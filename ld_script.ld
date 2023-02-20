@@ -21,7 +21,9 @@ SECTIONS
 	ALIGN(4)
 	{
         asm/crt0.o(.text);
-        asm/code.o(.text);
+        asm/code1.o(.text);
+        src/player.o(.text);
+        asm/code2.o(.text);
 	} = 0
 
     .data :
