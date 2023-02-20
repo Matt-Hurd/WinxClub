@@ -1,16 +1,4 @@
-. = 0x00096800; gUnknown_02096800 = .;
-. = 0x001B2305; gUnknown_021B2305 = .;
 . = 0x0030020C; gUnknown_0230020C = .;
-. = 0x00496820; gUnknown_02496820 = .;
-. = 0x00522203; gUnknown_02522203 = .;
 . = 0x00530452; gUnknown_02530452 = .;
-. = 0x005B2303; gUnknown_025B2303 = .;
-. = 0x007F2703; gUnknown_027F2703 = .;
-. = 0x00802001; gUnknown_02802001 = .;
-. = 0x00809102; gUnknown_02809102 = .;
-. = 0x00928CC1; gUnknown_02928CC1 = .;
-. = 0x00928D41; gUnknown_02928D41 = .;
-. = 0x009B2301; gUnknown_029B2301 = .;
 . = 0x00A0A000; gUnknown_02A0A000 = .;
 . = 0x00BDC000; gUnknown_02BDC000 = .;
-. = 0x00BF8D41; gUnknown_02BF8D41 = .;
