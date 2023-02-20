@@ -24,6 +24,8 @@ SECTIONS
         asm/code1.o(.text);
         src/player.o(.text);
         asm/code2.o(.text);
+        data/mid_data.o(.data)
+        asm/code3.o(.text);
 	} = 0
 
     .data :
