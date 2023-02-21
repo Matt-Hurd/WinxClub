@@ -1,41 +1,35 @@
 OUTPUT_ARCH(arm)
 
+MEMORY {
+    ewram (w!x) : ORIGIN = 0x02000000, LENGTH = 256K
+    iwram (w!x) : ORIGIN = 0x03000000, LENGTH = 32K
+    rom (rx) : ORIGIN = 0x08000000, LENGTH = 32M
+}
+
 SECTIONS
 {
-    . = 0x02000000;
-    EWRAM (NOLOAD) :
-    ALIGN(4)
+    EWRAM (NOLOAD) : ALIGN(4)
     {
         INCLUDE "sym_ewram.txt"
-    }
+    } >ewram
 
-    . = 0x03000000;
-    IWRAM (NOLOAD) :
-    ALIGN(4)
+    IWRAM (NOLOAD) : ALIGN(4)
     {
         INCLUDE "sym_iwram.txt"
-    }
-    
-	. = 0x08000000;
-    .text :
-	ALIGN(4)
+    } >iwram
+
+    ROM : ALIGN(4)
 	{
         asm/crt0.o(.text);
         asm/code1.o(.text);
-        src/player.o(.text);
         asm/code2.o(.text);
-        data/mid_data.o(.data)
+        data/mid_data.o(.rodata)
         asm/code3.o(.text);
-	} = 0
+        data/data.o(.rodata);
+    } >rom
 
-    .data :
-	ALIGN(4)
-    {
-        data/data.o(.data);
-    } = 0
-    
     ROM_END = .;
-    
+
     /* DWARF debug sections.
        Symbols in the DWARF debugging sections are relative to the beginning
        of the section so we begin them at 0.  */

@@ -1,4 +1,7 @@
-	.section .data
+	.include "asm/macros.inc"
+	.include "constants/constants.inc"
+
+	.section .rodata
 
     .global gUnknown_0803E2A0
 gUnknown_0803E2A0:
