@@ -1,7 +1,4 @@
-	.include "asm/macros.inc"
-	.include "constants/constants.inc"
-
-	.section .rodata
+	.section .data
 
     .global gUnknown_08041448
 gUnknown_08041448:

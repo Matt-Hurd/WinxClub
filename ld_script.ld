@@ -1,5 +1,8 @@
 OUTPUT_ARCH(arm)
 
+gNumMusicPlayers = 0x20;
+gMaxLines = 0;
+
 MEMORY {
     ewram (w!x) : ORIGIN = 0x02000000, LENGTH = 256K
     iwram (w!x) : ORIGIN = 0x03000000, LENGTH = 32K
@@ -18,14 +21,14 @@ SECTIONS
         INCLUDE "sym_iwram.txt"
     } >iwram
 
-    ROM : ALIGN(4)
+    ROM : ALIGN(2)
 	{
         asm/crt0.o(.text);
         asm/code1.o(.text);
         asm/code2.o(.text);
-        data/mid_data.o(.rodata)
+        data/mid_data.o(.data)
         asm/code3.o(.text);
-        data/data.o(.rodata);
+        data/data.o(.data);
     } >rom
 
     ROM_END = .;

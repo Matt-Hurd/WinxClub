@@ -25978,7 +25978,7 @@ _0800EBE4:
 	cmp r0, #0
 	bne _0800EBE4
 	bl sub_800E53C
-	ldr r0, _0800ED70 @ =gUnknown_03003D2C
+	ldr r0, _0800ED70 @ =gPlayerEntity
 	ldr r0, [r0]
 	bl sub_803DA18
 	movs r1, #0
@@ -26123,7 +26123,7 @@ _0800ED60: .4byte sub_8038754
 _0800ED64: .4byte gUnknown_03003D28
 _0800ED68: .4byte gUnknown_03003D35
 _0800ED6C: .4byte gUnknown_03003438
-_0800ED70: .4byte gUnknown_03003D2C
+_0800ED70: .4byte gPlayerEntity
 _0800ED74: .4byte 0x0000C350
 _0800ED78: .4byte 0x000249F0
 
@@ -41906,7 +41906,7 @@ sub_80167AC: @ 0x080167AC
 	adds r0, #0x10
 	adds r0, r0, r1
 	ldr r3, [r0, #0x1c]
-	ldr r0, _08016AAC @ =gUnknown_03003D2C
+	ldr r0, _08016AAC @ =gPlayerEntity
 	sub sp, #8
 	ldr r1, [r0]
 	adds r1, #0x90
@@ -42281,7 +42281,7 @@ _08016A9C: .4byte gUnknown_0803E320
 _08016AA0: .4byte gUnknown_03003E88
 _08016AA4: .4byte gUnknown_03003458
 _08016AA8: .4byte gUnknown_03003454
-_08016AAC: .4byte gUnknown_03003D2C
+_08016AAC: .4byte gPlayerEntity
 _08016AB0: .4byte 0x0000FFFF
 _08016AB4: .4byte gUnknown_03003D34
 _08016AB8: .4byte gUnknown_03003D35
@@ -42313,7 +42313,7 @@ _08016ACC:
 	ldr r0, [r0]
 	bl sub_801CBAA
 	ldr r1, [sp, #0x90]
-	ldr r0, _08016D64 @ =gUnknown_03003D2C
+	ldr r0, _08016D64 @ =gPlayerEntity
 	adds r1, #0x58
 	ldr r0, [r0]
 	ldr r2, [r1]
@@ -42397,7 +42397,7 @@ _08016B7A:
 sub_8016BAC: @ 0x08016BAC
 	push {r4, lr}
 	ldr r0, [r1]
-	ldr r2, _08016D64 @ =gUnknown_03003D2C
+	ldr r2, _08016D64 @ =gPlayerEntity
 	ldrh r1, [r0, #4]
 	ldr r3, [r2]
 	movs r2, #0x90
@@ -42613,7 +42613,7 @@ sub_8016D0E: @ 0x08016D0E
 
 	thumb_func_start sub_8016D24
 sub_8016D24: @ 0x08016D24
-	ldr r0, _08016D64 @ =gUnknown_03003D2C
+	ldr r0, _08016D64 @ =gPlayerEntity
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r1, [r1]
@@ -42644,7 +42644,7 @@ _08016D4A:
 	.align 2, 0
 _08016D5C: .4byte 0x000004DD
 _08016D60: .4byte gUnknown_03003458
-_08016D64: .4byte gUnknown_03003D2C
+_08016D64: .4byte gPlayerEntity
 _08016D68: .4byte gUnknown_0300345C
 _08016D6C: .4byte 0x000004DE
 _08016D70: .4byte gUnknown_03003444
@@ -42800,7 +42800,7 @@ _08016E7C:
 	thumb_func_start sub_8016E8C
 sub_8016E8C: @ 0x08016E8C
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r6, _08017114 @ =gUnknown_03003D2C
+	ldr r6, _08017114 @ =gPlayerEntity
 	ldr r0, [r1]
 	ldr r1, [r6]
 	ldrh r0, [r0, #4]
@@ -42808,7 +42808,7 @@ sub_8016E8C: @ 0x08016E8C
 	movs r4, #0
 	strb r0, [r1, #4]
 _08016E9C:
-	ldr r6, _08017114 @ =gUnknown_03003D2C
+	ldr r6, _08017114 @ =gPlayerEntity
 	movs r7, #1
 	ldr r0, [r6]
 	adds r1, r7, #0
@@ -42828,7 +42828,7 @@ _08016EAE:
 	adds r0, r0, r4
 	str r0, [sp]
 _08016EC2:
-	ldr r0, _08017114 @ =gUnknown_03003D2C
+	ldr r0, _08017114 @ =gPlayerEntity
 	movs r7, #1
 	ldr r0, [r0]
 	adds r1, r7, #0
@@ -42846,7 +42846,7 @@ _08016ED6:
 	adds r0, #0xff
 	adds r0, #0x55
 	bl sub_803FEF8
-	ldr r7, _08017114 @ =gUnknown_03003D2C
+	ldr r7, _08017114 @ =gPlayerEntity
 	movs r1, #1
 	ldr r0, [r7]
 	adds r0, #0x80
@@ -43048,7 +43048,7 @@ loc_801701c:
 	bl sub_8016D90
 	b _08016FEA
 loc_8017022:
-	ldr r0, _08017114 @ =gUnknown_03003D2C
+	ldr r0, _08017114 @ =gPlayerEntity
 	movs r1, #0x84
 	ldr r0, [r0]
 	ldrb r1, [r1, r0]
@@ -43166,7 +43166,7 @@ _08017104: .4byte gUnknown_03003458
 _08017108: .4byte gUnknown_030034F8
 _0801710C: .4byte 0x0000FFFE
 _08017110: .4byte gUnknown_03003454
-_08017114: .4byte gUnknown_03003D2C
+_08017114: .4byte gPlayerEntity
 _08017118: .4byte gUnknown_03003E98
 _0801711C: .4byte gUnknown_03003C58
 _08017120: .4byte gUnknown_0300345C
@@ -48667,7 +48667,7 @@ _08019B52:
 	movs r1, #4
 	adds r0, r5, #0
 	bl sub_80147FA
-	ldr r0, _08019DF0 @ =gUnknown_03003D2C
+	ldr r0, _08019DF0 @ =gPlayerEntity
 	movs r3, #0xff
 	ldr r0, [r0]
 	movs r2, #0
@@ -48974,7 +48974,7 @@ _08019DDC:
 _08019DE4: .4byte gUnknown_03003448
 _08019DE8: .4byte 0x00000C81
 _08019DEC: .4byte 0x00000CA8
-_08019DF0: .4byte gUnknown_03003D2C
+_08019DF0: .4byte gPlayerEntity
 _08019DF4: .4byte gUnknown_0300345C
 _08019DF8: .4byte sub_80143E0
 _08019DFC: .4byte gUnknown_03003444
@@ -49172,7 +49172,7 @@ _08019F82:
 	adds r0, #0xff
 	strb r0, [r4, #4]
 _08019F8C:
-	ldr r6, _0801A2D0 @ =gUnknown_03003D2C
+	ldr r6, _0801A2D0 @ =gPlayerEntity
 	ldrb r7, [r4, #4]
 	ldr r0, [r6]
 	adds r0, r0, r7
@@ -49234,7 +49234,7 @@ _0801A002:
 	bl sub_80137F8
 _0801A00A:
 	movs r3, #4
-	ldr r6, _0801A2D0 @ =gUnknown_03003D2C
+	ldr r6, _0801A2D0 @ =gPlayerEntity
 	ldrsb r0, [r4, r3]
 	ldr r1, [r6]
 	adds r0, r0, r1
@@ -49517,7 +49517,7 @@ _0801A220:
 	ldr r1, _0801A2D8 @ =gUnknown_080507A8
 	lsls r0, r5, #2
 	ldrh r0, [r1, r0]
-	ldr r1, _0801A2D0 @ =gUnknown_03003D2C
+	ldr r1, _0801A2D0 @ =gPlayerEntity
 	movs r3, #0xff
 	ldr r1, [r1]
 	movs r2, #0
@@ -49570,7 +49570,7 @@ _0801A220:
 	.align 2, 0
 _0801A2C8: .4byte gUnknown_03003448
 _0801A2CC: .4byte 0x00000634
-_0801A2D0: .4byte gUnknown_03003D2C
+_0801A2D0: .4byte gPlayerEntity
 _0801A2D4: .4byte gUnknown_0300344C
 _0801A2D8: .4byte gUnknown_080507A8
 _0801A2DC: .4byte 0x000004CC
@@ -49638,7 +49638,7 @@ _0801A31C:
 	ldr r0, _0801A728 @ =gUnknown_03003448
 	ldr r0, [r0]
 	bl sub_800116A
-	ldr r5, _0801A72C @ =gUnknown_03003D2C
+	ldr r5, _0801A72C @ =gPlayerEntity
 	str r0, [r7]
 	ldr r1, [r5]
 	ldr r2, _0801A730 @ =gUnknown_080507B8
@@ -50082,7 +50082,7 @@ _0801A6A4:
 	.align 2, 0
 _0801A724: .4byte 0x000005BC
 _0801A728: .4byte gUnknown_03003448
-_0801A72C: .4byte gUnknown_03003D2C
+_0801A72C: .4byte gPlayerEntity
 _0801A730: .4byte gUnknown_080507B8
 _0801A734: .4byte 0x0000FFFF
 _0801A738: .4byte 0x00000C9C
@@ -51869,7 +51869,7 @@ _0801B562:
 sub_801B56C: @ 0x0801B56C
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0x16
-	ldr r6, _0801B87C @ =gUnknown_03003D2C
+	ldr r6, _0801B87C @ =gPlayerEntity
 	adds r4, r0, #0
 	movs r5, #1
 	sub sp, #0x4c
@@ -51928,7 +51928,7 @@ _0801B5C8:
 	add r1, pc, #0x2B4 @ =_0801B894
 	bl sub_803FC68
 	movs r2, #0
-	ldr r6, _0801B87C @ =gUnknown_03003D2C
+	ldr r6, _0801B87C @ =gPlayerEntity
 	str r2, [sp]
 	adds r5, r0, #0
 	ldr r0, [r6]
@@ -52001,7 +52001,7 @@ _0801B65C:
 	cmp r0, #0
 	bne _0801B65C
 _0801B678:
-	ldr r0, _0801B87C @ =gUnknown_03003D2C
+	ldr r0, _0801B87C @ =gPlayerEntity
 	movs r1, #0x90
 	ldr r0, [r0]
 	ldr r2, _0801B8AC @ =gUnknown_08050C54
@@ -52087,7 +52087,7 @@ _0801B6D4:
 	stm r5!, {r1, r2, r3}
 	ldm r0, {r0, r1, r2, r3}
 	stm r5!, {r0, r1, r2, r3}
-	ldr r0, _0801B87C @ =gUnknown_03003D2C
+	ldr r0, _0801B87C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0x90
 	ldrb r0, [r0]
@@ -52187,7 +52187,7 @@ _0801B772:
 	str r0, [sp, #4]
 	movs r0, #1
 	str r0, [sp, #0x28]
-	ldr r0, _0801B87C @ =gUnknown_03003D2C
+	ldr r0, _0801B87C @ =gPlayerEntity
 	add r3, sp, #0
 	strb r6, [r3, #0x14]
 	ldr r0, [r0]
@@ -52260,7 +52260,7 @@ _0801B7C8:
 	adds r3, #0x10
 	movs r7, #6
 	strb r7, [r3, #0xe]
-	ldr r7, _0801B87C @ =gUnknown_03003D2C
+	ldr r7, _0801B87C @ =gPlayerEntity
 	ldr r7, [r7]
 	adds r7, #0x90
 	ldrb r7, [r7]
@@ -52298,7 +52298,7 @@ _0801B7C8:
 _0801B870: .4byte gUnknown_03003450
 _0801B874: .4byte gUnknown_03003458
 _0801B878: .4byte 0xFFF90000
-_0801B87C: .4byte gUnknown_03003D2C
+_0801B87C: .4byte gPlayerEntity
 _0801B880: .4byte gUnknown_03003D20
 _0801B884: .4byte gUnknown_0300345C
 _0801B888: .4byte gUnknown_08050E84
@@ -52801,7 +52801,7 @@ _0801BC2A:
 	movs r0, #0
 	bl sub_80050FA
 	movs r2, #0
-	ldr r0, _0801BE88 @ =gUnknown_03003D2C
+	ldr r0, _0801BE88 @ =gPlayerEntity
 	str r2, [sp]
 	ldr r0, [r0]
 	ldr r1, _0801BE8C @ =gUnknown_080507F4
@@ -52816,7 +52816,7 @@ _0801BC2A:
 	adds r2, r5, #0
 	ldr r0, [r0]
 	bl sub_8017884
-	ldr r0, _0801BE88 @ =gUnknown_03003D2C
+	ldr r0, _0801BE88 @ =gPlayerEntity
 	movs r1, #0x90
 	ldr r0, [r0]
 	ldr r2, _0801BE8C @ =gUnknown_080507F4
@@ -52861,7 +52861,7 @@ _0801BCDC:
 	bl sub_8017A0A
 _0801BCFC:
 	movs r2, #0
-	ldr r0, _0801BE88 @ =gUnknown_03003D2C
+	ldr r0, _0801BE88 @ =gPlayerEntity
 	str r2, [sp]
 	ldr r0, [r0]
 	ldr r1, _0801BE94 @ =gUnknown_08050A24
@@ -52875,7 +52875,7 @@ _0801BCFC:
 	adds r2, r5, #0
 	ldr r0, [r7]
 	bl sub_8017884
-	ldr r0, _0801BE88 @ =gUnknown_03003D2C
+	ldr r0, _0801BE88 @ =gPlayerEntity
 	movs r1, #0x90
 	ldr r0, [r0]
 	ldr r2, _0801BE94 @ =gUnknown_08050A24
@@ -52897,7 +52897,7 @@ _0801BCFC:
 	ldr r0, [r7]
 	bl sub_8017884
 _0801BD48:
-	ldr r0, _0801BE88 @ =gUnknown_03003D2C
+	ldr r0, _0801BE88 @ =gPlayerEntity
 	ldr r2, _0801BE98 @ =0x0000FFFF
 	ldr r0, [r0]
 	adds r0, #0x80
@@ -53052,7 +53052,7 @@ _0801BE78: .4byte 0x61697469
 _0801BE7C: .4byte 0x6173696C
 _0801BE80: .4byte 0x6E6F6974
 _0801BE84: .4byte 0x00000000
-_0801BE88: .4byte gUnknown_03003D2C
+_0801BE88: .4byte gPlayerEntity
 _0801BE8C: .4byte gUnknown_080507F4
 _0801BE90: .4byte gUnknown_03003E88
 _0801BE94: .4byte gUnknown_08050A24
@@ -55422,7 +55422,7 @@ _0801CF90:
 	ldr r0, _0801D110 @ =gUnknown_03003D28
 	strb r4, [r0]
 	bl sub_802383A
-	ldr r0, _0801D114 @ =gUnknown_03003D2C
+	ldr r0, _0801D114 @ =gPlayerEntity
 	movs r3, #0x9b
 	ldr r1, [r0]
 	movs r0, #0x90
@@ -55479,7 +55479,7 @@ _0801D104: .4byte 0x000008A4
 _0801D108: .4byte 0x00000C9D
 _0801D10C: .4byte 0x00000C8B
 _0801D110: .4byte gUnknown_03003D28
-_0801D114: .4byte gUnknown_03003D2C
+_0801D114: .4byte gPlayerEntity
 _0801D118:
 	movs r2, #0
 	movs r1, #0
@@ -55518,7 +55518,7 @@ _0801D118:
 	movs r1, #4
 	adds r0, r6, #0
 	bl sub_80147FA
-	ldr r0, _0801D500 @ =gUnknown_03003D2C
+	ldr r0, _0801D500 @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xa0
 	ldrb r0, [r0, #0xf]
@@ -55544,7 +55544,7 @@ _0801D118:
 	movs r1, #4
 	adds r0, r6, #0
 	bl sub_80147FA
-	ldr r0, _0801D500 @ =gUnknown_03003D2C
+	ldr r0, _0801D500 @ =gPlayerEntity
 	add r1, pc, #0x360 @ =_0801D50C
 	ldr r0, [r0]
 	adds r0, #0xb0
@@ -55568,7 +55568,7 @@ _0801D118:
 	movs r1, #4
 	adds r0, r6, #0
 	bl sub_80147FA
-	ldr r0, _0801D500 @ =gUnknown_03003D2C
+	ldr r0, _0801D500 @ =gPlayerEntity
 	ldr r0, [r0]
 	ldr r7, [r0]
 	adds r0, r7, #0
@@ -55607,7 +55607,7 @@ _0801D118:
 	ldr r0, [r1, #0x30]
 	cmp r0, #0
 	beq _0801D24E
-	ldr r0, _0801D500 @ =gUnknown_03003D2C
+	ldr r0, _0801D500 @ =gPlayerEntity
 	movs r3, #0xff
 	ldr r0, [r0]
 	movs r2, #0
@@ -55939,7 +55939,7 @@ _0801D4F2:
 _0801D4F4: .4byte gUnknown_08050FC0
 _0801D4F8: .4byte 0x0000FFFF
 _0801D4FC: .4byte 0x00000574
-_0801D500: .4byte gUnknown_03003D2C
+_0801D500: .4byte gPlayerEntity
 _0801D504: .4byte 0x00006925
 _0801D508: .4byte 0x000005EC
 _0801D50C: .4byte 0x69323025
@@ -60116,7 +60116,7 @@ _0801F392:
 	ldr r0, _0801F620 @ =gUnknown_03003EB8
 	ldr r0, [r0]
 	bl sub_800116A
-	ldr r1, _0801F624 @ =gUnknown_03003D2C
+	ldr r1, _0801F624 @ =gPlayerEntity
 	str r0, [r4, #0x30]
 	ldr r1, [r1]
 	adds r1, #0x90
@@ -60439,7 +60439,7 @@ _0801F616:
 	b _0801F5E6
 	.align 2, 0
 _0801F620: .4byte gUnknown_03003EB8
-_0801F624: .4byte gUnknown_03003D2C
+_0801F624: .4byte gPlayerEntity
 _0801F628: .4byte gUnknown_08050FD4
 _0801F62C: .4byte 0x000011EF
 _0801F630: .4byte 0x00010000
@@ -60833,7 +60833,7 @@ sub_801F906: @ 0x0801F906
 	ldr r0, [sp, #8]
 	ldr r2, _0801FBB0 @ =gUnknown_03003D20
 	ldrh r6, [r0, #6]
-	ldr r0, _0801FBAC @ =gUnknown_03003D2C
+	ldr r0, _0801FBAC @ =gPlayerEntity
 	adds r7, r4, #0
 	ldr r0, [r0]
 	adds r7, #0x90
@@ -61141,7 +61141,7 @@ _0801FB9C: .4byte 0xF000FFFF
 _0801FBA0: .4byte 0xFF8003FF
 _0801FBA4: .4byte 0x0043A000
 _0801FBA8: .4byte gUnknown_03003EB8
-_0801FBAC: .4byte gUnknown_03003D2C
+_0801FBAC: .4byte gPlayerEntity
 _0801FBB0: .4byte gUnknown_03003D20
 _0801FBB4: .4byte gUnknown_0300346C
 _0801FBB8:
@@ -61529,10 +61529,10 @@ _0801FEA8:
 loc_801feaa:
 	movs r3, #5
 	ldrsb r1, [r0, r3]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 _0801FEB8:
 	add sp, #4
 	pop {r3}
@@ -61540,7 +61540,7 @@ _0801FEB8:
 loc_801febe:
 	movs r3, #5
 	ldrsb r1, [r0, r3]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
 	bl sub_8023A70
@@ -61548,7 +61548,7 @@ loc_801febe:
 loc_801fece:
 	movs r3, #5
 	ldrsb r1, [r0, r3]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
 	bl sub_8023AA2
@@ -61556,7 +61556,7 @@ loc_801fece:
 loc_801fede:
 	movs r3, #5
 	ldrsb r1, [r0, r3]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
 	bl sub_8023B22
@@ -61564,7 +61564,7 @@ loc_801fede:
 loc_801feee:
 	movs r3, #5
 	ldrsb r1, [r0, r3]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
 	bl sub_8023AE0
@@ -61882,7 +61882,7 @@ _08020102:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	str r0, [sp, #0x10]
-	ldr r0, _0802026C @ =gUnknown_03003D2C
+	ldr r0, _0802026C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xb0
 	ldrb r1, [r0, #5]
@@ -62071,7 +62071,7 @@ _0802023A:
 	strh r0, [r4, #0x10]
 	b _0802028E
 	.align 2, 0
-_0802026C: .4byte gUnknown_03003D2C
+_0802026C: .4byte gPlayerEntity
 _08020270: .4byte gUnknown_03003E80
 _08020274: .4byte gUnknown_03003458
 _08020278: .4byte gUnknown_030034F8
@@ -62567,7 +62567,7 @@ _080205E2:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _08020610
-	ldr r0, _08020994 @ =gUnknown_03003D2C
+	ldr r0, _08020994 @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xb0
 	ldrb r0, [r0, #6]
@@ -62941,7 +62941,7 @@ _080208AC:
 	ldrb r1, [r1]
 	cmp r1, #0
 	beq _0802090E
-	ldr r0, _08020994 @ =gUnknown_03003D2C
+	ldr r0, _08020994 @ =gPlayerEntity
 	movs r1, #0xae
 	ldr r0, [r0]
 	ldrb r1, [r1, r0]
@@ -63049,7 +63049,7 @@ _0802098E:
 	b _080209D6
 	.align 2, 0
 _08020990: .4byte gUnknown_030034F8
-_08020994: .4byte gUnknown_03003D2C
+_08020994: .4byte gPlayerEntity
 _08020998: .4byte gUnknown_0805107A
 _0802099C: .4byte gUnknown_0805107E
 _080209A0: .4byte gUnknown_08051082
@@ -63112,13 +63112,13 @@ _08020A06:
 	ldrb r0, [r0, #0xe]
 	rsbs r0, r0, #0
 	lsls r1, r0, #0x18
-	ldr r0, _08020DB0 @ =gUnknown_03003D2C
+	ldr r0, _08020DB0 @ =gPlayerEntity
 	asrs r1, r1, #0x18
 	ldr r0, [r0]
 	adds r0, #0xac
 	bl sub_8023A70
 _08020A2C:
-	ldr r0, _08020DB0 @ =gUnknown_03003D2C
+	ldr r0, _08020DB0 @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xa0
 	ldrb r0, [r0, #0xd]
@@ -63189,7 +63189,7 @@ _08020A94:
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8020AB6
+	non_word_aligned_thumb_func_start sub_8020AB6
 sub_8020AB6: @ 0x08020AB6
 	push {r4, lr}
 	adds r4, r0, #0
@@ -63305,7 +63305,7 @@ sub_8020B6E: @ 0x08020B6E
 	bl sub_80406C4
 	cmp r0, #0
 	bne _08020B94
-	ldr r0, _08020DB0 @ =gUnknown_03003D2C
+	ldr r0, _08020DB0 @ =gPlayerEntity
 	movs r1, #1
 	ldr r0, [r0]
 	adds r0, #0xac
@@ -63574,7 +63574,7 @@ _08020D96:
 	b _08020EC8
 	.align 2, 0
 _08020DAC: .4byte gUnknown_03003D20
-_08020DB0: .4byte gUnknown_03003D2C
+_08020DB0: .4byte gPlayerEntity
 _08020DB4: .4byte gUnknown_03003EB8
 _08020DB8: .4byte gUnknown_03003E98
 loc_8020dbc:
@@ -64717,7 +64717,7 @@ _08021680:
 	cmp r2, #2
 	bne _080216BE
 _08021688:
-	ldr r0, _08021704 @ =gUnknown_03003D2C
+	ldr r0, _08021704 @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0x90
 	ldrb r0, [r0]
@@ -64748,7 +64748,7 @@ _080216A4:
 _080216BC:
 	b _080217D2
 _080216BE:
-	ldr r0, _08021704 @ =gUnknown_03003D2C
+	ldr r0, _08021704 @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0x90
 	ldrb r0, [r0]
@@ -64782,7 +64782,7 @@ _080216F4:
 _080216F8: .4byte gUnknown_0300345C
 _080216FC: .4byte 0x000011EF
 _08021700: .4byte gUnknown_03003D20
-_08021704: .4byte gUnknown_03003D2C
+_08021704: .4byte gPlayerEntity
 _08021708: .4byte 0x00000325
 _0802170C: .4byte 0x000002C1
 _08021710: .4byte 0x000002E2
@@ -64794,7 +64794,7 @@ _0802171C:
 	str r0, [sp, #8]
 	movs r0, #0
 	str r0, [sp, #4]
-	ldr r0, _08021A1C @ =gUnknown_03003D2C
+	ldr r0, _08021A1C @ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0x90
 	ldrb r0, [r0]
@@ -65176,7 +65176,7 @@ _08021A0E:
 	pop {r3}
 	bx r3
 	.align 2, 0
-_08021A1C: .4byte gUnknown_03003D2C
+_08021A1C: .4byte gPlayerEntity
 _08021A20: .4byte 0x00000307
 _08021A24: .4byte 0x000002A3
 _08021A28: .4byte gUnknown_0300345C
@@ -65896,7 +65896,7 @@ _08021F7E:
 	ble _08021FC0
 	rsbs r1, r0, #0
 _08021FC0:
-	ldr r5, _080221A4 @ =gUnknown_03003D2C
+	ldr r5, _080221A4 @ =gPlayerEntity
 	lsls r1, r1, #0x18
 	ldr r0, [r5]
 	asrs r1, r1, #0x18
@@ -65976,12 +65976,12 @@ _0802203C:
 	.byte 0xA3, 0x00
 loc_802203e:
 	rsbs r0, r6, #0
-	ldr r5, _080221A4 @ =gUnknown_03003D2C
+	ldr r5, _080221A4 @ =gPlayerEntity
 	lsls r1, r0, #0x18
 	ldr r0, [r5]
 	asrs r1, r1, #0x18
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 	lsrs r0, r6, #1
 	rsbs r0, r0, #0
 	lsls r1, r0, #0x18
@@ -66094,12 +66094,12 @@ _08022124:
 	b _08022168
 _0802212A:
 	rsbs r0, r6, #0
-	ldr r5, _080221A4 @ =gUnknown_03003D2C
+	ldr r5, _080221A4 @ =gPlayerEntity
 	lsls r1, r0, #0x18
 	ldr r0, [r5]
 	asrs r1, r1, #0x18
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 	ldr r0, _0802219C @ =gUnknown_03003D20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -66153,7 +66153,7 @@ _08022188:
 _08022198: .4byte 0x000011EF
 _0802219C: .4byte gUnknown_03003D20
 _080221A0: .4byte gUnknown_0300345C
-_080221A4: .4byte gUnknown_03003D2C
+_080221A4: .4byte gPlayerEntity
 _080221A8: .4byte gUnknown_03003458
 
 	thumb_func_start sub_80221AC
@@ -69153,42 +69153,3 @@ _080239DC: .4byte 0xF0F0F023
 _080239E0: .4byte gUnknown_03003478
 _080239E4: .4byte gUnknown_08051040
 _080239E8: .4byte 0x0000FFFF
-
-	thumb_func_start sub_80239EC
-sub_80239EC: @ 0x080239EC
-	push {r4, r5, lr}
-	sub sp, #0x1fc
-	sub sp, #8
-	movs r1, #1
-	lsls r1, r1, #9
-	add r5, sp, #4
-	movs r2, #0
-	adds r0, r5, #0
-	bl sub_803F464
-	movs r2, #1
-	lsls r2, r2, #9
-	ldr r4, =gUnknown_03003D28
-	str r2, [sp]
-	ldrb r0, [r4]
-	lsls r2, r0, #9
-	adds r2, #0x20
-	ldr r0, =gUnknown_03003464
-	adds r3, r5, #0
-	movs r1, #1
-	ldr r0, [r0]
-	bl sub_800B314
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _08023A24
-	bl sub_803DA18
-_08023A24:
-	movs r0, #0
-	str r0, [r4, #4]
-	movs r1, #0
-	movs r0, #4
-	bl sub_803FEF8
-	add sp, #0x1fc
-	add sp, #8
-	pop {r4, r5}
-	pop {r3}
-	bx r3
