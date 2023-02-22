@@ -7,11 +7,11 @@ else
 EXE :=
 endif
 
-CC1      := tools/agbcc/bin/agbcc$(EXE)
+CC1	  := tools/agbcc/bin/agbcc$(EXE)
 CC1_OLD  := tools/agbcc/bin/old_agbcc$(EXE)
-CPP      := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS       := tools/ADSv1_2/bin/armasm
-LD       := tools/ADSv1_2/bin/armlink
+CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
+AS	   := tools/ADSv1_2/bin/armasm
+LD	   := tools/ADSv1_2/bin/armlink
 OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
 
 GFX := tools/gbagfx/gbagfx$(EXE)
@@ -28,8 +28,8 @@ ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -interworking -I asminclude -I incl
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
 ROM 	 := $(BUILD_NAME).gba
-MAP      := $(ROM:%.gba=%.map)
-ELF      := $(ROM:%.gba=%.elf)
+MAP	  := $(ROM:%.gba=%.map)
+ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
 LDFLAGS =
 
@@ -140,7 +140,7 @@ mostlyclean: tidy
 tidy:
 	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS)
 	rm -r build
-    
+
 
 include graphics_file_rules.mk
 
@@ -183,13 +183,13 @@ $(RODATA_ASM_BUILDDIR)/%.o: rodata_dep = $(shell $(SCANINC) -I include -I "" $(R
 endif
 
 #### Recipes ####
-   
+
 $(OBJ_DIR)/ld_script.ld: $(LDSCRIPT) $(OBJ_DIR)/sym_ewram.txt $(OBJ_DIR)/sym_iwram.txt
 	cd $(OBJ_DIR) && sed "s#tools/#../../tools/#g" ../../$(LDSCRIPT) > $(LDSCRIPT)
-    
+
 $(OBJ_DIR)/sym_ewram.txt: sym_ewram.txt
 	$(CPP) -P $(CPPFLAGS) $< | sed -e "s#tools/#../../tools/#g" > $@
-    
+
 $(OBJ_DIR)/sym_iwram.txt: sym_iwram.txt
 	$(CPP) -P $(CPPFLAGS) $< | sed -e "s#tools/#../../tools/#g" > $@
 
@@ -205,26 +205,26 @@ $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
-    
+
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(PREPROC) $< charmap.txt > $(DATA_ASM_BUILDDIR)/$*.p.i
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(RODATA_ASM_BUILDDIR)/%.o: $(RODATA_ASM_SUBDIR)/%.s $$(rodata_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
-    
+
 $(SOUND_ASM_BUILDDIR)/%.o: $(SOUND_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BANK_ASM_BUILDDIR)/%.o: $(BANK_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
-    
+
 $(SEQ_ASM_BUILDDIR)/%.o: $(SEQ_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
-    
+
 $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
-    
+	
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a

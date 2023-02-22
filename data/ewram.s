@@ -1,6 +1,6 @@
 	AREA data, DATA
 
-    GLOBAL ewram
+	GLOBAL ewram
 ewram
-    SPACE 0x40000
-    END
+	SPACE 0x40000
+	END

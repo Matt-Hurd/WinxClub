@@ -14743,7 +14743,7 @@ _080081C8 DCDU 0x04000100
 _080081CC DCDU gUnknown_03003EAC
 _080081D0 DCDU sub_8008122
 
-       arm_func_start sub_80081D4
+	arm_func_start sub_80081D4
 sub_80081D4 ;@ 0x080081D4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
@@ -128988,3 +128988,4 @@ sub_08041440 ;@ 0x08041440
 	arm_func_start sub_08041444
 sub_08041444 ;@ 0x08041444
 	b _0803E294
+	END
