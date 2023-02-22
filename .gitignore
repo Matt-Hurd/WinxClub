@@ -73,3 +73,10 @@ sound_/
 
 # Emulators
 *.sav
+
+# ADS
+tools/ADSv1_2/
+
+# Data
+*.bin
+*.bak

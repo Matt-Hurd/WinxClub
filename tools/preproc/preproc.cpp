@@ -31,7 +31,7 @@ void PrintAsmBytes(unsigned char *s, int length)
 {
     if (length > 0)
     {
-        std::printf("\t.byte ");
+        std::printf("\tDCB ");
         for (int i = 0; i < length; i++)
         {
             std::printf("0x%02X", s[i]);

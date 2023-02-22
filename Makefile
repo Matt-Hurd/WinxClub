@@ -10,9 +10,9 @@ endif
 CC1      := tools/agbcc/bin/agbcc$(EXE)
 CC1_OLD  := tools/agbcc/bin/old_agbcc$(EXE)
 CPP      := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS       := $(DEVKITARM)/bin/arm-none-eabi-as
-LD       := $(DEVKITARM)/bin/arm-none-eabi-ld
-OBJCOPY  := $(DEVKITARM)/bin/arm-none-eabi-objcopy
+AS       := tools/ADSv1_2/bin/armasm
+LD       := tools/ADSv1_2/bin/armlink
+OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
 
 GFX := tools/gbagfx/gbagfx$(EXE)
 AIF := tools/aif2pcm/aif2pcm$(EXE)
@@ -23,15 +23,15 @@ GBAFIX := tools/gbafix/gbafix$(EXE)
 
 CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O0 -fhex-asm -g
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork -I asminclude -I include --defsym VERSION_$(GAME_VERSION)=1 --defsym REVISION=$(GAME_REVISION) --defsym $(GAME_REGION)=1 --defsym DEBUG=$(DEBUG)
+ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -interworking -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
 ROM 	 := $(BUILD_NAME).gba
 MAP      := $(ROM:%.gba=%.map)
 ELF      := $(ROM:%.gba=%.elf)
-LDSCRIPT := ld_script.ld
-LDFLAGS = --no-check-section -Map ../../$(MAP)
+LDSCRIPT := scatter_script.txt
+LDFLAGS =
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
@@ -201,17 +201,17 @@ $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
-	$(PREPROC) $< charmap.txt | $(AS) $(ASFLAGS) -o $@
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
-	$(PREPROC) $< charmap.txt | $(AS) $(ASFLAGS) -o $@
+	$(AS) $(ASFLAGS) -o $@ $<
     
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(PREPROC) $< charmap.txt > $(DATA_ASM_BUILDDIR)/$*.p.i
-	$(PREPROC) $< charmap.txt | $(AS) $(ASFLAGS) -o $@
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(RODATA_ASM_BUILDDIR)/%.o: $(RODATA_ASM_SUBDIR)/%.s $$(rodata_dep)
-	$(PREPROC) $< charmap.txt | $(AS) $(ASFLAGS) -o $@
+	$(AS) $(ASFLAGS) -o $@ $<
     
 $(SOUND_ASM_BUILDDIR)/%.o: $(SOUND_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
@@ -227,8 +227,9 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
     
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
-	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T $(LDSCRIPT) $(OBJS_REL) ../../tools/agbcc/lib/libgcc.a ../../tools/agbcc/lib/libc.a -o ../../$@
+	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a
 
 $(ROM): %.gba: %.elf
-	$(OBJCOPY) -O binary --gap-fill=0xFF --pad-to 0x8800000 $< $@
+	$(OBJCOPY) -bin -output build/objcopy $<
+	cp build/objcopy/.text $@
 	$(GBAFIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION) --silent
