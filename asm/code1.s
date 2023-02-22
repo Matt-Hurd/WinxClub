@@ -61707,7 +61707,7 @@ loc_801feaa
 	ldr r0, _0802026C ;@ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 _0801FEB8:
 	add sp, #4
 	pop {r3}
@@ -66154,7 +66154,7 @@ loc_802203e
 	ldr r0, [r5]
 	asrs r1, r1, #0x18
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 	lsrs r0, r6, #1
 	NEGS r0, r0
 	lsls r1, r0, #0x18
@@ -66272,7 +66272,7 @@ _0802212A
 	ldr r0, [r5]
 	asrs r1, r1, #0x18
 	adds r0, #0xac
-	bl modify_player_health
+	bl ModifyPlayerHealth
 	ldr r0, _0802219C @ =gUnknown_03003D20
 	ldrb r0, [r0]
 	cmp r0, #0
