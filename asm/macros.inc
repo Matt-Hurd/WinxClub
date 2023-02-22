@@ -1,1 +1,2 @@
-	.include "asm/macros/function.inc"
+	INCLUDE asm/macros/function.inc
+	END
