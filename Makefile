@@ -124,7 +124,7 @@ MAKEFLAGS += --no-print-directory
 .DELETE_ON_ERROR:
 
 all: $(ROM)
-	perl calcrom.pl $(MAP)
+	# perl calcrom.pl $(MAP)
 ifeq ($(COMPARE),1)
 	sha1sum -c $(BUILD_NAME).sha1
 endif
