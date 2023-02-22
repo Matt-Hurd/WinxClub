@@ -77,7 +77,7 @@ void PrintWait(int wait)
 {
     if (wait > 0)
     {
-        std::fprintf(g_outputFile, "\t.byte\tW%02d\n", wait);
+        std::fprintf(g_outputFile, "\tDCB\tW%02d\n", wait);
         s_velocityChanged = true;
         s_noteChanged = true;
         s_keepLastOpName = true;
@@ -88,7 +88,7 @@ void PrintOp(int wait, std::string name, const char *format, ...)
 {
     std::va_list args;
     va_start(args, format);
-    std::fprintf(g_outputFile, "\t.byte\t\t");
+    std::fprintf(g_outputFile, "\tDCB\t\t");
 
     if (format != nullptr)
     {
@@ -120,7 +120,7 @@ void PrintByte(const char *format, ...)
 {
     std::va_list args;
     va_start(args, format);
-    std::fprintf(g_outputFile, "\t.byte\t");
+    std::fprintf(g_outputFile, "\tDCB\t");
     std::vfprintf(g_outputFile, format, args);
     std::fprintf(g_outputFile, "\n");
     s_velocityChanged = true;
@@ -446,10 +446,10 @@ void PrintAgbFooter()
     std::fprintf(g_outputFile, "\n@******************************************************@\n");
     std::fprintf(g_outputFile, "\t.align\t2\n");
     std::fprintf(g_outputFile, "\n%s:\n", g_asmLabel.c_str());
-    std::fprintf(g_outputFile, "\t.byte\t%u\t@ NumTrks\n", trackCount);
-    std::fprintf(g_outputFile, "\t.byte\t%u\t@ NumBlks\n", 0);
-    std::fprintf(g_outputFile, "\t.byte\t%s_pri\t@ Priority\n", g_asmLabel.c_str());
-    std::fprintf(g_outputFile, "\t.byte\t%s_rev\t@ Reverb.\n", g_asmLabel.c_str());
+    std::fprintf(g_outputFile, "\tDCB\t%u\t@ NumTrks\n", trackCount);
+    std::fprintf(g_outputFile, "\tDCB\t%u\t@ NumBlks\n", 0);
+    std::fprintf(g_outputFile, "\tDCB\t%s_pri\t@ Priority\n", g_asmLabel.c_str());
+    std::fprintf(g_outputFile, "\tDCB\t%s_rev\t@ Reverb.\n", g_asmLabel.c_str());
     std::fprintf(g_outputFile, "\n");
     std::fprintf(g_outputFile, "\t.word\t%s_grp\n", g_asmLabel.c_str());
     std::fprintf(g_outputFile, "\n");

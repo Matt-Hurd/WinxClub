@@ -1,38 +1,40 @@
-	.macro arm_func_start name
-	.align 2, 0
-	.global \name
-	.arm
-	.type \name, function
-	.endm
+	MACRO
+$l	arm_func_start $name
+	ALIGN 2, 0
+	GLOBAL $name
+	CODE32
+	MEND
 
-	.macro arm_func_end name
-	.size \name, .-\name
-	.endm
+	MACRO
+$l	arm_func_end $name
+	SIZE $name, .-$name
+	MEND
 
-	.macro THUMB_FUNC_START name
-	.align 2, 0
-	.global \name
-	.thumb
-	.thumb_func
-	.type \name, function
-	.endm
+	MACRO
+$l	thumb_func_start $name
+	ALIGN 2, 0
+	GLOBAL $name
+	CODE16
+	MEND
 
-	.macro non_word_aligned_thumb_func_start name
-	.global \name
-	.thumb
-	.thumb_func
-	.type \name, function
-	.endm
+	MACRO
+$l	non_word_aligned_thumb_func_start $name
+	GLOBAL $name
+	CODE16
+	MEND
 
-	.macro thumb_func_end name
-	.size \name, .-\name
-	.endm
+	MACRO
+$l	thumb_func_end $name
+	SIZE $name, .-$name
+	MEND
 
-	.macro mov32 reg, addr
-	.if \addr == 0x08800000
-		movs \reg, #0x88
-		lsls \reg, \reg, #0x14
-	.else
-		ldr \reg, =#\addr
-	.endif
-	.endm
+	MACRO
+$l	mov32 $reg, $addr
+	IF $addr == 0x08800000
+		movs $reg, #0x88
+		lsls $reg, $reg, #0x14
+	ELSE
+		ldr $reg, =#$addr
+	ENDIF
+	MEND
+	END

@@ -1,4 +1,0 @@
-. = 0x0030020C; gUnknown_0230020C = .;
-. = 0x00530452; gUnknown_02530452 = .;
-. = 0x00A0A000; gUnknown_02A0A000 = .;
-. = 0x00BDC000; gUnknown_02BDC000 = .;
