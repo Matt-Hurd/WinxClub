@@ -1,7 +1,6 @@
+#include "iwram.h"
 #include "global.h"
 #include "gba/m4a_internal.h"
-
-extern unsigned int gUnknown_030034F8;
 
 extern char *sub_80244C6(void *, unsigned int);
 
@@ -25,7 +24,7 @@ unsigned char *modify_player_health(unsigned char *result, unsigned int a2)
     {
       *result = 0;
     }
-    return (unsigned char *)sub_80244C6(gUnknown_030034F8, a2 >> 31);
+    return (unsigned char *)sub_80244C6((void *)gUnknown_030034F8, a2 >> 31);
   }
   return result;
 }

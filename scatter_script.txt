@@ -22,7 +22,19 @@ LOAD_ROM_1 0x08000000
 
     .text2 0x08000210
     {
-        code.o (+RO)
+        code1.o (+RO)
+        code2.o (+RO)
+    }
+    DATABLOCK1 0x0803E2A0
+    {
+        mid_data.o (+RW)
+    }
+    .text3 0x0803EF1C
+    {
+        code3.o (+RO)
+    }
+    DATABLOCK2 0x08041448
+    {
         data.o (+RW)
     }
 }

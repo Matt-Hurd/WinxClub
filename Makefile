@@ -7,7 +7,7 @@ else
 EXE :=
 endif
 
-CC1	  := tools/agbcc/bin/agbcc$(EXE)
+CC1	  :=tools/ADSv1_2/bin/armcc$(EXE)
 CC1_OLD  := tools/agbcc/bin/old_agbcc$(EXE)
 CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
 AS	   := tools/ADSv1_2/bin/armasm
@@ -21,7 +21,7 @@ SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 GBAFIX := tools/gbafix/gbafix$(EXE)
 
-CC1FLAGS := -mthumb-interwork -Wimplicit -Wparentheses -O0 -fhex-asm -g
+CC1FLAGS := -Wi -Wp -O0 -S -g
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
 ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -interworking -I asminclude -I include
 
@@ -195,8 +195,7 @@ $(OBJ_DIR)/sym_iwram.txt: sym_iwram.txt
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
-	$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt > $(C_BUILDDIR)/$*.p.i
-	$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
+	$(CC1) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
