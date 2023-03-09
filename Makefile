@@ -31,7 +31,7 @@ ROM 	 := $(BUILD_NAME).gba
 MAP	  := $(ROM:%.gba=%.map)
 ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
-LDFLAGS =
+LDFLAGS = -noremove
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools

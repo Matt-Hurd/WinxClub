@@ -19,7 +19,7 @@
 	IMPORT sub_803E1B8
 	IMPORT sub_803E1C4
 	IMPORT sub_803F3E8
-	IMPORt _0803E294
+	IMPORT _0803E294
 
 	thumb_func_start sub_80412A8
 sub_80412A8 ;@ 0x080412A8
@@ -209,21 +209,21 @@ _0804142C DCDU 0x040000D4
 _08041430 DCDU 0x81000A36
 _08041434 DCDU 0x8500051B
 
-	thumb_func_start sub_08041438
-sub_08041438 ;@ 0x08041438
+	thumb_func_start sub_8041438
+sub_8041438 ;@ 0x08041438
 	bx pc
 	ALIGN
 
-	arm_func_start sub_0804143C
-sub_0804143C ;@ 0x0804143C
+	arm_func_start sub_804143C
+sub_804143C ;@ 0x0804143C
 	bx lr
 
-	thumb_func_start sub_08041440
-sub_08041440 ;@ 0x08041440
+	thumb_func_start sub_8041440
+sub_8041440 ;@ 0x08041440
 	bx pc
 	ALIGN
 
-	arm_func_start sub_08041444
-sub_08041444 ;@ 0x08041444
+	arm_func_start sub_8041444
+sub_8041444 ;@ 0x08041444
 	b _0803E294
 	END

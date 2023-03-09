@@ -27,25 +27,6 @@
 	IMPORT sub_803F2CC
 	IMPORT sub_803FC14
 
-
-	non_word_aligned_thumb_func_start sub_803A476
-sub_803A476 ;@ 0x0803A476
-	movs r1, #0
-_0803A478
-	lsls r2, r1, #2
-	adds r2, r2, r0
-	ldr r2, [r2, #0x38]
-	cmp r2, #0
-	beq _0803A486
-	movs r0, #1
-	bx lr
-_0803A486
-	adds r1, #1
-	cmp r1, #5
-	blo _0803A478
-	movs r0, #0
-	bx lr
-
 	thumb_func_start sub_803A490
 sub_803A490 ;@ 0x0803A490
 	push {r3, r4, r5, r6, r7, lr}
