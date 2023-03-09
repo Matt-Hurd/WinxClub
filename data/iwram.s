@@ -425,8 +425,8 @@ gUnknown_03003D28
 	DCB 0x00
 	SPACE 0x3
 
-	GLOBAL gUnknown_03003D2C
-gUnknown_03003D2C
+	GLOBAL gPlayerEntity
+gPlayerEntity
 	DCB 0x00
 	SPACE 0x3
 

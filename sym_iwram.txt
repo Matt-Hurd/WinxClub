@@ -83,7 +83,7 @@
 . = 0x00003D20; gUnknown_03003D20 = .;
 . = 0x00003D24; gUnknown_03003D24 = .;
 . = 0x00003D28; gUnknown_03003D28 = .;
-. = 0x00003D2C; gUnknown_03003D2C = .;
+. = 0x00003D2C; gPlayerEntity = .;
 . = 0x00003D30; gUnknown_03003D30 = .;
 . = 0x00003D34; gUnknown_03003D34 = .;
 . = 0x00003D35; gUnknown_03003D35 = .;

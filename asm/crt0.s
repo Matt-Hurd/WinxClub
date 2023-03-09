@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03007F00
 	IMPORT gUnknown_03007FA0
-	IMPORT sub_0803CDF4
+	IMPORT sub_803CDF4
 	ENTRY
 
 	arm_func_start start
@@ -81,7 +81,7 @@ _080001A0
 	mov fp, #0
 _080001C4
 	cmp r2, r3
-	bleq sub_0803CDF4
+	bleq sub_803CDF4
 	ldmia r2!, {r4, r5}
 	tst r4, #1
 	addne r4, r4, ip
