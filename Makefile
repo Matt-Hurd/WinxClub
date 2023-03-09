@@ -208,7 +208,7 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 	
 
-$(ELF): $(OBJS)
+$(ELF): $(OBJS) scatter_script.txt
 	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a
 
 $(ROM): %.gba: %.elf
