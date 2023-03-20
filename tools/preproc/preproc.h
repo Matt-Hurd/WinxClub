@@ -23,6 +23,7 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <stdexcept>
 #include "charmap.h"
 
 #ifdef _MSC_VER

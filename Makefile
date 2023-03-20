@@ -3,16 +3,19 @@ include config.mk
 
 ifeq ($(OS),Windows_NT)
 EXE := .exe
+WINE :=
 else
 EXE :=
+WINE := wine
 endif
 
-CC1	  := tools/ADSv1_2/bin/tcc$(EXE)
-CC1_OLD  := tools/agbcc/bin/old_agbcc$(EXE)
-CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS	   := tools/ADSv1_2/bin/armasm
-LD	   := tools/ADSv1_2/bin/armlink
-OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
+TCC	  := $(WINE) tools/ADSv1_2/bin/tcc.exe
+ACC	  := $(WINE) tools/ADSv1_2/bin/armcc.exe
+CC1_OLD  := $(WINE) tools/agbcc/bin/old_agbcc.exe
+CPP	  := $(WINE) $(DEVKITARM)/bin/arm-none-eabi-cpp
+AS	   := $(WINE) tools/ADSv1_2/bin/armasm.exe
+LD	   := $(WINE) tools/ADSv1_2/bin/armlink.exe
+OBJCOPY  := $(WINE) tools/ADSv1_2/Bin/fromelf.exe
 
 GFX := tools/gbagfx/gbagfx$(EXE)
 AIF := tools/aif2pcm/aif2pcm$(EXE)
@@ -21,9 +24,9 @@ SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 GBAFIX := tools/gbafix/gbafix$(EXE)
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -S -g
+CC1FLAGS := -Wi -Wp -Wb -O2 -S -g -apcs "/interwork"
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -interworking -I asminclude -I include
+ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
@@ -177,9 +180,7 @@ endif
 #### Recipes ####
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
-	# $(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
-	$(CC1) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
-	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	$(ACC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
