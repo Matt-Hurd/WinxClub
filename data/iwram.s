@@ -420,8 +420,8 @@ gUnknown_03003D24
 	DCB 0x00
 	SPACE 0x3
 
-	GLOBAL gUnknown_03003D28
-gUnknown_03003D28
+	GLOBAL gPlayerPointer
+gPlayerPointer
 	DCB 0x00
 	SPACE 0x3
 

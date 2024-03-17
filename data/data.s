@@ -311,4 +311,4 @@ gUnknown_08051750
 	GLOBAL gUnknown_080517C8
 gUnknown_080517C8
 	INCBIN data/ripped/000517C8.bin
-
+	END

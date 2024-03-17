@@ -1421,3 +1421,4 @@ _0800A200
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	END

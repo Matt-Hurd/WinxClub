@@ -52,3 +52,4 @@ _0803B812
 	pop {r1}
 	bx r1
 	ALIGN
+	END

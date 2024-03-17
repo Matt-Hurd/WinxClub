@@ -587,3 +587,4 @@ _08007FF4
 	mov r0, r7
 	LDMFD SP!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	END

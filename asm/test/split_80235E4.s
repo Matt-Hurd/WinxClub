@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003464
 	IMPORT gUnknown_03003478
-	IMPORT gUnknown_03003D28
+	IMPORT gPlayerPointer
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_0804AE30
 	IMPORT gUnknown_08051040
@@ -29,7 +29,7 @@ sub_80235E4 ;@ 0x080235E4
 	bl sub_803F464
 	ldr r0, _080239C8 ;@ =0xF0F0F022
 	str r0, [sp, #4]
-	ldr r0, _080239CC ;@ =gUnknown_03003D28
+	ldr r0, _080239CC ;@ =gPlayerPointer
 	ldr r0, [r0, #8]
 	ldrb r1, [r0]
 	str r1, [sp, #8]
@@ -72,7 +72,7 @@ sub_802363C ;@ 0x0802363C
 	movs r1, #0x20
 	adds r0, r4, #0
 	bl sub_803F464
-	ldr r5, _080239CC ;@ =gUnknown_03003D28
+	ldr r5, _080239CC ;@ =gPlayerPointer
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	bne _08023674
@@ -157,7 +157,7 @@ sub_80236D4 ;@ 0x080236D4
 	bl sub_803F464
 	ldr r1, _080239D8 ;@ =gUnknown_03003E98
 	ldr r0, [r1]
-	ldr r1, _080239CC ;@ =gUnknown_03003D28
+	ldr r1, _080239CC ;@ =gPlayerPointer
 	ldr r0, [r0, #8]
 	ldr r6, [r1, #4]
 	adds r7, r6, #0
@@ -183,7 +183,7 @@ _08023716
 	cmp r0, r6
 	str r1, [sp, #4]
 	blt _08023716
-	ldr r7, _080239CC ;@ =gUnknown_03003D28
+	ldr r7, _080239CC ;@ =gPlayerPointer
 	ldr r0, _080239DC ;@ =0xF0F0F023
 	ldrb r1, [r7]
 	cmp r1, #0
@@ -280,7 +280,7 @@ _080237A6
 	non_word_aligned_thumb_func_start sub_80237DA
 sub_80237DA ;@ 0x080237DA
 	push {r0, r4, r5, r6, r7, lr}
-	ldr r0, _080239CC ;@ =gUnknown_03003D28
+	ldr r0, _080239CC ;@ =gPlayerPointer
 	movs r1, #0
 	ldr r5, [r0, #4]
 	adds r4, r5, #0
@@ -345,7 +345,7 @@ sub_802383A ;@ 0x0802383A
 	add r7, sp, #4
 	add r0, sp, #4
 	bl sub_803BEB0
-	ldr r5, _080239CC ;@ =gUnknown_03003D28
+	ldr r5, _080239CC ;@ =gPlayerPointer
 	movs r6, #0
 	ldr r0, [r5, #4]
 	cmp r0, #0
@@ -368,7 +368,7 @@ _08023876
 _08023878
 	movs r2, #1
 	lsls r2, r2, #9
-	ldr r5, _080239CC ;@ =gUnknown_03003D28
+	ldr r5, _080239CC ;@ =gPlayerPointer
 	str r2, [sp]
 	ldrb r0, [r5]
 	adds r5, r7, #0
@@ -390,7 +390,7 @@ _08023898
 	eors r4, r2
 	cmp r0, #0x7f
 	blt _08023898
-	ldr r5, _080239CC ;@ =gUnknown_03003D28
+	ldr r5, _080239CC ;@ =gPlayerPointer
 	adds r1, #0xff
 	adds r1, #0xc1
 	ldrb r0, [r5]
@@ -541,7 +541,7 @@ _0802397A
 	bx r3
 	ALIGN
 _080239C8 DCDU 0xF0F0F022
-_080239CC DCDU gUnknown_03003D28
+_080239CC DCDU gPlayerPointer
 _080239D0 DCDU gUnknown_03003464
 _080239D4 DCDU gUnknown_0804AE30
 _080239D8 DCDU gUnknown_03003E98
@@ -549,3 +549,4 @@ _080239DC DCDU 0xF0F0F023
 _080239E0 DCDU gUnknown_03003478
 _080239E4 DCDU gUnknown_08051040
 _080239E8 DCDU 0x0000FFFF
+	END

@@ -29,7 +29,7 @@
 	IMPORT sub_8023A70
 	IMPORT sub_8023AA2
 	IMPORT sub_8023AE0
-	IMPORT sub_8023B22
+	IMPORT CollectFirefly
 	IMPORT sub_8028C2E
 	IMPORT sub_802E3C6
 	IMPORT sub_80333DC
@@ -104,7 +104,7 @@ loc_801fede
 	ldr r0, _0802026C ;@ =gPlayerEntity
 	ldr r0, [r0]
 	adds r0, #0xac
-	bl sub_8023B22
+	bl CollectFirefly
 	b _0801FEB8
 loc_801feee
 	movs r3, #5
@@ -2688,3 +2688,4 @@ _0802122E
 _0802123C DCDU gUnknown_03003D20
 _08021240 DCDU gUnknown_0300345C
 _08021244 DCDU 0x000011EF
+	END

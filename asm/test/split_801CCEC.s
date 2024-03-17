@@ -8,7 +8,7 @@
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003460
 	IMPORT gUnknown_03003468
-	IMPORT gUnknown_03003D28
+	IMPORT gPlayerPointer
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EA8
@@ -482,7 +482,7 @@ _0801CF90
 	movs r1, #1
 	ldr r0, [r6, #0x2c]
 	bl sub_80401E4
-	ldr r0, _0801D110 ;@ =gUnknown_03003D28
+	ldr r0, _0801D110 ;@ =gPlayerPointer
 	strb r4, [r0]
 	bl sub_802383A
 	ldr r0, _0801D114 ;@ =gPlayerEntity
@@ -541,7 +541,7 @@ _0801D100 DCDU gUnknown_03003E98
 _0801D104 DCDU 0x000008A4
 _0801D108 DCDU 0x00000C9D
 _0801D10C DCDU 0x00000C8B
-_0801D110 DCDU gUnknown_03003D28
+_0801D110 DCDU gPlayerPointer
 _0801D114 DCDU gPlayerEntity
 _0801D118
 	movs r2, #0
@@ -717,7 +717,7 @@ _0801D28A
 	adds r0, r5, #0
 	bl sub_8018C48
 _0801D294
-	ldr r0, _0801D528 ;@ =gUnknown_03003D28
+	ldr r0, _0801D528 ;@ =gPlayerPointer
 	movs r3, #0
 	strb r3, [r0]
 	bl sub_802383A
@@ -913,7 +913,7 @@ _0801D424
 	ldr r1, [r1, #0x30]
 	cmp r1, #0
 	beq _0801D44E
-	ldr r1, _0801D528 ;@ =gUnknown_03003D28
+	ldr r1, _0801D528 ;@ =gPlayerPointer
 	strb r0, [r1]
 	movs r0, #4
 	strb r0, [r4, #0xc]
@@ -1012,7 +1012,7 @@ _0801D518 DCDU 0x69323025
 _0801D51C DCDU 0x3230253A
 _0801D520 DCDU 0x00000069
 _0801D524 DCDU 0x0000040C
-_0801D528 DCDU gUnknown_03003D28
+_0801D528 DCDU gPlayerPointer
 _0801D52C DCDU gUnknown_03003448
 _0801D530 DCDU gUnknown_08050716
 _0801D534 DCDU gUnknown_03003460
@@ -1029,3 +1029,4 @@ _0801D55C
 	movs r0, #2
 	bl sub_8018386
 	b _0801D470
+	END

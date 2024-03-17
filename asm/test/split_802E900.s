@@ -489,3 +489,4 @@ _0802EC6C
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	END

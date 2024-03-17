@@ -767,3 +767,4 @@ _08001FFA
 	ldr r0, [sp, #0x38]
 	bl sub_800DEF8
 	b _08001FF2
+	END

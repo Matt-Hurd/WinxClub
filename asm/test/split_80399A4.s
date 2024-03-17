@@ -531,3 +531,4 @@ _08039DA4
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	END

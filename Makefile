@@ -22,11 +22,11 @@ AIF := tools/aif2pcm/aif2pcm$(EXE)
 MID := $(abspath tools/mid2agb/mid2agb)$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
-GBAFIX := tools/gbafix/gbafix$(EXE)
+GBAFIX := $(WINE) tools/gbafix/gbafix.exe
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -S -g -apcs "/interwork"
+CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
+ASFLAGS  := -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
@@ -180,7 +180,7 @@ endif
 #### Recipes ####
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
-	$(ACC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
+	$(TCC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s

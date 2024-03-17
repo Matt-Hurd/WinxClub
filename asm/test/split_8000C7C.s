@@ -137,3 +137,4 @@ nullsub_3 ;@ 0x08000D5E
 	bx lr
 	ALIGN
 _08000D60 DCDU gUnknown_03003E84
+	END

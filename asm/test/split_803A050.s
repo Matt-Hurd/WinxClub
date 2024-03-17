@@ -560,3 +560,4 @@ _0803A486
 	blo _0803A478
 	movs r0, #0
 	bx lr
+	END

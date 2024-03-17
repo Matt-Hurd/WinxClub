@@ -553,3 +553,4 @@ _0801D9A2
 	movs r1, #1
 	bl sub_803FEF8
 	b _0801D99C
+	END
