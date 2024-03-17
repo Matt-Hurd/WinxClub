@@ -1,4 +1,5 @@
-import re
+import os
+import subprocess
 import sys
 
 def merge_asm_files(source_path, built_path, output_path):
@@ -47,9 +48,25 @@ def merge_asm_files(source_path, built_path, output_path):
     with open(output_path, 'w') as file:
         file.writelines(output_lines)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: merge_asm.py <source_file> <built_file> <output_file>")
-        sys.exit(1)
+def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_builddir, tcc, cc1flags, include_dir, merge_script):
+    base_name = os.path.splitext(os.path.basename(yml_file))[0]
+    rel_dir = os.path.relpath(os.path.dirname(yml_file), start=partial_decomp_subdir)
+    target_dir = os.path.join(partial_decomp_builddir, rel_dir)
+    output_dir = os.path.join(merged_builddir, rel_dir)
 
-    merge_asm_files(sys.argv[1], sys.argv[2], sys.argv[3])
+    os.makedirs(target_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
+
+    s_file_in_partial = os.path.join(os.path.dirname(yml_file), base_name + '.s')
+    s_file_in_build = os.path.join(target_dir, base_name + '.s')
+    output_file = os.path.join(output_dir, base_name + '.s')
+    c_file = os.path.join(os.path.dirname(yml_file), base_name + '.c')
+
+    if os.path.exists(c_file):
+        compile_cmd = tcc.replace('/', '\\') + " " + f"{cc1flags} -I {include_dir} -o {s_file_in_build} {c_file}"
+
+        subprocess.run(compile_cmd, check=True, shell=True)
+        merge_asm_files(s_file_in_partial, s_file_in_build, output_file)
+
+if __name__ == "__main__":
+    main(*sys.argv[1:])

@@ -133,24 +133,12 @@ MAKEFLAGS += --no-print-directory
 all: $(ROM)
 	# perl calcrom.pl $(MAP)
 ifeq ($(COMPARE),1)
-	sha1sum -c $(BUILD_NAME).sha1
+	coreutils sha1sum -c $(BUILD_NAME).sha1
 endif
 
 compile-partial-c:
 	@$(foreach yml,$(YML_FILES),\
-		$(eval BASE_NAME := $(basename $(notdir $(yml))))\
-		$(eval REL_DIR := $(patsubst $(PARTIAL_DECOMP_SUBDIR)/%,%,$(dir $(yml))))\
-		$(eval TARGET_DIR := $(PARTIAL_DECOMP_BUILDDIR)/$(REL_DIR))\
-		$(eval S_FILE_IN_PARTIAL := $(dir $(yml))$(BASE_NAME).s)\
-		$(eval S_FILE_IN_BUILD := $(TARGET_DIR)$(BASE_NAME).s)\
-		$(eval OUTPUT_DIR := $(MERGED_BUILDDIR)/$(REL_DIR))\
-		$(eval OUTPUT_FILE := $(OUTPUT_DIR)$(BASE_NAME).s)\
-		$(eval C_FILE := $(dir $(yml))$(BASE_NAME).c)\
-		$(shell mkdir -p $(TARGET_DIR))\
-		$(shell mkdir -p $(OUTPUT_DIR))\
-		$(if $(wildcard $(C_FILE)),\
-			$(TCC) $(CC1FLAGS) -I include -o $(S_FILE_IN_BUILD) $(C_FILE) && $(PYTHON) $(MERGE_SCRIPT) $(S_FILE_IN_PARTIAL) $(S_FILE_IN_BUILD) $(OUTPUT_FILE)))
-
+		$(PYTHON) $(MERGE_SCRIPT) "$(yml)" "$(PARTIAL_DECOMP_SUBDIR)" "$(PARTIAL_DECOMP_BUILDDIR)" "$(MERGED_BUILDDIR)" "$(TCC)" "$(CC1FLAGS)" "include" "$(MERGE_SCRIPT)";)
 
 compare: $(ROM)
 	sha1sum -c $(BUILD_NAME).sha1
