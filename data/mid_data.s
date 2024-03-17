@@ -339,3 +339,4 @@ gUnknown_0803EEC4
 	GLOBAL gUnknown_0803EEF0
 gUnknown_0803EEF0
 	INCBIN data/ripped/0003EEF0.bin
+	END

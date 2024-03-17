@@ -21,6 +21,7 @@ struct Player {
 };
 
 struct PlayerPointer {
-  int field_0;
+  char field_0;
+  char field_1[0x3];
   struct Player *field_4; 
 };
