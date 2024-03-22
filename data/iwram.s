@@ -550,8 +550,8 @@ gUnknown_03003EC4
 	DCB 0x00
 	SPACE 0x403b
 
-	GLOBAL gUnknown_03007F00
-gUnknown_03007F00
+	GLOBAL gInterruptStack
+gInterruptStack
 	DCB 0x00
 	SPACE 0x9f
 

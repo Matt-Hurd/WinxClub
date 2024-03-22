@@ -1,7 +1,8 @@
 	AREA text, CODE
 	INCLUDE asm/macros.inc
+	INCLUDE asm/gba_constants.inc
 
-	IMPORT gUnknown_03007F00
+	IMPORT gInterruptStack
 	IMPORT gUnknown_03007FA0
 	IMPORT sub_803CDF4
 	ENTRY
@@ -22,24 +23,24 @@ _080000E4
 	DCB 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	DCB 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 _08000100
-	mov r0, #0x12
+	mov r0, #0x$PSR_IRQ_MODE
 	msr cpsr_fc, r0
 	LDR sp, _0800012C ;@ =gUnknown_03007FA0
-	mov r0, #0x1f
+	mov r0, #0x$PSR_SYS_MODE
 	msr cpsr_fc, r0
-	LDR sp, _08000128 ;@ =gUnknown_03007F00
-	LDR r1, _08000130 ;@ =sub_8000134
+	LDR sp, _08000128 ;@ =gInterruptStack
+	LDR r1, _08000130 ;@ =InterruptHandler
 	mov lr, pc
 	bx r1
 _08000124
 	b _08000100
 	ALIGN
-_08000128 DCDU gUnknown_03007F00
+_08000128 DCDU gInterruptStack
 _0800012C DCDU gUnknown_03007FA0
-_08000130 DCDU sub_8000134
+_08000130 DCDU InterruptHandler
 
-	arm_func_start sub_8000134
-sub_8000134 ;@ 0x08000134
+	arm_func_start InterruptHandler
+InterruptHandler ;@ 0x08000134
 	add r8, pc, #0xC4 ;@ =_08000200
 	ldmia r8, {r0, r1}
 	add r0, r0, r8

@@ -7,7 +7,7 @@
 	IMPORT gUnknown_030033F4
 	IMPORT gUnknown_03003D98
 	IMPORT gUnknown_03003EC4
-	IMPORT gUnknown_03007F00
+	IMPORT gInterruptStack
 	IMPORT sub_80046EE
 	IMPORT sub_800476C
 	IMPORT sub_8004784
@@ -3368,14 +3368,14 @@ sub_803D480 ;@ 0x0803D480
 	ldr r3, _0803D490 ;@ =0x04000208
 	movs r2, #0
 	strb r2, [r3]
-	ldr r1, _0803D494 ;@ =gUnknown_03007F00
+	ldr r1, _0803D494 ;@ =gInterruptStack
 	mov sp, r1
 	SWI 1
 	SWI 0
 	DCB 0, 0
 	ALIGN
 _0803D490 DCDU 0x04000208
-_0803D494 DCDU gUnknown_03007F00
+_0803D494 DCDU gInterruptStack
 
 	thumb_func_start sub_803D498
 sub_803D498 ;@ 0x0803D498
@@ -4247,7 +4247,7 @@ sub_803DAC0 ;@ 0x0803DAC0
 
 	arm_func_start sub_803DAC4
 sub_803DAC4 ;@ 0x0803DAC4
-	LDR sp, _0803DB28 ;@ =gUnknown_03007F00
+	LDR sp, _0803DB28 ;@ =gInterruptStack
 	LDR sl, _0803DB2C ;@ =gUnknown_03003EC4
 	mov r0, #0x2000000
 	mov r1, #0x2000000
@@ -4283,7 +4283,7 @@ sub_803DB18 ;@ 0x0803DB18
 _0803DB24
 	b _0803DB24
 	ALIGN
-_0803DB28 DCDU gUnknown_03007F00
+_0803DB28 DCDU gInterruptStack
 _0803DB2C DCDU gUnknown_03003EC4
 _0803DB30 DCDU gUnknown_030033EC
 _0803DB34 DCDU gUnknown_030033F0

@@ -3,7 +3,7 @@
 extern int gUnknown_0300344C;
 extern int gUnknown_03003454;
 extern int gUnknown_03003464;
-extern int *gUnknown_030034F8;
+extern struct Unknown_030034F8 *gUnknown_030034F8;
 extern struct PlayerPointer gPlayerPointer;
 extern int gUnknown_03003E88;
 extern int *gUnknown_03003E98;
@@ -12,7 +12,7 @@ extern char *gUnknown_08051038;
 
 extern int sub_8005106(void);
 extern int sub_80237DA(unsigned char *);
-extern int *sub_8024084(int *);
+extern int *sub_8024084(struct Unknown_030034F8*);
 extern int *sub_802416A(void *);
 extern int sub_80244C6(void *, int);
 extern int sub_803B860(int, int, ...);

@@ -1,4 +1,5 @@
     INCLUDE asm/macros.inc
+	INCLUDE asm/gba_constants.inc
     AREA text, CODE
 
 	IMPORT gUnknown_03002BEC
@@ -207,7 +208,7 @@ _0800B20E
 	str r1, [r0, #0x30]
 	ldr r1, _0800B30C ;@ =sub_800B1BC
 	str r1, [r0, #0x34]
-	ldr r0, _0800B310 ;@ =0x04000120
+	ldr r0, _0800B310 ;@ =REG_SIOMULTI0
 	strh r2, [r0, #0x10]
 	ldrh r1, [r3]
 	lsrs r2, r0, #0xe
@@ -282,5 +283,5 @@ _0800B300 DCDU nullsub_10
 _0800B304 DCDU nullsub_9
 _0800B308 DCDU sub_800B1D0
 _0800B30C DCDU sub_800B1BC
-_0800B310 DCDU 0x04000120
+_0800B310 DCDU 0x$REG_SIOMULTI0
 	END
