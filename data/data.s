@@ -116,6 +116,14 @@ gUnknown_0804AE70
 gUnknown_0804AE80
 	INCBIN data/ripped/0004AE80.bin
 
+	GLOBAL gUnknown_0804AE90
+gUnknown_0804AE90
+	INCBIN data/ripped/0004AE90.bin
+
+	GLOBAL gUnknown_0804AEA0
+gUnknown_0804AEA0
+	INCBIN data/ripped/0004AEA0.bin
+
 	GLOBAL gUnknown_0804AEAC
 gUnknown_0804AEAC
 	INCBIN data/ripped/0004AEAC.bin
@@ -307,8 +315,4 @@ gUnknown_08051744
 	GLOBAL gUnknown_08051750
 gUnknown_08051750
 	INCBIN data/ripped/00051750.bin
-
-	GLOBAL gUnknown_080517C8
-gUnknown_080517C8
-	INCBIN data/ripped/000517C8.bin
 	END

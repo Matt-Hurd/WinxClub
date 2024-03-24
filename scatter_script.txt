@@ -378,4 +378,12 @@ LOAD_ROM_1 0x08000000
     {
         data.o (+RW)
     }
+    .text5 0x080517C8
+    {
+        last_code.o
+    }
+    DATABLOCK3 0x08055AC0
+    {
+        last_data.o (+RW)
+    }
 }
