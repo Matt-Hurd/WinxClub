@@ -85,3 +85,12 @@ struct Unknown_03003458 {
   char total_object_count; //0x51C, object_count*2
 };
 
+struct struct_8023AA2_a
+{
+  char gap0[2];
+  unsigned char unk1;
+  char gap3[2];
+  unsigned char unk2;
+  char gap6[18];
+  int dword18;
+};

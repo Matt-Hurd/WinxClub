@@ -1,9 +1,10 @@
 	AREA data, DATA
     GLOBAL gUnknown_08055AC0
+    GLOBAL gArchive
+
 gUnknown_08055AC0
     INCBIN data/ripped/00055AC0.bin
 
-    GLOBAL gArchive
 gArchive ; 00055CB8
     INCBIN data/archive/header
     INCBIN data/archive/sprites

@@ -77,28 +77,28 @@ void sub_8023A70(unsigned char *a1, int a2)
 	*((int *)a1 + 5) = *(int*)(8 + (int)gUnknown_03003E98);
 }
 
-int  sub_8023AA2(unsigned char *a1, int a2)
+int  sub_8023AA2(struct struct_8023AA2_a *a1, int a2)
 {
   int v3; // r0
   int v4; // r1
   int result; // r0
 
-  v3 = *(a1 + 2) + a2;
+  v3 = a1->unk1 + a2;
   if ( v3 < 0 || gPlayerPointer.field_4->field_80.field_4 == 1 )
   {
-	*(a1 + 2) = 0;
+	a1->unk1 = 0;
   }
   else
   {
-	v4 = *(a1 + 5);
+	v4 = a1->unk2;
 	if ( v4 < v3 )
-	  *(a1 + 2) = v4;
+	  a1->unk1 = v4;
 	else
-	  *(a1 + 2) = v3;
+	  a1->unk1 = v3;
   }
   sub_8024084(gUnknown_030034F8);
   result = *(int *)((int)gUnknown_03003E98 + 8);
-  *(int *)(a1 + 24) = result;
+  a1->dword18 = result;
   return result;
 }
 
