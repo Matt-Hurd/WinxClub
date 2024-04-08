@@ -64,6 +64,7 @@ def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_buildd
 
     if os.path.exists(c_file):
         compile_cmd = tcc.replace('/', '\\') + " " + f"{cc1flags} -I {include_dir} -o {s_file_in_build} {c_file}"
+        print(compile_cmd)
 
         subprocess.run(compile_cmd, check=True, shell=True)
         merge_asm_files(s_file_in_partial, s_file_in_build, output_file)

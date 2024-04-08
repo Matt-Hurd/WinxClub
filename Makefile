@@ -1,28 +1,20 @@
 #### Tools ####
 include config.mk
 
-ifeq ($(OS),Windows_NT)
-EXE := .exe
-WINE :=
-else
-EXE :=
-WINE := wine
-endif
+TCC	  := tools/ADSv1_2/bin/tcc.exe
+ACC	  := tools/ADSv1_2/bin/armcc.exe
+CC1_OLD  := tools/agbcc/bin/old_agbcc.exe
+CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
+AS	   := tools/ADSv1_2/bin/armasm.exe
+LD	   := tools/ADSv1_2/bin/armlink.exe
+OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
 
-TCC	  := $(WINE) tools/ADSv1_2/bin/tcc.exe
-ACC	  := $(WINE) tools/ADSv1_2/bin/armcc.exe
-CC1_OLD  := $(WINE) tools/agbcc/bin/old_agbcc.exe
-CPP	  := $(WINE) $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS	   := $(WINE) tools/ADSv1_2/bin/armasm.exe
-LD	   := $(WINE) tools/ADSv1_2/bin/armlink.exe
-OBJCOPY  := $(WINE) tools/ADSv1_2/Bin/fromelf.exe
-
-GFX := tools/gbagfx/gbagfx$(EXE)
-AIF := tools/aif2pcm/aif2pcm$(EXE)
-MID := $(abspath tools/mid2agb/mid2agb)$(EXE)
-SCANINC := tools/scaninc/scaninc$(EXE)
-PREPROC := tools/preproc/preproc$(EXE)
-GBAFIX := $(WINE) tools/gbafix/gbafix.exe
+GFX := tools/gbagfx/gbagfx.exe
+AIF := tools/aif2pcm/aif2pcm.exe
+MID := $(abspath tools/mid2agb/mid2agb).exe
+SCANINC := tools/scaninc/scaninc.exe
+PREPROC := tools/preproc/preproc.exe
+GBAFIX := tools/gbafix/gbafix.exe
 
 CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
