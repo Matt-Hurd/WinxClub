@@ -1,29 +1,24 @@
 #### Tools ####
 include config.mk
 
-ifeq ($(OS),Windows_NT)
-EXE := .exe
-else
-EXE :=
-endif
-
-CC1	  := tools/ADSv1_2/bin/tcc$(EXE)
-CC1_OLD  := tools/agbcc/bin/old_agbcc$(EXE)
+TCC	  := tools/ADSv1_2/bin/tcc.exe
+ACC	  := tools/ADSv1_2/bin/armcc.exe
+CC1_OLD  := tools/agbcc/bin/old_agbcc.exe
 CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS	   := tools/ADSv1_2/bin/armasm
-LD	   := tools/ADSv1_2/bin/armlink
+AS	   := tools/ADSv1_2/bin/armasm.exe
+LD	   := tools/ADSv1_2/bin/armlink.exe
 OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
 
-GFX := tools/gbagfx/gbagfx$(EXE)
-AIF := tools/aif2pcm/aif2pcm$(EXE)
-MID := $(abspath tools/mid2agb/mid2agb)$(EXE)
-SCANINC := tools/scaninc/scaninc$(EXE)
-PREPROC := tools/preproc/preproc$(EXE)
-GBAFIX := tools/gbafix/gbafix$(EXE)
+GFX := tools/gbagfx/gbagfx.exe
+AIF := tools/aif2pcm/aif2pcm.exe
+MID := $(abspath tools/mid2agb/mid2agb).exe
+SCANINC := tools/scaninc/scaninc.exe
+PREPROC := tools/preproc/preproc.exe
+GBAFIX := tools/gbafix/gbafix.exe
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -S -g
+CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -NOWarn -CPU arm7tdmi -LIttleend -interworking -I asminclude -I include
+ASFLAGS  := -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
@@ -51,6 +46,8 @@ SOUND_ASM_SUBDIR = sound
 BANK_ASM_SUBDIR = sound/bank
 SEQ_ASM_SUBDIR = sound/seq
 WAVE_ASM_SUBDIR = sound/wave
+PARTIAL_DECOMP_SUBDIR = partial
+MERGED_SUBDIR = merged
 
 C_BUILDDIR = $(OBJ_DIR)/$(C_SUBDIR)
 C_DATA_BUILDDIR = $(OBJ_DIR)/$(C_DATA_SUBDIR)
@@ -62,6 +59,8 @@ SOUND_ASM_BUILDDIR = $(OBJ_DIR)/$(SOUND_ASM_SUBDIR)
 BANK_ASM_BUILDDIR = $(OBJ_DIR)/$(BANK_ASM_SUBDIR)
 SEQ_ASM_BUILDDIR = $(OBJ_DIR)/$(SEQ_ASM_SUBDIR)
 WAVE_ASM_BUILDDIR = $(OBJ_DIR)/$(WAVE_ASM_SUBDIR)
+PARTIAL_DECOMP_BUILDDIR = $(OBJ_DIR)/$(PARTIAL_DECOMP_SUBDIR)
+MERGED_BUILDDIR = $(OBJ_DIR)/$(MERGED_SUBDIR)
 
 #$(shell mkdir -p $(C_BUILDDIR) $(C_DATA_BUILDDIR) $(SRC_ASM_BUILDDIR) $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR) $(RODATA_ASM_BUILDDIR) $(SOUND_ASM_BUILDDIR) $(BANK_ASM_BUILDDIR) $(SEQ_ASM_BUILDDIR) $(WAVE_ASM_BUILDDIR))
 
@@ -94,7 +93,15 @@ SEQ_ASM_OBJS := $(patsubst $(SEQ_ASM_SUBDIR)/%.s,$(SEQ_ASM_BUILDDIR)/%.o,$(SEQ_A
 WAVE_ASM_SRCS := $(wildcard $(WAVE_ASM_SUBDIR)/*.s)
 WAVE_ASM_OBJS := $(patsubst $(WAVE_ASM_SUBDIR)/%.s,$(WAVE_ASM_BUILDDIR)/%.o,$(WAVE_ASM_SRCS))
 
-OBJS := $(C_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) 
+YML_FILES := $(wildcard $(PARTIAL_DECOMP_SUBDIR)/*.yml  $(PARTIAL_DECOMP_SUBDIR)/*/*.yml  $(PARTIAL_DECOMP_SUBDIR)/*/*/*.yml)
+
+MERGED_ASM_SRCS := $(patsubst $(PARTIAL_DECOMP_SUBDIR)/%.yml,$(MERGED_BUILDDIR)/%.s,$(YML_FILES))
+MERGED_ASM_OBJS := $(patsubst $(PARTIAL_DECOMP_SUBDIR)/%.yml,$(MERGED_BUILDDIR)/%.o,$(YML_FILES))
+
+PYTHON := python # or just python, depending on your setup
+MERGE_SCRIPT := scripts/merge_partial_c.py
+
+OBJS := $(C_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS)))
@@ -103,7 +110,7 @@ $(shell mkdir -p $(SUBDIRS))
 #### Main Rules ####
 
 # Available targets
-.PHONY: all clean tidy tools
+.PHONY: all clean tidy tools compile-partial-c
 
 MAKEFLAGS += --no-print-directory
 # Secondary expansion is required for dependency variables in object rules.
@@ -118,8 +125,12 @@ MAKEFLAGS += --no-print-directory
 all: $(ROM)
 	# perl calcrom.pl $(MAP)
 ifeq ($(COMPARE),1)
-	sha1sum -c $(BUILD_NAME).sha1
+	coreutils sha1sum -c $(BUILD_NAME).sha1
 endif
+
+compile-partial-c:
+	@$(foreach yml,$(YML_FILES),\
+		$(PYTHON) $(MERGE_SCRIPT) "$(yml)" "$(PARTIAL_DECOMP_SUBDIR)" "$(PARTIAL_DECOMP_BUILDDIR)" "$(MERGED_BUILDDIR)" "$(TCC)" "$(CC1FLAGS)" "include" "$(MERGE_SCRIPT)";)
 
 compare: $(ROM)
 	sha1sum -c $(BUILD_NAME).sha1
@@ -177,12 +188,13 @@ endif
 #### Recipes ####
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
-	# $(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
-	$(CC1) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
-	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	$(TCC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
+$(MERGED_BUILDDIR)/%.o: $(MERGED_BUILDDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
@@ -208,7 +220,7 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 	
 
-$(ELF): $(OBJS) scatter_script.txt
+$(ELF): compile-partial-c $(OBJS) scatter_script.txt
 	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a
 
 $(ROM): %.gba: %.elf

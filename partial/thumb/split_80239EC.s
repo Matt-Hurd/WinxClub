@@ -4,8 +4,8 @@
 	IMPORT gUnknown_0300344C
 	IMPORT gUnknown_03003454
 	IMPORT gUnknown_03003464
-	IMPORT gUnknown_030034F8
-	IMPORT gUnknown_03003D28
+	IMPORT gPlayerEntity
+	IMPORT gPlayerPointer
 	IMPORT gUnknown_03003E88
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_08051038
@@ -25,187 +25,8 @@
 	IMPORT sub_803FEF8
 	IMPORT sub_8040684
 
-	thumb_func_start sub_80239EC
-sub_80239EC ;@ 0x080239EC
-	push {r4, r5, lr}
-	sub sp, #0x1fc
-	sub sp, #8
-	movs r1, #1
-	lsls r1, r1, #9
-	add r5, sp, #4
-	movs r2, #0
-	adds r0, r5, #0
-	bl sub_803F464
-	movs r2, #1
-	lsls r2, r2, #9
-	ldr r4, _08023CE8 ;@ =gUnknown_03003D28
-	str r2, [sp]
-	ldrb r0, [r4]
-	lsls r2, r0, #9
-	adds r2, #0x20
-	ldr r0, _08023CEC ;@ =gUnknown_03003464
-	adds r3, r5, #0
-	movs r1, #1
-	ldr r0, [r0]
-	bl sub_800B314
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _08023A24
-	bl sub_803DA18
-_08023A24
-	movs r0, #0
-	str r0, [r4, #4]
-	movs r1, #0
-	movs r0, #4
-	bl sub_803FEF8
-	add sp, #0x1fc
-	add sp, #8
-	pop {r4, r5}
-	pop {r3}
-	bx r3
-
-	non_word_aligned_thumb_func_start ModifyPlayerHealth
-ModifyPlayerHealth ;@ 0x08023A3A
-	push {r3, lr}
-	ldrb r2, [r0]
-	adds r2, r2, r1
-	cmp r1, #0
-	bge _08023A4A
-	ldrb r3, [r0, #0xe]
-	cmp r3, #0
-	bne _08023A6A
-_08023A4A
-	cmp r2, #0
-	bge _08023A54
-	movs r2, #0
-	strb r2, [r0]
-	b _08023A60
-_08023A54
-	ldrb r3, [r0, #3]
-	cmp r3, r2
-	bge _08023A5E
-	strb r3, [r0]
-	b _08023A60
-_08023A5E
-	strb r2, [r0]
-_08023A60
-	ldr r0, _08023CF0 ;@ =0x030034F8
-	lsrs r1, r1, #0x1f
-	ldr r0, [r0]
-	bl sub_80244C6
-_08023A6A
-	add sp, #4
-	pop {r3}
-	bx r3
-
-	thumb_func_start sub_8023A70
-sub_8023A70 ;@ 0x08023A70
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrb r0, [r0, #1]
-	adds r0, r0, r1
-	bpl _08023A80
-	movs r0, #0
-	strb r0, [r4, #1]
-	b _08023A8C
-_08023A80
-	ldrb r1, [r4, #4]
-	cmp r1, r0
-	bge _08023A8A
-	strb r1, [r4, #1]
-	b _08023A8C
-_08023A8A
-	strb r0, [r4, #1]
-_08023A8C
-	ldr r0, _08023CF0 ;@ =gUnknown_030034F8
-	ldr r0, [r0]
-	bl sub_802416A
-	ldr r0, _08023CF4 ;@ =gUnknown_03003E98
-	ldr r0, [r0]
-	ldr r0, [r0, #8]
-	str r0, [r4, #0x14]
-	pop {r4}
-	pop {r3}
-	bx r3
-
-	non_word_aligned_thumb_func_start sub_8023AA2
-sub_8023AA2 ;@ 0x08023AA2
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrb r0, [r0, #2]
-	adds r0, r0, r1
-	bmi _08023AB8
-	ldr r1, _08023CE8 ;@ =gUnknown_03003D28
-	ldr r1, [r1, #4]
-	adds r1, #0x80
-	ldrb r1, [r1, #4]
-	cmp r1, #1
-	bne _08023ABE
-_08023AB8
-	movs r0, #0
-	strb r0, [r4, #2]
-	b _08023ACA
-_08023ABE
-	ldrb r1, [r4, #5]
-	cmp r1, r0
-	bge _08023AC8
-	strb r1, [r4, #2]
-	b _08023ACA
-_08023AC8
-	strb r0, [r4, #2]
-_08023ACA
-	ldr r0, _08023CF0 ;@ =gUnknown_030034F8
-	ldr r0, [r0]
-	bl sub_8024084
-	ldr r0, _08023CF4 ;@ =gUnknown_03003E98
-	ldr r0, [r0]
-	ldr r0, [r0, #8]
-	str r0, [r4, #0x18]
-	pop {r4}
-	pop {r3}
-	bx r3
-
-	thumb_func_start sub_8023AE0
-sub_8023AE0 ;@ 0x08023AE0
-	push {r3, lr}
-	ldrb r2, [r0, #8]
-	adds r2, r2, r1
-	lsls r2, r2, #0x18
-	asrs r2, r2, #0x18
-	bpl _08023AF2
-	movs r2, #0
-	strb r2, [r0, #8]
-	b _08023AFE
-_08023AF2
-	ldrb r3, [r0, #7]
-	cmp r3, r2
-	bge _08023AFC
-	strb r3, [r0, #8]
-	b _08023AFE
-_08023AFC
-	strb r2, [r0, #8]
-_08023AFE
-	ldrb r2, [r0, #8]
-	lsls r3, r2, #1
-	adds r2, r3, r2
-	lsls r2, r2, #1
-	strb r2, [r0, #3]
-	strb r2, [r0]
-	movs r0, #1
-	cmp r1, #0
-	bgt _08023B12
-	movs r0, #0
-_08023B12
-	adds r1, r0, #0
-	ldr r0, _08023CF0 ;@ =gUnknown_030034F8
-	ldr r0, [r0]
-	bl sub_80244C6
-	add sp, #4
-	pop {r3}
-	bx r3
-
-	non_word_aligned_thumb_func_start sub_8023B22
-sub_8023B22 ;@ 0x08023B22
+	non_word_aligned_thumb_func_start CollectFirefly
+CollectFirefly ;@ 0x08023B22
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #6]
@@ -234,7 +55,7 @@ _08023B44
 	cmp r5, #1
 	bne _08023C3A
 _08023B54
-	ldr r7, _08023CE8 ;@ =gUnknown_03003D28
+	ldr r7, _08023CE8 ;@ =gPlayerPointer
 	movs r0, #0
 	ldr r2, [r7, #4]
 	add r6, sp, #0x28
@@ -425,7 +246,7 @@ _08023CE0
 	pop {r3}
 	bx r3
 	ALIGN
-_08023CE8 DCDU gUnknown_03003D28
+_08023CE8 DCDU gPlayerPointer
 _08023CEC DCDU gUnknown_03003464
 _08023CF0 DCDU gUnknown_030034F8
 _08023CF4 DCDU gUnknown_03003E98
@@ -434,3 +255,4 @@ _08023CFC DCDU gUnknown_0300344C
 _08023D00 DCDU 0x000004E9
 _08023D04 DCDU gUnknown_03003E88
 _08023D08 DCDU gUnknown_03003454
+	END
