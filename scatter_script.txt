@@ -155,7 +155,13 @@ LOAD_ROM_1 0x08000000
         split_80225E4.o
         split_8022840.o
         split_80235E4.o
+    }
+    .text7 0x080239EC
+    {
         split_80239EC.o
+    }
+    .text3 0x08023D0C
+    {
         split_8023D0C.o
         split_8024084.o
         split_80247A4.o
@@ -288,7 +294,7 @@ LOAD_ROM_1 0x08000000
     {
         mid_data.o (+RW)
     }
-    .text3 0x0803EF1C
+    .text4 0x0803EF1C
     {
         split_803EF1C.o
         split_803F07C.o
