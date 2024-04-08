@@ -82,7 +82,7 @@
 . = 0x00003D1C; gUnknown_03003D1C = .;
 . = 0x00003D20; gUnknown_03003D20 = .;
 . = 0x00003D24; gUnknown_03003D24 = .;
-. = 0x00003D28; gUnknown_03003D28 = .;
+. = 0x00003D28; gPlayerPointer = .;
 . = 0x00003D2C; gPlayerEntity = .;
 . = 0x00003D30; gUnknown_03003D30 = .;
 . = 0x00003D34; gUnknown_03003D34 = .;
@@ -108,7 +108,7 @@
 . = 0x00003EBC; gUnknown_03003EBC = .;
 . = 0x00003EC0; gUnknown_03003EC0 = .;
 . = 0x00003EC4; gUnknown_03003EC4 = .;
-. = 0x00007F00; gUnknown_03007F00 = .;
+. = 0x00007F00; gInterruptStack = .;
 . = 0x00007FA0; gUnknown_03007FA0 = .;
 . = 0x00007FC0; gUnknown_03007FC0 = .;
 . = 0x00007FF8; gUnknown_03007FF8 = .;
