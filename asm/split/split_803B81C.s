@@ -49,38 +49,4 @@ nullsub_62 ;@ 0x0803B85C
 	non_word_aligned_thumb_func_start nullsub_63
 nullsub_63 ;@ 0x0803B85E
 	bx lr
-
-	thumb_func_start sub_803B860
-sub_803B860 ;@ 0x0803B860
-	push {r0, r1, r2, r3}
-	push {r4, r5, lr}
-	sub sp, #0x44
-	str r0, [sp, #0x3c]
-	ldr r0, _0803B89C ;@ =0x0000156F
-	add r1, sp, #0x58
-	str r1, [sp, #0x38]
-	add r0, pc
-	str r0, [sp, #0x20]
-	ldr r0, _0803B8A0 ;@ =0x00001577
-	add r0, pc
-	str r0, [sp, #0x24]
-	add r5, sp, #0x3c
-	adds r0, r5, #0
-	add r3, sp, #4
-	add r2, sp, #0x38
-	ldr r1, [sp, #0x54]
-	bl sub_803C4B4
-	adds r4, r0, #0
-	adds r1, r5, #0
-	movs r0, #0
-	bl sub_803CDE0
-	adds r0, r4, #0
-	add sp, #0x44
-	pop {r4, r5}
-	pop {r3}
-	add sp, #0x10
-	bx r3
-	ALIGN
-_0803B89C DCDU 0x0000156F
-_0803B8A0 DCDU 0x00001577
 	END
