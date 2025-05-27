@@ -257,9 +257,10 @@ LOAD_ROM_1 0x08000000
         split_803B650.o
         split_803B7C4.o
         split_803B81C.o
-        split_803B8A4.o
-        split_803B904.o
-        split_803B914.o
+    }
+    .text17 0x0803D4A8
+    {
+        split_803D4A8.o
         split_803DB3C.o
         split_803E104.o
         split_803E110.o

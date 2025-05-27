@@ -16,9 +16,9 @@ SCANINC := tools/scaninc/scaninc
 PREPROC := tools/preproc/preproc
 GBAFIX := tools/gbafix/gbafix
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
+CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
+ASFLAGS  := -CPU arm7tdmi -LIttleend -fpu none -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
@@ -26,7 +26,7 @@ ROM 	 := $(BUILD_NAME).gba
 MAP	  := $(ROM:%.gba=%.map)
 ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
-LDFLAGS = -noremove
+LDFLAGS = -noremove -libpath /opt/arm/common/lib
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
@@ -226,4 +226,4 @@ $(ELF): compile-partial-c $(OBJS) scatter_script.txt
 $(ROM): %.gba: %.elf
 	$(OBJCOPY) -bin -output build/objcopy $<
 	cp build/objcopy/.text $@
-	$(GBAFIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION) --silent
+	$(GBAFIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION)
