@@ -79,3 +79,6 @@ tools/ADSv1_2/
 
 # Data
 *.bak
+
+tools/gbafix/gbafix
+tools/gbafix/gbafix.c

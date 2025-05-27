@@ -1,20 +1,20 @@
 #### Tools ####
 include config.mk
 
-TCC	  := tools/ADSv1_2/bin/tcc.exe
-ACC	  := tools/ADSv1_2/bin/armcc.exe
+TCC	  := tcc
+ACC	  := armcc
 CC1_OLD  := tools/agbcc/bin/old_agbcc.exe
 CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS	   := tools/ADSv1_2/bin/armasm.exe
-LD	   := tools/ADSv1_2/bin/armlink.exe
-OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
+AS	   := armasm
+LD	   := armlink
+OBJCOPY  := fromelf
 
 GFX := tools/gbagfx/gbagfx.exe
-AIF := tools/aif2pcm/aif2pcm.exe
-MID := $(abspath tools/mid2agb/mid2agb).exe
-SCANINC := tools/scaninc/scaninc.exe
-PREPROC := tools/preproc/preproc.exe
-GBAFIX := tools/gbafix/gbafix.exe
+AIF := tools/aif2pcm/aif2pcm
+MID := $(abspath tools/mid2agb/mid2agb)
+SCANINC := tools/scaninc/scaninc
+PREPROC := tools/preproc/preproc
+GBAFIX := tools/gbafix/gbafix
 
 CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
 CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
@@ -125,7 +125,7 @@ MAKEFLAGS += --no-print-directory
 all: $(ROM)
 	# perl calcrom.pl $(MAP)
 ifeq ($(COMPARE),1)
-	coreutils sha1sum -c $(BUILD_NAME).sha1
+	sha1sum -c $(BUILD_NAME).sha1
 endif
 
 compile-partial-c:
