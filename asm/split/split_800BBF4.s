@@ -7,10 +7,10 @@
 	IMPORT gUnknown_0804AB68
 	IMPORT gUnknown_0804AC68
 	IMPORT sub_800B8CE
-	IMPORT sub_803C04C
-	IMPORT sub_803D468
-	IMPORT sub_803D478
-	IMPORT sub_803D47C
+	IMPORT __16__rt_sdiv
+	IMPORT CpuSet
+	IMPORT LZ77UnCompVram
+	IMPORT RLUnCompVram
 	IMPORT sub_8040444
 
 
@@ -1348,7 +1348,7 @@ sub_800C55E ;@ 0x0800C55E
 	lsls r1, r0, #2
 	movs r3, #0x20
 	ldrsh r0, [r4, r3]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x18]
 	strh r0, [r1]
 	ldrh r0, [r4, #0x24]
@@ -1359,7 +1359,7 @@ sub_800C55E ;@ 0x0800C55E
 	NEGS r1, r0
 	movs r3, #0x22
 	ldrsh r0, [r4, r3]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x18]
 	strh r0, [r1, #4]
 	ldrh r0, [r4, #0x24]
@@ -1369,7 +1369,7 @@ sub_800C55E ;@ 0x0800C55E
 	lsls r1, r0, #2
 	movs r3, #0x20
 	ldrsh r0, [r4, r3]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x18]
 	strh r0, [r1, #2]
 	ldrh r0, [r4, #0x24]
@@ -1381,7 +1381,7 @@ sub_800C55E ;@ 0x0800C55E
 	lsls r1, r0, #2
 	movs r3, #0x22
 	ldrsh r0, [r4, r3]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x18]
 	strh r0, [r1, #6]
 	ldr r1, [sp, #0x18]
@@ -1858,7 +1858,7 @@ _0800C952
 	adds r2, r0, #0
 	mov r0, sp
 	ldr r1, [r4]
-	bl sub_803D468
+	bl CpuSet
 	b _0800C9AA
 _0800C97A
 	movs r0, #0
@@ -1884,7 +1884,7 @@ _0800C996
 	cmp r1, #2
 	bne _0800C9AA
 	ldr r1, [r4]
-	bl sub_803D478
+	bl LZ77UnCompVram
 _0800C9AA
 	ldr r0, [r6, #0x14]
 	adds r4, #0xc
@@ -1909,7 +1909,7 @@ _0800C9C0
 	lsls r2, r2, #0x1a
 	orrs r2, r1
 	ldr r1, [r4]
-	bl sub_803D468
+	bl CpuSet
 	b _0800C9AA
 _0800C9DA
 	str r0, [r7]
@@ -1925,7 +1925,7 @@ _0800C9DA
 	b _0800C9AA
 _0800C9F0
 	ldr r1, [r4]
-	bl sub_803D47C
+	bl RLUnCompVram
 	b _0800C9AA
 _0800C9F8
 	ldr r4, [r0, #4]

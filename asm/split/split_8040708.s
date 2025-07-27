@@ -4,8 +4,8 @@
 	IMPORT gUnknown_03003520
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT sub_803B8CE
-	IMPORT sub_803D46C
+	IMPORT __call_via_r3
+	IMPORT Div
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040708
@@ -290,7 +290,7 @@ _0804088E
 	cmp r3, #0
 	beq _080407A8
 	adds r0, r2, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	b _08040766
 loc_804089e
 	ldrh r0, [r1, #6]
@@ -307,7 +307,7 @@ _080408AA
 	lsrs r1, r0, #0x17
 	ldr r0, _08040970 ;@ =gUnknown_03003520
 	ldrh r0, [r0, #0x18]
-	bl sub_803D46C
+	bl Div
 	strh r0, [r4, #0xe]
 	b _08040766
 loc_80408c0
@@ -402,7 +402,7 @@ _08040954
 	beq _0804086C
 	ldrh r1, [r1, #6]
 	adds r0, r2, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	b _08040766
 	ALIGN
 _08040968 DCDU gUnknown_03003BC8

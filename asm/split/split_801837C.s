@@ -2,7 +2,7 @@
     AREA text, CODE
 
 	IMPORT gUnknown_03003C84
-	IMPORT sub_803B8C8
+	IMPORT __call_via_r0
 
 	thumb_func_start sub_801837C
 sub_801837C ;@ 0x0801837C
@@ -36,7 +36,7 @@ _0801839E
 	ldrb r0, [r4]
 	lsls r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_803B8C8
+	bl __call_via_r0
 	ldrb r0, [r4]
 	cmp r0, #0x18
 	bne _0801839E

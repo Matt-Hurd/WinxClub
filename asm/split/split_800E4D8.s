@@ -104,9 +104,9 @@
 	IMPORT sub_8038D2C
 	IMPORT sub_80397DC
 	IMPORT sub_803B406
-	IMPORT sub_803B8A4
-	IMPORT sub_803B8CC
-	IMPORT sub_803C034
+	IMPORT atoi
+	IMPORT __call_via_r2
+	IMPORT __16__rt_memset
 	IMPORT sub_803D680
 	IMPORT sub_803D834
 	IMPORT sub_803D984
@@ -189,7 +189,7 @@ sub_800E53C ;@ 0x0800E53C
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r4, [r6, #0x18]
 _0800E564
 	ldr r0, [r6, #0x24]
@@ -208,7 +208,7 @@ _0800E576
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r4, [r6, #0x2c]
 _0800E58A
 	ldr r0, [r6, #0x28]
@@ -228,7 +228,7 @@ _0800E58A
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _0800E5B4
 	str r4, [r6, #0x28]
 _0800E5B6
@@ -245,7 +245,7 @@ _0800E5B6
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _0800E5D8
 	str r4, [r6, #0x10]
 _0800E5DA
@@ -880,7 +880,7 @@ sub_800EA22 ;@ 0x0800EA22
 	mvns r1, r4
 	movs r0, #3
 	lsls r0, r0, #0x19
-	bl sub_803C034
+	bl __16__rt_memset
 	movs r0, #3
 	bl sub_800E71C
 	add r5, sp, #0xc
@@ -1015,7 +1015,7 @@ _0800EC80
 	str r0, [sp]
 	strb r5, [r3, #4]
 	mov r0, sp
-	bl sub_803B8A4
+	bl atoi
 	strh r0, [r4, #4]
 	strb r5, [r4]
 	b _0800EC78

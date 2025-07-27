@@ -11,9 +11,9 @@
 	IMPORT gUnknown_03003670
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT sub_803B8CC
-	IMPORT sub_803D468
-	IMPORT sub_803D46C
+	IMPORT __call_via_r2
+	IMPORT CpuSet
+	IMPORT Div
 
 	thumb_func_start sub_80114B0
 sub_80114B0 ;@ 0x080114B0
@@ -77,7 +77,7 @@ _08011516
 	lsrs r1, r4, #5
 _0801151C
 	lsls r0, r4, #4
-	bl sub_803D46C
+	bl Div
 	subs r1, r4, r0
 	lsrs r5, r1, #1
 	adds r6, r5, r0
@@ -103,7 +103,7 @@ _08011548
 	subs r0, r4, r5
 	lsls r0, r0, #8
 	ldr r1, [sp]
-	bl sub_803D46C
+	bl Div
 	ldr r1, [r7, #0x14]
 	adds r0, #0x80
 	strb r0, [r1, r4]
@@ -301,12 +301,12 @@ _0801169A
 	beq _080116AE
 	movs r0, #0
 	ldr r2, [r5, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _080116AE
 	adds r1, r4, #0
 	movs r0, #0
 	ldr r2, [r5]
-	bl sub_803B8CC
+	bl __call_via_r2
 	lsrs r1, r4, #1
 	str r0, [r6, #0x14]
 	adds r0, r0, r1
@@ -366,7 +366,7 @@ _08011714
 	ldr r2, _08011730 ;@ =gUnknown_030034FC
 	movs r0, #2
 	ldr r2, [r2, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r4, [r5, #0x24]
 _08011726
 	pop {r3, r4, r5}
@@ -399,7 +399,7 @@ sub_801175C ;@ 0x0801175C
 	adds r1, r0, #0
 	movs r0, #2
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801177A
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
@@ -407,7 +407,7 @@ _0801177A
 	adds r1, r0, #0
 	movs r0, #1
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801178A
 	ldr r0, _08011A14 ;@ =gUnknown_030034FC
 	adds r0, #0x24
@@ -417,7 +417,7 @@ _0801178A
 	adds r1, r0, #0
 	movs r0, #0
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801179E
 	pop {r3, r4, r5}
 	pop {r3}
@@ -482,7 +482,7 @@ _080117E8
 	adds r4, r7, #0
 	muls r1, r3
 	lsrs r1, r1, #0x17
-	bl sub_803D46C
+	bl Div
 	strh r0, [r6, #0xe]
 	movs r0, #0
 	strh r0, [r6, #0x10]
@@ -548,7 +548,7 @@ _0801187A
 	ldrh r1, [r0, #0x18]
 	movs r0, #1
 	lsls r0, r0, #0x18
-	bl sub_803D46C
+	bl Div
 	movs r1, #1
 	lsls r1, r1, #0x10
 	subs r0, r1, r0
@@ -696,14 +696,14 @@ sub_801197C ;@ 0x0801197C
 	mov r0, sp
 	ldr r2, _08011A68 ;@ =0x0500004C
 	adds r1, #0x44
-	bl sub_803D468
+	bl CpuSet
 	movs r0, #0
 	ldr r5, _08011A6C ;@ =gUnknown_03003670
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _08011A68 ;@ =0x0500004C
 	adds r1, r5, #0
-	bl sub_803D468
+	bl CpuSet
 	ldr r0, _08011A14 ;@ =gUnknown_030034FC
 	movs r2, #1
 	adds r0, #0x44
@@ -738,7 +738,7 @@ _080119C6
 	ldr r0, [r0, #8]
 	ldrh r1, [r1, #0x18]
 	lsls r0, r2, #0x16
-	bl sub_803D46C
+	bl Div
 	movs r1, #1
 	lsls r1, r1, #0x10
 	subs r0, r1, r0

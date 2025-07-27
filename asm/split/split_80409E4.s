@@ -5,7 +5,7 @@
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BF8
 	IMPORT gUnknown_0804AEAC
-	IMPORT sub_803D470
+	IMPORT DivRem
 	IMPORT sub_8040978
 
 	thumb_func_start sub_80409E4
@@ -113,7 +113,7 @@ loc_8040a8c
 	subs r0, #0x30
 	ldrb r0, [r0, #3]
 	movs r1, #3
-	bl sub_803D470
+	bl DivRem
 	cmp r0, #0
 	beq _08040ABE
 	cmp r0, #1

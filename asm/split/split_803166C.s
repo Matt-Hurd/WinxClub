@@ -11,7 +11,7 @@
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
 	IMPORT sub_801EBCA
-	IMPORT sub_803BE1C
+	IMPORT rand
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_80404B4
@@ -145,12 +145,12 @@ sub_8031748 ;@ 0x08031748
 sub_8031754 ;@ 0x08031754
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl sub_803BE1C
+	bl rand
 	movs r1, #0xa0
 	ldrh r1, [r1, r4]
 	ands r0, r1
 	bne _0803178C
-	bl sub_803BE1C
+	bl rand
 	bl sub_80404B4
 	adds r0, #1
 	lsls r0, r0, #0x18

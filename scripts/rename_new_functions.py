@@ -125,7 +125,7 @@ def main():
     # --- Configuration ---
     # Path to the file containing "sub_<addr> <new_name>" mappings.
     # This path is relative to where you run the script.
-    ida_output_file = "scripts/function_list.txt"
+    ida_output_file = "scripts/renames.txt"
 
     # Directories to process and their respective file extensions.
     # These paths are also relative to where you run the script.

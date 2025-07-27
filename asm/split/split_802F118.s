@@ -24,9 +24,9 @@
 	IMPORT sub_8023A70
 	IMPORT CollectFirefly
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CC
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
+	IMPORT __call_via_r2
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
@@ -109,10 +109,10 @@ _0802F134
 	lsrs r0, r0, #0x11
 	ldrsh r0, [r2, r0]
 	lsls r0, r0, #2
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x378 ;@ =_0802F524
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r5, #0x2c]
 	ldr r0, [r5, #0xc]
 	movs r1, #0xf
@@ -158,7 +158,7 @@ sub_802F1F0 ;@ 0x0802F1F0
 	ldr r2, [r0]
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 _0802F204
 	add sp, #4
 	pop {r3}

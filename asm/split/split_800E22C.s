@@ -11,8 +11,8 @@
 	IMPORT sub_803B15C
 	IMPORT sub_803B184
 	IMPORT sub_803B1AE
-	IMPORT sub_803C2DC
-	IMPORT sub_803D468
+	IMPORT strlen
+	IMPORT CpuSet
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
@@ -155,7 +155,7 @@ sub_800E2F6 ;@ 0x0800E2F6
 	adds r7, r0, #0
 	adds r5, r0, #4
 	adds r0, r5, #4
-	bl sub_803C2DC
+	bl strlen
 	adds r0, #4
 	lsrs r0, r0, #2
 	lsls r0, r0, #2
@@ -237,7 +237,7 @@ _0800E3CA
 	add r0, sp, #0x14
 	adds r1, r7, #0
 	ldr r2, _0800E4C8 ;@ =0x0500051B
-	bl sub_803D468
+	bl CpuSet
 	b _0800E40E
 _0800E3E2
 	b _0800E482

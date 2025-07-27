@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003E7C
 	IMPORT gUnknown_03003EAC
 	IMPORT sub_800B12C
-	IMPORT sub_803C124
+	IMPORT __16__rt_udiv
 
 	thumb_func_start sub_800FD48
 sub_800FD48 ;@ 0x0800FD48
@@ -141,7 +141,7 @@ sub_800FE3A ;@ 0x0800FE3A
 	adds r0, r1, #0
 	movs r1, #1
 	lsls r1, r1, #0x18
-	bl sub_803C124
+	bl __16__rt_udiv
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_800FDCE

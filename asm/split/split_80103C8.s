@@ -3,9 +3,9 @@
 
 	IMPORT gUnknown_0803E684
 	IMPORT gUnknown_0804AE70
-	IMPORT sub_803B8CE
-	IMPORT sub_803BEB0
-	IMPORT sub_803BFC4
+	IMPORT __call_via_r3
+	IMPORT __16__rt_memclr_w
+	IMPORT __rt_memcpy_w
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
 	IMPORT sub_803D9F8
@@ -48,7 +48,7 @@ sub_80103EC ;@ 0x080103EC
 	str r5, [r4, #0x58]
 	str r5, [r4, #0x60]
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0x1b
 	lsls r0, r0, #6
 	movs r1, #0x6d
@@ -330,7 +330,7 @@ sub_8010604 ;@ 0x08010604
 	adds r5, r1, #0
 	adds r0, r4, r0
 	movs r2, #0x1a
-	bl sub_803BFC4
+	bl __rt_memcpy_w
 	ldrh r0, [r5, #0x16]
 	ldr r2, _080106A8 ;@ =0x0000FFFF
 	cmp r0, r2
@@ -378,7 +378,7 @@ _08010644
 	adds r5, r4, r1
 	ldr r1, [r5, #0x18]
 	ldr r2, _080106AC ;@ =0x0000146C
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xf0
 	ldr r1, [r0]
@@ -386,7 +386,7 @@ _08010644
 	adds r3, r2, r1
 	ldr r2, _080106AC ;@ =0x0000146C
 	ldr r1, [r5, #0x1c]
-	bl sub_803B8CE
+	bl __call_via_r3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

@@ -31,10 +31,10 @@
 	IMPORT sub_8033512
 	IMPORT sub_803357C
 	IMPORT sub_8033C58
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8D2
-	IMPORT sub_803B8D4
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT __call_via_r5
+	IMPORT __call_via_r6
 	IMPORT sub_803DA80
 	IMPORT sub_803FC14
 	IMPORT sub_803FF24
@@ -180,7 +180,7 @@ _08033720
 	adds r5, r1, r0
 	adds r1, r4, #0
 	ldr r0, [sp, #8]
-	bl sub_803B8D2
+	bl __call_via_r5
 _08033754
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
@@ -456,7 +456,7 @@ _0803394E
 	adds r6, r2, r1
 	adds r2, r5, #0
 	adds r1, r4, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	b _080339C2
 _08033976
 	bl sub_80050FA
@@ -491,7 +491,7 @@ _08033994
 	movs r3, #0
 	mvns r3, r3
 	adds r1, r4, #0
-	bl sub_803B8D2
+	bl __call_via_r5
 _080339C2
 	ldr r0, _08033A68 ;@ =gPlayerEntity
 	movs r1, #0xae
@@ -654,7 +654,7 @@ _08033AFE
 	ldr r1, [r0, #8]
 	adds r1, r1, r0
 	ldr r0, [sp, #8]
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08033764
 
 	non_word_aligned_thumb_func_start sub_8033B0E
@@ -783,7 +783,7 @@ sub_8033BEE ;@ 0x08033BEE
 	ldr r1, [r0]
 	ldr r2, [r1, #0xc]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -798,7 +798,7 @@ sub_8033C0A ;@ 0x08033C0A
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -814,7 +814,7 @@ sub_8033C26 ;@ 0x08033C26
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	ldr r1, [r4, #0x2c]
-	bl sub_803B8CC
+	bl __call_via_r2
 	pop {r4}
 	pop {r3}
 	bx r3

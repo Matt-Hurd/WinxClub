@@ -12,8 +12,8 @@
 	IMPORT sub_8017862
 	IMPORT sub_8017884
 	IMPORT sub_8017A0A
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803F72C
@@ -235,7 +235,7 @@ _0801D6F4
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0801D708
 	adds r5, #1
 	cmp r5, #5
@@ -459,7 +459,7 @@ _0801D8C0
 	ldr r2, [r1, #0x44]
 	adds r2, r2, r1
 	adds r1, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801D8D2
 	movs r3, #8
 	ldrsh r0, [r4, r3]

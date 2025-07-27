@@ -7,8 +7,8 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_8018620
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_sshift_r
 	IMPORT sub_803FF24
 	IMPORT sub_80401E4
 
@@ -313,18 +313,18 @@ sub_802FA92 ;@ 0x0802FA92
 	ldr r0, [r7, #4]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0xEC ;@ =_0802FBDC
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r7, #4]
 	ldr r0, [r7, #8]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0xD8 ;@ =_0802FBDC
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r7, #8]
 	ldr r0, _0802FBE4 ;@ =0xFFFD0000
 	movs r1, #0

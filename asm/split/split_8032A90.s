@@ -24,11 +24,11 @@
 	IMPORT sub_802E4EE
 	IMPORT sub_802E5D2
 	IMPORT sub_803357C
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8D4
-	IMPORT sub_803B940
-	IMPORT sub_803B998
-	IMPORT sub_803B9C4
+	IMPORT __call_via_r1
+	IMPORT __call_via_r6
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_srdv
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803F38C
@@ -355,7 +355,7 @@ _08032CFC
 	adds r0, r4, #0
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r4, #0x4c]
 	bl sub_803357C
 _08032D18
@@ -419,7 +419,7 @@ _08032D88
 	ldr r2, [r1, #0x1c]
 	adds r0, r4, #0
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r3, r0, #0
 	ldr r0, [r5]
 	movs r2, #1
@@ -427,7 +427,7 @@ _08032D88
 	adds r6, r1, r0
 	ldr r1, [r4, #0x4c]
 	adds r0, r5, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r4, _08032EA0 ;@ =gUnknown_0300345C
 	movs r5, #0x49
 	ldr r0, [r4]
@@ -512,16 +512,16 @@ _08032E42
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0x50 ;@ =_08032EA8
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r5, r0, #0
 	beq _08032EC0
 	ldr r0, [sp, #0x18]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	str r0, [sp, #4]
 	adds r0, r5, #0
 	str r1, [sp, #8]
@@ -530,12 +530,12 @@ _08032E42
 	str r5, [sp, #0x20]
 	add r3, sp, #4
 	ldm r3!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [r4, #0x24]
 	ldr r0, [sp, #0x14]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	b _08032EB0
 	ALIGN
 _08032E8C DCDU gUnknown_0803EC44
@@ -552,7 +552,7 @@ _08032EB0
 	adds r3, r1, #0
 	ldr r1, [sp, #0x1c]
 	ldr r0, [sp, #0x20]
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [r4, #0x28]
 	b _08032EC6
 _08032EC0

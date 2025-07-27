@@ -6,7 +6,7 @@
 	IMPORT gUnknown_03003C40
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_800C0EC
-	IMPORT sub_803C47C
+	IMPORT vsprintf
 
 	arm_func_start sub_803F4CC
 sub_803F4CC ;@ 0x0803F4CC
@@ -58,7 +58,7 @@ _0803F536
 	add r2, sp, #4
 	adds r1, r0, r1
 	ldr r0, [sp, #0x10]
-	bl sub_803C47C
+	bl vsprintf
 	add sp, #8
 	pop {r4}
 	pop {r3}

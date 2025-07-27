@@ -26,7 +26,7 @@ ROM 	 := $(BUILD_NAME).gba
 MAP	  := $(ROM:%.gba=%.map)
 ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
-LDFLAGS = -noremove -libpath /opt/arm/common/lib
+LDFLAGS = -noremove -libpath /opt/arm/common/lib 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
@@ -221,7 +221,7 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
 	
 
 $(ELF): compile-partial-c $(OBJS) scatter_script.txt
-	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a
+	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) lib/libagbsyscall_arm.alf
 
 $(ROM): %.gba: %.elf
 	$(OBJCOPY) -bin -output build/objcopy $<

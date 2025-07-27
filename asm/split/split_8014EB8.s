@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EA4
 	IMPORT gUnknown_08050410
 	IMPORT sub_8001B80
-	IMPORT sub_803C04C
+	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_8014EB8
 sub_8014EB8 ;@ 0x08014EB8
@@ -95,7 +95,7 @@ _08014F06
 	bge _08014FB2
 	lsls r1, r5, #4
 	asrs r0, r0, #6
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	adds r2, r0, #0
 	muls r2, r6
 	ldr r1, [r4, #0x20]
@@ -262,7 +262,7 @@ sub_801505A ;@ 0x0801505A
 	bgt _080150BC
 	adds r1, r6, #0
 	ldr r0, [sp, #0x28]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x28]
 	muls r1, r0
 	subs r6, r6, r1
@@ -272,7 +272,7 @@ _080150BC
 	bge _080150D0
 	adds r1, r6, #0
 	ldr r0, [sp, #0x28]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x28]
 	muls r0, r1
 	subs r0, r6, r0
@@ -284,7 +284,7 @@ _080150D0
 	bgt _080150E8
 	adds r1, r7, #0
 	ldr r0, [sp, #0x24]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x24]
 	muls r1, r0
 	subs r7, r7, r1
@@ -294,7 +294,7 @@ _080150E8
 	bge _080150FC
 	adds r1, r7, #0
 	ldr r0, [sp, #0x24]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r1, [sp, #0x24]
 	muls r0, r1
 	subs r0, r7, r0
@@ -530,7 +530,7 @@ _08015278
 	bgt _080152B4
 	adds r1, r4, #0
 	adds r0, r7, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	muls r7, r0
 	subs r4, r4, r7
 	b _080152CC
@@ -539,7 +539,7 @@ _080152B4
 	bge _080152CC
 	adds r1, r4, #0
 	adds r0, r7, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	muls r0, r7
 	subs r0, r4, r0
 	adds r4, r7, r0
@@ -552,7 +552,7 @@ _080152CC
 	bgt _080152E0
 	adds r1, r5, #0
 	adds r0, r7, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	muls r7, r0
 	subs r5, r5, r7
 	b _080152F8
@@ -561,7 +561,7 @@ _080152E0
 	bge _080152F8
 	adds r1, r5, #0
 	adds r0, r7, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	muls r0, r7
 	subs r0, r5, r0
 	adds r5, r7, r0

@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_0803E680
 	IMPORT gUnknown_0803ECC0
-	IMPORT sub_803BF0C
+	IMPORT __16__rt_memcpy
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -57,7 +57,7 @@ sub_800529A ;@ 0x0800529A
 	beq _080052AC
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	adds r0, r4, #0
 _080052AC
 	pop {r4}

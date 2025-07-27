@@ -4,8 +4,8 @@
 	IMPORT gUnknown_0803EDE8
 	IMPORT gUnknown_0804AA68
 	IMPORT gUnknown_0804AB34
-	IMPORT sub_803BEB4
-	IMPORT sub_803BF10
+	IMPORT __rt_memclr_w
+	IMPORT __rt_memcpy
 	IMPORT sub_803E104
 	IMPORT sub_803E110
 	IMPORT sub_803E11C
@@ -124,7 +124,7 @@ sub_8008FFC ;@ 0x08008FFC
 	mov r7, r0
 	add r1, r1, #0x5400
 	add r5, r6, #4
-	bl sub_803BEB4
+	bl __rt_memclr_w
 	LDR r0, [r6]
 	mov r3, r5
 	MOV r2, r0, LSR #0x1b
@@ -1381,7 +1381,7 @@ _0800A180
 	LDR r2, [sp, #8]
 	add r0, r1, r0
 	mov r1, r6
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r0, [r7, #0xc]
 	LDR r1, [sp, #8]
 	add r0, r0, r1

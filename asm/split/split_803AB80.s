@@ -19,7 +19,7 @@
 	IMPORT sub_800CD58
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -329,7 +329,7 @@ _0803ADBA
 	ldr r1, [r4]
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4, #4]
 	ldr r0, [r1]
 	lsls r0, r0, #0x16

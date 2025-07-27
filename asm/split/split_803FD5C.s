@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EB4
 	IMPORT sub_8005106
-	IMPORT sub_803D468
+	IMPORT CpuSet
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_803FD5C
@@ -101,7 +101,7 @@ _0803FE02
 	adds r1, r0, #0
 	adds r0, r3, #0
 	ldr r2, _0803FE78 ;@ =0x04000080
-	bl sub_803D468
+	bl CpuSet
 	b _0803FE4C
 _0803FE16
 	lsls r3, r1, #0x1e

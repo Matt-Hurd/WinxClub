@@ -10,7 +10,7 @@
 	IMPORT sub_8001338
 	IMPORT sub_8001432
 	IMPORT sub_802E4EE
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803FF24
 	IMPORT sub_80401E4
 
@@ -202,7 +202,7 @@ _08037B60
 	adds r0, r4, #0
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r4, #4]
 	ldr r1, [r0]
 	lsls r1, r1, #0x16

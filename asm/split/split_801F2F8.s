@@ -9,9 +9,9 @@
 	IMPORT sub_8000914
 	IMPORT sub_800116A
 	IMPORT sub_8018620
-	IMPORT sub_803B8CA
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
+	IMPORT __call_via_r1
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
 	IMPORT sub_803F170
 	IMPORT sub_803F2CC
 	IMPORT sub_803FAB8
@@ -174,12 +174,12 @@ _0801F432
 	adds r0, r4, #0
 	ldr r2, [r1, #0x38]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x3c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -218,36 +218,36 @@ _0801F484
 	cmp r1, #0
 	ble _0801F4BC
 	adds r0, r5, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r5, r0, #0
 	ldr r1, [sp, #4]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r6, r0, #0
 	adds r0, r5, #0
 	ldr r1, [sp, #8]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	b _0801F4DC
 _0801F4BC
 	adds r0, r5, #0
 	ldr r1, [sp, #4]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r6, r0, #0
 	adds r0, r5, #0
 	ldr r1, [sp, #8]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 _0801F4DC
 	ldr r2, [r4, #0x68]
 	adds r2, r2, r6
@@ -358,7 +358,7 @@ _0801F5A0
 	adds r0, r4, #0
 	ldr r2, [r1, #0x3c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r5, #0xc]
 	lsls r1, r0, #1
 	lsrs r1, r1, #0x14

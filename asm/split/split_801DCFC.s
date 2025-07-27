@@ -10,9 +10,9 @@
 	IMPORT sub_801DAA0
 	IMPORT sub_801DAEC
 	IMPORT sub_801DB90
-	IMPORT sub_803B8CC
-	IMPORT sub_803BE1C
-	IMPORT sub_803C04C
+	IMPORT __call_via_r2
+	IMPORT rand
+	IMPORT __16__rt_sdiv
 	IMPORT sub_803F6B4
 	IMPORT sub_8040594
 
@@ -26,12 +26,12 @@ sub_801DCFC ;@ 0x0801DCFC
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x18
 	beq _0801DD3A
-	bl sub_803BE1C
+	bl rand
 	adds r1, r0, #0
 	ldr r0, [r5]
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x18
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [r5, #8]
 	str r4, [sp]
 	lsls r0, r0, #0x16
@@ -113,12 +113,12 @@ loc_801dd84
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x18
 	beq _0801DD58
-	bl sub_803BE1C
+	bl rand
 	adds r1, r0, #0
 	ldr r0, [r5]
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x18
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [r5, #8]
 	str r4, [sp]
 	lsls r0, r0, #0x16
@@ -295,7 +295,7 @@ loc_801debe
 	adds r0, r4, #0
 	ldr r3, [r2, #0x4c]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 	b _0801DD58
 loc_801decc
 	ldr r0, _0801DFCC ;@ =gUnknown_03003450
@@ -311,7 +311,7 @@ loc_801dedc
 	adds r0, r4, #0
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 	b _0801DD58
 loc_801deea
 	ldrh r1, [r0, #4]

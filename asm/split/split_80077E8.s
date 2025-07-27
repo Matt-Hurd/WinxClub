@@ -7,7 +7,7 @@
 	IMPORT gUnknown_08049778
 	IMPORT gUnknown_080497F0
 	IMPORT gUnknown_0804A7F0
-	IMPORT sub_803BF10
+	IMPORT __rt_memcpy
 
 	arm_func_start sub_80077E8
 sub_80077E8 ;@ 0x080077E8
@@ -550,7 +550,7 @@ _08007F5C
 	STR r0, [r4, #0x14]
 	mov r0, r8
 	mov r1, sb
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r0, [r5, #0x2c]
 	add r1, sb, r6
 	cmp r0, r1
@@ -578,7 +578,7 @@ _08007FC8
 	STR r0, [r4, #0x14]
 	mov r0, r8
 	mov r1, sb
-	bl sub_803BF10
+	bl __rt_memcpy
 	add r8, r8, r6
 	add r1, sb, r6
 _08007FF4

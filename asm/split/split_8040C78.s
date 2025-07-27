@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003530
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT sub_803D468
+	IMPORT CpuSet
 	IMPORT sub_8040708
 	IMPORT sub_8040978
 	IMPORT sub_8040C38
@@ -485,7 +485,7 @@ _08040FB6
 	adds r2, r0, #0
 	mov r0, sp
 	adds r1, r6, #0
-	bl sub_803D468
+	bl CpuSet
 	ldr r0, [sp, #8]
 	movs r3, #0x4c
 	ldrb r0, [r0, #0xf]

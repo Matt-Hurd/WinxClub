@@ -8,7 +8,7 @@
 	IMPORT sub_801DB90
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
@@ -299,7 +299,7 @@ sub_803564C ;@ 0x0803564C
 	adds r0, r4, #0
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 _0803566C
 	pop {r4}
 	pop {r3}

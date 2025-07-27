@@ -6,8 +6,8 @@
 	IMPORT sub_800529A
 	IMPORT sub_8008008
 	IMPORT sub_80081A8
-	IMPORT sub_803C2DC
-	IMPORT sub_803D468
+	IMPORT strlen
+	IMPORT CpuSet
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
@@ -19,7 +19,6 @@
 	IMPORT sub_803E1B8
 	IMPORT sub_803E1C4
 	IMPORT sub_803F3E8
-	IMPORT _0803E294
 
 	thumb_func_start sub_80412A8
 sub_80412A8 ;@ 0x080412A8
@@ -41,7 +40,7 @@ sub_80412A8 ;@ 0x080412A8
 	adds r4, r0, #0
 	adds r5, r0, #4
 	adds r0, r5, #4
-	bl sub_803C2DC
+	bl strlen
 	adds r0, #4
 	lsrs r0, r0, #2
 	lsls r0, r0, #2
@@ -122,7 +121,7 @@ _08041362
 	add r0, sp, #0x14
 	adds r1, r6, #0
 	ldr r2, _08041428 ;@ =0x0500051B
-	bl sub_803D468
+	bl CpuSet
 	b _080413A4
 _0804137A
 	lsls r1, r6, #0x1e
@@ -209,21 +208,12 @@ _0804142C DCDU 0x040000D4
 _08041430 DCDU 0x81000A36
 _08041434 DCDU 0x8500051B
 
-	thumb_func_start sub_8041438
-sub_8041438 ;@ 0x08041438
+	thumb_func_start _fp_init
+_fp_init ;@ 0x08041438
 	bx pc
 	ALIGN
 
-	arm_func_start sub_804143C
-sub_804143C ;@ 0x0804143C
+	arm_func_start __32_fp_init
+__32_fp_init ;@ 0x0804143C
 	bx lr
-
-	thumb_func_start sub_8041440
-sub_8041440 ;@ 0x08041440
-	bx pc
-	ALIGN
-
-	arm_func_start sub_8041444
-sub_8041444 ;@ 0x08041444
-	b _0803E294
 	END

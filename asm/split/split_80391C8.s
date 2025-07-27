@@ -45,8 +45,8 @@
 	IMPORT sub_802EF0A
 	IMPORT sub_8038E44
 	IMPORT sub_8038EE2
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
 	IMPORT sub_80401C0
@@ -774,7 +774,7 @@ sub_80397DC ;@ 0x080397DC
 	adds r3, r4, #0
 	movs r2, #0x78
 	adds r0, #8
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
 	adds r0, #0xff
 	adds r0, #0x3d
@@ -789,7 +789,7 @@ sub_80397DC ;@ 0x080397DC
 	adds r5, r1, #0
 	movs r2, #0x78
 	adds r3, r4, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _08039968 ;@ =0x0000040C
 	movs r3, #0x13
 	lsls r3, r3, #7
@@ -799,7 +799,7 @@ sub_80397DC ;@ 0x080397DC
 	adds r0, r5, #0
 	movs r2, #0x78
 	adds r3, r4, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _08039988 ;@ =0x00000574
 	movs r3, #0x13
 	lsls r3, r3, #7
@@ -809,13 +809,13 @@ sub_80397DC ;@ 0x080397DC
 	adds r5, r1, #0
 	movs r2, #0x78
 	adds r3, r4, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _0803998C ;@ =0x000009AC
 	movs r2, #0x78
 	adds r1, r6, r0
 	adds r0, r5, #0
 	adds r3, r4, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
 	bl sub_8039336
 	movs r0, #0x4d
@@ -880,7 +880,7 @@ _080398BA
 	adds r5, r1, #0
 	adds r0, r6, r0
 	adds r3, r4, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r0, #0xe5
 	lsls r0, r0, #2
 	movs r3, #0x13
@@ -892,7 +892,7 @@ _080398BA
 	str r1, [r3, #0x44]
 	adds r0, r5, #0
 	adds r3, r4, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r0, #0x8b
 	lsls r0, r0, #2
 	movs r3, #0x13
@@ -904,13 +904,13 @@ _080398BA
 	ldr r0, [r3, #0x44]
 	adds r5, r1, #0
 	adds r3, r4, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r2, #0x77
 	mvns r2, r2
 	adds r1, r7, #0
 	adds r0, r5, #0
 	adds r3, r4, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r1, #0
 	adds r0, r7, #0
 	bl sub_8014436
@@ -921,7 +921,7 @@ _080398BA
 	adds r3, r4, #0
 	adds r0, r6, #0
 	adds r0, #0x80
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	ldr r3, _080399A0 ;@ =0x000009CC
 	add sp, r3
 	pop {r4, r5, r6, r7}

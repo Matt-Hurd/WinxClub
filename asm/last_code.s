@@ -14,18 +14,18 @@
 	IMPORT sub_801145E
 	IMPORT sub_80133A0
 	IMPORT sub_802F04E
-	IMPORT sub_803BE6C
-	IMPORT sub_803BEB4
-	IMPORT sub_803BF10
-	IMPORT sub_803C050
-	IMPORT sub_803C128
-	IMPORT sub_803C1F0
-	IMPORT sub_803D468
+	IMPORT __rt_memclr
+	IMPORT __rt_memclr_w
+	IMPORT __rt_memcpy
+	IMPORT __rt_sdiv
+	IMPORT __rt_udiv
+	IMPORT strcmp
+	IMPORT CpuSet
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
 	arm_func_start sub_80517C8
@@ -1275,15 +1275,15 @@ _08052A0C DCDU 0xFFFFE333
 
 	arm_func_start sub_8052A10
 sub_8052A10 ;@ 0x08052A10
-	LDR pc, _08052A14 ;@ =sub_803BEB4
+	LDR pc, _08052A14 ;@ =__rt_memclr_w
 	ALIGN
-_08052A14 DCDU sub_803BEB4
+_08052A14 DCDU __rt_memclr_w
 
 	arm_func_start sub_8052A18
 sub_8052A18 ;@ 0x08052A18
-	LDR pc, _08052A1C ;@ =sub_803BF10
+	LDR pc, _08052A1C ;@ =__rt_memcpy
 	ALIGN
-_08052A1C DCDU sub_803BF10
+_08052A1C DCDU __rt_memcpy
 
 	arm_func_start sub_8052A20
 sub_8052A20 ;@ 0x08052A20
@@ -1301,9 +1301,9 @@ _08052A34 DCDU sub_802F04E
 
 	arm_func_start sub_8052A38
 sub_8052A38 ;@ 0x08052A38
-	LDR pc, _08052A3C ;@ =sub_803C1F0
+	LDR pc, _08052A3C ;@ =strcmp
 	ALIGN
-_08052A3C DCDU sub_803C1F0
+_08052A3C DCDU strcmp
 
 	arm_func_start sub_8052A40
 sub_8052A40 ;@ 0x08052A40
@@ -4521,15 +4521,15 @@ _080557B0 DCDU 0x03003520
 
 	arm_func_start sub_80557B4
 sub_80557B4 ;@ 0x080557B4
-	LDR pc, _080557B8 ;@ =sub_803C128
+	LDR pc, _080557B8 ;@ =__rt_udiv
 	ALIGN
-_080557B8 DCDU sub_803C128
+_080557B8 DCDU __rt_udiv
 
 	arm_func_start sub_80557BC
 sub_80557BC ;@ 0x080557BC
-	LDR pc, _080557C0 ;@ =sub_803C050
+	LDR pc, _080557C0 ;@ =__rt_sdiv
 	ALIGN
-_080557C0 DCDU sub_803C050
+_080557C0 DCDU __rt_sdiv
 
 	arm_func_start sub_80557C4
 sub_80557C4 ;@ 0x080557C4
@@ -4561,16 +4561,16 @@ _080557F0 DCDU sub_803DA9C
 
 	arm_func_start sub_80557F4
 sub_80557F4 ;@ 0x080557F4
-	LDR pc, _080557F8 ;@ =sub_803BE6C
+	LDR pc, _080557F8 ;@ =__rt_memclr
 	ALIGN
-_080557F8 DCDU sub_803BE6C
+_080557F8 DCDU __rt_memclr
 
 	arm_func_start sub_80557FC
 sub_80557FC ;@ 0x080557FC
-	LDR ip, _08055804 ;@ =sub_803DA4C
+	LDR ip, _08055804 ;@ =__da__FPv
 	bx ip
 	ALIGN
-_08055804 DCDU sub_803DA4C
+_08055804 DCDU __da__FPv
 
 	arm_func_start sub_8055808
 sub_8055808 ;@ 0x08055808
@@ -4581,10 +4581,10 @@ _08055810 DCDU sub_803DA18
 
 	arm_func_start sub_8055814
 sub_8055814 ;@ 0x08055814
-	LDR ip, _0805581C ;@ =sub_803D468
+	LDR ip, _0805581C ;@ =CpuSet
 	bx ip
 	ALIGN
-_0805581C DCDU sub_803D468
+_0805581C DCDU CpuSet
 
 	arm_func_start sub_8055820
 sub_8055820 ;@ 0x08055820

@@ -10,8 +10,8 @@
 	IMPORT sub_80002A8
 	IMPORT sub_80002C8
 	IMPORT sub_800529A
-	IMPORT sub_803BEB0
-	IMPORT sub_803BF0C
+	IMPORT __16__rt_memclr_w
+	IMPORT __16__rt_memcpy
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
 	IMPORT sub_803D9F8
@@ -122,7 +122,7 @@ _08004E7C
 	subs r2, r0, r7
 	add r0, sp, #0xc
 	adds r0, r0, r7
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 _08004EA8
 	ldr r0, [sp, #0x10]
 	adds r7, r5, #0
@@ -165,7 +165,7 @@ _08004EDC
 	adds r2, r0, #0
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r1, [sp, #8]
 	adds r7, r7, r6
 	adds r1, r1, r6
@@ -214,7 +214,7 @@ _08004F50
 	movs r4, #0
 	movs r1, #0x40
 	add r0, sp, #8
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	cmp r6, #0
 	beq _08004F90
 	movs r1, #0x5c
@@ -235,7 +235,7 @@ _08004F7E
 	adds r1, r6, #0
 	add r6, sp, #8
 	adds r0, r6, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	adds r0, r6, #0
 	bl sub_80002A8
 _08004F90

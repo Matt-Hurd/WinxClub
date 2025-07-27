@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EA4
 	IMPORT sub_8002230
-	IMPORT sub_803C04C
+	IMPORT __16__rt_sdiv
 	IMPORT sub_8040504
 
 	thumb_func_start sub_800423C
@@ -80,12 +80,12 @@ _080042B6
 	str r0, [sp, #0x14]
 	ldrh r0, [r5, #0xc]
 	str r0, [sp, #0x10]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldrh r0, [r5, #0xe]
 	adds r6, r1, #0
 	ldr r1, [sp, #0x14]
 	adds r5, r0, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	cmp r6, #0
 	bge _080042DA
 	ldr r0, [sp, #0x10]

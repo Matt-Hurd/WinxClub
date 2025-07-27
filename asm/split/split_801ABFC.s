@@ -24,7 +24,7 @@
 	IMPORT sub_8018C48
 	IMPORT sub_8028C2E
 	IMPORT sub_802EF0A
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803F9C4
 
 	thumb_func_start sub_801ABFC
@@ -38,14 +38,14 @@ sub_801ABFC ;@ 0x0801ABFC
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	movs r0, #0x81
 	lsls r0, r0, #2
 	adds r0, r6, r0
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	movs r0, #0
 	bl sub_80050FA
 	ldr r7, _0801AEA0 ;@ =gUnknown_03003448

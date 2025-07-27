@@ -8,10 +8,10 @@
 	IMPORT sub_8017444
 	IMPORT sub_8017450
 	IMPORT sub_80177D8
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
@@ -66,7 +66,7 @@ _080164F2
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _08016508
 	adds r4, #1
 	ldrb r0, [r5, #8]
@@ -76,7 +76,7 @@ _08016508
 	bhi _080164F2
 _08016514
 	ldr r0, [r5, #0x14]
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r0, #0
 	strb r0, [r5, #8]
 	str r0, [r5, #0x14]

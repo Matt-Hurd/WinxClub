@@ -16,7 +16,7 @@
 	IMPORT sub_8024084
 	IMPORT sub_802416A
 	IMPORT sub_80244C6
-	IMPORT sub_803B860
+	IMPORT sprintf
 	IMPORT sub_803DA18
 	IMPORT sub_803DA9C
 	IMPORT sub_803F464
@@ -169,7 +169,7 @@ _08023C3A
 _08023C3C
 	adds r1, r5, #0
 	ldr r0, [sp, #0x20]
-	bl sub_803B860
+	bl sprintf
 	ldr r7, _08023D04 ;@ =gUnknown_03003E88
 	movs r2, #0
 	movs r1, #4

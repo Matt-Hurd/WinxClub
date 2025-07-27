@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_030033E8
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 
 	thumb_func_start sub_8041274
 sub_8041274 ;@ 0x08041274
@@ -20,7 +20,7 @@ sub_8041274 ;@ 0x08041274
 	lsrs r1, r1, #0x18
 	cmp r1, #2
 	bne _08041294
-	bl sub_803DA4C
+	bl __da__FPv
 	b _08041298
 _08041294
 	bl sub_803DA18

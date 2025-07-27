@@ -9,8 +9,8 @@
 	IMPORT sub_800FB72
 	IMPORT sub_800FE3A
 	IMPORT sub_8012468
-	IMPORT sub_803B8CA
-	IMPORT sub_803BEB0
+	IMPORT __call_via_r1
+	IMPORT __16__rt_memclr_w
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803DAC0
@@ -53,7 +53,7 @@ sub_800F220 ;@ 0x0800F220
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x80
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0x11
 	lsls r0, r0, #0xb
 	str r0, [r4]
@@ -170,7 +170,7 @@ sub_800F2E2 ;@ 0x0800F2E2
 	adds r4, r0, #0
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4, #0x70]
 	lsrs r0, r0, #1
 	adds r1, #0x80
@@ -338,7 +338,7 @@ sub_800F408 ;@ 0x0800F408
 	ldr r2, [r1, #0x18]
 	adds r0, r4, #0
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	bics r0, r6
 	str r0, [r4, #0x10]
 	cmp r0, r5
@@ -379,7 +379,7 @@ _0800F46A
 	ldr r2, [r1, #0x18]
 	subs r4, #8
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4, #0x70]
 	lsrs r0, r0, #1
 	str r1, [sp]

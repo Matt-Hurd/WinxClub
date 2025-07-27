@@ -18,7 +18,7 @@
 	IMPORT sub_800B9B6
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_8040550
 
@@ -197,11 +197,11 @@ _08000EA6
 	orrs r0, r6
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r5, #0
 	str r5, [r4]
 	ldr r0, [r4, #0x10]
-	bl sub_803DA4C
+	bl __da__FPv
 	str r5, [r4, #0x10]
 	strh r5, [r7, #0x1c]
 	strh r5, [r4, #4]
@@ -249,13 +249,13 @@ _08000F12
 	movs r6, #0
 	cmp r0, #0
 	beq _08000F20
-	bl sub_803DA4C
+	bl __da__FPv
 	str r6, [r5, #0x1c]
 _08000F20
 	ldr r0, [r5, #0x24]
 	cmp r0, #0
 	beq _08000F2C
-	bl sub_803DA4C
+	bl __da__FPv
 	str r6, [r5, #0x24]
 _08000F2C
 	movs r1, #0
@@ -287,7 +287,7 @@ sub_8000F4C ;@ 0x08000F4C
 	cmp r0, #0
 	sub sp, #4
 	beq _08000F68
-	bl sub_803DA4C
+	bl __da__FPv
 	str r6, [r4, #0x1c]
 _08000F68
 	cmp r5, #0
@@ -352,7 +352,7 @@ sub_8000FCE ;@ 0x08000FCE
 	movs r7, #0
 	cmp r0, #0
 	beq _08000FEC
-	bl sub_803DA4C
+	bl __da__FPv
 	str r7, [r5, #0x24]
 _08000FEC
 	ldr r0, [r4, #0x54]

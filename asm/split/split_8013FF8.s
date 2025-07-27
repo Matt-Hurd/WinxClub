@@ -5,7 +5,7 @@
 	IMPORT sub_80134B8
 	IMPORT sub_801352C
 	IMPORT sub_8013E2C
-	IMPORT sub_803B8CE
+	IMPORT __call_via_r3
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803F464
@@ -69,7 +69,7 @@ sub_801404E ;@ 0x0801404E
 	ldr r3, [r0]
 	ldr r4, [r3, #0x10]
 	adds r3, r4, r3
-	bl sub_803B8CE
+	bl __call_via_r3
 	pop {r4}
 	pop {r3}
 	bx r3

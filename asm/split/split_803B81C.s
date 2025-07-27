@@ -3,8 +3,8 @@
 
 	IMPORT sub_803B650
 	IMPORT sub_803B7C4
-	IMPORT sub_803C4B4
-	IMPORT sub_803CDE0
+	IMPORT __vfprintf
+	IMPORT _sputc
 
 	thumb_func_start sub_803B81C
 sub_803B81C ;@ 0x0803B81C

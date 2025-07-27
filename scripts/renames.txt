@@ -19,7 +19,7 @@ sub_803B92C __16_ll_mulss
 sub_803B930 _ll_mulss
 sub_803B940 __16_ll_sdiv
 sub_803B944 _ll_sdiv
-sub_803B998 j__swap_4A2D8
+sub_803B998 __16_ll_sshift_r
 sub_803B99C _swap_4A2D8
 sub_803B9C4 __16_ll_srdv
 sub_803B9C8 _ll_srdv
@@ -27,7 +27,7 @@ sub_803BA1C j_nullsub_7
 sub_803BA20 nullsub_7
 sub_803BA24 __16_ll_udiv
 sub_803BA28 _ll_udiv
-sub_803BD84 j__sub_4A6A0
+sub_803BD84 __16_ll_ushift_r
 sub_803BD88 _sub_4A6A0
 sub_803BDB0 __pvfn__Fv
 sub_803BDEC rand_init

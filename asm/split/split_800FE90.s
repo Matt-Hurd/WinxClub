@@ -29,13 +29,13 @@
 	IMPORT sub_80106B0
 	IMPORT sub_8010920
 	IMPORT sub_802EF0A
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803B8D2
-	IMPORT sub_803B8D4
-	IMPORT sub_803BE68
-	IMPORT sub_803C04C
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __call_via_r5
+	IMPORT __call_via_r6
+	IMPORT __16__rt_memclr
+	IMPORT __16__rt_sdiv
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -82,7 +82,7 @@ sub_800FEBC ;@ 0x0800FEBC
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0800FEDE
 	ldr r4, _080101EC ;@ =gUnknown_03003E94
 	ldr r0, [r4]
@@ -181,7 +181,7 @@ _0800FF8C
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _0800FF9E
 	ldr r0, _080101F4 ;@ =_0803ECC8
 	movs r1, #0
@@ -241,7 +241,7 @@ _0800FFD4
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 	movs r3, #0
 	str r3, [r4, #0x10]
 _08010016
@@ -255,14 +255,14 @@ _08010020
 	beq _08010062
 	adds r1, r5, #0
 	adds r0, r6, #0
-	bl sub_803BE68
+	bl __16__rt_memclr
 	ldr r0, [r4, #0x10]
 	ldr r1, [r0]
 	ldr r2, [r1, #0x20]
 	adds r3, r2, r1
 	adds r2, r5, #0
 	adds r1, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, _0801020C ;@ =0x060174D8
 	movs r2, #0xb
 	ldr r0, [r4, #0x10]
@@ -277,7 +277,7 @@ _08010020
 	adds r5, r1, r0
 	adds r1, r7, #0
 	adds r0, r4, #0
-	bl sub_803B8D2
+	bl __call_via_r5
 _08010062
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
@@ -313,7 +313,7 @@ sub_801006A ;@ 0x0801006A
 	ldr r1, [r2]
 _080100A0
 	movs r2, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r6, _08010214 ;@ =0x00001A08
 	add r6, sp
 	adds r0, r6, #0
@@ -346,7 +346,7 @@ _080100A0
 	bl sub_80106B0
 	movs r1, #0xf
 	lsls r1, r1, #0x12
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r5, #8]
@@ -372,13 +372,13 @@ _08010114
 	mvns r2, r2
 	movs r1, #0
 	movs r0, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 _08010126
 	ldr r0, [r4, #4]
 	ldr r1, [r0]
 	ldr r2, [r1, #0xc]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r6, [r4, #0x1c]
 	cmp r6, #0
 	beq _08010144
@@ -386,7 +386,7 @@ _08010126
 	mvns r2, r2
 	movs r1, #0
 	movs r0, #1
-	bl sub_803B8D4
+	bl __call_via_r6
 _08010144
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5, #8]
@@ -420,7 +420,7 @@ _0801016E
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r6, r0, #0
 	bne _080101B8
 	ldr r0, _0801022C ;@ =gUnknown_030033F4
@@ -437,7 +437,7 @@ _0801016E
 	adds r2, r6, #0
 	movs r0, #2
 	ldr r3, [r4, #0x1c]
-	bl sub_803B8CE
+	bl __call_via_r3
 _080101AE
 	ldr r0, [r5, #0xc]
 	lsls r0, r0, #0x18
@@ -449,7 +449,7 @@ _080101B8
 	ldr r1, [r0]
 	ldr r2, [r1, #0x14]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	cmp r6, #1
 	bne _08010114
 	str r7, [r5, #4]

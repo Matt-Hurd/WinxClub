@@ -6,7 +6,7 @@
 	IMPORT sub_8029420
 	IMPORT sub_8030668
 	IMPORT sub_80306B4
-	IMPORT sub_803C3A4
+	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_8041020
@@ -36,7 +36,7 @@ _0803A068
 	movs r2, #8
 	adds r0, #0xe0
 	ldr r3, _0803A424 ;@ =sub_8041020
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	add r0, pc, #0x3A4 ;@ =_0803A428
 	str r0, [r4, #0x4c]
 	movs r0, #0xb

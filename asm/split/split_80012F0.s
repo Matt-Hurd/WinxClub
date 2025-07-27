@@ -11,7 +11,7 @@
 	IMPORT sub_8018110
 	IMPORT sub_8018160
 	IMPORT sub_801819E
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_8040550
 
 	thumb_func_start sub_80012F0
@@ -427,7 +427,7 @@ _080015D8
 	b _080015E0
 _080015DA
 	ldr r0, [r0, #0x38]
-	bl sub_803B8CA
+	bl __call_via_r1
 _080015E0
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}

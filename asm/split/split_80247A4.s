@@ -37,11 +37,11 @@
 	IMPORT sub_8028A7C
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803B8D6
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __call_via_r7
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_sshift_r
 	IMPORT sub_8040034
 	IMPORT sub_80401C0
 	IMPORT sub_80401E4
@@ -506,7 +506,7 @@ _08024B7A
 	adds r2, r1, r0
 	movs r1, #0
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5]
 	ldr r1, [r0, #0x28]
 	adds r2, r1, r0
@@ -524,21 +524,21 @@ _08024BC0 DCDU 0x0000088D
 _08024BC4
 	movs r1, #0
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5]
 	movs r2, #2
 	ldr r1, [r0, #0x14]
 	adds r3, r1, r0
 	movs r1, #0xa1
 	adds r0, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, [r5]
 	adds r0, r5, #0
 	ldr r2, [r1, #0x10]
 	adds r3, r2, r1
 	movs r2, #0x10
 	movs r1, #0x40
-	bl sub_803B8CE
+	bl __call_via_r3
 	movs r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -549,7 +549,7 @@ _08024BC4
 	movs r2, #0xff
 	adds r3, r6, #0
 	movs r1, #4
-	bl sub_803B8D6
+	bl __call_via_r7
 	adds r0, r5, #0
 	bl sub_8013B76
 	movs r1, #0x13
@@ -669,10 +669,10 @@ _08024C96
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0x144 ;@ =_08024E48
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

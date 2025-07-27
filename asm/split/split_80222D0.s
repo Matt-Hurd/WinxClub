@@ -14,9 +14,9 @@
 	IMPORT sub_8014864
 	IMPORT sub_80180BE
 	IMPORT sub_8028A7C
-	IMPORT sub_803B8CE
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
+	IMPORT __call_via_r3
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
 	IMPORT sub_803D66C
 	IMPORT sub_8040594
 
@@ -142,7 +142,7 @@ loc_80223a0
 	adds r3, r1, r0
 	movs r1, #0xf0
 	adds r0, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldrb r1, [r4, #0xb]
 	movs r3, #0xff
 	movs r2, #0
@@ -186,10 +186,10 @@ _080223EC
 	movs r1, #0x2b
 	lsls r0, r0, #2
 	lsls r1, r1, #0x12
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x1C4 ;@ =_080225D8
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r6, r5, #0
 	adds r6, #0xff
 	adds r6, #0xf1
@@ -204,7 +204,7 @@ _080223EC
 	adds r1, r7, #0
 	movs r2, #0x28
 	adds r0, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r6, #0x30
 	ldrb r1, [r6, #8]
 	movs r0, #0x4d
@@ -218,7 +218,7 @@ _080223EC
 	adds r2, #0x28
 	adds r3, r3, r1
 	adds r1, r7, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldrb r0, [r4, #9]
 	adds r0, #2
 	strb r0, [r4, #9]
@@ -296,10 +296,10 @@ loc_80224c6
 	movs r1, #0x2b
 	lsls r0, r0, #2
 	lsls r1, r1, #0x12
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0xE8 ;@ =_080225D8
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r6, r5, #0
 	adds r6, #0xff
 	adds r6, #0xf1
@@ -314,7 +314,7 @@ loc_80224c6
 	adds r1, r7, #0
 	movs r2, #0x28
 	adds r0, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r6, #0x30
 	ldrb r1, [r6, #8]
 	movs r0, #0x4d
@@ -328,7 +328,7 @@ loc_80224c6
 	adds r2, #0x28
 	adds r3, r3, r1
 	adds r1, r7, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldrb r0, [r4, #9]
 	adds r0, #0xfe
 	lsls r0, r0, #0x18

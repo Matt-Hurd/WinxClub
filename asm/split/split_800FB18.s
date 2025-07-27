@@ -11,15 +11,15 @@
 	IMPORT sub_800F72C
 	IMPORT sub_800FAB0
 	IMPORT sub_800FD48
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803B920
-	IMPORT sub_803B998
-	IMPORT sub_803B9C4
-	IMPORT sub_803BA24
-	IMPORT sub_803BE68
-	IMPORT sub_803BEB0
-	IMPORT sub_803BFC4
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __16_ll_mullu
+	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_srdv
+	IMPORT __16_ll_udiv
+	IMPORT __16__rt_memclr
+	IMPORT __16__rt_memclr_w
+	IMPORT __rt_memcpy_w
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_800FB18
@@ -33,7 +33,7 @@ sub_800FB18 ;@ 0x0800FB18
 	movs r1, #1
 	lsls r1, r2
 	adds r1, #0x10
-	bl sub_803BE68
+	bl __16__rt_memclr
 _0800FB2E
 	movs r0, #0
 	str r0, [r4, #0xc]
@@ -41,7 +41,7 @@ _0800FB2E
 	adds r0, r4, #0
 	movs r1, #0x48
 	adds r0, #0x14
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #8
 	str r0, [r4, #0x5c]
 	pop {r4}
@@ -243,7 +243,7 @@ sub_800FC76 ;@ 0x0800FC76
 	bne _0800FC9C
 	movs r1, #0x48
 	adds r0, r6, #0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #8
 	str r0, [r4, #0x5c]
 	movs r0, #0
@@ -262,7 +262,7 @@ _0800FC9C
 	movs r2, #0x48
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_803BFC4
+	bl __rt_memcpy_w
 	ldr r0, [r4, #0x18]
 	movs r2, #1
 	lsls r0, r0, #6
@@ -272,20 +272,20 @@ _0800FC9C
 	adds r7, r1, #0
 	adds r6, r0, #0
 	lsls r2, r2, #0x18
-	bl sub_803B920
+	bl __16_ll_mullu
 	add r2, pc, #0x74 ;@ =_0800FD40
 	ldm r2!, {r2, r3}
-	bl sub_803BA24
+	bl __16_ll_udiv
 	str r0, [r4, #0x68]
 	adds r0, r6, #0
 	adds r1, r7, #0
 	movs r2, #8
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	adds r2, r0, #0
 	ldr r0, [sp, #0xc]
 	adds r3, r1, #0
 	asrs r1, r0, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [r4, #0x60]
 	adds r0, r5, #0
 	b _0800FC94
@@ -306,7 +306,7 @@ sub_800FCF0 ;@ 0x0800FCF0
 	adds r3, r2, r1
 	adds r2, r7, #0
 	adds r1, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	cmp r6, #0
 	beq _0800FD24
 	ldr r1, [r4]
@@ -314,7 +314,7 @@ sub_800FCF0 ;@ 0x0800FCF0
 	ldr r2, [r1, #0xc]
 	adds r2, r2, r1
 	movs r1, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _0800FD24
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}

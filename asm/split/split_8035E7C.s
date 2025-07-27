@@ -15,7 +15,7 @@
 	IMPORT sub_801DF50
 	IMPORT sub_801E124
 	IMPORT sub_801E2DA
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
@@ -209,7 +209,7 @@ _08035FCE
 	ldr r2, [r0]
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 	b _08035FC8
 _08035FDA
 	bl sub_8035F54

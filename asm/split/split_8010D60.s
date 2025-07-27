@@ -5,9 +5,9 @@
 	IMPORT gUnknown_03003EB4
 	IMPORT sub_800529A
 	IMPORT sub_8008008
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803D468
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT CpuSet
 	IMPORT sub_803E1EC
 	IMPORT sub_803E1F8
 
@@ -80,7 +80,7 @@ _08010DDC
 	cmp r7, #0
 	beq _08010E9A
 	ldr r2, _08011034 ;@ =0x04000600
-	bl sub_803D468
+	bl CpuSet
 	b _08010ECE
 _08010DEE
 	adds r4, r0, #0
@@ -116,7 +116,7 @@ _08010DEE
 	adds r2, r1, r0
 	ldr r1, [sp, #0x1c]
 	adds r0, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r0, [r5, #0x28]
 	str r0, [r5, #0x2c]
 	add r0, sp, #4
@@ -144,7 +144,7 @@ _08010E56
 	adds r2, r1, r0
 	add r1, sp, #4
 	adds r0, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _08010E6E
 	ldr r0, [r4]
 	movs r2, #1
@@ -154,7 +154,7 @@ _08010E6E
 	ldr r7, [r4, #0xc]
 	ldr r1, [r5, #0x28]
 	adds r0, r4, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r0, [r4, #0xc]
 	ldr r1, [r5, #0x28]
 	subs r0, r0, r7

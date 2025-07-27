@@ -9,7 +9,7 @@
 	IMPORT gUnknown_0803EC70
 	IMPORT gUnknown_0803ECE8
 	IMPORT sub_80002E2
-	IMPORT sub_803D480
+	IMPORT SoftReset
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -95,7 +95,7 @@ sub_800B1CA ;@ 0x0800B1CA
 sub_800B1D0 ;@ 0x0800B1D0
 	push {r3, lr}
 	movs r0, #0xfb
-	bl sub_803D480
+	bl SoftReset
 	add sp, #4
 	pop {r3}
 	bx r3

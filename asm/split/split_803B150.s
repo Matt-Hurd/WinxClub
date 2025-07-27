@@ -15,8 +15,8 @@
 	IMPORT sub_8010D60
 	IMPORT sub_802E47A
 	IMPORT sub_802F04E
-	IMPORT sub_803B8CA
-	IMPORT sub_803C124
+	IMPORT __call_via_r1
+	IMPORT __16__rt_udiv
 	IMPORT sub_803D9C4
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
@@ -150,11 +150,11 @@ sub_803B1AE ;@ 0x0803B1AE
 	lsls r0, r7, #0xa
 	lsrs r1, r0, #0x16
 	ldrb r0, [r5]
-	bl sub_803C124
+	bl __16__rt_udiv
 	str r0, [sp, #0xc]
 	ldrb r0, [r5, #1]
 	lsrs r1, r7, #0x16
-	bl sub_803C124
+	bl __16__rt_udiv
 	ldr r1, [sp, #0xc]
 	movs r7, #1
 	muls r1, r0
@@ -239,7 +239,7 @@ _0803B296
 	adds r0, r4, #0
 	ldr r2, [r1, #8]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}

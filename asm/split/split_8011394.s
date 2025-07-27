@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_0804AE70
 	IMPORT sub_800B09A
-	IMPORT sub_803C124
+	IMPORT __16__rt_udiv
 	IMPORT sub_80405D8
 
 	thumb_func_start sub_8011394
@@ -79,7 +79,7 @@ _08011408
 	subs r0, r2, r0
 	muls r1, r0
 	adds r0, r2, #0
-	bl sub_803C124
+	bl __16__rt_udiv
 _0801141E
 	adds r7, r0, #0
 	ldr r0, _080114A0 ;@ =0x000120C0

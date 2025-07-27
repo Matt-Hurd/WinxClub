@@ -20,7 +20,7 @@
 	IMPORT sub_8028C2E
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
@@ -855,7 +855,7 @@ sub_802D920 ;@ 0x0802D920
 	ldr r2, [r1, #0x18]
 	sub sp, #8
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r4, #0x48]
 	lsls r0, r0, #0x16
 	bpl _0802D94C

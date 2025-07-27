@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E88
 	IMPORT sub_8005106
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_803F3E8
 	IMPORT sub_803F72C
@@ -249,7 +249,7 @@ _08017C70
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _08017C82
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r1, [sp, #4]
 	movs r0, #0
 	str r0, [r1, #0x18]
@@ -415,7 +415,7 @@ _08017D80
 	strh r0, [r1, #0x18]
 _08017DB2
 	ldr r0, [r7, #4]
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r1, #0
 	str r1, [r7, #4]
 	add sp, #0xc

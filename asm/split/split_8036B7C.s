@@ -8,7 +8,7 @@
 	IMPORT sub_801F286
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_8036B7C
@@ -67,14 +67,14 @@ loc_8036bca
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08036BEC
 loc_8036bd8
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08036BEC
 _08036BE6
 	adds r0, r4, #0

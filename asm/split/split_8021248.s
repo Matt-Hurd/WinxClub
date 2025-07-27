@@ -15,7 +15,7 @@
 	IMPORT sub_801F0F0
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
-	IMPORT sub_803BE1C
+	IMPORT rand
 	IMPORT sub_803F2CC
 	IMPORT sub_803F6B4
 	IMPORT sub_803F6E0
@@ -751,7 +751,7 @@ _0802178A
 	bl sub_8028BE4
 	cmp r0, #0
 	bne _080217DC
-	bl sub_803BE1C
+	bl rand
 	lsls r0, r0, #0x1e
 	lsrs r0, r0, #0x1e
 	cmp r0, #3

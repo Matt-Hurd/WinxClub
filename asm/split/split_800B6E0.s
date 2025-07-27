@@ -20,9 +20,9 @@
 	IMPORT sub_8012126
 	IMPORT sub_8012180
 	IMPORT sub_80121C4
-	IMPORT sub_803BE68
-	IMPORT sub_803BEB0
-	IMPORT sub_803D468
+	IMPORT __16__rt_memclr
+	IMPORT __16__rt_memclr_w
+	IMPORT CpuSet
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -245,46 +245,46 @@ _0800B7F4
 	str r0, [r1, #0x14]
 	movs r1, #0x3c
 	adds r0, r4, #4
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r1, #0x19
 	lsls r1, r1, #5
 	adds r0, r4, #0
 	adds r0, #0x80
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0x1d
 	lsls r0, r0, #5
 	movs r1, #0x22
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	ldr r1, _0800BBA4 ;@ =0x00000409
 	adds r0, r1, #0
 	subs r0, #0x47
 	adds r0, r4, r0
-	bl sub_803BE68
+	bl __16__rt_memclr
 	ldr r0, _0800BBAC ;@ =0x000007CC
 	ldr r1, _0800BBA8 ;@ =0x00000404
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	ldr r0, _0800BBB4 ;@ =0x00001318
 	ldr r1, _0800BBB0 ;@ =0x0000050C
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r1, #0xff
 	ldr r0, _0800BBB8 ;@ =0x00001824
 	adds r1, #0x8d
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0xbd
 	lsls r0, r0, #4
 	movs r1, #0x80
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r1, #0x1b
 	movs r0, #0xc5
 	lsls r0, r0, #4
 	lsls r1, r1, #6
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	adds r0, r4, #0
 	b _0800B7EE
 
@@ -400,7 +400,7 @@ sub_800B94A ;@ 0x0800B94A
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _0800BBD4 ;@ =0x05001000
-	bl sub_803D468
+	bl CpuSet
 _0800B970
 	add sp, #4
 	pop {r3}
@@ -425,7 +425,7 @@ _0800B98C
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _0800BBE0 ;@ =0x05002000
-	bl sub_803D468
+	bl CpuSet
 	b _0800B970
 _0800B9A0
 	adds r2, r1, #0
@@ -449,7 +449,7 @@ sub_800B9B6 ;@ 0x0800B9B6
 	lsls r1, r1, #5
 	adds r0, r4, #0
 	adds r0, #0x80
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0
 	movs r3, #0x1d
 	lsls r3, r3, #5
@@ -558,7 +558,7 @@ _0800BA8C
 	ldr r0, _0800BBAC ;@ =0x000007CC
 	lsls r1, r1, #0xa
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r1, #0xff
 	lsls r1, r1, #0x10
 	movs r0, #0
@@ -590,7 +590,7 @@ _0800BAA2
 	movs r1, #5
 	lsls r1, r1, #8
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #7
 	lsls r0, r0, #0x18
 	adds r1, r0, #0
@@ -655,7 +655,7 @@ _0800BB06
 	adds r0, r7, #4
 	adds r1, #0x81
 	adds r0, r4, r0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0
 	movs r1, #0xff
 	adds r1, #1

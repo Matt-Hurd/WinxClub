@@ -78,8 +78,6 @@
 	GLOBAL gUnknown_080514B8
 	GLOBAL gUnknown_080514C8
 	GLOBAL gUnknown_080514D0
-	GLOBAL gUnknown_08051744
-	GLOBAL gUnknown_08051750
 
 gUnknown_08041448
 	INCBIN data/ripped/00041448.bin
@@ -311,10 +309,4 @@ gUnknown_080514C8
 
 gUnknown_080514D0
 	INCBIN data/ripped/000514D0.bin
-
-gUnknown_08051744
-	INCBIN data/ripped/00051744.bin
-
-gUnknown_08051750
-	INCBIN data/ripped/00051750.bin
 	END

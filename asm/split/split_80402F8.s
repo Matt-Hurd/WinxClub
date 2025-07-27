@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E90
 	IMPORT gUnknown_0803ECCC
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -29,7 +29,7 @@ _08040314
 	ldr r2, [r1, #0x4c]
 	adds r2, r2, r1
 	adds r1, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _08040322
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1c
@@ -42,7 +42,7 @@ _08040322
 	ldr r2, [r1, #0x58]
 	adds r2, r2, r1
 	adds r1, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _0804033C
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1e
@@ -52,7 +52,7 @@ _0804033C
 	ldr r2, [r1, #0x50]
 	adds r2, r2, r1
 	adds r1, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _08040350
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1d
@@ -62,7 +62,7 @@ _08040350
 	ldr r2, [r1, #0x54]
 	adds r2, r2, r1
 	adds r1, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _08040364
 	pop {r3, r4, r5}
 	pop {r3}

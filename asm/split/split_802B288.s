@@ -20,9 +20,9 @@
 	IMPORT sub_8020AB6
 	IMPORT sub_802459E
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CA
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __call_via_r1
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803F9C4
@@ -58,7 +58,7 @@ _0802B2A2
 	adds r0, r4, #0
 	adds r0, #0xf4
 	ldr r3, _0802B640 ;@ =sub_80143E0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	movs r1, #0
 	strb r1, [r4]
 	strb r1, [r4, #2]
@@ -142,20 +142,20 @@ _0802B348
 	adds r0, r5, #4
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r0, r5, #0
 	adds r0, #0xf4
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r0, r5, #0
 	adds r0, #0xff
 	adds r0, #0x6d
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -190,7 +190,7 @@ _0802B3A2
 	adds r0, r1, #0
 	adds r0, #0xf0
 	ldr r3, _0802B648 ;@ =sub_8014436
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r1, #0
 	adds r0, r5, #0
 	bl sub_8014436

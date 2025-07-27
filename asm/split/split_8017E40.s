@@ -25,11 +25,11 @@
 	IMPORT sub_8018070
 	IMPORT sub_80180BE
 	IMPORT sub_8018386
-	IMPORT sub_803D468
+	IMPORT CpuSet
 	IMPORT sub_803D680
 	IMPORT sub_803D834
 	IMPORT sub_803D97C
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_8017E40
@@ -61,7 +61,7 @@ sub_8017E40 ;@ 0x08017E40
 	adds r1, r2, #0
 	subs r1, #0x20
 	add r0, sp, #4
-	bl sub_803D468
+	bl CpuSet
 	b _08017E98
 _08017E86
 	movs r0, #0
@@ -91,7 +91,7 @@ _08017E98
 _08017EB8
 	ldr r5, _08018068 ;@ =gUnknown_03003468
 	ldr r0, [r5]
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r1, #0
 	movs r0, #0
 	bl sub_800ED7C

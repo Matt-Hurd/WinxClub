@@ -17,8 +17,8 @@
 	IMPORT sub_8005106
 	IMPORT sub_80051D6
 	IMPORT sub_8005220
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
 	IMPORT sub_803E17C
 	IMPORT sub_803E258
 	IMPORT sub_803E260
@@ -27,6 +27,7 @@
 	IMPORT sub_803E278
 	IMPORT sub_803E280
 	IMPORT sub_803E288
+	IMPORT __16__rt_memclr
 
 	thumb_func_start sub_803D4A8
 sub_803D4A8 ;@ 0x0803D4A8
@@ -194,7 +195,7 @@ sub_803D5A4 ;@ 0x0803D5A4
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	adds r1, r6, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r0, [sp, #0x14]
 	str r7, [sp, #0x18]
 	cmp r5, #0
@@ -204,7 +205,7 @@ sub_803D5A4 ;@ 0x0803D5A4
 	ldr r2, [r1, #0x20]
 	adds r2, r2, r1
 	ldr r1, [sp, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 	adds r5, r0, #0
 	movs r6, #0
 	cmp r0, #0
@@ -221,14 +222,14 @@ sub_803D5A4 ;@ 0x0803D5A4
 	adds r3, r2, r1
 	adds r2, r5, #0
 	adds r1, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 _0803D61A
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #8]
 	adds r2, r2, r1
 	add r1, sp, #4
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0xc]
@@ -236,7 +237,7 @@ _0803D61A
 	movs r2, #1
 	lsls r2, r2, #0x1e
 	ldr r1, [sp, #0x14]
-	bl sub_803B8CE
+	bl __call_via_r3
 	cmp r5, #0
 	beq _0803D648
 	movs r2, #0
@@ -250,7 +251,7 @@ _0803D648
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _0803D658
 	ldr r0, [sp, #0x14]
 	add sp, #0x1c
@@ -747,7 +748,7 @@ sub_803D9C4 ;@ 0x0803D9C4
 	beq _0803D9EA
 	adds r1, r5, #0
 	adds r0, r4, #0
-	bl sub_803BE68
+	bl __16__rt_memclr
 _0803D9EA
 	adds r0, r4, #0
 	add sp, #8
@@ -805,8 +806,8 @@ _0803DA42
 	ALIGN
 _0803DA48 DCDU gUnknown_030033E8
 
-	thumb_func_start sub_803DA4C
-sub_803DA4C ;@ 0x0803DA4C
+	thumb_func_start __da__FPv
+__da__FPv ;@ 0x0803DA4C
 	push {lr}
 	adds r1, r0, #0
 	beq _0803DA76
@@ -883,8 +884,8 @@ sub_803DAC0 ;@ 0x0803DAC0
 	adds r0, r1, #0
 	bx lr
 
-	arm_func_start sub_803DAC4
-sub_803DAC4 ;@ 0x0803DAC4
+	arm_func_start __rt_stackheap_init
+__rt_stackheap_init ;@ 0x0803DAC4
 	LDR sp, _0803DB28 ;@ =gInterruptStack
 	LDR sl, _0803DB2C ;@ =gUnknown_03003EC4
 	mov r0, #0x2000000
@@ -906,7 +907,7 @@ sub_803DAFC ;@ 0x0803DAFC
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x64
-	b _0803DB24
+	b _sys_exit
 
 	arm_func_start sub_803DB10
 sub_803DB10 ;@ 0x0803DB10
@@ -918,8 +919,11 @@ sub_803DB18 ;@ 0x0803DB18
 	STMFD SP!, {r0, r1}
 	LDMIA sp, {sl, sp}
 	mov pc, lr
-_0803DB24
-	b _0803DB24
+
+
+	arm_func_start _sys_exit
+_sys_exit
+	b _sys_exit
 	ALIGN
 _0803DB28 DCDU gInterruptStack
 _0803DB2C DCDU gUnknown_03003EC4

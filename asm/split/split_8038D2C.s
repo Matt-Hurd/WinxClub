@@ -11,8 +11,8 @@
 	IMPORT sub_8038888
 	IMPORT sub_803894A
 	IMPORT sub_80389CC
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start sub_8038D2C
 sub_8038D2C ;@ 0x08038D2C
@@ -27,7 +27,7 @@ sub_8038D2C ;@ 0x08038D2C
 	movs r2, #0x78
 	adds r0, #8
 	ldr r3, _08038E2C ;@ =sub_80143E0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
 	bl sub_80143E0
 	adds r0, r5, #0
@@ -133,7 +133,7 @@ _08038DFA
 	adds r0, r5, #0
 	adds r0, #0x80
 	ldr r3, _08038E40 ;@ =sub_8014436
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0x20
 	pop {r4, r5, r6, r7}

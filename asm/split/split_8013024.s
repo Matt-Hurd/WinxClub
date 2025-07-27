@@ -6,11 +6,11 @@
 	IMPORT sub_8004FFC
 	IMPORT sub_8005106
 	IMPORT sub_8012BA0
-	IMPORT sub_803BEB0
-	IMPORT sub_803C3EC
-	IMPORT sub_803C428
+	IMPORT __16__rt_memclr_w
+	IMPORT __vec_ctor_p__FPvUiT2bPFPv_v
+	IMPORT __vec_dtor__FPvUiPFPvi_vPFPv_v
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
 	arm_func_start sub_8013024
@@ -223,7 +223,7 @@ sub_80132F4 ;@ 0x080132F4
 	adds r4, r0, #0
 	movs r1, #0x43
 	lsls r1, r1, #3
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r1, #0x21
 	lsls r1, r1, #4
 	adds r1, r4, r1
@@ -246,7 +246,7 @@ sub_8013318 ;@ 0x08013318
 	ldm r0!, {r0, r1}
 	cmp r1, r0
 	beq _0801332E
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r0, [r4, #0x14]
 	str r0, [r4, #0x10]
 _0801332E
@@ -272,7 +272,7 @@ sub_801333E ;@ 0x0801333E
 	adds r3, r6, #0
 	movs r1, #0x1c
 	ldr r2, _08013434 ;@ =sub_8013318
-	bl sub_803C428
+	bl __vec_dtor__FPvUiPFPvi_vPFPv_v
 _08013358
 	bl sub_8005106
 	adds r1, r0, #0
@@ -288,7 +288,7 @@ _08013358
 	movs r2, #0x1c
 	movs r3, #1
 	adds r1, r4, #0
-	bl sub_803C3EC
+	bl __vec_ctor_p__FPvUiT2bPFPv_v
 	str r0, [r5]
 	add sp, #8
 	pop {r4, r5, r6}
@@ -305,7 +305,7 @@ sub_8013386 ;@ 0x08013386
 	movs r3, #0
 	movs r1, #0x1c
 	ldr r2, _08013434 ;@ =sub_8013318
-	bl sub_803C428
+	bl __vec_dtor__FPvUiPFPvi_vPFPv_v
 _0801339A
 	add sp, #4
 	pop {r3}

@@ -11,7 +11,7 @@
 	IMPORT sub_8010ED2
 	IMPORT sub_8010F10
 	IMPORT sub_8010F90
-	IMPORT sub_803C124
+	IMPORT __16__rt_udiv
 	IMPORT sub_803E204
 	IMPORT sub_803E210
 
@@ -289,13 +289,13 @@ _08011214
 	lsrs r1, r0, #0x16
 	ldr r0, [sp, #0xc]
 	ldrb r0, [r0]
-	bl sub_803C124
+	bl __16__rt_udiv
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x1c]
 	lsrs r1, r0, #0x16
 	ldr r0, [sp, #0xc]
 	ldrb r0, [r0, #1]
-	bl sub_803C124
+	bl __16__rt_udiv
 	adds r1, r0, #0
 	ldr r0, [sp, #8]
 	muls r0, r1

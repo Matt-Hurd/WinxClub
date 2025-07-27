@@ -1,8 +1,8 @@
     INCLUDE asm/macros.inc
     AREA text, CODE
 
-	IMPORT sub_803BE1C
-	IMPORT sub_803C04C
+	IMPORT rand
+	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_8002004
 sub_8002004 ;@ 0x08002004
@@ -72,12 +72,12 @@ _08002058
 	bne _080020BC
 	lsls r1, r0, #0x10
 	bpl _0800208E
-	bl sub_803BE1C
+	bl rand
 	ldr r7, [r4]
 	adds r1, r0, #0
 	lsls r0, r7, #0x11
 	lsrs r0, r0, #0x18
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	lsrs r0, r7, #6
 	lsls r0, r0, #6
 	lsls r1, r1, #0x1a
@@ -165,7 +165,7 @@ sub_80020F8 ;@ 0x080020F8
 	ldrh r0, [r0, #2]
 	subs r1, r1, r2
 	asrs r1, r1, #1
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	add sp, #4
 	pop {r3}
 	bx r3

@@ -11,11 +11,11 @@
 	IMPORT sub_800263E
 	IMPORT sub_8002698
 	IMPORT sub_800288A
-	IMPORT sub_803B8CE
-	IMPORT sub_803BEB0
-	IMPORT sub_803BF0C
-	IMPORT sub_803C034
-	IMPORT sub_803D468
+	IMPORT __call_via_r3
+	IMPORT __16__rt_memclr_w
+	IMPORT __16__rt_memcpy
+	IMPORT __16__rt_memset
+	IMPORT CpuSet
 	IMPORT sub_803D5A4
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
@@ -43,7 +43,7 @@ sub_800CD98 ;@ 0x0800CD98
 	adds r2, r7, #0
 	movs r1, #0xff
 	str r0, [r5]
-	bl sub_803C034
+	bl __16__rt_memset
 	ldrb r1, [r4, #0x10]
 	movs r0, #0
 	cmp r1, #0
@@ -99,7 +99,7 @@ _0800CE12
 	adds r2, r7, #0
 	movs r1, #0xff
 	str r0, [r6]
-	bl sub_803C034
+	bl __16__rt_memset
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
 	bne _0800CE66
@@ -796,7 +796,7 @@ _0800D32E
 _0800D34C
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x20]
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 _0800D354
 	ldr r0, [r7, #4]
 	movs r1, #0x10
@@ -1006,7 +1006,7 @@ _0800D4B0
 	adds r0, r0, r1
 	ldr r1, [sp, #0x38]
 	ldr r2, _0800D87C ;@ =0x04000008
-	bl sub_803D468
+	bl CpuSet
 	b _0800D4E4
 _0800D4D0
 	ldr r0, [r4, #0xc]
@@ -1689,7 +1689,7 @@ _0800D9B6
 	movs r1, #0xff
 	adds r1, #0x61
 	ldr r0, [sp]
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0x13
 	lsls r0, r0, #7
 	adds r0, r4, r0
@@ -2465,7 +2465,7 @@ _0800DF78
 	adds r1, #0x38
 	ldr r2, [r0, #0x2c]
 	adds r0, r6, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 _0800DFA0
 	ldr r0, [r4, #0x38]
 	ldr r1, [r4, #0x40]
@@ -2630,7 +2630,7 @@ _0800E0AE
 	add r2, sp, #4
 	adds r1, r4, #0
 	ldr r0, [r0]
-	bl sub_803B8CE
+	bl __call_via_r3
 _0800E0C8
 	cmp r5, #0
 	beq _0800E0E2
@@ -2643,7 +2643,7 @@ _0800E0C8
 	add r2, sp, #4
 	adds r1, r4, #0
 	ldr r0, [r0]
-	bl sub_803B8CE
+	bl __call_via_r3
 _0800E0E2
 	ldr r1, [r4, #0x50]
 	ldrh r0, [r1, #0xc]

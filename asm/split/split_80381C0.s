@@ -17,9 +17,9 @@
 	IMPORT sub_80268AC
 	IMPORT sub_8028BE4
 	IMPORT sub_802E47A
-	IMPORT sub_803B8CA
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __call_via_r1
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_sshift_r
 	IMPORT sub_803FF24
 
 	thumb_func_start sub_80381C0
@@ -172,7 +172,7 @@ _080382DA
 	adds r0, r4, #0
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4, #4]
 	ldr r0, [r1]
 	lsls r0, r0, #0x15
@@ -218,10 +218,10 @@ _08038324
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0x114 ;@ =_08038460
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

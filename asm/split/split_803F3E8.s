@@ -2,7 +2,7 @@
     AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
-	IMPORT sub_803D468
+	IMPORT CpuSet
 
 	thumb_func_start sub_803F3E8
 sub_803F3E8 ;@ 0x0803F3E8
@@ -32,7 +32,7 @@ _0803F406
 	lsrs r1, r1, #0xb
 	orrs r2, r1
 	adds r1, r3, #0
-	bl sub_803D468
+	bl CpuSet
 _0803F41E
 	pop {r4, r5, r6}
 	pop {r3}

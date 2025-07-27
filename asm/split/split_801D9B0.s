@@ -7,8 +7,8 @@
 	IMPORT sub_8000914
 	IMPORT sub_8005106
 	IMPORT sub_801D788
-	IMPORT sub_803B914
-	IMPORT sub_803B940
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_sdiv
 	IMPORT sub_803DA80
 	IMPORT sub_803F6B4
 	IMPORT sub_803FC14
@@ -357,10 +357,10 @@ _0801DBFA
 _0801DBFC
 	add r0, pc, #0xEC ;@ =_0801DCEC
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0xEC ;@ =_0801DCF4
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	b _0801DCB8
 _0801DC0E
 	cmp r5, #3
@@ -402,10 +402,10 @@ _0801DC4A
 _0801DC4C
 	add r0, pc, #0x9C ;@ =_0801DCEC
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x9C ;@ =_0801DCF4
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	b _0801DCB8
 _0801DC5E
 	cmp r1, #0

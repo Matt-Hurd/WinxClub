@@ -41,10 +41,10 @@
 	IMPORT sub_803772C
 	IMPORT sub_803AB80
 	IMPORT sub_803AE68
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8D4
-	IMPORT sub_803B8D6
-	IMPORT sub_803BE1C
+	IMPORT __call_via_r1
+	IMPORT __call_via_r6
+	IMPORT __call_via_r7
+	IMPORT rand
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 	IMPORT sub_803EF1C
@@ -614,7 +614,7 @@ _08029AD4
 	movs r2, #0
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029B64 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -698,7 +698,7 @@ _08029B9E
 	movs r2, #3
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -760,7 +760,7 @@ _08029C24
 	movs r2, #1
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -823,7 +823,7 @@ _08029CAA
 	movs r2, #1
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -885,7 +885,7 @@ _08029D30
 	movs r2, #0
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -950,7 +950,7 @@ _08029DBA
 	movs r2, #2
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1016,7 +1016,7 @@ _08029E4A
 	movs r2, #3
 	adds r1, r4, #0
 	adds r3, r7, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1084,7 +1084,7 @@ _08029EFC
 _08029EFE
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _08029F60 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1148,7 +1148,7 @@ _08029F64
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1208,7 +1208,7 @@ _08029FE6
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1276,7 +1276,7 @@ _0802A078
 	movs r2, #3
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1339,7 +1339,7 @@ _0802A0FE
 	movs r2, #4
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1405,7 +1405,7 @@ _0802A188
 	movs r2, #2
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1468,7 +1468,7 @@ _0802A20E
 	movs r2, #4
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1535,7 +1535,7 @@ _0802A29E
 	movs r2, #3
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1598,7 +1598,7 @@ _0802A324
 	movs r2, #2
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A370 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1670,7 +1670,7 @@ _0802A3BE
 	movs r2, #0
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1733,7 +1733,7 @@ _0802A444
 	movs r2, #5
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1800,7 +1800,7 @@ _0802A4D4
 	movs r2, #6
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1867,7 +1867,7 @@ _0802A564
 	movs r2, #3
 	adds r1, r4, #0
 	adds r3, r7, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1931,7 +1931,7 @@ _0802A5EE
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -1995,7 +1995,7 @@ _0802A674
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2055,7 +2055,7 @@ _0802A6F6
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802A75C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2130,7 +2130,7 @@ _0802A79A
 	movs r2, #0
 	adds r1, r4, #0
 	adds r3, r7, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2202,7 +2202,7 @@ _0802A83E
 	adds r7, r2, r1
 	movs r2, #1
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2262,7 +2262,7 @@ _0802A8AE
 	adds r7, r2, r1
 	movs r2, #2
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2322,7 +2322,7 @@ _0802A930
 	adds r7, r2, r1
 	movs r2, #3
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2390,7 +2390,7 @@ _0802A9C0
 	movs r2, #7
 	adds r1, r4, #0
 	adds r3, r6, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2456,7 +2456,7 @@ _0802AA50
 	movs r2, #4
 	adds r1, r4, #0
 	adds r3, r7, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2520,7 +2520,7 @@ _0802AADA
 	adds r7, r2, r1
 	movs r2, #4
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AB5C ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2585,7 +2585,7 @@ _0802AB68
 	adds r7, r2, r1
 	movs r2, #4
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AF70 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2645,7 +2645,7 @@ _0802ABEA
 	adds r7, r2, r1
 	movs r2, #4
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, _0802AF70 ;@ =gUnknown_03003458
 	ldr r0, [r0]
 	bl sub_803EF1C
@@ -2694,7 +2694,7 @@ _0802AC56
 	adds r0, r4, #0
 	ldr r2, [r1, #0x60]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _0802A99A
 
 	thumb_func_start sub_802AC74
@@ -2804,7 +2804,7 @@ sub_802ACDE ;@ 0x0802ACDE
 	movs r6, #1
 	b _0802AEBC
 _0802AD30
-	bl sub_803BE1C
+	bl rand
 	ldr r1, [r5, #0x30]
 	lsls r0, r0, #0x19
 	lsls r1, r1, #0x19
@@ -2910,7 +2910,7 @@ _0802ADD8
 _0802ADF4
 	b _0802AEA8
 _0802ADF6
-	bl sub_803BE1C
+	bl rand
 	ldr r1, [r5, #0x30]
 	lsls r0, r0, #0x19
 	lsls r1, r1, #0x19
@@ -3001,7 +3001,7 @@ _0802AE78
 _0802AEA6
 	b _0802AD50
 _0802AEA8
-	bl sub_803BE1C
+	bl rand
 	ldr r1, [r5, #0x30]
 	lsls r0, r0, #0x19
 	lsls r1, r1, #0x19
@@ -3365,12 +3365,12 @@ _0802B150
 	adds r0, r4, #0
 	ldr r2, [r1, #0x50]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x54]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r5, #0x2c]
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1a
@@ -3465,12 +3465,12 @@ sub_802B1CC ;@ 0x0802B1CC
 	adds r0, r4, #0
 	ldr r2, [r1, #0x50]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x54]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r5, #0x2c]
 	lsls r0, r1, #0x1d
 	lsrs r0, r0, #0x1a

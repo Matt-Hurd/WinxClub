@@ -5,8 +5,8 @@
 	IMPORT gUnknown_03003EB0
 	IMPORT sub_800212C
 	IMPORT sub_8002230
-	IMPORT sub_803BE68
-	IMPORT sub_803C04C
+	IMPORT __16__rt_memclr
+	IMPORT __16__rt_sdiv
 	IMPORT sub_8040504
 
 	thumb_func_start sub_8002828
@@ -78,7 +78,7 @@ sub_800288A ;@ 0x0800288A
 	movs r1, #1
 	lsls r1, r1, #0xb
 	adds r0, r4, #0
-	bl sub_803BE68
+	bl __16__rt_memclr
 	ldr r0, [r7, #0x50]
 	movs r3, #0x1e
 	ldr r2, [r0]
@@ -685,14 +685,14 @@ _08002D0A
 	str r0, [sp, #0x74]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x70]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x7c]
 	str r1, [sp, #0x18]
 	asrs r1, r0, #0x13
 	ldr r0, [sp, #0x74]
 	ldrh r0, [r0, #0xe]
 	str r0, [sp, #0x6c]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r2, [sp, #0x18]
 	cmp r2, #0
 	bge _08002D4E
@@ -1181,13 +1181,13 @@ _080030C8
 	str r0, [sp, #0x48]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x44]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x48]
 	str r1, [sp, #0x18]
 	ldrh r0, [r0, #0xe]
 	ldr r1, [sp, #0x50]
 	str r0, [sp, #0x40]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r2, [sp, #0x18]
 	cmp r2, #0
 	bge _08003110
@@ -1696,14 +1696,14 @@ _080034B0
 	str r0, [sp, #0x5c]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x58]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x64]
 	str r1, [sp, #0x18]
 	asrs r1, r0, #0x13
 	ldr r0, [sp, #0x5c]
 	ldrh r0, [r0, #0xe]
 	str r0, [sp, #0x54]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r2, [sp, #0x18]
 	cmp r2, #0
 	bge _080034F2
@@ -2248,13 +2248,13 @@ _080038D6
 	str r0, [sp, #0x54]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x50]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x54]
 	str r1, [sp, #0x10]
 	ldrh r0, [r0, #0xe]
 	ldr r1, [sp, #0x5c]
 	str r0, [sp, #0x4c]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r2, [sp, #0x10]
 	cmp r2, #0
 	bge _08003918
@@ -2825,13 +2825,13 @@ _08003D3A
 	str r0, [sp, #0x3c]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x38]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x3c]
 	adds r7, r1, #0
 	ldrh r0, [r0, #0xe]
 	ldr r1, [sp, #0x44]
 	str r0, [sp, #0x34]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	cmp r7, #0
 	bge _08003D68
 	ldr r0, [sp, #0x38]
@@ -3028,13 +3028,13 @@ _08003EBC
 	str r0, [sp, #0x1c]
 	ldrh r0, [r0, #0xc]
 	str r0, [sp, #0x18]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [sp, #0x1c]
 	adds r7, r1, #0
 	ldrh r0, [r0, #0xe]
 	ldr r1, [sp, #0x24]
 	str r0, [sp, #0x14]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	cmp r7, #0
 	bge _08003EF2
 	ldr r0, [sp, #0x18]
@@ -3287,12 +3287,12 @@ _080040B4
 	adds r1, r1, r0
 	ldrh r0, [r7, #0xc]
 	str r0, [sp, #0x18]
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldrh r0, [r7, #0xe]
 	adds r5, r1, #0
 	ldr r1, [sp, #0x1c]
 	adds r7, r0, #0
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	cmp r5, #0
 	bge _080040D6
 	ldr r0, [sp, #0x18]

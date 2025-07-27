@@ -10,7 +10,7 @@
 	IMPORT sub_80134F8
 	IMPORT sub_801352C
 	IMPORT sub_8013E2C
-	IMPORT sub_803D498
+	IMPORT VBlankIntrWait
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803F464
@@ -383,7 +383,7 @@ _08014570
 	ldr r0, _08014734 ;@ =gUnknown_03003EB8
 	ldr r0, [r0]
 	bl sub_80014E4
-	bl sub_803D498
+	bl VBlankIntrWait
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

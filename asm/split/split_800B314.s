@@ -9,7 +9,7 @@
 	IMPORT sub_803B4D8
 	IMPORT sub_803B5A0
 	IMPORT sub_803B81C
-	IMPORT sub_803BF0C
+	IMPORT __16__rt_memcpy
 
 	thumb_func_start sub_800B314
 sub_800B314 ;@ 0x0800B314
@@ -63,7 +63,7 @@ _0800B36E
 	adds r1, r0, r1
 	movs r2, #8
 	adds r0, r7, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r0, [sp, #8]
 	adds r0, r0, r4
 	lsls r0, r0, #0x10
@@ -171,7 +171,7 @@ _0800B43C
 	adds r0, r0, r1
 	movs r2, #8
 	adds r1, r7, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	adds r4, #1
 	cmp r4, r6
 	blo _0800B414

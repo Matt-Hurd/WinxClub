@@ -20,7 +20,7 @@
 	IMPORT sub_801E124
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
-	IMPORT sub_803BE1C
+	IMPORT rand
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
@@ -370,7 +370,7 @@ _0802FE5E
 	movs r1, #0xa
 	subs r0, r1, r0
 	strh r0, [r6, #0x10]
-	bl sub_803BE1C
+	bl rand
 	ldrh r1, [r6, #0x10]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
@@ -380,7 +380,7 @@ _0802FE5E
 	ldrsh r0, [r6, r3]
 	cmp r0, #0
 	ble _0802FE8E
-	bl sub_803BE1C
+	bl rand
 	ldrh r1, [r6, #0x12]
 	lsls r0, r0, #0x1b
 	lsrs r0, r0, #0x1b
@@ -388,7 +388,7 @@ _0802FE5E
 	strh r0, [r6, #0x12]
 	b _0802FE9C
 _0802FE8E
-	bl sub_803BE1C
+	bl rand
 	ldrh r1, [r6, #0x12]
 	lsls r0, r0, #0x1b
 	lsrs r0, r0, #0x1b

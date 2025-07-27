@@ -3,9 +3,9 @@
 
 	IMPORT gUnknown_03003450
 	IMPORT sub_8002004
-	IMPORT sub_803B998
-	IMPORT sub_803B9C4
-	IMPORT sub_803D468
+	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_srdv
+	IMPORT CpuSet
 	IMPORT sub_803FF24
 
 	thumb_func_start sub_801C210
@@ -18,13 +18,13 @@ sub_801C210 ;@ 0x0801C210
 	str r4, [sp, #4]
 	add r0, sp, #4
 	ldr r2, _0801C494 ;@ =0x05000014
-	bl sub_803D468
+	bl CpuSet
 	movs r0, #0
 	str r0, [sp, #4]
 	add r0, sp, #4
 	ldr r2, _0801C494 ;@ =0x05000014
 	add r1, sp, #8
-	bl sub_803D468
+	bl CpuSet
 	ldr r0, _0801C498 ;@ =gUnknown_03003450
 	ldr r0, [r0]
 	bl sub_8002004
@@ -258,13 +258,13 @@ _0801C3D6
 	adds r0, r7, #0
 	asrs r1, r7, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	adds r2, r0, #0
 	ldr r0, [sp, #0x10]
 	str r1, [sp, #4]
 	ldr r3, [sp, #4]
 	asrs r1, r0, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	cmp r4, #0
 	bge _0801C3FA
 	ldr r4, _0801C4A0 ;@ =0xFFFF0000
@@ -290,7 +290,7 @@ _0801C416
 	adds r0, r4, #0
 	asrs r1, r4, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	adds r4, r0, #0
 	cmp r7, #0
 	str r1, [sp, #4]
@@ -305,7 +305,7 @@ _0801C430
 	asrs r1, r0, #0x1f
 	adds r2, r4, #0
 	ldr r3, [sp, #4]
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	adds r4, r0, #0
 _0801C43C
 	cmp r7, #0

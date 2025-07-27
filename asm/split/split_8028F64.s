@@ -21,8 +21,8 @@
 	IMPORT sub_8018070
 	IMPORT sub_8018386
 	IMPORT sub_801B170
-	IMPORT sub_803D468
-	IMPORT sub_803DA4C
+	IMPORT CpuSet
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_80406C4
 
@@ -63,7 +63,7 @@ sub_8028F64 ;@ 0x08028F64
 	adds r1, r2, #0
 	subs r1, #0x20
 	mov r0, sp
-	bl sub_803D468
+	bl CpuSet
 	b _08028FCC
 _08028FBA
 	movs r0, #0
@@ -81,7 +81,7 @@ _08028FCC
 	bl sub_8018070
 	ldr r5, _08029064 ;@ =gUnknown_03003468
 	ldr r0, [r5]
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r6, _08029068 ;@ =gUnknown_03003C58
 	movs r1, #0
 	ldrh r0, [r6]

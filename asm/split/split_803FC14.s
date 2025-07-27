@@ -3,8 +3,8 @@
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_sshift_r
 
 	thumb_func_start sub_803FC14
 sub_803FC14 ;@ 0x0803FC14
@@ -24,10 +24,10 @@ sub_803FC14 ;@ 0x0803FC14
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl sub_803B998
+	bl __16_ll_sshift_r
 	add r2, pc, #0x24 ;@ =_0803FC60
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

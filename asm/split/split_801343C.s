@@ -7,7 +7,7 @@
 	IMPORT sub_8005106
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_801343C
@@ -54,7 +54,7 @@ sub_8013480 ;@ 0x08013480
 	adds r5, r1, #0
 	str r0, [r4]
 	ldr r0, [r4, #4]
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r0, _080134AC ;@ =_0803ECF4
 	ldr r1, _080134B0 ;@ =gUnknown_03003EBC
 	str r0, [r4]

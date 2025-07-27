@@ -13,7 +13,7 @@
 	IMPORT sub_800C1CA
 	IMPORT sub_800C4F0
 	IMPORT sub_800CD28
-	IMPORT sub_803BEB0
+	IMPORT __16__rt_memclr_w
 	IMPORT sub_803D9F8
 
 	thumb_func_start sub_8000324
@@ -278,7 +278,7 @@ sub_80004F8 ;@ 0x080004F8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x60
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0xff
 	adds r0, #1
 	strh r0, [r4, #0x20]

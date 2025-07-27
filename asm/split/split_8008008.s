@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003EAC
 	IMPORT gUnknown_0803EEF0
 	IMPORT sub_800B12C
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803D9F8
 	IMPORT sub_803DA18
 
@@ -133,7 +133,7 @@ _080080C2
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	ldr r1, [r5]
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r0, [r4, #0x18]
 	ldr r1, [r4, #0x10]
 	ands r0, r1

@@ -5,7 +5,7 @@
 	IMPORT sub_8016176
 	IMPORT sub_80162D6
 	IMPORT sub_8028C2E
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_80163D4
@@ -93,7 +93,7 @@ _0801645C
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _08016472
-	bl sub_803DA4C
+	bl __da__FPv
 _08016472
 	movs r0, #1
 	str r5, [r4]
@@ -111,7 +111,7 @@ _0801647C
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _08016492
-	bl sub_803DA4C
+	bl __da__FPv
 _08016492
 	movs r0, #1
 	str r5, [r4]
