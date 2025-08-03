@@ -1,0 +1,7 @@
+{
+  "files.insertFinalNewline": true,
+
+  "[s]": {
+    "editor.insertSpaces": false
+  }
+}
