@@ -273,7 +273,7 @@ sub_803D66C ;@ 0x0803D66C
 	strh r0, [r1, #0x14]
 	bx lr
 	ALIGN
-_0803D67C DCDU 0x04000040
+_0803D67C DCDU REG_WIN0H
 
 	thumb_func_start sub_803D680
 sub_803D680 ;@ 0x0803D680
