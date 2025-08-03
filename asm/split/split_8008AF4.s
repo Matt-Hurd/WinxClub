@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
 	IMPORT gUnknown_0803EE6C
@@ -8,24 +8,24 @@
 	IMPORT CpuSet
 
 	arm_func_start sub_8008AF4
-sub_8008AF4 ;@ 0x08008AF4
+sub_8008AF4
 	LDR r0, [r1]
 	bx lr
 
 	arm_func_start sub_8008AFC
-sub_8008AFC ;@ 0x08008AFC
+sub_8008AFC
 	mov r0, #4
 	bx lr
 
 	arm_func_start sub_8008B04
-sub_8008B04 ;@ 0x08008B04
+sub_8008B04
 	STR r1, [r0, #0x44]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x48]
 	bx lr
 
 	arm_func_start sub_8008B14
-sub_8008B14 ;@ 0x08008B14
+sub_8008B14
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne _08008B38
@@ -38,7 +38,7 @@ sub_8008B14 ;@ 0x08008B14
 _08008B38
 	mov r0, r4
 	bl sub_800802E
-	LDR r0, _08008EAC ;@ =_0803EE6C
+	LDR r0, _08008EAC
 	STR r0, [r4]
 	mov r0, #2
 	strh r0, [r4, #6]
@@ -47,7 +47,7 @@ _08008B38
 	bx lr
 
 	arm_func_start sub_8008B5C
-sub_8008B5C ;@ 0x08008B5C
+sub_8008B5C
 	STR lr, [sp, #-4]!
 	LDR r2, [r1]
 	LDR r3, [r2]
@@ -94,7 +94,7 @@ _08008BE8
 	bx lr
 
 	arm_func_start sub_8008BFC
-sub_8008BFC ;@ 0x08008BFC
+sub_8008BFC
 	STMFD SP!, {r4, r5, r6, lr}
 	mov r4, r0
 	ldrh r0, [r0, #4]
@@ -128,7 +128,7 @@ _08008C34
 	addhi r2, r2, ip
 	movhi lr, #0xa00000
 _08008C78
-	LDR r6, _08008EB0 ;@ =gUnknown_03003EB4
+	LDR r6, _08008EB0
 	LDR r6, [r6]
 	cmp r6, #0
 	beq _08008C9C
@@ -266,7 +266,7 @@ _08008E50
 	bx lr
 
 	arm_func_start sub_8008E64
-sub_8008E64 ;@ 0x08008E64
+sub_8008E64
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	bne _08008E88
@@ -283,13 +283,13 @@ _08008E88
 	bx lr
 
 	arm_func_start sub_8008E98
-sub_8008E98 ;@ 0x08008E98
+sub_8008E98
 	LDR r0, [r1]
 	MOV r0, r0, LSR #8
 	bx lr
 
 	arm_func_start sub_8008EA4
-sub_8008EA4 ;@ 0x08008EA4
+sub_8008EA4
 	mov r0, #4
 	bx lr
 	ALIGN

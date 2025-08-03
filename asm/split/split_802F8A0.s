@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003EA0
@@ -13,7 +13,7 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_802F8A0
-sub_802F8A0 ;@ 0x0802F8A0
+sub_802F8A0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -82,7 +82,7 @@ _0802F906
 	b _0802F8FE
 
 	non_word_aligned_thumb_func_start sub_802F926
-sub_802F926 ;@ 0x0802F926
+sub_802F926
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -92,7 +92,7 @@ sub_802F926 ;@ 0x0802F926
 	movs r1, #1
 	bl sub_80401E4
 _0802F938
-	ldr r0, _0802FBD4 ;@ =gUnknown_03003EA0
+	ldr r0, _0802FBD4
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
 	ldr r2, [r5, #0x44]
@@ -148,7 +148,7 @@ _0802F99E
 	ldr r1, [r0]
 	lsls r1, r1, #0x1f
 	bne _0802F9B8
-	ldr r1, _0802FBD8 ;@ =gPlayerEntity
+	ldr r1, _0802FBD8
 	ldr r1, [r1]
 	adds r1, #0x90
 	ldrb r1, [r1]
@@ -182,7 +182,7 @@ _0802F9B8
 	bx r3
 
 	thumb_func_start sub_802F9E8
-sub_802F9E8 ;@ 0x0802F9E8
+sub_802F9E8
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -240,7 +240,7 @@ sub_802F9E8 ;@ 0x0802F9E8
 	orrs r1, r2
 	str r1, [r0]
 _0802FA5A
-	ldr r0, _0802FBD4 ;@ =gUnknown_03003EA0
+	ldr r0, _0802FBD4
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
 	ldr r2, [r5, #0x44]
@@ -270,7 +270,7 @@ _0802FA8A
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_802FA92
-sub_802FA92 ;@ 0x0802FA92
+sub_802FA92
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r4, #0
@@ -314,7 +314,7 @@ sub_802FA92 ;@ 0x0802FA92
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	bl __16_ll_shift_l
-	add r2, pc, #0xEC ;@ =_0802FBDC
+	add r2, pc, #0xEC
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	str r0, [r7, #4]
@@ -322,11 +322,11 @@ sub_802FA92 ;@ 0x0802FA92
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	bl __16_ll_shift_l
-	add r2, pc, #0xD8 ;@ =_0802FBDC
+	add r2, pc, #0xD8
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	str r0, [r7, #8]
-	ldr r0, _0802FBE4 ;@ =0xFFFD0000
+	ldr r0, _0802FBE4
 	movs r1, #0
 	str r0, [r7]
 	str r1, [r6, #0x3c]
@@ -375,7 +375,7 @@ _0802FB3E
 	orrs r1, r2
 	str r1, [r0]
 _0802FB6A
-	ldr r0, _0802FBD4 ;@ =gUnknown_03003EA0
+	ldr r0, _0802FBD4
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
 	ldr r2, [r5, #0x44]

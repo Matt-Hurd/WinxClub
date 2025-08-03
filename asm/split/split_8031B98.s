@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_03003454
@@ -19,7 +19,7 @@
 	IMPORT sub_803F72C
 
 	thumb_func_start sub_8031B98
-sub_8031B98 ;@ 0x08031B98
+sub_8031B98
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x114
 	add r6, sp, #0x10
@@ -30,13 +30,13 @@ sub_8031B98 ;@ 0x08031B98
 	movs r2, #0x78
 	adds r0, #0x10
 	str r0, [sp, #0x110]
-	ldr r3, _08031CE8 ;@ =sub_80143E0
+	ldr r3, _08031CE8
 	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #0
 	str r0, [sp, #0xc]
 	adds r0, r6, #0
 	bl sub_80318BC
-	ldr r0, _08031CEC ;@ =gUnknown_03003454
+	ldr r0, _08031CEC
 	movs r2, #3
 	ldr r1, [r0]
 	lsls r2, r2, #9
@@ -47,11 +47,11 @@ sub_8031B98 ;@ 0x08031B98
 	add r6, sp, #0x18
 _08031BCE
 	add r3, sp, #0
-	ldr r7, _08031CEC ;@ =gUnknown_03003454
+	ldr r7, _08031CEC
 	ldrb r1, [r3, #0x14]
 	ldr r0, [r7]
 	bl sub_8017620
-	ldr r0, _08031CF0 ;@ =gUnknown_03003444
+	ldr r0, _08031CF0
 	movs r1, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
@@ -90,11 +90,11 @@ _08031C00
 	ldrh r0, [r3, #0x12]
 	str r0, [sp, #8]
 	bne _08031C30
-	ldr r7, _08031CEC ;@ =gUnknown_03003454
+	ldr r7, _08031CEC
 	ldr r0, [r7]
 	ldrb r2, [r0, #0x14]
 _08031C30
-	ldr r0, _08031CF4 ;@ =gUnknown_03003E88
+	ldr r0, _08031CF4
 	movs r1, #0x10
 	ldr r0, [r0]
 	bl sub_803F72C
@@ -108,7 +108,7 @@ _08031C30
 	add r3, sp, #0
 	strh r2, [r0, #8]
 	ldr r2, [sp, #8]
-	ldr r7, _08031CEC ;@ =gUnknown_03003454
+	ldr r7, _08031CEC
 	strh r2, [r0, #0xa]
 	strh r1, [r0, #0xc]
 	ldrb r2, [r3, #0x14]
@@ -125,7 +125,7 @@ _08031C30
 	ldr r0, [r7]
 	ldrb r2, [r0, #0x14]
 _08031C70
-	ldr r0, _08031CF4 ;@ =gUnknown_03003E88
+	ldr r0, _08031CF4
 	movs r1, #4
 	ldr r0, [r0]
 	bl sub_803F72C
@@ -156,7 +156,7 @@ _08031CA8
 	movs r5, #0
 	movs r2, #6
 	adds r0, r6, #0
-	ldr r3, _08031CF8 ;@ =0x000004F5
+	ldr r3, _08031CF8
 	ldr r1, [sp, #0x110]
 	bl sub_8018C48
 _08031CBA
@@ -173,7 +173,7 @@ _08031CBA
 	mvns r2, r2
 	adds r0, r6, #0
 	adds r0, #0x88
-	ldr r3, _08031CFC ;@ =sub_8014436
+	ldr r3, _08031CFC
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x114
 	pop {r4, r5, r6, r7}

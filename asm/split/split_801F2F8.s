@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003EB8
@@ -20,10 +20,10 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_801F2F8
-sub_801F2F8 ;@ 0x0801F2F8
+sub_801F2F8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0801F620 ;@ =gUnknown_03003EB8
+	ldr r0, _0801F620
 	ldr r0, [r0]
 	bl sub_800116A
 	str r0, [r4, #0x2c]
@@ -92,10 +92,10 @@ _0801F36E
 	ldr r0, [r4, #0x2c]
 	bl sub_8000914
 _0801F392
-	ldr r0, _0801F620 ;@ =gUnknown_03003EB8
+	ldr r0, _0801F620
 	ldr r0, [r0]
 	bl sub_800116A
-	ldr r1, _0801F624 ;@ =gPlayerEntity
+	ldr r1, _0801F624
 	str r0, [r4, #0x30]
 	ldr r1, [r1]
 	adds r1, #0x90
@@ -113,7 +113,7 @@ _0801F3B2
 	lsrs r2, r1, #0x1c
 	beq _0801F3CC
 	lsrs r1, r1, #0x1c
-	ldr r2, _0801F628 ;@ =gUnknown_08050FD4
+	ldr r2, _0801F628
 	lsls r1, r1, #1
 	adds r1, r1, r2
 	subs r1, #0x20
@@ -121,7 +121,7 @@ _0801F3B2
 	bl sub_800065C
 	b _0801F3D2
 _0801F3CC
-	ldr r1, _0801F62C ;@ =0x000011EF
+	ldr r1, _0801F62C
 	bl sub_800065C
 _0801F3D2
 	ldr r0, [r4, #0x30]
@@ -185,7 +185,7 @@ _0801F432
 	bx r3
 
 	thumb_func_start sub_801F450
-sub_801F450 ;@ 0x0801F450
+sub_801F450
 	push {r4, r5, r6, r7, lr}
 	adds r6, r1, #0
 	adds r4, r0, #0
@@ -214,7 +214,7 @@ _0801F47E
 	bl sub_8018620
 _0801F484
 	ldr r1, [r6, #0x70]
-	add r7, pc, #0x1A8 ;@ =_0801F630
+	add r7, pc, #0x1A8
 	cmp r1, #0
 	ble _0801F4BC
 	adds r0, r5, #0
@@ -261,7 +261,7 @@ _0801F4DC
 	bx r3
 
 	thumb_func_start sub_801F4F0
-sub_801F4F0 ;@ 0x0801F4F0
+sub_801F4F0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x58
@@ -363,13 +363,13 @@ _0801F5A0
 	lsls r1, r0, #1
 	lsrs r1, r1, #0x14
 	beq _0801F5E6
-	ldr r2, _0801F638 ;@ =0x8007FFFF
+	ldr r2, _0801F638
 	adds r1, r0, #0
 	ands r1, r2
 	movs r2, #1
 	lsls r2, r2, #0x13
 	subs r0, r0, r2
-	ldr r2, _0801F63C ;@ =0x7FF80000
+	ldr r2, _0801F63C
 	ands r0, r2
 	orrs r0, r1
 	str r0, [r5, #0xc]

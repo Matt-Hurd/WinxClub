@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003520
 	IMPORT gUnknown_030037A0
@@ -9,12 +9,12 @@
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040708
-sub_8040708 ;@ 0x08040708
+sub_8040708
 	push {r4, lr}
 	ldrh r2, [r1, #4]
 	cmp r2, #0x20
 	bhs _0804071A
-	add r3, pc, #0x8 ;@ =_0804071C
+	add r3, pc, #0x8
 	adds r3, r3, r2
 	ldrh r3, [r3, r2]
 	lsls r3, r3, #1
@@ -157,7 +157,7 @@ _080407C6
 	b _08040766
 loc_80407d2
 	ldrh r1, [r1, #6]
-	ldr r0, _08040968 ;@ =gUnknown_03003BC8
+	ldr r0, _08040968
 	adds r1, #0xff
 	strb r1, [r0, #7]
 	ldr r1, [r0, #0x28]
@@ -189,7 +189,7 @@ loc_8040806
 	lsrs r4, r1, #4
 	cmp r4, #0xf
 	bhs _0804088E
-	add r3, pc, #0x8 ;@ =_08040818
+	add r3, pc, #0x8
 	ldrb r3, [r3, r4]
 	lsls r3, r3, #1
 	add pc, r3
@@ -280,12 +280,12 @@ loc_804086e
 	b _08040766
 loc_8040884
 	lsls r0, r1, #0x1c
-	ldr r1, _08040968 ;@ =gUnknown_03003BC8
+	ldr r1, _08040968
 	lsrs r0, r0, #0x1c
 	strb r0, [r1, #5]
 	b _08040766
 _0804088E
-	ldr r0, _08040968 ;@ =gUnknown_03003BC8
+	ldr r0, _08040968
 	ldr r3, [r0, #0x2c]
 	cmp r3, #0
 	beq _080407A8
@@ -296,28 +296,28 @@ loc_804089e
 	ldrh r0, [r1, #6]
 	cmp r0, #0x10
 	bhs _080408AA
-	ldr r1, _08040968 ;@ =gUnknown_03003BC8
+	ldr r1, _08040968
 	strb r0, [r1, #4]
 	b _08040766
 _080408AA
-	ldr r4, _08040968 ;@ =gUnknown_03003BC8
-	ldr r3, _0804096C ;@ =0x00333333
+	ldr r4, _08040968
+	ldr r3, _0804096C
 	strb r0, [r4, #0xb]
 	muls r0, r3
 	lsrs r1, r0, #0x17
-	ldr r0, _08040970 ;@ =gUnknown_03003520
+	ldr r0, _08040970
 	ldrh r0, [r0, #0x18]
 	bl Div
 	strh r0, [r4, #0xe]
 	b _08040766
 loc_80408c0
 	ldrh r1, [r1, #6]
-	ldr r3, _08040968 ;@ =gUnknown_03003BC8
+	ldr r3, _08040968
 	movs r2, #0
 	strh r2, [r3, #0x12]
 	strh r1, [r3, #0x16]
-	ldr r1, _08040970 ;@ =gUnknown_03003520
-	ldr r0, _08040974 ;@ =gUnknown_030037A0
+	ldr r1, _08040970
+	ldr r0, _08040974
 	adds r1, #0x10
 	ldrb r1, [r1, #0xf]
 	cmp r1, #0
@@ -342,7 +342,7 @@ loc_80408ec
 	blo _080408F6
 	lsrs r0, r1, #4
 _080408F6
-	ldr r2, _08040968 ;@ =gUnknown_03003BC8
+	ldr r2, _08040968
 	movs r3, #0xff
 	ldrh r1, [r2, #0x16]
 	adds r3, #1
@@ -396,7 +396,7 @@ _08040948
 	str r1, [r0, #0x40]
 	b _08040766
 _08040954
-	ldr r0, _08040968 ;@ =gUnknown_03003BC8
+	ldr r0, _08040968
 	ldr r3, [r0, #0x2c]
 	cmp r3, #0
 	beq _0804086C

@@ -9,7 +9,7 @@
 eeprom_list
 	INCBIN data/ripped/00051744.bin
 
-    EXPORT gUnknown_08051750
+	EXPORT gUnknown_08051750
 
 gUnknown_08051750
 	DCB 0x00, 0x20, 0x00, 0x00, 0x00, 0x04, 0x00, 0x03

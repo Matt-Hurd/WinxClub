@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E94
 	IMPORT sub_8004C2C
@@ -12,14 +12,14 @@
 	IMPORT __16__rt_memcpy
 
 	thumb_func_start sub_800B314
-sub_800B314 ;@ 0x0800B314
+sub_800B314
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r1, #0
 	adds r7, r2, #0
 	ldr r6, [sp, #0x30]
 	bl sub_8004C2C
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	movs r5, #0
 	ldr r0, [r0]
 	cmp r0, #0
@@ -27,7 +27,7 @@ sub_800B314 ;@ 0x0800B314
 	bl sub_800B66A
 	cmp r0, #0
 	beq _0800B33E
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B652
 	movs r5, #1
@@ -74,7 +74,7 @@ _0800B36E
 	beq _0800B3A4
 	cmp r5, #0
 	beq _0800B39A
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
 _0800B39A
@@ -91,7 +91,7 @@ _0800B3A4
 _0800B3AA
 	cmp r5, #0
 	beq _0800B3B6
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
 _0800B3B6
@@ -99,14 +99,14 @@ _0800B3B6
 	b _0800B39C
 
 	non_word_aligned_thumb_func_start sub_800B3BA
-sub_800B3BA ;@ 0x0800B3BA
+sub_800B3BA
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r1, #0
 	adds r7, r2, #0
 	ldr r6, [sp, #0x30]
 	bl sub_8004C2C
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	movs r5, #0
 	ldr r0, [r0]
 	cmp r0, #0
@@ -114,7 +114,7 @@ sub_800B3BA ;@ 0x0800B3BA
 	bl sub_800B66A
 	cmp r0, #0
 	beq _0800B3E4
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B652
 	movs r5, #1
@@ -155,7 +155,7 @@ _0800B414
 	beq _0800B43C
 	cmp r5, #0
 	beq _0800B432
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
 _0800B432
@@ -178,7 +178,7 @@ _0800B43C
 _0800B450
 	cmp r5, #0
 	beq _0800B45C
-	ldr r0, _0800B460 ;@ =gUnknown_03003E94
+	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
 _0800B45C

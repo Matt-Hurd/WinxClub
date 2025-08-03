@@ -1,23 +1,23 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT eeprom
 	IMPORT sub_803B5A0
 
 	thumb_func_start sub_803B7C4
-sub_803B7C4 ;@ 0x0803B7C4
+sub_803B7C4
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r1, #0
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r5, #0
-	ldr r0, _0803B7E0 ;@ =eeprom
+	ldr r0, _0803B7E0
 	ldr r0, [r0]
 	ldrh r0, [r0, #4]
 	cmp r1, r0
 	blo _0803B7E8
-	ldr r0, _0803B7E4 ;@ =0x000080FF
+	ldr r0, _0803B7E4
 	b _0803B812
 	ALIGN
 _0803B7E0 DCDU eeprom

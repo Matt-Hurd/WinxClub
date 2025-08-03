@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT sub_8013B76
 	IMPORT __call_via_r2
@@ -8,7 +8,7 @@
 	IMPORT __16__rt_udiv
 
 	thumb_func_start sub_803F904
-sub_803F904 ;@ 0x0803F904
+sub_803F904
 	push {r4}
 	cmp r3, #0xff
 	bne _0803F90C
@@ -30,7 +30,7 @@ _0803F90C
 	ALIGN
 
 	thumb_func_start sub_803F928
-sub_803F928 ;@ 0x0803F928
+sub_803F928
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -114,7 +114,7 @@ _0803F9BC
 	bx r3
 
 	thumb_func_start sub_803F9C4
-sub_803F9C4 ;@ 0x0803F9C4
+sub_803F9C4
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	add r7, sp, #0x2c
@@ -137,7 +137,7 @@ sub_803F9C4 ;@ 0x0803F9C4
 	ldr r2, [sp, #0x28]
 	ldr r1, [sp, #0x10]
 	bl __call_via_r3
-	ldr r0, _0803FA38 ;@ =0x0000FFFF
+	ldr r0, _0803FA38
 	cmp r5, r0
 	beq _0803FA10
 	cmp r6, r0

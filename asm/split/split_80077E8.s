@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_08049608
 	IMPORT gUnknown_08049684
@@ -10,7 +10,7 @@
 	IMPORT __rt_memcpy
 
 	arm_func_start sub_80077E8
-sub_80077E8 ;@ 0x080077E8
+sub_80077E8
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe0
 	LDR r7, [sp, #0x11c]
@@ -333,7 +333,7 @@ _08007C54
 	bx lr
 
 	arm_func_start sub_8007C78
-sub_8007C78 ;@ 0x08007C78
+sub_8007C78
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x1c
 	mov r7, r0
@@ -389,7 +389,7 @@ _08007D1C
 	bx lr
 
 	arm_func_start sub_8007D44
-sub_8007D44 ;@ 0x08007D44
+sub_8007D44
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	mov r7, r0
@@ -404,7 +404,7 @@ sub_8007D44 ;@ 0x08007D44
 	LDR r3, [r4, #0x1c]
 	mov sl, r2
 	mov r2, #8
-	add lr, pc, #0x4 ;@ =loc_8007D88
+	add lr, pc, #0x4
 	mov r1, #0x480
 	bx r3
 loc_8007D88
@@ -416,13 +416,13 @@ loc_8007D88
 	add r2, sp, #0x18
 	add r0, sp, #0x10
 	STMIA r0, {r2, r5}
-	LDR r2, _08007F00 ;@ =gUnknown_08049684
+	LDR r2, _08007F00
 	mov r0, sl
 	STMIA sp, {r2, r6, fp}
 	mov r2, #1
 	add r2, r2, #0x100
 	STR sb, [sp, #0xc]
-	LDR r3, _08007F04 ;@ =gUnknown_08049608
+	LDR r3, _08007F04
 	mov r1, r7
 	bl sub_80077E8
 	movs r6, r0
@@ -453,11 +453,11 @@ _08007E18
 	STMIA r0, {r2, r5}
 	add r0, sp, #8
 	STMIA r0, {r8, sb}
-	LDR r2, _08007F08 ;@ =gUnknown_08049778
+	LDR r2, _08007F08
 	LDR r3, [sp, #0x58]
 	STMIA sp, {r2, r3}
 	LDR r1, [sp, #0x20]
-	LDR r3, _08007F0C ;@ =gUnknown_08049700
+	LDR r3, _08007F0C
 	mov r2, #0
 	add r0, sl, r7, lsl #2
 	bl sub_80077E8
@@ -502,14 +502,14 @@ _08007EB0
 	bx lr
 
 	arm_func_start sub_8007ED8
-sub_8007ED8 ;@ 0x08007ED8
+sub_8007ED8
 	mov ip, #9
 	STR ip, [r0]
 	mov r0, #5
 	STR r0, [r1]
-	LDR r0, _08007F10 ;@ =gUnknown_080497F0
+	LDR r0, _08007F10
 	STR r0, [r2]
-	LDR r0, _08007F14 ;@ =gUnknown_0804A7F0
+	LDR r0, _08007F14
 	STR r0, [r3]
 	mov r0, #0
 	bx lr

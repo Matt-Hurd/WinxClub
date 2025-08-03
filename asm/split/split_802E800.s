@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EB8
 	IMPORT sub_8000AC4
@@ -7,7 +7,7 @@
 	IMPORT sub_80019B4
 
 	thumb_func_start sub_802E800
-sub_802E800 ;@ 0x0802E800
+sub_802E800
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -24,7 +24,7 @@ sub_802E800 ;@ 0x0802E800
 	bl sub_8000AC4
 	cmp r0, #0
 	beq _0802E85E
-	ldr r0, _0802E8FC ;@ =gUnknown_03003EB8
+	ldr r0, _0802E8FC
 	ldr r0, [r0]
 	bl sub_80019B4
 	mov r5, sp
@@ -99,7 +99,7 @@ _0802E8AA
 	b _0802E85E
 
 	thumb_func_start sub_802E8B0
-sub_802E8B0 ;@ 0x0802E8B0
+sub_802E8B0
 	push {r4, r5, r6, lr}
 	ldr r5, [r0, #4]
 	adds r4, r0, #0
@@ -107,7 +107,7 @@ sub_802E8B0 ;@ 0x0802E8B0
 	movs r6, #0
 	lsls r0, r0, #0x1c
 	bpl _0802E8C8
-	ldr r0, _0802E8FC ;@ =gUnknown_03003EB8
+	ldr r0, _0802E8FC
 	adds r1, r5, #0
 	ldr r0, [r0]
 	bl sub_8001338
@@ -138,7 +138,7 @@ _0802E8C8
 	bx r3
 
 	thumb_func_start sub_802E8F8
-sub_802E8F8 ;@ 0x0802E8F8
+sub_802E8F8
 	movs r0, #0
 	bx lr
 	ALIGN

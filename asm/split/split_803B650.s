@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT eeprom
 	IMPORT EepromTimerIntr
 
 	thumb_func_start Dma3Transmit
-Dma3Transmit ;@ 0x0803B650
+Dma3Transmit
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -17,7 +17,7 @@ Dma3Transmit ;@ 0x0803B650
 	bx r1
 
 	thumb_func_start sub_803B664
-sub_803B664 ;@ 0x0803B664
+sub_803B664
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xb0
 	adds r5, r1, #0
@@ -25,18 +25,18 @@ sub_803B664 ;@ 0x0803B664
 	lsrs r1, r0, #0x10
 	lsls r2, r2, #0x18
 	lsrs r7, r2, #0x18
-	ldr r0, _0803B680 ;@ =eeprom
+	ldr r0, _0803B680
 	ldr r0, [r0]
 	ldrh r0, [r0, #4]
 	cmp r1, r0
 	blo _0803B688
-	ldr r0, _0803B684 ;@ =0x000080FF
+	ldr r0, _0803B684
 	b _0803B7BC
 	ALIGN
 _0803B680 DCDU eeprom
 _0803B684 DCDU 0x000080FF
 _0803B688
-	ldr r0, _0803B6C8 ;@ =eeprom
+	ldr r0, _0803B6C8
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	lsls r0, r0, #1
@@ -66,7 +66,7 @@ _0803B6A4
 	cmp r4, #3
 	bls _0803B69E
 	movs r4, #0
-	ldr r0, _0803B6C8 ;@ =eeprom
+	ldr r0, _0803B6C8
 	adds r2, r0, #0
 	ldr r0, [r0]
 	b _0803B6DA
@@ -91,7 +91,7 @@ _0803B6DA
 	strh r6, [r3]
 	movs r4, #0xd0
 	lsls r4, r4, #0x14
-	ldr r0, _0803B74C ;@ =eeprom
+	ldr r0, _0803B74C
 	ldr r0, [r0]
 	ldrb r2, [r0, #8]
 	adds r2, #0x43
@@ -103,7 +103,7 @@ _0803B6DA
 	strh r5, [r2]
 	mov r1, sp
 	adds r1, #0xa6
-	ldr r0, _0803B750 ;@ =0x04000006
+	ldr r0, _0803B750
 	ldrh r0, [r0]
 	strh r0, [r1]
 	add r0, sp, #0xac
@@ -117,7 +117,7 @@ _0803B6DA
 	bne _0803B7B0
 _0803B720
 	add r3, sp, #0xa8
-	ldr r0, _0803B750 ;@ =0x04000006
+	ldr r0, _0803B750
 	ldrh r0, [r0]
 	strh r0, [r3]
 	mov r4, sp
@@ -169,7 +169,7 @@ _0803B76A
 	ands r0, r1
 	cmp r0, #0
 	bne _0803B7BA
-	ldr r5, _0803B78C ;@ =0x0000C001
+	ldr r5, _0803B78C
 	b _0803B7BA
 	ALIGN
 _0803B78C DCDU 0x0000C001

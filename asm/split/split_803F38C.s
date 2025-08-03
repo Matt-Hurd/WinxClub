@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT __16_ll_mulss
 	IMPORT __16_ll_sdiv
 
 	thumb_func_start sub_803F38C
-sub_803F38C ;@ 0x0803F38C
+sub_803F38C
 	movs r2, #0xff
 	adds r2, #1
 	push {r4}
@@ -28,12 +28,12 @@ _0803F3A6
 	ALIGN
 
 	thumb_func_start sub_803F3B0
-sub_803F3B0 ;@ 0x0803F3B0
+sub_803F3B0
 	movs r0, #1
 	bx lr
 
 	thumb_func_start sub_803F3B4
-sub_803F3B4 ;@ 0x0803F3B4
+sub_803F3B4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -45,7 +45,7 @@ sub_803F3B4 ;@ 0x0803F3B4
 	ldr r1, [r4, #4]
 	ldr r0, [r5, #4]
 	bl __16_ll_mulss
-	add r2, pc, #0x10 ;@ =_0803F3E0
+	add r2, pc, #0x10
 	adds r0, r0, r6
 	adcs r1, r7
 	ldm r2!, {r2, r3}

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EB0
 	IMPORT gUnknown_08041448
@@ -23,7 +23,7 @@
 	IMPORT sub_8040490
 	
 	thumb_func_start sub_800CD98
-sub_800CD98 ;@ 0x0800CD98
+sub_800CD98
 	push {r3, r4, r5, r6, r7, lr}
 	ldrb r0, [r1, #0x10]
 	adds r6, r3, #0
@@ -140,7 +140,7 @@ _0800CE66
 	bx r3
 
 	thumb_func_start sub_800CE6C
-sub_800CE6C ;@ 0x0800CE6C
+sub_800CE6C
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r1, #0
 	ldrb r1, [r2, #3]
@@ -981,7 +981,7 @@ _0800D48E
 	movs r0, #5
 	lsls r0, r0, #0x18
 	str r0, [sp, #0x38]
-	ldr r0, _0800D878 ;@ =0x00007C1F
+	ldr r0, _0800D878
 	movs r7, #0
 	str r0, [sp, #0x34]
 	ldrb r1, [r4, #2]
@@ -1005,25 +1005,25 @@ _0800D4B0
 	lsls r1, r7, #5
 	adds r0, r0, r1
 	ldr r1, [sp, #0x38]
-	ldr r2, _0800D87C ;@ =0x04000008
+	ldr r2, _0800D87C
 	bl CpuSet
 	b _0800D4E4
 _0800D4D0
 	ldr r0, [r4, #0xc]
-	ldr r1, _0800D880 ;@ =0x040000D4
+	ldr r1, _0800D880
 	lsls r2, r7, #5
 	adds r0, r0, r2
 	str r0, [r1]
 	ldr r0, [sp, #0x38]
 	str r0, [r1, #4]
-	ldr r0, _0800D884 ;@ =0x84000008
+	ldr r0, _0800D884
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
 _0800D4E4
 	ldr r0, [r4, #0xc]
 	lsls r1, r7, #5
 	ldrh r0, [r0, r1]
-	ldr r1, _0800D878 ;@ =0x00007C1F
+	ldr r1, _0800D878
 	cmp r0, r1
 	beq _0800D4F2
 	str r0, [sp, #0x34]
@@ -1129,7 +1129,7 @@ _0800D58C
 	bx r3
 
 	thumb_func_start sub_800D5A8
-sub_800D5A8 ;@ 0x0800D5A8
+sub_800D5A8
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	movs r7, #0
 	adds r5, r1, #0
@@ -1597,7 +1597,7 @@ _0800D8F4
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800D912
-sub_800D912 ;@ 0x0800D912
+sub_800D912
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x27
@@ -1660,7 +1660,7 @@ _0800D976
 	lsrs r0, r0, #0x1f
 	bl sub_800263E
 _0800D986
-	ldr r0, _0800DD64 ;@ =gUnknown_03003EB0
+	ldr r0, _0800DD64
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0800D992
@@ -1706,7 +1706,7 @@ _0800D9B6
 	bx r3
 
 	thumb_func_start sub_800D9E0
-sub_800D9E0 ;@ 0x0800D9E0
+sub_800D9E0
 	push {r0, r1, r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	ldr r1, [sp, #0x48]
@@ -1831,7 +1831,7 @@ _0800DAD4
 	ldr r0, [sp, #0x40]
 	str r2, [sp, #0x28]
 	ldr r1, [r0, #0x3c]
-	ldr r0, _0800DD68 ;@ =0xFF800FFF
+	ldr r0, _0800DD68
 	ands r1, r0
 	asrs r2, r0, #0xb
 	ands r1, r2
@@ -1929,7 +1929,7 @@ _0800DB8A
 	movs r1, #0x21
 	lsls r1, r1, #6
 	adds r4, r2, r1
-	ldr r1, _0800DD6C ;@ =0x04000008
+	ldr r1, _0800DD6C
 	str r4, [sp, #0x38]
 	movs r2, #0x20
 	movs r7, #0
@@ -2210,7 +2210,7 @@ _0800DDAA
 _0800DDB2
 	ldrh r1, [r5, #4]
 	ldr r0, [sp, #0x40]
-	ldr r2, _0800E15C ;@ =0x007FF000
+	ldr r2, _0800E15C
 	ldr r0, [r0, #0x3c]
 	lsls r1, r1, #0xc
 	adds r1, r0, r1
@@ -2231,13 +2231,13 @@ _0800DDCA
 	str r4, [r0, #0x20]
 _0800DDDA
 	movs r7, #0
-	ldr r1, _0800E160 ;@ =gUnknown_08041448
+	ldr r1, _0800E160
 	str r7, [r4, #0xc]
 	ldr r0, [r1, #4]
-	ldr r2, _0800E164 ;@ =gUnknown_08041468
+	ldr r2, _0800E164
 	str r0, [r4, #0x10]
 	ldr r0, [r2, #4]
-	ldr r3, _0800E168 ;@ =gUnknown_08041488
+	ldr r3, _0800E168
 	str r0, [r4, #0x14]
 	ldr r0, [r3, #4]
 	str r0, [r4, #0x18]
@@ -2250,7 +2250,7 @@ _0800DDDA
 	str r0, [r4, #0x24]
 	ldr r0, [r3, #0x14]
 	str r0, [r4, #0x28]
-	ldr r0, _0800E16C ;@ =gUnknown_080414A8
+	ldr r0, _0800E16C
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x50]
@@ -2289,7 +2289,7 @@ _0800DE46
 	str r3, [r0, #0x14]
 _0800DE4C
 	ldr r0, [sp, #0x40]
-	ldr r2, _0800E170 ;@ =0xFFFFF001
+	ldr r2, _0800E170
 	ldr r0, [r0, #0x3c]
 	ldr r1, [sp, #0x40]
 	ands r0, r2
@@ -2298,7 +2298,7 @@ _0800DE4C
 	ldr r0, [r1, #0xc]
 	cmp r0, #0
 	bne _0800DE90
-	ldr r4, _0800E174 ;@ =gUnknown_03003EB0
+	ldr r4, _0800E174
 	ldr r0, [r4]
 	bl sub_8002698
 	ldrb r0, [r6]
@@ -2378,7 +2378,7 @@ _0800DE90
 
 
 	thumb_func_start sub_800DEF8
-sub_800DEF8 ;@ 0x0800DEF8
+sub_800DEF8
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	movs r2, #0x27
 	lsls r2, r2, #6
@@ -2626,7 +2626,7 @@ _0800E0AE
 	ldr r3, [r0, #0x1c]
 	cmp r3, #0
 	beq _0800E0C8
-	ldr r0, _0800E174 ;@ =gUnknown_03003EB0
+	ldr r0, _0800E174
 	add r2, sp, #4
 	adds r1, r4, #0
 	ldr r0, [r0]
@@ -2639,7 +2639,7 @@ _0800E0C8
 	ldr r3, [r0, #0xc]
 	cmp r3, #0
 	beq _0800E0E2
-	ldr r0, _0800E174 ;@ =gUnknown_03003EB0
+	ldr r0, _0800E174
 	add r2, sp, #4
 	adds r1, r4, #0
 	ldr r0, [r0]

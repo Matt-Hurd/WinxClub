@@ -1,15 +1,15 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT sub_800529A
 	IMPORT sub_803D9A8
 
 	thumb_func_start sub_8000C7C
-sub_8000C7C ;@ 0x08000C7C
+sub_8000C7C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _08000D60 ;@ =gUnknown_03003E84
+	ldr r0, _08000D60
 	adds r5, r1, #0
 	adds r3, r4, #4
 	movs r2, #0x3c
@@ -45,17 +45,17 @@ sub_8000C7C ;@ 0x08000C7C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8000CC6
-sub_8000CC6 ;@ 0x08000CC6
+sub_8000CC6
 	str r1, [r0, #0x4c]
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8000CCA
-sub_8000CCA ;@ 0x08000CCA
+sub_8000CCA
 	str r1, [r0, #0x50]
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8000CCE
-sub_8000CCE ;@ 0x08000CCE
+sub_8000CCE
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x40]
@@ -128,12 +128,12 @@ _08000D54
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8000D5A
-sub_8000D5A ;@ 0x08000D5A
+sub_8000D5A
 	adds r0, #4
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_3
-nullsub_3 ;@ 0x08000D5E
+nullsub_3
 	bx lr
 	ALIGN
 _08000D60 DCDU gUnknown_03003E84

@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT rand
 	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_8002004
-sub_8002004 ;@ 0x08002004
+sub_8002004
 	movs r1, #0x13
 	lsls r1, r1, #7
 	adds r0, r0, r1
@@ -14,7 +14,7 @@ sub_8002004 ;@ 0x08002004
 	bx lr
 
 	thumb_func_start sub_8002010
-sub_8002010 ;@ 0x08002010
+sub_8002010
 	lsls r1, r1, #2
 	adds r1, r1, r0
 	movs r0, #0x27
@@ -25,7 +25,7 @@ sub_8002010 ;@ 0x08002010
 	bx lr
 
 	thumb_func_start sub_8002020
-sub_8002020 ;@ 0x08002020
+sub_8002020
 	movs r2, #0x27
 	lsls r2, r2, #6
 	adds r0, r0, r2
@@ -33,7 +33,7 @@ sub_8002020 ;@ 0x08002020
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800202A
-sub_800202A ;@ 0x0800202A
+sub_800202A
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r1, [sp, #8]
@@ -147,7 +147,7 @@ _080020DE
 	bx r3
 
 	thumb_func_start sub_80020F8
-sub_80020F8 ;@ 0x080020F8
+sub_80020F8
 	push {r3, lr}
 	movs r3, #0x58
 	muls r1, r3

@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
 	IMPORT CpuSet
 
 	thumb_func_start sub_803F3E8
-sub_803F3E8 ;@ 0x0803F3E8
+sub_803F3E8
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	adds r3, r0, #0
@@ -22,7 +22,7 @@ sub_803F3E8 ;@ 0x0803F3E8
 	movs r5, #5
 	lsls r5, r5, #0x15
 _0803F406
-	ldr r6, _0803F45C ;@ =gUnknown_03003EB4
+	ldr r6, _0803F45C
 	ldr r6, [r6]
 	cmp r6, #0
 	beq _0803F424
@@ -39,7 +39,7 @@ _0803F41E
 	bx r3
 _0803F424
 	lsls r3, r1, #0x1e
-	ldr r0, _0803F460 ;@ =0x040000D4
+	ldr r0, _0803F460
 	bmi _0803F432
 	lsls r3, r4, #0x1e
 	bmi _0803F432

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030033E8
 	IMPORT gUnknown_030033EC
@@ -30,11 +30,11 @@
 	IMPORT __16__rt_memclr
 
 	thumb_func_start sub_803D4A8
-sub_803D4A8 ;@ 0x0803D4A8
+sub_803D4A8
 	push {r4, lr}
 	cmp r0, #8
 	bhs _0803D57C
-	add r3, pc, #0x8 ;@ =_0803D4B8
+	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -136,7 +136,7 @@ loc_803d55e
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
-	ldr r0, _0803D5A0 ;@ =0x00005524
+	ldr r0, _0803D5A0
 	bl sub_803DA80
 	adds r4, r0, #0
 	beq _0803D578
@@ -168,15 +168,15 @@ _0803D59C
 _0803D5A0 DCDU 0x00005524
 
 	thumb_func_start sub_803D5A4
-sub_803D5A4 ;@ 0x0803D5A4
+sub_803D5A4
 	push {r4, r5, r6, r7, lr}
 	adds r6, r1, #0
-	ldr r1, _0803D664 ;@ =0x04000100
+	ldr r1, _0803D664
 	adds r5, r2, #0
 	movs r7, #0
 	sub sp, #0x1c
 	strh r7, [r1, #0xa]
-	ldr r1, _0803D668 ;@ =gUnknown_030033F4
+	ldr r1, _0803D668
 	str r7, [r1]
 	str r7, [r1, #4]
 	bl sub_803D4A8
@@ -263,9 +263,9 @@ _0803D664 DCDU REG_TM0CNT
 _0803D668 DCDU gUnknown_030033F4
 
 	thumb_func_start sub_803D66C
-sub_803D66C ;@ 0x0803D66C
+sub_803D66C
 	ldrh r2, [r0]
-	ldr r1, _0803D67C ;@ =0x04000040
+	ldr r1, _0803D67C
 	strh r2, [r1, #0x10]
 	ldrh r2, [r0, #2]
 	strh r2, [r1, #0x12]
@@ -276,7 +276,7 @@ sub_803D66C ;@ 0x0803D66C
 _0803D67C DCDU REG_WIN0H
 
 	thumb_func_start sub_803D680
-sub_803D680 ;@ 0x0803D680
+sub_803D680
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	sub sp, #4
@@ -310,7 +310,7 @@ sub_803D680 ;@ 0x0803D680
 	lsrs r0, r0, #0x1d
 	cmp r0, #6
 	bhs _0803D758
-	add r3, pc, #0x4 ;@ =_0803D6CC
+	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -431,7 +431,7 @@ _0803D7A2
 	lsrs r0, r0, #0x1d
 	cmp r0, #6
 	bhs _0803D7F8
-	add r3, pc, #0x4 ;@ =_0803D7B4
+	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -514,7 +514,7 @@ _0803D81C
 	bx r3
 
 	thumb_func_start sub_803D834
-sub_803D834 ;@ 0x0803D834
+sub_803D834
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -553,7 +553,7 @@ _0803D84E
 	lsrs r0, r0, #0x1d
 	cmp r0, #6
 	bhs _0803D8F0
-	add r3, pc, #0x8 ;@ =_0803D884
+	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -689,17 +689,17 @@ _0803D978
 	b _0803D840
 
 	thumb_func_start sub_803D97C
-sub_803D97C ;@ 0x0803D97C
+sub_803D97C
 	ldr r0, [r0]
 	lsls r0, r0, #6
 	lsrs r0, r0, #0x1f
 	bx lr
 
 	thumb_func_start sub_803D984
-sub_803D984 ;@ 0x0803D984
+sub_803D984
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0803D9A4 ;@ =gUnknown_030033E8
+	ldr r0, _0803D9A4
 	sub sp, #8
 	ldr r0, [r0, #8]
 	str r2, [sp]
@@ -715,10 +715,10 @@ sub_803D984 ;@ 0x0803D984
 _0803D9A4 DCDU gUnknown_030033E8
 
 	thumb_func_start sub_803D9A8
-sub_803D9A8 ;@ 0x0803D9A8
+sub_803D9A8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0803D9C0 ;@ =gUnknown_030033E8
+	ldr r0, _0803D9C0
 	adds r3, r2, #0
 	adds r2, r1, #0
 	adds r1, r4, #0
@@ -731,10 +731,10 @@ sub_803D9A8 ;@ 0x0803D9A8
 _0803D9C0 DCDU gUnknown_030033E8
 
 	thumb_func_start sub_803D9C4
-sub_803D9C4 ;@ 0x0803D9C4
+sub_803D9C4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r0, _0803D9F4 ;@ =gUnknown_030033E8
+	ldr r0, _0803D9F4
 	sub sp, #8
 	ldr r0, [r0, #8]
 	str r3, [sp]
@@ -759,9 +759,9 @@ _0803D9EA
 _0803D9F4 DCDU gUnknown_030033E8
 
 	thumb_func_start maybeMallocEWRAM
-maybeMallocEWRAM ;@ 0x0803D9F8
+maybeMallocEWRAM
 	adds r1, r0, #0
-	ldr r0, _0803DA14 ;@ =gUnknown_030033E8
+	ldr r0, _0803DA14
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	movs r2, #0
@@ -776,11 +776,11 @@ maybeMallocEWRAM ;@ 0x0803D9F8
 _0803DA14 DCDU gUnknown_030033E8
 
 	thumb_func_start sub_803DA18
-sub_803DA18 ;@ 0x0803DA18
+sub_803DA18
 	push {lr}
 	adds r1, r0, #0
 	beq _0803DA42
-	ldr r0, _0803DA48 ;@ =gUnknown_030033E8
+	ldr r0, _0803DA48
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0803DA3A
@@ -807,11 +807,11 @@ _0803DA42
 _0803DA48 DCDU gUnknown_030033E8
 
 	thumb_func_start __da__FPv
-__da__FPv ;@ 0x0803DA4C
+__da__FPv
 	push {lr}
 	adds r1, r0, #0
 	beq _0803DA76
-	ldr r0, _0803DA7C ;@ =gUnknown_030033E8
+	ldr r0, _0803DA7C
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0803DA6E
@@ -838,7 +838,7 @@ _0803DA76
 _0803DA7C DCDU gUnknown_030033E8
 
 	thumb_func_start sub_803DA80
-sub_803DA80 ;@ 0x0803DA80
+sub_803DA80
 	push {r4, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -854,7 +854,7 @@ sub_803DA80 ;@ 0x0803DA80
 	bx r3
 
 	thumb_func_start sub_803DA9C
-sub_803DA9C ;@ 0x0803DA9C
+sub_803DA9C
 	push {r4, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -870,24 +870,24 @@ sub_803DA9C ;@ 0x0803DA9C
 	bx r3
 
 	thumb_func_start nullsub_5
-nullsub_5 ;@ 0x0803DAB8
+nullsub_5
 	bx lr
 	ALIGN
 
 	thumb_func_start sub_803DABC
-sub_803DABC ;@ 0x0803DABC
+sub_803DABC
 	adds r0, r2, #0
 	bx lr
 
 	thumb_func_start sub_803DAC0
-sub_803DAC0 ;@ 0x0803DAC0
+sub_803DAC0
 	adds r0, r1, #0
 	bx lr
 
 	arm_func_start __rt_stackheap_init
-__rt_stackheap_init ;@ 0x0803DAC4
-	LDR sp, _0803DB28 ;@ =gInterruptStack
-	LDR sl, _0803DB2C ;@ =gUnknown_03003EC4
+__rt_stackheap_init
+	LDR sp, _0803DB28
+	LDR sl, _0803DB2C
 	mov r0, #0x2000000
 	mov r1, #0x2000000
 	add r1, r1, #0x40000
@@ -895,27 +895,27 @@ __rt_stackheap_init ;@ 0x0803DAC4
 	sub r1, r1, r0
 	bl sub_80050C0
 	LDMFD SP!, {r0, r1, lr}
-	LDR r1, _0803DB30 ;@ =gUnknown_030033EC
+	LDR r1, _0803DB30
 	STR r0, [r1]
-	LDR r1, _0803DB34 ;@ =gUnknown_030033F0
+	LDR r1, _0803DB34
 	STR r0, [r1]
 	mov pc, lr
 
 	arm_func_start sub_803DAFC
-sub_803DAFC ;@ 0x0803DAFC
-	LDR r0, _0803DB38 ;@ =0x04000208
+sub_803DAFC
+	LDR r0, _0803DB38
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x64
 	b _sys_exit
 
 	arm_func_start sub_803DB10
-sub_803DB10 ;@ 0x0803DB10
+sub_803DB10
 	mov r0, #0
 	mov pc, lr
 
 	arm_func_start sub_803DB18
-sub_803DB18 ;@ 0x0803DB18
+sub_803DB18
 	STMFD SP!, {r0, r1}
 	LDMIA sp, {sl, sp}
 	mov pc, lr

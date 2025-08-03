@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_0300334A
@@ -34,7 +34,7 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_8033C58
-sub_8033C58 ;@ 0x08033C58
+sub_8033C58
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08033C70
@@ -50,7 +50,7 @@ _08033C6A
 _08033C70
 	adds r0, r4, #0
 	bl sub_802E418
-	ldr r0, _08034050 ;@ =gUnknown_0803EA68
+	ldr r0, _08034050
 	movs r1, #0
 	str r0, [r4]
 	str r1, [r4, #0x3c]
@@ -75,16 +75,16 @@ _08033C70
 	b _08033C6A
 
 	thumb_func_start sub_8033CA4
-sub_8033CA4 ;@ 0x08033CA4
+sub_8033CA4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _08034050 ;@ =gUnknown_0803EA68
+	ldr r0, _08034050
 	adds r7, r1, #0
 	str r0, [r4]
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
 	beq _08033CC4
-	ldr r0, _08034054 ;@ =gUnknown_03003EB8
+	ldr r0, _08034054
 	adds r1, r4, #0
 	adds r1, #0x3c
 	ldr r0, [r0]
@@ -92,7 +92,7 @@ sub_8033CA4 ;@ 0x08033CA4
 	movs r0, #0
 	str r0, [r4, #0x3c]
 _08033CC4
-	ldr r5, _08034058 ;@ =gUnknown_0300345C
+	ldr r5, _08034058
 	movs r6, #0x45
 	ldr r0, [r5]
 	lsls r6, r6, #5
@@ -138,10 +138,10 @@ _08033D1E
 	bx r3
 
 	thumb_func_start sub_8033D24
-sub_8033D24 ;@ 0x08033D24
+sub_8033D24
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0803405C ;@ =gUnknown_03003458
+	ldr r0, _0803405C
 	movs r6, #3
 	ldr r1, [r0]
 	movs r0, #5
@@ -220,7 +220,7 @@ sub_8033D24 ;@ 0x08033D24
 	str r0, [r4, #0x34]
 	movs r0, #0
 	strh r0, [r5, #0x12]
-	ldr r0, _08034054 ;@ =gUnknown_03003EB8
+	ldr r0, _08034054
 	ldr r0, [r0]
 	bl sub_800116A
 	str r0, [r4, #4]
@@ -230,7 +230,7 @@ sub_8033D24 ;@ 0x08033D24
 	lsls r7, r2, #7
 	bics r1, r7
 	str r1, [r0]
-	ldr r0, _08034054 ;@ =gUnknown_03003EB8
+	ldr r0, _08034054
 	ldr r0, [r0]
 	bl sub_800116A
 	str r0, [r4, #0x3c]
@@ -256,7 +256,7 @@ sub_8033D24 ;@ 0x08033D24
 	b _08033E48
 _08033E12
 	movs r3, #0x16
-	ldr r7, _08034060 ;@ =gUnknown_0300334A
+	ldr r7, _08034060
 	muls r1, r3
 	lsls r0, r0, #0x1a
 	lsrs r0, r0, #0x1c
@@ -312,7 +312,7 @@ _08033E48
 	lsls r0, r0, #6
 	lsrs r1, r0, #0x1c
 	cmp r1, #1
-	ldr r0, _08034058 ;@ =gUnknown_0300345C
+	ldr r0, _08034058
 	bne _08033EAC
 	ldr r1, [r0]
 	movs r0, #0x45
@@ -332,7 +332,7 @@ _08033EAC
 	b _08033EA6
 
 	non_word_aligned_thumb_func_start sub_8033EBA
-sub_8033EBA ;@ 0x08033EBA
+sub_8033EBA
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x3c]
@@ -372,7 +372,7 @@ _08033EFE
 	cmp r1, #2
 	bne _08033F26
 	ldr r0, [r0, #0x7c]
-	ldr r1, _08034064 ;@ =gUnknown_03003454
+	ldr r1, _08034064
 	lsls r0, r0, #8
 	lsrs r0, r0, #0x18
 	ldr r1, [r1]
@@ -389,7 +389,7 @@ _08033EFE
 	movs r1, #0
 	bl sub_803F654
 _08033F26
-	ldr r0, _0803405C ;@ =gUnknown_03003458
+	ldr r0, _0803405C
 	movs r1, #0x29
 	ldr r0, [r0]
 	lsls r1, r1, #5
@@ -426,7 +426,7 @@ _08033F4E
 	bl sub_803F6B4
 	ldrh r1, [r5, #0xc]
 	movs r3, #0x16
-	ldr r6, _08034060 ;@ =gUnknown_0300334A
+	ldr r6, _08034060
 	lsls r2, r1, #0x16
 	lsrs r2, r2, #0x1e
 	lsls r1, r1, #0x1a
@@ -475,7 +475,7 @@ _08033FA0
 	bne _08033FDA
 	bl sub_8000914
 _08033FDA
-	ldr r7, _08034058 ;@ =gUnknown_0300345C
+	ldr r7, _08034058
 	ldr r0, [r7]
 	ldr r1, [r4, #0x34]
 	lsls r1, r1, #6
@@ -501,7 +501,7 @@ _08033FF0
 	bls _08034068
 	lsls r0, r1, #0x1a
 	lsrs r0, r0, #0x1c
-	ldr r6, _08034060 ;@ =gUnknown_0300334A
+	ldr r6, _08034060
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	ldrh r1, [r0, #0x2c]
@@ -547,7 +547,7 @@ _08034068
 	lsrs r3, r3, #0x1f
 	bne _0803412C
 	movs r3, #0x16
-	ldr r7, _08034338 ;@ =gUnknown_0300334A
+	ldr r7, _08034338
 	lsls r1, r1, #0x1a
 	lsrs r1, r1, #0x1c
 	muls r2, r3
@@ -597,7 +597,7 @@ _080340D8
 	lsls r1, r0, #0x16
 	lsrs r1, r1, #0x1e
 	lsls r7, r1, #3
-	ldr r1, _0803433C ;@ =gUnknown_030033A6
+	ldr r1, _0803433C
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x1e
 	lsls r2, r0, #1
@@ -612,7 +612,7 @@ _080340D8
 	beq _0803414A
 	cmp r2, #2
 	bne _08034122
-	ldr r1, _08034340 ;@ =gUnknown_03003454
+	ldr r1, _08034340
 	ldr r0, [r1]
 	ldr r1, [r4, #0x40]
 	ldr r1, [r1, #0x7c]
@@ -638,13 +638,13 @@ _08034122
 _0803412C
 	b _0803425C
 _0803412E
-	ldr r2, _08034344 ;@ =gUnknown_030033A2
+	ldr r2, _08034344
 	ldrb r0, [r2, r0]
 	bl __16__rt_udiv
-	ldr r2, _08034344 ;@ =gUnknown_030033A2
+	ldr r2, _08034344
 	strh r0, [r5, #0xe]
 	ldrb r0, [r2]
-	ldr r1, _0803433C ;@ =gUnknown_030033A6
+	ldr r1, _0803433C
 	strh r0, [r5, #0x10]
 	ldrh r1, [r1, r7]
 	bl __16__rt_udiv
@@ -652,7 +652,7 @@ _0803412E
 	b _08034122
 _0803414A
 	ldr r0, [r4, #0x44]
-	ldr r7, _08034348 ;@ =gUnknown_0300345C
+	ldr r7, _08034348
 	ldr r1, [r0, #0x70]
 	asrs r2, r1, #1
 	str r1, [r0, #0x74]
@@ -696,7 +696,7 @@ _08034172
 	bgt _0803425C
 _080341A2
 	ldr r0, [r0, #0x7c]
-	ldr r1, _08034340 ;@ =gUnknown_03003454
+	ldr r1, _08034340
 	lsls r0, r0, #8
 	lsrs r0, r0, #0x18
 	ldr r1, [r1]
@@ -732,8 +732,8 @@ _080341A2
 	strh r0, [r5, #0xc]
 	b _0803425C
 _080341EE
-	ldr r0, _0803434C ;@ =gPlayerEntity
-	ldr r2, _08034344 ;@ =gUnknown_030033A2
+	ldr r0, _0803434C
+	ldr r2, _08034344
 	ldr r7, [r0]
 	movs r0, #0xac
 	ldrb r0, [r0, r7]
@@ -767,7 +767,7 @@ _08034230
 	ldrh r1, [r5, #0x14]
 	cmp r0, r1
 	beq _08034260
-	ldr r0, _0803434C ;@ =gPlayerEntity
+	ldr r0, _0803434C
 	ldr r1, [r0]
 	adds r1, #0xa0
 	ldrb r0, [r1, #0xc]
@@ -775,7 +775,7 @@ _08034230
 	cmp r0, r1
 	beq _08034260
 	ldrh r1, [r5, #0xc]
-	ldr r2, _08034344 ;@ =gUnknown_030033A2
+	ldr r2, _08034344
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x1e
 	ldrb r1, [r2, r1]
@@ -823,7 +823,7 @@ _08034296
 	lsls r1, r1, #0x15
 	lsrs r1, r1, #0x1f
 	bne _080342D0
-	ldr r6, _08034350 ;@ =gUnknown_03003EB8
+	ldr r6, _08034350
 	cmp r0, #0
 	beq _080342AE
 	adds r1, r4, #4
@@ -840,7 +840,7 @@ _080342AE
 	bl sub_8000DE6
 	str r7, [r4, #0x3c]
 _080342C0
-	ldr r0, _08034354 ;@ =gUnknown_03003458
+	ldr r0, _08034354
 	movs r1, #0x29
 	ldr r0, [r0]
 	lsls r1, r1, #5

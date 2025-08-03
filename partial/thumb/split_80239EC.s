@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0300344C
 	IMPORT gUnknown_03003454
@@ -26,7 +26,7 @@
 	IMPORT sub_8040684
 
 	non_word_aligned_thumb_func_start CollectFirefly
-CollectFirefly ;@ 0x08023B22
+CollectFirefly
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #6]
@@ -55,7 +55,7 @@ _08023B44
 	cmp r5, #1
 	bne _08023C3A
 _08023B54
-	ldr r7, _08023CE8 ;@ =gPlayerPointer
+	ldr r7, _08023CE8
 	movs r0, #0
 	ldr r2, [r7, #4]
 	add r6, sp, #0x28
@@ -89,7 +89,7 @@ _08023B88
 	ldrb r1, [r1, #5]
 	cmp r2, r1
 	beq _08023BAA
-	ldr r3, _08023CF8 ;@ =gUnknown_08051038
+	ldr r3, _08023CF8
 	lsls r2, r0, #1
 	ldrh r2, [r3, r2]
 	adds r3, r5, #0
@@ -115,7 +115,7 @@ _08023BAA
 	add r3, sp, #0x20
 	ldrb r1, [r3, #7]
 	movs r6, #0xff
-	ldr r7, _08023CFC ;@ =gUnknown_0300344C
+	ldr r7, _08023CFC
 	adds r3, r6, #0
 	movs r2, #0
 	ldr r0, [r7]
@@ -149,7 +149,7 @@ _08023BAA
 	movs r2, #0
 	bl sub_803F904
 	adds r4, r0, #0
-	ldr r0, _08023D00 ;@ =0x000004E9
+	ldr r0, _08023D00
 	adds r3, r6, #0
 	movs r2, #0
 	adds r1, r5, r0
@@ -170,7 +170,7 @@ _08023C3C
 	adds r1, r5, #0
 	ldr r0, [sp, #0x20]
 	bl sprintf
-	ldr r7, _08023D04 ;@ =gUnknown_03003E88
+	ldr r7, _08023D04
 	movs r2, #0
 	movs r1, #4
 	ldr r0, [r7]
@@ -184,7 +184,7 @@ _08023C3C
 	adds r3, r5, #0
 	str r2, [sp]
 	adds r2, r0, #0
-	ldr r6, _08023D08 ;@ =gUnknown_03003454
+	ldr r6, _08023D08
 	movs r1, #1
 	ldr r0, [r6]
 	bl sub_8017A0A

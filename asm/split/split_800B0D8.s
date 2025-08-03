@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT sub_800525C
 	IMPORT sub_800527E
@@ -10,10 +10,10 @@
 	IMPORT sub_800EA22
 
 	thumb_func_start main
-main ;@ 0x0800B0D8
+main
 	push {r4, r5, r6, r7, lr}
-	ldr r0, _0800B124 ;@ =0x00004014
-	ldr r1, _0800B128 ;@ =0x04000200
+	ldr r0, _0800B124
+	ldr r1, _0800B128
 	sub sp, #0x14
 	strh r0, [r1, #4]
 	add r5, sp, #8

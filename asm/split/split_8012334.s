@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003530
 	IMPORT gUnknown_030037A0
 
 	thumb_func_start sub_8012334
-sub_8012334 ;@ 0x08012334
+sub_8012334
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -20,14 +20,14 @@ _08012346
 	bx r3
 
 	thumb_func_start sub_801234C
-sub_801234C ;@ 0x0801234C
-	ldr r1, _08012460 ;@ =gUnknown_03003530
+sub_801234C
+	ldr r1, _08012460
 	push {r4, r5, r6}
 	ldrb r2, [r1, #0xe]
 	cmp r2, #0
 	beq _080123B0
 	ldrb r1, [r1, #0xf]
-	ldr r6, _08012464 ;@ =gUnknown_030037A0
+	ldr r6, _08012464
 	adds r5, r1, #0
 	adds r2, r2, r1
 	cmp r1, r2
@@ -84,15 +84,15 @@ _080123B0
 	b _080123A8
 
 	thumb_func_start sub_80123B4
-sub_80123B4 ;@ 0x080123B4
+sub_80123B4
 	cmp r0, #0
 	beq _080123E0
-	ldr r2, _08012460 ;@ =gUnknown_03003530
+	ldr r2, _08012460
 	movs r3, #0x4c
 	ldrb r1, [r2, #0xf]
 	ldrb r2, [r2, #0xe]
 	muls r1, r3
-	ldr r3, _08012464 ;@ =gUnknown_030037A0
+	ldr r3, _08012464
 	adds r1, r1, r3
 	cmp r2, #0
 	beq _080123DC
@@ -115,14 +115,14 @@ _080123E0
 	bx lr
 
 	thumb_func_start sub_80123E4
-sub_80123E4 ;@ 0x080123E4
+sub_80123E4
 	push {r4, r5, r6, r7}
-	ldr r1, _08012460 ;@ =gUnknown_03003530
+	ldr r1, _08012460
 	movs r3, #0x4c
 	subs r1, #0x10
 	ldrh r0, [r1, #0x12]
-	ldr r7, _08012460 ;@ =gUnknown_03003530
-	ldr r4, _08012464 ;@ =gUnknown_030037A0
+	ldr r7, _08012460
+	ldr r4, _08012464
 	subs r7, #0x34
 	muls r0, r3
 	ldr r3, [r7, #0xc]
@@ -140,7 +140,7 @@ _0801240C
 	ldrh r3, [r0, #4]
 	lsls r3, r3, #0x1e
 	beq _08012436
-	ldr r7, _08012460 ;@ =gUnknown_03003530
+	ldr r7, _08012460
 	ldr r3, [r0, #0x4c]
 	subs r7, #0x34
 	ldr r7, [r7, #0xc]
@@ -173,15 +173,15 @@ _08012442
 	movs r2, #0
 	movs r1, #0
 _08012446
-	ldr r3, _08012464 ;@ =gUnknown_030037A0
+	ldr r3, _08012464
 	subs r0, #0x4c
 	cmp r0, r3
 	bhs _0801240C
 _0801244E
 	movs r0, #0x4c
-	ldr r4, _08012464 ;@ =gUnknown_030037A0
+	ldr r4, _08012464
 	muls r0, r2
-	ldr r1, _08012460 ;@ =gUnknown_03003530
+	ldr r1, _08012460
 	adds r0, r0, r4
 	subs r1, #0x10
 	str r0, [r1]

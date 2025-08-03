@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0804AE80
 	IMPORT gUnknown_0804AE90
@@ -29,7 +29,7 @@
 	IMPORT sub_803DA9C
 
 	arm_func_start sub_80517C8
-sub_80517C8 ;@ 0x080517C8
+sub_80517C8
 	STMFD SP!, {r4, r5, r6, lr}
 	LDR r2, [r0, #4]
 	mvn lr, #0
@@ -105,7 +105,7 @@ _080518C4
 	bx lr
 
 	arm_func_start sub_80518D4
-sub_80518D4 ;@ 0x080518D4
+sub_80518D4
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r0
 	add r0, r0, r2, lsl #11
@@ -119,7 +119,7 @@ sub_80518D4 ;@ 0x080518D4
 	add sl, sl, #0x1c
 	mov r0, r7
 	bl sub_80517C8
-	LDR r6, _08052324 ;@ =0x0300142C
+	LDR r6, _08052324
 	LDR r1, [r6, #0x10]
 	add r1, r1, #1
 	STR r1, [r6, #0x10]
@@ -135,7 +135,7 @@ _08051938
 	mov r1, sl
 	mov r0, r7
 	bl sub_80517C8
-	LDR r6, _08052324 ;@ =0x0300142C
+	LDR r6, _08052324
 	cmn r0, #2
 	LDR r1, [r6, #0x14]
 	moveq r0, #0
@@ -224,7 +224,7 @@ _08051A70
 	mov r0, r8
 	mov r4, r6
 	mov r2, #0x40
-	LDR r1, _08052328 ;@ =0x030013EC
+	LDR r1, _08052328
 	bl sub_8052A18
 	mov r0, #0x40
 _08051A90
@@ -246,7 +246,7 @@ _08051A90
 	bx lr
 
 	arm_func_start sub_8051AD0
-sub_8051AD0 ;@ 0x08051AD0
+sub_8051AD0
 	STMFD SP!, {r0, r1, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x400
 	mov r1, #0x244
@@ -262,7 +262,7 @@ sub_8051AD0 ;@ 0x08051AD0
 	bl sub_8052A2C
 	add r0, r0, r5
 	STR r0, [r4]
-	LDR fp, _08052328 ;@ =0x030013EC
+	LDR fp, _08052328
 	STR r0, [r4, #4]
 	add r5, r4, #0x2000
 _08051B18
@@ -574,7 +574,7 @@ _08051F5C
 	blo _08052124
 	add r0, r0, #2
 	STR r0, [r4, #4]
-	add r1, pc, #0x398 ;@ =0x0805232C
+	add r1, pc, #0x398
 	bl sub_8052A38
 	cmp r0, #0
 	bne _08052124
@@ -614,7 +614,7 @@ _08051FD8
 	tst r1, #0xf
 	andne r0, r1, #0xf
 	rsbne r0, r0, #0x10
-	LDR sb, _08052324 ;@ =0x0300142C
+	LDR sb, _08052324
 	addne r1, r1, r0
 	STR r1, [sb, #4]
 	LDR r0, [r4, #0x14]
@@ -646,7 +646,7 @@ _08051FD8
 	LDMEQFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bxeq lr
 _080520A4
-	LDR sb, _08052324 ;@ =0x0300142C
+	LDR sb, _08052324
 	add r7, sp, #0x400
 	LDR r0, [sb, #4]
 	add r7, r7, #0x258
@@ -666,7 +666,7 @@ _080520A4
 	STR r0, [r4, #0xc]
 	LDR r0, [r4, #0x18]
 	cmp r0, #1
-	LDREQ sb, _08052324 ;@ =0x0300142C
+	LDREQ sb, _08052324
 	moveq r8, #0
 	beq _08052460
 	cmp r0, #3
@@ -741,7 +741,7 @@ _0805214C
 	add r1, sp, #0x158
 	mov r0, r4
 	bl sub_80518D4
-	LDR r3, _08052324 ;@ =0x0300142C
+	LDR r3, _08052324
 	LDR r0, [sp, #0x148]
 	LDR r2, [sp, #0x144]
 	LDR r1, [r3, #4]
@@ -962,7 +962,7 @@ _08052548
 	mov r1, #0
 	mov r0, r4
 	bl sub_8052A58
-	LDR sb, _08052324 ;@ =0x0300142C
+	LDR sb, _08052324
 	LDR r0, [sb]
 	add sp, sp, #0x400
 	add sp, sp, #0x37c
@@ -970,7 +970,7 @@ _08052548
 	bx lr
 
 	arm_func_start sub_8052570
-sub_8052570 ;@ 0x08052570
+sub_8052570
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x11c
 	mov r3, r0
@@ -1021,7 +1021,7 @@ _08052604
 	add r5, r6, r4
 	rsb ip, r5, r5, lsl #4
 	add r5, ip, r5, lsl #7
-	LDR ip, _08052A08 ;@ =0xFFFFC4DF
+	LDR ip, _08052A08
 	rsb r5, r5, r5, lsl #5
 	mla r4, ip, r4, r5
 	rsb ip, r6, r6, lsl #5
@@ -1078,7 +1078,7 @@ _08052604
 	add r6, r6, #0x3000
 	mul ip, r6, ip
 	STR ip, [sp, #0x110]
-	LDR ip, _08052A0C ;@ =0xFFFFE333
+	LDR ip, _08052A0C
 	LDR r6, [sp, #0x104]
 	mvn sl, #2
 	mul r6, ip, r6
@@ -1156,7 +1156,7 @@ _0805282C
 	add r3, r4, lr
 	rsb ip, r3, r3, lsl #4
 	add r3, ip, r3, lsl #7
-	LDR ip, _08052A08 ;@ =0xFFFFC4DF
+	LDR ip, _08052A08
 	rsb r3, r3, r3, lsl #5
 	mla lr, ip, lr, r3
 	rsb ip, r4, r4, lsl #5
@@ -1202,7 +1202,7 @@ _0805282C
 	add r6, r6, #0x3000
 	mul sb, r6, r5
 	LDR r5, [sp, #0x104]
-	LDR r6, _08052A0C ;@ =0xFFFFE333
+	LDR r6, _08052A0C
 	mvn sl, #2
 	mul r5, r6, r5
 	LDR r6, [sp, #0x100]
@@ -1274,67 +1274,67 @@ _08052A08 DCDU 0xFFFFC4DF
 _08052A0C DCDU 0xFFFFE333
 
 	arm_func_start sub_8052A10
-sub_8052A10 ;@ 0x08052A10
-	LDR pc, _08052A14 ;@ =__rt_memclr_w
+sub_8052A10
+	LDR pc, _08052A14
 	ALIGN
 _08052A14 DCDU __rt_memclr_w
 
 	arm_func_start sub_8052A18
-sub_8052A18 ;@ 0x08052A18
-	LDR pc, _08052A1C ;@ =__rt_memcpy
+sub_8052A18
+	LDR pc, _08052A1C
 	ALIGN
 _08052A1C DCDU __rt_memcpy
 
 	arm_func_start sub_8052A20
-sub_8052A20 ;@ 0x08052A20
-	LDR ip, _08052A28 ;@ =sub_803D9C4
+sub_8052A20
+	LDR ip, _08052A28
 	bx ip
 	ALIGN
 _08052A28 DCDU sub_803D9C4
 
 	arm_func_start sub_8052A2C
-sub_8052A2C ;@ 0x08052A2C
-	LDR ip, _08052A34 ;@ =sub_802F04E
+sub_8052A2C
+	LDR ip, _08052A34
 	bx ip
 	ALIGN
 _08052A34 DCDU sub_802F04E
 
 	arm_func_start sub_8052A38
-sub_8052A38 ;@ 0x08052A38
-	LDR pc, _08052A3C ;@ =strcmp
+sub_8052A38
+	LDR pc, _08052A3C
 	ALIGN
 _08052A3C DCDU strcmp
 
 	arm_func_start sub_8052A40
-sub_8052A40 ;@ 0x08052A40
-	LDR ip, _08052A48 ;@ =sub_8005106
+sub_8052A40
+	LDR ip, _08052A48
 	bx ip
 	ALIGN
 _08052A48 DCDU sub_8005106
 
 	arm_func_start sub_8052A4C
-sub_8052A4C ;@ 0x08052A4C
-	LDR ip, _08052A54 ;@ =sub_803DA9C
+sub_8052A4C
+	LDR ip, _08052A54
 	bx ip
 	ALIGN
 _08052A54 DCDU sub_803DA9C
 
 	arm_func_start sub_8052A58
-sub_8052A58 ;@ 0x08052A58
-	LDR ip, _08052A60 ;@ =sub_803D9A8
+sub_8052A58
+	LDR ip, _08052A60
 	bx ip
 	ALIGN
 _08052A60 DCDU sub_803D9A8
 
 	arm_func_start sub_8052A64
-sub_8052A64 ;@ 0x08052A64
-	LDR ip, _08052A6C ;@ =sub_801145E
+sub_8052A64
+	LDR ip, _08052A6C
 	bx ip
 	ALIGN
 _08052A6C DCDU sub_801145E
 
 	arm_func_start sub_8052A70
-sub_8052A70 ;@ 0x08052A70
+sub_8052A70
 	STMFD SP!, {r4, r5, lr}
 	mov r4, #1
 	mov r2, #0
@@ -1378,12 +1378,12 @@ _08052AE4
 	bx lr
 
 	arm_func_start sub_8052B08
-sub_8052B08 ;@ 0x08052B08
+sub_8052B08
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	sub r0, r2, #0x80
 	sub r2, r3, #0x80
-	LDR r3, _08052BB0 ;@ =0x000166E9
+	LDR r3, _08052BB0
 	sub sp, sp, #0xc
 	mul ip, r3, r2
 	mov r3, #0x19
@@ -1431,7 +1431,7 @@ _08052BB4
 	DCB 0x39, 0x3A, 0x3E, 0x3F
 
 	arm_func_start sub_8052BF4
-sub_8052BF4 ;@ 0x08052BF4
+sub_8052BF4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne _08052C18
@@ -1444,7 +1444,7 @@ sub_8052BF4 ;@ 0x08052BF4
 _08052C18
 	mov r0, r4
 	bl sub_8053CD8
-	LDR r0, _08052E88 ;@ =0x03001114
+	LDR r0, _08052E88
 	STR r0, [r4]
 	mov r0, #7
 	strh r0, [r4, #6]
@@ -1458,10 +1458,10 @@ _08052C48
 	DCB 0x1E, 0xFF, 0x2F, 0xE1
 
 	arm_func_start sub_8052C4C
-sub_8052C4C ;@ 0x08052C4C
+sub_8052C4C
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
-	LDR r0, _08052E88 ;@ =0x03001114
+	LDR r0, _08052E88
 	mov r5, r1
 	STR r0, [r4]
 	mov r0, r4
@@ -1475,7 +1475,7 @@ sub_8052C4C ;@ 0x08052C4C
 	bx lr
 
 	arm_func_start sub_8052C84
-sub_8052C84 ;@ 0x08052C84
+sub_8052C84
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r0
@@ -1545,14 +1545,14 @@ _08052D50
 	bx lr
 
 	arm_func_start sub_8052D84
-sub_8052D84 ;@ 0x08052D84
+sub_8052D84
 	STR r1, [r0, #0x20]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x24]
 	bx lr
 
 	arm_func_start sub_8052D94
-sub_8052D94 ;@ 0x08052D94
+sub_8052D94
 	LDR r0, [r1, #4]
 	MOV r1, r0, LSL #0x16
 	MOV r1, r1, LSR #0x1c
@@ -1566,18 +1566,18 @@ sub_8052D94 ;@ 0x08052D94
 	bx lr
 
 	arm_func_start sub_8052DC0
-sub_8052DC0 ;@ 0x08052DC0
+sub_8052DC0
 	LDR r0, [r0, #0x28]
 	bx lr
 
 	arm_func_start sub_8052DC8
-sub_8052DC8 ;@ 0x08052DC8
+sub_8052DC8
 	STR r1, [r0, #0x28]
 	STR r1, [r0, #0x2c]
 	bx lr
 
 	arm_func_start sub_8052DD4
-sub_8052DD4 ;@ 0x08052DD4
+sub_8052DD4
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r3, [r4, #0x18]
@@ -1595,7 +1595,7 @@ sub_8052DD4 ;@ 0x08052DD4
 	cmp r1, #0
 	add r5, ip, lr
 	ble _08052E28
-	LDR ip, _08052E8C ;@ =0x030033F4
+	LDR ip, _08052E8C
 	LDR ip, [ip]
 	cmp ip, #0
 	beq _08052E34
@@ -1623,12 +1623,12 @@ _08052E34
 	bx lr
 
 	arm_func_start sub_8052E78
-sub_8052E78 ;@ 0x08052E78
+sub_8052E78
 	LDR r0, [r1]
 	bx lr
 
 	arm_func_start sub_8052E80
-sub_8052E80 ;@ 0x08052E80
+sub_8052E80
 	mov r0, #8
 	bx lr
 	ALIGN
@@ -1636,7 +1636,7 @@ _08052E88 DCDU 0x03001114
 _08052E8C DCDU 0x030033F4
 
 	arm_func_start sub_8052E90
-sub_8052E90 ;@ 0x08052E90
+sub_8052E90
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	sub sp, sp, #8
 	STR r0, [sp]
@@ -1666,7 +1666,7 @@ sub_8052E90 ;@ 0x08052E90
 	add r2, sl, r1
 	STR r2, [sp, #4]
 _08052F00
-	LDR r0, _08053CC8 ;@ =0x030033F4
+	LDR r0, _08053CC8
 	LDR r0, [r0]
 	cmp r0, #1
 	beq _08053C70
@@ -1681,24 +1681,24 @@ _08052F00
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08052F6C
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08052F64
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08052F94
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08052F90
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1730,24 +1730,24 @@ _08052FBC
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x0805302C
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053024
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053054
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053050
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1756,32 +1756,32 @@ _08052FBC
 	adc r1, r1, #0
 	eor r3, r1, r4, lsr #31
 	tst r3, #1
-	addeq pc, pc, #0x78 ;@ =0x080530E4
+	addeq pc, pc, #0x78
 	cmp r1, #0x100
-	addcs pc, pc, #0x78 ;@ =0x080530EC
+	addcs pc, pc, #0x78
 	MOV r1, r1, LSL #1
 	ldrh r3, [r0, r1]
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080530B4
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080530AC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x080530DC
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080530D8
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1800,24 +1800,24 @@ _080530F8
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053140
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053138
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053168
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053164
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1844,24 +1844,24 @@ _08053198
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080531E8
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080531E0
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053210
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x0805320C
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1872,24 +1872,24 @@ _08053198
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053258
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053250
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053280
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x0805327C
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1904,24 +1904,24 @@ _08053198
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080532D8
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080532D0
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053300
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080532FC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1947,24 +1947,24 @@ _0805333C
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053380
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053378
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x080533A8
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080533A4
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -1980,24 +1980,24 @@ _080533BC
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053400
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080533F8
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053428
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053424
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2020,29 +2020,29 @@ _08053450
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053498
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053490
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x080534C0
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080534BC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmp r3, #0
-	addcs pc, pc, #0x90 ;@ =0x08053558
+	addcs pc, pc, #0x90
 	and r3, r7, #0x18000
 	MOV r3, r3, LSR #0xf
 	add r0, r0, r3, lsl #4
@@ -2053,24 +2053,24 @@ _08053450
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x0805351C
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053514
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053544
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053540
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2079,34 +2079,34 @@ _08053450
 	cmp r1, #8
 	sublo pc, pc, #0x7c
 	bic r1, r1, #8
-	add pc, pc, #0x188 ;@ =0x080536E4
+	add pc, pc, #0x188
 	ldrh r3, [r0, #2]
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053598
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, #2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053590
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x080535C0
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, #2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080535BC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmp r3, #0
-	addcs pc, pc, #0x94 ;@ =0x0805365C
+	addcs pc, pc, #0x94
 	and r3, r7, #0x18000
 	MOV r3, r3, LSR #0xf
 	add r0, r0, r3, lsl #4
@@ -2117,24 +2117,24 @@ _08053450
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x0805361C
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053614
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053644
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053640
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2144,7 +2144,7 @@ _08053450
 	sublo pc, pc, #0x7c
 	bic r1, r1, #8
 	add r1, r1, #8
-	add pc, pc, #0x84 ;@ =0x080536E4
+	add pc, pc, #0x84
 	add r0, r0, #0x204
 	mov r1, #1
 	MOV r1, r1, LSL #1
@@ -2152,24 +2152,24 @@ _08053450
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080536A8
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080536A0
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x080536D0
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080536CC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2199,29 +2199,29 @@ _080536F8
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053760
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053758
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053788
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053784
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmp r3, #0
-	addcs pc, pc, #0x90 ;@ =0x08053820
+	addcs pc, pc, #0x90
 	and r3, r7, #0x18000
 	MOV r3, r3, LSR #0xf
 	add r0, r0, r3, lsl #4
@@ -2232,24 +2232,24 @@ _080536F8
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080537E4
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080537DC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x0805380C
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053808
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2258,34 +2258,34 @@ _080536F8
 	cmp r1, #8
 	sublo pc, pc, #0x7c
 	bic r1, r1, #8
-	add pc, pc, #0x188 ;@ =0x080539AC
+	add pc, pc, #0x188
 	ldrh r3, [r0, #2]
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053860
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, #2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053858
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053888
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, #2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053884
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmp r3, #0
-	addcs pc, pc, #0x94 ;@ =0x08053924
+	addcs pc, pc, #0x94
 	and r3, r7, #0x18000
 	MOV r3, r3, LSR #0xf
 	add r0, r0, r3, lsl #4
@@ -2296,24 +2296,24 @@ _080536F8
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x080538E4
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080538DC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x0805390C
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053908
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2323,7 +2323,7 @@ _080536F8
 	sublo pc, pc, #0x7c
 	bic r1, r1, #8
 	add r1, r1, #8
-	add pc, pc, #0x84 ;@ =0x080539AC
+	add pc, pc, #0x84
 	add r0, r0, #0x204
 	mov r1, #1
 	MOV r1, r1, LSL #1
@@ -2331,24 +2331,24 @@ _080536F8
 	MOV r2, fp, LSR #0xb
 	mul r2, r3, r2
 	cmp ip, r2
-	addcs pc, pc, #0x28 ;@ =0x08053970
+	addcs pc, pc, #0x28
 	mov fp, r2
 	rsb r2, r3, #0x800
 	add r3, r3, r2, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053968
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
 	cmn r3, #0
-	add pc, pc, #0x24 ;@ =0x08053998
+	add pc, pc, #0x24
 	sub fp, fp, r2
 	sub ip, ip, r2
 	sub r3, r3, r3, lsr #5
 	strh r3, [r0, r1]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053994
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r3, [sl], #1
 	add ip, r3, ip, lsl #8
@@ -2368,24 +2368,24 @@ _080536F8
 	MOV r3, fp, LSR #0xb
 	mul r3, r4, r3
 	cmp ip, r3
-	addcs pc, pc, #0x28 ;@ =0x08053A04
+	addcs pc, pc, #0x28
 	mov fp, r3
 	rsb r3, r4, #0x800
 	add r4, r4, r3, lsr #5
 	strh r4, [r0, r2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x080539FC
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r4, [sl], #1
 	add ip, r4, ip, lsl #8
 	cmn r4, #0
-	add pc, pc, #0x24 ;@ =0x08053A2C
+	add pc, pc, #0x24
 	sub fp, fp, r3
 	sub ip, ip, r3
 	sub r4, r4, r4, lsr #5
 	strh r4, [r0, r2]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053A28
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r4, [sl], #1
 	add ip, r4, ip, lsl #8
@@ -2418,24 +2418,24 @@ _080536F8
 	MOV r1, fp, LSR #0xb
 	mul r1, r2, r1
 	cmp ip, r1
-	addcs pc, pc, #0x28 ;@ =0x08053ACC
+	addcs pc, pc, #0x28
 	mov fp, r1
 	rsb r1, r2, #0x800
 	add r2, r2, r1, lsr #5
 	strh r2, [r8, r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053AC4
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r2, [sl], #1
 	add ip, r2, ip, lsl #8
 	cmn r2, #0
-	add pc, pc, #0x24 ;@ =0x08053AF4
+	add pc, pc, #0x24
 	sub fp, fp, r1
 	sub ip, ip, r1
 	sub r2, r2, r2, lsr #5
 	strh r2, [r8, r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053AF0
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r2, [sl], #1
 	add ip, r2, ip, lsl #8
@@ -2465,7 +2465,7 @@ _08053B34
 	subhs ip, ip, fp
 	orrhs r3, r3, #1
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053B64
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r4, [sl], #1
 	add ip, r4, ip, lsl #8
@@ -2483,24 +2483,24 @@ _08053B34
 	MOV r1, fp, LSR #0xb
 	mul r1, r2, r1
 	cmp ip, r1
-	addcs pc, pc, #0x28 ;@ =0x08053BCC
+	addcs pc, pc, #0x28
 	mov fp, r1
 	rsb r1, r2, #0x800
 	add r2, r2, r1, lsr #5
 	strh r2, [r8, r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053BC4
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r2, [sl], #1
 	add ip, r2, ip, lsl #8
 	cmn r2, #0
-	add pc, pc, #0x24 ;@ =0x08053BF4
+	add pc, pc, #0x24
 	sub fp, fp, r1
 	sub ip, ip, r1
 	sub r2, r2, r2, lsr #5
 	strh r2, [r8, r0]
 	cmp fp, #0x1000000
-	addcs pc, pc, #0x8 ;@ =0x08053BF0
+	addcs pc, pc, #0x8
 	MOV fp, fp, LSL #8
 	LDRB r2, [sl], #1
 	add ip, r2, ip, lsl #8
@@ -2566,34 +2566,34 @@ _08053CBC
 _08053CC8 DCDU 0x030033F4
 
 	arm_func_start sub_8053CCC
-sub_8053CCC ;@ 0x08053CCC
-	LDR ip, _08053CD4 ;@ =maybeMallocEWRAM
+sub_8053CCC
+	LDR ip, _08053CD4
 	bx ip
 	ALIGN
 _08053CD4 DCDU maybeMallocEWRAM
 
 	arm_func_start sub_8053CD8
-sub_8053CD8 ;@ 0x08053CD8
-	LDR ip, _08053CE0 ;@ =sub_800802E
+sub_8053CD8
+	LDR ip, _08053CE0
 	bx ip
 	ALIGN
 _08053CE0 DCDU sub_800802E
 
 	arm_func_start sub_8053CE4
-sub_8053CE4 ;@ 0x08053CE4
-	LDR ip, _08053CEC ;@ =sub_800805E
+sub_8053CE4
+	LDR ip, _08053CEC
 	bx ip
 	ALIGN
 _08053CEC DCDU sub_800805E
 _08053CF0
-	LDR ip, _08053CF8 ;@ =sub_803DA18
+	LDR ip, _08053CF8
 	bx ip
 	ALIGN
 _08053CF8 DCDU sub_803DA18
 
 	arm_func_start sub_8053CFC
-sub_8053CFC ;@ 0x08053CFC
-	LDR ip, _08053D04 ;@ =sub_800808E
+sub_8053CFC
+	LDR ip, _08053D04
 	bx ip
 	ALIGN
 _08053D04 DCDU sub_800808E
@@ -2604,7 +2604,7 @@ _08053D08
 	DCB 0xC0, 0xF0, 0xFF, 0xFF
 
 	arm_func_start sub_8053D34
-sub_8053D34 ;@ 0x08053D34
+sub_8053D34
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRB r7, [r2]
 	sub sp, sp, #8
@@ -2615,7 +2615,7 @@ sub_8053D34 ;@ 0x08053D34
 	mul r6, r8, r4
 	cmp r7, #1
 	cmpeq r8, #1
-	LDR r4, _080545D8 ;@ =gUnknown_0804AE90
+	LDR r4, _080545D8
 	bne _08053E38
 	cmp r5, #7
 	addls pc, pc, r5, lsl #2
@@ -2708,7 +2708,7 @@ _8053E5C
 _8053E60
 	b _08053E68
 _08053E64
-	LDR r4, _080545DC ;@ =gUnknown_0804AEA0
+	LDR r4, _080545DC
 _08053E68
 	add r5, r0, r6
 	STR r3, [sp]
@@ -3028,7 +3028,7 @@ _08054070
 	bx lr
 
 	arm_func_start sub_8054344
-sub_8054344 ;@ 0x08054344
+sub_8054344
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRB r2, [r0, #0x54]
 	sub sp, sp, #0xc
@@ -3140,8 +3140,8 @@ _08054464
 	bx lr
 
 	arm_func_start sub_80544AC
-sub_80544AC ;@ 0x080544AC
-	LDR r3, _080545E0 ;@ =gUnknown_0804AE80
+sub_80544AC
+	LDR r3, _080545E0
 	add r1, r3, r1, lsl #1
 	LDRB r3, [r1]
 	LDRB r1, [r1, #1]
@@ -3170,8 +3170,8 @@ _080544D4
 	bx lr
 
 	arm_func_start sub_8054514
-sub_8054514 ;@ 0x08054514
-	LDR r3, _080545E0 ;@ =gUnknown_0804AE80
+sub_8054514
+	LDR r3, _080545E0
 	cmp r1, #7
 	add ip, r3, r1, lsl #1
 	mov r3, #0
@@ -3242,7 +3242,7 @@ _080545DC DCDU gUnknown_0804AEA0
 _080545E0 DCDU gUnknown_0804AE80
 
 	arm_func_start sub_80545E4
-sub_80545E4 ;@ 0x080545E4
+sub_80545E4
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	LDR r7, [sp, #0x40]
@@ -3355,7 +3355,7 @@ _08054768
 	bx lr
 
 	arm_func_start sub_805477C
-sub_805477C ;@ 0x0805477C
+sub_805477C
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs fp, r1
 	cmpne fp, #1
@@ -3505,7 +3505,7 @@ _08054978
 	LDR r1, [r4]
 	mov r0, r4
 	LDR r2, [r1, #0x40]
-	add lr, pc, #0x4 ;@ =_080549AC
+	add lr, pc, #0x4
 	add r1, r2, r1
 	bx r1
 _080549AC
@@ -3520,7 +3520,7 @@ _080549AC
 	beq _08054A3C
 	cmp r0, #0
 	beq _08054A40
-	LDR r6, _08054CE8 ;@ =0x030033E8
+	LDR r6, _08054CE8
 	STR r2, [r6]
 	LDR r1, [r0, #-4]
 	and r1, r1, #0xff
@@ -3532,7 +3532,7 @@ _080549F8
 	LDR r1, [r4]
 	mov r0, r4
 	LDR r2, [r1, #0x38]
-	add lr, pc, #0x4 ;@ =0x08054A10
+	add lr, pc, #0x4
 	add r1, r2, r1
 	bx r1
 _08054A10
@@ -3541,7 +3541,7 @@ _08054A14
 	LDR r1, [r4]
 	mov r0, r4
 	LDR r2, [r1, #0x3c]
-	add lr, pc, #0x4 ;@ =0x08054A2C
+	add lr, pc, #0x4
 	add r1, r2, r1
 	bx r1
 _08054A2C
@@ -3559,7 +3559,7 @@ _08054A40
 	bx lr
 
 	arm_func_start sub_8054A4C
-sub_8054A4C ;@ 0x08054A4C
+sub_8054A4C
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	ldrh r0, [r0, #0x3c]
@@ -3743,7 +3743,7 @@ _08054CCC
 _08054CE8 DCDU 0x030033E8
 
 	arm_func_start sub_8054CEC
-sub_8054CEC ;@ 0x08054CEC
+sub_8054CEC
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	mov r0, #0
@@ -3752,7 +3752,7 @@ sub_8054CEC ;@ 0x08054CEC
 	LDRB r0, [r4, #0x2d]
 	bl sub_80557C4
 	LDRB r0, [r0, #0x18]
-	LDR r1, _0805500C ;@ =0x030031D8
+	LDR r1, _0805500C
 	add r3, sp, #0x2c
 	LDRB r1, [r1, r0]
 	LDRB r2, [r4, #0x75]
@@ -3815,7 +3815,7 @@ _08054DDC
 	LDR r0, [sb, #0x18]
 	cmp r0, #0
 	bne _08054E28
-	LDR r0, _08055010 ;@ =0x03003EA0
+	LDR r0, _08055010
 	LDR r0, [r0]
 	bl sub_8055820
 	LDR r1, [sb, #0x10]
@@ -3958,7 +3958,7 @@ _0805500C DCDU 0x030031D8
 _08055010 DCDU 0x03003EA0
 
 	arm_func_start sub_8055014
-sub_8055014 ;@ 0x08055014
+sub_8055014
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x84]
@@ -3991,7 +3991,7 @@ _8055064
 _8055068
 	b _08055420
 _0805506C
-	LDR r0, _080554D0 ;@ =0x03003E98
+	LDR r0, _080554D0
 	LDR r0, [r0]
 	bl sub_805582C
 	LDR r3, [r4, #0xc]
@@ -4052,7 +4052,7 @@ _08055144
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 _0805514C
-	LDR r0, _080554D0 ;@ =0x03003E98
+	LDR r0, _080554D0
 	LDR r0, [r0]
 	bl sub_805582C
 	mov r1, #0x314
@@ -4063,7 +4063,7 @@ _0805514C
 	MOV r2, r1, LSL #0xa
 	MOV r6, r2, LSR #0x18
 	MOV r2, r1, LSR #0x16
-	LDR r1, _080554D4 ;@ =0xAAAAAAAB
+	LDR r1, _080554D4
 	umull ip, r2, r1, r2
 	LDR r1, [r4, #0x90]
 	MOV lr, r2, LSR #1
@@ -4105,7 +4105,7 @@ _08055200
 	add r1, r1, #0x3c0
 	bgt _08055198
 _08055210
-	LDR r0, _080554D8 ;@ =0x03003EB4
+	LDR r0, _080554D8
 	LDR r0, [r0]
 	cmp r0, #0
 	beq _08055240
@@ -4145,7 +4145,7 @@ _08055278
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 _080552A4
-	LDR r0, _080554D0 ;@ =0x03003E98
+	LDR r0, _080554D0
 	LDR r0, [r0]
 	bl sub_805582C
 	mov r1, #0x314
@@ -4155,7 +4155,7 @@ _080552A4
 	LDR ip, [r4, #0x7c]
 	MOV r2, r1, LSL #0xa
 	MOV r3, r2, LSR #0x16
-	LDR r2, _080554D4 ;@ =0xAAAAAAAB
+	LDR r2, _080554D4
 	MOV r1, r1, LSR #0x16
 	umull lr, r3, r2, r3
 	MOV r7, r3, LSR #1
@@ -4207,7 +4207,7 @@ _0805537C
 	add r1, r1, #0x3c0
 	bgt _080552F8
 _0805538C
-	LDR r0, _080554D8 ;@ =0x03003EB4
+	LDR r0, _080554D8
 	LDR r0, [r0]
 	cmp r0, #0
 	beq _080553BC
@@ -4247,7 +4247,7 @@ _080553F4
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 _08055420
-	LDR r0, _080554D0 ;@ =0x03003E98
+	LDR r0, _080554D0
 	LDR r0, [r0]
 	bl sub_805582C
 	LDR r2, [r4, #0xc]
@@ -4300,7 +4300,7 @@ _080554D4 DCDU 0xAAAAAAAB
 _080554D8 DCDU 0x03003EB4
 
 	arm_func_start sub_80554DC
-sub_80554DC ;@ 0x080554DC
+sub_80554DC
 	mov r3, #0x4000000
 	add r3, r3, #0x200
 	LDR r2, [r3]
@@ -4353,7 +4353,7 @@ sub_80554DC ;@ 0x080554DC
 	ands r0, r1, #0x2000
 _080555A4
 	strh r0, [r3, #2]
-	LDR r1, _08055610 ;@ =0x000020D0
+	LDR r1, _08055610
 	bic r2, r2, r0
 	and r1, r1, r2
 	strh r1, [r3]
@@ -4363,11 +4363,11 @@ _080555A4
 	bicne r3, r3, #0xdf
 	orr r3, r3, #0x1f
 	msr cpsr_fsxc, r3
-	LDR r1, _08055614 ;@ =0x030033FC
+	LDR r1, _08055614
 	add r1, r1, ip
 	LDR r0, [r1]
 	stmdb sp!, {lr}
-	add lr, pc, #0x0 ;@ =0x080555E8
+	add lr, pc, #0x0
 	bx r0
 	LDMIA sp!, {lr}
 	mrs r3, CPSR
@@ -4384,13 +4384,13 @@ _08055610 DCDU 0x000020D0
 _08055614 DCDU 0x030033FC
 
 	arm_func_start nullsub_23
-nullsub_23 ;@ 0x08055618
+nullsub_23
 	bx lr
 
 	arm_func_start sub_805561C
-sub_805561C ;@ 0x0805561C
+sub_805561C
 	STMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
-	LDR r1, _080557B0 ;@ =0x03003520
+	LDR r1, _080557B0
 	mov r7, #1
 	LDMIA r1, {r2, r3, r4}
 	adds r6, r3, r0
@@ -4408,7 +4408,7 @@ _08055644
 	bx lr
 
 	arm_func_start sub_805565C
-sub_805565C ;@ 0x0805565C
+sub_805565C
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip}
@@ -4425,7 +4425,7 @@ sub_805565C ;@ 0x0805565C
 	bx r8
 
 	arm_func_start sub_8055694
-sub_8055694 ;@ 0x08055694
+sub_8055694
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip}
@@ -4442,23 +4442,23 @@ sub_8055694 ;@ 0x08055694
 	bx r8
 
 	arm_func_start sub_80556CC
-sub_80556CC ;@ 0x080556CC
+sub_80556CC
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	LDR r8, [r1], #0x4c
 	bx r8
 
 	arm_func_start sub_80556DC
-sub_80556DC ;@ 0x080556DC
+sub_80556DC
 	STMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
-	LDR r1, _080557B0 ;@ =0x03003520
+	LDR r1, _080557B0
 	LDMIA r1, {r2, r3, r4, r5}
 	adds r6, r3, r0
 	STR r6, [r1, #4]
 	b _08055708
 
 	arm_func_start sub_80556F4
-sub_80556F4 ;@ 0x080556F4
+sub_80556F4
 	LDRB r7, [r4, r7, asr #6]
 	LDRB r6, [r4, r6, asr #6]
 	STRB r7, [r3, r5]
@@ -4474,7 +4474,7 @@ _08055708
 	bx lr
 
 	arm_func_start sub_8055724
-sub_8055724 ;@ 0x08055724
+sub_8055724
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip, lr}
@@ -4492,7 +4492,7 @@ sub_8055724 ;@ 0x08055724
 	bx r8
 
 	arm_func_start sub_8055760
-sub_8055760 ;@ 0x08055760
+sub_8055760
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip, lr}
@@ -4511,7 +4511,7 @@ sub_8055760 ;@ 0x08055760
 	bx r8
 
 	arm_func_start sub_80557A0
-sub_80557A0 ;@ 0x080557A0
+sub_80557A0
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	LDR r8, [r1], #0x4c
@@ -4520,88 +4520,88 @@ sub_80557A0 ;@ 0x080557A0
 _080557B0 DCDU 0x03003520
 
 	arm_func_start sub_80557B4
-sub_80557B4 ;@ 0x080557B4
-	LDR pc, _080557B8 ;@ =__rt_udiv
+sub_80557B4
+	LDR pc, _080557B8
 	ALIGN
 _080557B8 DCDU __rt_udiv
 
 	arm_func_start sub_80557BC
-sub_80557BC ;@ 0x080557BC
-	LDR pc, _080557C0 ;@ =__rt_sdiv
+sub_80557BC
+	LDR pc, _080557C0
 	ALIGN
 _080557C0 DCDU __rt_sdiv
 
 	arm_func_start sub_80557C4
-sub_80557C4 ;@ 0x080557C4
-	LDR ip, _080557CC ;@ =sub_80133A0
+sub_80557C4
+	LDR ip, _080557CC
 	bx ip
 	ALIGN
 _080557CC DCDU sub_80133A0
 
 	arm_func_start sub_80557D0
-sub_80557D0 ;@ 0x080557D0
-	LDR ip, _080557D8 ;@ =sub_8005106
+sub_80557D0
+	LDR ip, _080557D8
 	bx ip
 	ALIGN
 _080557D8 DCDU sub_8005106
 
 	arm_func_start sub_80557DC
-sub_80557DC ;@ 0x080557DC
-	LDR ip, _080557E4 ;@ =sub_80050FA
+sub_80557DC
+	LDR ip, _080557E4
 	bx ip
 	ALIGN
 _080557E4 DCDU sub_80050FA
 
 	arm_func_start sub_80557E8
-sub_80557E8 ;@ 0x080557E8
-	LDR ip, _080557F0 ;@ =sub_803DA9C
+sub_80557E8
+	LDR ip, _080557F0
 	bx ip
 	ALIGN
 _080557F0 DCDU sub_803DA9C
 
 	arm_func_start sub_80557F4
-sub_80557F4 ;@ 0x080557F4
-	LDR pc, _080557F8 ;@ =__rt_memclr
+sub_80557F4
+	LDR pc, _080557F8
 	ALIGN
 _080557F8 DCDU __rt_memclr
 
 	arm_func_start sub_80557FC
-sub_80557FC ;@ 0x080557FC
-	LDR ip, _08055804 ;@ =__da__FPv
+sub_80557FC
+	LDR ip, _08055804
 	bx ip
 	ALIGN
 _08055804 DCDU __da__FPv
 
 	arm_func_start sub_8055808
-sub_8055808 ;@ 0x08055808
-	LDR ip, _08055810 ;@ =sub_803DA18
+sub_8055808
+	LDR ip, _08055810
 	bx ip
 	ALIGN
 _08055810 DCDU sub_803DA18
 
 	arm_func_start sub_8055814
-sub_8055814 ;@ 0x08055814
-	LDR ip, _0805581C ;@ =CpuSet
+sub_8055814
+	LDR ip, _0805581C
 	bx ip
 	ALIGN
 _0805581C DCDU CpuSet
 
 	arm_func_start sub_8055820
-sub_8055820 ;@ 0x08055820
-	LDR ip, _08055828 ;@ =sub_8000D5A
+sub_8055820
+	LDR ip, _08055828
 	bx ip
 	ALIGN
 _08055828 DCDU sub_8000D5A
 
 	arm_func_start sub_805582C
-sub_805582C ;@ 0x0805582C
-	LDR ip, _08055834 ;@ =sub_800B09A
+sub_805582C
+	LDR ip, _08055834
 	bx ip
 	ALIGN
 _08055834 DCDU sub_800B09A
 
 	arm_func_start sub_8055838
-sub_8055838 ;@ 0x08055838
+sub_8055838
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	sub sp, sp, #4
 	LDR r5, [r0, #0x34]
@@ -4617,7 +4617,7 @@ _0805585C
 	bls _08055A58
 	LDR sl, [r0, #0x1c]
 _0805586C
-	LDR r4, _08055ABC ;@ =0x030031D0
+	LDR r4, _08055ABC
 	LDRB sb, [r4, sl, lsr #29]
 	and fp, sb, #0xf
 	MOV r4, sl, LSL fp

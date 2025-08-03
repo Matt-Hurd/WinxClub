@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_0300345C
@@ -15,7 +15,7 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start sub_801AB34
-sub_801AB34 ;@ 0x0801AB34
+sub_801AB34
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	add r0, sp, #4
@@ -28,13 +28,13 @@ sub_801AB34 ;@ 0x0801AB34
 	movs r2, #0x78
 	adds r0, r6, #0
 	adds r0, #0x7c
-	ldr r3, _0801ABEC ;@ =sub_80143E0
+	ldr r3, _0801ABEC
 	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
 	bl sub_801A8B8
 	movs r7, #0
 _0801AB5C
-	ldr r0, _0801ABF0 ;@ =gUnknown_03003444
+	ldr r0, _0801ABF0
 	adds r1, r7, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
@@ -62,7 +62,7 @@ _0801AB88
 	bl sub_800EF2A
 	cmp r4, #0
 	beq _0801AB5C
-	ldr r0, _0801ABF4 ;@ =gUnknown_0300345C
+	ldr r0, _0801ABF4
 	ldr r0, [r0]
 	bl sub_8028C2E
 	add r3, sp, #0
@@ -84,7 +84,7 @@ _0801ABB2
 	mvns r2, r2
 	adds r1, r5, #0
 	adds r0, #0x6d
-	ldr r3, _0801ABF8 ;@ =sub_8014436
+	ldr r3, _0801ABF8
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r1, #0
 	adds r0, r5, #0

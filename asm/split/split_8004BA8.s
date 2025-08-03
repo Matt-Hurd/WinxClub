@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_080494B8
 	IMPORT __rt_udiv
 
 	thumb_func_start sub_8004BA8
-sub_8004BA8 ;@ 0x08004BA8
+sub_8004BA8
 	push {r4, r5, r6}
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1e
@@ -75,21 +75,21 @@ _08004C1E
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8004C22
-sub_8004C22 ;@ 0x08004C22
+sub_8004C22
 	movs r0, #0
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_23
-nullsub_23 ;@ 0x08004C26
+nullsub_23
 	bx lr
 
 	thumb_func_start sub_8004C28
-sub_8004C28 ;@ 0x08004C28
+sub_8004C28
 	movs r0, #0
 	bx lr
 
 	thumb_func_start sub_8004C2C
-sub_8004C2C ;@ 0x08004C2C
+sub_8004C2C
 	cmp r1, #0
 	beq _08004C38
 	cmp r1, #1
@@ -106,11 +106,11 @@ _08004C3E
 	ALIGN
 
 	arm_func_start sub_8004C44
-sub_8004C44 ;@ 0x08004C44
+sub_8004C44
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	cmp r4, #0x10000
-	LDR r0, _08004DBC ;@ =gUnknown_080494B8
+	LDR r0, _08004DBC
 	blo _08004D38
 	cmp r4, #0x1000000
 	blo _08004CD8
@@ -202,7 +202,7 @@ _08004D84
 	bx lr
 
 	arm_func_start sub_8004D98
-sub_8004D98 ;@ 0x08004D98
+sub_8004D98
 	mov r1, #1
 	mov r2, #0
 _08004DA0

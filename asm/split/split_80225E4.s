@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_03003448
@@ -34,7 +34,7 @@
 	IMPORT sub_803F9C4
 
 	thumb_func_start sub_80225E4
-sub_80225E4 ;@ 0x080225E4
+sub_80225E4
 	push {r4, r5, r6, lr}
 	movs r5, #0
 	adds r4, r0, #0
@@ -47,9 +47,9 @@ sub_80225E4 ;@ 0x080225E4
 	strb r5, [r0, #8]
 	str r5, [r4]
 	str r5, [r4, #4]
-	add r0, pc, #0x214 ;@ =_08022814
+	add r0, pc, #0x214
 	bl sub_800EF60
-	ldr r6, _08022824 ;@ =gUnknown_03003460
+	ldr r6, _08022824
 	ldr r0, [r6]
 	cmp r0, #0
 	beq _08022628
@@ -61,7 +61,7 @@ sub_80225E4 ;@ 0x080225E4
 	cmp r0, #0
 	beq _08022628
 _0802261C
-	ldr r0, _08022828 ;@ =gUnknown_0300345C
+	ldr r0, _08022828
 	movs r2, #0
 	movs r1, #1
 	ldr r0, [r0]
@@ -155,7 +155,7 @@ _08022628
 	bl __call_via_r2
 	movs r2, #0
 	adds r0, r5, #0
-	add r1, pc, #0x138 ;@ =_0802282C
+	add r1, pc, #0x138
 	bl sub_80137F8
 	bl sub_8018070
 	movs r0, #0x17
@@ -179,14 +179,14 @@ _08022628
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8022726
-sub_8022726 ;@ 0x08022726
+sub_8022726
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0xf8
 	mov r6, sp
 	add r1, sp, #0xf8
 	add r0, sp, #8
-	ldr r3, _08022830 ;@ =sub_80143E0
+	ldr r3, _08022830
 	movs r2, #0x78
 	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
@@ -214,11 +214,11 @@ sub_8022726 ;@ 0x08022726
 	bl sub_80046F8
 	adds r0, r6, #0
 	bl sub_80225E4
-	ldr r7, _08022828 ;@ =gUnknown_0300345C
+	ldr r7, _08022828
 	adds r4, r6, #0
 	adds r4, #0xf0
 _0802277E
-	ldr r0, _08022834 ;@ =gUnknown_03003444
+	ldr r0, _08022834
 	movs r1, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
@@ -249,7 +249,7 @@ _0802279A
 	ldr r0, [r7]
 	bl sub_8028A7C
 	bl sub_80180BE
-	ldr r4, _08022838 ;@ =gUnknown_03003448
+	ldr r4, _08022838
 	mov r1, sp
 	ldr r0, [r4]
 	bl sub_8000DE6
@@ -274,7 +274,7 @@ _0802279A
 	mvns r2, r2
 	adds r0, r6, #0
 	adds r0, #0x80
-	ldr r3, _0802283C ;@ =sub_8014436
+	ldr r3, _0802283C
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0xf8

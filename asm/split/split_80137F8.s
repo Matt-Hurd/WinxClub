@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EBC
@@ -22,7 +22,7 @@
 	IMPORT sub_80402F8
 
 	thumb_func_start sub_80137F8
-sub_80137F8 ;@ 0x080137F8
+sub_80137F8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -136,9 +136,9 @@ _080138CC
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80138E2
-sub_80138E2 ;@ 0x080138E2
+sub_80138E2
 	push {r4, r5}
-	ldr r4, _08013B5C ;@ =gUnknown_03003EBC
+	ldr r4, _08013B5C
 	cmp r3, #0xff
 	ldr r4, [r4]
 	bne _080138EE
@@ -160,7 +160,7 @@ _080138EE
 	b sub_80137F8
 
 	non_word_aligned_thumb_func_start sub_801390A
-sub_801390A ;@ 0x0801390A
+sub_801390A
 	push {r0, r1, r2, r3}
 	push {r4, r5, lr}
 	sub sp, #0x1fc
@@ -191,7 +191,7 @@ sub_801390A ;@ 0x0801390A
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8013946
-sub_8013946 ;@ 0x08013946
+sub_8013946
 	push {r0, r1, r2, r3}
 	push {r4, r5, r6, lr}
 	sub sp, #0x1fc
@@ -201,7 +201,7 @@ sub_8013946 ;@ 0x08013946
 	add r0, sp, #0x3fc
 	adds r0, #0x34
 	str r0, [sp, #0xc]
-	ldr r0, _08013B5C ;@ =gUnknown_03003EBC
+	ldr r0, _08013B5C
 	add r3, sp, #0x3fc
 	adds r3, #0x24
 	ldr r0, [r0]
@@ -240,17 +240,17 @@ _08013968
 	bx r3
 
 	thumb_func_start sub_80139A4
-sub_80139A4 ;@ 0x080139A4
+sub_80139A4
 	str r1, [r0, #0x40]
 	bx lr
 
 	thumb_func_start sub_80139A8
-sub_80139A8 ;@ 0x080139A8
+sub_80139A8
 	movs r0, #1
 	bx lr
 
 	thumb_func_start sub_80139AC
-sub_80139AC ;@ 0x080139AC
+sub_80139AC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -268,7 +268,7 @@ _080139BA
 	beq _08013A62
 	cmp r0, #2
 	bne _08013A20
-	ldr r1, _08013B60 ;@ =gUnknown_03003E98
+	ldr r1, _08013B60
 	ldr r0, [r4, #0x4c]
 	ldr r1, [r1]
 	ldr r2, [r1, #8]
@@ -352,7 +352,7 @@ _08013A62
 	ldr r5, [r4, #0x4c]
 	bl sub_80133A0
 	mov ip, r0
-	ldr r0, _08013B60 ;@ =gUnknown_03003E98
+	ldr r0, _08013B60
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	ldr r2, [r5]
@@ -434,7 +434,7 @@ _08013B00
 	b _08013A20
 
 	non_word_aligned_thumb_func_start sub_8013B0A
-sub_8013B0A ;@ 0x08013B0A
+sub_8013B0A
 	push {r3, lr}
 	ldrh r2, [r0, #0xe]
 	lsls r2, r2, #0x1f

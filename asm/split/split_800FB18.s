@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E7C
 	IMPORT gUnknown_03003E84
@@ -23,7 +23,7 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_800FB18
-sub_800FB18 ;@ 0x0800FB18
+sub_800FB18
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #4]
@@ -49,14 +49,14 @@ _0800FB2E
 	bx r3
 
 	thumb_func_start sub_800FB48
-sub_800FB48 ;@ 0x0800FB48
+sub_800FB48
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800FD30 ;@ =_0803ECB8
+	ldr r0, _0800FD30
 	str r0, [r4]
-	ldr r0, _0800FD34 ;@ =gUnknown_03003E7C
+	ldr r0, _0800FD34
 	str r4, [r0]
-	ldr r0, _0800FD38 ;@ =_0803E59C
+	ldr r0, _0800FD38
 	str r0, [r4]
 	movs r0, #0
 	str r0, [r4, #4]
@@ -72,17 +72,17 @@ sub_800FB48 ;@ 0x0800FB48
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800FB72
-sub_800FB72 ;@ 0x0800FB72
+sub_800FB72
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800FD38 ;@ =_0803E59C
+	ldr r0, _0800FD38
 	str r0, [r4]
 	adds r0, r4, #0
 	bl sub_800FD48
 	adds r0, r4, #0
 	bl sub_800FB18
-	ldr r0, _0800FD30 ;@ =_0803ECB8
-	ldr r1, _0800FD34 ;@ =gUnknown_03003E7C
+	ldr r0, _0800FD30
+	ldr r1, _0800FD34
 	str r0, [r4]
 	movs r0, #0
 	str r0, [r1]
@@ -91,18 +91,18 @@ sub_800FB72 ;@ 0x0800FB72
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800FB96
-sub_800FB96 ;@ 0x0800FB96
+sub_800FB96
 	ldr r0, [r0, #0x18]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_37
-nullsub_37 ;@ 0x0800FB9E
+nullsub_37
 	bx lr
 
 	thumb_func_start sub_800FBA0
-sub_800FBA0 ;@ 0x0800FBA0
+sub_800FBA0
 	push {r3, lr}
 	adds r1, r0, #0
 	bne _0800FBAC
@@ -111,7 +111,7 @@ _0800FBA6
 	pop {r3}
 	bx r3
 _0800FBAC
-	ldr r0, _0800FD3C ;@ =gUnknown_03003E84
+	ldr r0, _0800FD3C
 	movs r3, #0
 	movs r2, #0x48
 	ldr r0, [r0]
@@ -122,7 +122,7 @@ _0800FBAC
 	b _0800FBA6
 
 	thumb_func_start sub_800FBC0
-sub_800FBC0 ;@ 0x0800FBC0
+sub_800FBC0
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	beq _0800FBCA
@@ -135,7 +135,7 @@ _0800FBCC
 	pop {r3}
 	bx r3
 _0800FBD2
-	ldr r1, _0800FD3C ;@ =gUnknown_03003E84
+	ldr r1, _0800FD3C
 	movs r3, #0
 	ldr r5, [r1]
 	adds r1, r0, #0
@@ -148,7 +148,7 @@ _0800FBD2
 	lsrs r0, r0, #0x1c
 	cmp r0, #6
 	bhs _0800FC58
-	add r3, pc, #0x8 ;@ =_0800FBF8
+	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -221,18 +221,18 @@ _0800FC5C
 	b _0800FBCC
 
 	thumb_func_start sub_800FC6C
-sub_800FC6C ;@ 0x0800FC6C
+sub_800FC6C
 	adds r0, #4
 	stm r0!, {r1, r2}
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FC72
-sub_800FC72 ;@ 0x0800FC72
+sub_800FC72
 	movs r0, #0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FC76
-sub_800FC76 ;@ 0x0800FC76
+sub_800FC76
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x14
@@ -253,7 +253,7 @@ _0800FC94
 	pop {r3}
 	bx r3
 _0800FC9C
-	ldr r0, _0800FD3C ;@ =gUnknown_03003E84
+	ldr r0, _0800FD3C
 	movs r3, #0
 	adds r2, #0x48
 	ldr r0, [r0]
@@ -273,7 +273,7 @@ _0800FC9C
 	adds r6, r0, #0
 	lsls r2, r2, #0x18
 	bl __16_ll_mullu
-	add r2, pc, #0x74 ;@ =_0800FD40
+	add r2, pc, #0x74
 	ldm r2!, {r2, r3}
 	bl __16_ll_udiv
 	str r0, [r4, #0x68]
@@ -291,7 +291,7 @@ _0800FC9C
 	b _0800FC94
 
 	thumb_func_start sub_800FCF0
-sub_800FCF0 ;@ 0x0800FCF0
+sub_800FCF0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r2, #0
 	adds r5, r1, #0
@@ -321,11 +321,11 @@ _0800FD24
 	bx r3
 
 	non_word_aligned_thumb_func_start nullsub_38
-nullsub_38 ;@ 0x0800FD2A
+nullsub_38
 	bx lr
 
 	thumb_func_start sub_800FD2C
-sub_800FD2C ;@ 0x0800FD2C
+sub_800FD2C
 	movs r0, #0
 	bx lr
 	ALIGN

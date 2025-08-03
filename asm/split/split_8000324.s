@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
@@ -17,7 +17,7 @@
 	IMPORT maybeMallocEWRAM
 
 	thumb_func_start sub_8000324
-sub_8000324 ;@ 0x08000324
+sub_8000324
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -27,7 +27,7 @@ sub_8000324 ;@ 0x08000324
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	bne _08000350
-	ldr r0, _08000654 ;@ =gUnknown_03003EA0
+	ldr r0, _08000654
 	ldr r0, [r0]
 	bl sub_8000D5A
 	ldr r1, [r4, #0x10]
@@ -129,7 +129,7 @@ _080003DE
 	b _08000380
 
 	thumb_func_start sub_80003F4
-sub_80003F4 ;@ 0x080003F4
+sub_80003F4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -139,7 +139,7 @@ sub_80003F4 ;@ 0x080003F4
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	bne _08000420
-	ldr r0, _08000654 ;@ =gUnknown_03003EA0
+	ldr r0, _08000654
 	ldr r0, [r0]
 	bl sub_8000D5A
 	ldr r1, [r4, #0x10]
@@ -244,7 +244,7 @@ _080004B2
 	b _08000450
 
 	non_word_aligned_thumb_func_start sub_80004CA
-sub_80004CA ;@ 0x080004CA
+sub_80004CA
 	push {r3, lr}
 	cmp r0, #0
 	bne _080004DA
@@ -262,7 +262,7 @@ _080004E0
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80004E6
-sub_80004E6 ;@ 0x080004E6
+sub_80004E6
 	push {r3, lr}
 	cmp r0, #0
 	bne _080004F2
@@ -274,7 +274,7 @@ _080004F2
 	bx r3
 
 	thumb_func_start sub_80004F8
-sub_80004F8 ;@ 0x080004F8
+sub_80004F8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x60
@@ -288,7 +288,7 @@ sub_80004F8 ;@ 0x080004F8
 	lsls r1, r1, #9
 	orrs r0, r1
 	str r0, [r4]
-	ldr r0, _08000658 ;@ =gUnknown_03003EB8
+	ldr r0, _08000658
 	ldr r0, [r0]
 	bl sub_80019A6
 	movs r2, #1
@@ -304,11 +304,11 @@ sub_80004F8 ;@ 0x080004F8
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8000532
-sub_8000532 ;@ 0x08000532
+sub_8000532
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
-	ldr r7, _08000658 ;@ =gUnknown_03003EB8
+	ldr r7, _08000658
 	lsls r0, r0, #0x15
 	bpl _08000550
 	adds r1, r4, #0
@@ -321,7 +321,7 @@ sub_8000532 ;@ 0x08000532
 	str r0, [r4]
 _08000550
 	ldr r0, [r4]
-	ldr r5, _08000654 ;@ =gUnknown_03003EA0
+	ldr r5, _08000654
 	lsls r0, r0, #0x1f
 	bpl _08000586
 	adds r1, r4, #0

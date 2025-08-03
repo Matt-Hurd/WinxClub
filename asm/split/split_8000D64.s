@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
@@ -23,7 +23,7 @@
 	IMPORT sub_8040550
 
 	thumb_func_start sub_8000D64
-sub_8000D64 ;@ 0x08000D64
+sub_8000D64
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08000D7E
@@ -38,11 +38,11 @@ _08000D78
 	pop {r3}
 	bx r3
 _08000D7E
-	ldr r0, _08001044 ;@ =gUnknown_0803ECF0
+	ldr r0, _08001044
 	str r0, [r4]
-	ldr r0, _08001048 ;@ =gUnknown_03003EB8
+	ldr r0, _08001048
 	str r4, [r0]
-	ldr r0, _0800104C ;@ =gUnknown_0803EC78
+	ldr r0, _0800104C
 	str r0, [r4]
 	adds r0, r4, #4
 	bl sub_800B7DC
@@ -68,7 +68,7 @@ _08000D7E
 	strh r1, [r0, #0xc]
 	strh r1, [r0, #0xe]
 	str r1, [r0, #0x10]
-	ldr r2, _08001050 ;@ =0x0000FFFF
+	ldr r2, _08001050
 	str r1, [r0, #0x14]
 	str r2, [r0, #0x18]
 	str r1, [r0, #0x1c]
@@ -91,7 +91,7 @@ _08000D7E
 	b _08000D78
 
 	non_word_aligned_thumb_func_start sub_8000DE6
-sub_8000DE6 ;@ 0x08000DE6
+sub_8000DE6
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0x67
@@ -120,7 +120,7 @@ sub_8000DE6 ;@ 0x08000DE6
 	orrs r0, r1
 	str r0, [r2]
 	ldr r1, [r4]
-	ldr r2, _08001054 ;@ =0xFFE00000
+	ldr r2, _08001054
 	ldr r1, [r1, #0x14]
 	orrs r0, r2
 	str r0, [r1]
@@ -159,7 +159,7 @@ sub_8000DE6 ;@ 0x08000DE6
 	bx r3
 
 	thumb_func_start sub_8000E6C
-sub_8000E6C ;@ 0x08000E6C
+sub_8000E6C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0xcd
@@ -211,7 +211,7 @@ _08000EA6
 	strh r5, [r4, #0xc]
 	strh r5, [r4, #0xe]
 	ldr r0, [r4, #0x28]
-	ldr r5, _08001058 ;@ =gUnknown_03003EA0
+	ldr r5, _08001058
 	lsrs r0, r0, #0x10
 	lsls r0, r0, #0x10
 	str r0, [r4, #0x28]
@@ -230,10 +230,10 @@ _08000EEA
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8000EF6
-sub_8000EF6 ;@ 0x08000EF6
+sub_8000EF6
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0800104C ;@ =gUnknown_0803EC78
+	ldr r0, _0800104C
 	adds r7, r1, #0
 	str r0, [r4]
 	movs r0, #0x67
@@ -261,10 +261,10 @@ _08000F2C
 	movs r1, #0
 	adds r0, r4, #4
 	bl sub_800B8A4
-	ldr r0, _08001044 ;@ =gUnknown_0803ECF0
+	ldr r0, _08001044
 	cmp r7, #0
 	str r0, [r4]
-	ldr r0, _08001048 ;@ =gUnknown_03003EB8
+	ldr r0, _08001048
 	str r6, [r0]
 	beq _08000F46
 	adds r0, r4, #0
@@ -275,7 +275,7 @@ _08000F46
 	bx r3
 
 	thumb_func_start sub_8000F4C
-sub_8000F4C ;@ 0x08000F4C
+sub_8000F4C
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r0, #0x67
@@ -340,7 +340,7 @@ _08000FA6
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8000FCE
-sub_8000FCE ;@ 0x08000FCE
+sub_8000FCE
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #4

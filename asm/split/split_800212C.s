@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EB0
 	IMPORT sub_800DEF8
@@ -7,7 +7,7 @@
 	IMPORT sub_8040504
 
 	thumb_func_start sub_800212C
-sub_800212C ;@ 0x0800212C
+sub_800212C
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r1, #0
 	ldr r2, [r6]
@@ -51,7 +51,7 @@ sub_800212C ;@ 0x0800212C
 	adds r3, r5, r3
 	adds r3, #4
 	ldr r5, [r3]
-	ldr r7, _080023E8 ;@ =0xFF001FFF
+	ldr r7, _080023E8
 	lsls r2, r2, #0x14
 	mov lr, r2
 	lsrs r2, r2, #0x15
@@ -84,7 +84,7 @@ _08002196
 	orrs r3, r5
 	str r3, [r2]
 _080021C0
-	ldr r3, _080023EC ;@ =0xFFFFF001
+	ldr r3, _080023EC
 	ldr r2, [r4, #0x3c]
 	lsls r5, r1, #1
 	ands r2, r3
@@ -118,7 +118,7 @@ _080021C0
 	orrs r0, r1
 	str r0, [r7]
 	ldr r0, [r4, #0x14]
-	ldr r2, _080023F0 ;@ =0xFFFFE007
+	ldr r2, _080023F0
 	str r6, [r0, r5]
 	ldr r0, [r4, #0x14]
 	adds r0, r0, r5
@@ -141,7 +141,7 @@ _080021C0
 	bx r3
 
 	thumb_func_start sub_8002230
-sub_8002230 ;@ 0x08002230
+sub_8002230
 	push {r4, r5}
 	ldr r1, [r1]
 	ldr r2, [r2, #0x30]
@@ -172,7 +172,7 @@ sub_8002230 ;@ 0x08002230
 	lsls r3, r3, #2
 	adds r3, r0, r3
 	ldr r3, [r3, #4]
-	ldr r5, _080023EC ;@ =0xFFFFF001
+	ldr r5, _080023EC
 	lsls r3, r3, #8
 	lsrs r3, r3, #0x15
 	lsls r3, r3, #1
@@ -217,7 +217,7 @@ _080022A6
 	ldr r0, [r0, #4]
 	adds r3, #4
 	ldr r4, [r3]
-	ldr r5, _080023E8 ;@ =0xFF001FFF
+	ldr r5, _080023E8
 	lsls r0, r0, #8
 	lsrs r0, r0, #0x15
 	lsls r0, r0, #0xd
@@ -236,10 +236,10 @@ _080022D0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80022E2
-sub_80022E2 ;@ 0x080022E2
+sub_80022E2
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	ldr r0, _080023F4 ;@ =gUnknown_03003EB0
+	ldr r0, _080023F4
 	movs r2, #1
 	ldr r1, [r0]
 	lsls r2, r2, #0xb
@@ -285,7 +285,7 @@ _08002318
 	ldr r0, [r0, r3]
 	lsls r0, r0, #0x19
 	bpl _0800234E
-	ldr r0, _080023F4 ;@ =gUnknown_03003EB0
+	ldr r0, _080023F4
 	lsls r3, r6, #0x13
 	ldr r0, [r0]
 	ldr r6, [r1, #0x2c]
@@ -353,7 +353,7 @@ _080023B4
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80023BA
-sub_80023BA ;@ 0x080023BA
+sub_80023BA
 	push {r4, lr}
 	movs r2, #0x13
 	lsls r2, r2, #7

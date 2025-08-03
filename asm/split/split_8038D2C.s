@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003444
@@ -15,7 +15,7 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start sub_8038D2C
-sub_8038D2C ;@ 0x08038D2C
+sub_8038D2C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x20
@@ -26,7 +26,7 @@ sub_8038D2C ;@ 0x08038D2C
 	adds r0, r5, #0
 	movs r2, #0x78
 	adds r0, #8
-	ldr r3, _08038E2C ;@ =sub_80143E0
+	ldr r3, _08038E2C
 	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r6, #0
 	bl sub_80143E0
@@ -39,7 +39,7 @@ sub_8038D2C ;@ 0x08038D2C
 	adds r0, r5, #0
 	bl sub_80389CC
 _08038D60
-	ldr r0, _08038E30 ;@ =gUnknown_03003444
+	ldr r0, _08038E30
 	movs r1, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
@@ -102,12 +102,12 @@ _08038DBC
 	adds r0, r0, r5
 	adds r0, r0, r1
 	ldrb r0, [r0, #0xc]
-	ldr r1, _08038E34 ;@ =gUnknown_080514B0
+	ldr r1, _08038E34
 	ldrb r1, [r1, r0]
-	ldr r0, _08038E38 ;@ =gPlayerEntity
+	ldr r0, _08038E38
 	ldr r0, [r0]
 	strb r1, [r2, r0]
-	ldr r1, _08038E3C ;@ =0x0000FFFF
+	ldr r1, _08038E3C
 	adds r0, #0x80
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x18]
@@ -132,7 +132,7 @@ _08038DFA
 	mvns r2, r2
 	adds r0, r5, #0
 	adds r0, #0x80
-	ldr r3, _08038E40 ;@ =sub_8014436
+	ldr r3, _08038E40
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0x20

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003EB4
@@ -27,10 +27,10 @@
 	IMPORT sub_803F3E8
 
 	thumb_func_start sub_800E22C
-sub_800E22C ;@ 0x0800E22C
+sub_800E22C
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _0800E4A8 ;@ =gUnknown_03003E84
+	ldr r0, _0800E4A8
 	adds r4, r1, #0
 	movs r3, #0
 	movs r2, #0x48
@@ -49,9 +49,9 @@ sub_800E22C ;@ 0x0800E22C
 	bx r3
 
 	thumb_func_start sub_800E254
-sub_800E254 ;@ 0x0800E254
+sub_800E254
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
-	ldr r3, _0800E4AC ;@ =0xFFFFE880
+	ldr r3, _0800E4AC
 	adds r5, r2, #0
 	add sp, r3
 	add r6, sp, #0x54
@@ -72,7 +72,7 @@ sub_800E254 ;@ 0x0800E254
 	bpl _0800E2A0
 	movs r2, #0
 	movs r1, #0
-	ldr r0, _0800E4B0 ;@ =0x0000146C
+	ldr r0, _0800E4B0
 	bl sub_803D984
 	str r0, [sp, #0x44]
 	str r0, [sp, #0x40]
@@ -84,11 +84,11 @@ sub_800E254 ;@ 0x0800E254
 	str r0, [sp, #0x3c]
 	b _0800E2AC
 _0800E2A0
-	ldr r0, _0800E4B4 ;@ =0x06014C00
+	ldr r0, _0800E4B4
 	str r0, [sp, #0x44]
-	ldr r0, _0800E4B8 ;@ =0x0601606C
+	ldr r0, _0800E4B8
 	str r0, [sp, #0x40]
-	ldr r0, _0800E4BC ;@ =0x06012C00
+	ldr r0, _0800E4BC
 	str r0, [sp, #0x3c]
 _0800E2AC
 	adds r1, r7, #0
@@ -118,17 +118,17 @@ _0800E2DA
 	movs r1, #0
 	adds r0, r6, #0
 	bl sub_803B184
-	ldr r3, _0800E4C0 ;@ =0x0000178C
+	ldr r3, _0800E4C0
 	add sp, r3
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800E2F6
-sub_800E2F6 ;@ 0x0800E2F6
+sub_800E2F6
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
-	ldr r0, _0800E4A8 ;@ =gUnknown_03003E84
+	ldr r0, _0800E4A8
 	movs r7, #0
 	adds r4, r1, #0
 	subs r1, r6, #4
@@ -146,7 +146,7 @@ sub_800E2F6 ;@ 0x0800E2F6
 	add r0, sp, #0x24
 	bl gUnknown_0300028C
 	adds r2, r0, #0
-	ldr r0, _0800E4A8 ;@ =gUnknown_03003E84
+	ldr r0, _0800E4A8
 	adds r2, #0x48
 	movs r3, #0
 	adds r1, r5, #0
@@ -209,7 +209,7 @@ _0800E39C
 	ldr r0, [sp, #0x1c]
 	adds r0, r6, r0
 	subs r3, r0, r7
-	ldr r0, _0800E4A8 ;@ =gUnknown_03003E84
+	ldr r0, _0800E4A8
 	str r3, [sp, #0x18]
 	ldr r0, [r0]
 	ldr r1, [sp, #0x20]
@@ -221,14 +221,14 @@ _0800E39C
 	bpl _0800E3C8
 	movs r2, #0
 	movs r1, #0
-	ldr r0, _0800E4B0 ;@ =0x0000146C
+	ldr r0, _0800E4B0
 	bl sub_803D984
 	adds r7, r0, #0
 	b _0800E3CA
 _0800E3C8
-	ldr r7, _0800E4B8 ;@ =0x0601606C
+	ldr r7, _0800E4B8
 _0800E3CA
-	ldr r0, _0800E4C4 ;@ =gUnknown_03003EB4
+	ldr r0, _0800E4C4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0800E3E4
@@ -236,14 +236,14 @@ _0800E3CA
 	str r0, [sp, #0x14]
 	add r0, sp, #0x14
 	adds r1, r7, #0
-	ldr r2, _0800E4C8 ;@ =0x0500051B
+	ldr r2, _0800E4C8
 	bl CpuSet
 	b _0800E40E
 _0800E3E2
 	b _0800E482
 _0800E3E4
 	lsls r1, r7, #0x1e
-	ldr r0, _0800E4CC ;@ =0x040000D4
+	ldr r0, _0800E4CC
 	bpl _0800E3FE
 	movs r1, #0
 	add r3, sp, #0
@@ -251,7 +251,7 @@ _0800E3E4
 	add r1, sp, #0x14
 	str r1, [r0]
 	str r7, [r0, #4]
-	ldr r1, _0800E4D0 ;@ =0x81000A36
+	ldr r1, _0800E4D0
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b _0800E40E
@@ -261,11 +261,11 @@ _0800E3FE
 	add r1, sp, #0x14
 	str r1, [r0]
 	str r7, [r0, #4]
-	ldr r1, _0800E4D4 ;@ =0x8500051B
+	ldr r1, _0800E4D4
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 _0800E40E
-	ldr r2, _0800E4B0 ;@ =0x0000146C
+	ldr r2, _0800E4B0
 	adds r1, r7, #0
 	add r0, sp, #0x24
 	bl gUnknown_03000190

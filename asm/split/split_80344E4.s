@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_0803E424
@@ -13,7 +13,7 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_80344E4
-sub_80344E4 ;@ 0x080344E4
+sub_80344E4
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _080344FC
@@ -29,10 +29,10 @@ _080344F6
 _080344FC
 	adds r0, r4, #0
 	bl sub_8029070
-	ldr r0, _080348C4 ;@ =gUnknown_0803E424
+	ldr r0, _080348C4
 	movs r1, #0x97
 	str r0, [r4]
-	add r0, pc, #0x3BC ;@ =_080348C8
+	add r0, pc, #0x3BC
 	str r0, [r4, #0x4c]
 	movs r0, #0xf
 	strh r0, [r4, #4]
@@ -44,7 +44,7 @@ _080344FC
 	adds r1, r4, #0
 	adds r1, #0x80
 	ldr r2, [r1, #4]
-	ldr r3, _080348DC ;@ =0xF000FFFF
+	ldr r3, _080348DC
 	ands r2, r3
 	movs r3, #1
 	lsls r3, r3, #0x19
@@ -57,10 +57,10 @@ _080344FC
 	b _080344F6
 
 	non_word_aligned_thumb_func_start sub_8034536
-sub_8034536 ;@ 0x08034536
+sub_8034536
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080348C4 ;@ =gUnknown_0803E424
+	ldr r0, _080348C4
 	adds r5, r1, #0
 	movs r1, #0
 	str r0, [r4]
@@ -76,7 +76,7 @@ _08034552
 	bx r3
 
 	thumb_func_start sub_8034558
-sub_8034558 ;@ 0x08034558
+sub_8034558
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	adds r1, r0, #0
@@ -91,7 +91,7 @@ sub_8034558 ;@ 0x08034558
 	bx lr
 
 	thumb_func_start sub_8034570
-sub_8034570 ;@ 0x08034570
+sub_8034570
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r3, [r2]
@@ -121,7 +121,7 @@ _0803459E
 	b _08034592
 
 	thumb_func_start sub_80345A4
-sub_80345A4 ;@ 0x080345A4
+sub_80345A4
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -137,7 +137,7 @@ _080345B6
 	b _080345B0
 
 	thumb_func_start sub_80345BC
-sub_80345BC ;@ 0x080345BC
+sub_80345BC
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0xff
 	adds r5, r0, #0
@@ -161,7 +161,7 @@ sub_80345BC ;@ 0x080345BC
 	str r2, [sp, #0x14]
 	movs r1, #0
 	movs r2, #0x32
-	ldr r0, _080348E0 ;@ =0x0000038B
+	ldr r0, _080348E0
 	str r2, [sp, #8]
 	str r1, [sp, #0x10]
 	str r1, [sp, #4]
@@ -177,7 +177,7 @@ sub_80345BC ;@ 0x080345BC
 	str r2, [sp, #0x14]
 	movs r1, #0
 	movs r2, #0x32
-	ldr r0, _080348E4 ;@ =0x00000397
+	ldr r0, _080348E4
 	str r2, [sp, #8]
 	str r1, [sp, #0x10]
 	str r1, [sp, #4]
@@ -204,7 +204,7 @@ sub_80345BC ;@ 0x080345BC
 	movs r3, #0x50
 	adds r0, r4, #0
 	bl sub_802913E
-	ldr r1, _080348E8 ;@ =0x0000039A
+	ldr r1, _080348E8
 	strh r1, [r4, #0xe]
 	adds r2, r1, #1
 	strh r2, [r4, #0xa]
@@ -215,7 +215,7 @@ sub_80345BC ;@ 0x080345BC
 	strh r2, [r4, #0x1a]
 	strh r0, [r4, #0x1c]
 	strh r0, [r4, #0x18]
-	ldr r0, _080348EC ;@ =0x00000391
+	ldr r0, _080348EC
 	movs r1, #0xd
 	strh r0, [r6, #8]
 	subs r0, #3
@@ -230,7 +230,7 @@ sub_80345BC ;@ 0x080345BC
 	lsls r1, r1, #8
 	adds r1, #0x69
 	str r1, [r5, #0x34]
-	ldr r1, _080348F0 ;@ =0x00012668
+	ldr r1, _080348F0
 	lsls r2, r2, #0xf
 	str r1, [r4, #0x70]
 	movs r1, #7
@@ -243,7 +243,7 @@ sub_80345BC ;@ 0x080345BC
 	lsls r2, r2, #0xf
 	adds r1, r1, r2
 	str r1, [r5, #0xc]
-	ldr r1, _080348F4 ;@ =0xFFFF007F
+	ldr r1, _080348F4
 	lsls r0, r0, #7
 	adds r0, #0x5a
 	ands r0, r1
@@ -255,7 +255,7 @@ _080346A4
 	ldr r0, [r5, #0x30]
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x17
-	ldr r0, _080348F8 ;@ =gPlayerEntity
+	ldr r0, _080348F8
 	ldr r0, [r0]
 	adds r0, #0xa0
 	strb r1, [r0, #9]
@@ -339,7 +339,7 @@ _080346CA
 	lsls r1, r1, #8
 	adds r1, #0x5d
 	str r1, [r5, #0x34]
-	ldr r1, _080348F0 ;@ =0x00012668
+	ldr r1, _080348F0
 	lsls r2, r2, #0xf
 	str r1, [r4, #0x70]
 	movs r1, #0x13
@@ -352,7 +352,7 @@ _080346CA
 	lsls r2, r2, #0xf
 	adds r1, r1, r2
 	str r1, [r5, #0xc]
-	ldr r1, _080348F4 ;@ =0xFFFF007F
+	ldr r1, _080348F4
 	lsls r0, r0, #7
 	adds r0, #0x64
 	ands r0, r1
@@ -370,7 +370,7 @@ _08034778
 	str r2, [sp, #0x14]
 	movs r2, #0x32
 	movs r1, #0x1e
-	ldr r0, _080348FC ;@ =0x0000036A
+	ldr r0, _080348FC
 	str r1, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #0
@@ -385,7 +385,7 @@ _08034778
 	str r2, [sp, #0x14]
 	movs r1, #0
 	movs r2, #0x32
-	ldr r0, _08034900 ;@ =0x0000036D
+	ldr r0, _08034900
 	str r2, [sp, #8]
 	str r1, [sp, #0x10]
 	str r1, [sp, #4]
@@ -395,7 +395,7 @@ _08034778
 	str r0, [sp]
 	adds r0, r4, #0
 	bl sub_802913E
-	ldr r1, _08034904 ;@ =0x00000376
+	ldr r1, _08034904
 	strh r1, [r4, #0xe]
 	adds r2, r1, #1
 	strh r2, [r4, #0xa]
@@ -436,7 +436,7 @@ _08034778
 	str r1, [r5, #0xc]
 	lsrs r0, r0, #7
 	lsls r0, r0, #7
-	ldr r1, _080348F4 ;@ =0xFFFF007F
+	ldr r1, _080348F4
 	adds r0, #0x6e
 	ands r0, r1
 	movs r1, #0x23
@@ -503,7 +503,7 @@ _08034820
 	lsls r1, r1, #8
 	adds r1, #0x65
 	str r1, [r5, #0x34]
-	ldr r1, _08034908 ;@ =0x00010CD0
+	ldr r1, _08034908
 	lsls r2, r2, #0xf
 	str r1, [r4, #0x70]
 	movs r1, #0xd
@@ -516,7 +516,7 @@ _08034820
 	lsls r2, r2, #0xf
 	adds r1, r1, r2
 	str r1, [r5, #0xc]
-	ldr r1, _080348F4 ;@ =0xFFFF007F
+	ldr r1, _080348F4
 	lsls r0, r0, #7
 	adds r0, #0x78
 	ands r0, r1

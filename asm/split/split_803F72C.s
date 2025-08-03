@@ -1,12 +1,12 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
 	IMPORT sub_803F8BC
 
 	thumb_func_start sub_803F72C
-sub_803F72C ;@ 0x0803F72C
+sub_803F72C
 	lsls r3, r2, #1
 	adds r3, r3, r0
 	push {r4, r5}
@@ -47,7 +47,7 @@ _0803F76C
 	ALIGN
 
 	thumb_func_start sub_803F774
-sub_803F774 ;@ 0x0803F774
+sub_803F774
 	push {r4, r5, r6, r7, lr}
 	adds r4, r1, #0
 	movs r3, #0x1a
@@ -136,7 +136,7 @@ _0803F80C
 	bx r3
 
 	thumb_func_start sub_803F814
-sub_803F814 ;@ 0x0803F814
+sub_803F814
 	push {r4, r5, r6}
 	movs r4, #0x38
 	ldrb r4, [r4, r0]
@@ -214,10 +214,10 @@ _0803F892
 	ALIGN
 
 	thumb_func_start sub_803F898
-sub_803F898 ;@ 0x0803F898
+sub_803F898
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0803F8B8 ;@ =gUnknown_03003EA0
+	ldr r0, _0803F8B8
 	ldr r0, [r0]
 	bl sub_8000D5A
 	ldr r0, [r0, #0x20]

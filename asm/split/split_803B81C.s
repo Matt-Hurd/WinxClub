@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT Dma3Transmit
 	IMPORT sub_803B7C4
@@ -7,7 +7,7 @@
 	IMPORT _sputc
 
 	thumb_func_start sub_803B81C
-sub_803B81C ;@ 0x0803B81C
+sub_803B81C
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #0x10
@@ -43,10 +43,10 @@ _0803B852
 	ALIGN
 
 	thumb_func_start nullsub_62
-nullsub_62 ;@ 0x0803B85C
+nullsub_62
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_63
-nullsub_63 ;@ 0x0803B85E
+nullsub_63
 	bx lr
 	END

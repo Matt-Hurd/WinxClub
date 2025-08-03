@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003450
 	IMPORT gUnknown_03003478
@@ -15,12 +15,12 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_801D9B0
-sub_801D9B0 ;@ 0x0801D9B0
+sub_801D9B0
 	push {r4, r5, r6}
 	adds r0, r1, #0
 	movs r2, #0
 	movs r4, #1
-	ldr r5, _0801DCE0 ;@ =gUnknown_03003478
+	ldr r5, _0801DCE0
 	b _0801DA1E
 _0801D9BC
 	movs r1, #0
@@ -91,7 +91,7 @@ _0801DA26
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_801DA2A
-sub_801DA2A ;@ 0x0801DA2A
+sub_801DA2A
 	push {r4, lr}
 	ldr r1, [r0, #0x28]
 	adds r4, r0, #0
@@ -107,7 +107,7 @@ _0801DA40
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_801DA46
-sub_801DA46 ;@ 0x0801DA46
+sub_801DA46
 	push {r4, r5, r6, lr}
 	ldr r4, [r1]
 	adds r5, r0, #0
@@ -155,7 +155,7 @@ _0801DA70
 	bx r3
 
 	thumb_func_start sub_801DAA0
-sub_801DAA0 ;@ 0x0801DAA0
+sub_801DAA0
 	push {r4, r5}
 	ldr r3, [r1]
 	ldrh r1, [r3, #4]
@@ -201,7 +201,7 @@ _0801DAD6
 	b _0801DAD2
 
 	thumb_func_start sub_801DAEC
-sub_801DAEC ;@ 0x0801DAEC
+sub_801DAEC
 	push {r3, r4, r5, lr}
 	ldr r5, [r1]
 	adds r4, r0, #0
@@ -244,14 +244,14 @@ _0801DB38
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_801DB3E
-sub_801DB3E ;@ 0x0801DB3E
+sub_801DB3E
 	push {r4, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
 	ldrh r2, [r1, #4]
 	adds r4, #0x80
 	ldr r0, [r4, #0x10]
-	ldr r3, _0801DCE4 ;@ =0xE00FFFFF
+	ldr r3, _0801DCE4
 	lsls r2, r2, #0x17
 	lsrs r2, r2, #3
 	ands r0, r3
@@ -279,8 +279,8 @@ sub_801DB3E ;@ 0x0801DB3E
 	bx r3
 
 	thumb_func_start sub_801DB80
-sub_801DB80 ;@ 0x0801DB80
-	ldr r1, _0801DCE8 ;@ =gUnknown_03003450
+sub_801DB80
+	ldr r1, _0801DCE8
 	movs r2, #0x27
 	ldr r1, [r1]
 	lsls r2, r2, #6
@@ -290,7 +290,7 @@ sub_801DB80 ;@ 0x0801DB80
 	bx lr
 
 	thumb_func_start sub_801DB90
-sub_801DB90 ;@ 0x0801DB90
+sub_801DB90
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r5, [r1]
 	adds r4, r0, #0
@@ -355,10 +355,10 @@ _0801DBF2
 _0801DBFA
 	subs r2, r3, r1
 _0801DBFC
-	add r0, pc, #0xEC ;@ =_0801DCEC
+	add r0, pc, #0xEC
 	ldm r0!, {r0, r1}
 	bl __16_ll_mulls
-	add r2, pc, #0xEC ;@ =_0801DCF4
+	add r2, pc, #0xEC
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	b _0801DCB8
@@ -400,10 +400,10 @@ _0801DC42
 _0801DC4A
 	subs r2, r3, r1
 _0801DC4C
-	add r0, pc, #0x9C ;@ =_0801DCEC
+	add r0, pc, #0x9C
 	ldm r0!, {r0, r1}
 	bl __16_ll_mulls
-	add r2, pc, #0x9C ;@ =_0801DCF4
+	add r2, pc, #0x9C
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	b _0801DCB8

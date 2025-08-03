@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030030B8
 	IMPORT gUnknown_03003E84
@@ -13,7 +13,7 @@
 	IMPORT sub_80405F8
 
 	thumb_func_start sub_800F4F0
-sub_800F4F0 ;@ 0x0800F4F0
+sub_800F4F0
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x70]
@@ -43,7 +43,7 @@ sub_800F4F0 ;@ 0x0800F4F0
 	bx r3
 
 	thumb_func_start sub_800F528
-sub_800F528 ;@ 0x0800F528
+sub_800F528
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -92,14 +92,14 @@ _0800F570
 	adds r0, #0x80
 	ldr r7, [r0, #4]
 _0800F58A
-	ldr r0, _0800F718 ;@ =gUnknown_03003E84
+	ldr r0, _0800F718
 	movs r3, #0
 	adds r2, r6, #0
 	adds r1, r7, #0
 	ldr r0, [r0]
 	bl sub_800529A
 	str r0, [sp]
-	ldr r0, _0800F718 ;@ =gUnknown_03003E84
+	ldr r0, _0800F718
 	adds r2, r6, #0
 	adds r1, r7, #0
 	ldr r0, [r0]
@@ -153,14 +153,14 @@ _0800F5D0
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _0800F624
-	ldr r1, _0800F71C ;@ =gUnknown_030030B8
-	ldr r0, _0800F720 ;@ =0xE1A09009
+	ldr r1, _0800F71C
+	ldr r0, _0800F720
 	ldr r5, [r1]
 	str r0, [r1]
 	movs r6, #1
 _0800F60A
 	ldr r1, [r4, #0x70]
-	ldr r0, _0800F718 ;@ =gUnknown_03003E84
+	ldr r0, _0800F718
 	adds r1, #0x80
 	ldr r2, [r1, #0x10]
 	ldr r0, [r0]
@@ -190,7 +190,7 @@ _0800F640
 	adds r0, r4, #0
 	ldr r1, [sp, #4]
 	bl sub_800F312
-	ldr r1, _0800F71C ;@ =gUnknown_030030B8
+	ldr r1, _0800F71C
 	str r5, [r1]
 _0800F64C
 	ldr r0, [r4, #0x70]
@@ -198,7 +198,7 @@ _0800F64C
 	adds r0, #0x80
 	str r5, [r0, #0xc]
 	ldr r1, [r4, #0x70]
-	ldr r0, _0800F718 ;@ =gUnknown_03003E84
+	ldr r0, _0800F718
 	adds r1, #0x80
 	ldr r2, [r1, #0x10]
 	ldr r0, [r0]
@@ -216,7 +216,7 @@ _0800F64C
 	b _0800F568
 
 	non_word_aligned_thumb_func_start sub_800F67A
-sub_800F67A ;@ 0x0800F67A
+sub_800F67A
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -262,8 +262,8 @@ _0800F690
 	str r1, [r3, #8]
 	ldrh r1, [r0, #0xe]
 	ldrh r0, [r0, #0xc]
-	ldr r2, _0800F728 ;@ =0x0000055B
-	ldr r3, _0800F724 ;@ =0x0000404A
+	ldr r2, _0800F728
+	ldr r3, _0800F724
 	muls r2, r0
 	muls r1, r3
 	adds r1, r1, r2
@@ -286,7 +286,7 @@ _0800F690
 	b _0800F68A
 
 	thumb_func_start sub_800F700
-sub_800F700 ;@ 0x0800F700
+sub_800F700
 	ldr r0, [r0, #0x18]
 	lsls r1, r0, #6
 	lsrs r1, r1, #0x10

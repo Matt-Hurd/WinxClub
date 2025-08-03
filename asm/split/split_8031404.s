@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000914
@@ -15,7 +15,7 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_8031404
-sub_8031404 ;@ 0x08031404
+sub_8031404
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -117,7 +117,7 @@ _080314B2
 	bl rand
 	lsls r0, r0, #0x19
 	bne _08031512
-	ldr r0, _0803156C ;@ =gUnknown_03003EA0
+	ldr r0, _0803156C
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -133,7 +133,7 @@ _080314B2
 	movs r2, #0x10
 	str r0, [r5, #8]
 	bl __16_ll_shift_l
-	add r2, pc, #0x7C ;@ =_08031570
+	add r2, pc, #0x7C
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
@@ -154,7 +154,7 @@ _08031512
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_803151A
-sub_803151A ;@ 0x0803151A
+sub_803151A
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl sub_801E124

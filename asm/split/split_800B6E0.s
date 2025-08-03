@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EA0
@@ -27,7 +27,7 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B6E0
-sub_800B6E0 ;@ 0x0800B6E0
+sub_800B6E0
 	push {r3, lr}
 	bl sub_8011DB2
 	add sp, #4
@@ -35,7 +35,7 @@ sub_800B6E0 ;@ 0x0800B6E0
 	bx r3
 
 	thumb_func_start sub_800B6EC
-sub_800B6EC ;@ 0x0800B6EC
+sub_800B6EC
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8011E52
@@ -44,7 +44,7 @@ sub_800B6EC ;@ 0x0800B6EC
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B6FA
-sub_800B6FA ;@ 0x0800B6FA
+sub_800B6FA
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8011DE4
@@ -53,7 +53,7 @@ sub_800B6FA ;@ 0x0800B6FA
 	bx r3
 
 	thumb_func_start sub_800B708
-sub_800B708 ;@ 0x0800B708
+sub_800B708
 	push {r3, lr}
 	bl sub_8011F0E
 	add sp, #4
@@ -61,7 +61,7 @@ sub_800B708 ;@ 0x0800B708
 	bx r3
 
 	thumb_func_start sub_800B714
-sub_800B714 ;@ 0x0800B714
+sub_800B714
 	push {r3, lr}
 	bl sub_8011E22
 	cmp r0, #0
@@ -76,7 +76,7 @@ _0800B726
 	b _0800B720
 
 	non_word_aligned_thumb_func_start sub_800B72A
-sub_800B72A ;@ 0x0800B72A
+sub_800B72A
 	push {r3, lr}
 	bl sub_8011E10
 	cmp r0, #0
@@ -91,7 +91,7 @@ _0800B73C
 	b _0800B736
 
 	thumb_func_start sub_800B740
-sub_800B740 ;@ 0x0800B740
+sub_800B740
 	push {r3, lr}
 	bl sub_8011E3C
 	cmp r0, #0
@@ -106,7 +106,7 @@ _0800B752
 	b _0800B74C
 
 	non_word_aligned_thumb_func_start sub_800B756
-sub_800B756 ;@ 0x0800B756
+sub_800B756
 	push {r3, lr}
 	movs r0, #5
 	bl sub_8011B28
@@ -115,7 +115,7 @@ sub_800B756 ;@ 0x0800B756
 	bx r3
 
 	thumb_func_start sub_800B764
-sub_800B764 ;@ 0x0800B764
+sub_800B764
 	push {r3, lr}
 	movs r0, #3
 	bl sub_8011B28
@@ -124,7 +124,7 @@ sub_800B764 ;@ 0x0800B764
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B772
-sub_800B772 ;@ 0x0800B772
+sub_800B772
 	push {r3, lr}
 	adds r0, r1, #0
 	adds r1, r2, #0
@@ -134,7 +134,7 @@ sub_800B772 ;@ 0x0800B772
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B782
-sub_800B782 ;@ 0x0800B782
+sub_800B782
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8012180
@@ -143,7 +143,7 @@ sub_800B782 ;@ 0x0800B782
 	bx r3
 
 	thumb_func_start sub_800B790
-sub_800B790 ;@ 0x0800B790
+sub_800B790
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -159,7 +159,7 @@ _0800B7A4
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B7AA
-sub_800B7AA ;@ 0x0800B7AA
+sub_800B7AA
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_80121C4
@@ -175,7 +175,7 @@ _0800B7BE
 	b _0800B7B8
 
 	non_word_aligned_thumb_func_start sub_800B7C2
-sub_800B7C2 ;@ 0x0800B7C2
+sub_800B7C2
 	ldr r2, [r0, #8]
 	movs r3, #0x10
 	lsls r1, r1, #0x1f
@@ -186,7 +186,7 @@ sub_800B7C2 ;@ 0x0800B7C2
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B7D2
-sub_800B7D2 ;@ 0x0800B7D2
+sub_800B7D2
 	ldr r0, [r0, #8]
 	lsls r0, r0, #0x1b
 	lsrs r0, r0, #0x1f
@@ -194,11 +194,11 @@ sub_800B7D2 ;@ 0x0800B7D2
 	ALIGN
 
 	thumb_func_start sub_800B7DC
-sub_800B7DC ;@ 0x0800B7DC
+sub_800B7DC
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0800B7F4
-	ldr r0, _0800BB94 ;@ =0x000019B0
+	ldr r0, _0800BB94
 	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800B7F4
@@ -208,13 +208,13 @@ _0800B7EE
 	pop {r3}
 	bx r3
 _0800B7F4
-	ldr r0, _0800BB98 ;@ =_0803ECDC
+	ldr r0, _0800BB98
 	adds r1, r4, #0
 	str r0, [r4]
-	ldr r0, _0800BB9C ;@ =gUnknown_03003EA0
+	ldr r0, _0800BB9C
 	adds r1, #0x60
 	str r4, [r0]
-	ldr r0, _0800BBA0 ;@ =_0803EB3C
+	ldr r0, _0800BBA0
 	str r0, [r4]
 	movs r0, #0
 	str r0, [r4, #0x40]
@@ -256,21 +256,21 @@ _0800B7F4
 	movs r1, #0x22
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
-	ldr r1, _0800BBA4 ;@ =0x00000409
+	ldr r1, _0800BBA4
 	adds r0, r1, #0
 	subs r0, #0x47
 	adds r0, r4, r0
 	bl __16__rt_memclr
-	ldr r0, _0800BBAC ;@ =0x000007CC
-	ldr r1, _0800BBA8 ;@ =0x00000404
+	ldr r0, _0800BBAC
+	ldr r1, _0800BBA8
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
-	ldr r0, _0800BBB4 ;@ =0x00001318
-	ldr r1, _0800BBB0 ;@ =0x0000050C
+	ldr r0, _0800BBB4
+	ldr r1, _0800BBB0
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
 	movs r1, #0xff
-	ldr r0, _0800BBB8 ;@ =0x00001824
+	ldr r0, _0800BBB8
 	adds r1, #0x8d
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
@@ -289,16 +289,16 @@ _0800B7F4
 	b _0800B7EE
 
 	thumb_func_start sub_800B8A4
-sub_800B8A4 ;@ 0x0800B8A4
+sub_800B8A4
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _0800BBA0 ;@ =_0803EB3C
+	ldr r0, _0800BBA0
 	adds r5, r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
 	bl sub_8000CCE
-	ldr r0, _0800BB98 ;@ =_0803ECDC
-	ldr r1, _0800BB9C ;@ =gUnknown_03003EA0
+	ldr r0, _0800BB98
+	ldr r1, _0800BB9C
 	str r0, [r4]
 	movs r0, #0
 	str r0, [r1]
@@ -312,7 +312,7 @@ _0800B8C8
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B8CE
-sub_800B8CE ;@ 0x0800B8CE
+sub_800B8CE
 	movs r1, #0xbd
 	lsls r1, r1, #4
 	adds r2, r0, r1
@@ -332,7 +332,7 @@ sub_800B8CE ;@ 0x0800B8CE
 	movs r4, #0
 	cmp r1, #0
 	beq _0800B902
-	ldr r1, _0800BBB8 ;@ =0x00001824
+	ldr r1, _0800BBB8
 	adds r1, r0, r1
 	movs r2, #0x1f
 _0800B8FA
@@ -353,7 +353,7 @@ _0800B902
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B916
-sub_800B916 ;@ 0x0800B916
+sub_800B916
 	push {r4, r5, r6, r7}
 	movs r3, #1
 	lsls r3, r3, #9
@@ -364,7 +364,7 @@ sub_800B916 ;@ 0x0800B916
 	adds r1, r0, #0
 	movs r2, #0
 	adds r4, #1
-	add r5, pc, #0x290 ;@ =_0800BBBC
+	add r5, pc, #0x290
 _0800B92C
 	ldm r5!, {r6, r7}
 	stm r1!, {r6, r7}
@@ -383,23 +383,23 @@ _0800B92C
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B94A
-sub_800B94A ;@ 0x0800B94A
-	ldr r0, _0800BBC4 ;@ =gUnknown_03003E98
+sub_800B94A
+	ldr r0, _0800BBC4
 	push {r3, lr}
 	ldr r0, [r0]
 	bl sub_800B082
-	ldr r1, _0800BBCC ;@ =gUnknown_03003EB4
+	ldr r1, _0800BBCC
 	cmp r0, #3
 	ldr r0, [r1]
-	ldr r3, _0800BBC8 ;@ =0x040000D4
+	ldr r3, _0800BBC8
 	blo _0800B98C
-	ldr r1, _0800BBD0 ;@ =0x06014000
+	ldr r1, _0800BBD0
 	cmp r0, #0
 	beq _0800B976
 	movs r0, #0
 	str r0, [sp]
 	mov r0, sp
-	ldr r2, _0800BBD4 ;@ =0x05001000
+	ldr r2, _0800BBD4
 	bl CpuSet
 _0800B970
 	add sp, #4
@@ -413,18 +413,18 @@ _0800B976
 	str r1, [r3]
 	adds r0, r3, #0
 	str r2, [r0, #4]
-	ldr r1, _0800BBD8 ;@ =0x85001000
+	ldr r1, _0800BBD8
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b _0800B970
 _0800B98C
-	ldr r1, _0800BBDC ;@ =0x06010000
+	ldr r1, _0800BBDC
 	cmp r0, #0
 	beq _0800B9A0
 	movs r0, #0
 	str r0, [sp]
 	mov r0, sp
-	ldr r2, _0800BBE0 ;@ =0x05002000
+	ldr r2, _0800BBE0
 	bl CpuSet
 	b _0800B970
 _0800B9A0
@@ -435,13 +435,13 @@ _0800B9A0
 	str r1, [r3]
 	adds r0, r3, #0
 	str r2, [r0, #4]
-	ldr r1, _0800BBE4 ;@ =0x85002000
+	ldr r1, _0800BBE4
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b _0800B970
 
 	non_word_aligned_thumb_func_start sub_800B9B6
-sub_800B9B6 ;@ 0x0800B9B6
+sub_800B9B6
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl sub_800B94A
@@ -488,7 +488,7 @@ _0800B9F6
 _0800BA0C
 	mov r0, lr
 	lsls r0, r0, #7
-	ldr r1, _0800BBE8 ;@ =0x000003C2
+	ldr r1, _0800BBE8
 	adds r0, r0, r4
 	adds r0, r0, r1
 	ldrb r1, [r0]
@@ -539,7 +539,7 @@ _0800BA60
 	mov lr, r0
 	cmp r0, #8
 	blt _0800BA0C
-	ldr r0, _0800BBC4 ;@ =gUnknown_03003E98
+	ldr r0, _0800BBC4
 	ldr r0, [r0]
 	bl sub_800B082
 	movs r1, #0x1f
@@ -555,7 +555,7 @@ _0800BA88
 	strb r5, [r1, #0xa]
 _0800BA8C
 	movs r1, #1
-	ldr r0, _0800BBAC ;@ =0x000007CC
+	ldr r0, _0800BBAC
 	lsls r1, r1, #0xa
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
@@ -586,7 +586,7 @@ _0800BAA2
 	movs r1, #0xff
 	strb r1, [r0, #0xd]
 	strb r5, [r0, #0xe]
-	ldr r0, _0800BBB4 ;@ =0x00001318
+	ldr r0, _0800BBB4
 	movs r1, #5
 	lsls r1, r1, #8
 	adds r0, r4, r0
@@ -598,7 +598,7 @@ _0800BAA2
 	movs r6, #3
 	lsls r6, r6, #8
 _0800BAE4
-	add r7, pc, #0xD4 ;@ =_0800BBBC
+	add r7, pc, #0xD4
 	ldm r7!, {r3, r7}
 	stm r1!, {r3, r7}
 	ldr r3, [r0]
@@ -631,7 +631,7 @@ _0800BB06
 	subs r7, #1
 	adds r6, r6, r7
 	strh r6, [r3, #0x18]
-	ldr r3, _0800BBEC ;@ =0x00001310
+	ldr r3, _0800BBEC
 	adds r0, #1
 	adds r3, r2, r3
 	strb r0, [r3, #0xf]
@@ -641,7 +641,7 @@ _0800BB06
 	strb r1, [r2]
 	cmp r0, #0x80
 	blt _0800BB06
-	ldr r0, _0800BBF0 ;@ =0x00001810
+	ldr r0, _0800BBF0
 	movs r7, #0xc1
 	adds r0, r4, r0
 	strb r5, [r0, #0xe]

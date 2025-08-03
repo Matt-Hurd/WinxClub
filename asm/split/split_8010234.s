@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030031EC
 	IMPORT gUnknown_03003E7C
@@ -21,11 +21,11 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8010234
-sub_8010234 ;@ 0x08010234
+sub_8010234
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0801024C
-	ldr r0, _080103AC ;@ =0x00001730
+	ldr r0, _080103AC
 	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0801024C
@@ -37,18 +37,18 @@ _08010246
 _0801024C
 	adds r0, r4, #0
 	bl sub_801053C
-	ldr r0, _080103B0 ;@ =_0803EC98
+	ldr r0, _080103B0
 	movs r1, #0xb9
 	lsls r1, r1, #5
 	str r0, [r4]
 	movs r0, #0
 	adds r1, r4, r1
 	strb r0, [r1, #0xc]
-	ldr r1, _080103B8 ;@ =gUnknown_030031EC
+	ldr r1, _080103B8
 	movs r3, #0
 	ldrsb r1, [r1, r3]
-	ldr r0, _080103B4 ;@ =gUnknown_03003E98
-	ldr r2, _080103BC ;@ =gUnknown_0804AE44
+	ldr r0, _080103B4
+	ldr r2, _080103BC
 	ldr r0, [r0]
 	lsls r1, r1, #2
 	ldr r1, [r2, r1]
@@ -57,10 +57,10 @@ _0801024C
 	b _08010246
 
 	thumb_func_start sub_8010278
-sub_8010278 ;@ 0x08010278
+sub_8010278
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080103B0 ;@ =_0803EC98
+	ldr r0, _080103B0
 	adds r5, r1, #0
 	movs r1, #0
 	str r0, [r4]
@@ -76,9 +76,9 @@ _08010294
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_801029A
-sub_801029A ;@ 0x0801029A
+sub_801029A
 	push {r3, r4, r5, lr}
-	ldr r5, _080103C0 ;@ =gUnknown_03003E80
+	ldr r5, _080103C0
 	adds r4, r0, #0
 	ldr r0, [r5]
 	bl sub_80049B4
@@ -111,9 +111,9 @@ _080102D2
 	bx r3
 
 	thumb_func_start sub_80102D8
-sub_80102D8 ;@ 0x080102D8
+sub_80102D8
 	push {r3, r4, r5, lr}
-	ldr r5, _080103C4 ;@ =gUnknown_03003E7C
+	ldr r5, _080103C4
 	adds r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -164,9 +164,9 @@ _08010338
 	bx r3
 
 	thumb_func_start sub_8010344
-sub_8010344 ;@ 0x08010344
+sub_8010344
 	push {r3, r4, r5, lr}
-	ldr r5, _080103C4 ;@ =gUnknown_03003E7C
+	ldr r5, _080103C4
 	adds r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -217,7 +217,7 @@ _080103A4
 	b _0801038C
 
 	thumb_func_start nullsub_39
-nullsub_39 ;@ 0x080103A8
+nullsub_39
 	bx lr
 	ALIGN
 _080103AC DCDU 0x00001730

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0803EDE8
 	IMPORT gUnknown_0804AA68
@@ -13,7 +13,7 @@
 	IMPORT sub_800808E
 
 	arm_func_start sub_8008EB4
-sub_8008EB4 ;@ 0x08008EB4
+sub_8008EB4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne _08008EDC
@@ -27,7 +27,7 @@ sub_8008EB4 ;@ 0x08008EB4
 _08008EDC
 	mov r0, r4
 	bl sub_800802E
-	LDR r0, _08009E20 ;@ =_0803EDE8
+	LDR r0, _08009E20
 	STR r0, [r4]
 	mov r0, #6
 	strh r0, [r4, #6]
@@ -41,14 +41,14 @@ _08008EDC
 	bx lr
 
 	arm_func_start nullsub_29
-nullsub_29 ;@ 0x08008F14
+nullsub_29
 	bx lr
 
 	arm_func_start sub_8008F18
-sub_8008F18 ;@ 0x08008F18
+sub_8008F18
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
-	LDR r0, _08009E20 ;@ =_0803EDE8
+	LDR r0, _08009E20
 	mov r5, r1
 	STR r0, [r4]
 	mov r0, r4
@@ -62,7 +62,7 @@ sub_8008F18 ;@ 0x08008F18
 	bx lr
 
 	arm_func_start sub_8008F50
-sub_8008F50 ;@ 0x08008F50
+sub_8008F50
 	mov r0, #1
 	cmp r2, #0xf
 	blo _08008F64
@@ -113,7 +113,7 @@ _08008FDC
 	bx lr
 
 	arm_func_start sub_8008FFC
-sub_8008FFC ;@ 0x08008FFC
+sub_8008FFC
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r4, r0
@@ -136,19 +136,19 @@ sub_8008FFC ;@ 0x08008FFC
 	bx lr
 
 	arm_func_start sub_800904C
-sub_800904C ;@ 0x0800904C
+sub_800904C
 	STR r1, [r0, #0x20]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x24]
 	bx lr
 
 	arm_func_start sub_800905C
-sub_800905C ;@ 0x0800905C
+sub_800905C
 	mov r0, #0
 	bx lr
 
 	arm_func_start sub_8009064
-sub_8009064 ;@ 0x08009064
+sub_8009064
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDR lr, [sp, #8]
 	mov r2, #1
@@ -300,7 +300,7 @@ _08009260
 	bx lr
 
 	arm_func_start sub_8009270
-sub_8009270 ;@ 0x08009270
+sub_8009270
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #4
 	LDR sb, [sp, #0x3c]
@@ -539,7 +539,7 @@ _080095A0
 	bx lr
 
 	arm_func_start sub_80095B8
-sub_80095B8 ;@ 0x080095B8
+sub_80095B8
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDMIA r1, {r6, sb, fp}
 	mov sl, r1
@@ -993,7 +993,7 @@ _08009C28
 	cmp r1, #3
 	moveq r1, #1
 	beq _08009CA4
-	LDR r2, _08009E24 ;@ =gUnknown_0804AB34
+	LDR r2, _08009E24
 	LDRB r2, [r2, r1]
 	cmp r2, #0
 	moveq r3, #0
@@ -1016,7 +1016,7 @@ _08009C84
 	MOV r5, r5, LSL r2
 	sub r4, r4, r2
 _08009C94
-	LDR r2, _08009E28 ;@ =gUnknown_0804AA68
+	LDR r2, _08009E28
 	LDR r1, [r2, r1, lsl #2]
 	add r1, r1, r3
 	sub r1, r1, #2
@@ -1182,8 +1182,8 @@ _08009ED4
 	MOV r2, ip, ASR #3
 	cmp r2, #2
 	bls _0800A0E4
-	LDR r1, _08009E24 ;@ =gUnknown_0804AB34
-	LDR r3, _08009E28 ;@ =gUnknown_0804AA68
+	LDR r1, _08009E24
+	LDR r3, _08009E28
 	LDRB r1, [r1, r2]
 	LDR r2, [r3, r2, lsl #2]
 	sub r3, r2, #2

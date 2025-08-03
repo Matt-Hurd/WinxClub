@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
@@ -36,7 +36,7 @@
 	IMPORT sub_804025C
 
 	thumb_func_start sub_80154DC
-sub_80154DC ;@ 0x080154DC
+sub_80154DC
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _080154F6
@@ -53,7 +53,7 @@ _080154F0
 _080154F6
 	adds r0, r4, #0
 	bl sub_8017444
-	ldr r0, _080158AC ;@ =_0803E314
+	ldr r0, _080158AC
 	str r0, [r4]
 	adds r0, r4, #0
 	adds r0, #0x80
@@ -69,11 +69,11 @@ _080154F6
 	adds r0, #0xff
 	movs r2, #0x78
 	adds r0, #0x81
-	ldr r3, _080158B0 ;@ =sub_80143E0
+	ldr r3, _080158B0
 	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #3
 	strh r0, [r4, #4]
-	ldr r0, _080158B4 ;@ =gUnknown_03003E88
+	ldr r0, _080158B4
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_80177D8
@@ -124,10 +124,10 @@ _08015572
 	b _080154F0
 
 	thumb_func_start sub_8015588
-sub_8015588 ;@ 0x08015588
+sub_8015588
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080158AC ;@ =_0803E314
+	ldr r0, _080158AC
 	adds r5, r1, #0
 	adds r1, r4, #0
 	str r0, [r4]
@@ -138,7 +138,7 @@ sub_8015588 ;@ 0x08015588
 	adds r1, #9
 	lsls r0, r0, #3
 	adds r0, r4, r0
-	ldr r3, _080158B8 ;@ =sub_8014436
+	ldr r3, _080158B8
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	adds r0, r4, #0
 	adds r0, #0xff
@@ -162,7 +162,7 @@ _080155D0
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80155D6
-sub_80155D6 ;@ 0x080155D6
+sub_80155D6
 	push {r3, r4, r5, r6, r7, lr}
 	movs r5, #0
 	adds r4, r0, #0
@@ -173,7 +173,7 @@ _080155DE
 	ldr r0, [r6, #8]
 	cmp r0, #0
 	beq _080155F6
-	ldr r0, _080158BC ;@ =gUnknown_03003EB8
+	ldr r0, _080158BC
 	adds r1, r6, #0
 	adds r1, #8
 	ldr r0, [r0]
@@ -192,7 +192,7 @@ _08015602
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
 	beq _0801561A
-	ldr r0, _080158BC ;@ =gUnknown_03003EB8
+	ldr r0, _080158BC
 	adds r1, r6, #0
 	adds r1, #0x28
 	ldr r0, [r0]
@@ -204,7 +204,7 @@ _0801561A
 	lsrs r5, r5, #0x18
 	cmp r5, #2
 	blo _08015602
-	ldr r6, _080158BC ;@ =gUnknown_03003EB8
+	ldr r6, _080158BC
 	movs r5, #0
 _08015628
 	lsls r0, r5, #2
@@ -262,12 +262,12 @@ _0801565C
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
 	bl __call_via_r1
-	ldr r1, _080158C0 ;@ =gUnknown_03003478
+	ldr r1, _080158C0
 	movs r0, #4
 	ldr r1, [r1]
 	ands r1, r0
 	bne _080156AE
-	ldr r0, _080158C4 ;@ =gUnknown_03003458
+	ldr r0, _080158C4
 	movs r1, #0
 	ldr r0, [r0]
 	bl sub_801CBDE
@@ -277,7 +277,7 @@ _080156AE
 	bx r3
 
 	thumb_func_start sub_80156B4
-sub_80156B4 ;@ 0x080156B4
+sub_80156B4
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r7, r1, #0
 	adds r4, r0, #0
@@ -290,16 +290,16 @@ sub_80156B4 ;@ 0x080156B4
 	strh r3, [r1, r4]
 	cmp r7, #0
 	bne _080156CE
-	ldr r7, _080158C8 ;@ =0x00001136
+	ldr r7, _080158C8
 _080156CE
 	movs r6, #0
 _080156D0
-	ldr r0, _080158BC ;@ =gUnknown_03003EB8
+	ldr r0, _080158BC
 	ldr r0, [r0]
 	bl sub_800116A
 	lsls r1, r6, #2
 	adds r5, r1, r4
-	ldr r2, _080158CC ;@ =gUnknown_08050654
+	ldr r2, _080158CC
 	str r0, [r5, #8]
 	lsls r1, r6, #1
 	ldrh r1, [r2, r1]
@@ -361,7 +361,7 @@ _0801574E
 	blo _080156D0
 	movs r5, #0
 _0801575A
-	ldr r0, _080158BC ;@ =gUnknown_03003EB8
+	ldr r0, _080158BC
 	ldr r0, [r0]
 	bl sub_800116A
 	lsls r1, r5, #2
@@ -407,13 +407,13 @@ _080157A0
 	beq _08015832
 	movs r5, #0
 _080157BA
-	ldr r0, _080158BC ;@ =gUnknown_03003EB8
+	ldr r0, _080158BC
 	ldr r0, [r0]
 	bl sub_800116A
 	lsls r1, r5, #2
 	adds r7, r1, r4
 	str r0, [r7, #0x30]
-	ldr r1, _080158D0 ;@ =0x0000088D
+	ldr r1, _080158D0
 	bl sub_800065C
 	movs r0, #0xf0
 	add r3, sp, #0
@@ -493,25 +493,25 @@ _08015832
 	adds r0, r4, #0
 	bl sub_80147FA
 _08015872
-	ldr r0, _080158D4 ;@ =gUnknown_030034F8
+	ldr r0, _080158D4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08015884
 	movs r3, #0
 	movs r2, #0
-	ldr r1, _080158D8 ;@ =0x0000FFFE
+	ldr r1, _080158D8
 	bl sub_8024D30
 _08015884
-	ldr r0, _080158DC ;@ =gUnknown_0300345C
+	ldr r0, _080158DC
 	ldr r0, [r0]
 	adds r0, #0xe0
 	bl sub_8028C2E
-	ldr r1, _080158C0 ;@ =gUnknown_03003478
+	ldr r1, _080158C0
 	movs r0, #4
 	ldr r1, [r1]
 	ands r1, r0
 	beq _080158A2
-	ldr r0, _080158C4 ;@ =gUnknown_03003458
+	ldr r0, _080158C4
 	movs r1, #1
 	ldr r0, [r0]
 	bl sub_801CBDE

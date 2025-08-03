@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03000000
@@ -118,7 +118,7 @@
 	IMPORT sub_80412A8
 
 	thumb_func_start sub_800E4D8
-sub_800E4D8 ;@ 0x0800E4D8
+sub_800E4D8
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r2, #0
@@ -138,7 +138,7 @@ sub_800E4D8 ;@ 0x0800E4D8
 	bx r3
 
 	thumb_func_start sub_800E500
-sub_800E500 ;@ 0x0800E500
+sub_800E500
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r0, r3, #0
@@ -172,13 +172,13 @@ _0800E52E
 	ALIGN
 
 	thumb_func_start sub_800E53C
-sub_800E53C ;@ 0x0800E53C
+sub_800E53C
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r7, _0800E920 ;@ =0x04000200
+	ldr r7, _0800E920
 	adds r5, r0, #0
 	movs r4, #0
 	strh r4, [r7, #8]
-	ldr r6, _0800E924 ;@ =gUnknown_03003438
+	ldr r6, _0800E924
 	ldr r0, [r6, #0x30]
 	bl sub_80050FA
 	adds r0, r6, #0
@@ -258,22 +258,22 @@ _0800E5DA
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800E5EA
-sub_800E5EA ;@ 0x0800E5EA
+sub_800E5EA
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r6, _0800E924 ;@ =gUnknown_03003438
+	ldr r6, _0800E924
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0
 	bne _0800E672
 	movs r3, #1
 	str r3, [r6, #0x3c]
 	ldr r0, [r6, #0x28]
-	ldr r7, _0800E928 ;@ =gUnknown_03003E94
+	ldr r7, _0800E928
 	cmp r0, #0
 	beq _0800E606
 	ldr r0, [r7]
 	bl sub_800B65E
 _0800E606
-	ldr r0, _0800E92C ;@ =gUnknown_03003EB8
+	ldr r0, _0800E92C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0800E63C
@@ -300,7 +300,7 @@ _0800E624
 	adds r0, r5, #0
 	bl sub_800C93A
 _0800E63C
-	ldr r0, _0800E930 ;@ =gUnknown_03003EA4
+	ldr r0, _0800E930
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0800E648
@@ -312,13 +312,13 @@ _0800E648
 	ldr r0, [r7]
 	bl sub_800B708
 _0800E654
-	ldr r2, _0800E934 ;@ =gUnknown_03007FF8
+	ldr r2, _0800E934
 	ldrh r1, [r2]
 	movs r0, #0
 	movs r3, #1
 	orrs r1, r3
 	strh r1, [r2]
-	ldr r1, _0800E938 ;@ =gUnknown_03003E98
+	ldr r1, _0800E938
 	ldr r1, [r1]
 	cmp r1, #0
 	beq _0800E670
@@ -334,21 +334,21 @@ _0800E672
 	bx r3
 
 	thumb_func_start sub_800E678
-sub_800E678 ;@ 0x0800E678
+sub_800E678
 	push {r4, lr}
 	sub sp, #8
 	movs r0, #2
 	bl sub_801333E
-	add r1, pc, #0x2B8 ;@ =_0800E93C
+	add r1, pc, #0x2B8
 	movs r0, #0
 	bl sub_80133F0
-	add r1, pc, #0x2C4 ;@ =_0800E950
+	add r1, pc, #0x2C4
 	movs r0, #1
 	bl sub_80133F0
 	movs r0, #1
 	bl sub_80133A0
 	movs r2, #0
-	ldr r4, _0800E964 ;@ =0x0000777F
+	ldr r4, _0800E964
 	movs r3, #0
 	movs r1, #1
 	str r2, [sp, #4]
@@ -367,14 +367,14 @@ sub_800E678 ;@ 0x0800E678
 	movs r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
-	ldr r2, _0800E96C ;@ =0x000050FC
+	ldr r2, _0800E96C
 	movs r1, #3
-	ldr r3, _0800E968 ;@ =0x0000FFFF
+	ldr r3, _0800E968
 	bl sub_803FDB8
-	ldr r0, _0800E970 ;@ =gUnknown_03003EBC
-	add r1, pc, #0x29C ;@ =_0800E974
+	ldr r0, _0800E970
+	add r1, pc, #0x29C
 	ldr r4, [r0]
-	ldr r0, _0800E988 ;@ =gUnknown_03003EA8
+	ldr r0, _0800E988
 	ldr r0, [r0]
 	bl sub_8004FFC
 	ldr r1, [r0]
@@ -397,8 +397,8 @@ sub_800E678 ;@ 0x0800E678
 	ldr r2, [r1]
 	adds r0, r2, r0
 	str r0, [r1, #0xc]
-	ldr r1, _0800E98C ;@ =gUnknown_03003D30
-	ldr r0, _0800E924 ;@ =gUnknown_03003438
+	ldr r1, _0800E98C
+	ldr r0, _0800E924
 	ldr r1, [r1]
 	ldr r0, [r0, #0x14]
 	ldrb r1, [r1, #3]
@@ -409,15 +409,15 @@ sub_800E678 ;@ 0x0800E678
 	bx r3
 
 	thumb_func_start sub_800E71C
-sub_800E71C ;@ 0x0800E71C
+sub_800E71C
 	push {r0, r4, r5, r6, r7, lr}
-	ldr r5, _0800E938 ;@ =gUnknown_03003E98
+	ldr r5, _0800E938
 	ldr r0, [r5]
 	bl sub_800B082
-	ldr r7, _0800E920 ;@ =0x04000200
+	ldr r7, _0800E920
 	movs r4, #0
 	strh r4, [r7, #8]
-	ldr r0, _0800E924 ;@ =gUnknown_03003438
+	ldr r0, _0800E924
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	bne _0800E756
@@ -434,10 +434,10 @@ sub_800E71C ;@ 0x0800E71C
 	adds r0, r5, #0
 	bl sub_8004DE6
 _0800E752
-	ldr r0, _0800E924 ;@ =gUnknown_03003438
+	ldr r0, _0800E924
 	str r5, [r0, #8]
 _0800E756
-	ldr r6, _0800E924 ;@ =gUnknown_03003438
+	ldr r6, _0800E924
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
 	bne _0800E77A
@@ -466,7 +466,7 @@ _0800E77A
 	bl sub_803DA80
 	adds r5, r0, #0
 	beq _0800E79E
-	add r1, pc, #0x1F8 ;@ =_0800E990
+	add r1, pc, #0x1F8
 	adds r0, r5, #0
 	bl sub_8017474
 _0800E79E
@@ -497,7 +497,7 @@ _0800E7C8
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
-	ldr r0, _0800E9A0 ;@ =0x00000524
+	ldr r0, _0800E9A0
 	bl sub_803DA80
 	adds r5, r0, #0
 	beq _0800E7E8
@@ -518,10 +518,10 @@ _0800E7EA
 	bl sub_803DA80
 	cmp r0, #0
 	beq _0800E812
-	ldr r1, _0800E9A4 ;@ =_0803ECCC
-	ldr r2, _0800E9A8 ;@ =gUnknown_03003E90
+	ldr r1, _0800E9A4
+	ldr r2, _0800E9A8
 	str r1, [r0]
-	ldr r1, _0800E9AC ;@ =_0803E86C
+	ldr r1, _0800E9AC
 	str r0, [r2]
 	str r1, [r0]
 _0800E812
@@ -553,7 +553,7 @@ _0800E842
 	bne _0800E860
 	adds r3, r4, #0
 	movs r2, #0
-	ldr r0, _0800E9B0 ;@ =0x00000A08
+	ldr r0, _0800E9B0
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
@@ -579,23 +579,23 @@ _0800E87C
 	adds r0, r5, #0
 	adds r3, r4, #0
 	movs r1, #0
-	ldr r2, _0800E9B4 ;@ =0x00003442
+	ldr r2, _0800E9B4
 	str r5, [r6, #0x28]
 	bl sub_800B5EE
-	add r1, pc, #0x12C ;@ =_0800E9B8
+	add r1, pc, #0x12C
 	ldr r0, [r6, #8]
 	bl sub_8004FFC
 	adds r1, r0, #0
 	ldr r0, [r6, #0x28]
 	bl sub_800B676
-	add r1, pc, #0x128 ;@ =_0800E9C4
+	add r1, pc, #0x128
 	ldr r0, [r6, #8]
 	bl sub_8004FFC
 	adds r2, r0, #0
 	ldr r0, [r6, #0x28]
 	movs r1, #5
 	bl sub_800B772
-	ldr r5, _0800E98C ;@ =gUnknown_03003D30
+	ldr r5, _0800E98C
 	ldr r0, [r5]
 	ldrb r0, [r0]
 	lsls r3, r0, #1
@@ -620,7 +620,7 @@ _0800E8DC
 	bne _0800E900
 	adds r3, r4, #0
 	movs r2, #0
-	ldr r0, _0800E9CC ;@ =0x00001308
+	ldr r0, _0800E9CC
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
@@ -632,7 +632,7 @@ _0800E8F8
 	str r5, [r6, #0x24]
 	bl sub_8026962
 _0800E900
-	ldr r5, _0800E938 ;@ =gUnknown_03003E98
+	ldr r5, _0800E938
 	ldr r0, [r5]
 	ldr r1, [sp]
 	bl sub_800B058
@@ -696,8 +696,8 @@ _0800E9D0
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0800E9FE
-	ldr r0, _0800ECBC ;@ =gUnknown_03003EA8
-	add r1, pc, #0x2E4 ;@ =_0800ECC0
+	ldr r0, _0800ECBC
+	add r1, pc, #0x2E4
 	ldr r0, [r0]
 	bl sub_8004FFC
 	adds r3, r4, #0
@@ -720,10 +720,10 @@ _0800EA00
 _0800EA06
 	movs r0, #0
 	bl sub_80050FA
-	ldr r0, _0800ECC8 ;@ =gUnknown_03003EAC
+	ldr r0, _0800ECC8
 	adds r3, r5, #0
 	movs r1, #0
-	ldr r2, _0800ECCC ;@ =sub_800E5EA
+	ldr r2, _0800ECCC
 	ldr r0, [r0]
 	bl sub_800B12C
 	strh r5, [r7, #8]
@@ -732,122 +732,122 @@ _0800EA06
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800EA22
-sub_800EA22 ;@ 0x0800EA22
+sub_800EA22
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, sp, #0x18
 	adds r0, r5, #0
 	bl sub_8031578
-	ldr r4, _0800ECD0 ;@ =gUnknown_03003E9C
-	ldr r1, _0800ECD4 ;@ =sub_80517C8
+	ldr r4, _0800ECD0
+	ldr r1, _0800ECD4
 	ldr r0, [r4]
 	bl sub_80315FC
 	movs r1, #3
 	ldr r0, [r4]
 	bl sub_80315CE
 	ldr r0, [r4]
-	ldr r2, _0800ECD8 ;@ =0x00000018
-	ldr r1, _0800ECDC ;@ =gUnknown_0300142C
+	ldr r2, _0800ECD8
+	ldr r1, _0800ECDC
 	str r2, [sp, #4]
 	str r1, [sp]
 	movs r1, #0
-	ldr r2, _0800ECE4 ;@ =gUnknown_03000000
-	ldr r3, _0800ECE0 ;@ =0x0000142C
+	ldr r2, _0800ECE4
+	ldr r3, _0800ECE0
 	bl sub_8031600
 	ldr r0, [r4]
-	ldr r2, _0800ECE8 ;@ =0x00000000
-	ldr r1, _0800ECEC ;@ =gUnknown_03001140
+	ldr r2, _0800ECE8
+	ldr r1, _0800ECEC
 	str r2, [sp, #4]
 	str r1, [sp]
 	movs r1, #1
-	ldr r2, _0800ECF4 ;@ =gUnknown_03000000
-	ldr r3, _0800ECF0 ;@ =0x00001140
+	ldr r2, _0800ECF4
+	ldr r3, _0800ECF0
 	bl sub_8031600
 	ldr r0, [r4]
-	ldr r2, _0800ECF8 ;@ =0x00000AFC
-	ldr r1, _0800ECFC ;@ =gUnknown_030033C8
+	ldr r2, _0800ECF8
+	ldr r1, _0800ECFC
 	str r2, [sp, #4]
 	str r1, [sp]
 	movs r1, #2
-	ldr r2, _0800ED04 ;@ =gUnknown_03001444
-	ldr r3, _0800ED00 ;@ =0x00001F84
+	ldr r2, _0800ED04
+	ldr r3, _0800ED00
 	bl sub_8031600
 	movs r1, #1
 	adds r0, r5, #0
 	bl sub_8031622
 	movs r1, #1
-	ldr r0, _0800ED08 ;@ =sub_8017FFE
+	ldr r0, _0800ED08
 	bl sub_801837C
 	movs r1, #0
-	ldr r0, _0800ED0C ;@ =sub_8017DE6
+	ldr r0, _0800ED0C
 	bl sub_801837C
 	movs r1, #0x10
-	ldr r0, _0800ED10 ;@ =sub_8028CE8
+	ldr r0, _0800ED10
 	bl sub_801837C
 	movs r1, #0x13
-	ldr r0, _0800ED14 ;@ =sub_80397DC
+	ldr r0, _0800ED14
 	bl sub_801837C
 	movs r1, #0x11
-	ldr r0, _0800ED18 ;@ =sub_8028C7C
+	ldr r0, _0800ED18
 	bl sub_801837C
 	movs r1, #0x12
-	ldr r0, _0800ED1C ;@ =sub_8028D60
+	ldr r0, _0800ED1C
 	bl sub_801837C
 	movs r1, #0x14
-	ldr r0, _0800ED20 ;@ =sub_8038D2C
+	ldr r0, _0800ED20
 	bl sub_801837C
 	movs r1, #2
-	ldr r0, _0800ED24 ;@ =sub_801AB34
+	ldr r0, _0800ED24
 	bl sub_801837C
 	movs r1, #0xf
-	ldr r0, _0800ED28 ;@ =sub_8026014
+	ldr r0, _0800ED28
 	bl sub_801837C
 	movs r1, #0x15
-	ldr r0, _0800ED2C ;@ =sub_8028F64
+	ldr r0, _0800ED2C
 	bl sub_801837C
 	movs r1, #3
-	ldr r0, _0800ED30 ;@ =sub_80192CE
+	ldr r0, _0800ED30
 	bl sub_801837C
 	movs r1, #4
-	ldr r0, _0800ED34 ;@ =sub_8019BE2
+	ldr r0, _0800ED34
 	bl sub_801837C
 	movs r1, #5
-	ldr r0, _0800ED38 ;@ =sub_801A4DA
+	ldr r0, _0800ED38
 	bl sub_801837C
 	movs r1, #6
-	ldr r0, _0800ED3C ;@ =sub_801AED0
+	ldr r0, _0800ED3C
 	bl sub_801837C
 	movs r1, #7
-	ldr r0, _0800ED40 ;@ =sub_8022D6E
+	ldr r0, _0800ED40
 	bl sub_801837C
 	movs r1, #8
-	ldr r0, _0800ED44 ;@ =sub_8023486
+	ldr r0, _0800ED44
 	bl sub_801837C
 	movs r1, #9
-	ldr r0, _0800ED48 ;@ =sub_801D360
+	ldr r0, _0800ED48
 	bl sub_801837C
 	movs r1, #0xa
-	ldr r0, _0800ED4C ;@ =sub_8022726
+	ldr r0, _0800ED4C
 	bl sub_801837C
 	movs r1, #0xd
-	ldr r0, _0800ED50 ;@ =sub_8031B98
+	ldr r0, _0800ED50
 	bl sub_801837C
 	movs r1, #0x16
-	ldr r0, _0800ED54 ;@ =sub_80305CC
+	ldr r0, _0800ED54
 	bl sub_801837C
 	movs r1, #0x17
-	ldr r0, _0800ED58 ;@ =sub_803B406
+	ldr r0, _0800ED58
 	bl sub_801837C
 	movs r1, #0xb
-	ldr r0, _0800ED5C ;@ =sub_8035324
+	ldr r0, _0800ED5C
 	bl sub_801837C
 	movs r1, #0xc
-	ldr r0, _0800ED60 ;@ =sub_8038754
+	ldr r0, _0800ED60
 	bl sub_801837C
-	ldr r0, _0800ED64 ;@ =gPlayerPointer
+	ldr r0, _0800ED64
 	movs r4, #0
 	strb r4, [r0]
-	ldr r0, _0800ED68 ;@ =gUnknown_03003D35
+	ldr r0, _0800ED68
 	strb r4, [r0]
 	bl sub_8005106
 	adds r1, r0, #0
@@ -859,7 +859,7 @@ sub_800EA22 ;@ 0x0800EA22
 	movs r1, #0x31
 	lsls r1, r1, #0xc
 	bl sub_80050C0
-	ldr r6, _0800ED6C ;@ =gUnknown_03003438
+	ldr r6, _0800ED6C
 	str r0, [r6, #0x30]
 	bl sub_8005106
 	adds r1, r0, #0
@@ -907,7 +907,7 @@ sub_800EA22 ;@ 0x0800EA22
 	movs r1, #0xce
 	ldr r0, [r6, #0x1c]
 	bl sub_8017884
-	ldr r2, _0800ED6C ;@ =gUnknown_03003438
+	ldr r2, _0800ED6C
 	movs r0, #8
 	adds r2, #0x40
 	ldr r1, [r2]
@@ -920,7 +920,7 @@ _0800EBE4
 	cmp r0, #0
 	bne _0800EBE4
 	bl sub_800E53C
-	ldr r0, _0800ED70 ;@ =gPlayerEntity
+	ldr r0, _0800ED70
 	ldr r0, [r0]
 	bl sub_803DA18
 	movs r1, #0
@@ -932,12 +932,12 @@ _0800EBE4
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800EC0E
-sub_800EC0E ;@ 0x0800EC0E
+sub_800EC0E
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	cmp r0, #2
 	bne _0800EC78
-	ldr r4, _0800ED6C ;@ =gUnknown_03003438
+	ldr r4, _0800ED6C
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _0800EC24
@@ -948,7 +948,7 @@ _0800EC24
 	cmp r0, #0
 	bne _0800EC32
 	bl sub_8008160
-	ldr r1, _0800ED74 ;@ =0x0000C350
+	ldr r1, _0800ED74
 	cmp r0, r1
 	bhs _0800EC42
 _0800EC32
@@ -956,7 +956,7 @@ _0800EC32
 	cmp r0, #1
 	bne _0800EC78
 	bl sub_8008160
-	ldr r1, _0800ED78 ;@ =0x000249F0
+	ldr r1, _0800ED78
 	cmp r0, r1
 	blo _0800EC78
 _0800EC42

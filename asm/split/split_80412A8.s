@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003EB4
@@ -21,7 +21,7 @@
 	IMPORT sub_803F3E8
 
 	thumb_func_start sub_80412A8
-sub_80412A8 ;@ 0x080412A8
+sub_80412A8
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	sub sp, #0x80
@@ -31,7 +31,7 @@ sub_80412A8 ;@ 0x080412A8
 	add r0, sp, #0x24
 	bl gUnknown_0300028C
 	adds r2, r0, #0
-	ldr r0, _08041418 ;@ =gUnknown_03003E84
+	ldr r0, _08041418
 	adds r2, #0x48
 	movs r3, #0
 	subs r1, r6, #4
@@ -94,7 +94,7 @@ _08041336
 	ldr r0, [sp, #0x1c]
 	adds r0, r4, r0
 	subs r3, r0, r6
-	ldr r0, _08041418 ;@ =gUnknown_03003E84
+	ldr r0, _08041418
 	str r3, [sp, #0x18]
 	ldr r0, [r0]
 	ldr r1, [sp, #0x20]
@@ -105,14 +105,14 @@ _08041336
 	bpl _08041360
 	movs r2, #0
 	movs r1, #0
-	ldr r0, _0804141C ;@ =0x0000146C
+	ldr r0, _0804141C
 	bl sub_803D984
 	adds r6, r0, #0
 	b _08041362
 _08041360
-	ldr r6, _08041420 ;@ =0x0601606C
+	ldr r6, _08041420
 _08041362
-	ldr r0, _08041424 ;@ =gUnknown_03003EB4
+	ldr r0, _08041424
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0804137A
@@ -120,12 +120,12 @@ _08041362
 	str r0, [sp, #0x14]
 	add r0, sp, #0x14
 	adds r1, r6, #0
-	ldr r2, _08041428 ;@ =0x0500051B
+	ldr r2, _08041428
 	bl CpuSet
 	b _080413A4
 _0804137A
 	lsls r1, r6, #0x1e
-	ldr r0, _0804142C ;@ =0x040000D4
+	ldr r0, _0804142C
 	bpl _08041394
 	movs r1, #0
 	add r3, sp, #0
@@ -133,7 +133,7 @@ _0804137A
 	add r1, sp, #0x14
 	str r1, [r0]
 	str r6, [r0, #4]
-	ldr r1, _08041430 ;@ =0x81000A36
+	ldr r1, _08041430
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b _080413A4
@@ -143,11 +143,11 @@ _08041394
 	add r1, sp, #0x14
 	str r1, [r0]
 	str r6, [r0, #4]
-	ldr r1, _08041434 ;@ =0x8500051B
+	ldr r1, _08041434
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 _080413A4
-	ldr r2, _0804141C ;@ =0x0000146C
+	ldr r2, _0804141C
 	adds r1, r6, #0
 	add r0, sp, #0x24
 	bl gUnknown_03000190
@@ -209,11 +209,11 @@ _08041430 DCDU 0x81000A36
 _08041434 DCDU 0x8500051B
 
 	thumb_func_start _fp_init
-_fp_init ;@ 0x08041438
+_fp_init
 	bx pc
 	ALIGN
 
 	arm_func_start __32_fp_init
-__32_fp_init ;@ 0x0804143C
+__32_fp_init
 	bx lr
 	END

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_0803EB34
@@ -9,7 +9,7 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800AFD4
-sub_800AFD4 ;@ 0x0800AFD4
+sub_800AFD4
 	push {r3, lr}
 	cmp r0, #0
 	bne _0800AFE4
@@ -18,11 +18,11 @@ sub_800AFD4 ;@ 0x0800AFD4
 	cmp r0, #0
 	beq _0800B014
 _0800AFE4
-	ldr r1, _0800B0C8 ;@ =_0803ECD4
+	ldr r1, _0800B0C8
 	str r1, [r0]
-	ldr r1, _0800B0CC ;@ =gUnknown_03003E98
+	ldr r1, _0800B0CC
 	str r0, [r1]
-	ldr r1, _0800B0D0 ;@ =_0803EB34
+	ldr r1, _0800B0D0
 	str r1, [r0]
 	movs r1, #1
 	lsls r1, r1, #0x1a
@@ -34,7 +34,7 @@ _0800AFE4
 	movs r3, #0x80
 	bics r2, r3
 	strh r2, [r1]
-	ldr r1, _0800B0D4 ;@ =0x00007FFF
+	ldr r1, _0800B0D4
 	movs r2, #5
 	lsls r2, r2, #0x18
 	strh r1, [r2]
@@ -48,10 +48,10 @@ _0800B014
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B01A
-sub_800B01A ;@ 0x0800B01A
+sub_800B01A
 	push {r3, lr}
-	ldr r2, _0800B0C8 ;@ =_0803ECD4
-	ldr r3, _0800B0CC ;@ =gUnknown_03003E98
+	ldr r2, _0800B0C8
+	ldr r3, _0800B0CC
 	str r2, [r0]
 	movs r2, #0
 	str r2, [r3]
@@ -64,7 +64,7 @@ _0800B02E
 	bx r3
 
 	thumb_func_start sub_800B034
-sub_800B034 ;@ 0x0800B034
+sub_800B034
 	movs r0, #1
 	lsls r0, r0, #0xc
 	lsls r2, r0, #0xe
@@ -80,7 +80,7 @@ _0800B046
 	bx lr
 
 	thumb_func_start sub_800B04C
-sub_800B04C ;@ 0x0800B04C
+sub_800B04C
 	movs r0, #1
 	lsls r0, r0, #0x1a
 	ldrh r0, [r0]
@@ -89,7 +89,7 @@ sub_800B04C ;@ 0x0800B04C
 	bx lr
 
 	thumb_func_start sub_800B058
-sub_800B058 ;@ 0x0800B058
+sub_800B058
 	movs r0, #1
 	lsls r0, r0, #0x1a
 	ldrh r2, [r0]
@@ -114,7 +114,7 @@ _0800B080
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B082
-sub_800B082 ;@ 0x0800B082
+sub_800B082
 	movs r0, #1
 	lsls r0, r0, #0x1a
 	ldrh r0, [r0]
@@ -123,7 +123,7 @@ sub_800B082 ;@ 0x0800B082
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B08E
-sub_800B08E ;@ 0x0800B08E
+sub_800B08E
 	push {r3, lr}
 	bl VBlankIntrWait
 	add sp, #4
@@ -131,13 +131,13 @@ sub_800B08E ;@ 0x0800B08E
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800B09A
-sub_800B09A ;@ 0x0800B09A
+sub_800B09A
 	movs r0, #3
 	lsls r0, r0, #0x19
 	bx lr
 
 	thumb_func_start sub_800B0A0
-sub_800B0A0 ;@ 0x0800B0A0
+sub_800B0A0
 	lsls r3, r2, #0x10
 	lsls r0, r2, #8
 	lsls r2, r2, #0x18
@@ -156,7 +156,7 @@ sub_800B0A0 ;@ 0x0800B0A0
 	bx lr
 
 	thumb_func_start sub_800B0C0
-sub_800B0C0 ;@ 0x0800B0C0
+sub_800B0C0
 	movs r0, #1
 	lsls r0, r0, #0x1a
 	ldrh r0, [r0, #6]

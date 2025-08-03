@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0803E684
 	IMPORT gUnknown_0804AE70
@@ -13,7 +13,7 @@
 	IMPORT gUnknown_03000058
 
 	thumb_func_start sub_80103C8
-sub_80103C8 ;@ 0x080103C8
+sub_80103C8
 	push {r3, lr}
 	cmp r0, #0
 	bne _080103D8
@@ -35,14 +35,14 @@ _080103E6
 	bx r3
 
 	thumb_func_start sub_80103EC
-sub_80103EC ;@ 0x080103EC
+sub_80103EC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x50
 	movs r6, #0xb
 	strb r6, [r0, #4]
 	movs r5, #0
-	ldr r0, _0801068C ;@ =0x0000064C
+	ldr r0, _0801068C
 	adds r7, r1, #0
 	movs r1, #0x90
 	str r5, [r4, #0x58]
@@ -64,7 +64,7 @@ sub_80103EC ;@ 0x080103EC
 	str r2, [r0, #0x18]
 	strb r6, [r3]
 	str r2, [r0, #0x34]
-	ldr r2, _08010690 ;@ =0x0001FEEB
+	ldr r2, _08010690
 	str r5, [r0, #0x38]
 	str r2, [r0, #0x3c]
 	movs r2, #7
@@ -81,7 +81,7 @@ sub_80103EC ;@ 0x080103EC
 	movs r2, #0xff
 	strb r2, [r1, #0xe]
 	strb r5, [r1, #0xf]
-	ldr r1, _08010694 ;@ =0x000007FF
+	ldr r1, _08010694
 	str r1, [r0, #0x20]
 	str r5, [r0, #0x28]
 	str r5, [r0, #0x2c]
@@ -90,7 +90,7 @@ sub_80103EC ;@ 0x080103EC
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8010456
-sub_8010456 ;@ 0x08010456
+sub_8010456
 	movs r2, #0x1f
 	asrs r3, r0, #3
 	cmp r3, #0x1f
@@ -98,7 +98,7 @@ sub_8010456 ;@ 0x08010456
 	movs r2, #0
 	cmp r0, #0
 	blt _08010478
-	ldr r2, _08010698 ;@ =gUnknown_0804AE70
+	ldr r2, _08010698
 	lsls r0, r0, #0x1d
 	ldrb r1, [r2, r1]
 	lsrs r0, r0, #0x1d
@@ -115,10 +115,10 @@ _08010478
 	bx lr
 
 	thumb_func_start sub_801047C
-sub_801047C ;@ 0x0801047C
+sub_801047C
 	push {r4, r5, r6, r7}
 	movs r6, #0xff
-	ldr r5, _08010698 ;@ =gUnknown_0804AE70
+	ldr r5, _08010698
 	movs r4, #0
 	adds r6, #1
 _08010486
@@ -155,7 +155,7 @@ _080104A8
 	bx lr
 
 	thumb_func_start sub_80104BC
-sub_80104BC ;@ 0x080104BC
+sub_80104BC
 	push {r3, r4, r5, r6, r7, lr}
 	movs r6, #0
 	str r6, [r0, #0x74]
@@ -188,7 +188,7 @@ _080104F2
 	adds r5, #0x80
 	str r6, [r4, #0x7c]
 	str r6, [r5, #4]
-	ldr r0, _0801069C ;@ =0x0001FFFF
+	ldr r0, _0801069C
 	str r6, [r4, #0x58]
 	str r0, [r5]
 	movs r0, #0x71
@@ -222,10 +222,10 @@ _0801052E
 	bx r3
 
 	thumb_func_start sub_801053C
-sub_801053C ;@ 0x0801053C
+sub_801053C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080106A0 ;@ =_0803E684
+	ldr r0, _080106A0
 	str r0, [r4]
 	adds r0, r4, #0
 	adds r0, #0x94
@@ -233,7 +233,7 @@ sub_801053C ;@ 0x0801053C
 	adds r0, r4, #0
 	adds r0, #0xf0
 	bl gUnknown_03000000
-	ldr r0, _080106A4 ;@ =0x00001710
+	ldr r0, _080106A4
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -250,10 +250,10 @@ sub_801053C ;@ 0x0801053C
 	bx r3
 
 	thumb_func_start sub_8010574
-sub_8010574 ;@ 0x08010574
+sub_8010574
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080106A0 ;@ =_0803E684
+	ldr r0, _080106A0
 	adds r5, r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
@@ -262,7 +262,7 @@ sub_8010574 ;@ 0x08010574
 	adds r0, r4, #0
 	adds r0, #0xf0
 	bl gUnknown_03000000
-	ldr r0, _080106A4 ;@ =0x00001710
+	ldr r0, _080106A4
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -279,10 +279,10 @@ sub_8010574 ;@ 0x08010574
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80105AE
-sub_80105AE ;@ 0x080105AE
+sub_80105AE
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080106A0 ;@ =_0803E684
+	ldr r0, _080106A0
 	str r0, [r4]
 	ldr r0, [r4, #0x70]
 	cmp r0, #0
@@ -323,16 +323,16 @@ _080105EA
 	bx r3
 
 	thumb_func_start sub_8010604
-sub_8010604 ;@ 0x08010604
+sub_8010604
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080106A4 ;@ =0x00001710
+	ldr r0, _080106A4
 	adds r5, r1, #0
 	adds r0, r4, r0
 	movs r2, #0x1a
 	bl __rt_memcpy_w
 	ldrh r0, [r5, #0x16]
-	ldr r2, _080106A8 ;@ =0x0000FFFF
+	ldr r2, _080106A8
 	cmp r0, r2
 	bne _0801062E
 	ldr r0, [r4, #0xc]
@@ -377,14 +377,14 @@ _08010644
 	lsls r1, r1, #8
 	adds r5, r4, r1
 	ldr r1, [r5, #0x18]
-	ldr r2, _080106AC ;@ =0x0000146C
+	ldr r2, _080106AC
 	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xf0
 	ldr r1, [r0]
 	ldr r2, [r1, #0x1c]
 	adds r3, r2, r1
-	ldr r2, _080106AC ;@ =0x0000146C
+	ldr r2, _080106AC
 	ldr r1, [r5, #0x1c]
 	bl __call_via_r3
 	pop {r3, r4, r5}

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030033D0
 	IMPORT gUnknown_03003EA4
@@ -9,14 +9,14 @@
 	IMPORT sub_8004C44
 
 	thumb_func_start sub_801537C
-sub_801537C ;@ 0x0801537C
+sub_801537C
 	push {r4, r5, r6, r7, lr}
 	adds r6, r2, #0
 	adds r4, r0, #0
 	adds r0, #0xc0
 	movs r2, #0
 	sub sp, #0x14
-	ldr r3, _080154D4 ;@ =gUnknown_03003EA4
+	ldr r3, _080154D4
 	str r2, [r0, #0x1c]
 	ldr r2, [r3]
 	movs r5, #0x13
@@ -133,7 +133,7 @@ _08015446
 	ldr r0, [r6]
 	beq _08015480
 	ldr r1, [sp, #8]
-	ldr r2, _080154D8 ;@ =gUnknown_030033D0
+	ldr r2, _080154D8
 	subs r0, r1, r0
 	ldr r1, [r6, #4]
 	asrs r0, r5
@@ -159,7 +159,7 @@ _08015496
 	b _080153EE
 
 	non_word_aligned_thumb_func_start sub_801549A
-sub_801549A ;@ 0x0801549A
+sub_801549A
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #2
@@ -170,7 +170,7 @@ sub_801549A ;@ 0x0801549A
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80154AA
-sub_80154AA ;@ 0x080154AA
+sub_80154AA
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #2
@@ -181,7 +181,7 @@ sub_80154AA ;@ 0x080154AA
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80154BA
-sub_80154BA ;@ 0x080154BA
+sub_80154BA
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #2
@@ -194,7 +194,7 @@ sub_80154BA ;@ 0x080154BA
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80154CE
-sub_80154CE ;@ 0x080154CE
+sub_80154CE
 	adds r0, #0xc0
 	ldr r0, [r0, #0x1c]
 	bx lr

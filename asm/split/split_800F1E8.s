@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_0803E870
@@ -16,7 +16,7 @@
 	IMPORT sub_803DAC0
 
 	thumb_func_start sub_800F1E8
-sub_800F1E8 ;@ 0x0800F1E8
+sub_800F1E8
 	push {r4}
 	movs r1, #0x11
 	lsls r1, r1, #0xb
@@ -49,7 +49,7 @@ _0800F206
 	bx lr
 
 	thumb_func_start sub_800F220
-sub_800F220 ;@ 0x0800F220
+sub_800F220
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x80
@@ -87,7 +87,7 @@ _0800F246
 	ALIGN
 
 	thumb_func_start sub_800F264
-sub_800F264 ;@ 0x0800F264
+sub_800F264
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0800F27C
@@ -103,7 +103,7 @@ _0800F276
 _0800F27C
 	adds r0, r4, #0
 	bl sub_800FB48
-	ldr r0, _0800F4E8 ;@ =_0803E870
+	ldr r0, _0800F4E8
 	str r0, [r4]
 	movs r0, #0
 	str r0, [r4, #0x70]
@@ -113,10 +113,10 @@ _0800F27C
 	b _0800F276
 
 	non_word_aligned_thumb_func_start sub_800F292
-sub_800F292 ;@ 0x0800F292
+sub_800F292
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _0800F4E8 ;@ =_0803E870
+	ldr r0, _0800F4E8
 	adds r5, r1, #0
 	movs r1, #0
 	str r0, [r4]
@@ -132,17 +132,17 @@ _0800F2AE
 	bx r3
 
 	thumb_func_start sub_800F2B4
-sub_800F2B4 ;@ 0x0800F2B4
+sub_800F2B4
 	movs r0, #0x98
 	bx lr
 
 	thumb_func_start sub_800F2B8
-sub_800F2B8 ;@ 0x0800F2B8
+sub_800F2B8
 	str r1, [r0, #0x70]
 	bx lr
 
 	thumb_func_start sub_800F2BC
-sub_800F2BC ;@ 0x0800F2BC
+sub_800F2BC
 	push {r3, lr}
 	ldr r1, [r0, #0x74]
 	cmp r1, #0
@@ -155,7 +155,7 @@ sub_800F2BC ;@ 0x0800F2BC
 	ldr r0, [r0, #0x5c]
 	lsls r0, r0, #0x1e
 	beq _0800F2DC
-	ldr r0, _0800F4EC ;@ =gUnknown_03003E84
+	ldr r0, _0800F4EC
 	ldr r0, [r0]
 	bl nullsub_5
 _0800F2DC
@@ -164,7 +164,7 @@ _0800F2DC
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800F2E2
-sub_800F2E2 ;@ 0x0800F2E2
+sub_800F2E2
 	push {r4, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -192,7 +192,7 @@ _0800F306
 	b _0800F300
 
 	non_word_aligned_thumb_func_start sub_800F312
-sub_800F312 ;@ 0x0800F312
+sub_800F312
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, [r0, #4]
 	adds r4, r0, #0
@@ -208,7 +208,7 @@ sub_800F312 ;@ 0x0800F312
 _0800F32A
 	cmp r1, #0
 	beq _0800F3C6
-	ldr r0, _0800F4EC ;@ =gUnknown_03003E84
+	ldr r0, _0800F4EC
 	ldr r0, [r0]
 	ldr r1, [r4, #0x74]
 	bl sub_803DAC0
@@ -321,7 +321,7 @@ _0800F400
 	bx r3
 
 	thumb_func_start sub_800F408
-sub_800F408 ;@ 0x0800F408
+sub_800F408
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x5c]

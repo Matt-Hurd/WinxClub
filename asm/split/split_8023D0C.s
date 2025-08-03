@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003448
@@ -17,7 +17,7 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8023D0C
-sub_8023D0C ;@ 0x08023D0C
+sub_8023D0C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne _08023D26
@@ -125,7 +125,7 @@ _08023DB8
 	b _08023D20
 
 	thumb_func_start sub_8023DD0
-sub_8023DD0 ;@ 0x08023DD0
+sub_8023DD0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0xff
@@ -142,7 +142,7 @@ _08023DE6
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
 	beq _08023DFE
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r6, #0
 	adds r1, #0x10
 	ldr r0, [r0]
@@ -161,7 +161,7 @@ _08023E0A
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
 	beq _08023E22
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r6, #0
 	adds r1, #0x28
 	ldr r0, [r0]
@@ -180,7 +180,7 @@ _08023E2E
 	ldr r0, [r6, #0x48]
 	cmp r0, #0
 	beq _08023E46
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r6, #0
 	adds r1, #0x48
 	ldr r0, [r0]
@@ -202,7 +202,7 @@ _08023E52
 	cmp r1, #0
 	beq _08023E6E
 	adds r1, r0, #0
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, #0x98
 	ldr r0, [r0]
 	bl sub_8000DE6
@@ -220,7 +220,7 @@ _08023E7A
 	ldr r0, [r6, #0x78]
 	cmp r0, #0
 	beq _08023E92
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r6, #0
 	adds r1, #0x78
 	ldr r0, [r0]
@@ -242,7 +242,7 @@ _08023E9E
 	cmp r1, #0
 	beq _08023EBA
 	adds r1, r0, #0
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, #0xb0
 	ldr r0, [r0]
 	bl sub_8000DE6
@@ -260,7 +260,7 @@ _08023EC6
 	ldr r0, [r6, #0x60]
 	cmp r0, #0
 	beq _08023EDE
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r6, #0
 	adds r1, #0x60
 	ldr r0, [r0]
@@ -282,7 +282,7 @@ _08023EEA
 	cmp r1, #0
 	beq _08023F06
 	adds r1, r0, #0
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, #0x88
 	ldr r0, [r0]
 	bl sub_8000DE6
@@ -303,7 +303,7 @@ _08023F12
 	cmp r1, #0
 	beq _08023F2E
 	adds r1, r0, #0
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, #0xd4
 	ldr r0, [r0]
 	bl sub_8000DE6
@@ -319,7 +319,7 @@ _08023F2E
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	beq _08023F50
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r4, #0
 	adds r1, #0xd0
 	ldr r0, [r0]
@@ -329,7 +329,7 @@ _08023F50
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _08023F64
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r4, #0
 	adds r1, #0xc8
 	ldr r0, [r0]
@@ -339,14 +339,14 @@ _08023F64
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _08023F78
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, r4, #0
 	adds r1, #0xcc
 	ldr r0, [r0]
 	bl sub_8000DE6
 	str r7, [r5, #0xc]
 _08023F78
-	ldr r0, _08024070 ;@ =gUnknown_0300345C
+	ldr r0, _08024070
 	ldr r0, [r0]
 	adds r0, #0xc0
 	bl sub_80268AC
@@ -355,7 +355,7 @@ _08023F78
 	bx r3
 
 	thumb_func_start sub_8023F88
-sub_8023F88 ;@ 0x08023F88
+sub_8023F88
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x28]
@@ -376,7 +376,7 @@ _08023F9E
 	cmp r1, #0
 	beq _08023FBA
 	adds r1, r0, #0
-	ldr r0, _0802406C ;@ =gUnknown_03003448
+	ldr r0, _0802406C
 	adds r1, #0xdc
 	ldr r0, [r0]
 	bl sub_8000DE6
@@ -404,9 +404,9 @@ _08023FDC
 	bx r3
 
 	thumb_func_start sub_8023FE4
-sub_8023FE4 ;@ 0x08023FE4
+sub_8023FE4
 	push {r0, r4, r5, r6, r7, lr}
-	ldr r0, _08024074 ;@ =gPlayerEntity
+	ldr r0, _08024074
 	movs r3, #8
 	ldr r0, [r0]
 	sub sp, #8
@@ -431,15 +431,15 @@ _08024002
 _08024012
 	movs r0, #0
 _08024014
-	ldr r2, _08024078 ;@ =0x0000087D
+	ldr r2, _08024078
 	adds r1, r2, #0
 	cmp r0, #0x10
 	bhs _08024020
-	ldr r1, _0802407C ;@ =0x0000086D
+	ldr r1, _0802407C
 	adds r1, r0, r1
 _08024020
 	subs r0, r2, r1
-	ldr r1, _0802407C ;@ =0x0000086D
+	ldr r1, _0802407C
 	adds r0, r0, r1
 	lsls r5, r0, #0x10
 	ldr r1, [sp, #8]
@@ -448,7 +448,7 @@ _08024020
 	lsrs r5, r5, #0x10
 	adds r7, #0x80
 	ldr r1, [r7, #0x30]
-	ldr r0, _08024080 ;@ =gUnknown_03003EA0
+	ldr r0, _08024080
 	str r1, [sp, #4]
 	ldr r0, [r0]
 	bl sub_8000D5A

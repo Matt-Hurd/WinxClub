@@ -1,11 +1,11 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003BC8
 
 	thumb_func_start sub_8040C38
-sub_8040C38 ;@ 0x08040C38
-	ldr r2, _08040C74 ;@ =gUnknown_03003BC8
+sub_8040C38
+	ldr r2, _08040C74
 	ldrb r1, [r2, #7]
 	adds r1, #1
 	lsls r1, r1, #0x18

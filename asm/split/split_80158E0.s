@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_03003454
@@ -23,7 +23,7 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_80158E0
-sub_80158E0 ;@ 0x080158E0
+sub_80158E0
 	adds r1, r0, #0
 	adds r1, #0xf0
 	ldrb r1, [r1, #8]
@@ -35,13 +35,13 @@ _080158EE
 	bx lr
 
 	thumb_func_start sub_80158F0
-sub_80158F0 ;@ 0x080158F0
+sub_80158F0
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0x1b
 	lsls r0, r0, #5
 	adds r4, r6, r0
-	ldr r0, _08015CE0 ;@ =gUnknown_03003444
+	ldr r0, _08015CE0
 	movs r3, #3
 	ldr r0, [r0]
 	ldrsb r1, [r4, r3]
@@ -143,7 +143,7 @@ _080159A8
 	ldr r0, [r6, #0x3c]
 	add r1, sp, #4
 	bl sub_8040034
-	ldr r0, _08015CE4 ;@ =gUnknown_0300345C
+	ldr r0, _08015CE4
 	ldr r0, [r0]
 	adds r0, #0x20
 	bl sub_8028C2E
@@ -152,7 +152,7 @@ _080159C2
 	mvns r6, r6
 	lsls r1, r5, #0x1f
 	cmp r1, #0
-	ldr r0, _08015CE8 ;@ =gUnknown_03003454
+	ldr r0, _08015CE8
 	bge _080159F2
 	movs r2, #0
 	str r2, [sp]
@@ -192,10 +192,10 @@ _080159F2
 	b _080159EA
 
 	non_word_aligned_thumb_func_start sub_8015A16
-sub_8015A16 ;@ 0x08015A16
+sub_8015A16
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	ldr r0, _08015CE0 ;@ =gUnknown_03003444
+	ldr r0, _08015CE0
 	movs r1, #0
 	ldr r0, [r0]
 	sub sp, #0xc
@@ -289,7 +289,7 @@ _08015AB2
 	lsls r2, r2, #1
 	adds r2, r2, r1
 	ldrh r0, [r1, r0]
-	ldr r1, _08015CEC ;@ =gUnknown_03003D30
+	ldr r1, _08015CEC
 	ldrh r2, [r2, #2]
 	ldr r1, [r1]
 	movs r3, #0xa
@@ -333,7 +333,7 @@ _08015B14
 	b _08015A98
 
 	non_word_aligned_thumb_func_start sub_8015B1E
-sub_8015B1E ;@ 0x08015B1E
+sub_8015B1E
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x19
@@ -356,14 +356,14 @@ sub_8015B1E ;@ 0x08015B1E
 	add r3, sp, #0
 	strh r0, [r3, #8]
 	lsls r0, r0, #0x12
-	ldr r1, _08015CF0 ;@ =gUnknown_080414B8
+	ldr r1, _08015CF0
 	lsrs r0, r0, #0x11
 	ldrsh r0, [r1, r0]
 	lsls r0, r0, #2
 	str r0, [sp, #0x10]
 	adds r1, r5, #0
 	bl __16_ll_mulss
-	add r2, pc, #0x194 ;@ =_08015CF4
+	add r2, pc, #0x194
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r0, r0, #0x10
@@ -372,10 +372,10 @@ sub_8015B1E ;@ 0x08015B1E
 	subs r0, #8
 	lsls r6, r0, #0x10
 	asrs r6, r6, #0x10
-	ldr r7, _08015CFC ;@ =gUnknown_08050664
+	ldr r7, _08015CFC
 	movs r5, #0
 _08015B74
-	ldr r7, _08015CFC ;@ =gUnknown_08050664
+	ldr r7, _08015CFC
 	lsls r0, r5, #1
 	ldrh r0, [r7, r0]
 	add r3, sp, #0
@@ -493,7 +493,7 @@ _08015C58
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0xc]
 	bl __16_ll_mulss
-	add r2, pc, #0x90 ;@ =_08015CF4
+	add r2, pc, #0x90
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r0, r0, #0x10
@@ -533,7 +533,7 @@ _08015CA6
 	ldr r1, [r0, #0x30]
 	cmp r1, #0
 	beq _08015CCA
-	ldr r2, _08015CFC ;@ =gUnknown_08050664
+	ldr r2, _08015CFC
 	lsls r1, r6, #1
 	adds r2, #0x10
 	ldrh r1, [r2, r1]
@@ -596,7 +596,7 @@ _08015D1C
 	blt _08015E1C
 	movs r6, #0
 _08015D38
-	ldr r1, _080160F0 ;@ =gUnknown_08050664
+	ldr r1, _080160F0
 	lsls r0, r6, #1
 	ldrh r0, [r1, r0]
 	add r3, sp, #0
@@ -687,7 +687,7 @@ _08015DDE
 	ldr r1, [r0, #0x30]
 	cmp r1, #0
 	beq _08015E02
-	ldr r2, _080160F0 ;@ =gUnknown_08050664
+	ldr r2, _080160F0
 	lsls r1, r6, #1
 	adds r2, #0x10
 	ldrh r1, [r2, r1]
@@ -777,7 +777,7 @@ _08015E78
 	ldrh r4, [r2, #2]
 	lsls r1, r1, #1
 	ldrh r2, [r0, r1]
-	ldr r0, _080160F4 ;@ =gUnknown_03003D30
+	ldr r0, _080160F4
 	movs r1, #0xa
 	ldr r0, [r0]
 	adds r3, r4, #0
@@ -800,7 +800,7 @@ _08015E78
 	b _08015E4C
 
 	non_word_aligned_thumb_func_start sub_8015EC2
-sub_8015EC2 ;@ 0x08015EC2
+sub_8015EC2
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x11
@@ -823,14 +823,14 @@ sub_8015EC2 ;@ 0x08015EC2
 	add r3, sp, #0
 	strh r0, [r3, #8]
 	lsls r0, r0, #0x12
-	ldr r1, _080160F8 ;@ =gUnknown_080414B8
+	ldr r1, _080160F8
 	lsrs r0, r0, #0x11
 	ldrsh r0, [r1, r0]
 	lsls r0, r0, #2
 	str r0, [sp, #0x10]
 	adds r1, r5, #0
 	bl __16_ll_mulss
-	add r2, pc, #0x1F8 ;@ =_080160FC
+	add r2, pc, #0x1F8
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r6, r0, #0x10
@@ -850,7 +850,7 @@ sub_8015EC2 ;@ 0x08015EC2
 	movs r5, #0
 	movs r7, #0x6c
 _08015F2A
-	ldr r1, _080160F0 ;@ =gUnknown_08050664
+	ldr r1, _080160F0
 	lsls r0, r5, #1
 	ldrh r0, [r1, r0]
 	add r3, sp, #0
@@ -985,7 +985,7 @@ _08016028
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0xc]
 	bl __16_ll_mulss
-	add r2, pc, #0xC8 ;@ =_080160FC
+	add r2, pc, #0xC8
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r6, r0, #0x10
@@ -1013,7 +1013,7 @@ _0801605E
 	ldr r1, [r0, #0x30]
 	cmp r1, #0
 	beq _08016082
-	ldr r2, _080160F0 ;@ =gUnknown_08050664
+	ldr r2, _080160F0
 	lsls r1, r5, #1
 	adds r2, #0x10
 	ldrh r1, [r2, r1]
@@ -1069,7 +1069,7 @@ _080160B4
 	movs r0, #0
 	movs r1, #0xf8
 	strb r0, [r1, r4]
-	ldr r0, _08016104 ;@ =gUnknown_03003454
+	ldr r0, _08016104
 	movs r1, #0
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]

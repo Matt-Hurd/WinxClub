@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030033D0
 	IMPORT gUnknown_03003EA0
@@ -8,7 +8,7 @@
 	IMPORT sub_8004C44
 
 	thumb_func_start sub_800F010
-sub_800F010 ;@ 0x0800F010
+sub_800F010
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, [r1, #0x10]
 	adds r4, r1, #0
@@ -84,7 +84,7 @@ _0800F08C
 	b _0800F06E
 
 	thumb_func_start sub_800F090
-sub_800F090 ;@ 0x0800F090
+sub_800F090
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r3, sp, #0x20
@@ -197,7 +197,7 @@ _0800F12A
 	cmp r0, r1
 	bgt _0800F1BE
 	ldr r0, [sp, #0x28]
-	ldr r2, _0800F1E0 ;@ =gUnknown_030033D0
+	ldr r2, _0800F1E0
 	ldr r0, [r0]
 	ldr r3, [sp, #0x28]
 	subs r0, r6, r0
@@ -205,7 +205,7 @@ _0800F12A
 	asrs r0, r5
 	subs r1, r7, r1
 	asrs r1, r5
-	ldr r5, _0800F1E4 ;@ =gUnknown_03003EA0
+	ldr r5, _0800F1E4
 	stm r2!, {r0, r1}
 	ldr r0, [r5]
 	bl sub_8000D5A
@@ -252,7 +252,7 @@ _0800F1D6
 	b _0800F0A2
 
 	non_word_aligned_thumb_func_start sub_800F1DA
-sub_800F1DA ;@ 0x0800F1DA
+sub_800F1DA
 	adds r0, #0xe8
 	bx lr
 	ALIGN

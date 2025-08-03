@@ -1,12 +1,12 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0803EE40
 	IMPORT maybeMallocEWRAM
 	IMPORT sub_800802E
 
 	arm_func_start sub_800A9BC
-sub_800A9BC ;@ 0x0800A9BC
+sub_800A9BC
 _0800A9BC
 	STMFD SP!, {r4, lr}
 	movs r4, r0
@@ -20,7 +20,7 @@ _0800A9BC
 _0800A9E0
 	mov r0, r4
 	bl sub_800802E
-	LDR r0, _0800AA18 ;@ =_0803EE40
+	LDR r0, _0800AA18
 	STR r0, [r4]
 	mov r0, #1
 	strh r0, [r4, #6]
@@ -29,13 +29,13 @@ _0800A9E0
 	bx lr
 
 	arm_func_start sub_800AA04
-sub_800AA04 ;@ 0x0800AA04
+sub_800AA04
 	LDR r0, [r1]
 	MOV r0, r0, LSR #8
 	bx lr
 
 	arm_func_start sub_800AA10
-sub_800AA10 ;@ 0x0800AA10
+sub_800AA10
 	mov r0, #4
 	bx lr
 	ALIGN

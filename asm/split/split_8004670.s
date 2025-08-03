@@ -1,21 +1,21 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT sub_803D66C
 	IMPORT maybeMallocEWRAM
 
 	thumb_func_start sub_8004670
-sub_8004670 ;@ 0x08004670
+sub_8004670
 	str r1, [r0, #4]
 	bx lr
 
 	thumb_func_start sub_8004674
-sub_8004674 ;@ 0x08004674
+sub_8004674
 	ldr r0, [r0, #4]
 	bx lr
 
 	thumb_func_start sub_8004678
-sub_8004678 ;@ 0x08004678
+sub_8004678
 	push {r4, lr}
 	adds r4, r1, #0
 	cmp r0, #0
@@ -45,7 +45,7 @@ _080046A6
 	bx r3
 
 	thumb_func_start sub_80046AC
-sub_80046AC ;@ 0x080046AC
+sub_80046AC
 	str r1, [r0, #4]
 	ldrh r1, [r0]
 	movs r2, #4
@@ -54,7 +54,7 @@ sub_80046AC ;@ 0x080046AC
 	bx lr
 
 	thumb_func_start sub_80046B8
-sub_80046B8 ;@ 0x080046B8
+sub_80046B8
 	ldrh r1, [r1]
 	sub sp, #4
 	add r3, sp, #0
@@ -73,18 +73,18 @@ sub_80046B8 ;@ 0x080046B8
 	bx lr
 
 	thumb_func_start sub_80046D8
-sub_80046D8 ;@ 0x080046D8
+sub_80046D8
 	ldr r0, [r0, #4]
 	bx lr
 
 	thumb_func_start sub_80046DC
-sub_80046DC ;@ 0x080046DC
+sub_80046DC
 	ldrh r1, [r1, #8]
 	strh r1, [r0]
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80046E2
-sub_80046E2 ;@ 0x080046E2
+sub_80046E2
 	adds r1, #0xa
 	ldrh r2, [r1]
 	strh r2, [r0]
@@ -93,7 +93,7 @@ sub_80046E2 ;@ 0x080046E2
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80046EE
-sub_80046EE ;@ 0x080046EE
+sub_80046EE
 	movs r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -101,7 +101,7 @@ sub_80046EE ;@ 0x080046EE
 	bx lr
 
 	thumb_func_start sub_80046F8
-sub_80046F8 ;@ 0x080046F8
+sub_80046F8
 	push {r3, lr}
 	cmp r0, #0
 	bne _08004708
@@ -120,7 +120,7 @@ _08004710
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8004716
-sub_8004716 ;@ 0x08004716
+sub_8004716
 	push {r3, lr}
 	cmp r0, #0
 	bne _08004726
@@ -146,19 +146,19 @@ _0800473C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8004742
-sub_8004742 ;@ 0x08004742
+sub_8004742
 	adds r0, #4
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8004746
-sub_8004746 ;@ 0x08004746
+sub_8004746
 	ldr r0, [r0]
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1d
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800474E
-sub_800474E ;@ 0x0800474E
+sub_800474E
 	push {r3, lr}
 	adds r0, #4
 	bl sub_803D66C
@@ -167,7 +167,7 @@ sub_800474E ;@ 0x0800474E
 	bx r3
 
 	thumb_func_start sub_800475C
-sub_800475C ;@ 0x0800475C
+sub_800475C
 	movs r3, #1
 	lsls r3, r3, #0x1a
 	ldr r2, [r0]
@@ -178,7 +178,7 @@ sub_800475C ;@ 0x0800475C
 	bx lr
 
 	thumb_func_start sub_800476C
-sub_800476C ;@ 0x0800476C
+sub_800476C
 	ldrh r2, [r0]
 	movs r3, #0xc0
 	lsls r1, r1, #0x1e

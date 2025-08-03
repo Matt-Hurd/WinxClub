@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003530
 	IMPORT gUnknown_030037A0
@@ -10,8 +10,8 @@
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040C78
-sub_8040C78 ;@ 0x08040C78
-	ldr r2, _08041010 ;@ =gUnknown_03003BC8
+sub_8040C78
+	ldr r2, _08041010
 	push {r4, r5, r6, r7, lr}
 	ldrb r0, [r2, #5]
 	sub sp, #0xc
@@ -25,18 +25,18 @@ _08040C88
 	pop {r3}
 	bx r3
 _08040C90
-	ldr r2, _08041010 ;@ =gUnknown_03003BC8
-	ldr r6, _08041010 ;@ =gUnknown_03003BC8
+	ldr r2, _08041010
+	ldr r6, _08041010
 	ldrh r0, [r2, #0xc]
 	adds r6, #0x30
-	ldr r4, _08041018 ;@ =gUnknown_030037A0
+	ldr r4, _08041018
 	adds r1, r0, #1
 	strh r1, [r2, #0xc]
 	ldr r1, [r2, #0x28]
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0, #4]
-	ldr r1, _08041014 ;@ =gUnknown_03003530
+	ldr r1, _08041014
 	cmp r0, #0
 	str r1, [sp, #8]
 	beq _08040D92
@@ -158,7 +158,7 @@ _08040D66
 	mov ip, r3
 	mov r1, lr
 	beq _08040DFC
-	ldr r2, _08041010 ;@ =gUnknown_03003BC8
+	ldr r2, _08041010
 	lsls r0, r0, #2
 	ldr r2, [r2, #0x20]
 	adds r0, r2, r0
@@ -215,7 +215,7 @@ _08040DD0
 	str r2, [r4, #0x3c]
 	b _08040E18
 _08040DE0
-	ldr r0, _0804101C ;@ =0x0000FFFF
+	ldr r0, _0804101C
 	movs r1, #0
 	str r0, [r4, #0x1c]
 	strh r1, [r4, #0x20]
@@ -277,7 +277,7 @@ _08040E42
 	strb r0, [r4, #0xd]
 	movs r1, #0
 	strh r1, [r4, #0x14]
-	ldr r0, _0804101C ;@ =0x0000FFFF
+	ldr r0, _0804101C
 	strb r1, [r4, #0x1b]
 	str r0, [r4, #0x1c]
 	strh r1, [r4, #0x20]
@@ -461,7 +461,7 @@ _08040F92
 	bl sub_8040978
 _08040FA0
 	ldr r1, [sp]
-	ldr r2, _08041010 ;@ =gUnknown_03003BC8
+	ldr r2, _08041010
 	adds r1, #1
 	str r1, [sp]
 	ldrb r0, [r2, #2]
@@ -475,7 +475,7 @@ _08040FB4
 _08040FB6
 	movs r0, #0
 	str r0, [sp]
-	ldr r0, _08041010 ;@ =gUnknown_03003BC8
+	ldr r0, _08041010
 	movs r1, #5
 	ldrb r0, [r0, #2]
 	lsls r1, r1, #0x18
@@ -506,7 +506,7 @@ _08040FE2
 	cmp r0, r4
 	bhi _08040FE2
 _08040FF8
-	ldr r2, _08041010 ;@ =gUnknown_03003BC8
+	ldr r2, _08041010
 	ldr r1, [r2, #0x28]
 	ldrh r0, [r2, #0xc]
 	ldr r1, [r1]

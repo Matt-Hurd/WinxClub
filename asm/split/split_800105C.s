@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_80004CA
@@ -13,7 +13,7 @@
 	IMPORT sub_8040550
 
 	thumb_func_start sub_800105C
-sub_800105C ;@ 0x0800105C
+sub_800105C
 	push {r3, lr}
 	adds r0, #4
 	bl sub_8000CCE
@@ -22,7 +22,7 @@ sub_800105C ;@ 0x0800105C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800106A
-sub_800106A ;@ 0x0800106A
+sub_800106A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r0, #0x67
@@ -34,7 +34,7 @@ sub_800106A ;@ 0x0800106A
 	lsls r1, r1, #0x12
 	orrs r0, r1
 	str r0, [r4, #0x28]
-	ldr r0, _080012E4 ;@ =gUnknown_03003EA0
+	ldr r0, _080012E4
 	ldr r0, [r0]
 	bl sub_800B8CE
 	bl sub_8005106
@@ -47,7 +47,7 @@ sub_800106A ;@ 0x0800106A
 	movs r2, #0
 	adds r0, r6, #0
 	bl sub_803DA9C
-	ldr r2, _080012E8 ;@ =sub_80004CA
+	ldr r2, _080012E8
 	movs r3, #0
 	str r2, [sp]
 	movs r2, #0x60
@@ -119,7 +119,7 @@ _08001118
 	lsls r2, r2, #8
 	orrs r2, r3
 	str r2, [r7]
-	ldr r7, _080012EC ;@ =0xFFE00000
+	ldr r7, _080012EC
 	ldr r3, [r4, #0x10]
 	orrs r2, r7
 	adds r3, r3, r0
@@ -149,7 +149,7 @@ _08001118
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800116A
-sub_800116A ;@ 0x0800116A
+sub_800116A
 	push {r3, r4, r5, r6, r7, lr}
 	movs r1, #0xcd
 	lsls r1, r1, #5
@@ -201,7 +201,7 @@ _08001182
 	b _0800117C
 
 	non_word_aligned_thumb_func_start sub_80011CA
-sub_80011CA ;@ 0x080011CA
+sub_80011CA
 	movs r1, #0x67
 	lsls r1, r1, #6
 	adds r0, r0, r1
@@ -211,7 +211,7 @@ sub_80011CA ;@ 0x080011CA
 	bx lr
 
 	thumb_func_start sub_80011D8
-sub_80011D8 ;@ 0x080011D8
+sub_80011D8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r1, #0
 	movs r1, #0x67
@@ -259,7 +259,7 @@ _0800121C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8001232
-sub_8001232 ;@ 0x08001232
+sub_8001232
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r1, #0
 	movs r1, #0x67
@@ -316,7 +316,7 @@ _08001288
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800129A
-sub_800129A ;@ 0x0800129A
+sub_800129A
 	push {r3, r4, r5, lr}
 	movs r2, #0x67
 	lsls r2, r2, #6

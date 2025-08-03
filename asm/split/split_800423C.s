@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA4
 	IMPORT sub_8002230
@@ -7,7 +7,7 @@
 	IMPORT sub_8040504
 
 	thumb_func_start sub_800423C
-sub_800423C ;@ 0x0800423C
+sub_800423C
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	adds r4, r1, #0
@@ -26,7 +26,7 @@ sub_800423C ;@ 0x0800423C
 	ldr r0, [r5, #0x18]
 	lsls r1, r1, #6
 	str r0, [sp, #0x18]
-	ldr r0, _0800463C ;@ =gUnknown_03003EA4
+	ldr r0, _0800463C
 	ldr r0, [r0]
 	adds r0, r0, r1
 	subs r0, r4, r0
@@ -144,7 +144,7 @@ _08004308
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	mov lr, r2
-	ldr r2, _08004640 ;@ =0xFFE007FF
+	ldr r2, _08004640
 	lsls r0, r0, #0x11
 	lsrs r0, r0, #0xf
 	add lr, r0
@@ -158,7 +158,7 @@ _08004308
 	lsls r3, r3, #0xb
 	ands r2, r1
 	subs r1, r1, r3
-	ldr r3, _08004644 ;@ =0x001FF800
+	ldr r3, _08004644
 	ands r1, r3
 	orrs r1, r2
 	str r1, [r0]
@@ -188,7 +188,7 @@ _0800437C
 	str r2, [r1]
 	str r1, [r0]
 _08004394
-	ldr r0, _0800463C ;@ =gUnknown_03003EA4
+	ldr r0, _0800463C
 	adds r2, r4, #0
 	mov r1, ip
 	ldr r0, [r0]
@@ -201,7 +201,7 @@ _080043A2
 	add ip, r0
 	mov r1, ip
 	ldr r0, [r1]
-	ldr r2, _08004640 ;@ =0xFFE007FF
+	ldr r2, _08004640
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0xe
 	adds r0, r0, r7
@@ -210,7 +210,7 @@ _080043A2
 	lsls r3, r3, #0xb
 	ands r2, r1
 	subs r1, r1, r3
-	ldr r3, _08004644 ;@ =0x001FF800
+	ldr r3, _08004644
 	ands r1, r3
 	orrs r1, r2
 	str r1, [r0]
@@ -274,10 +274,10 @@ _0800441C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800442E
-sub_800442E ;@ 0x0800442E
+sub_800442E
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0800463C ;@ =gUnknown_03003EA4
+	ldr r0, _0800463C
 	adds r5, r1, #0
 	movs r1, #0x21
 	ldr r0, [r0]
@@ -315,7 +315,7 @@ _0800445A
 	lsrs r3, r3, #0x11
 	adds r3, r6, r3
 	ldr r6, [r5, #0x54]
-	ldr r7, _08004640 ;@ =0xFFE007FF
+	ldr r7, _08004640
 	ldr r6, [r6, #0x10]
 	ldrh r3, [r3]
 	lsls r3, r3, #0x11
@@ -334,7 +334,7 @@ _0800445A
 	movs r7, #1
 	lsls r7, r7, #0xb
 	subs r6, r6, r7
-	ldr r7, _08004644 ;@ =0x001FF800
+	ldr r7, _08004644
 	ands r6, r7
 	orrs r3, r6
 	mov r6, ip
@@ -478,7 +478,7 @@ _0800457E
 	ldr r4, [r4]
 	str r4, [sp]
 	ldr r6, [r5, #0x54]
-	ldr r4, _08004648 ;@ =0x040000D4
+	ldr r4, _08004648
 	ldr r7, [r6, #0xc]
 	ldr r6, [r3]
 	lsls r6, r6, #0x10
@@ -509,12 +509,12 @@ _0800457E
 	str r4, [r6]
 _080045F2
 	ldr r1, [r3]
-	ldr r7, _08004640 ;@ =0xFFE007FF
+	ldr r7, _08004640
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0xe
 	adds r0, r1, r0
 	ldr r1, [r0]
-	ldr r6, _08004644 ;@ =0x001FF800
+	ldr r6, _08004644
 	adds r4, r1, #0
 	ands r4, r7
 	movs r7, #1

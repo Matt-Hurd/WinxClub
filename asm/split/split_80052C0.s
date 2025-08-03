@@ -1,10 +1,10 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT sub_80406E4
 
 	thumb_func_start sub_80052C0
-sub_80052C0 ;@ 0x080052C0
+sub_80052C0
 	push {r3, r4, r5, r6, r7, lr}
 	lsls r5, r0, #0x10
 	lsrs r5, r5, #0x10
@@ -22,7 +22,7 @@ _080052D8
 	cmp r7, #0
 	beq _08005376
 _080052DC
-	ldr r0, _0800537C ;@ =0x000015B0
+	ldr r0, _0800537C
 	cmp r7, r0
 	bhs _080052E4
 	adds r0, r7, #0

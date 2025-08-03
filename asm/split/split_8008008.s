@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_030033F4
 	IMPORT gUnknown_03003EAC
@@ -10,7 +10,7 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8008008
-sub_8008008 ;@ 0x08008008
+sub_8008008
 	push {r3, lr}
 	cmp r0, #0
 	bne _08008018
@@ -33,7 +33,7 @@ _08008028
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800802E
-sub_800802E ;@ 0x0800802E
+sub_800802E
 	push {r3, lr}
 	cmp r0, #0
 	bne _0800803E
@@ -42,8 +42,8 @@ sub_800802E ;@ 0x0800802E
 	cmp r0, #0
 	beq _08008058
 _0800803E
-	ldr r1, _080081C0 ;@ =_0803EEF0
-	ldr r2, _080081C4 ;@ =gUnknown_030033F4
+	ldr r1, _080081C0
+	ldr r2, _080081C4
 	str r1, [r0]
 	movs r1, #0
 	strh r1, [r0, #4]
@@ -61,8 +61,8 @@ _08008058
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800805E
-sub_800805E ;@ 0x0800805E
-	ldr r2, _080081C0 ;@ =_0803EEF0
+sub_800805E
+	ldr r2, _080081C0
 	push {r3, lr}
 	str r2, [r0]
 	cmp r1, #0
@@ -74,18 +74,18 @@ _0800806C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8008072
-sub_8008072 ;@ 0x08008072
+sub_8008072
 	ldrh r0, [r0, #6]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_25
-nullsub_25 ;@ 0x0800807A
+nullsub_25
 	bx lr
 
 	thumb_func_start sub_800807C
-sub_800807C ;@ 0x0800807C
+sub_800807C
 	ldr r3, [r0, #0xc]
 	ldr r2, [r0, #0x14]
 	subs r3, r1, r3
@@ -97,7 +97,7 @@ sub_800807C ;@ 0x0800807C
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800808E
-sub_800808E ;@ 0x0800808E
+sub_800808E
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldrb r0, [r1, #0xc]
@@ -158,12 +158,12 @@ _080080C2
 	bx r3
 
 	thumb_func_start sub_80080FC
-sub_80080FC ;@ 0x080080FC
+sub_80080FC
 	movs r0, #0
 	bx lr
 
 	thumb_func_start sub_8008100
-sub_8008100 ;@ 0x08008100
+sub_8008100
 	adds r1, r0, #0
 	ldr r1, [r1, #0x18]
 	movs r0, #1
@@ -174,55 +174,55 @@ _0800810C
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800810E
-sub_800810E ;@ 0x0800810E
+sub_800810E
 	movs r0, #0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8008112
-sub_8008112 ;@ 0x08008112
+sub_8008112
 	movs r0, #0
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_26
-nullsub_26 ;@ 0x08008116
+nullsub_26
 	bx lr
 
 	thumb_func_start sub_8008118
-sub_8008118 ;@ 0x08008118
+sub_8008118
 	movs r0, #0
 	bx lr
 
 	thumb_func_start sub_800811C
-sub_800811C ;@ 0x0800811C
+sub_800811C
 	movs r0, #0
 	bx lr
 
 	thumb_func_start nullsub_27
-nullsub_27 ;@ 0x08008120
+nullsub_27
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8008122
-sub_8008122 ;@ 0x08008122
-	ldr r1, _080081C4 ;@ =gUnknown_030033F4
+sub_8008122
+	ldr r1, _080081C4
 	movs r0, #1
 	str r0, [r1]
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800812A
-sub_800812A ;@ 0x0800812A
+sub_800812A
 	push {r3, r4, r5, lr}
-	ldr r5, _080081C8 ;@ =0x04000100
+	ldr r5, _080081C8
 	adds r4, r0, #0
 	movs r0, #0
 	strh r0, [r5, #0xa]
-	ldr r1, _080081C4 ;@ =gUnknown_030033F4
+	ldr r1, _080081C4
 	str r0, [r1]
-	ldr r0, _080081CC ;@ =gUnknown_03003EAC
+	ldr r0, _080081CC
 	str r4, [r1, #4]
 	movs r3, #1
 	movs r1, #5
 	ldr r0, [r0]
-	ldr r2, _080081D0 ;@ =sub_8008122
+	ldr r2, _080081D0
 	bl sub_800B12C
 	lsrs r0, r4, #6
 	movs r1, #0
@@ -238,8 +238,8 @@ sub_800812A ;@ 0x0800812A
 	bx r3
 
 	thumb_func_start sub_8008160
-sub_8008160 ;@ 0x08008160
-	ldr r0, _080081C4 ;@ =gUnknown_030033F4
+sub_8008160
+	ldr r0, _080081C4
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	cmp r1, #0
@@ -249,7 +249,7 @@ sub_8008160 ;@ 0x08008160
 _0800816E
 	movs r1, #0
 _08008170
-	ldr r2, _080081C8 ;@ =0x04000100
+	ldr r2, _080081C8
 	ldrh r2, [r2, #8]
 	movs r3, #1
 	lsls r3, r3, #0x10
@@ -260,11 +260,11 @@ _08008170
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8008182
-sub_8008182 ;@ 0x08008182
-	ldr r2, _080081C8 ;@ =0x04000100
+sub_8008182
+	ldr r2, _080081C8
 	movs r0, #0
 	strh r0, [r2, #0xa]
-	ldr r0, _080081C4 ;@ =gUnknown_030033F4
+	ldr r0, _080081C4
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	cmp r1, #0
@@ -284,17 +284,17 @@ _08008198
 	bx lr
 
 	thumb_func_start sub_80081A8
-sub_80081A8 ;@ 0x080081A8
-	ldr r1, _080081C8 ;@ =0x04000100
+sub_80081A8
+	ldr r1, _080081C8
 	movs r0, #0
 	strh r0, [r1, #0xa]
-	ldr r1, _080081C4 ;@ =gUnknown_030033F4
+	ldr r1, _080081C4
 	str r0, [r1]
 	str r0, [r1, #4]
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80081B6
-sub_80081B6 ;@ 0x080081B6
+sub_80081B6
 	movs r2, #0
 	str r2, [r0]
 	str r1, [r0, #8]

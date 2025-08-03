@@ -1,15 +1,15 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0804A8F0
 
 	arm_func_start sub_8006BC0
-sub_8006BC0 ;@ 0x08006BC0
+sub_8006BC0
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #4
 	LDR r7, [sp, #0x3c]
 	LDR r8, [sp, #0x38]
-	LDR fp, _08006F8C ;@ =gUnknown_0804A8F0
+	LDR fp, _08006F8C
 	LDR r2, [r8, #0x34]
 	LDR r3, [r8, #0x30]
 	LDR r5, [r7, #4]
@@ -41,7 +41,7 @@ _08006C2C
 	add r3, r3, r1, lsl #3
 	LDRB r1, [r3]
 	cmp r1, #0
-	LDRNE fp, _08006F8C ;@ =gUnknown_0804A8F0
+	LDRNE fp, _08006F8C
 	bne _08006C68
 	LDRB r1, [r3, #1]
 	sub sb, sb, #1

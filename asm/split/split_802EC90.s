@@ -1,13 +1,13 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 
 	thumb_func_start sub_802EC90
-sub_802EC90 ;@ 0x0802EC90
+sub_802EC90
 	subs r1, #0x61
 	cmp r1, #6
 	bhs _0802ECB6
-	add r3, pc, #0x8 ;@ =_0802ECA0
+	add r3, pc, #0x8
 	ldrb r3, [r3, r1]
 	lsls r3, r3, #1
 	add pc, r3
@@ -36,7 +36,7 @@ loc_802eca6
 _0802ECB6
 	bx lr
 loc_802ecb8
-	ldr r1, _0802ED10 ;@ =0x00000362
+	ldr r1, _0802ED10
 	strh r1, [r0, #0x18]
 	adds r1, #3
 	strh r1, [r0, #0x1a]
@@ -55,7 +55,7 @@ loc_802ecc8
 	strb r1, [r0]
 	bx lr
 loc_802ecda
-	ldr r1, _0802ED14 ;@ =0x00000366
+	ldr r1, _0802ED14
 	strh r1, [r0, #0x18]
 	adds r1, #1
 	strh r1, [r0, #0x1a]
@@ -64,7 +64,7 @@ loc_802ecda
 	strb r1, [r0]
 	bx lr
 loc_802ecea
-	ldr r1, _0802ED18 ;@ =0x0000035E
+	ldr r1, _0802ED18
 	strh r1, [r0, #0x18]
 	adds r1, #1
 	strh r1, [r0, #0x1a]
@@ -84,7 +84,7 @@ loc_802ecfa
 	bx lr
 
 	thumb_func_start nullsub_55
-nullsub_55 ;@ 0x0802ED0C
+nullsub_55
 	bx lr
 	ALIGN
 _0802ED10 DCDU 0x00000362

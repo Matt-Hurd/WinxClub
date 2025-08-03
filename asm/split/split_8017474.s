@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003440
 	IMPORT gUnknown_03003468
@@ -21,7 +21,7 @@
 	IMPORT sub_803FBBC
 
 	thumb_func_start sub_8017474
-sub_8017474 ;@ 0x08017474
+sub_8017474
 	push {r0, r1, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -38,15 +38,15 @@ _0801748A
 	pop {r3}
 	bx r3
 _08017492
-	ldr r0, _080177A0 ;@ =_0803ECC4
+	ldr r0, _080177A0
 	movs r2, #0
 	str r0, [r4]
-	ldr r0, _080177A4 ;@ =gUnknown_03003E88
+	ldr r0, _080177A4
 	movs r1, #0x54
 	str r4, [r0]
-	ldr r0, _080177A8 ;@ =_0803E864
+	ldr r0, _080177A8
 	str r0, [r4]
-	ldr r0, _080177AC ;@ =0x0000061C
+	ldr r0, _080177AC
 	adds r0, r4, r0
 	bl sub_803F464
 	movs r1, #0xff
@@ -97,7 +97,7 @@ _08017492
 	lsls r1, r1, #7
 	adds r1, r4, r1
 	strb r7, [r4, #0x14]
-	add r0, pc, #0x298 ;@ =_080177B0
+	add r0, pc, #0x298
 	str r0, [r1, #0x18]
 	bl sub_8005106
 	adds r1, r0, #0
@@ -122,7 +122,7 @@ _08017534
 	adds r0, r5, #0
 	bl sub_80164A8
 _08017550
-	ldr r0, _080177C8 ;@ =gUnknown_03003468
+	ldr r0, _080177C8
 	str r5, [r4, #0x10]
 	str r7, [r4, #4]
 	ldr r0, [r0]
@@ -176,7 +176,7 @@ _080175A8
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _080175D0
-	ldr r0, _080177CC ;@ =gUnknown_03003440
+	ldr r0, _080177CC
 	ldr r1, [sp, #8]
 	ldr r0, [r0]
 	bl sub_8004FFC
@@ -186,10 +186,10 @@ _080175D0
 	b _0801748A
 
 	thumb_func_start sub_80175D4
-sub_80175D4 ;@ 0x080175D4
+sub_80175D4
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r0, _080177A8 ;@ =_0803E864
+	ldr r0, _080177A8
 	adds r6, r1, #0
 	str r0, [r5]
 	ldr r0, [r5, #0xc]
@@ -212,8 +212,8 @@ _080175F2
 	lsrs r4, r4, #0x18
 	cmp r4, #0x40
 	blo _080175F2
-	ldr r0, _080177A0 ;@ =_0803ECC4
-	ldr r1, _080177A4 ;@ =gUnknown_03003E88
+	ldr r0, _080177A0
+	ldr r1, _080177A4
 	str r0, [r5]
 	movs r0, #0
 	str r0, [r1]
@@ -227,7 +227,7 @@ _0801761A
 	bx r3
 
 	thumb_func_start sub_8017620
-sub_8017620 ;@ 0x08017620
+sub_8017620
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0
@@ -252,7 +252,7 @@ _0801763E
 	str r1, [sp, #4]
 	adds r1, r6, r0
 	str r1, [sp, #0x18]
-	ldr r7, _080177D0 ;@ =0x0000FFFE
+	ldr r7, _080177D0
 	b _08017786
 _08017650
 	lsls r0, r5, #2
@@ -278,7 +278,7 @@ _08017650
 	str r0, [sp, #0xc]
 	b _0801773C
 _0801767C
-	ldr r0, _080177A4 ;@ =gUnknown_03003E88
+	ldr r0, _080177A4
 	ldr r1, [r0]
 	ldrb r0, [r4, #4]
 	lsls r2, r0, #0x1f
@@ -334,7 +334,7 @@ _080176B8
 	b _080176F4
 _080176E0
 	ldrh r1, [r4, #0xe]
-	ldr r3, _080177D4 ;@ =0x0000FFFF
+	ldr r3, _080177D4
 	cmp r1, r3
 	beq _080176F4
 	cmp r2, #0

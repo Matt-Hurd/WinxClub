@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003D20
@@ -13,7 +13,7 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_80221AC
-sub_80221AC ;@ 0x080221AC
+sub_80221AC
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -22,7 +22,7 @@ sub_80221AC ;@ 0x080221AC
 	movs r1, #0xd
 	cmp r0, #5
 	beq _080221D6
-	ldr r2, _080222C0 ;@ =gUnknown_03003D20
+	ldr r2, _080222C0
 	ldrb r2, [r2]
 	cmp r2, #0
 	beq _080221D6
@@ -49,14 +49,14 @@ _080221D6
 	strh r0, [r4, #0x18]
 	str r1, [r5, #0x1c]
 _080221EE
-	ldr r0, _080222C4 ;@ =gUnknown_03003E98
+	ldr r0, _080222C4
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	lsls r0, r0, #0x1e
 	lsrs r0, r0, #0x1e
 	cmp r0, #2
 	bhs _0802220C
-	ldr r1, _080222C8 ;@ =gUnknown_0300345C
+	ldr r1, _080222C8
 	adds r0, #0x4d
 	lsls r0, r0, #0x18
 	ldr r1, [r1]
@@ -64,7 +64,7 @@ _080221EE
 	adds r0, r0, r1
 	bl sub_8028C2E
 _0802220C
-	ldr r1, _080222CC ;@ =0x8007FFFF
+	ldr r1, _080222CC
 	ldr r0, [r5, #0xc]
 	ands r0, r1
 	movs r1, #0xf
@@ -82,7 +82,7 @@ _08022226
 	bx r3
 
 	thumb_func_start sub_802222C
-sub_802222C ;@ 0x0802222C
+sub_802222C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0xff

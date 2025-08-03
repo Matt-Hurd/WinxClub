@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_0803EE98
 	IMPORT sub_8006FE4
@@ -15,21 +15,21 @@
 	IMPORT sub_8008008
 
 	arm_func_start sub_800AA1C
-sub_800AA1C ;@ 0x0800AA1C
+sub_800AA1C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
 	b sub_803D984
 
 	arm_func_start sub_800AA2C
-sub_800AA2C ;@ 0x0800AA2C
+sub_800AA2C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
 	b sub_803D9A8
 
 	arm_func_start sub_800AA3C
-sub_800AA3C ;@ 0x0800AA3C
+sub_800AA3C
 	mov r1, #1
 	add r3, r0, r2, lsl #2
 	STR r1, [r3, #0x58]
@@ -96,14 +96,14 @@ _0800AAE8
 	bx lr
 
 	arm_func_start sub_800AAF0
-sub_800AAF0 ;@ 0x0800AAF0
+sub_800AAF0
 	mov r1, #0
 	add r0, r0, r2, lsl #2
 	STR r1, [r0, #0x58]
 	bx lr
 
 	arm_func_start sub_800AB00
-sub_800AB00 ;@ 0x0800AB00
+sub_800AB00
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x28]
@@ -142,10 +142,10 @@ _0800AB5C
 	bx lr
 
 	arm_func_start sub_800AB8C
-sub_800AB8C ;@ 0x0800AB8C
+sub_800AB8C
 	STMFD SP!, {r4, r5, r6, lr}
 	mov r4, r0
-	LDR r0, _0800AFC8 ;@ =_0803EE98
+	LDR r0, _0800AFC8
 	add r5, r4, #0x24
 	STR r0, [r4]
 	LDR r0, [r4, #0x28]
@@ -190,7 +190,7 @@ _0800ABF4
 	bx lr
 
 	arm_func_start sub_800AC3C
-sub_800AC3C ;@ 0x0800AC3C
+sub_800AC3C
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	ldrh r0, [r0, #4]
@@ -232,11 +232,11 @@ _0800ACC0
 	bx lr
 
 	arm_func_start sub_800ACD0
-sub_800ACD0 ;@ 0x0800ACD0
+sub_800ACD0
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r1
 	LDR r1, [r0]
-	add lr, pc, #0xC ;@ =loc_800ACF0
+	add lr, pc, #0xC
 	LDR r2, [r1, #4]
 	mov r4, r0
 	add r1, r2, r1
@@ -262,9 +262,9 @@ loc_800ACF0
 	mov r1, #0
 	bl sub_803D984
 	STR r0, [r4, #0x54]
-	LDR r0, _0800AFCC ;@ =sub_800AA3C
+	LDR r0, _0800AFCC
 	STR r0, [r4, #0x40]
-	LDR r0, _0800AFD0 ;@ =sub_800AAF0
+	LDR r0, _0800AFD0
 	STR r0, [r4, #0x44]
 	STR r4, [r4, #0x48]
 	add r0, r4, #0x24
@@ -283,7 +283,7 @@ loc_800ACF0
 	bx lr
 
 	arm_func_start sub_800AD8C
-sub_800AD8C ;@ 0x0800AD8C
+sub_800AD8C
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne _0800ADB0
@@ -296,7 +296,7 @@ sub_800AD8C ;@ 0x0800AD8C
 _0800ADB0
 	mov r0, r4
 	bl sub_800802E
-	LDR r0, _0800AFC8 ;@ =_0803EE98
+	LDR r0, _0800AFC8
 	mov r1, #0
 	STR r0, [r4]
 	mov r0, #3
@@ -324,7 +324,7 @@ _0800ADB0
 	bx lr
 
 	arm_func_start sub_800AE20
-sub_800AE20 ;@ 0x0800AE20
+sub_800AE20
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x9c
 	add r5, sp, #0x1c
@@ -332,7 +332,7 @@ sub_800AE20 ;@ 0x0800AE20
 	mov r0, r5
 	mov sb, r1
 	bl sub_800802E
-	LDR r0, _0800AFC8 ;@ =_0803EE98
+	LDR r0, _0800AFC8
 	add r4, r5, #0x24
 	STR r0, [sp, #0x1c]
 	mov r0, #3
@@ -430,19 +430,19 @@ _0800AF88
 	bx lr
 
 	arm_func_start sub_800AFA8
-sub_800AFA8 ;@ 0x0800AFA8
+sub_800AFA8
 	LDR r0, [r0, #0x3c]
 	rsbs r0, r0, #1
 	movlo r0, #0
 	bx lr
 
 	arm_func_start sub_800AFB8
-sub_800AFB8 ;@ 0x0800AFB8
+sub_800AFB8
 	LDR r0, [r1]
 	bx lr
 
 	arm_func_start sub_800AFC0
-sub_800AFC0 ;@ 0x0800AFC0
+sub_800AFC0
 	mov r0, #4
 	bx lr
 	ALIGN

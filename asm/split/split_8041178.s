@@ -1,15 +1,15 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_0803ECDC
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8041178
-sub_8041178 ;@ 0x08041178
+sub_8041178
 	push {r3, lr}
-	ldr r2, _08041194 ;@ =gUnknown_0803ECDC
-	ldr r3, _08041198 ;@ =gUnknown_03003EA0
+	ldr r2, _08041194
+	ldr r3, _08041198
 	str r2, [r0]
 	movs r2, #0
 	str r2, [r3]

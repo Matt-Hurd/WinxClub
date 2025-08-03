@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003460
 	IMPORT gUnknown_03003460
@@ -20,7 +20,7 @@
 
 
 	thumb_func_start sub_80268AC
-sub_80268AC ;@ 0x080268AC
+sub_80268AC
 	push {r3, lr}
 	adds r0, #4
 	bl sub_8012334
@@ -29,7 +29,7 @@ sub_80268AC ;@ 0x080268AC
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_80268BA
-sub_80268BA ;@ 0x080268BA
+sub_80268BA
 	push {r3, lr}
 	adds r0, #4
 	bl sub_801228C
@@ -38,7 +38,7 @@ sub_80268BA ;@ 0x080268BA
 	bx r3
 
 	thumb_func_start sub_80268C8
-sub_80268C8 ;@ 0x080268C8
+sub_80268C8
 	push {r3, r4, r5, lr}
 	cmp r0, #0
 	bne _080268D8
@@ -65,7 +65,7 @@ _080268D8
 	str r1, [r0, #0x14]
 	movs r1, #5
 	str r1, [r0, #0xc]
-	ldr r1, _08026CDC ;@ =0x00002B11
+	ldr r1, _08026CDC
 	str r4, [r0, #0x18]
 	str r1, [r0, #0x1c]
 _08026902
@@ -74,11 +74,11 @@ _08026902
 	bx r3
 
 	thumb_func_start sub_8026908
-sub_8026908 ;@ 0x08026908
+sub_8026908
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne _08026920
-	ldr r0, _08026CE0 ;@ =0x00001308
+	ldr r0, _08026CE0
 	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08026920
@@ -94,7 +94,7 @@ _08026920
 	adds r5, r1, #0
 	movs r2, #0x20
 	adds r0, r4, #0
-	ldr r3, _08026CE4 ;@ =sub_80268C8
+	ldr r3, _08026CE4
 	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #0
 	strb r0, [r5, #5]
@@ -102,7 +102,7 @@ _08026920
 	b _0802691A
 
 	non_word_aligned_thumb_func_start sub_802693A
-sub_802693A ;@ 0x0802693A
+sub_802693A
 	push {r3, r4, r5, lr}
 	movs r2, #0x1f
 	mvns r2, r2
@@ -112,7 +112,7 @@ sub_802693A ;@ 0x0802693A
 	movs r0, #0x97
 	lsls r0, r0, #5
 	adds r0, r4, r0
-	ldr r3, _08026CE8 ;@ =sub_80403A4
+	ldr r3, _08026CE8
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	cmp r5, #0
 	beq _0802695C
@@ -124,17 +124,17 @@ _0802695C
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8026962
-sub_8026962 ;@ 0x08026962
+sub_8026962
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _08026CEC ;@ =gUnknown_03003460
+	ldr r0, _08026CEC
 	sub sp, #0x164
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08026A54
 	movs r0, #0
 	str r0, [r4, #8]
-	ldr r5, _08026CDC ;@ =0x00002B11
+	ldr r5, _08026CDC
 	adds r0, r4, #4
 	adds r7, r0, #0
 	str r5, [r4, #0x1c]
@@ -331,7 +331,7 @@ _08026A56
 	movs r0, #6
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x144]
-	ldr r1, _08026CDC ;@ =0x00002B11
+	ldr r1, _08026CDC
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x140]
@@ -354,7 +354,7 @@ _08026A56
 	adds r5, #0x1c
 	movs r0, #0xa
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -374,7 +374,7 @@ _08026A56
 	adds r5, #0x20
 	movs r0, #0xb
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -394,7 +394,7 @@ _08026A56
 	adds r5, #0x20
 	movs r0, #0xc
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -414,7 +414,7 @@ _08026A56
 	adds r5, #0x20
 	movs r0, #0xd
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -434,7 +434,7 @@ _08026A56
 	adds r5, #0x20
 	movs r0, #0xe
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -454,7 +454,7 @@ _08026A56
 	adds r5, #0x20
 	movs r0, #0xf
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r7, r0, #0
@@ -473,7 +473,7 @@ _08026A56
 	bl sub_801228C
 	lsls r0, r6, #5
 	adds r5, r4, r0
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	str r6, [r5, #8]
 	adds r0, r5, #4
@@ -497,7 +497,7 @@ _08026A56
 	adds r5, r4, r0
 	movs r0, #0x11
 	str r0, [r5, #8]
-	ldr r0, _08026CDC ;@ =0x00002B11
+	ldr r0, _08026CDC
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -527,7 +527,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x12
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -549,7 +549,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x13
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -571,7 +571,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x14
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -593,7 +593,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x15
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -615,7 +615,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x16
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -637,7 +637,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x17
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -659,7 +659,7 @@ _08026CF0
 	adds r6, r4, r0
 	movs r0, #0x18
 	str r0, [r6, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r5, r0, #0
@@ -682,7 +682,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x19
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -704,7 +704,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1a
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -726,7 +726,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1b
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -748,7 +748,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1c
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -770,7 +770,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1d
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -792,7 +792,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1e
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -814,7 +814,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x1f
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -836,7 +836,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x20
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -857,7 +857,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x21
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -878,7 +878,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x22
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -899,7 +899,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x23
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -920,7 +920,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x24
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -941,7 +941,7 @@ _08026CF0
 	adds r5, r4, r0
 	movs r0, #0x26
 	str r0, [r5, #8]
-	ldr r0, _080270F8 ;@ =0x00002B11
+	ldr r0, _080270F8
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -988,7 +988,7 @@ _080270FC
 	adds r6, r4, r0
 	movs r0, #0x27
 	str r0, [r6, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r5, r0, #0
@@ -1010,7 +1010,7 @@ _080270FC
 	adds r5, r4, r0
 	movs r0, #0x28
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1032,7 +1032,7 @@ _080270FC
 	adds r5, r4, r0
 	movs r0, #0x29
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1054,7 +1054,7 @@ _080270FC
 	adds r5, r4, r0
 	movs r0, #0x2a
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1076,7 +1076,7 @@ _080270FC
 	adds r5, r4, r0
 	movs r0, #0x2b
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1102,7 +1102,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x2c
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1150,7 +1150,7 @@ _0802723C
 	movs r0, #0x2e
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x13c]
-	ldr r1, _08027538 ;@ =0x00002B11
+	ldr r1, _08027538
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x138]
@@ -1175,7 +1175,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x2f
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1197,7 +1197,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x30
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1219,7 +1219,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x31
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1244,7 +1244,7 @@ _0802723C
 	movs r0, #0x32
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x134]
-	ldr r1, _08027538 ;@ =0x00002B11
+	ldr r1, _08027538
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x130]
@@ -1269,7 +1269,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x33
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1291,7 +1291,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x34
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1313,7 +1313,7 @@ _0802723C
 	adds r5, r4, r0
 	movs r0, #0x35
 	str r0, [r5, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1335,7 +1335,7 @@ _0802723C
 	adds r7, r4, r0
 	movs r0, #0x36
 	str r0, [r7, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r7, #0x1c]
 	adds r0, r7, #4
 	adds r6, r0, #0
@@ -1358,7 +1358,7 @@ _0802723C
 	adds r6, r4, r0
 	movs r0, #0x37
 	str r0, [r6, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1380,7 +1380,7 @@ _0802723C
 	adds r6, r4, r0
 	movs r0, #0x38
 	str r0, [r6, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1402,7 +1402,7 @@ _0802723C
 	adds r6, r4, r0
 	movs r0, #0x39
 	str r0, [r6, #8]
-	ldr r0, _08027538 ;@ =0x00002B11
+	ldr r0, _08027538
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1428,7 +1428,7 @@ _0802753C
 	adds r6, r4, r0
 	movs r0, #0x3a
 	str r0, [r6, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1450,7 +1450,7 @@ _0802753C
 	adds r6, r4, r0
 	movs r0, #0x3b
 	str r0, [r6, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1472,7 +1472,7 @@ _0802753C
 	adds r6, r4, r0
 	movs r0, #0x3c
 	str r0, [r6, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r7, r0, #0
@@ -1497,7 +1497,7 @@ _0802753C
 	movs r0, #0x3d
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x12c]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x128]
@@ -1525,7 +1525,7 @@ _0802753C
 	movs r0, #0x3e
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x124]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x120]
@@ -1552,7 +1552,7 @@ _0802753C
 	movs r0, #0x3f
 	str r0, [r1, #8]
 	ldr r1, [sp, #0x11c]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r1, #0x1c]
 	adds r0, r1, #4
 	str r0, [sp, #0x118]
@@ -1577,7 +1577,7 @@ _0802753C
 	movs r0, #0x40
 	str r0, [r1, #8]
 	ldr r1, [sp, #0x114]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r1, #0x1c]
 	adds r0, r1, #4
 	str r0, [sp, #0x110]
@@ -1603,7 +1603,7 @@ _0802753C
 	movs r0, #0x41
 	str r0, [r1, #8]
 	ldr r1, [sp, #0x10c]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r1, #0x1c]
 	adds r0, r1, #4
 	str r0, [sp, #0x108]
@@ -1627,7 +1627,7 @@ _0802753C
 	adds r5, r4, r0
 	movs r0, #0x42
 	str r0, [r5, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1648,7 +1648,7 @@ _0802753C
 	adds r5, r4, r0
 	movs r0, #0x43
 	str r0, [r5, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1669,7 +1669,7 @@ _0802753C
 	adds r5, r4, r0
 	movs r0, #0x44
 	str r0, [r5, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1690,7 +1690,7 @@ _0802753C
 	adds r6, r4, r0
 	movs r0, #0x45
 	str r0, [r6, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r5, r0, #0
@@ -1715,7 +1715,7 @@ _0802753C
 	movs r0, #0x46
 	str r0, [r1, #8]
 	ldr r0, [sp, #0x104]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0x100]
@@ -1743,7 +1743,7 @@ _0802753C
 	movs r0, #0x47
 	str r0, [r1, #8]
 	ldr r0, [sp, #0xfc]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0xf8]
@@ -1771,7 +1771,7 @@ _0802753C
 	movs r0, #0x48
 	str r0, [r1, #8]
 	ldr r0, [sp, #0xf4]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0xf0]
@@ -1799,7 +1799,7 @@ _0802753C
 	movs r0, #0x49
 	str r0, [r1, #8]
 	ldr r0, [sp, #0xec]
-	ldr r1, _0802793C ;@ =0x00002B11
+	ldr r1, _0802793C
 	str r1, [r0, #0x1c]
 	adds r0, #4
 	str r0, [sp, #0xe8]
@@ -1824,7 +1824,7 @@ _0802753C
 	adds r5, r4, r0
 	movs r0, #0x4a
 	str r0, [r5, #8]
-	ldr r0, _08027940 ;@ =0x00002B12
+	ldr r0, _08027940
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1846,7 +1846,7 @@ _0802753C
 	adds r5, r4, r0
 	movs r0, #0x4b
 	str r0, [r5, #8]
-	ldr r0, _0802793C ;@ =0x00002B11
+	ldr r0, _0802793C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1875,7 +1875,7 @@ _08027944
 	adds r6, r4, r0
 	movs r0, #0x4c
 	str r0, [r6, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r6, #0x1c]
 	adds r0, r6, #4
 	adds r5, r0, #0
@@ -1898,7 +1898,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x4d
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1921,7 +1921,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x4e
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1968,7 +1968,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x50
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -1991,7 +1991,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x51
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -2014,7 +2014,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x52
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	adds r6, r0, #0
@@ -2037,7 +2037,7 @@ _08027944
 	adds r5, r4, r0
 	movs r0, #0x53
 	str r0, [r5, #8]
-	ldr r0, _08027D4C ;@ =0x00002B11
+	ldr r0, _08027D4C
 	str r0, [r5, #0x1c]
 	adds r0, r5, #4
 	str r0, [sp, #0xe4]
@@ -2084,7 +2084,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x55
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2109,7 +2109,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x56
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2134,7 +2134,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x57
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2159,7 +2159,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x58
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2184,7 +2184,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x59
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2209,7 +2209,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x5a
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2232,7 +2232,7 @@ _08027944
 	adds r6, r4, r0
 	movs r0, #0x5b
 	str r0, [r6, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xe0]
@@ -2257,7 +2257,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x5c
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xdc]
@@ -2280,7 +2280,7 @@ _08027944
 	adds r1, r0, #0
 	movs r0, #0x5d
 	str r0, [r1, #8]
-	ldr r1, _08027D4C ;@ =0x00002B11
+	ldr r1, _08027D4C
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xd8]
@@ -2307,7 +2307,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x5e
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xd4]
@@ -2330,7 +2330,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x5f
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xd0]
@@ -2353,7 +2353,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x60
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xcc]
@@ -2376,7 +2376,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x61
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xc8]
@@ -2397,7 +2397,7 @@ _08027D50
 	adds r6, r4, r0
 	movs r0, #0x62
 	str r0, [r6, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xc4]
@@ -2420,7 +2420,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x63
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2446,7 +2446,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x64
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xc0]
@@ -2470,7 +2470,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x65
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xbc]
@@ -2494,7 +2494,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x66
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xb8]
@@ -2518,7 +2518,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x67
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xb4]
@@ -2542,7 +2542,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x68
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xb0]
@@ -2566,7 +2566,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x69
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xac]
@@ -2588,7 +2588,7 @@ _08027D50
 	adds r6, r4, r0
 	movs r0, #0x6a
 	str r0, [r6, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xa8]
@@ -2613,7 +2613,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x6b
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xa4]
@@ -2636,7 +2636,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x6c
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0xa0]
@@ -2659,7 +2659,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x6d
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x9c]
@@ -2682,7 +2682,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x6e
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x98]
@@ -2705,7 +2705,7 @@ _08027D50
 	adds r1, r0, #0
 	movs r0, #0x6f
 	str r0, [r1, #8]
-	ldr r1, _08028138 ;@ =0x00002B11
+	ldr r1, _08028138
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x94]
@@ -2736,7 +2736,7 @@ _08028120
 _08028138 DCDU 0x00002B11
 _0802813C
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x90]
@@ -2757,7 +2757,7 @@ _0802813C
 	adds r6, r4, r0
 	movs r0, #0x71
 	str r0, [r6, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x8c]
@@ -2780,7 +2780,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x72
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -2806,7 +2806,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x73
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x88]
@@ -2830,7 +2830,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x74
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x84]
@@ -2854,7 +2854,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x75
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x80]
@@ -2878,7 +2878,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x76
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x7c]
@@ -2902,7 +2902,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x77
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x78]
@@ -2926,7 +2926,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x78
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x74]
@@ -2948,7 +2948,7 @@ _0802813C
 	adds r6, r4, r0
 	movs r0, #0x79
 	str r0, [r6, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x70]
@@ -2973,7 +2973,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7a
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x6c]
@@ -2996,7 +2996,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7b
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x68]
@@ -3019,7 +3019,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7c
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x64]
@@ -3042,7 +3042,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7d
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x60]
@@ -3065,7 +3065,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7e
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x5c]
@@ -3088,7 +3088,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x7f
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x58]
@@ -3109,7 +3109,7 @@ _0802813C
 	adds r6, r4, r0
 	movs r1, #0x80
 	str r1, [r6, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x54]
@@ -3132,7 +3132,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x81
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -3158,7 +3158,7 @@ _0802813C
 	adds r1, r0, #0
 	movs r0, #0x82
 	str r0, [r1, #8]
-	ldr r1, _08028520 ;@ =0x00002B11
+	ldr r1, _08028520
 	b _08028524
 	ALIGN
 _08028520 DCDU 0x00002B11
@@ -3186,7 +3186,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x83
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x4c]
@@ -3210,7 +3210,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x84
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x48]
@@ -3234,7 +3234,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x85
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x44]
@@ -3258,7 +3258,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x86
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x40]
@@ -3282,7 +3282,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x87
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x3c]
@@ -3304,7 +3304,7 @@ _08028524
 	adds r6, r4, r0
 	movs r0, #0x88
 	str r0, [r6, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x38]
@@ -3329,7 +3329,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x89
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x34]
@@ -3352,7 +3352,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x8a
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x30]
@@ -3375,7 +3375,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x8b
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x2c]
@@ -3398,7 +3398,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x8c
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x28]
@@ -3421,7 +3421,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x8d
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x24]
@@ -3444,7 +3444,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x8e
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x20]
@@ -3465,7 +3465,7 @@ _08028524
 	adds r6, r4, r0
 	movs r0, #0x8f
 	str r0, [r6, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x1c]
@@ -3488,7 +3488,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x90
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -3511,7 +3511,7 @@ _08028524
 	adds r6, r4, r0
 	movs r0, #0x91
 	str r0, [r6, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	adds r7, r0, #0
 	str r1, [r6, #0x1c]
@@ -3534,7 +3534,7 @@ _08028524
 	adds r6, r4, r0
 	movs r0, #0x92
 	str r0, [r6, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r6, #4
 	str r1, [r6, #0x1c]
 	str r0, [sp, #0x18]
@@ -3559,7 +3559,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x93
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0x14]
@@ -3584,7 +3584,7 @@ _08028524
 	adds r1, r0, #0
 	movs r0, #0x94
 	str r0, [r1, #8]
-	ldr r1, _08028938 ;@ =0x00002B11
+	ldr r1, _08028938
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	b _08028908
@@ -3617,7 +3617,7 @@ _0802893C
 	adds r1, r0, #0
 	movs r0, #0x95
 	str r0, [r1, #8]
-	ldr r1, _08028BD8 ;@ =0x00002B11
+	ldr r1, _08028BD8
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #0xc]
@@ -3642,7 +3642,7 @@ _0802893C
 	adds r1, r0, #0
 	movs r0, #0x96
 	str r0, [r1, #8]
-	ldr r1, _08028BD8 ;@ =0x00002B11
+	ldr r1, _08028BD8
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #8]
@@ -3667,7 +3667,7 @@ _0802893C
 	adds r1, r0, #0
 	movs r0, #0x97
 	str r0, [r1, #8]
-	ldr r1, _08028BD8 ;@ =0x00002B11
+	ldr r1, _08028BD8
 	adds r0, r7, #4
 	str r1, [r7, #0x1c]
 	str r0, [sp, #4]
@@ -3751,11 +3751,11 @@ _08028A74
 	bx r3
 
 	thumb_func_start sub_8028A7C
-sub_8028A7C ;@ 0x08028A7C
+sub_8028A7C
 	push {r3, r4, r5, r6, r7, lr}
 _08028A7E
 	adds r6, r0, #0
-	ldr r0, _08028BDC ;@ =gUnknown_03003460
+	ldr r0, _08028BDC
 	adds r4, r2, #0
 	ldr r0, [r0]
 	cmp r0, #0
@@ -3766,7 +3766,7 @@ _08028A7E
 	strb r1, [r5, #5]
 	cmp r1, #7
 	bhs _08028AC4
-	add r3, pc, #0x8 ;@ =_08028AA0
+	add r3, pc, #0x8
 	ldrb r3, [r3, r1]
 	lsls r3, r3, #1
 	add pc, r3
@@ -3788,13 +3788,13 @@ _08028AA6
 loc_8028aa8
 	cmp r4, #0xff
 	beq _08028ABA
-	ldr r5, _08028BDC ;@ =gUnknown_03003460
+	ldr r5, _08028BDC
 	bl sub_800B6AC
 	adds r1, r4, #0
 	ldr r0, [r5]
 	bl sub_800B698
 _08028ABA
-	ldr r0, _08028BDC ;@ =gUnknown_03003460
+	ldr r0, _08028BDC
 	movs r1, #0x40
 	ldr r0, [r0]
 	bl sub_800B6EC
@@ -3810,13 +3810,13 @@ loc_8028aca
 loc_8028ad4
 	cmp r4, #0xff
 	beq _08028AE6
-	ldr r5, _08028BDC ;@ =gUnknown_03003460
+	ldr r5, _08028BDC
 	bl sub_800B6AC
 	adds r1, r4, #0
 	ldr r0, [r5]
 	bl sub_800B698
 _08028AE6
-	ldr r0, _08028BDC ;@ =gUnknown_03003460
+	ldr r0, _08028BDC
 	movs r1, #0xff
 	adds r1, #1
 	ldr r0, [r0]
@@ -3828,7 +3828,7 @@ loc_8028af4
 	bl sub_800B6EC
 	b _08028AC4
 loc_8028afe
-	ldr r7, _08028BDC ;@ =gUnknown_03003460
+	ldr r7, _08028BDC
 	bl sub_800B72A
 	cmp r0, #0
 	beq _08028B16
@@ -3844,7 +3844,7 @@ _08028B16
 	adds r0, r6, #0
 	b _08028A7E
 loc_8028b1e
-	ldr r0, _08028BE0 ;@ =gUnknown_03003E94
+	ldr r0, _08028BE0
 	ldr r0, [r0]
 	bl sub_800B764
 	strb r0, [r5, #6]
@@ -3852,8 +3852,8 @@ loc_8028b1e
 	b _08028AC4
 
 	thumb_func_start sub_8028B2C
-sub_8028B2C ;@ 0x08028B2C
-	ldr r1, _08028BDC ;@ =gUnknown_03003460
+sub_8028B2C
+	ldr r1, _08028BDC
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	cmp r1, #0
@@ -3864,7 +3864,7 @@ sub_8028B2C ;@ 0x08028B2C
 	ldrb r0, [r4, #5]
 	cmp r0, #7
 	bhs _08028B62
-	add r3, pc, #0x8 ;@ =_08028B4C
+	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -3895,7 +3895,7 @@ _08028B62
 	pop {r3}
 	bx r3
 loc_8028b68
-	ldr r5, _08028BDC ;@ =gUnknown_03003460
+	ldr r5, _08028BDC
 	adds r0, r1, #0
 	bl sub_800B714
 	cmp r0, #0
@@ -3908,7 +3908,7 @@ loc_8028b68
 	bl sub_800B6AC
 	b _08028B62
 loc_8028b84
-	ldr r5, _08028BDC ;@ =gUnknown_03003460
+	ldr r5, _08028BDC
 	adds r0, r1, #0
 	bl sub_800B714
 	cmp r0, #0
@@ -3927,13 +3927,13 @@ loc_8028b84
 	strb r0, [r4, #5]
 	b _08028B62
 loc_8028bb0
-	ldr r0, _08028BE0 ;@ =gUnknown_03003E94
+	ldr r0, _08028BE0
 	ldr r0, [r0]
 	bl sub_800B764
 	ldrb r1, [r4, #6]
 	cmp r0, r1
 	beq _08028B62
-	ldr r5, _08028BDC ;@ =gUnknown_03003460
+	ldr r5, _08028BDC
 	ldr r0, [r5]
 	bl sub_800B6AC
 	ldrb r1, [r4]

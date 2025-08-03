@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003450
 	IMPORT sub_8002004
@@ -9,7 +9,7 @@
 	IMPORT sub_803FF24
 
 	thumb_func_start sub_801C210
-sub_801C210 ;@ 0x0801C210
+sub_801C210
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #0xa8
 	movs r4, #0
@@ -17,15 +17,15 @@ sub_801C210 ;@ 0x0801C210
 	adds r1, r5, #0
 	str r4, [sp, #4]
 	add r0, sp, #4
-	ldr r2, _0801C494 ;@ =0x05000014
+	ldr r2, _0801C494
 	bl CpuSet
 	movs r0, #0
 	str r0, [sp, #4]
 	add r0, sp, #4
-	ldr r2, _0801C494 ;@ =0x05000014
+	ldr r2, _0801C494
 	add r1, sp, #8
 	bl CpuSet
-	ldr r0, _0801C498 ;@ =gUnknown_03003450
+	ldr r0, _0801C498
 	ldr r0, [r0]
 	bl sub_8002004
 	ldr r3, [r0, #4]
@@ -181,7 +181,7 @@ _0801C34A
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_801C352
-sub_801C352 ;@ 0x0801C352
+sub_801C352
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	ldr r1, [sp, #0x18]
@@ -212,7 +212,7 @@ _0801C37A
 	bne _0801C46C
 	movs r0, #0xa0
 	ldrh r0, [r0, r5]
-	ldr r1, _0801C49C ;@ =0x00002712
+	ldr r1, _0801C49C
 	cmp r0, r1
 	bne _0801C46C
 	movs r0, #0x94
@@ -267,7 +267,7 @@ _0801C3D6
 	bl __16_ll_srdv
 	cmp r4, #0
 	bge _0801C3FA
-	ldr r4, _0801C4A0 ;@ =0xFFFF0000
+	ldr r4, _0801C4A0
 	b _0801C448
 _0801C3FA
 	movs r4, #1
@@ -310,7 +310,7 @@ _0801C430
 _0801C43C
 	cmp r7, #0
 	bge _0801C444
-	ldr r0, _0801C4A0 ;@ =0xFFFF0000
+	ldr r0, _0801C4A0
 	b _0801C448
 _0801C444
 	movs r0, #1

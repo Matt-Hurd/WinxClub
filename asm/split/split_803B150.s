@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003E98
@@ -23,7 +23,7 @@
 	IMPORT gUnknown_03001444
 
 	thumb_func_start sub_803B150
-sub_803B150 ;@ 0x0803B150
+sub_803B150
 	push {r3, lr}
 	bl sub_802E47A
 	add sp, #4
@@ -31,11 +31,11 @@ sub_803B150 ;@ 0x0803B150
 	bx r3
 
 	thumb_func_start sub_803B15C
-sub_803B15C ;@ 0x0803B15C
+sub_803B15C
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0803B174
-	ldr r0, _0803B300 ;@ =0x0000172C
+	ldr r0, _0803B300
 	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0803B174
@@ -48,16 +48,16 @@ _0803B174
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_8010574
-	ldr r0, _0803B304 ;@ =gUnknown_0803EC7C
+	ldr r0, _0803B304
 	str r0, [r4]
 	adds r0, r4, #0
 	b _0803B16E
 
 	thumb_func_start sub_803B184
-sub_803B184 ;@ 0x0803B184
+sub_803B184
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _0803B304 ;@ =gUnknown_0803EC7C
+	ldr r0, _0803B304
 	adds r5, r1, #0
 	movs r1, #0
 	str r0, [r4]
@@ -73,23 +73,23 @@ _0803B1A0
 	bx r3
 
 	non_word_aligned_thumb_func_start nullsub_60
-nullsub_60 ;@ 0x0803B1A6
+nullsub_60
 	bx lr
 
 	thumb_func_start sub_803B1A8
-sub_803B1A8 ;@ 0x0803B1A8
+sub_803B1A8
 	movs r0, #0
 	bx lr
 
 	thumb_func_start nullsub_61
-nullsub_61 ;@ 0x0803B1AC
+nullsub_61
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_803B1AE
-sub_803B1AE ;@ 0x0803B1AE
+sub_803B1AE
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0803B308 ;@ =gUnknown_03003E84
+	ldr r0, _0803B308
 	movs r7, #0
 	adds r6, r1, #0
 	adds r3, r7, #0
@@ -99,7 +99,7 @@ sub_803B1AE ;@ 0x0803B1AE
 	bl sub_800529A
 	adds r5, r0, #0
 	ldr r0, [r0]
-	ldr r2, _0803B30C ;@ =0xFFC00FFF
+	ldr r2, _0803B30C
 	ldr r1, [r4, #0xc]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0xa
@@ -133,7 +133,7 @@ sub_803B1AE ;@ 0x0803B1AE
 	adds r0, r4, r0
 	adds r0, #0x50
 	stm r0!, {r1, r2}
-	ldr r0, _0803B310 ;@ =gUnknown_03003E98
+	ldr r0, _0803B310
 	ldr r0, [r0]
 	bl sub_8004674
 	adds r1, r4, #0
@@ -142,7 +142,7 @@ sub_803B1AE ;@ 0x0803B1AE
 	bl sub_80108DA
 	bl sub_80081A8
 	ldr r6, [r5]
-	ldr r1, _0803B314 ;@ =gUnknown_0804AE80
+	ldr r1, _0803B314
 	lsls r0, r6, #0x1d
 	lsrs r0, r0, #0x1c
 	ldr r7, [r4, #0xc]

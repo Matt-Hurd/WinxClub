@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EA4
@@ -11,10 +11,10 @@
 	IMPORT sub_803FA3C
 
 	thumb_func_start sub_800065C
-sub_800065C ;@ 0x0800065C
+sub_800065C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r0, _08000900 ;@ =gUnknown_03003EA0
+	ldr r0, _08000900
 	lsls r1, r1, #3
 	ldr r0, [r0]
 	ldr r2, [r0, #0x24]
@@ -44,16 +44,16 @@ _08000694
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800069A
-sub_800069A ;@ 0x0800069A
+sub_800069A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _08000904 ;@ =gUnknown_03003EA4
+	ldr r0, _08000904
 	movs r1, #0x13
 	ldr r0, [r0]
 	lsls r1, r1, #7
 	adds r0, r0, r1
 	ldr r5, [r0, #0x20]
-	ldr r0, _08000900 ;@ =gUnknown_03003EA0
+	ldr r0, _08000900
 	adds r5, #0x38
 	ldr r2, [r5]
 	ldr r3, [r4, #0x3c]
@@ -147,7 +147,7 @@ _0800070C
 	b _080006EE
 
 	non_word_aligned_thumb_func_start sub_800075E
-sub_800075E ;@ 0x0800075E
+sub_800075E
 	push {r4}
 	ldr r3, [r0, #0x10]
 	ldrh r2, [r0, #0x28]
@@ -183,9 +183,9 @@ sub_800075E ;@ 0x0800075E
 	bx lr
 
 	thumb_func_start sub_80007A0
-sub_80007A0 ;@ 0x080007A0
+sub_80007A0
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
-	ldr r6, _08000900 ;@ =gUnknown_03003EA0
+	ldr r6, _08000900
 	adds r4, r0, #0
 	ldr r0, [r6]
 	lsls r7, r1, #3
@@ -220,7 +220,7 @@ _080007BA
 	bhi _0800080A
 	ldr r0, [r1, #0x2c]
 	ldr r1, [r5, #4]
-	ldr r3, _08000908 ;@ =0x0010BE20
+	ldr r3, _08000908
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0xe
 	adds r0, r0, r1
@@ -247,7 +247,7 @@ _0800080A
 	adds r0, r1, r0
 	str r0, [r4, #0x48]
 	ldr r0, [r5]
-	ldr r3, _08000908 ;@ =0x0010BE20
+	ldr r3, _08000908
 	lsls r0, r0, #0xe
 	lsrs r0, r0, #0x1a
 	strb r0, [r4, #4]
@@ -257,7 +257,7 @@ _0800080A
 	b _08000858
 _0800082C
 	ldr r0, [r6]
-	ldr r3, _08000908 ;@ =0x0010BE20
+	ldr r3, _08000908
 	ldr r1, [r0, #0x28]
 	adds r1, r1, r7
 	str r1, [r4, #0x44]
@@ -305,9 +305,9 @@ _08000858
 	bx r3
 
 	thumb_func_start sub_800088C
-sub_800088C ;@ 0x0800088C
+sub_800088C
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r6, _08000900 ;@ =gUnknown_03003EA0
+	ldr r6, _08000900
 	adds r4, r0, #0
 	ldr r0, [r6]
 	adds r7, r2, #0
@@ -345,7 +345,7 @@ _080008AE
 	movs r2, #0x10
 	str r0, [r4, #8]
 	bl __16_ll_shift_l
-	add r2, pc, #0x28 ;@ =_0800090C
+	add r2, pc, #0x28
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f

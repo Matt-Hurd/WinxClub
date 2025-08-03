@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003E98
@@ -15,7 +15,7 @@
 	IMPORT sub_803D9C4
 
 	thumb_func_start sub_80106B0
-sub_80106B0 ;@ 0x080106B0
+sub_80106B0
 	ldr r0, [r0, #0xc]
 	lsls r0, r0, #0x14
 	lsrs r0, r0, #0x18
@@ -23,11 +23,11 @@ sub_80106B0 ;@ 0x080106B0
 	bx lr
 
 	non_word_aligned_thumb_func_start nullsub_40
-nullsub_40 ;@ 0x080106BA
+nullsub_40
 	bx lr
 
 	thumb_func_start sub_80106BC
-sub_80106BC ;@ 0x080106BC
+sub_80106BC
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	ldr r6, [r0, #4]
 	movs r5, #0
@@ -39,7 +39,7 @@ sub_80106BC ;@ 0x080106BC
 	cmp r0, #0
 	bls _08010720
 _080106D0
-	ldr r0, _08010994 ;@ =gUnknown_03003E84
+	ldr r0, _08010994
 	movs r3, #0
 	movs r2, #8
 	adds r1, r6, #0
@@ -101,7 +101,7 @@ _0801073E
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8010746
-sub_8010746 ;@ 0x08010746
+sub_8010746
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x70]
@@ -176,7 +176,7 @@ _080107A4
 	adds r0, #2
 	str r0, [sp, #0x58]
 _080107D8
-	ldr r0, _08010994 ;@ =gUnknown_03003E84
+	ldr r0, _08010994
 	movs r3, #0
 	movs r2, #0x42
 	adds r1, r5, #0
@@ -216,7 +216,7 @@ _0801080C
 	adds r0, #2
 	str r0, [sp, #0x54]
 _0801082A
-	ldr r0, _08010994 ;@ =gUnknown_03003E84
+	ldr r0, _08010994
 	movs r3, #0
 	ldr r0, [r0]
 	ldr r1, [sp, #0x50]
@@ -233,7 +233,7 @@ _0801082A
 	subs r0, r0, r1
 	beq _08010886
 _0801084E
-	ldr r0, _08010994 ;@ =gUnknown_03003E84
+	ldr r0, _08010994
 	movs r3, #0
 	movs r2, #8
 	adds r1, r5, #0
@@ -305,7 +305,7 @@ _080108D6
 	b _0801079C
 
 	non_word_aligned_thumb_func_start sub_80108DA
-sub_80108DA ;@ 0x080108DA
+sub_80108DA
 	push {r3, r4, r5, r6, r7, lr}
 	movs r6, #1
 	lsls r6, r6, #9
@@ -343,10 +343,10 @@ _08010904
 	bx r3
 
 	thumb_func_start sub_8010920
-sub_8010920 ;@ 0x08010920
+sub_8010920
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _08010994 ;@ =gUnknown_03003E84
+	ldr r0, _08010994
 	adds r5, r1, #0
 	adds r7, r2, #0
 	movs r3, #0
@@ -369,7 +369,7 @@ sub_8010920 ;@ 0x08010920
 	adds r5, r0, r5
 	cmp r7, #0
 	bne _08010984
-	ldr r0, _08010998 ;@ =gUnknown_03003E98
+	ldr r0, _08010998
 	ldr r0, [r0]
 	bl sub_8004674
 	adds r1, r4, #0

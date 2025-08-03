@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB4
@@ -15,7 +15,7 @@
 
 
 	thumb_func_start sub_800BBF4
-sub_800BBF4 ;@ 0x0800BBF4
+sub_800BBF4
 	push {r4, r5, r6, r7}
 	movs r2, #0xf
 	lsls r2, r2, #6
@@ -36,7 +36,7 @@ _0800BC08
 	lsls r4, r4, #1
 	adds r4, r4, r0
 	strb r5, [r2]
-	ldr r5, _0800BFF4 ;@ =0x00000FFF
+	ldr r5, _0800BFF4
 	adds r4, r4, r6
 	strh r5, [r4]
 	cmp r3, r1
@@ -50,7 +50,7 @@ _0800BC24
 	bx lr
 
 	thumb_func_start sub_800BC30
-sub_800BC30 ;@ 0x0800BC30
+sub_800BC30
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	lsls r0, r1, #1
@@ -75,7 +75,7 @@ sub_800BC30 ;@ 0x0800BC30
 	ldr r3, [r0, #0x14]
 	str r2, [r3, #4]
 	ldrb r1, [r1]
-	ldr r2, _0800BFF8 ;@ =0x05000200
+	ldr r2, _0800BFF8
 	lsls r1, r1, #5
 	adds r1, r1, r2
 	ldr r2, [r0, #0x14]
@@ -95,7 +95,7 @@ _0800BC7E
 	ldr r3, [r0, #0x10]
 	str r2, [r3, #4]
 	ldrb r1, [r1]
-	ldr r2, _0800BFF8 ;@ =0x05000200
+	ldr r2, _0800BFF8
 	lsls r1, r1, #5
 	adds r1, r1, r2
 	ldr r2, [r0, #0x10]
@@ -145,7 +145,7 @@ _0800BCC6
 	bx r3
 
 	thumb_func_start sub_800BCE4
-sub_800BCE4 ;@ 0x0800BCE4
+sub_800BCE4
 	push {r4, r5, r6, r7}
 	ldr r5, [sp, #0x10]
 	movs r0, #0
@@ -234,13 +234,13 @@ _0800BD62
 	bx lr
 
 	thumb_func_start sub_800BD7C
-sub_800BD7C ;@ 0x0800BD7C
+sub_800BD7C
 	push {r3, r4, r5, r6, r7, lr}
 	movs r4, #0x1f
 	lsls r4, r4, #6
 	adds r2, r0, r4
 	ldrb r2, [r2, #0xa]
-	ldr r5, _0800BFFC ;@ =0x000003C2
+	ldr r5, _0800BFFC
 	lsls r3, r2, #7
 	adds r3, r3, r0
 	adds r6, r3, r5
@@ -317,7 +317,7 @@ _0800BDE6
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800BE0E
-sub_800BE0E ;@ 0x0800BE0E
+sub_800BE0E
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x78]
@@ -363,8 +363,8 @@ _0800BE58
 	str r0, [sp]
 	adds r3, r0, #1
 	beq _0800BF40
-	ldr r1, _0800C004 ;@ =0x000007CC
-	ldr r0, _0800C000 ;@ =0x00001810
+	ldr r1, _0800C004
+	ldr r0, _0800C000
 	adds r2, r5, r1
 	movs r1, #0x2f
 	lsls r1, r1, #6
@@ -387,7 +387,7 @@ _0800BE7A
 	orrs r0, r1
 	str r0, [r4]
 	ldr r2, [sp, #4]
-	ldr r1, _0800C008 ;@ =0x00001310
+	ldr r1, _0800C008
 	ldrb r0, [r2, #0xe]
 	lsls r3, r0, #2
 	adds r0, r3, r0
@@ -452,7 +452,7 @@ _0800BEEC
 	lsls r1, r1, #4
 	lsrs r2, r2, #0x18
 	orrs r1, r2
-	ldr r2, _0800C00C ;@ =gUnknown_0804AB68
+	ldr r2, _0800C00C
 	lsls r0, r0, #0x1c
 	ldrb r2, [r2, r1]
 	movs r1, #1
@@ -484,12 +484,12 @@ _0800BF42
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	bne _0800BFAE
-	ldr r0, _0800C010 ;@ =0x0FFFFFFF
+	ldr r0, _0800C010
 	ldr r1, [r7]
 	bics r0, r1
 	beq _0800BFAE
 	ldrb r0, [r6, #0xd]
-	ldr r2, _0800C004 ;@ =0x000007CC
+	ldr r2, _0800C004
 	lsls r0, r0, #3
 	adds r0, r0, r5
 	adds r0, r0, r2
@@ -551,7 +551,7 @@ _0800BFAE
 	orrs r0, r1
 	str r0, [r4]
 	ldrb r0, [r6, #0xc]
-	ldr r1, _0800C004 ;@ =0x000007CC
+	ldr r1, _0800C004
 	movs r3, #0xff
 	lsls r0, r0, #3
 	adds r0, r0, r5
@@ -583,7 +583,7 @@ _0800C010 DCDU 0x0FFFFFFF
 
 
 	thumb_func_start sub_800C014
-sub_800C014 ;@ 0x0800C014
+sub_800C014
 	lsls r2, r2, #4
 	lsrs r2, r2, #4
 	str r2, [r0]
@@ -631,7 +631,7 @@ _0800C062
 	lsls r0, r0, #0x1f
 	bmi _0800C0BE
 	ldr r0, [r7, #4]
-	ldr r2, _0800C44C ;@ =0x00000FFF
+	ldr r2, _0800C44C
 	lsrs r1, r0, #0x14
 	cmp r1, r2
 	beq _0800C0BE
@@ -644,7 +644,7 @@ _0800C062
 	b _0800C0A8
 _0800C080
 	ldr r0, [r0, #4]
-	ldr r2, _0800C450 ;@ =0x000007CC
+	ldr r2, _0800C450
 	lsrs r0, r0, #0x18
 	lsls r0, r0, #3
 	adds r0, r0, r5
@@ -702,7 +702,7 @@ _0800C0CE
 	bx r3
 
 	thumb_func_start sub_800C0EC
-sub_800C0EC ;@ 0x0800C0EC
+sub_800C0EC
 	push {r4, r5, r6, r7}
 	movs r3, #0
 	subs r4, r2, #1
@@ -743,7 +743,7 @@ _0800C112
 	bx lr
 
 	thumb_func_start sub_800C134
-sub_800C134 ;@ 0x0800C134
+sub_800C134
 	lsls r1, r1, #1
 	adds r2, r1, r0
 	adds r2, #0x80
@@ -771,7 +771,7 @@ _0800C160
 	bx lr
 
 	thumb_func_start sub_800C164
-sub_800C164 ;@ 0x0800C164
+sub_800C164
 	push {r4, lr}
 	adds r4, r1, #0
 	ldr r1, [r1]
@@ -785,7 +785,7 @@ sub_800C164 ;@ 0x0800C164
 	lsls r1, r1, #5
 	adds r1, r2, r1
 	ldrh r1, [r1]
-	ldr r2, _0800C44C ;@ =0x00000FFF
+	ldr r2, _0800C44C
 	cmp r1, r2
 	beq _0800C192
 	bl sub_800C134
@@ -800,12 +800,12 @@ _0800C192
 	bx r3
 
 	thumb_func_start sub_800C198
-sub_800C198 ;@ 0x0800C198
+sub_800C198
 	push {r3, r4, r5, lr}
 	adds r4, r1, #0
 	lsrs r1, r1, #7
 	adds r3, r2, #0
-	ldr r2, _0800C454 ;@ =0x000003C2
+	ldr r2, _0800C454
 	lsls r1, r1, #7
 	adds r1, r1, r0
 	adds r1, r1, r2
@@ -827,7 +827,7 @@ sub_800C198 ;@ 0x0800C198
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800C1CA
-sub_800C1CA ;@ 0x0800C1CA
+sub_800C1CA
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x78]
@@ -893,7 +893,7 @@ _0800C218
 	str r1, [sp, #0x10]
 _0800C23E
 	ldr r0, [r5]
-	ldr r1, _0800C458 ;@ =0x00001318
+	ldr r1, _0800C458
 	lsls r0, r0, #0xb
 	lsrs r0, r0, #0x18
 	lsls r3, r0, #2
@@ -939,7 +939,7 @@ _0800C28C
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #1
-	ldr r3, _0800C45C ;@ =0x00001310
+	ldr r3, _0800C45C
 	ldrb r1, [r0, #7]
 	adds r2, r2, r4
 	adds r2, r2, r3
@@ -973,7 +973,7 @@ _0800C2A2
 	lsls r3, r3, #4
 	lsrs r6, r6, #0x18
 	orrs r3, r6
-	ldr r6, _0800C460 ;@ =gUnknown_0804AB68
+	ldr r6, _0800C460
 	lsls r1, r1, #0x1c
 	lsrs r1, r1, #0x1c
 	cmp r1, #9
@@ -989,7 +989,7 @@ _0800C2E8
 	lsrs r0, r0, #0x15
 	lsrs r1, r0, #7
 	lsls r1, r1, #7
-	ldr r2, _0800C454 ;@ =0x000003C2
+	ldr r2, _0800C454
 	adds r1, r1, r4
 	adds r1, r1, r2
 	movs r2, #8
@@ -1014,7 +1014,7 @@ _0800C306
 _0800C322
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x15
-	ldr r1, _0800C450 ;@ =0x000007CC
+	ldr r1, _0800C450
 	adds r0, r0, r4
 	adds r6, r0, r1
 	ldr r0, [r6, #4]
@@ -1034,7 +1034,7 @@ _0800C322
 	lsrs r0, r0, #0x1a
 	bne _0800C3EC
 	ldr r0, [r5]
-	ldr r2, _0800C454 ;@ =0x000003C2
+	ldr r2, _0800C454
 	lsrs r0, r0, #0x15
 	lsrs r1, r0, #7
 	lsls r1, r1, #7
@@ -1116,7 +1116,7 @@ _0800C3D4
 	adds r0, #0xff
 	strb r0, [r7, #0xe]
 _0800C3EC
-	ldr r1, _0800C464 ;@ =0xFFE00000
+	ldr r1, _0800C464
 	ldr r0, [r5]
 	orrs r0, r1
 	movs r1, #0xff
@@ -1126,7 +1126,7 @@ _0800C3EC
 	lsls r1, r1, #0x1f
 	bmi _0800C432
 	ldr r1, [sp, #8]
-	ldr r2, _0800C44C ;@ =0x00000FFF
+	ldr r2, _0800C44C
 	ldr r1, [r1, #4]
 	lsrs r1, r1, #0x14
 	cmp r1, r2
@@ -1189,7 +1189,7 @@ _0800C468
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800C482
-sub_800C482 ;@ 0x0800C482
+sub_800C482
 	push {r4, r5}
 	movs r4, #0xc1
 	adds r2, r0, #0
@@ -1250,11 +1250,11 @@ _0800C4E6
 	b _0800C4A0
 
 	thumb_func_start sub_800C4F0
-sub_800C4F0 ;@ 0x0800C4F0
+sub_800C4F0
 	lsls r2, r1, #1
 	adds r2, r2, r1
 	lsls r2, r2, #2
-	ldr r3, _0800C8A4 ;@ =0x00001824
+	ldr r3, _0800C8A4
 	adds r2, r2, r0
 	adds r2, r2, r3
 	push {r4, r5, r6, r7}
@@ -1312,7 +1312,7 @@ _0800C55A
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800C55E
-sub_800C55E ;@ 0x0800C55E
+sub_800C55E
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x78]
@@ -1322,7 +1322,7 @@ sub_800C55E ;@ 0x0800C55E
 	str r0, [r5, #0x78]
 	ldrh r0, [r1, #0x28]
 	adds r4, r1, #0
-	ldr r1, _0800C8A4 ;@ =0x00001824
+	ldr r1, _0800C8A4
 	lsls r0, r0, #0x12
 	lsrs r0, r0, #0x1b
 	lsls r3, r0, #1
@@ -1340,7 +1340,7 @@ sub_800C55E ;@ 0x0800C55E
 	bne _0800C600
 	ldrh r0, [r4, #0x24]
 	lsls r1, r6, #0xc
-	ldr r7, _0800C8A8 ;@ =gUnknown_080414B8
+	ldr r7, _0800C8A8
 	adds r0, r0, r1
 	lsls r0, r0, #0x12
 	lsrs r0, r0, #0x11
@@ -1454,7 +1454,7 @@ _0800C658
 	str r0, [r3, #4]
 	b _0800C68A
 _0800C670
-	ldr r6, _0800C8AC ;@ =0x0FFFFFFF
+	ldr r6, _0800C8AC
 	adds r3, r6, #0
 	bics r3, r0
 	bne _0800C67E
@@ -1471,7 +1471,7 @@ _0800C67E
 _0800C68A
 	mov r3, ip
 	ldr r0, [r3]
-	ldr r3, _0800C8B0 ;@ =0x06010000
+	ldr r3, _0800C8B0
 	lsrs r0, r0, #0x15
 	lsls r0, r0, #5
 	adds r0, r0, r3
@@ -1498,7 +1498,7 @@ _0800C6BA
 	muls r6, r3
 	strh r6, [r0, #8]
 	ldr r0, [r2, #0x14]
-	ldr r6, _0800C8AC ;@ =0x0FFFFFFF
+	ldr r6, _0800C8AC
 	ldr r3, [r0, #4]
 	cmp r3, r6
 	beq _0800C6D2
@@ -1526,7 +1526,7 @@ _0800C6DA
 	lsls r3, r6, #2
 	adds r3, r3, r6
 	lsls r3, r3, #1
-	ldr r6, _0800C8B4 ;@ =0x0000131C
+	ldr r6, _0800C8B4
 	adds r3, r3, r5
 	adds r3, r3, r6
 	ldrh r6, [r3]
@@ -1550,7 +1550,7 @@ _0800C710
 	lsls r3, r0, #2
 	adds r0, r3, r0
 	lsls r0, r0, #1
-	ldr r3, _0800C8B8 ;@ =0x00001318
+	ldr r3, _0800C8B8
 	adds r0, r0, r5
 	adds r0, r0, r3
 	ldrh r3, [r4, #0x26]
@@ -1572,7 +1572,7 @@ _0800C730
 	lsrs r3, r3, #0x18
 	lsls r6, r6, #4
 	orrs r3, r6
-	ldr r6, _0800C8BC ;@ =gUnknown_0804AC68
+	ldr r6, _0800C8BC
 	ldrb r3, [r6, r3]
 	ldrh r6, [r0, #2]
 	bics r6, r7
@@ -1827,7 +1827,7 @@ _0800C91A
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800C93A
-sub_800C93A ;@ 0x0800C93A
+sub_800C93A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0xc5
@@ -1839,12 +1839,12 @@ sub_800C93A ;@ 0x0800C93A
 	ldr r0, [r6, #0x14]
 	cmp r0, r4
 	bls _0800C9B2
-	ldr r7, _0800CCE0 ;@ =0x040000D4
+	ldr r7, _0800CCE0
 _0800C952
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	bne _0800C996
-	ldr r1, _0800CCE4 ;@ =gUnknown_03003EB4
+	ldr r1, _0800CCE4
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _0800C97A
@@ -1899,7 +1899,7 @@ _0800C9B2
 	bls _0800CA10
 	b _0800C9F8
 _0800C9C0
-	ldr r1, _0800CCE4 ;@ =gUnknown_03003EB4
+	ldr r1, _0800CCE4
 	ldr r1, [r1]
 	cmp r1, #0
 	beq _0800C9DA
@@ -1974,8 +1974,8 @@ _0800CA46
 	strb r0, [r1]
 	b _0800CA90
 _0800CA4C
-	ldr r3, _0800CCE8 ;@ =0x00001818
-	ldr r4, _0800CCEC ;@ =0x00001318
+	ldr r3, _0800CCE8
+	ldr r4, _0800CCEC
 	adds r3, r5, r3
 _0800CA52
 	ldrb r6, [r3, #7]
@@ -2024,8 +2024,8 @@ _0800CA90
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	beq _0800CACE
-	ldr r0, _0800CCF0 ;@ =0x00001824
-	ldr r1, _0800CCF4 ;@ =0x07000006
+	ldr r0, _0800CCF0
+	ldr r1, _0800CCF4
 	adds r0, r5, r0
 	movs r2, #0x1f
 _0800CAB0
@@ -2053,17 +2053,17 @@ _0800CACE
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_800CADA
-sub_800CADA ;@ 0x0800CADA
+sub_800CADA
 	ldr r0, [r0, #0x78]
 	lsls r0, r0, #0x1f
 	lsrs r0, r0, #0x1f
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800CAE2
-sub_800CAE2 ;@ 0x0800CAE2
+sub_800CAE2
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0800CCF8 ;@ =gUnknown_03003EA0
+	ldr r0, _0800CCF8
 	movs r1, #0xc1
 	ldr r0, [r0]
 	lsls r1, r1, #5
@@ -2077,7 +2077,7 @@ sub_800CAE2 ;@ 0x0800CAE2
 	movs r1, #1
 	orrs r0, r1
 	str r0, [r4, #0x78]
-	ldr r0, _0800CCFC ;@ =0x00001810
+	ldr r0, _0800CCFC
 	movs r1, #0
 	adds r2, r4, r0
 	str r2, [sp, #0x210]
@@ -2089,7 +2089,7 @@ sub_800CAE2 ;@ 0x0800CAE2
 	movs r3, #0
 	stm r7!, {r1, r2, r3}
 	lsls r0, r0, #1
-	ldr r6, _0800CCEC ;@ =0x00001318
+	ldr r6, _0800CCEC
 	adds r0, r0, r4
 	adds r0, r0, r6
 	stm r7!, {r3}
@@ -2188,7 +2188,7 @@ _0800CBB8
 	subs r5, #0x10
 	cmp r3, #0
 	ble _0800CBF4
-	ldr r7, _0800CD00 ;@ =0x00001310
+	ldr r7, _0800CD00
 _0800CBD4
 	ldrb r6, [r0, r2]
 	adds r2, #1
@@ -2222,7 +2222,7 @@ _0800CBF8
 	ble _0800CC34
 _0800CC0C
 	ldrb r5, [r0, r2]
-	ldr r6, _0800CD00 ;@ =0x00001310
+	ldr r6, _0800CD00
 	adds r2, #1
 	lsls r3, r5, #2
 	adds r3, r3, r5
@@ -2262,7 +2262,7 @@ _0800CC34
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #1
-	ldr r3, _0800CD00 ;@ =0x00001310
+	ldr r3, _0800CD00
 	adds r2, r2, r4
 	adds r2, r2, r3
 	strb r0, [r2, #0xf]
@@ -2321,7 +2321,7 @@ _0800CCA8
 	lsls r3, r0, #2
 	adds r0, r3, r0
 	lsls r0, r0, #1
-	ldr r3, _0800CD00 ;@ =0x00001310
+	ldr r3, _0800CD00
 	adds r0, r0, r4
 	adds r0, r0, r3
 	strb r1, [r0, #0xf]

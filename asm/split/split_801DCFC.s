@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003450
 	IMPORT gUnknown_03003454
@@ -17,7 +17,7 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_801DCFC
-sub_801DCFC ;@ 0x0801DCFC
+sub_801DCFC
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -42,7 +42,7 @@ sub_801DCFC ;@ 0x0801DCFC
 	lsrs r1, r1, #0x10
 	lsls r0, r0, #8
 	lsrs r2, r0, #0x18
-	ldr r0, _0801DFC8 ;@ =gUnknown_03003454
+	ldr r0, _0801DFC8
 	movs r3, #1
 	ldr r0, [r0]
 	bl sub_8017884
@@ -52,7 +52,7 @@ _0801DD3A
 	bx r3
 
 	thumb_func_start sub_801DD40
-sub_801DD40 ;@ 0x0801DD40
+sub_801DD40
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -60,7 +60,7 @@ sub_801DD40 ;@ 0x0801DD40
 	subs r2, #0x1c
 	cmp r2, #0x11
 	bhs _0801DD58
-	add r3, pc, #0x10 ;@ =_0801DD60
+	add r3, pc, #0x10
 	adds r3, r3, r2
 	ldrh r3, [r3, r2]
 	lsls r3, r3, #1
@@ -129,7 +129,7 @@ loc_801dd84
 	lsrs r1, r1, #0x10
 	lsls r0, r0, #8
 	lsrs r2, r0, #0x18
-	ldr r0, _0801DFC8 ;@ =gUnknown_03003454
+	ldr r0, _0801DFC8
 	movs r3, #1
 	ldr r0, [r0]
 	bl sub_8017884
@@ -144,7 +144,7 @@ loc_801ddc0
 	ldrb r1, [r0, #4]
 	cmp r1, #0xc
 	bhs _0801DD58
-	add r3, pc, #0x8 ;@ =_0801DDDC
+	add r3, pc, #0x8
 	ldrb r3, [r3, r1]
 	lsls r3, r3, #1
 	add pc, r3
@@ -298,7 +298,7 @@ loc_801debe
 	bl __call_via_r2
 	b _0801DD58
 loc_801decc
-	ldr r0, _0801DFCC ;@ =gUnknown_03003450
+	ldr r0, _0801DFCC
 	movs r2, #0x27
 	ldr r0, [r0]
 	lsls r2, r2, #6
@@ -317,7 +317,7 @@ loc_801deea
 	ldrh r1, [r0, #4]
 	adds r4, #0x80
 	ldr r2, [r4, #0x10]
-	ldr r3, _0801DFD0 ;@ =0xE00FFFFF
+	ldr r3, _0801DFD0
 	lsls r1, r1, #0x17
 	lsrs r1, r1, #3
 	ands r2, r3
@@ -365,7 +365,7 @@ loc_801df3a
 	b _0801DD58
 
 	thumb_func_start sub_801DF50
-sub_801DF50 ;@ 0x0801DF50
+sub_801DF50
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -374,7 +374,7 @@ sub_801DF50 ;@ 0x0801DF50
 	subs r0, #0x1c
 	cmp r0, #0x11
 	bhs _0801DFC4
-	add r3, pc, #0x4 ;@ =_0801DF68
+	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3

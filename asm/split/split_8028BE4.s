@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003460
 	IMPORT sub_80121C4
@@ -9,7 +9,7 @@
 	IMPORT sub_8012334
 
 	thumb_func_start sub_8028BE4
-sub_8028BE4 ;@ 0x08028BE4
+sub_8028BE4
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	bl sub_80121C4
@@ -25,10 +25,10 @@ _08028BF8
 	b _08028BF2
 
 	thumb_func_start sub_8028BFC
-sub_8028BFC ;@ 0x08028BFC
+sub_8028BFC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _08028C78 ;@ =gUnknown_03003460
+	ldr r0, _08028C78
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08028C28
@@ -54,7 +54,7 @@ _08028C28
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8028C2E
-sub_8028C2E ;@ 0x08028C2E
+sub_8028C2E
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #4
@@ -66,7 +66,7 @@ sub_8028C2E ;@ 0x08028C2E
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8028C42
-sub_8028C42 ;@ 0x08028C42
+sub_8028C42
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0]
@@ -82,7 +82,7 @@ _08028C56
 	bx r3
 
 	thumb_func_start sub_8028C5C
-sub_8028C5C ;@ 0x08028C5C
+sub_8028C5C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0]

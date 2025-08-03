@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_0300345C
@@ -20,7 +20,7 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start sub_801AED0
-sub_801AED0 ;@ 0x0801AED0
+sub_801AED0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0xa8
@@ -30,7 +30,7 @@ sub_801AED0 ;@ 0x0801AED0
 	adds r0, r5, #0
 	movs r2, #0x78
 	adds r0, #8
-	ldr r3, _0801B0EC ;@ =sub_80143E0
+	ldr r3, _0801B0EC
 	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r5, #0
 	adds r0, #0xff
@@ -54,7 +54,7 @@ sub_801AED0 ;@ 0x0801AED0
 	add r4, sp, #0x194
 	add r7, sp, #0x174
 _0801AF1A
-	ldr r0, _0801B0F0 ;@ =gUnknown_03003444
+	ldr r0, _0801B0F0
 	movs r2, #0
 	ldr r0, [r0]
 	adds r3, r2, #0
@@ -85,7 +85,7 @@ _0801AF34
 	adds r0, r1, r0
 	lsls r1, r0, #0x10
 	lsrs r1, r1, #0x10
-	ldr r0, _0801B0F4 ;@ =gUnknown_03003EA0
+	ldr r0, _0801B0F4
 	str r1, [sp, #4]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -109,7 +109,7 @@ _0801AF7A
 	adds r0, r0, r1
 	lsls r1, r0, #0x10
 	lsrs r1, r1, #0x10
-	ldr r0, _0801B0F4 ;@ =gUnknown_03003EA0
+	ldr r0, _0801B0F4
 	str r1, [sp, #4]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -166,11 +166,11 @@ _0801AFE4
 	bl sub_801AC60
 _0801AFF0
 	lsls r0, r6, #0x1a
-	ldr r1, _0801B0F8 ;@ =0x00000C83
+	ldr r1, _0801B0F8
 	lsrs r0, r0, #0x1f
 	adds r5, r0, r1
 	ldr r1, [r4, #4]
-	ldr r0, _0801B0F4 ;@ =gUnknown_03003EA0
+	ldr r0, _0801B0F4
 	str r1, [sp, #0x10]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -188,10 +188,10 @@ _0801AFF0
 	bl sub_800065C
 _0801B01E
 	lsls r0, r6, #0x1b
-	ldr r1, _0801B0FC ;@ =0x00000C85
+	ldr r1, _0801B0FC
 	lsrs r0, r0, #0x1f
 	adds r5, r0, r1
-	ldr r0, _0801B0F4 ;@ =gUnknown_03003EA0
+	ldr r0, _0801B0F4
 	ldr r6, [r4, #8]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -214,12 +214,12 @@ _0801B048
 	b _0801AF1A
 _0801B054
 	ldrh r2, [r7, #0x1a]
-	ldr r1, _0801B100 ;@ =gUnknown_080506E8
+	ldr r1, _0801B100
 	ldrb r0, [r4, #1]
 	ldrb r4, [r1, r2]
 	ldrh r2, [r7, #0x18]
 	add r5, sp, #0x14
-	ldr r6, _0801B104 ;@ =gUnknown_0300345C
+	ldr r6, _0801B104
 	cmp r0, #1
 	ldrb r7, [r1, r2]
 	beq _0801B08E
@@ -274,7 +274,7 @@ _0801B0B0
 	mvns r2, r2
 	adds r0, r5, #0
 	adds r0, #0x80
-	ldr r3, _0801B108 ;@ =sub_8014436
+	ldr r3, _0801B108
 	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0xa8

@@ -1,5 +1,5 @@
-    INCLUDE asm/macros.inc
-    AREA text, CODE
+	INCLUDE asm/macros.inc
+	AREA text, CODE
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003458
@@ -21,11 +21,11 @@
 	IMPORT __call_via_r1
 
 	thumb_func_start sub_8039DAC
-sub_8039DAC ;@ 0x08039DAC
+sub_8039DAC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r4, r0, #0
-	ldr r0, _0803A030 ;@ =gUnknown_03003E98
+	ldr r0, _0803A030
 	adds r5, r4, #0
 	ldr r0, [r0]
 	adds r5, #0xe0
@@ -72,7 +72,7 @@ _08039E00
 	movs r6, #1
 _08039E06
 	ldr r1, [r4, #0x30]
-	ldr r0, _0803A034 ;@ =gUnknown_03003EA0
+	ldr r0, _0803A034
 	str r1, [sp]
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -81,7 +81,7 @@ _08039E06
 	ldr r1, [r1, #0x10]
 	subs r0, r1, r0
 	asrs r0, r0, #3
-	ldr r1, _0803A038 ;@ =0x000011EF
+	ldr r1, _0803A038
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r6, r1
@@ -161,7 +161,7 @@ _08039EB0
 	bx r3
 
 	non_word_aligned_thumb_func_start sub_8039EB6
-sub_8039EB6 ;@ 0x08039EB6
+sub_8039EB6
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -215,7 +215,7 @@ _08039F0C
 	subs r0, #2
 	cmp r0, #6
 	bhs _08039FB4
-	add r3, pc, #0x8 ;@ =_08039F24
+	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
@@ -237,7 +237,7 @@ loc_8039f2a
 	bl sub_801F286
 	b _08039FBA
 loc_8039f32
-	ldr r0, _0803A03C ;@ =gPlayerEntity
+	ldr r0, _0803A03C
 	movs r1, #2
 	ldr r0, [r0]
 	adds r0, #0xac
@@ -258,7 +258,7 @@ loc_8039f32
 	bl __call_via_r1
 	b _08039FBA
 loc_8039f60
-	ldr r0, _0803A040 ;@ =gUnknown_03003458
+	ldr r0, _0803A040
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	adds r0, #0xa0
@@ -305,26 +305,26 @@ _08039FBA
 	ldrsb r1, [r0, r4]
 	cmp r1, #0
 	blt _08039FDE
-	ldr r2, _0803A044 ;@ =gUnknown_03003478
+	ldr r2, _0803A044
 	movs r0, #0x10
 	ldr r2, [r2]
 	ands r2, r0
 	beq _08039FDE
-	ldr r0, _0803A03C ;@ =gPlayerEntity
+	ldr r0, _0803A03C
 	ldr r0, [r0]
 	adds r0, #0xa0
 	strb r1, [r0, #8]
-	ldr r0, _0803A048 ;@ =gUnknown_030034F8
+	ldr r0, _0803A048
 	ldr r0, [r0]
 	bl sub_8023FE4
 	b _0803A01E
 _08039FDE
-	ldr r1, _0803A03C ;@ =gPlayerEntity
+	ldr r1, _0803A03C
 	movs r0, #0
 	ldr r1, [r1]
 	adds r1, #0xa0
 	strb r0, [r1, #8]
-	ldr r0, _0803A048 ;@ =gUnknown_030034F8
+	ldr r0, _0803A048
 	ldr r0, [r0]
 	bl sub_8023FE4
 	movs r0, #0xa8
@@ -335,7 +335,7 @@ _08039FDE
 	adds r0, #2
 	strh r0, [r4, #0x1c]
 	strh r0, [r4, #0x18]
-	ldr r0, _0803A04C ;@ =gUnknown_0300345C
+	ldr r0, _0803A04C
 	ldr r0, [r0]
 	ldr r1, [r5, #0x34]
 	adds r1, #1

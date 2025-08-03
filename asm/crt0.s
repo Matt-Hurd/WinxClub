@@ -11,7 +11,7 @@
 	ENTRY
 
 	arm_func_start start
-start ;@ 0x08000000
+start
 	b _08000100
 	INCLUDE asm/rom_header.inc
 
@@ -28,11 +28,11 @@ _080000E4
 _08000100
 	mov r0, #0x$PSR_IRQ_MODE
 	msr cpsr_fc, r0
-	LDR sp, _0800012C ;@ =gUnknown_03007FA0
+	LDR sp, _0800012C
 	mov r0, #0x$PSR_SYS_MODE
 	msr cpsr_fc, r0
-	LDR sp, _08000128 ;@ =gInterruptStack
-	LDR r1, _08000130 ;@ =gbaMain
+	LDR sp, _08000128
+	LDR r1, _08000130
 	mov lr, pc
 	bx r1
 _08000124
@@ -43,8 +43,8 @@ _0800012C DCDU gUnknown_03007FA0
 _08000130 DCDU gbaMain
 
 	arm_func_start gbaMain
-gbaMain ;@ 0x08000134
-	add r8, pc, #0xC4 ;@ =_08000200
+gbaMain
+	add r8, pc, #0xC4
 	ldmia r8, {r0, r1}
 	add r0, r0, r8
 	add r1, r1, r8
