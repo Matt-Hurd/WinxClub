@@ -540,9 +540,9 @@ LOAD_ROM_1 0x08000000
     {
         AgbSysArmVBlankIntrWait.o
     }
-    filler 0x803D4A0
+    split_803D4A0 0x803D4A0
     {
-        filler.o
+        split_803D4A0.o
     }
     C$$pi_ctorvec 0x803D4A4
     {
