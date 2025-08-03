@@ -14,7 +14,7 @@
 	IMPORT __16__rt_memcpy
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DABC
 
@@ -32,7 +32,7 @@ sub_8004DE6 ;@ 0x08004DE6
 	sub sp, #0x14
 	bne _08004E08
 	movs r0, #0xc
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08004E08
 	adds r0, r4, #0

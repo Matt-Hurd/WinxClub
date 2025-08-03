@@ -10,12 +10,12 @@
 	IMPORT sub_800D912
 	IMPORT sub_800DEF8
 	IMPORT __call_via_r1
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT __16_ll_srdv
 	IMPORT __16__rt_memclr_w
 	IMPORT __16__rt_memset
 	IMPORT __vecmap1c__FPvT1iPFPv_v
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_804036C
 
@@ -25,7 +25,7 @@ sub_8001A60 ;@ 0x08001A60
 	cmp r0, #0
 	bne _08001A70
 	movs r0, #0x2c
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08001A8A
 _08001A70
@@ -53,7 +53,7 @@ sub_8001A90 ;@ 0x08001A90
 	adds r4, r0, #0
 	bne _08001AA8
 	ldr r0, _08001E7C ;@ =0x00000A08
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08001AA8
 	adds r0, r4, #0
@@ -511,7 +511,7 @@ _08001DE8
 	ldr r0, [sp, #0xc]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x34]
 	str r1, [sp, #8]
@@ -523,7 +523,7 @@ _08001DE8
 	ldr r0, [sp, #0x10]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp, #4]
 	str r1, [sp, #8]
 	ldr r0, [r5, #0x38]
@@ -567,7 +567,7 @@ _08001E40
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0xc]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp]
 	ldr r0, [sp, #8]
 	str r1, [sp, #4]
@@ -616,7 +616,7 @@ _08001EBA
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0xc]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp]
 	ldr r0, [sp, #8]
 	str r1, [sp, #4]
@@ -670,7 +670,7 @@ _08001F20
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0x10]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp]
 	str r1, [sp, #4]
 	asrs r1, r7, #0x1f
@@ -706,7 +706,7 @@ _08001F72
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0x10]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp]
 	str r1, [sp, #4]
 	asrs r1, r7, #0x1f

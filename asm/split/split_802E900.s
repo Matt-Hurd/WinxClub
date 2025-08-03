@@ -24,7 +24,7 @@
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
@@ -35,7 +35,7 @@ sub_802E900 ;@ 0x0802E900
 	adds r4, r0, #0
 	bne _0802E918
 	movs r0, #0xac
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0802E918
 	adds r0, r4, #0

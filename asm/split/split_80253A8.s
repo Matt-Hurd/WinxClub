@@ -8,7 +8,7 @@
 	IMPORT sub_801DF50
 	IMPORT sub_801EBCA
 	IMPORT __call_via_r1
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 
@@ -18,7 +18,7 @@ sub_80253A8 ;@ 0x080253A8
 	adds r4, r0, #0
 	bne _080253C0
 	movs r0, #0xa0
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _080253C0
 	adds r0, r4, #0

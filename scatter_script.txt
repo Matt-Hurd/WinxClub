@@ -9,7 +9,7 @@ LOAD_ROM_3 0x03000000
 {
     IWRAM1 0x03000000 0x3D38
     {
-        iwram1.o (+RW)
+        iwram1.o
     }
 
     user_libspace 0x03003D38 0x60
@@ -285,10 +285,10 @@ LOAD_ROM_1 0x08000000
     {
         callvia.o
     }
-;    __cpp_initialise 0x803B8D8
-;    {
-;        init.o
-;    }
+    __cpp_initialise 0x803B8D8
+    {
+        cpp_init.o
+    }
     libspace 0x803B904
     {
         libspace.o
@@ -309,13 +309,17 @@ LOAD_ROM_1 0x08000000
     {
         llsdiv.o
     }
-    _ll_sshift_r 0x803B998
+    _ll_sshift_l 0x803B998
     {
-        llsshr.o
+        llshl.o
     }
     __16_ll_srdv 0x803B9C4
     {
         llsrdv.o
+    }
+    nullsub 0x803BA1C
+    {
+        split_803BA1C.o
     }
     __16_ll_udiv 0x803BA24
     {
@@ -325,10 +329,10 @@ LOAD_ROM_1 0x08000000
     {
         llushr.o
     }
-;    __pvfn__Fv 0x803BDB0
-;    {
-;        pvfn.o
-;    }
+    __pvfn__Fv 0x803BDB0
+    {
+        pvfn.o
+    }
     rand 0x803BDC0
     {
         rand.o
@@ -421,10 +425,10 @@ LOAD_ROM_1 0x08000000
     {
         llurdv.o
     }
-;    raise 0x803CF28
-;    {
-;        raise.o
-;    }
+    raise 0x803CF28
+    {
+        raise.o
+    }
     __16__rt_div0 0x803CF38
     {
         rt_div0.o
@@ -441,13 +445,13 @@ LOAD_ROM_1 0x08000000
     {
         _strtoul.o
     }
-    __rt_lib_init 0x803D0A4
-    {
-        lib_init.o
-    }
     exit 0x803D090
     {
         exit.o
+    }
+    __rt_lib_init 0x803D0A4
+    {
+        lib_init.o
     }
     __16_ll_cmpge 0x803D15C
     {
@@ -505,59 +509,56 @@ LOAD_ROM_1 0x08000000
     {
         use_semi.o
     }
-    AgbSyscall 0x803D468
+    AgbSyscall1 0x803D468
     {
         AgbSysArmCpuSet.o
+    }
+    AgbSyscall2 0x803D46C
+    {
         AgbSysArmDiv.o
+    }
+    AgbSyscall3 0x803D470
+    {
         AgbSysArmDivRem.o
+    }
+    AgbSyscall4 0x803D478
+    {
         AgbSysArmLZ77UnCompVram.o
+    }
+    AgbSyscall5 0x803D47C
+    {
         AgbSysArmDiff8bitUnFilterVram.o
+    }
+    AgbSyscall6 0x803D480
+    {
         AgbSysArmSoftReset.o
+    }
+    AgbSyscall7 0x803D498
+    {
         AgbSysArmVBlankIntrWait.o
+    }
+    filler 0x803D4A0
+    {
+        filler.o
+    }
+    C$$pi_ctorvec 0x803D4A4
+    {
+        * (CppInitializationVector)
     }
     .text17 0x0803D4A8
     {
         split_803D4A8.o
         split_803DB3C.o
-        split_803E104.o
     }
-    .veneers 0x0803E110
+    .veneers 0x0803E104
     {
-        split_803E110.o
-        split_803E11C.o
-        split_803E128.o
-        split_803E134.o
-        split_803E140.o
-        split_803E14C.o
-        split_803E158.o
-        split_803E164.o
-        split_803E170.o
-        split_803E17C.o
-        split_803E188.o
-        split_803E194.o
-        split_803E1A0.o
-        split_803E1AC.o
-        split_803E1B8.o
-        split_803E1C4.o
-        split_803E1D0.o
-        split_803E1DC.o
-        split_803E1F8.o
-        split_803E204.o
-        split_803E210.o
-        split_803E21C.o
-        split_803E228.o
-        split_803E240.o
-        split_803E24C.o
-        split_803E258.o
-        nofpdisp.o(Veneer$$Code)
+        *(Veneer$$Code)
     }
-;    DATABLOCK1 0x0803E2A0
-    DATABLOCK1 0x0803E2C0
+    DATABLOCK1 0x0803E2A0
     {
         mid_data.o (+RW)
     }
-;    .text4 0x0803EF1C
-    .text4 0x0803EF3C
+    .text4 0x0803EF1C
     {
         split_803EF1C.o
         split_803F07C.o
@@ -637,38 +638,31 @@ LOAD_ROM_1 0x08000000
         split_8041274.o
         split_80412A8.o
     }
-;    fp_printf 0x08041440
-    fp_printf 0x08041460
+    fp_printf 0x08041440
     {
         printf1.o(x$fpl$printf1)
     }
-;    DATABLOCK2 0x08041448
-    DATABLOCK2 0x08041468
+    DATABLOCK2 0x08041448
     {
         data1.o (+RW)
     }
-;    lc_ctype_data 0x80514FC
-    lc_ctype_data 0x805151C
+    lc_ctype_data 0x80514FC
     {
         lc_ctype_c.o(.constdata)
     }
-;    defsig_data 0x805160C
-    defsig_data 0x805162C
+    defsig_data 0x805160C
     {
         defsig.o(.constdata)
     }
-;    DATABLOCK3 0x08051744
-    DATABLOCK3 0x08051764
+    DATABLOCK3 0x08051738
     {
         data2.o (+RW)
     }
-;    .text5 0x080517C8
-    .text5 0x080517E8
+    .text5 0x080517C8
     {
         last_code.o
     }
-;    DATABLOCK4 0x08055AC0
-    DATABLOCK4 0x08055AE0
+    DATABLOCK4 0x08055AC0
     {
         last_data.o (+RW)
     }

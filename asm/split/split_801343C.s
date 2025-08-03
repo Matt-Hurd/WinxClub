@@ -5,7 +5,7 @@
 	IMPORT gUnknown_0803ECB4
 	IMPORT gUnknown_0803ECF4
 	IMPORT sub_8005106
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
@@ -18,7 +18,7 @@ sub_801343C ;@ 0x0801343C
 	cmp r0, #0
 	bne _08013458
 	movs r0, #0xc
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08013458
 	adds r0, r4, #0

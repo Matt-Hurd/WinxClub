@@ -23,7 +23,7 @@
 	IMPORT __16__rt_memclr
 	IMPORT __16__rt_memclr_w
 	IMPORT CpuSet
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B6E0
@@ -199,7 +199,7 @@ sub_800B7DC ;@ 0x0800B7DC
 	adds r4, r0, #0
 	bne _0800B7F4
 	ldr r0, _0800BB94 ;@ =0x000019B0
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800B7F4
 	adds r0, r4, #0

@@ -8,7 +8,7 @@
 	IMPORT sub_801E124
 	IMPORT sub_801EBCA
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT rand
 	IMPORT sub_803DA80
 	IMPORT sub_8040528
@@ -132,7 +132,7 @@ _080314B2
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x7C ;@ =_08031570
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv

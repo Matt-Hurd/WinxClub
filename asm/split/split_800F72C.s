@@ -12,10 +12,10 @@
 	IMPORT __call_via_r1
 	IMPORT __16_ll_mulls
 	IMPORT __16_ll_ushift_r
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DAC0
-	IMPORT sub_803E1E4
+	IMPORT sub_80130DC
 	IMPORT sub_804061C
 
 	thumb_func_start sub_800F72C
@@ -24,7 +24,7 @@ sub_800F72C ;@ 0x0800F72C
 	adds r4, r0, #0
 	bne _0800F744
 	movs r0, #0x8c
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800F744
 	adds r0, r4, #0
@@ -158,7 +158,7 @@ _0800F7F2
 	ldr r0, [r5, #0x6c]
 	ldr r1, [sp, #8]
 	subs r2, #1
-	bl sub_803E1E4
+	bl sub_80130DC
 	strh r0, [r4, #4]
 	ldr r0, [r4]
 	subs r0, r0, r7

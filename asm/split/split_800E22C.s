@@ -16,14 +16,14 @@
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT sub_803E17C
-	IMPORT sub_803E188
-	IMPORT sub_803E194
-	IMPORT sub_803E1A0
-	IMPORT sub_803E1AC
-	IMPORT sub_803E1B8
-	IMPORT sub_803E1C4
-	IMPORT sub_803E1D0
+	IMPORT gUnknown_03000000
+	IMPORT gUnknown_0300028C
+	IMPORT gUnknown_03000284
+	IMPORT gUnknown_03000058
+	IMPORT gUnknown_03000190
+	IMPORT gUnknown_03000090
+	IMPORT gUnknown_030001E0
+	IMPORT gUnknown_03000308
 	IMPORT sub_803F3E8
 
 	thumb_func_start sub_800E22C
@@ -142,9 +142,9 @@ sub_800E2F6 ;@ 0x0800E2F6
 	lsrs r1, r0, #0x1c
 	bne _0800E3E2
 	add r0, sp, #0x24
-	bl sub_803E17C
+	bl gUnknown_03000000
 	add r0, sp, #0x24
-	bl sub_803E188
+	bl gUnknown_0300028C
 	adds r2, r0, #0
 	ldr r0, _0800E4A8 ;@ =gUnknown_03003E84
 	adds r2, #0x48
@@ -168,7 +168,7 @@ sub_800E2F6 ;@ 0x0800E2F6
 	lsrs r2, r2, #2
 	subs r7, r2, r0
 	add r0, sp, #0x24
-	bl sub_803E194
+	bl gUnknown_03000284
 	adds r5, r0, #0
 	adds r1, r7, #0
 	cmp r7, r0
@@ -196,7 +196,7 @@ _0800E382
 	movs r1, #0
 	add r0, sp, #0x24
 	ldr r5, [sp, #0x1c]
-	bl sub_803E1A0
+	bl gUnknown_03000058
 	adds r0, r5, #0
 _0800E392
 	add sp, #0x8c
@@ -268,7 +268,7 @@ _0800E40E
 	ldr r2, _0800E4B0 ;@ =0x0000146C
 	adds r1, r7, #0
 	add r0, sp, #0x24
-	bl sub_803E1AC
+	bl gUnknown_03000190
 	mov r0, sp
 	bl sub_8008008
 	ldr r3, [sp, #0x18]
@@ -284,12 +284,12 @@ _0800E40E
 	str r0, [sp, #0x14]
 	add r0, sp, #0x24
 	mov r1, sp
-	bl sub_803E1B8
+	bl gUnknown_03000090
 	movs r2, #1
 	lsls r2, r2, #0x1e
 	adds r1, r5, #0
 	add r0, sp, #0x24
-	bl sub_803E1C4
+	bl gUnknown_030001E0
 	ldr r0, [sp, #0x88]
 	lsls r0, r0, #0x1e
 	bpl _0800E458
@@ -314,7 +314,7 @@ _0800E458
 _0800E476
 	movs r1, #0
 	add r0, sp, #0x24
-	bl sub_803E1A0
+	bl gUnknown_03000058
 	adds r0, r5, #0
 _0800E480
 	b _0800E392
@@ -333,7 +333,7 @@ _0800E496
 	bne _0800E480
 	adds r1, r4, #0
 	adds r0, r6, #0
-	bl sub_803E1D0
+	bl gUnknown_03000308
 	movs r0, #0
 	b _0800E392
 	ALIGN

@@ -6,7 +6,7 @@
 	IMPORT sub_8014EB8
 	IMPORT sub_801505A
 	IMPORT sub_8015240
-	IMPORT sub_803E1DC
+	IMPORT sub_8004C44
 
 	thumb_func_start sub_801537C
 sub_801537C ;@ 0x0801537C
@@ -84,7 +84,7 @@ _080153F6
 	adds r0, r4, #0
 	bl sub_8014EB8
 	adds r0, r5, r0
-	bl sub_803E1DC
+	bl sub_8004C44
 	asrs r0, r0, #8
 	movs r5, #0
 	cmp r0, #2

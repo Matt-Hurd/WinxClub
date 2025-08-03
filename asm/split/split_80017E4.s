@@ -9,7 +9,7 @@
 	IMPORT __16_ll_mulls
 	IMPORT __16_ll_mulss
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_80017E4
 sub_80017E4 ;@ 0x080017E4
@@ -146,7 +146,7 @@ _08001882
 	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	movs r2, #8
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x178 ;@ =_08001A44
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
@@ -159,7 +159,7 @@ _080018D8
 	adds r0, r4, #0
 	asrs r1, r4, #0x1f
 	movs r2, #9
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x158 ;@ =_08001A3C
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
@@ -197,7 +197,7 @@ _080018F6
 	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	movs r2, #8
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x104 ;@ =_08001A44
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv

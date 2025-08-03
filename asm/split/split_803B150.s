@@ -18,9 +18,9 @@
 	IMPORT __call_via_r1
 	IMPORT __16__rt_udiv
 	IMPORT sub_803D9C4
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
-	IMPORT sub_803E210
+	IMPORT gUnknown_03001444
 
 	thumb_func_start sub_803B150
 sub_803B150 ;@ 0x0803B150
@@ -36,7 +36,7 @@ sub_803B15C ;@ 0x0803B15C
 	adds r4, r0, #0
 	bne _0803B174
 	ldr r0, _0803B300 ;@ =0x0000172C
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0803B174
 	adds r0, r4, #0
@@ -234,7 +234,7 @@ _0803B296
 	ldr r1, [r0, #0x14]
 	adds r2, r5, #0
 	adds r0, r6, #0
-	bl sub_803E210
+	bl gUnknown_03001444
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #8]

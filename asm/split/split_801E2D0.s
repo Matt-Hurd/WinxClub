@@ -29,7 +29,7 @@
 	IMPORT __call_via_r2
 	IMPORT __16_ll_mulls
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT rand
 	IMPORT __16__rt_udiv
 	IMPORT __vec_dtor__FPvUiPFPvi_vPFPv_v
@@ -509,7 +509,7 @@ _0801E5CA
 	ldr r0, [sp, #0x50]
 	asrs r1, r0, #0x1f
 	movs r2, #0x14
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r7, pc, #0x190 ;@ =_0801E76C
 	ldm r7!, {r2, r3}
 	subs r7, #8
@@ -518,7 +518,7 @@ _0801E5CA
 	ldr r0, [sp, #0x54]
 	asrs r1, r0, #0x1f
 	movs r2, #0x14
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	ldm r7!, {r2, r3}
 	bl __16_ll_sdiv
 	b _0801E5FC

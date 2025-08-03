@@ -1,6 +1,9 @@
 	AREA text, CODE
 	INCLUDE asm/macros.inc
 	INCLUDE asm/gba_constants.inc
+	IMPORT ||Lib$$Request$$cpplib||
+	IMPORT __cpp_initialise
+	IMPORT __pvfn__Fv
 
 	IMPORT gInterruptStack
 	IMPORT gUnknown_03007FA0
@@ -29,7 +32,7 @@ _08000100
 	mov r0, #0x$PSR_SYS_MODE
 	msr cpsr_fc, r0
 	LDR sp, _08000128 ;@ =gInterruptStack
-	LDR r1, _08000130 ;@ =main
+	LDR r1, _08000130 ;@ =gbaMain
 	mov lr, pc
 	bx r1
 _08000124
@@ -37,10 +40,10 @@ _08000124
 	ALIGN
 _08000128 DCDU gInterruptStack
 _0800012C DCDU gUnknown_03007FA0
-_08000130 DCDU main
+_08000130 DCDU gbaMain
 
-	arm_func_start main
-main ;@ 0x08000134
+	arm_func_start gbaMain
+gbaMain ;@ 0x08000134
 	add r8, pc, #0xC4 ;@ =_08000200
 	ldmia r8, {r0, r1}
 	add r0, r0, r8

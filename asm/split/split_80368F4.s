@@ -12,7 +12,7 @@
 	IMPORT __call_via_r1
 	IMPORT __call_via_r5
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_80368F4
 sub_80368F4 ;@ 0x080368F4
@@ -282,7 +282,7 @@ _08036AB8
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x60 ;@ =_08036B74
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv

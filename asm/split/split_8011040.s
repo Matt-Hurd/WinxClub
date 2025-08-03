@@ -12,8 +12,8 @@
 	IMPORT sub_8010F10
 	IMPORT sub_8010F90
 	IMPORT __16__rt_udiv
-	IMPORT sub_803E204
-	IMPORT sub_803E210
+	IMPORT gUnknown_03001A54
+	IMPORT gUnknown_03001444
 
 	thumb_func_start sub_8011040
 sub_8011040 ;@ 0x08011040
@@ -395,7 +395,7 @@ _080112B8
 	beq _0801133A
 	adds r1, r6, #0
 	adds r0, r4, #0
-	bl sub_803E204
+	bl gUnknown_03001A54
 	movs r0, #1
 	add r3, sp, #0
 	strb r0, [r3, #0xc]
@@ -424,7 +424,7 @@ _080112B8
 	adds r0, r6, #0
 	add r2, sp, #0xc
 	ldr r1, [r1, #0x14]
-	bl sub_803E210
+	bl gUnknown_03001444
 _08011338
 	b _0801135E
 _0801133A
@@ -444,7 +444,7 @@ _0801133A
 	lsrs r3, r0, #0x16
 	adds r0, r6, #0
 	ldr r1, [r1, #0x14]
-	bl sub_803E210
+	bl gUnknown_03001444
 _0801135E
 	adds r0, r4, #0
 	bl sub_8010F90

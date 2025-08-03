@@ -14,7 +14,7 @@
 	IMPORT __call_via_r2
 	IMPORT __call_via_r3
 	IMPORT __16_ll_mullu
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT __16_ll_srdv
 	IMPORT __16_ll_udiv
 	IMPORT __16__rt_memclr
@@ -280,7 +280,7 @@ _0800FC9C
 	adds r0, r6, #0
 	adds r1, r7, #0
 	movs r2, #8
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	adds r2, r0, #0
 	ldr r0, [sp, #0xc]
 	adds r3, r1, #0

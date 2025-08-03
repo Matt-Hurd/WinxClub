@@ -6,7 +6,7 @@
 	IMPORT gUnknown_0803EEF0
 	IMPORT sub_800B12C
 	IMPORT __call_via_r2
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8008008
@@ -15,7 +15,7 @@ sub_8008008 ;@ 0x08008008
 	cmp r0, #0
 	bne _08008018
 	movs r0, #0x18
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08008028
 _08008018
@@ -38,7 +38,7 @@ sub_800802E ;@ 0x0800802E
 	cmp r0, #0
 	bne _0800803E
 	movs r0, #0x20
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08008058
 _0800803E

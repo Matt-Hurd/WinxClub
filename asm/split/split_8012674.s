@@ -4,7 +4,7 @@
 	IMPORT gUnknown_080503F6
 	IMPORT gUnknown_080503FE
 	IMPORT __rt_memcpy
-	IMPORT sub_803E228
+	IMPORT sub_80132F4
 
 	arm_func_start sub_8012674
 sub_8012674 ;@ 0x08012674
@@ -374,7 +374,7 @@ sub_8012BA0 ;@ 0x08012BA0
 	add r5, r5, #0x52
 	cmp r0, #0
 	moveq r0, r6
-	bleq sub_803E228
+	bleq sub_80132F4
 	LDR r0, [r4, #4]
 	cmp r0, #0x18
 	bhs _08012C14

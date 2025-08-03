@@ -11,7 +11,7 @@
 	IMPORT sub_8012468
 	IMPORT __call_via_r1
 	IMPORT __16__rt_memclr_w
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DAC0
 
@@ -92,7 +92,7 @@ sub_800F264 ;@ 0x0800F264
 	adds r4, r0, #0
 	bne _0800F27C
 	movs r0, #0x78
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800F27C
 	adds r0, r4, #0

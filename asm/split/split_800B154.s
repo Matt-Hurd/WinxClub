@@ -10,7 +10,7 @@
 	IMPORT gUnknown_0803ECE8
 	IMPORT sub_80002E2
 	IMPORT SoftReset
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B154
@@ -154,7 +154,7 @@ sub_800B1F6 ;@ 0x0800B1F6
 	adds r4, r0, #0
 	bne _0800B20E
 	movs r0, #4
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800B20E
 	adds r0, r4, #0

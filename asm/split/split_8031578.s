@@ -7,7 +7,7 @@
 	IMPORT sub_8005106
 	IMPORT __16__rt_memclr
 	IMPORT __16__rt_memcpy
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
@@ -18,7 +18,7 @@ sub_8031578 ;@ 0x08031578
 	cmp r0, #0
 	bne _08031588
 	movs r0, #0x10
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _0803159C
 _08031588

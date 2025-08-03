@@ -19,14 +19,14 @@
 	IMPORT sub_8005220
 	IMPORT __call_via_r2
 	IMPORT __call_via_r3
-	IMPORT sub_803E17C
-	IMPORT sub_803E258
-	IMPORT sub_803E260
-	IMPORT sub_803E268
-	IMPORT sub_803E270
-	IMPORT sub_803E278
-	IMPORT sub_803E280
-	IMPORT sub_803E288
+	IMPORT gUnknown_03000000
+	IMPORT sub_800A9BC
+	IMPORT sub_8008B14
+	IMPORT sub_800AD8C
+	IMPORT sub_800A270
+	IMPORT sub_80081D4
+	IMPORT sub_8008EB4
+	IMPORT sub_80050C0
 	IMPORT __16__rt_memclr
 
 	thumb_func_start sub_803D4A8
@@ -71,7 +71,7 @@ loc_803d4c8
 	adds r4, r0, #0
 	beq _0803D4E2
 	adds r0, r4, #0
-	bl sub_803E258
+	bl sub_800A9BC
 _0803D4E2
 	adds r0, r4, #0
 	b _0803D4C2
@@ -85,7 +85,7 @@ loc_803d4e6
 	adds r4, r0, #0
 	beq _0803D500
 	adds r0, r4, #0
-	bl sub_803E260
+	bl sub_8008B14
 _0803D500
 	adds r0, r4, #0
 	b _0803D4C2
@@ -99,7 +99,7 @@ loc_803d504
 	adds r4, r0, #0
 	beq _0803D51E
 	adds r0, r4, #0
-	bl sub_803E268
+	bl sub_800AD8C
 _0803D51E
 	adds r0, r4, #0
 	b _0803D4C2
@@ -113,7 +113,7 @@ loc_803d522
 	adds r4, r0, #0
 	beq _0803D53C
 	adds r0, r4, #0
-	bl sub_803E270
+	bl sub_800A270
 _0803D53C
 	adds r0, r4, #0
 	b _0803D4C2
@@ -127,7 +127,7 @@ loc_803d540
 	adds r4, r0, #0
 	beq _0803D55A
 	adds r0, r4, #0
-	bl sub_803E278
+	bl sub_80081D4
 _0803D55A
 	adds r0, r4, #0
 	b _0803D4C2
@@ -141,7 +141,7 @@ loc_803d55e
 	adds r4, r0, #0
 	beq _0803D578
 	adds r0, r4, #0
-	bl sub_803E280
+	bl sub_8008EB4
 _0803D578
 	adds r0, r4, #0
 	b _0803D4C2
@@ -157,7 +157,7 @@ loc_803d57e
 	adds r4, r0, #0
 	beq _0803D598
 	adds r0, r4, #0
-	bl sub_803E17C
+	bl gUnknown_03000000
 _0803D598
 	adds r0, r4, #0
 	b _0803D4C2
@@ -758,8 +758,8 @@ _0803D9EA
 	ALIGN
 _0803D9F4 DCDU gUnknown_030033E8
 
-	thumb_func_start sub_803D9F8
-sub_803D9F8 ;@ 0x0803D9F8
+	thumb_func_start maybeMallocEWRAM
+maybeMallocEWRAM ;@ 0x0803D9F8
 	adds r1, r0, #0
 	ldr r0, _0803DA14 ;@ =gUnknown_030033E8
 	push {r3, lr}
@@ -893,7 +893,7 @@ __rt_stackheap_init ;@ 0x0803DAC4
 	add r1, r1, #0x40000
 	STMFD SP!, {r0, r1, lr}
 	sub r1, r1, r0
-	bl sub_803E288
+	bl sub_80050C0
 	LDMFD SP!, {r0, r1, lr}
 	LDR r1, _0803DB30 ;@ =gUnknown_030033EC
 	STR r0, [r1]

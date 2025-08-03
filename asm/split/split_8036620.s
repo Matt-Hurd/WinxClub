@@ -11,7 +11,7 @@
 	IMPORT sub_8029070
 	IMPORT sub_802911C
 	IMPORT sub_802913E
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
@@ -21,7 +21,7 @@ sub_8036620 ;@ 0x08036620
 	adds r4, r0, #0
 	bne _08036638
 	movs r0, #0xe4
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08036638
 	adds r0, r4, #0

@@ -12,7 +12,7 @@
 	IMPORT sub_801537C
 	IMPORT __call_via_r2
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_8000914
 sub_8000914 ;@ 0x08000914
@@ -101,7 +101,7 @@ loc_8000986
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	mov r2, pc
 	subs r2, #0x94
 	ldm r2!, {r2, r3}
@@ -140,7 +140,7 @@ loc_80009be
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	mov r2, pc
 	subs r2, #0xe2
 	ldm r2!, {r2, r3}
@@ -231,7 +231,7 @@ _08000A92
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0xEC ;@ =_08000B98
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv

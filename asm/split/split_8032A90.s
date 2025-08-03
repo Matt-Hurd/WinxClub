@@ -27,9 +27,9 @@
 	IMPORT __call_via_r1
 	IMPORT __call_via_r6
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT __16_ll_srdv
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803F38C
 	IMPORT sub_803FF24
@@ -45,7 +45,7 @@ sub_8032A90 ;@ 0x08032A90
 	adds r4, r0, #0
 	bne _08032AA8
 	movs r0, #0x58
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08032AA8
 	adds r0, r4, #0
@@ -512,7 +512,7 @@ _08032E42
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x50 ;@ =_08032EA8
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
@@ -521,7 +521,7 @@ _08032E42
 	ldr r0, [sp, #0x18]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	str r0, [sp, #4]
 	adds r0, r5, #0
 	str r1, [sp, #8]
@@ -535,7 +535,7 @@ _08032E42
 	ldr r0, [sp, #0x14]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	b _08032EB0
 	ALIGN
 _08032E8C DCDU gUnknown_0803EC44

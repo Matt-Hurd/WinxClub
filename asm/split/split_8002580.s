@@ -12,7 +12,7 @@
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8002580
@@ -21,7 +21,7 @@ sub_8002580 ;@ 0x08002580
 	adds r4, r0, #0
 	bne _08002598
 	ldr r0, _0800280C ;@ =0x0000082C
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08002598
 	adds r0, r4, #0

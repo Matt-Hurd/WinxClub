@@ -8,8 +8,8 @@
 	IMPORT __call_via_r2
 	IMPORT __call_via_r3
 	IMPORT CpuSet
-	IMPORT sub_803E1EC
-	IMPORT sub_803E1F8
+	IMPORT gUnknown_03001BBC
+	IMPORT gUnknown_03001C24
 
 	thumb_func_start sub_8010D60
 sub_8010D60 ;@ 0x08010D60
@@ -44,14 +44,14 @@ sub_8010D60 ;@ 0x08010D60
 	lsls r1, r0, #0x1d
 	lsrs r1, r1, #0x1d
 	ldr r0, [r7, #0x10]
-	bl sub_803E1EC
+	bl gUnknown_03001BBC
 	ldr r0, [r4, #4]
 	lsls r1, r0, #0x10
 	lsrs r2, r1, #0x16
 	lsls r1, r0, #0x1d
 	lsrs r1, r1, #0x1d
 	ldr r0, [r7, #0x10]
-	bl sub_803E1F8
+	bl gUnknown_03001C24
 	ldrb r1, [r6, #0xd]
 	ldr r0, [r5, #0x24]
 	movs r5, #0

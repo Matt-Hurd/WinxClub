@@ -16,7 +16,7 @@
 	IMPORT sub_800B8CE
 	IMPORT sub_800B916
 	IMPORT sub_800B9B6
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
@@ -29,7 +29,7 @@ sub_8000D64 ;@ 0x08000D64
 	bne _08000D7E
 	movs r0, #0xdf
 	lsls r0, r0, #5
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08000D7E
 	adds r0, r4, #0

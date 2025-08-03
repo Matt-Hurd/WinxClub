@@ -36,7 +36,7 @@
 	IMPORT __call_via_r6
 	IMPORT __16__rt_memclr
 	IMPORT __16__rt_sdiv
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800FE90
@@ -45,7 +45,7 @@ sub_800FE90 ;@ 0x0800FE90
 	cmp r0, #0
 	bne _0800FEA0
 	movs r0, #0x20
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _0800FEB6
 _0800FEA0
@@ -107,7 +107,7 @@ sub_800FF00 ;@ 0x0800FF00
 	adds r4, r0, #0
 	bne _0800FF18
 	movs r0, #0x28
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800FF18
 	adds r0, r4, #0

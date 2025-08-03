@@ -49,7 +49,7 @@
 	IMPORT __call_via_r3
 	IMPORT __call_via_r7
 	IMPORT sub_803D66C
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_80401E4
 	IMPORT sub_804025C
@@ -61,7 +61,7 @@ sub_801669C ;@ 0x0801669C
 	adds r4, r0, #0
 	bne _080166B4
 	movs r0, #0x18
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _080166B4
 	adds r0, r4, #0

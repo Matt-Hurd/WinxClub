@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003450
 	IMPORT sub_8002004
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 	IMPORT __16_ll_srdv
 	IMPORT CpuSet
 	IMPORT sub_803FF24
@@ -258,7 +258,7 @@ _0801C3D6
 	adds r0, r7, #0
 	asrs r1, r7, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	adds r2, r0, #0
 	ldr r0, [sp, #0x10]
 	str r1, [sp, #4]
@@ -290,7 +290,7 @@ _0801C416
 	adds r0, r4, #0
 	asrs r1, r4, #0x1f
 	movs r2, #0x10
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	adds r4, r0, #0
 	cmp r7, #0
 	str r1, [sp, #4]

@@ -11,7 +11,7 @@
 	IMPORT sub_80012F0
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 	IMPORT sub_8040148
@@ -24,7 +24,7 @@ sub_803772C ;@ 0x0803772C
 	adds r4, r0, #0
 	bne _08037744
 	movs r0, #0x44
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08037744
 	adds r0, r4, #0

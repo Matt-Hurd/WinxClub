@@ -1,4 +1,4 @@
-	AREA data, DATA
+	AREA data, CODE
 
 	GLOBAL gUnknown_03000000
 	GLOBAL gUnknown_03000058
@@ -91,28 +91,36 @@
 	GLOBAL gUnknown_03003D35
 
 gUnknown_03000000
-	SPACE 0x58
+	ANDEQ           R0, R0, R0
+	SPACE 0x54
 
 gUnknown_03000058
-	SPACE 0x38
+	ANDEQ           R0, R0, R0
+	SPACE 0x34
 
 gUnknown_03000090
-	SPACE 0x100
+	ANDEQ           R0, R0, R0
+	SPACE 0xFC
 
 gUnknown_03000190
-	SPACE 0x50
+	ANDEQ           R0, R0, R0
+	SPACE 0x4C
 
 gUnknown_030001E0
-	SPACE 0xa4
+	ANDEQ           R0, R0, R0
+	SPACE 0xA0
 
 gUnknown_03000284
-	SPACE 0x8
+	ANDEQ           R0, R0, R0
+	SPACE 0x4
 
 gUnknown_0300028C
-	SPACE 0x7c
+	ANDEQ           R0, R0, R0
+	SPACE 0x78
 
 gUnknown_03000308
-	SPACE 0xe38
+	ANDEQ           R0, R0, R0
+	SPACE 0xe34
 
 gUnknown_03001140
 	SPACE 0x2ec
@@ -121,16 +129,20 @@ gUnknown_0300142C
 	SPACE 0x18
 
 gUnknown_03001444
-	SPACE 0x610
+	ANDEQ           R0, R0, R0
+	SPACE 0x60C
 
 gUnknown_03001A54
-	SPACE 0x168
+	ANDEQ           R0, R0, R0
+	SPACE 0x164
 
 gUnknown_03001BBC
-	SPACE 0x68
+	ANDEQ           R0, R0, R0
+	SPACE 0x64
 
 gUnknown_03001C24
-	SPACE 0xfc8
+	ANDEQ           R0, R0, R0
+	SPACE 0xfc4
 
 gUnknown_03002BEC
 	SPACE 0x13c
@@ -154,7 +166,8 @@ gUnknown_03002DE4
 	SPACE 0x164
 
 gUnknown_03002F48
-	SPACE 0x170
+	ANDEQ           R0, R0, R0
+	SPACE 0x16C
 
 gUnknown_030030B8
 	SPACE 0x134

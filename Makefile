@@ -3,8 +3,7 @@ include config.mk
 
 TCC	  := tcc
 ACC	  := armcc
-CC1_OLD  := tools/agbcc/bin/old_agbcc.exe
-CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
+CPP	  := armcpp
 AS	   := armasm
 LD	   := armlink
 OBJCOPY  := fromelf
@@ -17,7 +16,7 @@ PREPROC := tools/preproc/preproc
 GBAFIX := tools/gbafix/gbafix
 
 CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
-CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
+CPPFLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
 ASFLAGS  := -CPU arm7tdmi -LIttleend -fpu none -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
@@ -69,6 +68,10 @@ C_SRCS := $(foreach src,$(C_SRCS_IN),$(if $(findstring .inc.c,$(src)),,$(src)))
 #C_SRCS := $(wildcard $(C_SUBDIR)/*.c)
 C_OBJS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SRCS))
 
+CPP_SRCS_IN := $(wildcard $(C_SUBDIR)/*.cpp $(C_SUBDIR)/*/*.cpp $(C_SUBDIR)/*/*/*.cpp $(C_SUBDIR)/*/*/*/*.cpp)
+CPP_SRCS := $(foreach src,$(CPP_SRCS_IN),$(if $(findstring .inc.cpp,$(src)),,$(src)))
+CPP_OBJS := $(patsubst $(C_SUBDIR)/%.cpp,$(C_BUILDDIR)/%.o,$(CPP_SRCS))
+
 SRC_ASM_SRCS := $(wildcard $(C_SUBDIR)/*.s $(C_SUBDIR)/*/*.s $(C_SUBDIR)/*/*/*.s)
 SRC_ASM_OBJS := $(patsubst $(C_SUBDIR)/%.s,$(SRC_ASM_BUILDDIR)/%.o,$(SRC_ASM_SRCS))
 
@@ -101,7 +104,7 @@ MERGED_ASM_OBJS := $(patsubst $(PARTIAL_DECOMP_SUBDIR)/%.yml,$(MERGED_BUILDDIR)/
 PYTHON := python # or just python, depending on your setup
 MERGE_SCRIPT := scripts/merge_partial_c.py
 
-OBJS := $(C_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
+OBJS := $(C_OBJS) $(CPP_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS)))
@@ -168,6 +171,12 @@ $(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
 endif
 
 ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: cpp_dep :=
+else
+$(C_BUILDDIR)/%.o: cpp_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.cpp)
+endif
+
+ifeq ($(NODEP),1)
 $(ASM_BUILDDIR)/%.o: asm_dep :=
 else
 $(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) -I "" $(ASM_SUBDIR)/$*.s)
@@ -189,6 +198,10 @@ endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(TCC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
+	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
+
+$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.cpp $$(cpp_dep)
+	$(CPP) $(CPPFLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s

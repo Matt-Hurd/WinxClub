@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
 	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_sshift_r
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_803FC14
 sub_803FC14 ;@ 0x0803FC14
@@ -24,7 +24,7 @@ sub_803FC14 ;@ 0x0803FC14
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl __16_ll_sshift_r
+	bl __16_ll_shift_l
 	add r2, pc, #0x24 ;@ =_0803FC60
 	ldm r2!, {r2, r3}
 	bl __16_ll_sdiv
