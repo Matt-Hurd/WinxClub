@@ -11,9 +11,9 @@
 	IMPORT gUnknown_03003670
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT sub_803B8CC
-	IMPORT sub_803D468
-	IMPORT sub_803D46C
+	IMPORT __call_via_r2
+	IMPORT CpuSet
+	IMPORT Div
 
 	thumb_func_start sub_80114B0
 sub_80114B0 ;@ 0x080114B0
@@ -77,7 +77,7 @@ _08011516
 	lsrs r1, r4, #5
 _0801151C
 	lsls r0, r4, #4
-	bl sub_803D46C
+	bl Div
 	subs r1, r4, r0
 	lsrs r5, r1, #1
 	adds r6, r5, r0
@@ -103,7 +103,7 @@ _08011548
 	subs r0, r4, r5
 	lsls r0, r0, #8
 	ldr r1, [sp]
-	bl sub_803D46C
+	bl Div
 	ldr r1, [r7, #0x14]
 	adds r0, #0x80
 	strb r0, [r1, r4]
@@ -301,12 +301,12 @@ _0801169A
 	beq _080116AE
 	movs r0, #0
 	ldr r2, [r5, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _080116AE
 	adds r1, r4, #0
 	movs r0, #0
 	ldr r2, [r5]
-	bl sub_803B8CC
+	bl __call_via_r2
 	lsrs r1, r4, #1
 	str r0, [r6, #0x14]
 	adds r0, r0, r1
@@ -366,7 +366,7 @@ _08011714
 	ldr r2, _08011730 ;@ =gUnknown_030034FC
 	movs r0, #2
 	ldr r2, [r2, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r4, [r5, #0x24]
 _08011726
 	pop {r3, r4, r5}
@@ -375,14 +375,14 @@ _08011726
 	ALIGN
 _0801172C DCDU gUnknown_03002D28
 _08011730 DCDU gUnknown_030034FC
-_08011734 DCDU 0x040000D4
+_08011734 DCDU REG_DMA3
 _08011738 DCDU 0x85000008
 _0801173C DCDU gUnknown_03003BC8
 _08011740 DCDU 0x8500001A
 _08011744 DCDU 0x85000002
-_08011748 DCDU 0x04000080
-_0801174C DCDU 0x04000100
-_08011750 DCDU 0x040000C0
+_08011748 DCDU REG_SOUNDCNT
+_0801174C DCDU REG_TM0CNT
+_08011750 DCDU REG_DMA1DAD
 _08011754 DCDU 0x84400004
 _08011758 DCDU gUnknown_030037A0
 
@@ -399,7 +399,7 @@ sub_801175C ;@ 0x0801175C
 	adds r1, r0, #0
 	movs r0, #2
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801177A
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
@@ -407,7 +407,7 @@ _0801177A
 	adds r1, r0, #0
 	movs r0, #1
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801178A
 	ldr r0, _08011A14 ;@ =gUnknown_030034FC
 	adds r0, #0x24
@@ -417,7 +417,7 @@ _0801178A
 	adds r1, r0, #0
 	movs r0, #0
 	ldr r2, [r4, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801179E
 	pop {r3, r4, r5}
 	pop {r3}
@@ -482,7 +482,7 @@ _080117E8
 	adds r4, r7, #0
 	muls r1, r3
 	lsrs r1, r1, #0x17
-	bl sub_803D46C
+	bl Div
 	strh r0, [r6, #0xe]
 	movs r0, #0
 	strh r0, [r6, #0x10]
@@ -548,7 +548,7 @@ _0801187A
 	ldrh r1, [r0, #0x18]
 	movs r0, #1
 	lsls r0, r0, #0x18
-	bl sub_803D46C
+	bl Div
 	movs r1, #1
 	lsls r1, r1, #0x10
 	subs r0, r1, r0
@@ -696,14 +696,14 @@ sub_801197C ;@ 0x0801197C
 	mov r0, sp
 	ldr r2, _08011A68 ;@ =0x0500004C
 	adds r1, #0x44
-	bl sub_803D468
+	bl CpuSet
 	movs r0, #0
 	ldr r5, _08011A6C ;@ =gUnknown_03003670
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _08011A68 ;@ =0x0500004C
 	adds r1, r5, #0
-	bl sub_803D468
+	bl CpuSet
 	ldr r0, _08011A14 ;@ =gUnknown_030034FC
 	movs r2, #1
 	adds r0, #0x44
@@ -738,7 +738,7 @@ _080119C6
 	ldr r0, [r0, #8]
 	ldrh r1, [r1, #0x18]
 	lsls r0, r2, #0x16
-	bl sub_803D46C
+	bl Div
 	movs r1, #1
 	lsls r1, r1, #0x10
 	subs r0, r1, r0
@@ -769,12 +769,12 @@ _08011A2C DCDU 0x00333333
 _08011A30 DCDU 0x00000B6E
 _08011A34 DCDU 0x0000063C
 _08011A38 DCDU 0x000004E6
-_08011A3C DCDU 0x04000100
-_08011A40 DCDU 0x04000200
-_08011A44 DCDU 0x040000C0
+_08011A3C DCDU REG_TM0CNT
+_08011A40 DCDU REG_IE
+_08011A44 DCDU REG_DMA1DAD
 _08011A48 DCDU 0x84400004
 _08011A4C DCDU 0x00000B0C
-_08011A50 DCDU 0x04000080
+_08011A50 DCDU REG_SOUNDCNT
 _08011A54 DCDU gUnknown_03002D2C
 _08011A58 DCDU gUnknown_03002DE4
 _08011A5C DCDU gUnknown_03002D74
@@ -783,7 +783,7 @@ _08011A64 DCDU gUnknown_03002D48
 _08011A68 DCDU 0x0500004C
 _08011A6C DCDU gUnknown_03003670
 _08011A70 DCDU 0x04000083
-_08011A74 DCDU 0x040000BC
-_08011A78 DCDU 0x040000A0
+_08011A74 DCDU REG_DMA1
+_08011A78 DCDU REG_FIFO
 _08011A7C DCDU 0xB6400004
 	END

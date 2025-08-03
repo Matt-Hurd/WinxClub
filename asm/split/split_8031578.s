@@ -5,11 +5,11 @@
 	IMPORT gUnknown_0803EB38
 	IMPORT gUnknown_0803ECD8
 	IMPORT sub_8005106
-	IMPORT sub_803BE68
-	IMPORT sub_803BF0C
-	IMPORT sub_803D9F8
+	IMPORT __16__rt_memclr
+	IMPORT __16__rt_memcpy
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_8031578
@@ -18,7 +18,7 @@ sub_8031578 ;@ 0x08031578
 	cmp r0, #0
 	bne _08031588
 	movs r0, #0x10
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _0803159C
 _08031588
@@ -45,7 +45,7 @@ sub_80315A2 ;@ 0x080315A2
 	adds r5, r1, #0
 	str r0, [r4]
 	ldr r0, [r4, #0xc]
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r0, _08031660 ;@ =gUnknown_0803ECD8
 	movs r1, #0
 	str r0, [r4]
@@ -68,7 +68,7 @@ sub_80315CE ;@ 0x080315CE
 	str r1, [r0, #8]
 	ldr r0, [r0, #0xc]
 	adds r5, r1, #0
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r6, #0
 	str r6, [r4, #0xc]
 	cmp r5, #0
@@ -133,12 +133,12 @@ _08031640
 	adds r2, r0, r5
 	ldr r2, [r2, #4]
 	ldr r0, [r0, r5]
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r0, [r4, #0xc]
 	adds r0, r0, r5
 	adds r0, #8
 	ldm r0!, {r0, r1}
-	bl sub_803BE68
+	bl __16__rt_memclr
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

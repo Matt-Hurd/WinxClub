@@ -7,9 +7,24 @@ LOAD_ROM_2 0x02000000
 }
 LOAD_ROM_3 0x03000000
 {
-    IWRAM 0x03000000 0x8000
+    IWRAM1 0x03000000 0x3D38
     {
-        iwram.o (+RW)
+        iwram1.o
+    }
+
+    user_libspace 0x03003D38 0x60
+    {
+        libspace.o(.bss)
+    }
+
+    random 0x03003D98 0xE4
+    {
+        rand.o(.bss)
+    }
+    
+    IWRAM2 0x03003E7C 0x4184
+    {
+        iwram2.o (+RW)
     }
 }
 
@@ -251,44 +266,296 @@ LOAD_ROM_1 0x08000000
         split_803AE60.o
         split_803B150.o
         split_803B318.o
+    }
+    agbeeprom 0x803B4D8
+    {
         split_803B4D8.o
         split_803B520.o
         split_803B5A0.o
         split_803B650.o
         split_803B7C4.o
         split_803B81C.o
-        split_803B8A4.o
-        split_803B904.o
-        split_803B914.o
+    }
+    sprintf 0x803B860
+    {
+        sprintf.o
+    }
+    atoi 0x803B8A4
+    {
+        atoi.o
+    }
+    callvia 0x803B8C8
+    {
+        callvia.o
+    }
+    __cpp_initialise 0x803B8D8
+    {
+        cpp_init.o
+    }
+    libspace 0x803B904
+    {
+        libspace.o
+    }
+    __16_ll_mulls 0x803B914
+    {
+        llmulls.o
+    }
+    __16_ll_mullu 0x803B920
+    {
+        llmullu.o
+    }
+    __16_ll_mulss 0x803B92C
+    {
+        llmulss.o
+    }
+    __16_ll_sdiv 0x803B940
+    {
+        llsdiv.o
+    }
+    _ll_sshift_l 0x803B998
+    {
+        llshl.o
+    }
+    __16_ll_srdv 0x803B9C4
+    {
+        llsrdv.o
+    }
+    nullsub 0x803BA1C
+    {
+        split_803BA1C.o
+    }
+    __16_ll_udiv 0x803BA24
+    {
+        lludiv.o
+    }
+    _ll_ushift_r 0x803BD84
+    {
+        llushr.o
+    }
+    __pvfn__Fv 0x803BDB0
+    {
+        pvfn.o
+    }
+    rand 0x803BDC0
+    {
+        rand.o
+    }
+    __16__rt_memclr 0x803BE68
+    {
+        rt_memclr.o
+    }
+    __16__rt_memclr_w 0x803BEB0
+    {
+        rt_memclr_w.o
+    }
+    __16__rt_memcpy 0x803BF0C
+    {
+        rt_memcpy.o
+    }
+    __16__rt_memcpy_w 0x803BFC4
+    {
+        rt_memcpy_w.o
+    }
+    __16__rt_memset 0x803C034
+    {
+        rt_memset.o
+    }
+    __16__rt_sdiv 0x803C04C
+    {
+        rt_sdiv.o
+    }
+    __16__rt_udiv 0x803C124
+    {
+        rt_udiv.o
+    }
+    __16strcmp 0x803C1E8
+    {
+        strcmp.o
+    }
+    strcpy 0x803C28C
+    {
+        strcpy.o
+    }
+    strlen 0x803C2DC
+    {
+        strlen.o
+    }
+    strncpy 0x803C328
+    {
+        strncpy.o
+    }
+    strstr 0x803C37C
+    {
+        strstr.o
+    }
+    __vecmap1c__FPvT1iPFPv_v 0x803C3A4
+    {
+        vc1c.o
+    }
+    __vecmap1ci__FPvT1iPFPvi_v 0x803C3C8
+    {
+        vc1ci.o
+    }
+    __vec_ctor_p__FPvUiT2bPFPv_v 0x803C3EC
+    {
+        vecctorp.o
+    }
+    __vec_dtor__FPvUiPFPvi_vPFPv_v 0x803C428
+    {
+        vecdtor.o
+    }
+    vsprintf 0x803C47C
+    {
+        vsprintf.o(.text)
+    }
+    __vfprintf 0x803C4B4
+    {
+        __vfpntf.o(.text)
+    }
+    _sputc 0x803CDE0
+    {
+        _sputc.o(.text)
+    }
+    __rt_entry 0x803CDF4
+    {
+        kernel.o(.text)
+    }
+    _ll_mul 0x803CE44
+    {
+        llmul3m.o
+    }
+    __16_ll_urdv 0x803CE64
+    {
+        llurdv.o
+    }
+    raise 0x803CF28
+    {
+        raise.o
+    }
+    __16__rt_div0 0x803CF38
+    {
+        rt_div0.o
+    }
+    __rt_errno_addr 0x803CF48
+    {
+        rt_errno_addr.o
+    }
+    strtol 0x803CF5C
+    {
+        strtol.o
+    }
+    _strtoul 0x803CFD8
+    {
+        _strtoul.o
+    }
+    exit 0x803D090
+    {
+        exit.o
+    }
+    __rt_lib_init 0x803D0A4
+    {
+        lib_init.o
+    }
+    __16_ll_cmpge 0x803D15C
+    {
+        llcmpge.o
+    }
+    __16_ll_cmpu 0x803D16C
+    {
+        llcmpu.o
+    }
+    __16_ll_neg 0x803D17C
+    {
+        llneg.o
+    }
+    __16_ll_udiv10 0x803D18C
+    {
+        lludiv10.o
+    }
+    _no_fp_display 0x803D230
+    {
+        nofpdisp.o
+    }
+    __16__rt_ctype_table 0x803D234
+    {
+        rt_ctype_table.o
+    }
+    __rt_raise 0x803D250
+    {
+        rt_raise.o(.text)
+    }
+    __rt_udiv10 0x803D270
+    {
+        rtudiv10.o
+    }
+    __raise 0x803D2A0
+    {
+        __raise.o
+    }
+    _chval 0x803D2E4
+    {
+        _chval.o
+    }
+    _get_lc_ctype 0x803D308
+    {
+        lc_ctype_c.o
+    }
+    __default_signal_handler 0x803D334
+    {
+        defsig.o
+    }
+    _ttywrch 0x803D44C
+    {
+        sys_wrch.o
+    }
+    use_semi 0x803D460
+    {
+        use_semi.o
+    }
+    AgbSyscall1 0x803D468
+    {
+        AgbSysArmCpuSet.o
+    }
+    AgbSyscall2 0x803D46C
+    {
+        AgbSysArmDiv.o
+    }
+    AgbSyscall3 0x803D470
+    {
+        AgbSysArmDivRem.o
+    }
+    AgbSyscall4 0x803D478
+    {
+        AgbSysArmLZ77UnCompVram.o
+    }
+    AgbSyscall5 0x803D47C
+    {
+        AgbSysArmDiff8bitUnFilterVram.o
+    }
+    AgbSyscall6 0x803D480
+    {
+        AgbSysArmSoftReset.o
+    }
+    AgbSyscall7 0x803D498
+    {
+        AgbSysArmVBlankIntrWait.o
+    }
+    split_803D4A0 0x803D4A0
+    {
+        split_803D4A0.o
+    }
+    C$$pi_ctorvec 0x803D4A4
+    {
+        * (CppInitializationVector)
+    }
+    .text17 0x0803D4A8
+    {
+        split_803D4A8.o
         split_803DB3C.o
-        split_803E104.o
-        split_803E110.o
-        split_803E11C.o
-        split_803E128.o
-        split_803E134.o
-        split_803E140.o
-        split_803E14C.o
-        split_803E158.o
-        split_803E164.o
-        split_803E170.o
-        split_803E17C.o
-        split_803E188.o
-        split_803E194.o
-        split_803E1A0.o
-        split_803E1AC.o
-        split_803E1B8.o
-        split_803E1C4.o
-        split_803E1D0.o
-        split_803E1DC.o
-        split_803E1F8.o
-        split_803E204.o
-        split_803E210.o
-        split_803E21C.o
-        split_803E228.o
-        split_803E234.o
-        split_803E240.o
-        split_803E24C.o
-        split_803E258.o
+    }
+    .veneers 0x0803E104
+    {
+        *(Veneer$$Code)
     }
     DATABLOCK1 0x0803E2A0
     {
@@ -374,15 +641,31 @@ LOAD_ROM_1 0x08000000
         split_8041274.o
         split_80412A8.o
     }
+    fp_printf 0x08041440
+    {
+        printf1.o(x$fpl$printf1)
+    }
     DATABLOCK2 0x08041448
     {
-        data.o (+RW)
+        data1.o (+RW)
+    }
+    lc_ctype_data 0x80514FC
+    {
+        lc_ctype_c.o(.constdata)
+    }
+    defsig_data 0x805160C
+    {
+        defsig.o(.constdata)
+    }
+    DATABLOCK3 0x08051738
+    {
+        data2.o (+RW)
     }
     .text5 0x080517C8
     {
         last_code.o
     }
-    DATABLOCK3 0x08055AC0
+    DATABLOCK4 0x08055AC0
     {
         last_data.o (+RW)
     }

@@ -24,10 +24,10 @@
 	IMPORT sub_801CBDE
 	IMPORT sub_8024D30
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CA
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
@@ -42,7 +42,7 @@ sub_80154DC ;@ 0x080154DC
 	bne _080154F6
 	movs r0, #0x6d
 	lsls r0, r0, #3
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _080154F6
 	adds r0, r4, #0
@@ -70,7 +70,7 @@ _080154F6
 	movs r2, #0x78
 	adds r0, #0x81
 	ldr r3, _080158B0 ;@ =sub_80143E0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #3
 	strh r0, [r4, #4]
 	ldr r0, _080158B4 ;@ =gUnknown_03003E88
@@ -139,7 +139,7 @@ sub_8015588 ;@ 0x08015588
 	lsls r0, r0, #3
 	adds r0, r4, r0
 	ldr r3, _080158B8 ;@ =sub_8014436
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	adds r0, r4, #0
 	adds r0, #0xff
 	movs r1, #0
@@ -243,7 +243,7 @@ _0801565C
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r5, #1
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
@@ -254,14 +254,14 @@ _0801565C
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r0, r4, #0
 	adds r0, #0xff
 	adds r0, #5
 	ldr r1, [r0]
 	ldr r2, [r1, #4]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, _080158C0 ;@ =gUnknown_03003478
 	movs r0, #4
 	ldr r1, [r1]

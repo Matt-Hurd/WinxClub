@@ -2,10 +2,10 @@
     AREA text, CODE
 
 	IMPORT sub_8013B76
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803B8D2
-	IMPORT sub_803C124
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __call_via_r5
+	IMPORT __16__rt_udiv
 
 	thumb_func_start sub_803F904
 sub_803F904 ;@ 0x0803F904
@@ -46,7 +46,7 @@ sub_803F928 ;@ 0x0803F928
 	ldr r1, [r4, #0x58]
 	str r0, [sp]
 	ldrh r0, [r0, #0x1c]
-	bl sub_803C124
+	bl __16__rt_udiv
 	ldrh r1, [r4, #0x20]
 	movs r2, #0
 	movs r3, #0
@@ -123,20 +123,20 @@ sub_803F9C4 ;@ 0x0803F9C4
 	ldr r3, [r2, #0x18]
 	adds r4, r0, #0
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x28]
 	adds r2, r2, r1
 	ldr r1, [sp, #0xc]
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x14]
 	adds r3, r2, r1
 	ldr r2, [sp, #0x28]
 	ldr r1, [sp, #0x10]
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r0, _0803FA38 ;@ =0x0000FFFF
 	cmp r5, r0
 	beq _0803FA10
@@ -148,7 +148,7 @@ sub_803F9C4 ;@ 0x0803F9C4
 	adds r3, r2, r1
 	adds r2, r6, #0
 	adds r1, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 _0803FA10
 	cmp r7, #0xff
 	beq _0803FA2A
@@ -161,7 +161,7 @@ _0803FA10
 	adds r5, r2, r1
 	movs r2, #0xff
 	adds r1, r7, #0
-	bl sub_803B8D2
+	bl __call_via_r5
 _0803FA2A
 	adds r0, r4, #0
 	bl sub_8013B76

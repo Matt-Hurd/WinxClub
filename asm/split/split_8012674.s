@@ -3,8 +3,8 @@
 
 	IMPORT gUnknown_080503F6
 	IMPORT gUnknown_080503FE
-	IMPORT sub_803BF10
-	IMPORT sub_803E228
+	IMPORT __rt_memcpy
+	IMPORT sub_80132F4
 
 	arm_func_start sub_8012674
 sub_8012674 ;@ 0x08012674
@@ -230,13 +230,13 @@ _080129A4
 	mov r2, #0xf0
 	LDR r0, [sp, #0x54]
 	LDR r1, [sp, #0x50]
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r1, [sp, #0x60]
 	add r0, r6, r6, lsl #2
 	add r0, r1, r0, lsl #4
 	mov r1, r4
 	mov r2, #0x50
-	bl sub_803BF10
+	bl __rt_memcpy
 	add r6, r6, #1
 	cmp r6, #4
 	add r5, r5, #0x22
@@ -374,7 +374,7 @@ sub_8012BA0 ;@ 0x08012BA0
 	add r5, r5, #0x52
 	cmp r0, #0
 	moveq r0, r6
-	bleq sub_803E228
+	bleq sub_80132F4
 	LDR r0, [r4, #4]
 	cmp r0, #0x18
 	bhs _08012C14

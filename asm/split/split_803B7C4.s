@@ -1,7 +1,7 @@
     INCLUDE asm/macros.inc
     AREA text, CODE
 
-	IMPORT gUnknown_03003EC0
+	IMPORT eeprom
 	IMPORT sub_803B5A0
 
 	thumb_func_start sub_803B7C4
@@ -12,7 +12,7 @@ sub_803B7C4 ;@ 0x0803B7C4
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r5, #0
-	ldr r0, _0803B7E0 ;@ =gUnknown_03003EC0
+	ldr r0, _0803B7E0 ;@ =eeprom
 	ldr r0, [r0]
 	ldrh r0, [r0, #4]
 	cmp r1, r0
@@ -20,7 +20,7 @@ sub_803B7C4 ;@ 0x0803B7C4
 	ldr r0, _0803B7E4 ;@ =0x000080FF
 	b _0803B812
 	ALIGN
-_0803B7E0 DCDU gUnknown_03003EC0
+_0803B7E0 DCDU eeprom
 _0803B7E4 DCDU 0x000080FF
 _0803B7E8
 	adds r0, r1, #0

@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
 	IMPORT sub_8014EB8
-	IMPORT sub_803E1DC
+	IMPORT sub_8004C44
 
 	thumb_func_start sub_800F010
 sub_800F010 ;@ 0x0800F010
@@ -128,7 +128,7 @@ _0800F0AA
 	adds r0, r4, #0
 	bl sub_8014EB8
 	adds r0, r5, r0
-	bl sub_803E1DC
+	bl sub_8004C44
 	asrs r0, r0, #8
 	movs r5, #0
 	cmp r0, #2

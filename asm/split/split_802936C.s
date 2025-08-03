@@ -10,10 +10,10 @@
 	IMPORT sub_8000D5A
 	IMPORT sub_80012F0
 	IMPORT sub_801E2DA
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803BE1C
-	IMPORT sub_803C04C
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT rand
+	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_802936C
 sub_802936C ;@ 0x0802936C
@@ -100,7 +100,7 @@ _080293E8
 	lsls r1, r1, #6
 	adds r2, r3, r2
 	lsrs r1, r1, #0x18
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r4, #0x30]
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x17
@@ -268,12 +268,12 @@ _08029521
 _08029522
 	DCB 0x30, 0x00
 loc_8029524
-	bl sub_803BE1C
+	bl rand
 	adds r1, r0, #0
 	ldr r0, [r4, #0x30]
 	lsls r0, r0, #0xd
 	lsrs r0, r0, #0x1d
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	ldr r0, [r4, #0x2c]
 	lsls r1, r1, #0x1d
 	lsrs r0, r0, #3
@@ -341,7 +341,7 @@ _0802959C
 	adds r0, r5, #0
 	ldr r2, [r1, #0x58]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _080295B8
 	pop {r3, r4, r5}
 	pop {r3}
@@ -351,7 +351,7 @@ _080295BE
 	adds r0, r5, #0
 	ldr r2, [r1, #0x5c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _080295B8
 
 	thumb_func_start sub_80295CC

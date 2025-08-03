@@ -25,14 +25,14 @@
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
 	IMPORT sub_802E4AA
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803B914
-	IMPORT sub_803B940
-	IMPORT sub_803B998
-	IMPORT sub_803BE1C
-	IMPORT sub_803C124
-	IMPORT sub_803C428
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT rand
+	IMPORT __16__rt_udiv
+	IMPORT __vec_dtor__FPvUiPFPvi_vPFPv_v
 	IMPORT sub_803F170
 	IMPORT sub_803F2CC
 	IMPORT sub_803F6B4
@@ -311,7 +311,7 @@ loc_801e452
 	adds r2, r3, r2
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
-	bl sub_803B8CC
+	bl __call_via_r2
 	b _0801E2F0
 loc_801e466
 	adds r0, r4, #0
@@ -509,18 +509,18 @@ _0801E5CA
 	ldr r0, [sp, #0x50]
 	asrs r1, r0, #0x1f
 	movs r2, #0x14
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r7, pc, #0x190 ;@ =_0801E76C
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r5, r0, #0
 	ldr r0, [sp, #0x54]
 	asrs r1, r0, #0x1f
 	movs r2, #0x14
-	bl sub_803B998
+	bl __16_ll_shift_l
 	ldm r7!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	b _0801E5FC
 _0801E5F8
 	b _0801E6BC
@@ -819,11 +819,11 @@ _0801E806
 	b _0801E87A
 _0801E80E
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	mov r2, pc
 	subs r2, #0xac
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	NEGS r0, r0
 	str r0, [r4, #0x60]
 	str r0, [r4, #0x64]
@@ -843,11 +843,11 @@ _0801E834
 	b _0801E87A
 _0801E83C
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	mov r2, pc
 	subs r2, #0xda
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r4, #0x60]
 	NEGS r0, r0
 	str r0, [r4, #0x64]
@@ -878,10 +878,10 @@ _0801E87A
 	b _0801E952
 _0801E87C
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x308 ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	NEGS r0, r0
 	str r0, [r4, #0x60]
 	NEGS r0, r0
@@ -904,10 +904,10 @@ _0801E8A4
 	b _0801E952
 _0801E8AC
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x2D8 ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r4, #0x60]
 	str r0, [r4, #0x64]
 	b _0801E952
@@ -939,10 +939,10 @@ _0801E8E2
 	b _0801E952
 _0801E8EA
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x298 ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	NEGS r0, r0
 	str r0, [r4, #0x64]
 	str r0, [r4, #0x60]
@@ -962,10 +962,10 @@ _0801E90E
 	b _0801E952
 _0801E916
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x26C ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r4, #0x64]
 	NEGS r0, r0
 	str r0, [r4, #0x60]
@@ -996,10 +996,10 @@ _0801E952
 	b _0801E99E
 _0801E954
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x230 ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	NEGS r0, r0
 	str r0, [r4, #0x64]
 	NEGS r0, r0
@@ -1020,10 +1020,10 @@ _0801E97A
 	b _0801E99E
 _0801E982
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x200 ;@ =_0801EB8C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [r4, #0x64]
 	str r0, [r4, #0x60]
 	b _0801E99E
@@ -1240,7 +1240,7 @@ _0801EAFC
 	ldr r1, [r0]
 	ldr r2, [r1, #8]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [sp]
 	ldr r0, [r0, #0x38]
 	ldr r0, [r0, #4]
@@ -1298,7 +1298,7 @@ _0801EB5A
 	movs r3, #0
 	movs r1, #0x3c
 	ldr r2, _0801EBA0 ;@ =sub_802E4AA
-	bl sub_803C428
+	bl __vec_dtor__FPvUiPFPvi_vPFPv_v
 	b _0801EBB0
 	ALIGN
 _0801EB84 DCDU 0x0000B504
@@ -1314,7 +1314,7 @@ _0801EBA4
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801EBB0
 	ldr r0, _0801EF74 ;@ =gUnknown_030033E8
 	movs r3, #0
@@ -1517,7 +1517,7 @@ _0801ED0C
 	lsrs r0, r0, #0x1c
 	cmp r0, #3
 	beq _0801ED38
-	bl sub_803BE1C
+	bl rand
 	lsls r0, r0, #0x1c
 	bne _0801ED38
 	movs r0, #0x3b
@@ -1622,7 +1622,7 @@ _0801EDE6
 	lsrs r0, r0, #0x1c
 	cmp r0, #3
 	beq _0801EE1A
-	bl sub_803BE1C
+	bl rand
 	lsls r0, r0, #0x19
 	bne _0801EE1A
 	ldr r0, [r5, #0x2c]
@@ -1944,7 +1944,7 @@ _0801F06A
 	lsrs r1, r1, #0x15
 	muls r1, r0
 	adds r0, r2, #0
-	bl sub_803C124
+	bl __16__rt_udiv
 	lsls r1, r0, #0x10
 	lsrs r1, r1, #0x10
 	lsls r0, r6, #5

@@ -5,10 +5,10 @@
 	IMPORT sub_800529A
 	IMPORT sub_8008008
 	IMPORT sub_80103EC
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803C04C
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __16__rt_sdiv
 	IMPORT sub_803DABC
 	IMPORT sub_803DAC0
 
@@ -283,7 +283,7 @@ sub_8010B6C ;@ 0x08010B6C
 	muls r1, r3
 	lsls r0, r0, #0x14
 	lsrs r0, r0, #0x18
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -384,7 +384,7 @@ _08010C10
 	adds r2, r1, r0
 	ldr r1, [sp, #0x18]
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r0, [r4]
 	str r0, [r4, #4]
 	mov r0, sp
@@ -410,12 +410,12 @@ _08010C10
 	adds r2, r1, r0
 	mov r1, sp
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5]
 	ldr r1, [r0, #0x24]
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [sp, #0x18]
 	subs r0, r0, r1
 	ldr r1, [sp, #4]
@@ -451,7 +451,7 @@ _08010CA6
 	adds r2, r1, r0
 	ldr r1, [sp, #0x24]
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _08010CD0
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0
@@ -486,7 +486,7 @@ _08010CFE
 	adds r3, r1, r0
 	ldr r1, [r6, #0x3c]
 	adds r0, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r0, [r5, #0xc]
 	str r0, [r6, #0x38]
 	ldr r1, [sp, #0x20]
@@ -507,7 +507,7 @@ _08010D2C
 	ldr r1, [r0, #0x24]
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [sp, #0x24]
 	subs r0, r0, r1
 	ldr r1, [r4, #8]

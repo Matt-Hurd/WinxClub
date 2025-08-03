@@ -10,9 +10,9 @@
 	IMPORT sub_80116D4
 	IMPORT sub_801197C
 	IMPORT sub_80123E4
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
-	IMPORT sub_803D46C
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT Div
 	IMPORT sub_80409E4
 	IMPORT sub_8040C38
 	IMPORT sub_8040C78
@@ -70,13 +70,13 @@ sub_8011AC2 ;@ 0x08011AC2
 	adds r1, r0, #0
 	movs r0, #1
 	ldr r2, [r6, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _08011ADE
 	ldrb r0, [r4, #2]
 	ldr r2, [r6]
 	lsls r1, r0, #2
 	movs r0, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r0, [r5, #0x20]
 	ldrb r0, [r4, #3]
 	ldrb r2, [r4, #2]
@@ -236,7 +236,7 @@ _08011BC0
 	lsrs r1, r0, #0x17
 	ldr r0, _08011D18 ;@ =gUnknown_03003520
 	ldrh r0, [r0, #0x18]
-	bl sub_803D46C
+	bl Div
 	strh r0, [r4, #0xe]
 	b _08011B7C
 loc_8011bd6
@@ -320,7 +320,7 @@ _08011C44
 	lsrs r1, r0, #0x17
 	ldr r0, _08011D18 ;@ =gUnknown_03003520
 	ldrh r0, [r0, #0x18]
-	bl sub_803D46C
+	bl Div
 	strh r0, [r6, #0xe]
 	movs r0, #0xff
 	strb r0, [r6, #7]
@@ -346,13 +346,13 @@ _08011C44
 	adds r1, r0, #0
 	movs r0, #2
 	ldr r2, [r6, #4]
-	bl sub_803B8CC
+	bl __call_via_r2
 _08011CA0
 	ldrb r0, [r4, #3]
 	ldr r2, [r6]
 	lsls r1, r0, #2
 	movs r0, #2
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r6, _08011D30 ;@ =gUnknown_03003BC8
 	str r0, [r6, #0x24]
 	ldrb r1, [r4, #1]
@@ -411,8 +411,8 @@ _08011D0C
 	ALIGN
 _08011D18 DCDU gUnknown_03003520
 _08011D1C DCDU 0x84400004
-_08011D20 DCDU 0x040000C0
-_08011D24 DCDU 0x04000080
+_08011D20 DCDU REG_DMA1DAD
+_08011D24 DCDU REG_SOUNDCNT
 _08011D28 DCDU gUnknown_03003670
 _08011D2C DCDU 0x0000B660
 _08011D30 DCDU gUnknown_03003BC8
@@ -634,7 +634,7 @@ sub_8011E64 ;@ 0x08011E64
 	subs r0, r2, r0
 	mov r2, ip
 	muls r0, r2
-	bl sub_803D46C
+	bl Div
 	ldr r1, [sp, #4]
 	ldrh r1, [r1, #6]
 	adds r0, r0, r1
@@ -858,7 +858,7 @@ _0801201C
 	ldr r4, _080120A0 ;@ =gUnknown_03003530
 	subs r4, #0x34
 	ldr r1, [r4, #8]
-	bl sub_803B8CA
+	bl __call_via_r1
 	cmp r5, #0
 	bne _08011F38
 	b _0801208C
@@ -869,7 +869,7 @@ _08012038
 	bl sub_80123E4
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #8]
-	bl sub_803B8CA
+	bl __call_via_r1
 _0801204A
 	ldrh r0, [r7]
 	lsls r0, r0, #0x1c
@@ -890,7 +890,7 @@ _0801204A
 	muls r0, r4
 	lsrs r1, r0, #0x17
 	ldrh r0, [r5, #0x18]
-	bl sub_803D46C
+	bl Div
 	strh r0, [r7, #0xe]
 	ldrb r0, [r6, #8]
 	strb r0, [r7, #4]
@@ -914,7 +914,7 @@ _08012094
 _0801209C DCDU gUnknown_03003BC8
 _080120A0 DCDU gUnknown_03003530
 _080120A4 DCDU gUnknown_030037A0
-_080120A8 DCDU 0x040000D4
+_080120A8 DCDU REG_DMA3
 _080120AC DCDU 0x8500004C
 _080120B0 DCDU gUnknown_03003670
 _080120B4 DCDU 0x0000FFFF

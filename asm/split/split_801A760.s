@@ -27,9 +27,9 @@
 	IMPORT sub_80180BE
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
-	IMPORT sub_803B8D6
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT __call_via_r7
 	IMPORT sub_803D66C
 	IMPORT sub_80401E4
 	IMPORT sub_8040640
@@ -265,27 +265,27 @@ _0801A902
 	adds r7, #0x3e
 	adds r6, r5, #0
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5]
 	ldr r1, [r0, #0x28]
 	adds r2, r1, r0
 	movs r1, #0
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5]
 	adds r2, r7, #0
 	ldr r1, [r0, #0x14]
 	adds r3, r1, r0
 	movs r1, #0xa
 	adds r0, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, [r5]
 	adds r0, r5, #0
 	ldr r2, [r1, #0x10]
 	adds r3, r2, r1
 	movs r2, #0x10
 	movs r1, #0x50
-	bl sub_803B8CE
+	bl __call_via_r3
 	movs r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -295,7 +295,7 @@ _0801A902
 	adds r7, r2, r1
 	movs r2, #0xff
 	movs r1, #4
-	bl sub_803B8D6
+	bl __call_via_r7
 	adds r0, r5, #0
 	bl sub_8013B76
 	movs r1, #4

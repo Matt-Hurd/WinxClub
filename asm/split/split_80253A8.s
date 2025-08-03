@@ -7,8 +7,8 @@
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
 	IMPORT sub_801EBCA
-	IMPORT sub_803B8CA
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 
@@ -18,7 +18,7 @@ sub_80253A8 ;@ 0x080253A8
 	adds r4, r0, #0
 	bne _080253C0
 	movs r0, #0xa0
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _080253C0
 	adds r0, r4, #0
@@ -188,28 +188,28 @@ loc_80254c8
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _080254FE
 loc_80254d6
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _080254FE
 loc_80254e4
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _080254FE
 _080254F2
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _080254FE
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1

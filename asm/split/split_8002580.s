@@ -7,12 +7,12 @@
 	IMPORT gUnknown_0803EC74
 	IMPORT gUnknown_0803ECEC
 	IMPORT sub_800B082
-	IMPORT sub_803BEB0
-	IMPORT sub_803D468
+	IMPORT __16__rt_memclr_w
+	IMPORT CpuSet
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8002580
@@ -21,7 +21,7 @@ sub_8002580 ;@ 0x08002580
 	adds r4, r0, #0
 	bne _08002598
 	ldr r0, _0800280C ;@ =0x0000082C
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08002598
 	adds r0, r4, #0
@@ -47,7 +47,7 @@ _08002598
 	adds r1, r6, #0
 	stm r0!, {r3}
 	adds r5, r0, #0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	adds r1, r4, r6
 	movs r0, #0
 	str r0, [r1, #0x20]
@@ -148,7 +148,7 @@ _0800265A
 	lsls r2, r2, #0x18
 	orrs r2, r0
 	add r0, sp, #4
-	bl sub_803D468
+	bl CpuSet
 _08002676
 	add sp, #8
 	pop {r4}
@@ -321,7 +321,7 @@ _08002784
 	adds r2, r2, r7
 	lsls r3, r3, #0x19
 	adds r1, r1, r3
-	bl sub_803D468
+	bl CpuSet
 	ldr r0, [r4, #0x1c]
 	cmp r0, r5
 	bne _08002784
@@ -373,6 +373,6 @@ _08002810 DCDU gUnknown_0803ECEC
 _08002814 DCDU gUnknown_03003EB0
 _08002818 DCDU gUnknown_0803EC74
 _0800281C DCDU gUnknown_03003E98
-_08002820 DCDU 0x040000D4
+_08002820 DCDU REG_DMA3
 _08002824 DCDU gUnknown_03003EA4
 	END

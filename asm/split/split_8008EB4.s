@@ -4,13 +4,13 @@
 	IMPORT gUnknown_0803EDE8
 	IMPORT gUnknown_0804AA68
 	IMPORT gUnknown_0804AB34
-	IMPORT sub_803BEB4
-	IMPORT sub_803BF10
-	IMPORT sub_803E104
-	IMPORT sub_803E110
-	IMPORT sub_803E11C
-	IMPORT sub_803E128
-	IMPORT sub_803E134
+	IMPORT __rt_memclr_w
+	IMPORT __rt_memcpy
+	IMPORT maybeMallocEWRAM
+	IMPORT sub_800802E
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
+	IMPORT sub_800808E
 
 	arm_func_start sub_8008EB4
 sub_8008EB4 ;@ 0x08008EB4
@@ -19,14 +19,14 @@ sub_8008EB4 ;@ 0x08008EB4
 	bne _08008EDC
 	mov r0, #0x124
 	add r0, r0, #0x5400
-	bl sub_803E104
+	bl maybeMallocEWRAM
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
 	bxeq lr
 _08008EDC
 	mov r0, r4
-	bl sub_803E110
+	bl sub_800802E
 	LDR r0, _08009E20 ;@ =_0803EDE8
 	STR r0, [r4]
 	mov r0, #6
@@ -53,11 +53,11 @@ sub_8008F18 ;@ 0x08008F18
 	STR r0, [r4]
 	mov r0, r4
 	mov r1, #0
-	bl sub_803E11C
+	bl sub_800805E
 	cmp r5, #0
 	movne r0, r4
 	LDMNEFD SP!, {r3, r4, r5, lr}
-	bne sub_803E128
+	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
 
@@ -117,14 +117,14 @@ sub_8008FFC ;@ 0x08008FFC
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r4, r0
-	bl sub_803E134
+	bl sub_800808E
 	LDR r6, [r5]
 	mov r1, #0xf4
 	add r0, r4, #0x30
 	mov r7, r0
 	add r1, r1, #0x5400
 	add r5, r6, #4
-	bl sub_803BEB4
+	bl __rt_memclr_w
 	LDR r0, [r6]
 	mov r3, r5
 	MOV r2, r0, LSR #0x1b
@@ -1381,7 +1381,7 @@ _0800A180
 	LDR r2, [sp, #8]
 	add r0, r1, r0
 	mov r1, r6
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r0, [r7, #0xc]
 	LDR r1, [sp, #8]
 	add r0, r0, r1

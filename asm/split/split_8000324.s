@@ -13,8 +13,8 @@
 	IMPORT sub_800C1CA
 	IMPORT sub_800C4F0
 	IMPORT sub_800CD28
-	IMPORT sub_803BEB0
-	IMPORT sub_803D9F8
+	IMPORT __16__rt_memclr_w
+	IMPORT maybeMallocEWRAM
 
 	thumb_func_start sub_8000324
 sub_8000324 ;@ 0x08000324
@@ -249,7 +249,7 @@ sub_80004CA ;@ 0x080004CA
 	cmp r0, #0
 	bne _080004DA
 	movs r0, #0x60
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _080004E0
 _080004DA
@@ -267,7 +267,7 @@ sub_80004E6 ;@ 0x080004E6
 	cmp r0, #0
 	bne _080004F2
 	movs r0, #0x60
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 _080004F2
 	add sp, #4
 	pop {r3}
@@ -278,7 +278,7 @@ sub_80004F8 ;@ 0x080004F8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x60
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0xff
 	adds r0, #1
 	strh r0, [r4, #0x20]

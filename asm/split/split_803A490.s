@@ -20,8 +20,8 @@
 	IMPORT sub_801F286
 	IMPORT sub_802B054
 	IMPORT sub_8037E48
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8D4
+	IMPORT __call_via_r1
+	IMPORT __call_via_r6
 	IMPORT sub_803DA80
 	IMPORT sub_803F0A8
 	IMPORT sub_803F2CC
@@ -67,7 +67,7 @@ _0803A4C4
 	adds r0, r4, #0
 	ldr r2, [r1, #0x5c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0803A4E0
 	ldr r1, [r5, #0x30]
 	movs r2, #0x20
@@ -132,7 +132,7 @@ _0803A542
 	adds r0, r4, #0
 	ldr r2, [r1, #0x5c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0803A55E
 	ldr r0, [r5, #0x30]
 	movs r1, #0x2d
@@ -530,7 +530,7 @@ _0803A83C
 	adds r0, r4, #0
 	ldr r2, [r1, #0x60]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0803A858
 	ldr r0, [r5, #0x1c]
 	cmp r0, #9
@@ -691,7 +691,7 @@ _0803A994
 	adds r6, r2, r1
 	movs r2, #0
 	adds r1, r4, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0803AB78 ;@ =gUnknown_03003458
 	movs r1, #0x29
 	ldr r0, [r0]
@@ -735,7 +735,7 @@ _0803A9E6
 	adds r6, r2, r1
 	movs r2, #2
 	adds r1, r4, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0803AB78 ;@ =gUnknown_03003458
 	movs r1, #0x29
 	ldr r0, [r0]
@@ -800,7 +800,7 @@ _0803AA4E
 	lsrs r3, r1, #0x1c
 	movs r2, #1
 	adds r1, r4, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0803AB78 ;@ =gUnknown_03003458
 	movs r1, #0x29
 	ldr r0, [r0]

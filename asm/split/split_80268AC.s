@@ -12,9 +12,9 @@
 	IMPORT sub_800B764
 	IMPORT sub_801228C
 	IMPORT sub_8012334
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
-	IMPORT sub_803D9F8
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_80403A4
 
@@ -43,7 +43,7 @@ sub_80268C8 ;@ 0x080268C8
 	cmp r0, #0
 	bne _080268D8
 	movs r0, #0x20
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08026902
 _080268D8
@@ -79,7 +79,7 @@ sub_8026908 ;@ 0x08026908
 	adds r4, r0, #0
 	bne _08026920
 	ldr r0, _08026CE0 ;@ =0x00001308
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08026920
 	adds r0, r4, #0
@@ -95,7 +95,7 @@ _08026920
 	movs r2, #0x20
 	adds r0, r4, #0
 	ldr r3, _08026CE4 ;@ =sub_80268C8
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #0
 	strb r0, [r5, #5]
 	adds r0, r4, #0
@@ -113,7 +113,7 @@ sub_802693A ;@ 0x0802693A
 	lsls r0, r0, #5
 	adds r0, r4, r0
 	ldr r3, _08026CE8 ;@ =sub_80403A4
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	cmp r5, #0
 	beq _0802695C
 	adds r0, r4, #0

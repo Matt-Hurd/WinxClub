@@ -1,10 +1,13 @@
 	AREA text, CODE
 	INCLUDE asm/macros.inc
 	INCLUDE asm/gba_constants.inc
+	IMPORT ||Lib$$Request$$cpplib||
+	IMPORT __cpp_initialise
+	IMPORT __pvfn__Fv
 
 	IMPORT gInterruptStack
 	IMPORT gUnknown_03007FA0
-	IMPORT sub_803CDF4
+	IMPORT __rt_entry
 	ENTRY
 
 	arm_func_start start
@@ -29,7 +32,7 @@ _08000100
 	mov r0, #0x$PSR_SYS_MODE
 	msr cpsr_fc, r0
 	LDR sp, _08000128 ;@ =gInterruptStack
-	LDR r1, _08000130 ;@ =InterruptHandler
+	LDR r1, _08000130 ;@ =gbaMain
 	mov lr, pc
 	bx r1
 _08000124
@@ -37,10 +40,10 @@ _08000124
 	ALIGN
 _08000128 DCDU gInterruptStack
 _0800012C DCDU gUnknown_03007FA0
-_08000130 DCDU InterruptHandler
+_08000130 DCDU gbaMain
 
-	arm_func_start InterruptHandler
-InterruptHandler ;@ 0x08000134
+	arm_func_start gbaMain
+gbaMain ;@ 0x08000134
 	add r8, pc, #0xC4 ;@ =_08000200
 	ldmia r8, {r0, r1}
 	add r0, r0, r8
@@ -82,7 +85,7 @@ _080001A0
 	mov fp, #0
 _080001C4
 	cmp r2, r3
-	bleq sub_803CDF4
+	bleq __rt_entry
 	ldmia r2!, {r4, r5}
 	tst r4, #1
 	addne r4, r4, ip

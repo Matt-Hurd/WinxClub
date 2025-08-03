@@ -1,13 +1,13 @@
     INCLUDE asm/macros.inc
     AREA text, CODE
 
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
-	IMPORT sub_803B998
-	IMPORT sub_803B9C4
-	IMPORT sub_803C04C
-	IMPORT sub_803D46C
-	IMPORT sub_803E1DC
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT __16_ll_srdv
+	IMPORT __16__rt_sdiv
+	IMPORT Div
+	IMPORT sub_8004C44
 	IMPORT sub_803F3B4
 	IMPORT sub_80404D8
 
@@ -186,7 +186,7 @@ _080184E0
 	lsls r3, r1, #4
 	subs r1, r3, r1
 	lsls r1, r1, #1
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	cmp r0, #0
 	bne _080184F6
 	movs r0, #0x5a
@@ -196,11 +196,11 @@ _080184F6
 	lsls r1, r1, #3
 	cmp r0, #0x52
 	blt _08018504
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	b _0801850E
 _08018504
 	adds r0, #8
-	bl sub_803C04C
+	bl __16__rt_sdiv
 	b _0801850E
 _0801850C
 	movs r0, #0
@@ -377,41 +377,41 @@ sub_8018620 ;@ 0x08018620
 	adds r4, r0, #0
 	ldr r0, [r0]
 	adds r1, r0, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r6, pc, #0x344 ;@ =_08018974
 	ldm r6!, {r2, r3}
 	subs r6, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r5, r0, #0
 	ldr r0, [r4, #4]
 	adds r1, r0, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r6!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r0, r5, r0
-	bl sub_803E1DC
+	bl sub_8004C44
 	lsls r5, r0, #8
 	ldr r0, [r4]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r1, [sp]
 	adds r2, r0, #0
 	adds r0, r5, #0
 	asrs r1, r5, #0x1f
 	adds r6, r1, #0
 	ldr r3, [sp]
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [r4]
 	ldr r0, [r4, #4]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_shift_l
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r3, r1, #0
 	adds r1, r6, #0
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [r4, #4]
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
@@ -433,22 +433,22 @@ sub_8018688 ;@ 0x08018688
 	adds r2, r0, #0
 	muls r2, r0
 	adds r0, r1, r2
-	bl sub_803E1DC
+	bl sub_8004C44
 	adds r5, r0, #0
 	ldr r0, [r4]
 	lsls r0, r0, #8
 	adds r1, r5, #0
-	bl sub_803D46C
+	bl Div
 	str r0, [sp]
 	ldr r0, [r4, #4]
 	lsls r0, r0, #8
 	adds r1, r5, #0
-	bl sub_803D46C
+	bl Div
 	adds r7, r0, #0
 	ldr r0, [r4, #8]
 	lsls r0, r0, #8
 	adds r1, r5, #0
-	bl sub_803D46C
+	bl Div
 	ldr r1, [sp]
 	str r0, [r6, #8]
 	stm r6!, {r1, r7}
@@ -502,7 +502,7 @@ sub_8018712 ;@ 0x08018712
 	adds r2, r0, #0
 	muls r0, r2
 	adds r0, r1, r0
-	bl sub_803E1DC
+	bl sub_8004C44
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -533,7 +533,7 @@ sub_8018734 ;@ 0x08018734
 	adds r2, r0, #0
 	muls r2, r0
 	adds r0, r1, r2
-	bl sub_803E1DC
+	bl sub_8004C44
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -560,7 +560,7 @@ sub_801876E ;@ 0x0801876E
 	adds r0, r2, #0
 	muls r0, r2
 	adds r0, r1, r0
-	bl sub_803E1DC
+	bl sub_8004C44
 	add sp, #0xc
 	pop {r3}
 	bx r3
@@ -587,7 +587,7 @@ sub_80187A0 ;@ 0x080187A0
 	adds r1, r0, #0
 	muls r1, r0
 	adds r0, r2, r1
-	bl sub_803E1DC
+	bl sub_8004C44
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -631,12 +631,12 @@ sub_80187D2 ;@ 0x080187D2
 	adds r0, r6, #0
 	asrs r1, r6, #0x1f
 	movs r2, #8
-	bl sub_803B998
+	bl __16_ll_shift_l
 	adds r2, r0, #0
 	ldr r0, [sp, #4]
 	adds r3, r1, #0
 	asrs r1, r0, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [r4]
 	muls r1, r0
 	asrs r2, r1, #0x1f
@@ -738,12 +738,12 @@ sub_8018884 ;@ 0x08018884
 	adds r0, r6, #0
 	asrs r1, r6, #0x1f
 	movs r2, #8
-	bl sub_803B998
+	bl __16_ll_shift_l
 	adds r2, r0, #0
 	adds r3, r1, #0
 	adds r0, r5, #0
 	asrs r1, r5, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [sp, #4]
 	muls r1, r0
 	asrs r2, r1, #0x1f

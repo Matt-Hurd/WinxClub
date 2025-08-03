@@ -4,10 +4,10 @@
 	IMPORT gUnknown_03003EB4
 	IMPORT gUnknown_0803EE14
 	IMPORT sub_80095B8
-	IMPORT sub_803E104
-	IMPORT sub_803E110
-	IMPORT sub_803E134
-	IMPORT sub_803E14C
+	IMPORT maybeMallocEWRAM
+	IMPORT sub_800802E
+	IMPORT sub_800808E
+	IMPORT CpuSet
 
 	arm_func_start sub_800A240
 sub_800A240 ;@ 0x0800A240
@@ -37,14 +37,14 @@ _0800A270
 	movs r4, r0
 	bne _0800A294
 	mov r0, #0x3c
-	bl sub_803E104
+	bl maybeMallocEWRAM
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
 	bxeq lr
 _0800A294
 	mov r0, r4
-	bl sub_803E110
+	bl sub_800802E
 	LDR r0, _0800A9B4 ;@ =_0803EE14
 	STR r0, [r4]
 	mov r0, #4
@@ -58,7 +58,7 @@ sub_800A2B8 ;@ 0x0800A2B8
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r0
-	bl sub_803E134
+	bl sub_800808E
 	LDR r0, [r5]
 	mov r1, #0
 	add r0, r0, #4
@@ -130,7 +130,7 @@ _0800A3AC
 	MOV r2, ip, LSL #9
 	mov r3, #0x4000000
 	orr r2, r3, r2, lsr #11
-	bl sub_803E14C
+	bl CpuSet
 	b _0800A414
 _0800A3D0
 	orr r0, r2, r3

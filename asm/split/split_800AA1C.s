@@ -5,28 +5,28 @@
 	IMPORT sub_8006FE4
 	IMPORT sub_8007040
 	IMPORT sub_8007104
-	IMPORT sub_803E104
-	IMPORT sub_803E110
-	IMPORT sub_803E11C
-	IMPORT sub_803E128
-	IMPORT sub_803E134
-	IMPORT sub_803E158
-	IMPORT sub_803E164
-	IMPORT sub_803E170
+	IMPORT maybeMallocEWRAM
+	IMPORT sub_800802E
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
+	IMPORT sub_800808E
+	IMPORT sub_803D984
+	IMPORT sub_803D9A8
+	IMPORT sub_8008008
 
 	arm_func_start sub_800AA1C
 sub_800AA1C ;@ 0x0800AA1C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
-	b sub_803E158
+	b sub_803D984
 
 	arm_func_start sub_800AA2C
 sub_800AA2C ;@ 0x0800AA2C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
-	b sub_803E164
+	b sub_803D9A8
 
 	arm_func_start sub_800AA3C
 sub_800AA3C ;@ 0x0800AA3C
@@ -124,7 +124,7 @@ sub_800AB00 ;@ 0x0800AB00
 	beq _0800AB5C
 	mov r2, #0
 	mov r1, #0
-	bl sub_803E164
+	bl sub_803D9A8
 	mov r0, #0
 	STR r0, [r4, #0x54]
 _0800AB5C
@@ -166,7 +166,7 @@ sub_800AB8C ;@ 0x0800AB8C
 	beq _0800ABF4
 	mov r2, #0
 	mov r1, #0
-	bl sub_803E164
+	bl sub_803D9A8
 	mov r0, #0
 	STR r0, [r4, #0x54]
 _0800ABF4
@@ -181,11 +181,11 @@ _0800ABF4
 	STMIA r0, {r1, r2, r3, r5}
 	mov r1, #0
 	mov r0, r4
-	bl sub_803E11C
+	bl sub_800805E
 	cmp r6, #0
 	movne r0, r4
 	LDMNEFD SP!, {r4, r5, r6, lr}
-	bne sub_803E128
+	bne sub_803DA18
 	LDMFD SP!, {r4, r5, r6, lr}
 	bx lr
 
@@ -211,7 +211,7 @@ sub_800AC3C ;@ 0x0800AC3C
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [r4, #0x54]
-	bl sub_803E164
+	bl sub_803D9A8
 	STR r7, [r4, #0x54]
 	b _0800ACC0
 _0800AC98
@@ -220,7 +220,7 @@ _0800AC98
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [r4, #0x54]
-	bl sub_803E164
+	bl sub_803D9A8
 	STR r7, [r4, #0x54]
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #0
@@ -244,7 +244,7 @@ sub_800ACD0 ;@ 0x0800ACD0
 loc_800ACF0
 	mov r1, r5
 	mov r0, r4
-	bl sub_803E134
+	bl sub_800808E
 	LDR r0, [r5, #8]
 	add r3, r4, #0x30
 	STR r0, [r4, #0x20]
@@ -260,7 +260,7 @@ loc_800ACF0
 	mov r0, #0x3740
 	add r0, r0, #0x8000
 	mov r1, #0
-	bl sub_803E158
+	bl sub_803D984
 	STR r0, [r4, #0x54]
 	LDR r0, _0800AFCC ;@ =sub_800AA3C
 	STR r0, [r4, #0x40]
@@ -276,7 +276,7 @@ loc_800ACF0
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [r4, #0x54]
-	bl sub_803E164
+	bl sub_803D9A8
 	STR r5, [r4, #0x54]
 	LDMFD SP!, {r3, r4, r5, lr}
 	mov r0, #0
@@ -288,14 +288,14 @@ sub_800AD8C ;@ 0x0800AD8C
 	movs r4, r0
 	bne _0800ADB0
 	mov r0, #0x80
-	bl sub_803E104
+	bl maybeMallocEWRAM
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
 	bxeq lr
 _0800ADB0
 	mov r0, r4
-	bl sub_803E110
+	bl sub_800802E
 	LDR r0, _0800AFC8 ;@ =_0803EE98
 	mov r1, #0
 	STR r0, [r4]
@@ -331,7 +331,7 @@ sub_800AE20 ;@ 0x0800AE20
 	mov r8, r0
 	mov r0, r5
 	mov sb, r1
-	bl sub_803E110
+	bl sub_800802E
 	LDR r0, _0800AFC8 ;@ =_0803EE98
 	add r4, r5, #0x24
 	STR r0, [sp, #0x1c]
@@ -361,7 +361,7 @@ sub_800AE20 ;@ 0x0800AE20
 	add r7, sp, #4
 	mov r0, r7
 	sub r4, r4, #0x20
-	bl sub_803E170
+	bl sub_8008008
 	mov r1, r7
 	mov r0, r5
 	STR r8, [sp, #4]
@@ -394,7 +394,7 @@ _0800AEF0
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [sp, #0x70]
-	bl sub_803E164
+	bl sub_803D9A8
 	STR r6, [sp, #0x70]
 	b _0800AF5C
 _0800AF3C
@@ -403,7 +403,7 @@ _0800AF3C
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [sp, #0x70]
-	bl sub_803E164
+	bl sub_803D9A8
 	STR r6, [sp, #0x70]
 	b _0800AF68
 _0800AF5C

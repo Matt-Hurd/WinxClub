@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E7C
 	IMPORT gUnknown_0803ECB8
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8041020
@@ -12,7 +12,7 @@ sub_8041020 ;@ 0x08041020
 	cmp r0, #0
 	bne _0804102C
 	movs r0, #8
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 _0804102C
 	add sp, #4
 	pop {r3}

@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_080503D6
 	IMPORT sub_80301E8
-	IMPORT sub_803E21C
+	IMPORT gUnknown_03002F48
 
 	thumb_func_start sub_8012468
 sub_8012468 ;@ 0x08012468
@@ -17,7 +17,7 @@ sub_8012468 ;@ 0x08012468
 	adds r2, r4, #0
 	adds r1, r5, #0
 	adds r0, r6, #0
-	bl sub_803E21C
+	bl gUnknown_03002F48
 _08012480
 	pop {r4, r5, r6}
 	pop {r3}
@@ -31,7 +31,7 @@ _08012486
 	adds r5, r0, r5
 	subs r4, r4, r2
 	adds r0, r6, #0
-	bl sub_803E21C
+	bl gUnknown_03002F48
 _0801249A
 	adds r0, r6, #0
 	bl sub_80124C8
@@ -41,7 +41,7 @@ _0801249A
 	adds r2, r4, #0
 	adds r1, r5, #0
 	adds r0, r6, #0
-	bl sub_803E21C
+	bl gUnknown_03002F48
 	b _08012480
 _080124B2
 	lsrs r0, r2, #1
@@ -50,7 +50,7 @@ _080124B2
 	adds r5, r0, r5
 	subs r4, r4, r2
 	adds r0, r6, #0
-	bl sub_803E21C
+	bl gUnknown_03002F48
 	cmp r4, #0
 	bne _0801249A
 	b _08012480

@@ -1,0 +1,95 @@
+	AREA data, DATA
+
+	GLOBAL gUnknown_03003E7C
+	GLOBAL gUnknown_03003E80
+	GLOBAL gUnknown_03003E84
+	GLOBAL gUnknown_03003E88
+	GLOBAL gUnknown_03003E8C
+	GLOBAL gUnknown_03003E90
+	GLOBAL gUnknown_03003E94
+	GLOBAL gUnknown_03003E98
+	GLOBAL gUnknown_03003E9C
+	GLOBAL gUnknown_03003EA0
+	GLOBAL gUnknown_03003EA4
+	GLOBAL gUnknown_03003EA8
+	GLOBAL gUnknown_03003EAC
+	GLOBAL gUnknown_03003EB0
+	GLOBAL gUnknown_03003EB4
+	GLOBAL gUnknown_03003EB8
+	GLOBAL gUnknown_03003EBC
+	GLOBAL eeprom
+	GLOBAL gUnknown_03003EC4
+	GLOBAL gInterruptStack
+	GLOBAL gUnknown_03007FA0
+	GLOBAL gUnknown_03007FC0
+	GLOBAL gUnknown_03007FF8
+
+gUnknown_03003E7C
+	SPACE 0x4
+
+gUnknown_03003E80
+	SPACE 0x4
+
+gUnknown_03003E84
+	SPACE 0x4
+
+gUnknown_03003E88
+	SPACE 0x4
+
+gUnknown_03003E8C
+	SPACE 0x4
+
+gUnknown_03003E90
+	SPACE 0x4
+
+gUnknown_03003E94
+	SPACE 0x4
+
+gUnknown_03003E98
+	SPACE 0x4
+
+gUnknown_03003E9C
+	SPACE 0x4
+
+gUnknown_03003EA0
+	SPACE 0x4
+
+gUnknown_03003EA4
+	SPACE 0x4
+
+gUnknown_03003EA8
+	SPACE 0x4
+
+gUnknown_03003EAC
+	SPACE 0x4
+
+gUnknown_03003EB0
+	SPACE 0x4
+
+gUnknown_03003EB4
+	SPACE 0x4
+
+gUnknown_03003EB8
+	SPACE 0x4
+
+gUnknown_03003EBC
+	SPACE 0x4
+
+eeprom
+	SPACE 0x4
+
+gUnknown_03003EC4
+	SPACE 0x403c
+
+gInterruptStack
+	SPACE 0xa0
+
+gUnknown_03007FA0
+	SPACE 0x20
+
+gUnknown_03007FC0
+	SPACE 0x38
+
+gUnknown_03007FF8
+	SPACE 0x1
+	END

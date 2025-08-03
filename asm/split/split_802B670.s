@@ -10,9 +10,9 @@
 	IMPORT sub_802459E
 	IMPORT sub_8028C2E
 	IMPORT sub_802B2F8
-	IMPORT sub_803B8CE
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
+	IMPORT __call_via_r3
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
 	IMPORT sub_8040034
 	IMPORT sub_8040594
 
@@ -113,10 +113,10 @@ sub_802B6F4 ;@ 0x0802B6F4
 	lsls r0, r0, #2
 	str r0, [sp, #0xc]
 	adds r1, r5, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x2E4 ;@ =_0802BA14
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r0, r0, #0x10
 	movs r1, #0xa0
 	subs r0, r1, r0
@@ -172,7 +172,7 @@ _0802B74E
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
 	movs r1, #0x7c
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, [r4, #0x7c]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x14]
@@ -183,7 +183,7 @@ _0802B74E
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
 	movs r1, #0x7c
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xf4
 	ldr r1, [r0]
@@ -194,7 +194,7 @@ _0802B74E
 	asrs r2, r2, #0x10
 	adds r5, r2, #0
 	movs r1, #0x90
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xff
 	adds r0, #0x6d
@@ -203,13 +203,13 @@ _0802B74E
 	adds r3, r2, r1
 	adds r2, r5, #0
 	movs r1, #0xbb
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x21C ;@ =_0802BA14
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x10
 	movs r5, #0
 	movs r6, #0x28
@@ -326,10 +326,10 @@ sub_802B8B0 ;@ 0x0802B8B0
 	adds r1, r6, #0
 	lsls r7, r0, #2
 	adds r0, r7, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x12C ;@ =_0802BA14
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r6, r0, #0x10
 	movs r5, #0
 _0802B8F0
@@ -379,7 +379,7 @@ _0802B8F0
 	asrs r1, r1, #0x10
 	movs r2, #0x3c
 	adds r5, r1, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, [r4, #0x7c]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x14]
@@ -387,7 +387,7 @@ _0802B8F0
 	adds r3, r2, r1
 	movs r2, #0x46
 	adds r1, r5, #0
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xf4
 	ldr r1, [r0]
@@ -398,7 +398,7 @@ _0802B8F0
 	lsls r1, r1, #0x10
 	movs r2, #0x50
 	asrs r1, r1, #0x10
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r4, #0
 	adds r0, #0xff
 	adds r0, #0x6d
@@ -409,13 +409,13 @@ _0802B8F0
 	lsls r1, r6, #0x10
 	movs r2, #0x50
 	asrs r1, r1, #0x10
-	bl sub_803B8CE
+	bl __call_via_r3
 	adds r0, r7, #0
 	ldr r1, [sp, #8]
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x74 ;@ =_0802BA14
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r0, r0, #0x10
 	movs r5, #0
 	movs r1, #0x14

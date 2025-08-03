@@ -9,8 +9,8 @@
 	IMPORT sub_800B286
 	IMPORT sub_800EA22
 
-	thumb_func_start sub_800B0D8
-sub_800B0D8 ;@ 0x0800B0D8
+	thumb_func_start main
+main ;@ 0x0800B0D8
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _0800B124 ;@ =0x00004014
 	ldr r1, _0800B128 ;@ =0x04000200
@@ -43,5 +43,5 @@ sub_800B0D8 ;@ 0x0800B0D8
 	bx r3
 	ALIGN
 _0800B124 DCDU 0x00004014
-_0800B128 DCDU 0x04000200
+_0800B128 DCDU REG_IE
 	END

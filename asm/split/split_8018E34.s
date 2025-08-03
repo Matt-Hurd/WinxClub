@@ -39,9 +39,9 @@
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
 	IMPORT sub_802EF0A
-	IMPORT sub_803BF0C
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __16__rt_memcpy
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803F9C4
 	IMPORT sub_80401E4
 
@@ -202,7 +202,7 @@ sub_8018F5E ;@ 0x08018F5E
 	movs r2, #0xc
 	adds r1, #0x38
 	adds r0, r7, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r0, _08019220 ;@ =gUnknown_0805075A
 	add r3, sp, #0
 	subs r0, #0xc
@@ -612,7 +612,7 @@ sub_80192CE ;@ 0x080192CE
 	movs r2, #0x78
 	adds r3, r5, #0
 	adds r0, #8
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r4, #0
 	adds r0, #0xff
 	adds r0, #1
@@ -633,7 +633,7 @@ sub_80192CE ;@ 0x080192CE
 	adds r0, #0xa9
 	movs r2, #0x78
 	adds r3, r5, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	movs r3, #0xb
 	lsls r3, r3, #7
 	add r3, sp
@@ -929,7 +929,7 @@ _0801951C
 	adds r1, #0x31
 	adds r3, r4, #0
 	adds r0, r5, r0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r1, #0
 	movs r3, #0xb
 	lsls r3, r3, #7
@@ -943,7 +943,7 @@ _0801951C
 	adds r3, r4, #0
 	adds r0, r5, #0
 	adds r0, #0x80
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0x1fc
 	add sp, #0x19c

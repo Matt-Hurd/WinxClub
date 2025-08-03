@@ -7,7 +7,7 @@
 	IMPORT sub_8001C22
 	IMPORT sub_800202A
 	IMPORT sub_801F640
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 
 	thumb_func_start sub_801CB18
 sub_801CB18 ;@ 0x0801CB18
@@ -193,7 +193,7 @@ _0801CC50
 	ldr r1, [r0]
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r6, #0x1c]
 	adds r4, #1
 	lsls r0, r0, #0x18
@@ -224,7 +224,7 @@ _0801CC86
 	ldr r1, [r0]
 	ldr r2, [r1, #0x1c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r6, #0x1c]
 	adds r4, #1
 	lsls r0, r0, #0x18
@@ -255,7 +255,7 @@ _0801CCBC
 	ldr r1, [r0]
 	ldr r2, [r1, #0x20]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r6, #0x1c]
 	adds r4, #1
 	lsls r0, r0, #0x18

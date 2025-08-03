@@ -23,9 +23,9 @@
 	IMPORT sub_802D2E8
 	IMPORT sub_802DFF4
 	IMPORT sub_802E02A
-	IMPORT sub_803B8D4
-	IMPORT sub_803B8D6
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r6
+	IMPORT __call_via_r7
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
@@ -38,7 +38,7 @@ sub_801F794 ;@ 0x0801F794
 	cmp r0, #0
 	bne _0801F7B2
 	adds r0, r5, #0
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0801F7B2
 	adds r0, r4, #0
@@ -319,7 +319,7 @@ _0801F9A6
 	adds r7, r2, r1
 	adds r2, r5, #0
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, [r4, #0x7c]
 	movs r2, #7
 	movs r3, #1
@@ -425,7 +425,7 @@ _0801FA78
 	adds r7, r2, r1
 	adds r2, r5, #0
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, [r4, #0x7c]
 	movs r2, #7
 	movs r3, #1
@@ -514,7 +514,7 @@ _0801FB34
 	adds r7, r2, r1
 	adds r2, r5, #0
 	adds r1, r4, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, [r4, #0x7c]
 	movs r2, #7
 	movs r3, #1
@@ -855,7 +855,7 @@ _0801FE04
 	adds r6, r2, r1
 	adds r2, r5, #0
 	adds r1, r4, #0
-	bl sub_803B8D4
+	bl __call_via_r6
 	ldr r0, _0801FE88 ;@ =gUnknown_03003E98
 	ldr r0, [r0]
 	ldr r0, [r0, #8]

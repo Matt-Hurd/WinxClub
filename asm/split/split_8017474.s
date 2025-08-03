@@ -11,10 +11,10 @@
 	IMPORT sub_8005106
 	IMPORT sub_80164A8
 	IMPORT sub_801669C
-	IMPORT sub_803B8CC
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r2
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 	IMPORT sub_803F464
@@ -28,7 +28,7 @@ sub_8017474 ;@ 0x08017474
 	bne _08017492
 	movs r0, #0x67
 	lsls r0, r0, #4
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08017492
 	adds r0, r4, #0
@@ -199,14 +199,14 @@ sub_80175D4 ;@ 0x080175D4
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 _080175F0
 	movs r4, #0
 _080175F2
 	lsls r0, r4, #2
 	adds r0, r0, r5
 	ldr r0, [r0, #0x18]
-	bl sub_803DA4C
+	bl __da__FPv
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
@@ -354,7 +354,7 @@ _080176F4
 	ldr r2, [r1, #4]
 	adds r2, r2, r1
 	adds r1, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 _0801770C
 	ldrb r0, [r4, #4]
 	lsls r0, r0, #0x1c
@@ -364,7 +364,7 @@ _0801770C
 	ldr r2, [r1, #8]
 	adds r2, r2, r1
 	adds r1, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	cmp r0, #0
 	beq _08017730
 	adds r0, r4, #0
@@ -405,7 +405,7 @@ _08017744
 	ldrh r1, [r1, #0x18]
 	lsls r1, r1, #0x1f
 	bmi _08017780
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r1, [sp, #0x14]
 	movs r0, #0
 	adds r4, #0xff

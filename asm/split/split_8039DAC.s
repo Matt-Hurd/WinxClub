@@ -18,7 +18,7 @@
 	IMPORT sub_802B0CA
 	IMPORT sub_803490C
 	IMPORT sub_8034A86
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 
 	thumb_func_start sub_8039DAC
 sub_8039DAC ;@ 0x08039DAC
@@ -255,7 +255,7 @@ loc_8039f32
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08039FBA
 loc_8039f60
 	ldr r0, _0803A040 ;@ =gUnknown_03003458
@@ -273,7 +273,7 @@ loc_8039f60
 	ldr r1, [r0]
 	ldr r2, [r1, #0x1c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r1, r4, #0
 	adds r1, #0xb0
 	ldrb r2, [r1, #6]
@@ -287,7 +287,7 @@ loc_8039f60
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08039FBA
 _08039FA4
 	adds r0, r4, #0

@@ -4,8 +4,8 @@
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_0803EB34
 	IMPORT gUnknown_0803ECD4
-	IMPORT sub_803D498
-	IMPORT sub_803D9F8
+	IMPORT VBlankIntrWait
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800AFD4
@@ -14,7 +14,7 @@ sub_800AFD4 ;@ 0x0800AFD4
 	cmp r0, #0
 	bne _0800AFE4
 	movs r0, #0xc
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _0800B014
 _0800AFE4
@@ -125,7 +125,7 @@ sub_800B082 ;@ 0x0800B082
 	non_word_aligned_thumb_func_start sub_800B08E
 sub_800B08E ;@ 0x0800B08E
 	push {r3, lr}
-	bl sub_803D498
+	bl VBlankIntrWait
 	add sp, #4
 	pop {r3}
 	bx r3

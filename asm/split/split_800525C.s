@@ -4,8 +4,8 @@
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_0803E680
 	IMPORT gUnknown_0803ECC0
-	IMPORT sub_803BF0C
-	IMPORT sub_803D9F8
+	IMPORT __16__rt_memcpy
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800525C
@@ -14,7 +14,7 @@ sub_800525C ;@ 0x0800525C
 	cmp r0, #0
 	bne _0800526C
 	movs r0, #4
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08005278
 _0800526C
@@ -57,7 +57,7 @@ sub_800529A ;@ 0x0800529A
 	beq _080052AC
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	adds r0, r4, #0
 _080052AC
 	pop {r4}

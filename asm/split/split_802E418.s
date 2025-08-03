@@ -17,7 +17,7 @@
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT sub_800CD58
-	IMPORT sub_803D9F8
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_802E418
@@ -26,7 +26,7 @@ sub_802E418 ;@ 0x0802E418
 	cmp r0, #0
 	bne _0802E428
 	movs r0, #0x3c
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _0802E474
 _0802E428

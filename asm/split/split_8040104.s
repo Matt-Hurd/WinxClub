@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_800C482
 	IMPORT sub_800C4F0
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_8041274
 
 	thumb_func_start sub_8040104
@@ -27,7 +27,7 @@ sub_8040104 ;@ 0x08040104
 	b _0804012C
 _08040126
 	ldr r0, [r4, #0x48]
-	bl sub_803DA4C
+	bl __da__FPv
 _0804012C
 	str r7, [r4, #0x48]
 _0804012E

@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
 	IMPORT sub_801EBCA
-	IMPORT sub_803BE1C
+	IMPORT rand
 
 	thumb_func_start sub_80262CC
 sub_80262CC ;@ 0x080262CC
@@ -47,7 +47,7 @@ _08026312
 	lsrs r0, r0, #0x10
 	cmp r0, r1
 	beq _0802632E
-	bl sub_803BE1C
+	bl rand
 	movs r1, #0xa0
 	ldrh r1, [r1, r4]
 	ands r0, r1

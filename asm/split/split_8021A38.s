@@ -29,8 +29,8 @@
 	IMPORT sub_8023AA2
 	IMPORT sub_8028C2E
 	IMPORT sub_80384FA
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
@@ -52,13 +52,13 @@ sub_8021A38 ;@ 0x08021A38
 	ldr r1, [r0]
 	ldr r2, [r1, #0xc]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r0, r6, #0
 	adds r0, #0xa0
 	ldr r1, [r0]
 	ldr r2, [r1, #0xc]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	movs r5, #0
 	movs r7, #0
 _08021A60
@@ -116,13 +116,13 @@ _08021ABC
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r0, r4, #0
 	adds r0, #0xa0
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -190,14 +190,14 @@ _08021B4E
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	ldr r1, [r4, #0x2c]
-	bl sub_803B8CC
+	bl __call_via_r2
 	adds r0, r4, #0
 	adds r0, #0xa0
 	ldr r1, [r0]
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	ldr r1, [r4, #0x2c]
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0xf
 	beq _08021B7E
@@ -860,7 +860,7 @@ loc_802203e
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08022168
 _08022080
 	adds r0, r4, #0
@@ -979,7 +979,7 @@ _08022152
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _08022168
 	b _08022188
 _0802216A

@@ -6,8 +6,8 @@
 	IMPORT sub_8000D5A
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
 	IMPORT sub_803FA3C
 
 	thumb_func_start sub_800065C
@@ -344,10 +344,10 @@ _080008AE
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0x28 ;@ =_0800090C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

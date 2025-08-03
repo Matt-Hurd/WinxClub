@@ -10,9 +10,9 @@
 	IMPORT sub_800CD28
 	IMPORT sub_800F090
 	IMPORT sub_801537C
-	IMPORT sub_803B8CC
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __call_via_r2
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_8000914
 sub_8000914 ;@ 0x08000914
@@ -101,11 +101,11 @@ loc_8000986
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	mov r2, pc
 	subs r2, #0x94
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0
@@ -140,11 +140,11 @@ loc_80009be
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	mov r2, pc
 	subs r2, #0xe2
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0
@@ -203,7 +203,7 @@ loc_8000a60
 	ldr r2, [r4, #0x4c]
 	lsrs r1, r0, #0x18
 	adds r0, r4, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	cmp r0, #0
 	beq _08000A92
 	cmp r0, #7
@@ -231,10 +231,10 @@ _08000A92
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r4, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0xEC ;@ =_08000B98
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

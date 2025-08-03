@@ -3,8 +3,8 @@
 
 	IMPORT sub_8012334
 	IMPORT sub_803DA18
-	IMPORT sub_803E11C
-	IMPORT sub_803E128
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
 
 	thumb_func_start sub_80403A4
 sub_80403A4 ;@ 0x080403A4
@@ -28,11 +28,11 @@ sub_80403C0 ;@ 0x080403C0
 	mov r5, r1
 	mov r1, #0
 	mov r4, r0
-	bl sub_803E11C
+	bl sub_800805E
 	cmp r5, #0
 	movne r0, r4
 	LDMNEFD SP!, {r3, r4, r5, lr}
-	bne sub_803E128
+	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
 
@@ -42,11 +42,11 @@ sub_80403EC ;@ 0x080403EC
 	mov r5, r1
 	mov r1, #0
 	mov r4, r0
-	bl sub_803E11C
+	bl sub_800805E
 	cmp r5, #0
 	movne r0, r4
 	LDMNEFD SP!, {r3, r4, r5, lr}
-	bne sub_803E128
+	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
 
@@ -56,11 +56,11 @@ sub_8040418 ;@ 0x08040418
 	mov r5, r1
 	mov r1, #0
 	mov r4, r0
-	bl sub_803E11C
+	bl sub_800805E
 	cmp r5, #0
 	movne r0, r4
 	LDMNEFD SP!, {r3, r4, r5, lr}
-	bne sub_803E128
+	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
 

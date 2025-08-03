@@ -10,7 +10,7 @@
 	IMPORT sub_8005106
 	IMPORT sub_800B314
 	IMPORT sub_800B3BA
-	IMPORT sub_803BEB0
+	IMPORT __16__rt_memclr_w
 	IMPORT sub_803DA80
 	IMPORT sub_803F464
 	IMPORT sub_803FEF8
@@ -344,7 +344,7 @@ sub_802383A ;@ 0x0802383A
 	lsls r1, r1, #9
 	add r7, sp, #4
 	add r0, sp, #4
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	ldr r5, _080239CC ;@ =gPlayerPointer
 	movs r6, #0
 	ldr r0, [r5, #4]

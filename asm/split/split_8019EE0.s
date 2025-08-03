@@ -46,10 +46,10 @@
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
 	IMPORT sub_802EF0A
-	IMPORT sub_803B8CC
-	IMPORT sub_803BF0C
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __call_via_r2
+	IMPORT __16__rt_memcpy
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803D66C
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
@@ -185,7 +185,7 @@ _08019F8C
 	movs r1, #3
 	mvns r1, r1
 	adds r0, r6, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	adds r0, r6, #0
 	adds r6, #0x30
 	ldrb r1, [r6, #8]
@@ -320,7 +320,7 @@ sub_801A0D2 ;@ 0x0801A0D2
 	movs r2, #0xc
 	adds r1, #0x30
 	add r0, sp, #0x38
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r0, _0801A2D8 ;@ =gUnknown_080507A8
 	add r3, sp, #0
 	subs r0, #0xa
@@ -786,7 +786,7 @@ sub_801A4DA ;@ 0x0801A4DA
 	movs r2, #0x78
 	adds r3, r5, #0
 	adds r0, #8
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r4, #0
 	adds r0, #0xff
 	adds r0, #1
@@ -804,20 +804,20 @@ sub_801A4DA ;@ 0x0801A4DA
 	adds r6, r1, #0
 	movs r2, #0x78
 	adds r3, r5, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _0801A740 ;@ =0x000004CC
 	movs r2, #0x78
 	adds r1, r4, r0
 	adds r7, r1, #0
 	adds r0, r6, #0
 	adds r3, r5, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _0801A744 ;@ =0x00000634
 	movs r2, #0x78
 	adds r1, r4, r0
 	adds r0, r7, #0
 	adds r3, r5, #0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	movs r0, #0xc9
 	lsls r0, r0, #3
 	adds r0, r4, r0
@@ -1015,7 +1015,7 @@ _0801A6A4
 	adds r0, r4, r0
 	adds r6, r1, #0
 	adds r3, r5, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r0, #0x9d
 	lsls r0, r0, #2
 	adds r1, r4, r0
@@ -1024,7 +1024,7 @@ _0801A6A4
 	adds r7, r1, #0
 	adds r0, r6, #0
 	adds r3, r5, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	adds r1, r4, #0
 	adds r1, #0xff
 	movs r2, #0x77
@@ -1032,7 +1032,7 @@ _0801A6A4
 	adds r1, #0xd
 	adds r0, r7, #0
 	adds r3, r5, #0
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	movs r1, #0
 	movs r3, #0xd
 	lsls r3, r3, #7
@@ -1046,7 +1046,7 @@ _0801A6A4
 	adds r3, r5, #0
 	adds r0, r4, #0
 	adds r0, #0x80
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0x1fc
 	add sp, #0x1fc

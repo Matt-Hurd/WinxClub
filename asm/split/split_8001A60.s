@@ -9,13 +9,13 @@
 	IMPORT sub_8002614
 	IMPORT sub_800D912
 	IMPORT sub_800DEF8
-	IMPORT sub_803B8CA
-	IMPORT sub_803B998
-	IMPORT sub_803B9C4
-	IMPORT sub_803BEB0
-	IMPORT sub_803C034
-	IMPORT sub_803C3A4
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT __16_ll_shift_l
+	IMPORT __16_ll_srdv
+	IMPORT __16__rt_memclr_w
+	IMPORT __16__rt_memset
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_804036C
 
@@ -25,7 +25,7 @@ sub_8001A60 ;@ 0x08001A60
 	cmp r0, #0
 	bne _08001A70
 	movs r0, #0x2c
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	cmp r0, #0
 	beq _08001A8A
 _08001A70
@@ -53,7 +53,7 @@ sub_8001A90 ;@ 0x08001A90
 	adds r4, r0, #0
 	bne _08001AA8
 	ldr r0, _08001E7C ;@ =0x00000A08
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08001AA8
 	adds r0, r4, #0
@@ -80,7 +80,7 @@ _08001AA8
 	movs r2, #0x58
 	adds r6, r0, #0
 	ldr r3, _08001E8C ;@ =sub_804036C
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	ldr r0, _08001E90 ;@ =0x000009BC
 	movs r1, #0xff
 	adds r5, r4, r0
@@ -88,7 +88,7 @@ _08001AA8
 	adds r7, r4, r0
 	adds r1, #0x61
 	adds r0, r6, #0
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r0, #0x13
 	lsls r0, r0, #7
 	adds r0, r4, r0
@@ -128,7 +128,7 @@ _08001AA8
 	movs r2, #4
 	movs r1, #0xff
 	adds r0, r4, r0
-	bl sub_803C034
+	bl __16__rt_memset
 	str r6, [r4, #4]
 	str r6, [r4, #0xc]
 	str r6, [r4, #0x10]
@@ -214,7 +214,7 @@ sub_8001BB4 ;@ 0x08001BB4
 	cmp r1, #0
 	beq _08001BCC
 	adds r0, r4, #0
-	bl sub_803B8CA
+	bl __call_via_r1
 _08001BCC
 	ldr r2, [r4, #8]
 	movs r1, #0
@@ -255,7 +255,7 @@ _08001BFA
 _08001C0C
 	ldr r0, [r4, #0x10]
 	ldr r1, [r6, #8]
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r4, #4]
 	adds r5, #1
 	cmp r0, r5
@@ -511,26 +511,26 @@ _08001DE8
 	ldr r0, [sp, #0xc]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp, #4]
 	ldr r0, [sp, #0x34]
 	str r1, [sp, #8]
 	add r3, sp, #4
 	ldm r3!, {r2, r3}
 	asrs r1, r0, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp, #4]
 	str r1, [sp, #8]
 	ldr r0, [r5, #0x38]
 	add r3, sp, #4
 	ldm r3!, {r2, r3}
 	asrs r1, r0, #0x1f
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [sp, #0x10]
 _08001E20
 	ldr r0, [r5, #0x20]
@@ -567,7 +567,7 @@ _08001E40
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0xc]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp]
 	ldr r0, [sp, #8]
 	str r1, [sp, #4]
@@ -576,7 +576,7 @@ _08001E40
 	add r3, sp, #0
 	str r0, [sp, #0x30]
 	ldm r3!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	b _08001EA0
 	ALIGN
 _08001E7C DCDU 0x00000A08
@@ -594,7 +594,7 @@ _08001EA0
 	ldr r0, [sp, #0x30]
 	add r2, pc, #0x27C ;@ =_08002124
 	ldm r2!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [sp, #0xc]
 	NEGS r0, r0
 	cmp r0, r1
@@ -616,7 +616,7 @@ _08001EBA
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0xc]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp]
 	ldr r0, [sp, #8]
 	str r1, [sp, #4]
@@ -625,13 +625,13 @@ _08001EBA
 	add r3, sp, #0
 	str r0, [sp, #0x28]
 	ldm r3!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x28]
 	add r2, pc, #0x230 ;@ =_08002124
 	ldr r1, [sp, #0x24]
 	ldm r2!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [sp, #0xc]
 	cmp r0, r1
 	bge _08001F02
@@ -670,7 +670,7 @@ _08001F20
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0x10]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp]
 	str r1, [sp, #4]
 	asrs r1, r7, #0x1f
@@ -679,13 +679,13 @@ _08001F20
 	adds r7, r1, #0
 	adds r6, r0, #0
 	ldm r3!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [sp, #0x10]
 	add r2, pc, #0x1C8 ;@ =_08002124
 	adds r0, r6, #0
 	adds r1, r7, #0
 	ldm r2!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [sp, #0x10]
 	NEGS r0, r0
 	cmp r0, r1
@@ -706,7 +706,7 @@ _08001F72
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [sp, #0x10]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	str r0, [sp]
 	str r1, [sp, #4]
 	asrs r1, r7, #0x1f
@@ -715,13 +715,13 @@ _08001F72
 	adds r7, r1, #0
 	adds r6, r0, #0
 	ldm r3!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	str r0, [sp, #0x10]
 	add r2, pc, #0x17C ;@ =_08002124
 	adds r0, r6, #0
 	adds r1, r7, #0
 	ldm r2!, {r2, r3}
-	bl sub_803B9C4
+	bl __16_ll_srdv
 	ldr r1, [sp, #0x10]
 	cmp r0, r1
 	bge _08001FBA

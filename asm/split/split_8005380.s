@@ -10,7 +10,7 @@
 	IMPORT sub_8007D44
 	IMPORT sub_8007ED8
 	IMPORT sub_8007F18
-	IMPORT sub_803BF10
+	IMPORT __rt_memcpy
 
 	arm_func_start sub_8005380
 sub_8005380 ;@ 0x08005380
@@ -441,7 +441,7 @@ _08005958
 	STRHI r0, [sp, #0x2c]
 	LDR r2, [sp, #0x2c]
 	mov r0, sl
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r0, [sp, #0x2c]
 	LDR r1, [sp, #0x28]
 	add sb, sb, r0
@@ -1074,7 +1074,7 @@ sub_80062AC ;@ 0x080062AC
 	mov r4, r0
 	LDR r0, [r0, #0x28]
 	mov r5, r2
-	bl sub_803BF10
+	bl __rt_memcpy
 	LDR r0, [r4, #0x28]
 	add r0, r0, r5
 	STR r0, [r4, #0x34]

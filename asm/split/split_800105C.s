@@ -7,8 +7,8 @@
 	IMPORT sub_8000CCE
 	IMPORT sub_8005106
 	IMPORT sub_800B8CE
-	IMPORT sub_803BEB0
-	IMPORT sub_803C3EC
+	IMPORT __16__rt_memclr_w
+	IMPORT __vec_ctor_p__FPvUiT2bPFPv_v
 	IMPORT sub_803DA9C
 	IMPORT sub_8040550
 
@@ -52,10 +52,10 @@ sub_800106A ;@ 0x0800106A
 	str r2, [sp]
 	movs r2, #0x60
 	adds r1, r5, #1
-	bl sub_803C3EC
+	bl __vec_ctor_p__FPvUiT2bPFPv_v
 	adds r1, r6, #0
 	str r0, [r4]
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	movs r3, #0
 	ldr r0, [r4]
 	movs r2, #1

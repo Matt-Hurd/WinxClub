@@ -7,8 +7,8 @@
 	IMPORT sub_800F220
 	IMPORT sub_800F312
 	IMPORT sub_800FC76
-	IMPORT sub_803B914
-	IMPORT sub_803BD84
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_ushift_r
 	IMPORT sub_803DABC
 	IMPORT sub_80405F8
 
@@ -56,9 +56,9 @@ sub_800F528 ;@ 0x0800F528
 	adds r0, r5, #0
 	movs r1, #0
 	ldr r2, [r4, #0x60]
-	bl sub_803B914
+	bl __16_ll_mulls
 	movs r2, #8
-	bl sub_803BD84
+	bl __16_ll_ushift_r
 	lsrs r6, r0, #1
 	lsls r6, r6, #1
 	adds r0, r6, #0

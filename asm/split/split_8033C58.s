@@ -21,10 +21,10 @@
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
 	IMPORT sub_803357C
-	IMPORT sub_803B8CA
-	IMPORT sub_803B8D6
-	IMPORT sub_803C124
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT __call_via_r7
+	IMPORT __16__rt_udiv
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803F654
 	IMPORT sub_803F6B4
@@ -39,7 +39,7 @@ sub_8033C58 ;@ 0x08033C58
 	adds r4, r0, #0
 	bne _08033C70
 	movs r0, #0x58
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08033C70
 	adds r0, r4, #0
@@ -401,7 +401,7 @@ _08033F26
 	adds r0, r4, #0
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r0, [r4, #0x48]
 	bl sub_803357C
 _08033F48
@@ -640,14 +640,14 @@ _0803412C
 _0803412E
 	ldr r2, _08034344 ;@ =gUnknown_030033A2
 	ldrb r0, [r2, r0]
-	bl sub_803C124
+	bl __16__rt_udiv
 	ldr r2, _08034344 ;@ =gUnknown_030033A2
 	strh r0, [r5, #0xe]
 	ldrb r0, [r2]
 	ldr r1, _0803433C ;@ =gUnknown_030033A6
 	strh r0, [r5, #0x10]
 	ldrh r1, [r1, r7]
-	bl sub_803C124
+	bl __16__rt_udiv
 	strh r0, [r5, #0x10]
 	b _08034122
 _0803414A
@@ -719,7 +719,7 @@ _080341A2
 	adds r7, r2, r1
 	movs r2, #1
 	ldr r1, [r4, #0x48]
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r0, [r4, #0x34]
 	movs r1, #1
 	lsls r1, r1, #9
@@ -743,7 +743,7 @@ _080341EE
 	ldrh r0, [r5, #0x10]
 	cmp r0, #0
 	beq _08034230
-	bl sub_803C124
+	bl __16__rt_udiv
 	cmp r1, #0
 	bne _08034230
 	movs r1, #1
@@ -755,7 +755,7 @@ _08034218
 	ldrh r0, [r5, #0xe]
 	cmp r0, #0
 	beq _08034230
-	bl sub_803C124
+	bl __16__rt_udiv
 	cmp r1, #0
 	bne _08034230
 	movs r1, #1

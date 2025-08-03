@@ -45,8 +45,8 @@
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
 	IMPORT sub_802EF0A
-	IMPORT sub_803C3A4
-	IMPORT sub_803C3C8
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
 	IMPORT sub_80401E4
@@ -749,7 +749,7 @@ sub_8035324 ;@ 0x08035324
 	mov r6, sp
 	add r0, sp, #8
 	ldr r3, _0803546C ;@ =sub_80143E0
-	bl sub_803C3A4
+	bl __vecmap1c__FPvT1iPFPv_v
 	adds r0, r7, #0
 	bl sub_80143E0
 	adds r0, r6, #0
@@ -884,7 +884,7 @@ _0803542A
 	adds r0, r6, #0
 	adds r0, #0x80
 	ldr r3, _0803547C ;@ =sub_8014436
-	bl sub_803C3C8
+	bl __vecmap1ci__FPvT1iPFPvi_v
 	add sp, #0x1fc
 	add sp, #0x58
 	pop {r4, r5, r6, r7}

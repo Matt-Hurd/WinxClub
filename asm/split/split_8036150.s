@@ -10,7 +10,7 @@
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
-	IMPORT sub_803B8CA
+	IMPORT __call_via_r1
 	IMPORT sub_803F110
 
 	thumb_func_start sub_8036150
@@ -111,7 +111,7 @@ sub_80361E8 ;@ 0x080361E8
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 _0803620E
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1

@@ -16,10 +16,10 @@
 	IMPORT sub_802B0CA
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
-	IMPORT sub_803B8CA
-	IMPORT sub_803B914
-	IMPORT sub_803B940
-	IMPORT sub_803BE1C
+	IMPORT __call_via_r1
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_sdiv
+	IMPORT rand
 	IMPORT sub_8040468
 	IMPORT sub_8040490
 	IMPORT sub_8040574
@@ -33,10 +33,10 @@ sub_803490C ;@ 0x0803490C
 	lsls r2, r1, #0x10
 	ldm r0!, {r0, r1}
 	sub sp, #0x24
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r2, pc, #0x3DC ;@ =_08034CFC
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0
@@ -159,15 +159,15 @@ _080349F8
 	adds r0, #0xe0
 	ldrb r1, [r0]
 	str r1, [sp, #0x1c]
-	bl sub_803BE1C
+	bl rand
 	bl sub_8040490
 	adds r0, #1
 	str r0, [sp, #0xc]
-	bl sub_803BE1C
+	bl rand
 	bl sub_8040468
 	adds r0, #1
 	str r0, [sp, #8]
-	bl sub_803BE1C
+	bl rand
 	lsrs r1, r0, #0x1f
 	adds r1, r1, r0
 	asrs r1, r1, #1
@@ -176,7 +176,7 @@ _080349F8
 	bne _08034A2A
 	mvns r7, r7
 _08034A2A
-	bl sub_803BE1C
+	bl rand
 	lsrs r1, r0, #0x1f
 	adds r1, r1, r0
 	asrs r1, r1, #1
@@ -454,7 +454,7 @@ _08034C00
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08034C8C
 loc_8034c2e
 	ldr r0, _08034D0C ;@ =gUnknown_03003458
@@ -472,7 +472,7 @@ loc_8034c2e
 	ldr r1, [r0]
 	ldr r2, [r1, #0x1c]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r1, r4, #0
 	adds r1, #0xb0
 	ldrb r2, [r1, #6]
@@ -490,7 +490,7 @@ loc_8034c2e
 _08034C6E
 	b _08034C86
 _08034C70
-	bl sub_803B8CA
+	bl __call_via_r1
 	b _08034C8C
 _08034C76
 	adds r0, r4, #0

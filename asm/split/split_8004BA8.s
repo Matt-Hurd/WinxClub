@@ -2,7 +2,7 @@
     AREA text, CODE
 
 	IMPORT gUnknown_080494B8
-	IMPORT sub_803C128
+	IMPORT __rt_udiv
 
 	thumb_func_start sub_8004BA8
 sub_8004BA8 ;@ 0x08004BA8
@@ -131,13 +131,13 @@ _08004C80
 _08004C94
 	mov r1, r4
 	mov r0, r5
-	bl sub_803C128
+	bl __rt_udiv
 	add r0, r0, r5
 	add r0, r0, #1
 	MOV r5, r0, LSR #1
 	mov r0, r5
 	mov r1, r4
-	bl sub_803C128
+	bl __rt_udiv
 	add r0, r0, r5
 	add r0, r0, #1
 	MOV r0, r0, LSR #1
@@ -164,7 +164,7 @@ _08004CF8
 _08004D0C
 	mov r1, r4
 	mov r0, r5
-	bl sub_803C128
+	bl __rt_udiv
 	add r0, r0, r5
 	add r0, r0, #1
 	MOV r0, r0, LSR #1

@@ -14,10 +14,10 @@
 	IMPORT sub_800CD58
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT sub_803B8D2
-	IMPORT sub_803B940
-	IMPORT sub_803B998
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r5
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_803AE60
@@ -33,7 +33,7 @@ sub_803AE68 ;@ 0x0803AE68
 	adds r4, r0, #0
 	bne _0803AE80
 	movs r0, #0x44
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0803AE80
 	adds r0, r4, #0
@@ -293,7 +293,7 @@ _0803B02C
 	adds r5, r2, r1
 	movs r2, #1
 	ldr r1, [r4, #0x10]
-	bl sub_803B8D2
+	bl __call_via_r5
 _0803B070
 	ldr r0, _0803B144 ;@ =gUnknown_03003EA0
 	ldr r5, [r4, #4]
@@ -310,10 +310,10 @@ _0803B070
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0xB0 ;@ =_0803B148
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

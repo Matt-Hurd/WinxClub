@@ -15,8 +15,8 @@
 	IMPORT sub_801DF50
 	IMPORT sub_801E124
 	IMPORT sub_801E2DA
-	IMPORT sub_803B8CC
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r2
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
@@ -26,7 +26,7 @@ sub_8035E7C ;@ 0x08035E7C
 	adds r4, r0, #0
 	bne _08035E94
 	movs r0, #0xbc
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _08035E94
 	adds r0, r4, #0
@@ -209,7 +209,7 @@ _08035FCE
 	ldr r2, [r0]
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
-	bl sub_803B8CC
+	bl __call_via_r2
 	b _08035FC8
 _08035FDA
 	bl sub_8035F54

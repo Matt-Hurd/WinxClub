@@ -5,8 +5,8 @@
 	IMPORT gUnknown_030031FE
 	IMPORT sub_80139AC
 	IMPORT sub_8013F6C
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
 	IMPORT sub_803F55C
 	IMPORT sub_803F5FC
 	IMPORT sub_80401E4
@@ -83,14 +83,14 @@ sub_8014E46 ;@ 0x08014E46
 	adds r3, r2, r1
 	ldrh r2, [r0, #0x1e]
 	ldrh r1, [r0, #0x20]
-	bl sub_803B8CE
+	bl __call_via_r3
 	ldr r1, [r4]
 	ldr r2, [r1, #0x28]
 	adds r2, r2, r1
 	adds r0, r4, #0
 	movs r1, #0x2e
 	ldrb r1, [r1, r4]
-	bl sub_803B8CC
+	bl __call_via_r2
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_80139AC

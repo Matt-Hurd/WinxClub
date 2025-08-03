@@ -9,13 +9,13 @@
 	IMPORT sub_800FB72
 	IMPORT sub_800FE3A
 	IMPORT sub_80132F4
-	IMPORT sub_803B8CA
-	IMPORT sub_803B914
-	IMPORT sub_803BD84
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_ushift_r
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 	IMPORT sub_803DAC0
-	IMPORT sub_803E1E4
+	IMPORT sub_80130DC
 	IMPORT sub_804061C
 
 	thumb_func_start sub_800F72C
@@ -24,7 +24,7 @@ sub_800F72C ;@ 0x0800F72C
 	adds r4, r0, #0
 	bne _0800F744
 	movs r0, #0x8c
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800F744
 	adds r0, r4, #0
@@ -101,7 +101,7 @@ sub_800F7A8 ;@ 0x0800F7A8
 	adds r4, r0, #0
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	movs r1, #0x84
 	ldrh r1, [r1, r4]
 	lsrs r0, r0, #1
@@ -158,7 +158,7 @@ _0800F7F2
 	ldr r0, [r5, #0x6c]
 	ldr r1, [sp, #8]
 	subs r2, #1
-	bl sub_803E1E4
+	bl sub_80130DC
 	strh r0, [r4, #4]
 	ldr r0, [r4]
 	subs r0, r0, r7
@@ -227,7 +227,7 @@ sub_800F87A ;@ 0x0800F87A
 	ldr r2, [r1, #0x18]
 	adds r0, r4, #0
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	bics r0, r6
 	str r0, [r4, #0x10]
 	cmp r0, r5
@@ -268,7 +268,7 @@ _0800F8DC
 	ldr r2, [r1, #0x18]
 	subs r4, #8
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	adds r1, r4, #0
 	adds r1, #0x80
 	ldrh r2, [r1, #4]
@@ -376,9 +376,9 @@ sub_800F974 ;@ 0x0800F974
 	adds r0, r6, #0
 	movs r1, #0
 	ldr r2, [r4, #0x60]
-	bl sub_803B914
+	bl __16_ll_mulls
 	movs r2, #8
-	bl sub_803BD84
+	bl __16_ll_ushift_r
 	ldr r1, [r4, #0x7c]
 	lsrs r6, r0, #1
 	lsls r6, r6, #1

@@ -15,7 +15,7 @@ extern int sub_80237DA(unsigned char *);
 extern int *sub_8024084(struct Unknown_030034F8*);
 extern int *sub_802416A(void *);
 extern int sub_80244C6(void *, int);
-extern int sub_803B860(int, int, ...);
+extern int sprintf(int, int, ...);
 extern int sub_803DA18(struct Player*);
 extern int sub_803DA9C(int, int, int, int);
 extern unsigned int sub_803FEF8(unsigned int, int);

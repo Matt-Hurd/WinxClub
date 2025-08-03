@@ -13,8 +13,8 @@
 	IMPORT sub_8000DE6
 	IMPORT sub_800116A
 	IMPORT sub_8023FE4
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
 	IMPORT sub_8040034
 	IMPORT sub_80401C0
 	IMPORT sub_80401E4
@@ -259,10 +259,10 @@ _0802421A
 	movs r1, #0x11
 	lsls r0, r0, #2
 	lsls r1, r1, #0x14
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x234 ;@ =_08024480
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r6, r0, #0x10
 	movs r0, #0xf0
 	subs r0, r0, r6

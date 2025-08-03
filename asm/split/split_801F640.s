@@ -6,7 +6,7 @@
 	IMPORT gUnknown_03003E88
 	IMPORT sub_8017862
 	IMPORT sub_80179BE
-	IMPORT sub_803B8CC
+	IMPORT __call_via_r2
 	IMPORT sub_803F72C
 	IMPORT sub_803FC68
 	IMPORT sub_80401E4
@@ -45,7 +45,7 @@ _0801F664
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
-	bl sub_803B8CC
+	bl __call_via_r2
 	str r7, [r6, #0x38]
 _0801F67C
 	adds r5, #1

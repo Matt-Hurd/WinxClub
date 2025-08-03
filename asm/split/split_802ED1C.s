@@ -5,10 +5,10 @@
 	IMPORT nullsub_1
 	IMPORT sub_80002A8
 	IMPORT sub_800529A
-	IMPORT sub_803BEB0
-	IMPORT sub_803C28C
-	IMPORT sub_803C2DC
-	IMPORT sub_803C37C
+	IMPORT __16__rt_memclr_w
+	IMPORT strcpy
+	IMPORT strlen
+	IMPORT strstr
 
 
 	thumb_func_start sub_802ED1C
@@ -16,7 +16,7 @@ sub_802ED1C ;@ 0x0802ED1C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
-	bl sub_803C2DC
+	bl strlen
 	cmp r0, #0
 	beq _0802EDF6
 	movs r7, #0x47
@@ -320,14 +320,14 @@ sub_802EF0A ;@ 0x0802EF0A
 	adds r5, #8
 	movs r1, #0x40
 	add r0, sp, #4
-	bl sub_803BEB0
+	bl __16__rt_memclr_w
 	ldr r0, [sp, #0x50]
 	cmp r0, #0
 	beq _0802EF52
 	add r6, sp, #4
 	adds r0, r6, #0
 	ldr r1, [sp, #0x50]
-	bl sub_803C28C
+	bl strcpy
 	adds r0, r6, #0
 	bl sub_80002A8
 	adds r0, r6, #0
@@ -401,10 +401,10 @@ _0802EFB0
 	cmp r0, #0
 	beq _0802EFEA
 	add r1, sp, #4
-	bl sub_803C37C
+	bl strstr
 	cmp r0, #0
 	beq _0802EFEA
-	bl sub_803C2DC
+	bl strlen
 	ldr r1, [sp]
 	cmp r0, r1
 	bhs _0802EFEA
@@ -557,7 +557,7 @@ loc_802f09e
 	movs r4, #4
 _0802F0A4
 	adds r0, r1, #0
-	bl sub_803C2DC
+	bl strlen
 	adds r0, #4
 	lsrs r0, r0, #2
 	lsls r0, r0, #2

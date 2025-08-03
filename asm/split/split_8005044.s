@@ -2,7 +2,7 @@
     AREA text, CODE
 
 	IMPORT gUnknown_030033E8
-	IMPORT sub_803BE68
+	IMPORT __16__rt_memclr
 	IMPORT sub_803F07C
 
 	thumb_func_start sub_8005044
@@ -19,7 +19,7 @@ sub_8005044 ;@ 0x08005044
 	movs r2, #0
 	str r2, [r4, #0xc]
 	subs r1, r1, r0
-	bl sub_803BE68
+	bl __16__rt_memclr
 	movs r2, #0
 	movs r1, #0
 	ldr r0, [r4]

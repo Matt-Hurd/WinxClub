@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EB0
 	IMPORT sub_800DEF8
-	IMPORT sub_803B8D4
+	IMPORT __call_via_r6
 	IMPORT sub_8040504
 
 	thumb_func_start sub_800212C
@@ -290,7 +290,7 @@ _08002318
 	ldr r0, [r0]
 	ldr r6, [r1, #0x2c]
 	lsrs r3, r3, #0x16
-	bl sub_803B8D4
+	bl __call_via_r6
 _0800234E
 	ldr r0, [sp]
 	ldr r0, [r0, #0x14]

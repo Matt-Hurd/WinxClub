@@ -6,10 +6,10 @@
 	IMPORT sub_800B646
 	IMPORT sub_800B652
 	IMPORT sub_800B66A
-	IMPORT sub_803B4D8
+	IMPORT IdentifyEeprom
 	IMPORT sub_803B5A0
 	IMPORT sub_803B81C
-	IMPORT sub_803BF0C
+	IMPORT __16__rt_memcpy
 
 	thumb_func_start sub_800B314
 sub_800B314 ;@ 0x0800B314
@@ -37,7 +37,7 @@ _0800B33E
 	cmp r4, #1
 	bne _0800B34C
 	movs r0, #0x40
-	bl sub_803B4D8
+	bl IdentifyEeprom
 _0800B34C
 	cmp r4, #0
 	beq _0800B354
@@ -55,7 +55,7 @@ _0800B354
 	b _0800B36E
 _0800B366
 	movs r0, #4
-	bl sub_803B4D8
+	bl IdentifyEeprom
 	b _0800B34C
 _0800B36E
 	ldr r1, [sp, #0x18]
@@ -63,7 +63,7 @@ _0800B36E
 	adds r1, r0, r1
 	movs r2, #8
 	adds r0, r7, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	ldr r0, [sp, #8]
 	adds r0, r0, r4
 	lsls r0, r0, #0x10
@@ -124,7 +124,7 @@ _0800B3E4
 	cmp r4, #1
 	bne _0800B3F2
 	movs r0, #0x40
-	bl sub_803B4D8
+	bl IdentifyEeprom
 _0800B3F2
 	cmp r4, #0
 	beq _0800B3FA
@@ -142,7 +142,7 @@ _0800B3FA
 	b _0800B414
 _0800B40C
 	movs r0, #4
-	bl sub_803B4D8
+	bl IdentifyEeprom
 	b _0800B3F2
 _0800B414
 	ldr r0, [sp, #8]
@@ -171,7 +171,7 @@ _0800B43C
 	adds r0, r0, r1
 	movs r2, #8
 	adds r1, r7, #0
-	bl sub_803BF0C
+	bl __16__rt_memcpy
 	adds r4, #1
 	cmp r4, r6
 	blo _0800B414

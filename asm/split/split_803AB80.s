@@ -19,8 +19,8 @@
 	IMPORT sub_800CD58
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT sub_803B8CA
-	IMPORT sub_803D9F8
+	IMPORT __call_via_r1
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_803AB80
@@ -29,7 +29,7 @@ sub_803AB80 ;@ 0x0803AB80
 	adds r4, r0, #0
 	bne _0803AB98
 	movs r0, #0x40
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0803AB98
 	adds r0, r4, #0
@@ -329,7 +329,7 @@ _0803ADBA
 	ldr r1, [r4]
 	ldr r2, [r1, #0x18]
 	adds r1, r2, r1
-	bl sub_803B8CA
+	bl __call_via_r1
 	ldr r1, [r4, #4]
 	ldr r0, [r1]
 	lsls r0, r0, #0x16

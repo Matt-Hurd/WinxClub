@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EB8
 	IMPORT sub_8000DE6
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 
 	thumb_func_start sub_803F5FC
 sub_803F5FC ;@ 0x0803F5FC
@@ -38,11 +38,11 @@ _0803F624
 	bhi _0803F614
 _0803F634
 	adds r0, r6, #0
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r0, [sp, #0xc]
-	bl sub_803DA4C
+	bl __da__FPv
 	ldr r0, [sp, #0x10]
-	bl sub_803DA4C
+	bl __da__FPv
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}

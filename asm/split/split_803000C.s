@@ -8,10 +8,10 @@
 	IMPORT sub_8005106
 	IMPORT sub_801E124
 	IMPORT sub_801EBCA
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
-	IMPORT sub_803B998
-	IMPORT sub_803BE1C
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT rand
 	IMPORT sub_803DA80
 	IMPORT sub_8040528
 	IMPORT sub_8040594
@@ -53,10 +53,10 @@ _08030026
 	lsrs r0, r0, #0x11
 	ldrsh r0, [r2, r0]
 	lsls r0, r0, #2
-	bl sub_803B92C
+	bl __16_ll_mulss
 	add r2, pc, #0x17C ;@ =_080301D4
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	str r0, [sp, #8]
 	movs r3, #0x12
 	ldrsh r0, [r6, r3]
@@ -164,7 +164,7 @@ _08030116
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x1f
 	bne _08030176
-	bl sub_803BE1C
+	bl rand
 	lsls r0, r0, #0x19
 	bne _08030176
 	ldr r0, _080301DC ;@ =gUnknown_03003EA0
@@ -182,10 +182,10 @@ _08030116
 	asrs r1, r0, #0x1f
 	movs r2, #0x10
 	str r0, [r5, #8]
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0x88 ;@ =_080301E0
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
 	adds r0, r1, r0

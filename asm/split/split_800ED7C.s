@@ -34,9 +34,9 @@
 	IMPORT sub_8028B2C
 	IMPORT sub_802EF0A
 	IMPORT sub_8031622
-	IMPORT sub_803B8A4
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8D6
+	IMPORT atoi
+	IMPORT __call_via_r2
+	IMPORT __call_via_r7
 
 	thumb_func_start sub_800ED7C
 sub_800ED7C ;@ 0x0800ED7C
@@ -81,14 +81,14 @@ sub_800ED7C ;@ 0x0800ED7C
 	adds r2, r0, r1
 	movs r1, #0
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x28]
 	ldr r1, [sp, #8]
 	adds r2, r0, r1
 	movs r1, #3
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [sp, #8]
 	movs r2, #0
 	ldr r0, [r0, #0x14]
@@ -96,7 +96,7 @@ sub_800ED7C ;@ 0x0800ED7C
 	adds r7, r0, r1
 	movs r1, #4
 	adds r0, r5, #0
-	bl sub_803B8D6
+	bl __call_via_r7
 	ldr r1, [sp, #8]
 	adds r0, r5, #0
 	ldr r1, [r1, #0x10]
@@ -104,7 +104,7 @@ sub_800ED7C ;@ 0x0800ED7C
 	adds r7, r1, r2
 	movs r2, #0x16
 	movs r1, #0xe8
-	bl sub_803B8D6
+	bl __call_via_r7
 	adds r0, r5, #0
 	bl sub_8013B76
 	ldr r0, _0800EFD8 ;@ =0x060102C0
@@ -121,14 +121,14 @@ sub_800ED7C ;@ 0x0800ED7C
 	adds r2, r0, r1
 	movs r1, #2
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
 	ldr r1, [sp, #8]
 	adds r2, r0, r1
 	movs r1, #1
 	adds r0, r5, #0
-	bl sub_803B8CC
+	bl __call_via_r2
 	movs r3, #0x2f
 	lsls r3, r3, #7
 	add r3, sp
@@ -154,7 +154,7 @@ sub_800ED7C ;@ 0x0800ED7C
 	movs r0, #0
 	strb r0, [r3, #4]
 	mov r0, sp
-	bl sub_803B8A4
+	bl atoi
 	strh r0, [r6, #4]
 	movs r0, #1
 	strb r0, [r6]
@@ -319,7 +319,7 @@ _0800EFB6
 	ALIGN
 _0800EFC4 DCDU 0xFFFFE81C
 _0800EFC8 DCDU gUnknown_03003EAC
-_0800EFCC DCDU 0x04000200
+_0800EFCC DCDU REG_IE
 _0800EFD0 DCDU gUnknown_03003438
 _0800EFD4 DCDU gUnknown_0804AE1E
 _0800EFD8 DCDU 0x060102C0

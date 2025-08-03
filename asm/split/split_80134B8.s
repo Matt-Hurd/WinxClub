@@ -7,9 +7,9 @@
 	IMPORT gUnknown_0803E374
 	IMPORT sub_8005106
 	IMPORT sub_80133A0
-	IMPORT sub_803D468
+	IMPORT CpuSet
 	IMPORT sub_803DA18
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 	IMPORT sub_8041274
@@ -102,7 +102,7 @@ sub_801352C ;@ 0x0801352C
 	b _08013556
 _08013550
 	adds r0, r1, #0
-	bl sub_803DA4C
+	bl __da__FPv
 _08013556
 	ldr r0, [r4, #0x4c]
 	cmp r0, #0
@@ -112,12 +112,12 @@ _08013560
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _0801356A
-	bl sub_803DA4C
+	bl __da__FPv
 _0801356A
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _08013574
-	bl sub_803DA4C
+	bl __da__FPv
 _08013574
 	pop {r4}
 	pop {r3}
@@ -303,7 +303,7 @@ _08013694
 	lsrs r1, r1, #0x18
 	cmp r1, #2
 	bne _080136D2
-	bl sub_803DA4C
+	bl __da__FPv
 	b _080136D6
 _080136D2
 	bl sub_803DA18
@@ -312,7 +312,7 @@ _080136D6
 	str r3, [r7]
 	b _080136E0
 _080136DC
-	bl sub_803DA4C
+	bl __da__FPv
 _080136E0
 	ldr r1, [r5, #0x50]
 	cmp r1, #0
@@ -380,7 +380,7 @@ _0801374A
 	adds r2, r0, #0
 	adds r0, r6, #0
 	mov r1, ip
-	bl sub_803D468
+	bl CpuSet
 	b _0801379C
 _08013768
 	lsls r7, r0, #0x1e
@@ -427,7 +427,7 @@ _0801379C
 	cmp r0, #2
 	bne _080137C0
 	adds r0, r6, #0
-	bl sub_803DA4C
+	bl __da__FPv
 	b _080137C6
 _080137C0
 	adds r0, r6, #0
@@ -438,7 +438,7 @@ _080137C6
 	b _080137D2
 _080137CC
 	adds r0, r6, #0
-	bl sub_803DA4C
+	bl __da__FPv
 _080137D2
 	adds r5, #0x30
 	strb r4, [r5, #8]
@@ -452,5 +452,5 @@ _080137E4 DCDU gUnknown_03003C4C
 _080137E8 DCDU 0x000005FA
 _080137EC DCDU gUnknown_030033E8
 _080137F0 DCDU gUnknown_03003EB4
-_080137F4 DCDU 0x040000D4
+_080137F4 DCDU REG_DMA3
 	END

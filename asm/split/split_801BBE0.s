@@ -16,7 +16,7 @@
 	IMPORT sub_8017A0A
 	IMPORT sub_8017A56
 	IMPORT sub_801F2F8
-	IMPORT sub_803DA4C
+	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_803F72C
 	IMPORT sub_803FC68
@@ -93,7 +93,7 @@ _0801BC2A
 	ldr r0, [r0]
 	bl sub_80050FA
 	ldr r0, [sp, #8]
-	bl sub_803DA4C
+	bl __da__FPv
 	movs r0, #0
 	bl sub_80050FA
 	movs r2, #0

@@ -6,10 +6,10 @@
 	IMPORT sub_80154AA
 	IMPORT sub_80154BA
 	IMPORT sub_80154CE
-	IMPORT sub_803B914
-	IMPORT sub_803B92C
-	IMPORT sub_803B940
-	IMPORT sub_803B998
+	IMPORT __16_ll_mulls
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
 
 	thumb_func_start sub_80017E4
 sub_80017E4 ;@ 0x080017E4
@@ -122,10 +122,10 @@ _08001882
 	add r0, pc, #0x1B0 ;@ =_08001A34
 	ldm r0!, {r0, r1}
 	adds r2, r4, #0
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r6, pc, #0x1AC ;@ =_08001A3C
 	ldm r6!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	movs r1, #1
 	lsls r1, r1, #0x10
 	subs r6, r7, r5
@@ -134,22 +134,22 @@ _08001882
 	add r0, pc, #0x194 ;@ =_08001A34
 	ldm r0!, {r0, r1}
 	adds r2, r6, #0
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r6, pc, #0x190 ;@ =_08001A3C
 	ldm r6!, {r2, r3}
 	subs r6, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r6!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	movs r2, #8
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0x178 ;@ =_08001A44
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r0, r0, r5
 _080018D2
 	pop {r3, r4, r5, r6, r7}
@@ -159,10 +159,10 @@ _080018D8
 	adds r0, r4, #0
 	asrs r1, r4, #0x1f
 	movs r2, #9
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0x158 ;@ =_08001A3C
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	movs r1, #1
 	lsls r1, r1, #0x10
 	cmp r0, r1
@@ -173,11 +173,11 @@ _080018F6
 	add r0, pc, #0x154 ;@ =_08001A4C
 	ldm r0!, {r0, r1}
 	adds r2, r4, #0
-	bl sub_803B914
+	bl __16_ll_mulls
 	add r7, pc, #0x138 ;@ =_08001A3C
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	movs r1, #1
 	lsls r1, r1, #0x11
 	cmp r0, r1
@@ -185,22 +185,22 @@ _080018F6
 	ldr r0, _08001A54 ;@ =0x0000AAAA
 	subs r0, r0, r4
 	adds r1, r6, #0
-	bl sub_803B92C
+	bl __16_ll_mulss
 	ldm r7!, {r2, r3}
 	subs r7, #8
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r2, r0, #0
 	add r0, pc, #0x10C ;@ =_08001A34
 	ldm r0!, {r0, r1}
-	bl sub_803B914
+	bl __16_ll_mulls
 	ldm r7!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	asrs r1, r0, #0x1f
 	movs r2, #8
-	bl sub_803B998
+	bl __16_ll_shift_l
 	add r2, pc, #0x104 ;@ =_08001A44
 	ldm r2!, {r2, r3}
-	bl sub_803B940
+	bl __16_ll_sdiv
 	adds r0, r0, r5
 	b _080018D2
 _08001948

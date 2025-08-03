@@ -2,7 +2,7 @@
     AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
-	IMPORT sub_803D468
+	IMPORT CpuSet
 
 	thumb_func_start sub_803F464
 sub_803F464 ;@ 0x0803F464
@@ -20,7 +20,7 @@ sub_803F464 ;@ 0x0803F464
 	orrs r2, r1
 	adds r1, r0, #0
 	add r0, sp, #4
-	bl sub_803D468
+	bl CpuSet
 _0803F484
 	add sp, #8
 	pop {r4}
@@ -59,5 +59,5 @@ _0803F4AE
 	b _0803F484
 	ALIGN
 _0803F4C4 DCDU gUnknown_03003EB4
-_0803F4C8 DCDU 0x040000D4
+_0803F4C8 DCDU REG_DMA3
 	END

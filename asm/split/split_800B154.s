@@ -9,8 +9,8 @@
 	IMPORT gUnknown_0803EC70
 	IMPORT gUnknown_0803ECE8
 	IMPORT sub_80002E2
-	IMPORT sub_803D480
-	IMPORT sub_803D9F8
+	IMPORT SoftReset
+	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B154
@@ -95,7 +95,7 @@ sub_800B1CA ;@ 0x0800B1CA
 sub_800B1D0 ;@ 0x0800B1D0
 	push {r3, lr}
 	movs r0, #0xfb
-	bl sub_803D480
+	bl SoftReset
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -154,7 +154,7 @@ sub_800B1F6 ;@ 0x0800B1F6
 	adds r4, r0, #0
 	bne _0800B20E
 	movs r0, #4
-	bl sub_803D9F8
+	bl maybeMallocEWRAM
 	adds r4, r0, #0
 	bne _0800B20E
 	adds r0, r4, #0
@@ -260,8 +260,8 @@ sub_800B2AE ;@ 0x0800B2AE
 	movs r0, #0
 	bx lr
 	ALIGN
-_0800B2B4 DCDU 0x04000200
-_0800B2B8 DCDU 0x04000004
+_0800B2B4 DCDU REG_IE
+_0800B2B8 DCDU REG_DISPSTAT
 _0800B2BC DCDU 0x0000C00F
 _0800B2C0 DCDU gUnknown_0803ECE8
 _0800B2C4 DCDU gUnknown_03003EAC

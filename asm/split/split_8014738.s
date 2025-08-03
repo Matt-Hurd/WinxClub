@@ -12,8 +12,8 @@
 	IMPORT sub_80133A0
 	IMPORT sub_8013E64
 	IMPORT sub_8013F66
-	IMPORT sub_803B8CC
-	IMPORT sub_803B8CE
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
 	IMPORT sub_803DA9C
 	IMPORT sub_803EF2C
 	IMPORT sub_803F3E8
@@ -586,7 +586,7 @@ _08014B48
 	ldr r3, [r0]
 	ldr r4, [r3, #0x10]
 	adds r3, r4, r3
-	bl sub_803B8CE
+	bl __call_via_r3
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -611,7 +611,7 @@ sub_8014B66 ;@ 0x08014B66
 	adds r2, r2, r1
 	movs r1, #0x2e
 	ldrb r1, [r1, r0]
-	bl sub_803B8CC
+	bl __call_via_r2
 	add sp, #4
 	pop {r3}
 	bx r3

@@ -1,24 +1,23 @@
 #### Tools ####
 include config.mk
 
-TCC	  := tools/ADSv1_2/bin/tcc.exe
-ACC	  := tools/ADSv1_2/bin/armcc.exe
-CC1_OLD  := tools/agbcc/bin/old_agbcc.exe
-CPP	  := $(DEVKITARM)/bin/arm-none-eabi-cpp
-AS	   := tools/ADSv1_2/bin/armasm.exe
-LD	   := tools/ADSv1_2/bin/armlink.exe
-OBJCOPY  := tools/ADSv1_2/Bin/fromelf.exe
+TCC	  := tcc
+ACC	  := armcc
+CPP	  := armcpp
+AS	   := armasm
+LD	   := armlink
+OBJCOPY  := fromelf
 
 GFX := tools/gbagfx/gbagfx.exe
-AIF := tools/aif2pcm/aif2pcm.exe
-MID := $(abspath tools/mid2agb/mid2agb).exe
-SCANINC := tools/scaninc/scaninc.exe
-PREPROC := tools/preproc/preproc.exe
-GBAFIX := tools/gbafix/gbafix.exe
+AIF := tools/aif2pcm/aif2pcm
+MID := $(abspath tools/mid2agb/mid2agb)
+SCANINC := tools/scaninc/scaninc
+PREPROC := tools/preproc/preproc
+GBAFIX := tools/gbafix/gbafix
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork"
-CPPFLAGS := -I tools/agbcc/include -iquote include -nostdinc -undef -D VERSION_$(GAME_VERSION) -D REVISION=$(GAME_REVISION) -D $(GAME_REGION) -D DEBUG=$(DEBUG)
-ASFLAGS  := -CPU arm7tdmi -LIttleend -apcs "/interwork" -I asminclude -I include
+CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
+CPPFLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
+ASFLAGS  := -CPU arm7tdmi -LIttleend -fpu none -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
 OBJ_DIR  := build/$(BUILD_NAME)
@@ -26,7 +25,7 @@ ROM 	 := $(BUILD_NAME).gba
 MAP	  := $(ROM:%.gba=%.map)
 ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
-LDFLAGS = -noremove
+LDFLAGS = -noremove -libpath /opt/arm/common/lib 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
@@ -69,6 +68,10 @@ C_SRCS := $(foreach src,$(C_SRCS_IN),$(if $(findstring .inc.c,$(src)),,$(src)))
 #C_SRCS := $(wildcard $(C_SUBDIR)/*.c)
 C_OBJS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SRCS))
 
+CPP_SRCS_IN := $(wildcard $(C_SUBDIR)/*.cpp $(C_SUBDIR)/*/*.cpp $(C_SUBDIR)/*/*/*.cpp $(C_SUBDIR)/*/*/*/*.cpp)
+CPP_SRCS := $(foreach src,$(CPP_SRCS_IN),$(if $(findstring .inc.cpp,$(src)),,$(src)))
+CPP_OBJS := $(patsubst $(C_SUBDIR)/%.cpp,$(C_BUILDDIR)/%.o,$(CPP_SRCS))
+
 SRC_ASM_SRCS := $(wildcard $(C_SUBDIR)/*.s $(C_SUBDIR)/*/*.s $(C_SUBDIR)/*/*/*.s)
 SRC_ASM_OBJS := $(patsubst $(C_SUBDIR)/%.s,$(SRC_ASM_BUILDDIR)/%.o,$(SRC_ASM_SRCS))
 
@@ -101,7 +104,7 @@ MERGED_ASM_OBJS := $(patsubst $(PARTIAL_DECOMP_SUBDIR)/%.yml,$(MERGED_BUILDDIR)/
 PYTHON := python # or just python, depending on your setup
 MERGE_SCRIPT := scripts/merge_partial_c.py
 
-OBJS := $(C_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
+OBJS := $(C_OBJS) $(CPP_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS)))
@@ -125,7 +128,7 @@ MAKEFLAGS += --no-print-directory
 all: $(ROM)
 	# perl calcrom.pl $(MAP)
 ifeq ($(COMPARE),1)
-	coreutils sha1sum -c $(BUILD_NAME).sha1
+	sha1sum -c $(BUILD_NAME).sha1
 endif
 
 compile-partial-c:
@@ -168,6 +171,12 @@ $(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
 endif
 
 ifeq ($(NODEP),1)
+$(C_BUILDDIR)/%.o: cpp_dep :=
+else
+$(C_BUILDDIR)/%.o: cpp_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.cpp)
+endif
+
+ifeq ($(NODEP),1)
 $(ASM_BUILDDIR)/%.o: asm_dep :=
 else
 $(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) -I "" $(ASM_SUBDIR)/$*.s)
@@ -189,6 +198,10 @@ endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(TCC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
+	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
+
+$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.cpp $$(cpp_dep)
+	$(CPP) $(CPPFLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
@@ -221,9 +234,9 @@ $(WAVE_ASM_BUILDDIR)/%.o: $(WAVE_ASM_SUBDIR)/%.s
 	
 
 $(ELF): compile-partial-c $(OBJS) scatter_script.txt
-	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) tools/agbcc/lib/libgcc.a tools/agbcc/lib/libc.a
+	$(LD) $(LDFLAGS) -scatter $(LDSCRIPT) -Output $@ $(OBJS) lib/libagbsyscall_arm.alf
 
 $(ROM): %.gba: %.elf
 	$(OBJCOPY) -bin -output build/objcopy $<
 	cp build/objcopy/.text $@
-	$(GBAFIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION) --silent
+	$(GBAFIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION)

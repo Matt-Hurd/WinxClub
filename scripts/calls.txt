@@ -1,0 +1,4502 @@
+sub_3000000
+    sub_30010D8
+    sub_30010E4
+
+sub_3000058
+    sub_30010F0
+
+sub_3000090
+    sub_3001108
+
+sub_30001E0
+    iwram_DecompressImage
+
+sub_3001A54
+    _rt_udiv
+    j___rt_sdiv_0
+
+sub_3001CF4
+    sub_3002ED4
+
+sub_3001E8C
+    j___rt_memclr_0
+    j___rt_sdiv_0
+    sub_3001CF4
+    sub_3002ED4
+    sub_3002EE0
+    sub_3002EEC
+    sub_3002EF8
+    sub_3002F0C
+    sub_3002F18
+
+sub_300215C
+    j___rt_memclr_0
+    j___rt_sdiv_0
+    sub_3001CF4
+    sub_3002ED4
+    sub_3002F24
+
+sub_30023F8
+    sub_3002ED4
+    sub_3002F30
+
+writeImageToVRAM
+    sub_3002F24
+    sub_3002F3C
+
+sub_8000100
+    AgbMain
+
+AgbMain
+    __rt_entry
+
+sub_8000324
+    sub_8000D5A
+
+sub_80003F4
+    sub_8000D5A
+
+sub_80004CA
+    maybeMallocEWRAM
+
+sub_80004F8
+    __16__rt_memclr_w
+    sub_80019A6
+
+sub_8000532
+    sub_8000D5A
+    sub_8001232
+    sub_8001338
+    sub_8001432
+    sub_80016D8
+    sub_800C0EC
+    sub_800C1CA
+    sub_800C4F0
+    sub_800CD28
+
+sub_800065C
+    sub_8000D5A
+    sub_803FA3C
+
+sub_800069A
+    sub_800BE0E
+    sub_800C1CA
+
+sub_80007A0
+    sub_8000D5A
+    sub_800C1CA
+    sub_803FA3C
+
+sub_8000914
+    sub_80013D8
+
+sub_8000948
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    __call_via_r2
+    sub_8001232
+    sub_8001432
+    sub_800CD28
+
+sub_8000AC4
+    sub_800F090
+    sub_801537C
+
+sub_8000C7C
+    safe_memcpy
+
+sub_8000CCE
+    sub_803D9A8
+
+g3003448::Init
+    maybeMallocEWRAM
+    sub_800B7DC
+
+sub_8000DE6
+    j_mod_96
+    sub_8000532
+
+sub_8000E6C
+    sub_8000DE6
+    sub_800B8CE
+    sub_800B916
+    sub_803DA4C
+
+sub_8000F4C
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_8000C7C
+    sub_8000CC6
+    sub_8000CCA
+    sub_800B9B6
+    sub_803DA4C
+
+sub_800106A
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    __16__rt_memclr_w
+    __vec_ctor_p__FPvUiT2bPFPv_v
+    sub_800B8CE
+
+sub_800116A
+    sub_80004F8
+
+sub_80011D8
+    j_mod_96
+
+sub_8001232
+    j_mod_96
+
+sub_80012F0
+    j_mod_96
+
+sub_8001338
+    j_mod_96
+
+sub_80013D8
+    j_mod_96
+
+sub_8001432
+    j_mod_96
+
+sus_function
+    __call_via_r1
+    sub_800069A
+    sub_8000948
+    sub_800C55E
+    sub_800C93A
+    sub_800CAE2
+
+sub_80019B4
+    sub_800F1DA
+
+sub_80019C4
+    sub_80154CE
+
+sub_80019D4
+    sub_801549A
+
+sub_80019E8
+    sub_80154AA
+
+sub_80019FC
+    sub_80154BA
+
+sub_8001A60
+    maybeMallocEWRAM
+
+sub_8001A90
+    __16__rt_memclr_w
+    __16__rt_memset
+    __vecmap1c__FPvT1iPFPv_v
+    maybeMallocEWRAM
+    sub_8002580
+
+sub_8001BB4
+    __call_via_r1
+
+sub_8001C22
+    __16_ll_srdv
+    __16_ll_sshift_r
+    sub_800075E
+    sub_800DEF8
+
+sub_800202A
+    __16__rt_sdiv
+    rand
+
+sub_800212C
+    j_mod_88
+
+sub_80022E2
+    __call_via_r6
+
+sub_800242C
+    sub_800DEF8
+    sub_800E178
+
+sub_8002580
+    __16__rt_memclr_w
+    maybeMallocEWRAM
+
+sub_80025D6
+    sub_803D9A8
+
+sub_8002614
+    sub_80025D6
+    sub_803DA18
+
+sub_800263E
+    CpuSet
+    sub_800B082
+
+sub_8002698
+    sub_803D984
+    sub_803D9A8
+    sub_803D9C4
+
+sub_8002762
+    CpuSet
+
+sub_800288A
+    __16__rt_memclr
+    j_mod_88
+    sub_800212C
+
+sub_8002CAE
+    __16__rt_sdiv
+    j_mod_88
+    sub_800212C
+
+sub_800345C
+    __16__rt_sdiv
+    j_mod_88
+    sub_800212C
+
+sub_8003884
+    __16__rt_sdiv
+    j_mod_88
+    sub_800212C
+
+sub_8003CA6
+    __16__rt_sdiv
+    j_mod_88
+    sub_8002230
+
+sub_8004038
+    __16__rt_sdiv
+    j_mod_88
+    sub_8002230
+
+sub_800423C
+    __16__rt_sdiv
+    j_mod_88
+    sub_8002230
+
+sub_800442E
+    j_mod_88
+
+sub_80046F8
+    maybeMallocEWRAM
+
+sub_8004716
+    maybeMallocEWRAM
+
+sub_800474E
+    sub_803D66C
+
+sub_8004924
+    maybeMallocEWRAM
+
+sub_80049B4
+    sub_8004984
+
+sub_8004C44
+    __rt_udiv
+
+LoadFiletable
+    __16__rt_memcpy
+    maybeMallocEWRAM
+    safe_memcpy
+    sub_803D9C4
+    sub_803DABC
+
+sub_8004F42
+    __16__rt_memclr_w
+    __16__rt_memcpy
+    strStartsWith
+    strToLower
+    strchr
+    strlen
+
+sub_8004FFC
+    sub_8004F42
+
+sub_8005044
+    __16__rt_memclr
+    sub_803F07C
+
+SomehowInitEWRAMLinkedList
+    sub_8005044
+
+sub_8005170
+    sub_803F07C
+
+sub_80051D6
+    sub_8005170
+
+sub_800525C
+    maybeMallocEWRAM
+
+sub_800527E
+    sub_803DA18
+
+safe_memcpy
+    __16__rt_memcpy
+
+sub_80052C0
+    j_mod_65521
+
+sub_8005380
+    sub_8006BA4
+
+sub_80053F8
+    sub_8005380
+
+sub_8005504
+    __rt_memcpy
+    sub_80062F4
+    sub_8006350
+    sub_8006BA4
+    sub_8007C78
+    sub_8007D44
+    sub_8007ED8
+    sub_8007F18
+
+sub_8006244
+    sub_8005380
+
+sub_80062AC
+    __rt_memcpy
+
+sub_8006350
+    sub_8006BC0
+    sub_8007F18
+
+sub_8006F90
+    sub_8005380
+
+sub_8006FE4
+    sub_8006244
+
+sub_8007040
+    sub_80053F8
+    sub_8006F90
+
+sub_8007104
+    sub_8005380
+    sub_8005504
+
+sub_8007C78
+    sub_80077E8
+
+sub_8007D44
+    sub_80077E8
+
+sub_8007F18
+    __rt_memcpy
+
+sub_8008008
+    maybeMallocEWRAM
+
+sub_800802E
+    maybeMallocEWRAM
+
+sub_800805E
+    sub_803DA18
+
+sub_800808E
+    __call_via_r2
+
+sub_800812A
+    sub_800B12C
+
+sub_80081D4
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_8008298
+    sub_803F4CC
+
+sub_80085A4
+    __rt_memcpy
+    sub_803F4CC
+
+sub_8008B14
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_8008BFC
+    j_CpuSet
+
+sub_8008EB4
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_8009270
+    sub_8009064
+
+sub_80095B8
+    __rt_memcpy
+    sub_8009064
+    sub_8009270
+
+sub_800A270
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_800A9BC
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_800AB8C
+    sub_8006FE4
+    sub_803E11C
+    sub_803E164
+
+sub_800ACD0
+    sub_8007040
+    sub_803E134
+    sub_803E158
+    sub_803E164
+
+sub_800AD8C
+    j_maybeMallocEWRAM
+    sub_803E110
+
+sub_800AFD4
+    maybeMallocEWRAM
+
+sub_800B01A
+    sub_803DA18
+
+VBlank
+    VBlankIntrWait
+
+sub_800B0D8
+    maybeInitGame
+    sub_800525C
+    sub_800527E
+    sub_800AFD4
+    sub_800B01A
+    sub_800B1F6
+    sub_800B286
+
+sub_800B12C
+    sub_800B154
+
+sub_800B1BC
+    sub_80002E2
+
+sub_800B1F6
+    maybeMallocEWRAM
+    sub_800B154
+
+sub_800B286
+    sub_803DA18
+
+sub_800B314
+    IdentifyEeprom
+    __16__rt_memcpy
+    sub_8004C2C
+    sub_800B646
+    sub_800B652
+    sub_800B66A
+    sub_803B81C
+
+sub_800B3BA
+    IdentifyEeprom
+    __16__rt_memcpy
+    sub_8004C2C
+    sub_800B646
+    sub_800B652
+    sub_800B66A
+    sub_803B5A0
+
+sub_800B4F0
+    maybeMallocEWRAM
+    sub_80114B0
+    sub_803D9C4
+
+sub_800B5EE
+    sub_8011912
+
+sub_800B646
+    sub_801197C
+
+sub_800B652
+    sub_8011562
+
+sub_800B65E
+    sub_8011A80
+
+sub_800B66A
+    sub_80117A4
+
+sub_800B676
+    sub_8011AC2
+
+sub_800B698
+    sub_8011D3C
+
+sub_800B6AC
+    sub_80116D4
+
+sub_800B6EC
+    sub_8011E52
+
+sub_800B6FA
+    sub_8011DE4
+
+sub_800B708
+    sub_8011F0E
+
+sub_800B714
+    sub_8011E22
+
+sub_800B72A
+    sub_8011E10
+
+sub_800B764
+    sub_8011B28
+
+sub_800B772
+    sub_80120FA
+
+sub_800B782
+    sub_8012180
+
+sub_800B7DC
+    __16__rt_memclr
+    __16__rt_memclr_w
+    maybeMallocEWRAM
+
+sub_800B8A4
+    sub_8000CCE
+    sub_803DA18
+
+sub_800B94A
+    CpuSet
+    sub_800B082
+
+sub_800B9B6
+    __16__rt_memclr_w
+    sub_800B082
+    sub_800B8CE
+    sub_800B94A
+
+sub_800BC30
+    sub_800BBF4
+
+sub_800BD7C
+    sub_800BCE4
+
+sub_800BE0E
+    sub_800BC30
+    sub_800BD7C
+
+sub_800C164
+    sub_800C134
+
+sub_800C1CA
+    sub_800BCE4
+    sub_800C134
+
+sub_800C55E
+    __16__rt_sdiv
+
+sub_800C93A
+    CpuSet
+    LZ77UnCompVram
+    RLUnCompVram
+    sub_800B8CE
+
+sub_800CAE2
+    j_mod_10
+
+sub_800CD98
+    __16__rt_memset
+    sub_803D984
+
+sub_800CE6C
+    CpuSet
+    __16__rt_memcpy
+    j_mod_20
+    sub_800CD98
+    sub_803D5A4
+    sub_803D9A8
+    sub_803D9C4
+
+sub_800D5A8
+    j_mod_20
+    sub_800CD98
+    sub_803D9A8
+    sub_803D9C4
+
+sub_800D912
+    __16__rt_memclr_w
+    sub_80025D6
+    sub_800263E
+    sub_803D9A8
+
+sub_800D9E0
+    sub_8001BB4
+    sub_800263E
+    sub_8002698
+    sub_800288A
+    sub_800CE6C
+    sub_800D5A8
+    sub_800D912
+    sub_803D9C4
+
+sub_800DEF8
+    __call_via_r3
+
+sub_800E178
+    sub_80022E2
+    sub_8002762
+
+sub_800E254
+    maybeSetupVideoStructs
+    sub_80103C8
+    sub_803B15C
+    sub_803B184
+    sub_803B1AE
+    sub_803D984
+    sub_803D9A8
+    sub_803D9C4
+
+sub_800E2F6
+    CpuSet
+    maybeSmallAudioSetup
+    safe_memcpy
+    strlen_0
+    sub_8008008
+    sub_800E254
+    sub_803D984
+    sub_803D9A8
+    sub_803D9C4
+    sub_803E17C
+    sub_803E188
+    sub_803E194
+    sub_803E1A0
+    sub_803E1AC
+    sub_803E1B8
+    sub_803E1C4
+    sub_803E1D0
+    sub_803F3E8
+
+sub_800E4D8
+    sub_803D984
+    sub_80412A8
+
+sub_800E500
+    sub_80052C0
+
+sub_800E53C
+    __call_via_r2
+    sub_80050FA
+    sub_800B6FA
+    sub_800B782
+    sub_8013DEA
+    sub_8014DD4
+    sub_802693A
+
+sub_800E5EA
+    sub_800B65E
+    sub_800B708
+    sub_800C93A
+    sub_800CADA
+    sub_800E178
+
+sub_800E678
+    sub_8004FFC
+    sub_801333E
+    sub_80133A0
+    sub_80133F0
+    sub_803FDB8
+
+maybeInitTransitionLevelScreen
+    GetEWRAMStart
+    InitScriptData
+    LoadFiletable
+    g3003448::Init
+    maybeMalloc
+    sub_8000F4C
+    sub_800106A
+    sub_800194E
+    sub_8001A90
+    sub_8004924
+    sub_8004FFC
+    sub_80050FA
+    sub_800B034
+    sub_800B058
+    sub_800B082
+    sub_800B12C
+    sub_800B4F0
+    sub_800B5EE
+    sub_800B652
+    sub_800B676
+    sub_800B6FA
+    sub_800B772
+    sub_800B782
+    sub_800E678
+    sub_801343C
+    sub_8014DD4
+    sub_801B10C
+    sub_8026908
+    sub_8026962
+    sub_802EF0A
+    sub_8040574
+
+maybeInitGame
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    InitKeyinputIE
+    MainLoop
+    SetGlobalFunction
+    SetNextGlobalFunction
+    SomehowInitEWRAMLinkedList
+    __16__rt_memset
+    maybeInitTransitionLevelScreen
+    sub_8004716
+    sub_800474E
+    sub_800E53C
+    sub_8017884
+    sub_802363C
+    sub_8031578
+    sub_80315A2
+    sub_80315CE
+    sub_80315FC
+    sub_8031600
+    sub_8031622
+    sub_803D680
+    sub_803D834
+    sub_803DA18
+
+sub_800EC0E
+    atoi
+    sub_8008160
+    sub_80137F8
+    sub_80139AC
+
+PlayMovie
+    FadeToBlack
+    RenderMovie
+    __call_via_r2
+    __call_via_r7
+    atoi
+    sub_8004FFC
+    sub_800B12C
+    sub_800FE90
+    sub_800FF00
+    sub_800FF5E
+    sub_8010234
+    sub_8010278
+    sub_80137F8
+    sub_80139AC
+    sub_8013B76
+    sub_8013FF8
+    sub_801402C
+
+sub_800EF2A
+    VBlank
+    sub_80049B4
+    sub_8013D52
+    sub_8028B2C
+    sus_function
+
+maybeLoadOrRenderBgImage
+    sub_8004FFC
+    sub_80050FA
+    sub_800B09A
+    sub_800E2F6
+    sub_802EF0A
+    sub_8031622
+
+sub_800F090
+    sub_8000D5A
+    sub_800F010
+    sub_8014EB8
+    sub_803E1DC
+
+sub_800F220
+    __16__rt_memclr_w
+
+sub_800F264
+    maybeMallocEWRAM
+    sub_800FB48
+
+sub_800F2BC
+    nullsub_5
+
+sub_800F312
+    __ret_a2
+    sub_8012468
+
+sub_800F408
+    __call_via_r1
+    nullsub_6
+    sub_800F312
+    sub_800FE3A
+
+sub_800F4F0
+    sub_800F220
+
+sub_800F528
+    __16_ll_mulls
+    j__sub_4A6A0
+    j_mod_16458
+    safe_memcpy
+    sub_800F312
+    sub_800F4F0
+    sub_803DABC
+
+sub_800F72C
+    maybeMallocEWRAM
+    sub_800FB48
+
+sub_800F7D6
+    __ret_a2
+    sub_803E1E4
+
+sub_800FAB0
+    maybeMallocEWRAM
+    sub_800FB48
+
+sub_800FB18
+    __16__rt_memclr
+    __16__rt_memclr_w
+
+sub_800FB48
+    sub_800FB18
+
+sub_800FB72
+    sub_800FB18
+    sub_800FD48
+
+sub_800FBA0
+    safe_memcpy
+
+sub_800FBC0
+    GetEWRAMStart
+    maybeMalloc
+    safe_memcpy
+    sub_800F264
+    sub_800F72C
+    sub_800FAB0
+
+sub_800FC76
+    __16__rt_memclr_w
+    __16__rt_memcpy_w
+    __16_ll_mullu
+    __16_ll_srdv
+    __16_ll_sshift_r
+    __16_ll_udiv
+    safe_memcpy
+
+sub_800FD48
+    sub_800B12C
+
+sub_800FDCE
+    sub_800B12C
+
+sub_800FE3A
+    __16__rt_udiv
+    sub_800FDCE
+
+sub_800FE90
+    maybeMallocEWRAM
+
+sub_800FEBC
+    __call_via_r1
+    sub_800B65E
+    sub_800B708
+
+sub_800FF00
+    maybeMallocEWRAM
+    sub_800B058
+    sub_800B12C
+    sub_800B148
+
+sub_800FF5E
+    __call_via_r2
+    sub_800B12C
+    sub_800B154
+    sub_803DA18
+
+sub_800FFBA
+    __16__rt_memclr
+    __call_via_r2
+    __call_via_r3
+    __call_via_r5
+    sub_800FB96
+    sub_800FBA0
+    sub_800FBC0
+    sub_800FC6C
+    sub_80106B0
+    sub_802EF0A
+
+RenderMovie
+    VBlank
+    __16__rt_sdiv
+    __call_via_r1
+    __call_via_r3
+    __call_via_r6
+    maybeSetupVideoStructs
+    maybeSmallAudioSetup
+    sub_800812A
+    sub_8008160
+    sub_800FFBA
+    sub_80103C8
+    sub_80106B0
+    sub_8010920
+    sub_802EF0A
+
+sub_8010234
+    maybeMallocEWRAM
+    sub_8004670
+    sub_801053C
+
+sub_8010278
+    sub_80105AE
+    sub_803DA18
+
+maybeSetupInitialVideo
+    __call_via_r1
+    __call_via_r2
+    maybeFullySetupVideoStructs
+    maybeSmallAudioSetup
+    sub_801115C
+
+sub_8010344
+    __call_via_r1
+    sub_8010B3E
+    sub_801115C
+
+sub_80103C8
+    maybeMallocEWRAM
+
+sub_80103EC
+    __16__rt_memclr_w
+
+sub_80104BC
+    sub_80103EC
+    sub_801047C
+    sub_803D9C4
+
+sub_801053C
+    sub_80104BC
+    sub_803E17C
+
+sub_8010574
+    sub_80104BC
+    sub_803E17C
+
+sub_80105AE
+    sub_803D9A8
+    sub_803E1A0
+
+maybeSetupVideoStructs
+    __16__rt_memcpy_w
+    __call_via_r3
+
+sub_80106BC
+    safe_memcpy
+    sub_80103EC
+
+sub_8010746
+    __16__rt_memcpy
+    safe_memcpy
+    strlen_0
+    sub_803D9A8
+    sub_803D9C4
+
+sub_80108DA
+    __16__rt_memclr
+    __16__rt_memset
+
+sub_8010920
+    __16__rt_memcpy_w
+    safe_memcpy
+    strlen_0
+    sub_8004674
+    sub_80103EC
+    sub_80106BC
+    sub_8010746
+    sub_80108DA
+
+sub_8010B8A
+    __call_via_r1
+    __call_via_r2
+    __call_via_r3
+    __ret_a2
+    safe_memcpy
+    sub_8008008
+    sub_803DABC
+
+maybeFinalizeVideoAudio
+    CpuSet
+    __call_via_r2
+    __call_via_r3
+    safe_memcpy
+    sub_8008008
+    sub_803E1EC
+    sub_803E1F8
+
+sub_8010F10
+    maybeFinalizeVideoAudio
+    sub_8010ED2
+
+sub_8010F90
+    safe_memcpy
+
+maybeFullySetupVideoStructs
+    sub_8010B8A
+    sub_8010F10
+    sub_8010F90
+
+sub_801115C
+    __16__rt_udiv
+    sub_8004674
+    sub_8008160
+    sub_80108DA
+    sub_8010B8A
+    sub_8010F10
+    sub_8010F90
+    sub_803E204
+    sub_803E210
+
+sub_80114FA
+    Div
+
+sub_80115EC
+    __call_via_r2
+    sub_80114FA
+    sub_8011596
+
+sub_80116D4
+    __call_via_r2
+    sub_8011562
+    sub_80115EC
+
+sub_801175C
+    __call_via_r2
+    sub_8011562
+    sub_80116D4
+
+sub_80117B0
+    Div
+
+sub_8011898
+    sub_80114FA
+
+sub_8011912
+    sub_8011562
+    sub_80115EC
+    sub_80117B0
+    sub_8011898
+
+sub_801196A
+    sub_80114FA
+
+sub_801197C
+    CpuSet
+    Div
+
+sub_8011AC2
+    __call_via_r2
+
+sub_8011C0A
+    Div
+    __call_via_r2
+    sub_80115EC
+    sub_80116D4
+    sub_801197C
+    sub_8040C38
+
+sub_8011E64
+    Div
+
+sub_8011F0E
+    Div
+    __call_via_r1
+    sub_80116D4
+    sub_8011C0A
+    sub_8011D56
+    sub_8011E64
+    sub_80123E4
+    sub_80409E4
+    sub_8040C38
+    sub_8040C78
+
+sub_80120FA
+    sub_8011596
+    sub_801197C
+
+sub_8012126
+    sub_801234C
+
+sub_801220C
+    sub_801234C
+    sub_80123B4
+
+sub_801228C
+    sub_80123B4
+
+sub_80122F0
+    sub_80123B4
+
+sub_801230C
+    sub_80123B4
+
+sub_8012334
+    sub_80123B4
+
+sub_8012468
+    sub_80124C8
+    sub_803E21C
+
+sub_80124C8
+    sub_80301E8
+
+sub_80127C0
+    __rt_memcpy
+    sub_8012674
+
+sub_8012BA0
+    sub_80127C0
+    sub_803E228
+
+sub_80130DC
+    sub_8012BA0
+    sub_8013024
+
+sub_80132F4
+    __16__rt_memclr_w
+
+sub_8013318
+    sub_803DA18
+    sub_803DA4C
+
+sub_801333E
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    __vec_ctor_p__FPvUiT2bPFPv_v
+    __vec_dtor__FPvUiPFPvi_vPFPv_v
+
+sub_80133F0
+    sub_8004FFC
+    sub_80133AE
+
+sub_801343C
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeMallocEWRAM
+
+sub_801352C
+    sub_80134F8
+    sub_803DA18
+    sub_803DA4C
+    sub_8041274
+
+sub_801357A
+    AllocateEWRAMLinkedList
+    CpuSet
+    GetEWRAMStart
+    maybeMalloc
+    sub_80133A0
+    sub_803DA18
+    sub_803DA4C
+
+sub_80137F8
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    __call_via_r3
+    __call_via_r5
+    strlen_0
+    strncpy
+    sub_80133A0
+    sub_801340A
+    sub_801357A
+    sub_803DA4C
+
+sub_801390A
+    sub_80137F8
+    vsprintf
+
+sub_8013946
+    sub_80137F8
+    vsprintf
+
+sub_80139AC
+    __16__rt_sdiv
+    __16__rt_udiv
+    __call_via_r2
+    sub_80133A0
+    sub_803DA18
+    sub_80402F8
+
+sub_8013B76
+    sub_803DA18
+
+sub_8013B9C
+    GetEWRAMStart
+    __call_via_r2
+    maybeMalloc
+    sub_80133A0
+    sub_803DA18
+
+sub_8013C40
+    GetEWRAMStart
+    maybeMalloc
+    sub_80133A0
+    sub_803DA18
+
+sub_8013D52
+    __call_via_r2
+    sub_80402F8
+
+sub_8013DEA
+    __call_via_r1
+
+sub_8013F6C
+    sub_803DA18
+    sub_803DA4C
+    sub_8041274
+
+sub_8013FF8
+    maybeMallocEWRAM
+    sub_80134B8
+    sub_8013E2C
+
+sub_801402C
+    sub_801352C
+    sub_803DA18
+
+sub_80143E0
+    maybeMallocEWRAM
+    sub_80134B8
+    sub_8013E2C
+
+sub_8014436
+    sub_80134F8
+    sub_801352C
+    sub_803DA18
+    sub_803F55C
+    sub_803F5FC
+
+maybePauseUnpauseTransition
+    VBlankIntrWait
+    sub_8040034
+    sus_function
+
+sub_8014B02
+    sub_803EF2C
+    sub_803F5FC
+
+sub_8014F06
+    __16__rt_sdiv
+    sub_8014EB8
+
+sub_801505A
+    __16__rt_sdiv
+    sub_8001B80
+    sub_8015014
+
+sub_8015240
+    __16__rt_sdiv
+    sub_8001B80
+
+sub_801537C
+    sub_8014EB8
+    sub_801505A
+    sub_8015240
+    sub_803E1DC
+
+sub_80154DC
+    __vecmap1c__FPvT1iPFPv_v
+    maybeMallocEWRAM
+    sub_80143E0
+    sub_8017444
+    sub_80177D8
+
+sub_8015588
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_8014436
+    sub_8017450
+    sub_803DA18
+
+sub_80155D6
+    __call_via_r1
+    sub_8000DE6
+    sub_801CBDE
+
+sub_80156B4
+    sub_80003F4
+    sub_800065C
+    sub_800116A
+    sub_800EF2A
+    sub_80138E2
+    sub_80147FA
+    sub_801CBDE
+    sub_8024D30
+    sub_8028C2E
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+    sub_804025C
+
+sub_80158F0
+    sub_8017884
+    sub_8028C2E
+    sub_803F814
+    sub_8040034
+
+sub_8015A16
+    sub_80139AC
+    sub_8013B76
+    sub_8013B9C
+    sub_80401E4
+
+sub_8015B1E
+    __16_ll_mulss
+    __16_ll_sdiv
+    __call_via_r3
+    j_mod_100
+    sub_80139AC
+    sub_8013B9C
+    sub_803F814
+    sub_8040034
+
+sub_8015EC2
+    __16_ll_mulss
+    __16_ll_sdiv
+    __call_via_r3
+    j_mod_100
+    sub_80155D6
+    sub_801742C
+    sub_8040034
+
+sub_8016108
+    sub_80158F0
+    sub_8015A16
+    sub_8015B1E
+    sub_8015EC2
+
+sub_8016176
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_800EF2A
+    sub_80133A0
+    sub_80138E2
+    sub_80139AC
+    sub_80147FA
+    sub_80156B4
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+
+sub_80162D6
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_800EF2A
+    sub_80133A0
+    sub_80137F8
+    sub_80138E2
+    sub_80139AC
+    sub_80147FA
+    sub_8014B02
+    sub_80156B4
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+
+sub_80164A8
+    maybeMallocEWRAM
+    sub_8017444
+    sub_80177D8
+
+sub_80164E6
+    __call_via_r2
+    sub_803DA4C
+
+sub_8016526
+    sub_80164E6
+    sub_8017450
+    sub_803DA18
+
+sub_8016556
+    GetEWRAMStart
+    maybeMalloc
+
+sub_801659C
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeGameObjFactory
+    sub_803DA18
+
+sub_80165F2
+    sub_80164E6
+
+sub_8016612
+    GetEWRAMStart
+    maybeMalloc
+    sub_80164E6
+    sub_801659C
+
+sub_801669C
+    maybeMallocEWRAM
+    sub_8017444
+    sub_80177D8
+
+sub_80166FE
+    sub_80046F8
+    sub_800476C
+    sub_8004784
+    sub_80047BE
+    sub_803D66C
+
+sub_80167AC
+    SetNextGlobalFunction
+
+sub_80168E8
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    sub_80003F4
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_8000DE6
+    sub_800116A
+    sub_800EF2A
+    sub_80138E2
+    sub_8013B76
+    sub_80143E0
+    sub_8014436
+    sub_80147FA
+    sub_801CBAA
+    sub_80236D4
+    sub_8028C2E
+    sub_80401E4
+    sub_804025C
+
+sub_8016BAC
+    SetNextGlobalFunction
+
+sub_8016D90
+    sub_801CBDE
+    sub_8020AB6
+    sub_802459E
+    sub_803FEF8
+
+sub_8016E20
+    sub_8017884
+
+sub_8016E8C
+    sub_803FEF8
+
+maybeGameObjFactory
+    Anonymous18::Create
+    Anonymous4::Create
+    Bird::Create
+    Boss::Create
+    Critter::Create
+    GenericObject::Create
+    GetEWRAMStart
+    Kiko::Create
+    Monster::Create
+    Npc::Create
+    Object::Create
+    Scanner::Create
+    Static1::Create
+    Static2::Create
+    ToggleObject::Create
+    WallObject::Create
+    WinxClub::Create
+    maybeMalloc
+    sub_80154DC
+    sub_80399A4
+
+sub_801742C
+    sub_801CBAA
+
+sub_8017450
+    sub_80177E8
+
+InitScriptData
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeMalloc
+    maybeMallocEWRAM
+    sub_8004FFC
+    sub_80050FA
+    sub_80164A8
+    sub_801669C
+    sub_803F464
+
+sub_80175D4
+    __call_via_r2
+    sub_803DA18
+    sub_803DA4C
+
+sub_8017620
+    __call_via_r2
+    sub_803DA4C
+    sub_803FBBC
+
+sub_80177E8
+    sub_803FBBC
+
+sub_8017862
+    sub_803FBBC
+
+sub_8017884
+    sub_803F3E8
+    sub_803F72C
+    sub_803FAD4
+    sub_803FB24
+    sub_803FB58
+
+sub_80179BE
+    sub_803F72C
+    sub_803FAD4
+    sub_803FB24
+
+sub_8017A0A
+    sub_803F72C
+    sub_803FAD4
+    sub_803FB24
+
+sub_8017A56
+    sub_803F72C
+    sub_803FAD4
+    sub_803FB24
+
+sub_8017B9A
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_803DA4C
+    sub_803F3E8
+
+sub_8017CA0
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_803DA4C
+    sub_803F3E8
+
+sub_8017DE6
+    FadeToBlack
+    FadeToImage
+    SetNextGlobalFunction
+    maybeLoadOrRenderBgImage
+    sub_800EF2A
+
+PlayIntroMovie
+    AllocateEWRAMLinkedList
+    CpuSet
+    FadeToBlack
+    FadeToImage
+    GetEWRAMStart
+    PlayMovie
+    SetNextGlobalFunction
+    SomehowInitEWRAMLinkedList
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_80046F8
+    sub_800B058
+    sub_800E53C
+    sub_8017B9A
+    sub_8017CA0
+    sub_803DA4C
+
+PlayIntroLogo
+    maybeLoadOrRenderBgImage
+    sub_800474E
+    sub_803D680
+    sub_803D834
+    sub_803D97C
+
+HandleIntro
+    PlayIntroLogo
+    PlayIntroMovie
+    sub_8004716
+    sub_800EF2A
+
+FadeToImage
+    sub_8004716
+    sub_800474E
+    sub_800EF2A
+    sub_803D680
+    sub_803D834
+    sub_803D97C
+
+FadeToBlack
+    sub_8004716
+    sub_800474E
+    sub_800EF2A
+    sub_803D680
+    sub_803D834
+    sub_803D97C
+
+sub_8018110
+    maybeMallocEWRAM
+    sub_801047C
+    sub_80108DA
+    sub_803D984
+
+sub_8018160
+    __call_via_r2
+    sub_803D9A8
+    sub_803DA18
+
+sub_801819E
+    __call_via_r2
+    __call_via_r3
+    safe_memcpy
+    sub_8008008
+    sub_8008072
+    sub_803D4A8
+
+MainLoop
+    __call_via_r0
+
+sub_80184BC
+    __16__rt_sdiv
+    j_mod_360
+
+sub_8018620
+    __16_ll_mulss
+    __16_ll_sdiv
+    __16_ll_srdv
+    __16_ll_sshift_r
+    sub_803E1DC
+
+sub_80187A0
+    sub_803E1DC
+
+sub_8018884
+    __16_ll_srdv
+    __16_ll_sshift_r
+    sub_803F3B4
+
+sub_80189BC
+    GetNextGlobalFunction
+    j_mod_5
+    sub_80003F4
+    sub_800065C
+    sub_800116A
+    sub_80138E2
+    sub_80139AC
+    sub_80147FA
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+    sub_804025C
+
+sub_8018C48
+    sub_800065C
+    sub_800116A
+    sub_80137F8
+    sub_80138E2
+    sub_80139AC
+    sub_80147FA
+    sub_8014B02
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+
+sub_8018D76
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    sub_80138E2
+    sub_80147FA
+
+sub_8018E34
+    FadeToBlack
+    sub_8000DE6
+
+sub_8018E7E
+    sub_800065C
+    sub_80138E2
+    sub_8028C2E
+    sub_80401E4
+
+sub_8018F5E
+    FadeToImage
+    VBlank
+    __16__rt_memcpy
+    sub_800065C
+    sub_800116A
+    sub_8001A60
+    sub_8004FFC
+    sub_80050FA
+    sub_800BE0E
+    sub_800C1CA
+    sub_800D912
+    sub_800D9E0
+    sub_80137F8
+    sub_80147FA
+    sub_80189BC
+    sub_8018C48
+    sub_8018D76
+    sub_8018E7E
+    sub_802EF0A
+    sub_803F9C4
+
+HandleFavorsScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800065C
+    sub_8000D5A
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8018E34
+    sub_8018E7E
+    sub_8018F5E
+    sub_8028A7C
+    sub_8028C2E
+
+sub_80195D0
+    FadeToBlack
+    sub_8000DE6
+
+sub_801966A
+    sub_80137F8
+    sub_80138E2
+    sub_8018C48
+    sub_8028C2E
+    sub_8040034
+
+sub_80197AC
+    FadeToImage
+    VBlank
+    sub_800065C
+    sub_800116A
+    sub_8001A60
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_8004FFC
+    sub_80050FA
+    sub_800D912
+    sub_800D9E0
+    sub_80137F8
+    sub_80138E2
+    sub_80147FA
+    sub_8014B02
+    sub_80189BC
+    sub_8018C48
+    sub_801966A
+    sub_8028A7C
+    sub_802EF0A
+    sub_803D66C
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+
+HandleInventoryScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800065C
+    sub_8000D5A
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_80195D0
+    sub_801966A
+    sub_80197AC
+    sub_8028A7C
+    sub_8028C2E
+
+sub_8019EE0
+    FadeToBlack
+    sub_8000DE6
+
+sub_8019F60
+    __call_via_r2
+    sub_80007A0
+    sub_8000D5A
+    sub_80137F8
+    sub_8013946
+    sub_8028C2E
+    sub_8040034
+
+sub_801A0D2
+    FadeToImage
+    VBlank
+    __16__rt_memcpy
+    j_mod_5
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_8004FFC
+    sub_80050FA
+    sub_800D912
+    sub_800D9E0
+    sub_80137F8
+    sub_80138E2
+    sub_8013946
+    sub_80147FA
+    sub_80189BC
+    sub_8018C48
+    sub_8018D76
+    sub_8019F60
+    sub_802EF0A
+    sub_803D66C
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+
+HandleMagicScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800065C
+    sub_8000D5A
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8019EE0
+    sub_8019F60
+    sub_801A0D2
+    sub_8028A7C
+    sub_8028C2E
+
+sub_801A760
+    FadeToBlack
+    sub_8000DE6
+    sub_80137F8
+    sub_8028A7C
+    sub_80401E4
+
+sub_801A82E
+    j_mod_3_2
+    sub_8028C2E
+
+sub_801A8B8
+    FadeToImage
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_800065C
+    sub_800116A
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_800B6A8
+    sub_800B72A
+    sub_800BE0E
+    sub_800C1CA
+    sub_800E53C
+    sub_80138E2
+    sub_8013B76
+    sub_80147FA
+    sub_801A82E
+    sub_8028A7C
+    sub_803D66C
+    sub_80401E4
+
+HandleMainMenu
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_801A760
+    sub_801A82E
+    sub_801A8B8
+    sub_8028C2E
+
+sub_801ABFC
+    FadeToBlack
+    __call_via_r1
+    sub_8000DE6
+    sub_80050FA
+
+sub_801AC60
+    sub_80138E2
+    sub_8013946
+    sub_8028C2E
+
+sub_801AD22
+    FadeToImage
+    VBlank
+    sub_8001A60
+    sub_8004FFC
+    sub_80050FA
+    sub_800D912
+    sub_800D9E0
+    sub_80138E2
+    sub_80147FA
+    sub_80189BC
+    sub_8018C48
+    sub_801AC60
+    sub_802EF0A
+    sub_803F9C4
+
+HandleObjectivesScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800065C
+    sub_8000D5A
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_801ABFC
+    sub_801AC60
+    sub_801AD22
+    sub_8028A7C
+    sub_8028C2E
+
+sub_801B10C
+    maybeMallocEWRAM
+    sub_80154DC
+
+sub_801B170
+    sub_80015E6
+    sub_8017620
+    sub_8017A0A
+    sub_803F72C
+    sub_803FC68
+
+sub_801B1EC
+    sub_8015588
+    sub_801B170
+    sub_803DA18
+
+sub_801B212
+    sub_8000D5A
+
+sub_801B332
+    sub_8000D5A
+    sub_80158E0
+
+sub_801B48C
+    sub_8002004
+
+sub_801B56C
+    j_mod_88
+    sub_80015E6
+    sub_8001A60
+    sub_8001C22
+    sub_8002004
+    sub_8002010
+    sub_800242C
+    sub_8004FFC
+    sub_80050FA
+    sub_800D912
+    sub_800D9E0
+    sub_800E178
+    sub_8017620
+    sub_8017862
+    sub_8017884
+    sub_801B332
+    sub_8028A7C
+    sub_802EF0A
+    sub_803FC68
+    sub_803FD5C
+    sub_803FEF8
+    sub_803FF24
+
+sub_801BBE0
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_80050FA
+    sub_8017620
+    sub_8017862
+    sub_8017884
+    sub_8017A0A
+    sub_8017A56
+    sub_801F2F8
+    sub_803DA4C
+    sub_803F72C
+    sub_803FC68
+
+exit
+    sub_801B56C
+    sub_801BBE0
+
+sub_801BEB6
+    __call_via_r1
+    __call_via_r4
+    sub_80179BE
+    sub_80187A0
+    sub_801D9B0
+    sub_801F28C
+    sub_8024D30
+    sub_803F72C
+    sub_803FEF8
+
+sub_801C210
+    CpuSet
+    sub_8002004
+
+sub_801C352
+    __16_ll_srdv
+    __16_ll_sshift_r
+    sub_803FF24
+
+sub_801C4A4
+    __call_via_r1
+    __call_via_r4
+    __call_via_r6
+    __call_via_r7
+
+MaybeTickAllGameObjs
+    __16__rt_sdiv
+    __call_via_r1
+    sub_8001B80
+    sub_801B332
+    sub_801BEB6
+    sub_801C210
+    sub_801C352
+    sub_801C4A4
+    sub_801F4F0
+    sub_801F65C
+    sub_801F6DE
+    sub_802222C
+    sub_803F1AC
+    sub_803F23C
+
+sub_801CA1E
+    sub_80293D0
+    sub_803FD5C
+    sub_803FF24
+
+sub_801CB4E
+    sub_8001C22
+    sub_800202A
+
+sub_801CBAA
+    sub_801F640
+
+sub_801CC3C
+    __call_via_r1
+
+sub_801CC72
+    __call_via_r1
+
+sub_801CCA8
+    __call_via_r1
+
+sub_801CCEC
+    FadeToBlack
+    j_FadeToBlack
+    sub_8000DE6
+    sub_8028A7C
+
+sub_801CD96
+    j_mod_3_2
+    sub_800065C
+    sub_8000D5A
+    sub_8018C48
+    sub_8028C2E
+    sub_8040034
+    sub_80401E4
+
+sub_801CEC6
+    FadeToImage
+    VBlank
+    j_mod_3600
+    j_mod_6
+    j_mod_60
+    maybeInitTransitionLevelScreen
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_8004FFC
+    sub_80050FA
+    sub_800B6A8
+    sub_800B72A
+    sub_800D912
+    sub_800D9E0
+    sub_800E53C
+    sub_80137F8
+    sub_80138E2
+    sub_801390A
+    sub_80147FA
+    sub_8018C48
+    sub_802383A
+    sub_8028A7C
+    sub_802EF0A
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+
+HandleLoadGameScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_801CCEC
+    sub_801CD96
+    sub_801CEC6
+    sub_802383A
+    sub_8028C2E
+
+Init_and_add_some_object
+    maybeMallocEWRAM
+    sub_8017444
+
+MostScriptGroups::1C
+    __call_via_r1
+    sub_8000DE6
+
+GameObj::ctor
+    MostScriptGroups::1C
+    sub_8017450
+    sub_8017862
+    sub_803DA18
+
+sub_801D788
+    __call_via_r2
+    sub_8017884
+    sub_8017A0A
+    sub_803F72C
+    sub_803FC68
+    sub_803FEF8
+
+sub_801DA2A
+    sub_801D788
+    sub_801D9B0
+
+sub_801DA46
+    GetEWRAMStart
+    maybeMalloc
+
+sub_801DAEC
+    sub_80007A0
+    sub_8000914
+    sub_803F6B4
+    sub_803FC14
+
+sub_801DB90
+    __16_ll_mulls
+    __16_ll_sdiv
+
+WinxClubScriptGroup::04
+    __16__rt_sdiv
+    __call_via_r2
+    j_mod_100
+    rand
+    sub_8017884
+    sub_801D788
+    sub_801D9B0
+    sub_801DA46
+    sub_801DAA0
+    sub_801DAEC
+    sub_801DB90
+
+WinxClubScriptGroup::08
+    sub_801DAEC
+    sub_801DB90
+    sub_803F6B4
+
+MostScriptGroups::18
+    __call_via_r1
+    sub_8000D5A
+    sub_8001432
+    sub_803DA18
+    sub_803F6B4
+    sub_80401E4
+
+FewScriptGroups::20
+    __call_via_r1
+    __call_via_r2
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_800116A
+    sub_803F170
+    sub_803F2CC
+    sub_803FF24
+    sub_80401C0
+    sub_80401E4
+
+MostNonHostileScriptGroups::Dying
+    __call_via_r2
+    j_mod_100
+    sub_80401C0
+
+sub_801E4D0
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    sub_8000AC4
+    sub_80019B4
+    sub_80019C4
+    sub_80019D4
+    sub_80019E8
+    sub_80019FC
+    sub_8018620
+    sub_8018884
+
+AllScriptGroups::0C
+    __16_ll_mulls
+    __16_ll_sdiv
+    __call_via_r1
+    __call_via_r2
+    __vec_dtor__FPvUiPFPvi_vPFPv_v
+    sub_801E4D0
+
+sub_801EBCA
+    __16__rt_udiv
+    rand
+    sub_80007A0
+    sub_8000914
+    sub_8001432
+    sub_80187A0
+    sub_80268BA
+    sub_8028BE4
+    sub_8028C2E
+    sub_803F170
+    sub_803F2CC
+    sub_803F6B4
+    sub_803FAB8
+    sub_803FC14
+
+AllScriptGroups::14
+    sub_80401C0
+
+NonHostileScriptGroups::3C
+    sub_803FF24
+
+sub_801F2F8
+    __call_via_r1
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_803F170
+    sub_803F2CC
+    sub_803FAB8
+    sub_803FF24
+    sub_80401C0
+    sub_80401E4
+
+sub_801F450
+    __16_ll_mulss
+    __16_ll_sdiv
+    sub_8018620
+
+sub_801F4F0
+    __call_via_r1
+    sub_80401E4
+
+sub_801F65C
+    __call_via_r2
+    sub_8017862
+    sub_80401E4
+
+sub_801F6DE
+    sub_80179BE
+    sub_803F72C
+    sub_803FC68
+    sub_80401E4
+
+Anonymous4::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+    sub_8024E54
+    sub_802DFF4
+
+Anonymous4::ctor
+    GameObj::ctor
+    sub_8000DE6
+    sub_8024EBC
+    sub_802E02A
+    sub_803DA18
+
+sub_801F906
+    GetEWRAMStart
+    __call_via_r6
+    __call_via_r7
+    maybeMalloc
+    sub_80050FA
+    sub_8028C2E
+    sub_802BA4C
+    sub_802BFBC
+    sub_802C884
+    sub_802D2E8
+
+sub_801FE90
+    sub_8023A3A
+    sub_8023A70
+    sub_8023AA2
+    sub_8023AE0
+    sub_8023B22
+
+sub_801FEFE
+    GetEWRAMStart
+    maybeMalloc
+
+sub_801FF68
+    WinxClubScriptGroup::04
+    sub_801F906
+    sub_801FE90
+    sub_801FEFE
+
+sub_80200A4
+    WinxClubScriptGroup::08
+
+sub_80200E0
+    AllScriptGroups::0C
+    __call_via_r1
+    __call_via_r6
+    __call_via_r7
+    j_mod_60
+    sub_801F906
+    sub_8023A70
+    sub_802E3C6
+    sub_80333DC
+    sub_803FF24
+    sub_80401C0
+
+sub_8020A74
+    __call_via_r1
+    __call_via_r6
+    sub_802E3C6
+
+sub_8020AB6
+    sub_8001432
+    sub_803FC14
+
+sub_8021B84
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeMalloc
+    sub_800065C
+    sub_800116A
+    sub_80050FA
+    sub_80177D8
+    sub_803F2CC
+    sub_803F898
+    sub_803FF24
+    sub_80401C0
+    sub_80401E4
+
+sub_8021CFC
+    sub_800065C
+    sub_803F6E0
+    sub_803F898
+    sub_803FF24
+
+sub_8021EEC
+    NonHostileScriptGroups::TakeDamage
+    sub_8028C2E
+
+sub_8021F42
+    NonHostileScriptGroups::TakeDamage
+    __call_via_r1
+    sub_801CA1E
+    sub_801F450
+    sub_8020A74
+    sub_8020AB6
+    sub_8021EEC
+    sub_8023A3A
+    sub_8023A70
+    sub_8023AA2
+    sub_80384FA
+
+sub_802222C
+    sub_800065C
+    sub_803F2CC
+    sub_803F898
+    sub_803FF24
+    sub_80401E4
+
+sub_8022306
+    __16_ll_mulss
+    __16_ll_sdiv
+    __call_via_r3
+    j_mod_100
+    sub_80047BE
+    sub_80137F8
+    sub_80138E2
+    sub_80139AC
+    sub_8013C40
+    sub_803D66C
+
+sub_80225E4
+    FadeToImage
+    __call_via_r2
+    maybeLoadOrRenderBgImage
+    sub_8004784
+    sub_80047BE
+    sub_800B6A8
+    sub_800B72A
+    sub_80137F8
+    sub_80138E2
+    sub_80147FA
+    sub_8014864
+    sub_8014B02
+    sub_8018C48
+    sub_8028A7C
+    sub_803D66C
+    sub_803F9C4
+
+HandlePlayCreditsFromOptions
+    FadeToBlack
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_8000DE6
+    sub_80046F8
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8014864
+    sub_8022306
+    sub_80225E4
+    sub_8028A7C
+    sub_8028C2E
+
+sub_8022840
+    FadeToBlack
+    sub_8000DE6
+
+sub_80228D2
+    j_mod_10
+    sub_800B6FA
+    sub_800B782
+    sub_8028C2E
+    sub_8040034
+
+sub_80229B2
+    j_mod_3_2
+    sub_8028C2E
+    sub_8040034
+
+sub_8022A24
+    FadeToImage
+    VBlank
+    __16__rt_memcpy
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_8004FFC
+    sub_80050FA
+    sub_800D912
+    sub_800D9E0
+    sub_80138E2
+    sub_80147FA
+    sub_80189BC
+    sub_8018C48
+    sub_80228D2
+    sub_802EF0A
+    sub_803D66C
+    sub_8040034
+    sub_80401E4
+
+HandleIngameOptionsScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800065C
+    sub_8000D5A
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8022840
+    sub_80228D2
+    sub_80229B2
+    sub_8022A24
+    sub_80235E4
+    sub_8028A7C
+    sub_8028C2E
+
+sub_8022F8C
+    FadeToBlack
+    sub_8000DE6
+    sub_8028A7C
+
+sub_8022FFC
+    j_mod_10
+    sub_800B6FA
+    sub_800B782
+    sub_8028C2E
+    sub_8040034
+
+sub_80230DC
+    sub_8018C48
+    sub_8028C2E
+    sub_8040034
+
+sub_80231B0
+    FadeToImage
+    __16__rt_memcpy
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    maybeLoadOrRenderBgImage
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_800B6A8
+    sub_800B72A
+    sub_80138E2
+    sub_80147FA
+    sub_8018C48
+    sub_8022FFC
+    sub_80230DC
+    sub_8028A7C
+    sub_803D66C
+    sub_8040034
+    sub_80401E4
+
+HandleMainMenuOptionsScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8022F8C
+    sub_8022FFC
+    sub_80230DC
+    sub_80231B0
+    sub_80235E4
+    sub_8028C2E
+
+sub_80235E4
+    sub_800B314
+    sub_803F464
+
+sub_802363C
+    GetEWRAMStart
+    maybeMalloc
+    sub_800B3BA
+    sub_803F464
+
+sub_80236D4
+    j_mod_60
+    sub_800B314
+    sub_803F464
+    sub_803FEF8
+
+sub_80237DA
+    j_mod_5
+
+sub_802383A
+    GetEWRAMStart
+    __16__rt_memclr_w
+    maybeMalloc
+    sub_800B3BA
+    sub_80237DA
+    sub_803FEF8
+
+sub_80239EC
+    sub_800B314
+    sub_803DA18
+    sub_803F464
+    sub_803FEF8
+
+sub_8023A3A
+    sub_80244C6
+
+sub_8023A70
+    sub_802416A
+
+sub_8023AA2
+    sub_8024084
+
+sub_8023AE0
+    sub_80244C6
+
+sub_8023B22
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    j_mod_5
+    sprintf
+    sub_8017A0A
+    sub_80237DA
+    sub_803F72C
+    sub_803F904
+
+sub_8023D0C
+    maybeMallocEWRAM
+    sub_80143E0
+
+sub_8023DD0
+    __call_via_r1
+    sub_8000DE6
+    sub_80268AC
+
+sub_8023F88
+    sub_8000DE6
+    sub_8014436
+    sub_8023DD0
+    sub_803DA18
+
+sub_8023FE4
+    __16__rt_sdiv
+    sub_800065C
+    sub_8000D5A
+
+sub_8024084
+    sub_800065C
+    sub_8000D5A
+
+sub_802416A
+    sub_800065C
+    sub_8000D5A
+
+sub_80241DA
+    __16_ll_mulss
+    __16_ll_sdiv
+    j_mod_100
+    j_mod_6
+    sub_8000DE6
+    sub_8023FE4
+    sub_8024084
+    sub_802416A
+    sub_8040034
+    sub_80401E4
+
+sub_80244C6
+    sub_800065C
+    sub_8000D5A
+    sub_80401E4
+
+sub_802459E
+    sub_8000324
+    sub_800065C
+    sub_800116A
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+    sub_804025C
+
+sub_80247A4
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    __call_via_r2
+    __call_via_r3
+    __call_via_r7
+    j_mod_6
+    sub_80003F4
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_800116A
+    sub_8001432
+    sub_800B6A8
+    sub_80137F8
+    sub_8013B76
+    sub_80147FA
+    sub_8023DD0
+    sub_8023FE4
+    sub_8024084
+    sub_802416A
+    sub_80241DA
+    sub_80244C6
+    sub_802459E
+    sub_8028A7C
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+    sub_804025C
+
+sub_8024D30
+    sub_80137F8
+    sub_80138E2
+    sub_80139AC
+    sub_80268AC
+    sub_80268BA
+    sub_8028BE4
+    sub_8028C2E
+    sub_80401E4
+
+sub_8024E54
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_8024EBC
+    sub_8000DE6
+    sub_80268AC
+    sub_802E47A
+    sub_802E4AA
+    sub_803DA18
+
+Npc::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Npc::ctor
+    GameObj::ctor
+    sub_803DA18
+
+Npc::04
+    WinxClubScriptGroup::04
+
+Npc::08
+    WinxClubScriptGroup::08
+
+Npc::38
+    sub_803FF24
+
+Npc::3C
+    sub_803FF24
+
+Npc::Intersect
+    __call_via_r1
+
+Npc::10
+    sub_801EBCA
+
+Npc::40
+    sub_8025F7C
+    sub_8025F94
+
+MaybeHandleTransitionToArea
+    SetNextGlobalFunction
+
+GenericObject::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+GenericObject::ctor
+    GameObj::ctor
+    sub_803DA18
+
+GenericObject::04
+    WinxClubScriptGroup::04
+    sub_80007A0
+    sub_801DB90
+    sub_80260C8
+
+GenericObject::08
+    WinxClubScriptGroup::08
+    sub_801DB90
+
+GenericObject::10
+    rand
+    sub_8000D5A
+    sub_801EBCA
+
+sub_80268AC
+    sub_8012334
+
+sub_80268BA
+    sub_801228C
+
+sub_80268C8
+    maybeMallocEWRAM
+
+sub_8026908
+    __vecmap1c__FPvT1iPFPv_v
+    maybeMallocEWRAM
+
+sub_802693A
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_803DA18
+
+sub_8026962
+    sub_801228C
+
+sub_8028A7C
+    sub_800B698
+    sub_800B6AC
+    sub_800B6EC
+    sub_800B72A
+    sub_800B764
+
+sub_8028B2C
+    sub_800B698
+    sub_800B6AC
+    sub_800B6EC
+    sub_800B714
+    sub_800B764
+
+sub_8028BE4
+    sub_80121C4
+
+sub_8028BFC
+    sub_80121C4
+    sub_8012334
+
+sub_8028C2E
+    sub_801220C
+
+MaybeHandleIngameCutscene
+    FadeToImage
+    GetEWRAMStart
+    MaybeTickAllGameObjs
+    SetNextGlobalFunction
+    maybeMalloc
+    sub_800EF2A
+    sub_801B56C
+    sub_801CCA8
+    sub_8023D0C
+    sub_80247A4
+
+MaybeHandleBootIntoGame
+    exit
+    maybeInitTransitionLevelScreen
+    sub_800E53C
+
+HandleMainIngameLoop
+    FadeToBlack
+    GetNextGlobalFunction
+    MaybeTickAllGameObjs
+    SetNextGlobalFunction
+    j_FadeToBlack
+    sub_80046F8
+    sub_800476C
+    sub_8004784
+    sub_80047BE
+    sub_80050FA
+    sub_800D912
+    sub_800EF2A
+    sub_80158E0
+    sub_8016108
+    sub_8017620
+    sub_801B170
+    sub_801CB4E
+    sub_801CC3C
+    sub_801CC72
+    sub_8023F88
+    sub_80241DA
+    sub_8028A7C
+    sub_8028BFC
+    sub_802B288
+    sub_802B382
+    sub_802B390
+    sub_802B3D6
+    sub_802BA20
+    sub_803D66C
+
+sub_8028F64
+    AllocateEWRAMLinkedList
+    CpuSet
+    FadeToImage
+    GetEWRAMStart
+    PlayMovie
+    SetNextGlobalFunction
+    SomehowInitEWRAMLinkedList
+    j_mod_60
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_800B058
+    sub_800E53C
+    sub_800EF2A
+    sub_8017B9A
+    sub_8017CA0
+    sub_801B170
+    sub_803DA4C
+
+HostileCreature::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+HostileCreature::ctor
+    GameObj::ctor
+    sub_803DA18
+
+sub_8029290
+    WinxClubScriptGroup::04
+    __call_via_r2
+    sub_802913E
+
+HostileCreature::08
+    WinxClubScriptGroup::08
+
+sub_802936C
+    sub_800065C
+    sub_80012F0
+
+sub_80293D0
+    __call_via_r2
+    sub_802936C
+
+HostileCreature::Dying
+    MostNonHostileScriptGroups::Dying
+    sub_80293D0
+
+sub_80294EE
+    __16__rt_sdiv
+    __call_via_r1
+    rand
+
+HostileCreature::Attack
+    sub_8000D5A
+
+Monster::10
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    __call_via_r6
+    __call_via_r7
+    maybeCall60IfActive
+    maybeMalloc
+    sub_80003F4
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_80050FA
+    sub_800BE0E
+    sub_800C1CA
+    sub_8017884
+    sub_801EBCA
+    sub_80268AC
+    sub_8028BE4
+    sub_80296E0
+    sub_80298F0
+    sub_802BA4C
+    sub_802BFBC
+    sub_802C884
+    sub_802D2E8
+    sub_802DFF4
+    sub_8031D00
+    sub_803772C
+    sub_803AB80
+    sub_803AE68
+    sub_803EF1C
+    sub_803FC14
+
+maybeCall60IfActive
+    GetEWRAMStart
+    __call_via_r1
+    __call_via_r7
+    maybeMalloc
+    sub_80050FA
+    sub_80298F0
+    sub_802C884
+    sub_803EF1C
+
+HostileCreature::60
+    rand
+    sub_80179BE
+    sub_80187A0
+    sub_802AC74
+    sub_803F72C
+
+HostileCreature::3C
+    sub_803FF24
+
+HostileCreature::20
+    FewScriptGroups::20
+    sub_8023FE4
+    sub_802936C
+    sub_803FF24
+
+HostileCreature::54
+    sub_8028C2E
+
+sub_802B0CA
+    sub_801F65C
+
+HostileBaseObject::5C
+    __call_via_r1
+    sub_80187A0
+
+sub_802B288
+    __vecmap1c__FPvT1iPFPv_v
+    maybeMallocEWRAM
+    sub_80143E0
+
+sub_802B2F8
+    __call_via_r1
+    sub_8000DE6
+
+sub_802B390
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_8014436
+    sub_802B2F8
+    sub_803DA18
+
+sub_802B3D6
+    sub_80003F4
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_80133A0
+    sub_80138E2
+    sub_80147FA
+    sub_8020AB6
+    sub_802459E
+    sub_8028C2E
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+    sub_804025C
+
+sub_802B670
+    sub_802459E
+    sub_8028C2E
+    sub_8040034
+
+sub_802B6F4
+    __16_ll_mulss
+    __16_ll_sdiv
+    __call_via_r3
+    j_mod_100
+    sub_8040034
+
+sub_802B8B0
+    SetNextGlobalFunction
+    __16_ll_mulss
+    __16_ll_sdiv
+    __call_via_r3
+    j_mod_100
+    sub_802B2F8
+    sub_8040034
+
+sub_802BA20
+    sub_802B670
+    sub_802B6F4
+    sub_802B8B0
+
+sub_802BA4C
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_802BFBC
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_802C884
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_802D100
+    __call_via_r1
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_8000DE6
+    sub_8001338
+    sub_803FF24
+
+sub_802D2E8
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_802DFF4
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_802E02A
+    sub_802E4AA
+    sub_803DA18
+
+sub_802E3C6
+    sub_80268AC
+    sub_8028BE4
+
+sub_802E418
+    maybeMallocEWRAM
+
+sub_802E47A
+    sub_8000DE6
+
+sub_802E4AA
+    sub_8000DE6
+    sub_803DA18
+
+sub_802E4EE
+    sub_8000D5A
+    sub_8001432
+
+sub_802E5D2
+    sub_80003F4
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_800116A
+    sub_80011D8
+    sub_80012F0
+    sub_8001338
+    sub_800BE0E
+    sub_800C1CA
+    sub_800CD58
+
+sub_802E800
+    sub_8000AC4
+    sub_80019B4
+
+sub_802E8B0
+    sub_8001338
+
+Object::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Object::ctor
+    GameObj::ctor
+    sub_803DA18
+
+ObjectScriptGroup::38
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeMalloc
+    sub_8001432
+    sub_80050FA
+    sub_801EBCA
+
+ObjectScriptGroup::04
+    WinxClubScriptGroup::04
+    sub_801DA2A
+    sub_802EA80
+
+ObjectScriptGroup::08
+    WinxClubScriptGroup::08
+
+ObjectScriptGroup::44
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_8028C2E
+    sub_802F926
+    sub_802FA92
+
+ObjectScriptGroup::20
+    FewScriptGroups::20
+    GetEWRAMStart
+    maybeMalloc
+
+sub_802ED1C
+    strlen_0
+
+sub_802EF0A
+    __16__rt_memclr_w
+    nullsub_1
+    safe_memcpy
+    strToLower
+    strcpy
+    strlen_0
+    strstr
+    sub_802ED1C
+
+sub_802F04E
+    safe_memcpy
+    strlen_0
+
+Anonymous18::Create
+    Init_and_add_some_object
+    __16_ll_mulss
+    __16_ll_sdiv
+    j_mod_100
+    maybeMallocEWRAM
+
+Anonymous18::ctor
+    GameObj::ctor
+    sub_803DA18
+
+sub_802F2C6
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_8017A0A
+    sub_8023A3A
+    sub_8023A70
+    sub_8023B22
+    sub_8028C2E
+    sub_803F528
+    sub_803F72C
+    sub_803FF24
+    sub_80401E4
+
+sub_802F926
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_803FF24
+    sub_80401E4
+
+sub_802FA92
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    sub_80007A0
+    sub_8000D5A
+    sub_8018620
+    sub_803FF24
+
+Bird::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Bird::ctor
+    GameObj::ctor
+    sub_803DA18
+
+Bird::04
+    WinxClubScriptGroup::04
+
+Bird::08
+    WinxClubScriptGroup::08
+
+Bird::38
+    GetEWRAMStart
+    maybeMalloc
+
+Bird::44
+    rand
+    sub_80003F4
+    sub_80007A0
+    sub_8000914
+    sub_8002004
+    sub_800BE0E
+    sub_800C1CA
+    sub_8028BE4
+    sub_8028C2E
+
+Bird::10
+    __16_ll_mulss
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    j_mod_100
+    j_mod_90
+    rand
+    sub_8000914
+    sub_8000D5A
+    sub_801EBCA
+
+Bird::20
+    FewScriptGroups::20
+    GetEWRAMStart
+    maybeMalloc
+
+sub_8030244
+    FadeToBlack
+    SetNextGlobalFunction
+    sub_8000DE6
+    sub_800B72A
+    sub_800EF2A
+    sub_802383A
+    sub_8028A7C
+
+sub_80302CC
+    sub_8028C2E
+
+sub_8030346
+    FadeToImage
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_800065C
+    sub_800116A
+    sub_80011D8
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_800BE0E
+    sub_800C1CA
+    sub_800CD58
+    sub_800E53C
+    sub_80138E2
+    sub_80147FA
+    sub_80302CC
+    sub_803D66C
+    sub_803F9C4
+
+HandleGameOverScreen
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8028C2E
+    sub_8030244
+    sub_80302CC
+    sub_8030346
+
+Monster::Create
+    HostileCreature::Create
+    maybeMallocEWRAM
+
+Monster::ctor
+    HostileCreature::ctor
+    sub_803DA18
+
+Monster::40
+    sub_802913E
+
+Monster::Intersect
+    NonHostileScriptGroups::TakeDamage
+    __call_via_r1
+    sub_801F450
+    sub_8028C2E
+    sub_802B0CA
+
+Monster:TakeDamage
+    NonHostileScriptGroups::TakeDamage
+    sub_8028C2E
+
+Monster::50
+    sub_8028C2E
+
+Critter::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Critter::ctor
+    GameObj::ctor
+    sub_803DA18
+
+Critter::04
+    WinxClubScriptGroup::04
+
+Critter::08
+    WinxClubScriptGroup::08
+
+Critter::38
+    GetEWRAMStart
+    maybeMalloc
+
+Critter::44
+    rand
+    sub_80003F4
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_8002004
+    sub_800BE0E
+    sub_800C1CA
+    sub_8028C2E
+
+Critter::10
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    j_mod_100
+    j_mod_90
+    rand
+    sub_8000914
+    sub_8000D5A
+    sub_801EBCA
+
+Critter::20
+    FewScriptGroups::20
+    GetEWRAMStart
+    maybeMalloc
+
+sub_8031578
+    maybeMallocEWRAM
+
+sub_80315A2
+    sub_803DA18
+    sub_803DA4C
+
+sub_80315CE
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_803DA4C
+
+sub_8031622
+    __16__rt_memclr
+    __16__rt_memcpy
+
+Kiko::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Kiko::ctor
+    GameObj::ctor
+    sub_803DA18
+
+Kiko::04
+    WinxClubScriptGroup::04
+
+Kiko::08
+    WinxClubScriptGroup::08
+
+Kiko::10
+    j_mod_3
+    rand
+    sub_800065C
+    sub_8000D5A
+    sub_801EBCA
+
+sub_8031830
+    FadeToBlack
+    SetNextGlobalFunction
+    maybeInitTransitionLevelScreen
+    sub_8000DE6
+    sub_800B72A
+    sub_800E53C
+    sub_800EF2A
+    sub_8017620
+    sub_8028A7C
+
+sub_80318BC
+    AllocateEWRAMLinkedList
+    FadeToImage
+    GetEWRAMStart
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_8004FFC
+    sub_80050FA
+    sub_800B058
+    sub_800E53C
+    sub_8017B9A
+    sub_8017CA0
+    sub_8018C48
+    sub_8028A7C
+    sub_803D66C
+
+HandleShowPictureScreen
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80158E0
+    sub_8016108
+    sub_8017620
+    sub_8017A0A
+    sub_8018C48
+    sub_8031830
+    sub_80318BC
+    sub_803F72C
+
+sub_8031D00
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_8032A90
+    maybeMallocEWRAM
+    sub_802E418
+
+WinxClub::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+    sub_8024E54
+
+WinxClub::ctor
+    GameObj::ctor
+    sub_8024EBC
+    sub_803DA18
+
+sub_80333DC
+    sub_8002004
+
+sub_803357C
+    __call_via_r1
+    sub_8033512
+
+WinxClub::38
+    sub_803FF24
+
+WinxClub::10
+    GetEWRAMStart
+    __call_via_r1
+    __call_via_r5
+    __call_via_r6
+    maybeMalloc
+    sub_80003F4
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_80050FA
+    sub_800BE0E
+    sub_800C1CA
+    sub_801EBCA
+    sub_8023AA2
+    sub_8032A90
+    sub_8033512
+    sub_803357C
+    sub_8033C58
+    sub_803FC14
+    sub_803FF24
+
+WinxClub::3C
+    sub_800065C
+    sub_8000D5A
+    sub_803FF24
+
+WinxClub::18
+    MostScriptGroups::18
+    __call_via_r1
+
+WinxClub::1C
+    MostScriptGroups::1C
+    __call_via_r1
+
+WinxClub::20
+    FewScriptGroups::20
+    __call_via_r2
+
+sub_8033C58
+    maybeMallocEWRAM
+    sub_802E418
+
+Boss::Create
+    HostileCreature::Create
+    maybeMallocEWRAM
+
+Boss::ctor
+    HostileCreature::ctor
+    sub_803DA18
+
+Boss::04
+    sub_8029290
+    sub_80294EE
+
+Boss::08
+    HostileCreature::08
+
+Boss::40
+    sub_802913E
+
+sub_803490C
+    __16_ll_mulls
+    __16_ll_sdiv
+    j_mod_15
+    j_mod_20
+    j_mod_5
+    rand
+    sub_802F926
+    sub_802FA92
+    sub_8040574
+
+Boss::10
+    Monster::10
+
+Boss::Intersect
+    NonHostileScriptGroups::TakeDamage
+    __call_via_r1
+    sub_801F450
+    sub_8023AA2
+    sub_8023FE4
+    sub_8028C2E
+    sub_802B0CA
+    sub_803490C
+    sub_8034A86
+
+Boss::TakeDamage
+    NonHostileScriptGroups::TakeDamage
+    sub_8028C2E
+
+Boss::50
+    sub_8028C2E
+
+sub_8034D98
+    FadeToBlack
+    sub_8000DE6
+    sub_800B72A
+    sub_800EF2A
+    sub_8028A7C
+
+sub_8034E4A
+    sub_80138E2
+    sub_8013B9C
+    sub_8028C2E
+    sub_8040034
+
+sub_8034EE0
+    FadeToImage
+    VBlank
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_8004FFC
+    sub_80050FA
+    sub_800B6A8
+    sub_800B72A
+    sub_800D912
+    sub_800D9E0
+    sub_80137F8
+    sub_80138E2
+    sub_8013B9C
+    sub_80147FA
+    sub_8014B02
+    sub_8018C48
+    sub_8028A7C
+    sub_802EF0A
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+
+HandleAlbum
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80139AC
+    sub_80143E0
+    sub_8014436
+    sub_8028A7C
+    sub_8034D98
+    sub_8034E4A
+    sub_8034EE0
+
+ToggleObject::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+Toggle::ctor
+    GameObj::ctor
+    sub_803DA18
+
+sub_8035530
+    sub_801DB90
+
+ToggleObjectGroup::04
+    WinxClubScriptGroup::04
+    __call_via_r2
+    sub_801DB90
+    sub_803554A
+
+ToggleObjectGroup::08
+    WinxClubScriptGroup::08
+    sub_801DB90
+
+ToggleObjectGroup::38
+    GetEWRAMStart
+    maybeMalloc
+
+ToggleObjectGroup::20
+    FewScriptGroups::20
+    GetEWRAMStart
+    maybeMalloc
+
+ToggleObjectGroup::10
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_801EBCA
+    sub_8028C2E
+
+ToggleObjectGroup::48
+    MostNonHostileScriptGroups::Dying
+
+ToggleObjectGroup::44
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_80179BE
+    sub_80268AC
+    sub_8028C2E
+
+WallObject::Create
+    Init_and_add_some_object
+    maybeMallocEWRAM
+
+WallObject::ctor
+    GameObj::ctor
+    sub_803DA18
+
+sub_8035F54
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+
+WallObjectScriptGroup::04
+    WinxClubScriptGroup::04
+    __call_via_r2
+    sub_8035F1C
+    sub_8035F54
+
+WallObjectScriptGroup::08
+    WinxClubScriptGroup::08
+
+WallObjectScriptGroup::38
+    GetEWRAMStart
+    maybeMalloc
+
+WallObjectScriptGroup::20
+    FewScriptGroups::20
+    GetEWRAMStart
+    maybeMalloc
+
+WallObjectScriptGroup::48
+    MostNonHostileScriptGroups::Dying
+
+WallObjectScriptGroup::44
+    sub_80179BE
+    sub_803F110
+
+WallObjectScriptGroup::Intersect
+    __call_via_r1
+
+WallObjectScriptGroup::TakeDamage
+    sub_8000D5A
+    sub_80179BE
+    sub_8028C2E
+    sub_802F926
+    sub_802FA92
+    sub_803F110
+
+WallObjectScriptGroup::10
+    sub_8000D5A
+    sub_801EBCA
+
+Static1::Create
+    HostileCreature::Create
+    maybeMallocEWRAM
+
+sub_803666C
+    HostileCreature::ctor
+    sub_803DA18
+
+Static2::Create
+    HostileCreature::Create
+    maybeMallocEWRAM
+
+sub_8036D30
+    HostileCreature::ctor
+    sub_803DA18
+
+sub_803772C
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_8037E48
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_80384FA
+    sub_802E8B0
+
+sub_8038544
+    __16__rt_sdiv
+    __16__rt_udiv
+    sub_80138E2
+    sub_8028C2E
+    sub_8040034
+
+sub_80385AC
+    FadeToImage
+    maybeLoadOrRenderBgImage
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_80011D8
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_800B6A8
+    sub_800B72A
+    sub_800CD58
+    sub_80138E2
+    sub_80147FA
+    sub_8014B02
+    sub_8028A7C
+    sub_803D66C
+    sub_803F9C4
+    sub_8040034
+
+sub_8038754
+    FadeToBlack
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_8000DE6
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_80235E4
+    sub_8028C2E
+    sub_8038544
+    sub_80385AC
+
+sub_8038888
+    FadeToBlack
+    GetNextGlobalFunction
+    j_FadeToBlack
+    sub_8000DE6
+    sub_801B170
+    sub_8028A7C
+
+sub_803894A
+    sub_80138E2
+    sub_8028C2E
+    sub_8040034
+
+sub_80389CC
+    FadeToImage
+    VBlank
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_80046F8
+    sub_8004784
+    sub_80047BE
+    sub_8004FFC
+    sub_80050FA
+    sub_800B6A8
+    sub_800B72A
+    sub_800D912
+    sub_800D9E0
+    sub_80138E2
+    sub_80147FA
+    sub_8014B02
+    sub_8018C48
+    sub_8028A7C
+    sub_802EF0A
+    sub_803D66C
+    sub_803F708
+    sub_803F9C4
+    sub_8040034
+    sub_80401E4
+
+HandleTeleportMenu
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8038888
+    sub_803894A
+    sub_80389CC
+
+sub_8038E44
+    FadeToBlack
+    j_FadeToBlack
+    sub_8000DE6
+    sub_8028A7C
+
+sub_8038EE2
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_80003F4
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_8000DE6
+    sub_800116A
+    sub_800EF2A
+    sub_80138E2
+    sub_80143E0
+    sub_8014436
+    sub_80147FA
+    sub_802383A
+    sub_80239EC
+    sub_8028C2E
+    sub_803F814
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+    sub_804025C
+
+sub_80391C8
+    sub_802383A
+    sub_8028C2E
+    sub_8038EE2
+
+sub_8039206
+    j_mod_3_2
+    sub_800065C
+    sub_8000D5A
+    sub_8018C48
+    sub_8028C2E
+    sub_8040034
+    sub_80401E4
+
+sub_8039336
+    FadeToImage
+    VBlank
+    j_mod_3600
+    j_mod_6
+    j_mod_60
+    maybeInitTransitionLevelScreen
+    sub_800065C
+    sub_80007A0
+    sub_8000914
+    sub_800116A
+    sub_8001A60
+    sub_8004FFC
+    sub_80050FA
+    sub_800B6A8
+    sub_800B72A
+    sub_800D912
+    sub_800D9E0
+    sub_800E53C
+    sub_80137F8
+    sub_80138E2
+    sub_801390A
+    sub_80147FA
+    sub_8018C48
+    sub_802383A
+    sub_8028A7C
+    sub_802EF0A
+    sub_803F9C4
+    sub_8040034
+    sub_80401C0
+    sub_80401E4
+
+HandleNewGameScreen
+    SetNextGlobalFunction
+    __vecmap1c__FPvT1iPFPv_v
+    __vecmap1ci__FPvT1iPFPvi_v
+    sub_800EF2A
+    sub_80143E0
+    sub_8014436
+    sub_8038E44
+    sub_80391C8
+    sub_8039206
+    sub_8039336
+
+sub_80399A4
+    Boss::Create
+    maybeMallocEWRAM
+
+Scanner::Create
+    Monster::Create
+    __vecmap1c__FPvT1iPFPv_v
+    maybeMallocEWRAM
+
+Scanner::ctor
+    Monster::ctor
+    sub_803DA18
+
+ScannerScriptGroup::Dying
+    HostileCreature::Dying
+
+ScannerScriptGroup::40
+    sub_802913E
+
+ScannerScriptGroup::60
+    __call_via_r1
+    sub_80179BE
+    sub_80187A0
+    sub_803F0A8
+
+ScannerScriptGroup::10
+    GetEWRAMStart
+    __call_via_r1
+    __call_via_r6
+    maybeMalloc
+    sub_80007A0
+    sub_8000914
+    sub_8000D5A
+    sub_8001432
+    sub_80050FA
+    sub_801EBCA
+    sub_8037E48
+    sub_803F2CC
+    sub_803FC14
+
+ScannerScriptGroup::Intersect
+    NonHostileScriptGroups::TakeDamage
+
+ScannerScriptGroup::20
+    HostileCreature::20
+    sub_8001338
+
+sub_803AB80
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_803AE68
+    maybeMallocEWRAM
+    sub_802E418
+
+sub_803B15C
+    maybeMallocEWRAM
+    sub_8010574
+
+sub_803B184
+    sub_80105AE
+    sub_803DA18
+
+sub_803B1AE
+    __16__rt_udiv
+    __call_via_r1
+    maybeFinalizeVideoAudio
+    maybeSmallAudioSetup
+    safe_memcpy
+    sub_8004674
+    sub_80108DA
+    sub_8010B8A
+    sub_802F04E
+    sub_803D9C4
+    sub_803E210
+
+sub_803B318
+    CallSoftReset
+    FadeToBlack
+    SetNextGlobalFunction
+    __call_via_r1
+    sub_80050FA
+
+sub_803B342
+    FadeToImage
+    __call_via_r2
+    __call_via_r3
+    __call_via_r5
+    maybeInitTransitionLevelScreen
+    maybeLoadOrRenderBgImage
+    sub_80050FA
+    sub_800E53C
+    sub_80138E2
+    sub_8013B76
+    sub_8013C40
+    sub_80147FA
+    sub_8014B02
+
+HandlePostGameCredits
+    CallSoftReset
+    FadeToBlack
+    SetNextGlobalFunction
+    __call_via_r1
+    __call_via_r4
+    sub_80050FA
+    sub_800EF2A
+    sub_80138E2
+    sub_80139AC
+    sub_8013B9C
+    sub_80143E0
+    sub_8014436
+    sub_803B342
+
+sub_803B5A0
+    EepromTimerIntr
+
+Dma3Transmit
+    sub_803B664
+
+sub_803B664
+    EepromTimerIntr
+
+sub_803B7C4
+    sub_803B5A0
+
+sub_803B81C
+    Dma3Transmit
+    sub_803B7C4
+
+sprintf
+    __vfprintf
+    _sputc
+
+atoi
+    j___rt_errno_addr
+    strtol
+
+__cpp_initialise
+    __call_via_r0
+
+_ll_sdiv
+    _ll_udiv
+
+_ll_srdv
+    _ll_urdv
+
+__pvfn__Fv
+    raise
+
+__vecmap1c__FPvT1iPFPv_v
+    __call_via_r7
+
+__vecmap1ci__FPvT1iPFPvi_v
+    __call_via_r7
+
+__vec_ctor_p__FPvUiT2bPFPv_v
+    __call_via_r7
+
+__vec_dtor__FPvUiPFPvi_vPFPv_v
+    __call_via_r1
+    __call_via_r7
+    sub_803DA4C
+
+vsprintf
+    __vfprintf
+    _sputc
+
+__vfprintf
+    __16_ll_cmpge
+    __16_ll_neg
+    __call_via_r1
+    __call_via_r2
+    _printf_display
+    strlen_0
+
+_printf_display
+    __16_ll_cmpu
+    __16_ll_udiv10
+    __call_via_r2
+    j___rt_udiv10
+    j__sub_4A6A0
+    strlen_0
+    sub_8041440
+
+__rt_entry
+    _rt_lib_init
+    _rt_stackheap_init
+    exit_0
+    sub_800B0D8
+
+__32__rt_exit
+    j___rt_lib_shutdown
+
+raise
+    __rt_raise
+
+__rt_errno_addr
+    _user_libspace
+
+strtol
+    __16__rt_ctype_table
+    _strtoul
+    j___rt_errno_addr
+
+_strtoul
+    _chval
+    j___rt_errno_addr
+
+exit_0
+    __rt_exit
+
+__rt_lib_init
+    __cpp_initialise
+    j__user_libspace
+    j_nullsub_2
+    rand_init
+    unknown_libname_1
+
+__rt_ctype_table
+    _user_libspace
+
+__32__rt_raise
+    j___raise
+
+__raise
+    __call_via_r2
+    __default_signal_handler
+
+unknown_libname_1
+    __16strcmp
+
+__default_signal_handler
+    _ttywrch
+
+sub_803D4A8
+    GetEWRAMStart
+    maybeMalloc
+    sub_803E17C
+    sub_803E258
+    sub_803E260
+    sub_803E268
+    sub_803E270
+    sub_803E278
+    sub_803E280
+
+sub_803D5A4
+    __call_via_r2
+    __call_via_r3
+    sub_803D4A8
+    sub_803D9A8
+    sub_803D9C4
+
+sub_803D680
+    sub_80046EE
+    sub_800476C
+    sub_8004784
+    sub_80047B6
+    sub_80047BE
+
+sub_803D834
+    sub_80047B6
+    sub_80047BA
+    sub_80047BE
+    sub_80047DA
+
+sub_803D984
+    sub_80051D6
+
+sub_803D9A8
+    sub_8005220
+
+sub_803D9C4
+    __16__rt_memclr
+    sub_80051D6
+
+maybeMallocEWRAM
+    sub_80051D6
+
+sub_803DA18
+    sub_8005220
+
+sub_803DA4C
+    sub_8005220
+
+maybeMalloc
+    sub_80051D6
+
+AllocateEWRAMLinkedList
+    sub_80051D6
+
+_rt_stackheap_init
+    j_SomehowInitEWRAMLinkedList
+
+sub_803EF2C
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    sub_800116A
+    sub_80015F2
+    sub_803F8BC
+    sub_803FE80
+    sub_803FF64
+    sub_8040034
+    sub_80401E4
+
+sub_803F170
+    sub_80012F0
+    sub_8001338
+
+sub_803F1AC
+    sub_80012F0
+    sub_8001338
+
+sub_803F23C
+    sub_80012F0
+    sub_8001338
+
+sub_803F2CC
+    sub_80003F4
+    sub_800BE0E
+    sub_800C1CA
+
+sub_803F3B4
+    __16_ll_mulss
+    __16_ll_sdiv
+
+sub_803F3E8
+    CpuSet
+
+sub_803F464
+    CpuSet
+
+sub_803F528
+    vsprintf
+
+sub_803F55C
+    sub_800C0EC
+
+sub_803F5FC
+    sub_8000DE6
+    sub_803DA4C
+
+sub_803F6B4
+    sub_8000D5A
+
+sub_803F6E0
+    sub_8000D5A
+
+sub_803F774
+    sub_803F8BC
+
+sub_803F898
+    sub_8000D5A
+
+sub_803F8BC
+    sub_8000D5A
+
+sub_803F928
+    __16__rt_udiv
+
+sub_803F9C4
+    __call_via_r2
+    __call_via_r3
+    __call_via_r5
+    sub_8013B76
+
+sub_803FA3C
+    sub_8000324
+    sub_80003F4
+    sub_800BE0E
+    sub_800C1CA
+
+sub_803FC14
+    __16_ll_sdiv
+    __16_ll_sshift_r
+    sub_8000D5A
+
+sub_803FC68
+    AllocateEWRAMLinkedList
+    GetEWRAMStart
+    maybeMalloc
+    sub_80050FA
+
+sub_803FDB8
+    AllocateEWRAMLinkedList
+    CpuSet
+    GetEWRAMStart
+
+sub_803FE80
+    sub_8000324
+    sub_80003F4
+    sub_800BE0E
+    sub_800C1CA
+
+sub_803FF64
+    sub_8000D5A
+    sub_800C0EC
+    sub_800C164
+    sub_800CD04
+
+sub_8040034
+    sub_800BE0E
+    sub_800C1CA
+
+sub_8040104
+    sub_803DA4C
+    sub_8041274
+
+sub_8040148
+    sub_800C482
+    sub_800C4F0
+
+sub_80401E4
+    sub_80011D8
+    sub_8001232
+    sub_800CD28
+    sub_800CD58
+
+sub_804025C
+    sub_800BE0E
+    sub_800C1CA
+
+sub_80402F8
+    __call_via_r2
+
+sub_804036C
+    maybeMallocEWRAM
+
+sub_80403A4
+    sub_8012334
+    sub_803DA18
+
+sub_8040708
+    Div
+    __call_via_r3
+    sub_8040C38
+
+sub_80409E4
+    DivRem
+    sub_8040978
+
+sub_8040C78
+    CpuSet
+    sub_8040708
+    sub_8040978
+    sub_8040C38
+
+sub_8041020
+    maybeMallocEWRAM
+
+sub_804122C
+    sub_803DA18
+
+sub_8041274
+    sub_803DA18
+    sub_803DA4C
+
+sub_80412A8
+    CpuSet
+    maybeSmallAudioSetup
+    safe_memcpy
+    strlen_0
+    sub_8008008
+    sub_803D984
+    sub_803D9A8
+    sub_803D9C4
+    sub_803E17C
+    sub_803E188
+    sub_803E194
+    sub_803E1A0
+    sub_803E1AC
+    sub_803E1B8
+    sub_803E1C4
+    sub_803F3E8
+
+sub_80518D4
+    j___rt_memclr_w
+    j___rt_memcpy
+    sub_80517C8
+    sub_8052570
+    sub_8052A70
+
+maybeParseJPEG
+    j_AllocateEWRAMLinkedList
+    j_GetEWRAMStart
+    j___rt_memcpy
+    j_strcmp
+    sub_80518D4
+    sub_8052A20
+    sub_8052A2C
+    sub_8052A58
+    sub_8052B08
+
+sub_8052B08
+    sub_8052A64
+
+sub_8052BF4
+    sub_8053CCC
+    sub_8053CD8
+
+sub_8052C4C
+    sub_8053CE4
+
+sub_8052C84
+    sub_8053CFC
+
+sub_8052DD4
+    decompressImage
+
+sub_8054344
+    j___rt_sdiv
+    j___rt_udiv
+
+sub_80545E4
+    sub_80557C4
+
+sub_805477C
+    j___rt_memclr
+    j___rt_sdiv
+    sub_80545E4
+    sub_80557C4
+    sub_80557D0
+    sub_80557DC
+    sub_80557E8
+    sub_80557FC
+    sub_8055808
+
+sub_8054A4C
+    j___rt_memclr
+    j___rt_sdiv
+    sub_80545E4
+    sub_80557C4
+    sub_8055814
+
+sub_8054CEC
+    sub_80557C4
+    sub_8055820
+
+sub_8055014
+    sub_8055814
+    sub_805582C
