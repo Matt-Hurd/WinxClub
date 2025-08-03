@@ -1,12 +1,12 @@
 	AREA data, DATA
 
-	GLOBAL gUnknown_08051744
+	GLOBAL eeprom_list
 	GLOBAL gUnknown_08051750
 
 	DCB "EEPROM_V124"
 	DCB 0x00
 
-gUnknown_08051744
+eeprom_list
 	INCBIN data/ripped/00051744.bin
 
     EXPORT gUnknown_08051750

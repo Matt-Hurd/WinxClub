@@ -266,6 +266,9 @@ LOAD_ROM_1 0x08000000
         split_803AE60.o
         split_803B150.o
         split_803B318.o
+    }
+    agbeeprom 0x803B4D8
+    {
         split_803B4D8.o
         split_803B520.o
         split_803B5A0.o

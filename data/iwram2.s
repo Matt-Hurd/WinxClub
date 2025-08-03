@@ -17,7 +17,7 @@
 	GLOBAL gUnknown_03003EB4
 	GLOBAL gUnknown_03003EB8
 	GLOBAL gUnknown_03003EBC
-	GLOBAL gUnknown_03003EC0
+	GLOBAL eeprom
 	GLOBAL gUnknown_03003EC4
 	GLOBAL gInterruptStack
 	GLOBAL gUnknown_03007FA0
@@ -75,7 +75,7 @@ gUnknown_03003EB8
 gUnknown_03003EBC
 	SPACE 0x4
 
-gUnknown_03003EC0
+eeprom
 	SPACE 0x4
 
 gUnknown_03003EC4

@@ -1,7 +1,7 @@
     INCLUDE asm/macros.inc
     AREA text, CODE
 
-	IMPORT sub_803B650
+	IMPORT Dma3Transmit
 	IMPORT sub_803B7C4
 	IMPORT __vfprintf
 	IMPORT _sputc
@@ -23,7 +23,7 @@ _0803B82E
 	bhi _0803B852
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_803B650
+	bl Dma3Transmit
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0

@@ -1,10 +1,10 @@
     INCLUDE asm/macros.inc
     AREA text, CODE
 
-	IMPORT gUnknown_03003EC0
+	IMPORT eeprom
 
-	thumb_func_start sub_803B520
-sub_803B520 ;@ 0x0803B520
+	thumb_func_start EepromTimerIntr
+EepromTimerIntr ;@ 0x0803B520
 	push {r4, r5, r6, lr}
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -17,7 +17,7 @@ sub_803B520 ;@ 0x0803B520
 	ldrh r4, [r5]
 	ldr r3, _0803B588 ;@ =0x0000F8FF
 	ands r4, r3
-	ldr r3, _0803B58C ;@ =gUnknown_03003EC0
+	ldr r3, _0803B58C ;@ =eeprom
 	ldr r3, [r3]
 	ldrh r3, [r3, #6]
 	orrs r4, r3
@@ -25,6 +25,9 @@ sub_803B520 ;@ 0x0803B520
 	ldr r3, _0803B590 ;@ =0x040000D4
 	str r0, [r3]
 	ldr r0, _0803B594 ;@ =0x040000D8
+
+	thumb_func_start SetEepromTimerIntr
+SetEepromTimerIntr ;@ 0x0803B520
 	str r1, [r0]
 	ldr r1, _0803B598 ;@ =0x040000DC
 	movs r0, #0x80
@@ -58,7 +61,7 @@ _0803B574
 _0803B580 DCDU 0x04000208
 _0803B584 DCDU 0x04000204
 _0803B588 DCDU 0x0000F8FF
-_0803B58C DCDU gUnknown_03003EC0
+_0803B58C DCDU eeprom
 _0803B590 DCDU 0x040000D4
 _0803B594 DCDU 0x040000D8
 _0803B598 DCDU 0x040000DC
