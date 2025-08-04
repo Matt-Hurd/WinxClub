@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003E98
-	IMPORT gUnknown_0803EC7C
+	IMPORT __VTABLE__351dword_803EC7C
 	IMPORT gUnknown_0804AE80
 	IMPORT sub_8004674
 	IMPORT sub_800529A
@@ -18,7 +18,7 @@
 	IMPORT __call_via_r1
 	IMPORT __16__rt_udiv
 	IMPORT sub_803D9C4
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT gUnknown_03001444
 
@@ -34,24 +34,24 @@ sub_803B150
 sub_803B15C
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0803B174
+	bne %2
 	ldr r0, _0803B300
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0803B174
+	bne %2
 	adds r0, r4, #0
-_0803B16E
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0803B174
+2
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_8010574
 	ldr r0, _0803B304
 	str r0, [r4]
 	adds r0, r4, #0
-	b _0803B16E
+	b %1
 
 	thumb_func_start sub_803B184
 sub_803B184
@@ -64,16 +64,16 @@ sub_803B184
 	adds r0, r4, #0
 	bl sub_80105AE
 	cmp r5, #0
-	beq _0803B1A0
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0803B1A0
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start nullsub_60
-nullsub_60
+	non_word_aligned_thumb_func_start sub_803B1A6
+sub_803B1A6
 	bx lr
 
 	thumb_func_start sub_803B1A8
@@ -81,8 +81,8 @@ sub_803B1A8
 	movs r0, #0
 	bx lr
 
-	thumb_func_start nullsub_61
-nullsub_61
+	thumb_func_start sub_803B1AC
+sub_803B1AC
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_803B1AE
@@ -163,9 +163,9 @@ sub_803B1AE
 	lsrs r2, r2, #0x16
 	lsls r3, r0, #8
 	cmp r2, r3
-	bhi _0803B258
+	bhi %4
 	movs r0, #0
-_0803B258
+4
 	movs r2, #0x84
 	str r0, [r2, r4]
 	movs r2, #0
@@ -194,12 +194,12 @@ _0803B258
 	strb r0, [r6, #0xc]
 	movs r3, #0
 	strb r3, [r6, #0xe]
-_0803B296
+5
 	adds r0, r4, #0
 	bl sub_8010D60
 	ldrb r0, [r6, #0xc]
 	cmp r0, #0
-	bne _0803B296
+	bne %5
 	ldrb r1, [r6, #0xe]
 	ldr r0, [r7, #0x24]
 	lsls r3, r1, #1
@@ -246,7 +246,7 @@ _0803B296
 	bx r3
 	ALIGN
 _0803B300 DCDU 0x0000172C
-_0803B304 DCDU gUnknown_0803EC7C
+_0803B304 DCDU __VTABLE__351dword_803EC7C
 _0803B308 DCDU gUnknown_03003E84
 _0803B30C DCDU 0xFFC00FFF
 _0803B310 DCDU gUnknown_03003E98

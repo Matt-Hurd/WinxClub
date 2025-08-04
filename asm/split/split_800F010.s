@@ -43,45 +43,45 @@ sub_800F010
 	adds r7, r2, r7
 	ldr r2, [r3]
 	cmp r2, #0
-	ble _0800F05A
+	ble %1
 	adds r1, r2, r1
-	b _0800F05C
-_0800F05A
+	b %2
+1
 	adds r0, r2, r0
-_0800F05C
+2
 	ldr r2, [r3, #4]
 	cmp r2, #0
-	ble _0800F066
+	ble %3
 	adds r5, r2, r5
-	b _0800F068
-_0800F066
+	b %4
+3
 	adds r4, r2, r4
-_0800F068
+4
 	cmp r0, lr
-	ble _0800F074
+	ble %6
 	movs r0, #0
-_0800F06E
+5
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800F074
+6
 	cmp r1, ip
-	bge _0800F07C
+	bge %7
 	movs r0, #0
-	b _0800F06E
-_0800F07C
+	b %5
+7
 	cmp r4, r7
-	ble _0800F084
+	ble %8
 	movs r0, #0
-	b _0800F06E
-_0800F084
+	b %5
+8
 	cmp r5, r6
-	bge _0800F08C
+	bge %9
 	movs r0, #0
-	b _0800F06E
-_0800F08C
+	b %5
+9
 	movs r0, #1
-	b _0800F06E
+	b %5
 
 	thumb_func_start sub_800F090
 sub_800F090
@@ -92,13 +92,13 @@ sub_800F090
 	adds r4, r0, #0
 	bl sub_800F010
 	cmp r0, #0
-	bne _0800F0AA
-_0800F0A2
+	bne %11
+10
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800F0AA
+11
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0]
@@ -132,38 +132,38 @@ _0800F0AA
 	asrs r0, r0, #8
 	movs r5, #0
 	cmp r0, #2
-	bgt _0800F0FA
+	bgt %12
 	movs r5, #1
-	b _0800F110
-_0800F0FA
+	b %15
+12
 	cmp r0, #4
-	bgt _0800F102
+	bgt %13
 	movs r5, #2
-	b _0800F110
-_0800F102
+	b %15
+13
 	cmp r0, #8
-	bgt _0800F10A
+	bgt %14
 	movs r5, #3
-	b _0800F110
-_0800F10A
+	b %15
+14
 	cmp r0, #0x10
-	bgt _0800F110
+	bgt %15
 	movs r5, #4
-_0800F110
+15
 	movs r0, #1
 	lsls r0, r5
 	movs r1, #1
 	str r1, [sp, #8]
 	cmp r0, #1
 	str r0, [sp, #0x18]
-	blt _0800F1D6
+	blt %18
 	ldr r2, [sp, #0x24]
 	ldr r0, [sp, #0x20]
 	adds r2, #0x2c
 	adds r0, #0x2c
 	str r0, [sp, #0x10]
 	str r2, [sp, #0x14]
-_0800F12A
+16
 	ldr r0, [sp, #0x10]
 	adds r2, r6, #0
 	ldr r1, [r0]
@@ -195,7 +195,7 @@ _0800F12A
 	adds r0, r1, r0
 	ldr r1, [sp, #0xc]
 	cmp r0, r1
-	bgt _0800F1BE
+	bgt %17
 	ldr r0, [sp, #0x28]
 	ldr r2, _0800F1E0
 	ldr r0, [r0]
@@ -233,8 +233,8 @@ _0800F12A
 	ldr r2, [sp, #0x24]
 	movs r0, #1
 	str r2, [r4, #0x38]
-	b _0800F0A2
-_0800F1BE
+	b %10
+17
 	ldr r0, [sp, #0x28]
 	ldr r0, [r0]
 	adds r6, r0, r6
@@ -246,10 +246,10 @@ _0800F1BE
 	adds r1, #1
 	str r1, [sp, #8]
 	cmp r0, r1
-	bge _0800F12A
-_0800F1D6
+	bge %16
+18
 	movs r0, #0
-	b _0800F0A2
+	b %10
 
 	non_word_aligned_thumb_func_start sub_800F1DA
 sub_800F1DA

@@ -15,15 +15,15 @@ sub_802E800
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x1d
 	cmp r0, #2
-	beq _0802E85E
+	beq %1
 	ldr r0, [r4, #4]
 	cmp r0, #0
-	beq _0802E85E
+	beq %1
 	adds r1, r4, #0
 	adds r1, #0x24
 	bl sub_8000AC4
 	cmp r0, #0
-	beq _0802E85E
+	beq %1
 	ldr r0, _0802E8FC
 	ldr r0, [r0]
 	bl sub_80019B4
@@ -36,9 +36,9 @@ sub_802E800
 	movs r0, #0x50
 	ldrb r0, [r0, r1]
 	cmp r0, #0
-	beq _0802E85E
+	beq %1
 	lsls r2, r0, #0x1e
-	bpl _0802E866
+	bpl %2
 	movs r1, #1
 	ldr r0, [r4, #0x34]
 	lsls r1, r1, #0x15
@@ -53,35 +53,35 @@ sub_802E800
 	movs r0, #0
 	str r0, [r4, #0x24]
 	str r0, [r4, #0x28]
-_0802E85E
+1
 	add sp, #0x14
 	pop {r4, r5}
 	pop {r3}
 	bx r3
-_0802E866
+2
 	lsls r0, r0, #0x1f
-	bpl _0802E85E
+	bpl %1
 	ldr r0, [r4, #0x14]
 	ldr r2, [sp, #0xc]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	ldr r2, [sp, #0x10]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	ldr r0, [r4, #0x18]
 	ldr r2, [sp, #0xc]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	ldr r2, [sp, #0x10]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	ldr r0, [r4, #8]
 	ldr r2, [sp, #0xc]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	ldr r2, [sp, #0x10]
 	cmp r0, r2
-	beq _0802E85E
+	beq %1
 	movs r2, #1
 	ldr r0, [r4, #0x34]
 	lsls r2, r2, #0x14
@@ -89,14 +89,14 @@ _0802E866
 	str r0, [r4, #0x34]
 	ldr r0, [sp, #0xc]
 	cmp r1, r0
-	bne _0802E8AA
+	bne %3
 	ldr r0, [sp, #0x10]
 	str r0, [r4, #0xc]
-	b _0802E85E
-_0802E8AA
+	b %1
+3
 	ldr r0, [sp, #0xc]
 	str r0, [r4, #0xc]
-	b _0802E85E
+	b %1
 
 	thumb_func_start sub_802E8B0
 sub_802E8B0
@@ -106,12 +106,12 @@ sub_802E8B0
 	ldr r0, [r5]
 	movs r6, #0
 	lsls r0, r0, #0x1c
-	bpl _0802E8C8
+	bpl %4
 	ldr r0, _0802E8FC
 	adds r1, r5, #0
 	ldr r0, [r0]
 	bl sub_8001338
-_0802E8C8
+4
 	ldr r0, [r5]
 	movs r1, #8
 	bics r0, r1

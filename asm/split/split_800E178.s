@@ -21,27 +21,27 @@ sub_800E178
 	mov r1, ip
 	str r0, [r1, #0x3c]
 	lsls r0, r0, #7
-	bmi _0800E1B0
+	bmi %2
 	ldr r5, _0800E220
 	ldr r0, [r5]
 	cmp r0, #0
-	bne _0800E1B0
+	bne %2
 	movs r0, #1
 	str r0, [r5]
 	ldr r3, [r4, #8]
 	movs r6, #0
 	cmp r3, #0
-	beq _0800E1AE
+	beq %1
 	ldr r0, [r4, #4]
 	cmp r0, #0
-	bne _0800E1B6
-_0800E1AE
+	bne %3
+1
 	str r6, [r5]
-_0800E1B0
+2
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800E1B6
+3
 	movs r1, #0x21
 	ldrb r3, [r3]
 	lsls r1, r1, #6
@@ -49,8 +49,8 @@ _0800E1B6
 	movs r2, #0
 	cmp r3, #0
 	ldr r0, _0800E224
-	bls _0800E1F2
-_0800E1C6
+	bls %6
+4
 	ldr r3, [r1, #0x38]
 	adds r2, #1
 	asrs r7, r3, #0x1f
@@ -69,12 +69,12 @@ _0800E1C6
 	adds r3, r6, #0
 	adds r0, #4
 	cmp r7, #0
-	beq _0800E1EE
+	beq %5
 	ldrb r3, [r7]
-_0800E1EE
+5
 	cmp r3, r2
-	bhi _0800E1C6
-_0800E1F2
+	bhi %4
+6
 	ldr r0, _0800E228
 	mov r1, ip
 	ldr r0, [r0]
@@ -95,7 +95,7 @@ _0800E1F2
 	adds r0, r4, #0
 	bl sub_80022E2
 	str r6, [r5]
-	b _0800E1B0
+	b %2
 	ALIGN
 _0800E220 DCDU gUnknown_03003434
 _0800E224 DCDU REG_BG0HOFS

@@ -23,7 +23,7 @@
 	IMPORT __call_via_r1
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
@@ -34,18 +34,18 @@
 sub_802B288
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0802B2A2
+	bne %2
 	movs r0, #0xff
 	adds r0, #0xfd
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0802B2A2
+	bne %2
 	adds r0, r4, #0
-_0802B29C
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0802B2A2
+2
 	adds r0, r4, #4
 	bl sub_80143E0
 	adds r0, r4, #0
@@ -63,7 +63,7 @@ _0802B2A2
 	strb r1, [r4]
 	strb r1, [r4, #2]
 	movs r0, #0
-_0802B2CA
+3
 	lsls r2, r0, #2
 	adds r2, r2, r4
 	adds r2, #0xff
@@ -73,9 +73,9 @@ _0802B2CA
 	lsrs r0, r0, #0x18
 	cmp r0, #3
 	str r1, [r2, #0x24]
-	blo _0802B2CA
+	blo %3
 	movs r0, #0
-_0802B2E0
+4
 	lsls r2, r0, #2
 	adds r2, r2, r4
 	adds r2, #0xff
@@ -85,9 +85,9 @@ _0802B2E0
 	lsrs r0, r0, #0x18
 	cmp r0, #2
 	str r1, [r2, #0x30]
-	blo _0802B2E0
+	blo %4
 	adds r0, r4, #0
-	b _0802B29C
+	b %1
 
 	thumb_func_start sub_802B2F8
 sub_802B2F8
@@ -95,7 +95,7 @@ sub_802B2F8
 	adds r5, r0, #0
 	movs r4, #0
 	movs r7, #0
-_0802B300
+5
 	lsls r0, r4, #2
 	adds r1, r0, r5
 	adds r6, r1, #0
@@ -103,21 +103,21 @@ _0802B300
 	adds r6, #0xc1
 	ldr r0, [r6, #0x24]
 	cmp r0, #0
-	beq _0802B31E
+	beq %6
 	ldr r0, _0802B644
 	adds r1, #0xff
 	adds r1, #0xe5
 	ldr r0, [r0]
 	bl sub_8000DE6
 	str r7, [r6, #0x24]
-_0802B31E
+6
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #3
-	blo _0802B300
+	blo %5
 	movs r4, #0
-_0802B32A
+7
 	lsls r0, r4, #2
 	adds r1, r0, r5
 	adds r6, r1, #0
@@ -125,19 +125,19 @@ _0802B32A
 	adds r6, #0xc1
 	ldr r0, [r6, #0x30]
 	cmp r0, #0
-	beq _0802B348
+	beq %8
 	ldr r0, _0802B644
 	adds r1, #0xff
 	adds r1, #0xf1
 	ldr r0, [r0]
 	bl sub_8000DE6
 	str r7, [r6, #0x30]
-_0802B348
+8
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #2
-	blo _0802B32A
+	blo %7
 	ldr r1, [r5, #4]
 	adds r0, r5, #4
 	ldr r2, [r1, #4]
@@ -166,9 +166,9 @@ sub_802B382
 	ldrb r1, [r1, #2]
 	movs r0, #1
 	cmp r1, #0
-	bne _0802B38E
+	bne %9
 	movs r0, #0
-_0802B38E
+9
 	bx lr
 
 	thumb_func_start sub_802B390
@@ -178,10 +178,10 @@ sub_802B390
 	ldrb r0, [r0, #2]
 	adds r6, r1, #0
 	cmp r0, #0
-	beq _0802B3A2
+	beq %10
 	adds r0, r4, #0
 	bl sub_802B2F8
-_0802B3A2
+10
 	adds r1, r4, #0
 	adds r1, #0x7c
 	movs r2, #0x77
@@ -198,10 +198,10 @@ _0802B3A2
 	adds r0, r4, #4
 	bl sub_8014436
 	cmp r6, #0
-	beq _0802B3D0
+	beq %11
 	adds r0, r4, #0
 	bl sub_803DA18
-_0802B3D0
+11
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -220,7 +220,7 @@ sub_802B3D6
 	adds r1, #0xc9
 	strb r0, [r6, #1]
 	str r1, [sp, #0x10]
-_0802B3EE
+12
 	ldr r0, _0802B644
 	ldr r0, [r0]
 	bl sub_800116A
@@ -253,13 +253,13 @@ _0802B3EE
 	strb r1, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _0802B43C
+	bmi %13
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_0802B43C
+13
 	cmp r5, #2
-	bne _0802B468
+	bne %15
 	ldr r0, [sp, #0x10]
 	lsls r2, r5, #0xb
 	ldr r4, [r0, #0x24]
@@ -271,15 +271,15 @@ _0802B43C
 	bl sub_80003F4
 	ldr r0, [r4]
 	lsls r0, r0, #0x1e
-	bmi _0802B460
+	bmi %14
 	adds r0, r4, #0
 	bl sub_804025C
-_0802B460
+14
 	ldr r0, [r4]
 	movs r2, #0x80
 	orrs r0, r2
 	str r0, [r4]
-_0802B468
+15
 	movs r1, #1
 	ldr r0, [r7, #0x24]
 	bl sub_80401E4
@@ -287,10 +287,10 @@ _0802B468
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	cmp r5, #3
-	blo _0802B3EE
+	blo %12
 	movs r4, #0
 	movs r7, #0xf0
-_0802B47E
+16
 	ldr r0, _0802B644
 	ldr r0, [r0]
 	bl sub_800116A
@@ -321,11 +321,11 @@ _0802B47E
 	strb r2, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _0802B4C8
+	bmi %17
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_0802B4C8
+17
 	movs r1, #1
 	ldr r0, [r5, #0x30]
 	bl sub_80401E4
@@ -333,7 +333,7 @@ _0802B4C8
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #2
-	blo _0802B47E
+	blo %16
 	ldr r0, _0802B644
 	ldr r0, [r0]
 	bl sub_800116A
@@ -363,11 +363,11 @@ _0802B4C8
 	strb r2, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _0802B522
+	bmi %18
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_0802B522
+18
 	ldr r0, [r4, #0x38]
 	bl sub_8000914
 	movs r1, #1

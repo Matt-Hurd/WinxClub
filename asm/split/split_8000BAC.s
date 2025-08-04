@@ -105,16 +105,16 @@ sub_8000C2E
 	thumb_func_start sub_8000C58
 sub_8000C58
 	movs r1, #0
-_08000C5A
+1
 	ldrb r2, [r0, r1]
 	cmp r2, #0xff
-	beq _08000C64
+	beq %2
 	movs r0, #1
 	bx lr
-_08000C64
+2
 	adds r1, #1
 	cmp r1, #0x14
-	blo _08000C5A
+	blo %1
 	movs r0, #0
 	bx lr
 

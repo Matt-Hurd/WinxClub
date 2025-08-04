@@ -21,22 +21,22 @@ sub_803FBBC
 	ldr r2, [r0, #0x18]
 	ldr r5, [r0, #0x14]
 	cmp r2, #0
-	beq _0803FBE2
+	beq %1
 	str r5, [r2, #0x14]
-	b _0803FBE4
-_0803FBE2
+	b %2
+1
 	str r5, [r3]
-_0803FBE4
+2
 	ldr r2, [r0, #0x14]
 	cmp r2, #0
-	beq _0803FBF0
+	beq %3
 	ldr r3, [r0, #0x18]
 	str r3, [r2, #0x18]
-	b _0803FBF4
-_0803FBF0
+	b %4
+3
 	ldr r2, [r0, #0x18]
 	str r2, [r4]
-_0803FBF4
+4
 	ldrh r0, [r0, #0x10]
 	lsls r2, r0, #0x1a
 	lsrs r2, r2, #0x19

@@ -1,0 +1,58 @@
+    IMPORT  sub_3001E8C
+    IMPORT  sub_300215C
+    IMPORT  sub_80139A4
+    IMPORT  sub_80139A8
+    IMPORT  sub_8013B0A
+    IMPORT  sub_8013B64
+    IMPORT  sub_8013E64
+    IMPORT  sub_8013E72
+    IMPORT  sub_8013F1E
+    IMPORT  sub_8013F2A
+    IMPORT  sub_8013F5A
+    IMPORT  sub_8013F66
+    IMPORT  sub_8013F6C
+    IMPORT  sub_8013FAE
+    IMPORT  sub_8013FBC
+    IMPORT  sub_8013FC2
+    IMPORT  sub_8013FC4
+    IMPORT  sub_8013FF4
+    IMPORT  sub_801402C
+    IMPORT  sub_801404E
+    IMPORT  sub_8014060
+    IMPORT  sub_80141B4
+    IMPORT  sub_80142D0
+    IMPORT  sub_8040104
+
+    AREA    __VTABLE__320dword_803E6A0, DATA, READONLY
+
+    ; Human-readable label for assembly
+    GLOBAL  dword_803E6A0_VTABLE
+    EXPORT  dword_803E6A0_VTABLE
+dword_803E6A0_VTABLE
+    DCD     sub_801402C - __VTABLE__320dword_803E6A0
+    DCD     sub_8013F6C - __VTABLE__320dword_803E6A0
+    DCD     sub_8013FAE - __VTABLE__320dword_803E6A0
+    DCD     sub_80139A8 - __VTABLE__320dword_803E6A0
+    DCD     sub_8040104 - __VTABLE__320dword_803E6A0
+    DCD     sub_8014060 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013E64 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013F5A - __VTABLE__320dword_803E6A0
+    DCD     sub_8013E72 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013F1E - __VTABLE__320dword_803E6A0
+    DCD     sub_8013F66 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013F2A - __VTABLE__320dword_803E6A0
+    DCD     sub_80139A4 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013FF4 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013FBC - __VTABLE__320dword_803E6A0
+    DCD     sub_80141B4 - __VTABLE__320dword_803E6A0
+    DCD     sub_80142D0 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013FC2 - __VTABLE__320dword_803E6A0
+    DCD     sub_8013FC4 - __VTABLE__320dword_803E6A0
+    DCD     sub_3001E8C - __VTABLE__320dword_803E6A0
+    DCD     sub_8013B0A - __VTABLE__320dword_803E6A0
+    DCD     sub_8013B64 - __VTABLE__320dword_803E6A0
+    DCD     sub_300215C - __VTABLE__320dword_803E6A0
+    DCD     sub_801404E - __VTABLE__320dword_803E6A0
+
+    GLOBAL  __VTABLE__320dword_803E6A0
+    END

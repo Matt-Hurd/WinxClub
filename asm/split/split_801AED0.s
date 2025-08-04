@@ -10,7 +10,7 @@
 	IMPORT sub_800EF2A
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801ABFC
 	IMPORT sub_801AC60
 	IMPORT sub_801AD22
@@ -19,8 +19,8 @@
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
-	thumb_func_start sub_801AED0
-sub_801AED0
+	thumb_func_start HandleObjectivesScreen
+HandleObjectivesScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0xa8
@@ -53,22 +53,22 @@ sub_801AED0
 	str r1, [sp, #0x294]
 	add r4, sp, #0x194
 	add r7, sp, #0x174
-_0801AF1A
+1
 	ldr r0, _0801B0F0
 	movs r2, #0
 	ldr r0, [r0]
 	adds r3, r2, #0
 	ldr r1, [r0, #0x14]
 	lsls r5, r1, #0x1c
-	bmi _0801AF2A
+	bmi %2
 	ldrh r3, [r0, #8]
-_0801AF2A
+2
 	lsls r5, r3, #0x10
 	lsrs r5, r5, #0x10
 	lsls r1, r1, #0x1c
-	bmi _0801AF34
+	bmi %3
 	ldrh r2, [r0, #4]
-_0801AF34
+3
 	ldrh r0, [r7, #0x1c]
 	ldrh r1, [r7, #0x1e]
 	lsls r6, r2, #0x10
@@ -98,11 +98,11 @@ _0801AF34
 	ldr r1, [sp, #4]
 	lsrs r0, r0, #0x10
 	cmp r0, r1
-	beq _0801AF7A
+	beq %4
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #4]
 	bl sub_800065C
-_0801AF7A
+4
 	lsls r0, r6, #0x17
 	ldr r1, [sp, #8]
 	lsrs r0, r0, #0x1f
@@ -122,49 +122,49 @@ _0801AF7A
 	ldr r1, [sp, #4]
 	lsrs r0, r0, #0x10
 	cmp r0, r1
-	beq _0801AFAC
+	beq %5
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #4]
 	bl sub_800065C
-_0801AFAC
+5
 	lsls r0, r5, #0x16
-	bpl _0801AFB6
+	bpl %6
 	movs r0, #2
 	strb r0, [r4, #1]
-	b _0801AFF0
-_0801AFB6
+	b %11
+6
 	lsls r0, r5, #0x17
-	bpl _0801AFC0
+	bpl %7
 	movs r0, #1
 	strb r0, [r4, #1]
-	b _0801AFF0
-_0801AFC0
+	b %11
+7
 	lsls r0, r5, #0x1e
-	bpl _0801AFCA
+	bpl %8
 	movs r0, #3
 	strb r0, [r4, #1]
-	b _0801AFF0
-_0801AFCA
+	b %11
+8
 	lsls r0, r5, #0x1d
-	bpl _0801AFD4
+	bpl %9
 	movs r0, #3
 	strb r0, [r4, #1]
-	b _0801AFF0
-_0801AFD4
+	b %11
+9
 	lsls r0, r5, #0x1a
-	bpl _0801AFE4
+	bpl %10
 	movs r1, #0
 	mvns r1, r1
 	add r0, sp, #0x14
 	bl sub_801AC60
-	b _0801AFF0
-_0801AFE4
+	b %11
+10
 	lsls r0, r5, #0x1b
-	bpl _0801AFF0
+	bpl %11
 	movs r1, #1
 	add r0, sp, #0x14
 	bl sub_801AC60
-_0801AFF0
+11
 	lsls r0, r6, #0x1a
 	ldr r1, _0801B0F8
 	lsrs r0, r0, #0x1f
@@ -182,11 +182,11 @@ _0801AFF0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, r5
-	beq _0801B01E
+	beq %12
 	adds r1, r5, #0
 	ldr r0, [r4, #4]
 	bl sub_800065C
-_0801B01E
+12
 	lsls r0, r6, #0x1b
 	ldr r1, _0801B0FC
 	lsrs r0, r0, #0x1f
@@ -202,17 +202,17 @@ _0801B01E
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, r5
-	beq _0801B048
+	beq %13
 	adds r1, r5, #0
 	ldr r0, [r4, #8]
 	bl sub_800065C
-_0801B048
+13
 	bl sub_800EF2A
 	ldrb r0, [r4, #1]
 	cmp r0, #0
-	bne _0801B054
-	b _0801AF1A
-_0801B054
+	bne %14
+	b %1
+14
 	ldrh r2, [r7, #0x1a]
 	ldr r1, _0801B100
 	ldrb r0, [r4, #1]
@@ -222,41 +222,41 @@ _0801B054
 	ldr r6, _0801B104
 	cmp r0, #1
 	ldrb r7, [r1, r2]
-	beq _0801B08E
+	beq %16
 	cmp r0, #2
-	beq _0801B07C
+	beq %15
 	cmp r0, #3
-	beq _0801B0A0
+	beq %17
 	cmp r0, #6
-	bne _0801B0A6
+	bne %18
 	movs r0, #0xb
-	bl sub_8018386
-	b _0801B0A6
-_0801B07C
+	bl SetNextGlobalFunction
+	b %18
+15
 	ldr r0, [r6]
 	adds r0, #0x40
 	bl sub_8028C2E
 	lsls r0, r4, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
-	b _0801B0B0
-_0801B08E
+	bl SetNextGlobalFunction
+	b %19
+16
 	ldr r0, [r6]
 	adds r0, #0x40
 	bl sub_8028C2E
 	lsls r0, r7, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
-	b _0801B0B0
-_0801B0A0
+	bl SetNextGlobalFunction
+	b %19
+17
 	movs r0, #0x11
-	bl sub_8018386
-_0801B0A6
+	bl SetNextGlobalFunction
+18
 	movs r2, #0xff
 	movs r1, #4
 	ldr r0, [r6]
 	bl sub_8028A7C
-_0801B0B0
+19
 	adds r0, r5, #0
 	bl sub_801ABFC
 	movs r1, #0

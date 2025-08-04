@@ -3,32 +3,32 @@
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003EB8
-	IMPORT gUnknown_0803EB90
+	IMPORT __VTABLE__343Anonymous14
 	IMPORT sub_80012F0
 	IMPORT sub_8001338
 	IMPORT sub_802913E
-	IMPORT sub_80344E4
-	IMPORT sub_8034536
-	IMPORT maybeMallocEWRAM
+	IMPORT Boss__Create
+	IMPORT Boss__ctor
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_80399A4
 sub_80399A4
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _080399BC
+	bne %2
 	movs r0, #0xec
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _080399BC
+	bne %2
 	adds r0, r4, #0
-_080399B6
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_080399BC
+2
 	adds r0, r4, #0
-	bl sub_80344E4
+	bl Boss__Create
 	ldr r0, _08039D6C
 	movs r1, #0
 	str r0, [r4]
@@ -38,7 +38,7 @@ _080399BC
 	movs r1, #2
 	strb r1, [r0, #9]
 	adds r0, r4, #0
-	b _080399B6
+	b %1
 
 	non_word_aligned_thumb_func_start sub_80399D6
 sub_80399D6
@@ -49,12 +49,12 @@ sub_80399D6
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_8034536
+	bl Boss__ctor
 	cmp r5, #0
-	beq _080399F2
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080399F2
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -70,13 +70,13 @@ sub_80399F8
 	adds r4, r0, #0
 	cmp r1, #0x3a
 	sub sp, #0x1c
-	beq _08039AF0
+	beq %5
 	cmp r1, #0x3b
-	beq _08039AF2
+	beq %6
 	cmp r1, #0x3c
-	beq _08039AF4
+	beq %7
 	cmp r1, #0x3d
-	bne _08039AEE
+	bne %4
 	movs r2, #0
 	movs r0, #3
 	str r0, [sp, #0xc]
@@ -181,15 +181,15 @@ sub_80399F8
 	lsls r1, r1, #9
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-_08039AEE
-	b _08039AF6
-_08039AF0
-	b _08039B3C
-_08039AF2
-	b _08039BE6
-_08039AF4
-	b _08039C98
-_08039AF6
+4
+	b %8
+5
+	b %9
+6
+	b %11
+7
+	b %15
+8
 	ldr r0, [r5, #0x30]
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x17
@@ -203,10 +203,10 @@ _08039AF6
 	strb r1, [r0, #8]
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0x10
-	beq _08039BE4
+	beq %10
 	ldr r0, [r5, #0xc]
 	lsls r1, r0, #0x13
-	bmi _08039BE4
+	bmi %10
 	movs r1, #1
 	lsls r1, r1, #0xc
 	bics r0, r1
@@ -217,14 +217,14 @@ _08039AF6
 	lsrs r5, r0, #0x1f
 	ldr r0, _08039D78
 	ldr r1, [r4]
-	beq _08039C12
+	beq %12
 	lsls r1, r1, #0x1c
-	bmi _08039C14
+	bmi %13
 	ldr r0, [r0]
 	adds r1, r4, #0
 	bl sub_80012F0
-	b _08039C14
-_08039B3C
+	b %13
+9
 	movs r2, #0
 	str r2, [sp, #0x14]
 	movs r1, #0
@@ -306,10 +306,10 @@ _08039B3C
 	lsls r1, r1, #8
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _08039AEE
-_08039BE4
-	b _08039DA4
-_08039BE6
+	b %4
+10
+	b %18
+11
 	movs r2, #0
 	str r2, [sp, #0x14]
 	movs r1, #0
@@ -330,12 +330,12 @@ _08039BE6
 	movs r1, #0
 	movs r0, #3
 	str r0, [sp, #0xc]
-	b _08039C16
-_08039C12
-	b _08039D8C
-_08039C14
-	b _08039D98
-_08039C16
+	b %14
+12
+	b %16
+13
+	b %17
+14
 	str r2, [sp, #0x14]
 	movs r2, #0x32
 	str r2, [sp, #8]
@@ -399,8 +399,8 @@ _08039C16
 	lsls r1, r1, #8
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _08039AEE
-_08039C98
+	b %4
+15
 	movs r2, #0
 	movs r0, #3
 	str r0, [sp, #0xc]
@@ -503,9 +503,9 @@ _08039C98
 	lsls r1, r7, #7
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _08039AEE
+	b %4
 	ALIGN
-_08039D6C DCDU gUnknown_0803EB90
+_08039D6C DCDU __VTABLE__343Anonymous14
 _08039D70 DCDU 0xFFFF007F
 _08039D74 DCDU gPlayerEntity
 _08039D78 DCDU gUnknown_03003EB8
@@ -513,20 +513,20 @@ _08039D7C DCDU 0x00015998
 _08039D80 DCDU 0x0000032B
 _08039D84 DCDU 0x00000325
 _08039D88 DCDU 0x0000032E
-_08039D8C
+16
 	lsls r1, r1, #0x1c
-	bpl _08039D98
+	bpl %17
 	ldr r0, [r0]
 	adds r1, r4, #0
 	bl sub_8001338
-_08039D98
+17
 	ldr r0, [r4]
 	movs r1, #8
 	bics r0, r1
 	lsls r1, r5, #3
 	orrs r0, r1
 	str r0, [r4]
-_08039DA4
+18
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}

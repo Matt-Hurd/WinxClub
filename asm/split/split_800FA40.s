@@ -1,12 +1,12 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EAE0
+	IMPORT __VTABLE__337dword_803EAE0
 	IMPORT sub_800FB48
 	IMPORT sub_800FB72
 	IMPORT sub_800FC76
 	IMPORT sub_80132F4
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800FA40
@@ -17,12 +17,12 @@ sub_800FA40
 	movs r3, #8
 	bl sub_800FC76
 	cmp r0, #0
-	bne _0800FA56
-_0800FA50
+	bne %2
+1
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_0800FA56
+2
 	ldr r1, [r0, #0xc]
 	ldr r0, [r0, #0x10]
 	str r0, [r4, #0x74]
@@ -55,20 +55,20 @@ _0800FA56
 	adds r0, r0, r1
 	str r5, [r0, #0x1c]
 	movs r0, #1
-	b _0800FA50
+	b %1
 
 	non_word_aligned_thumb_func_start sub_800FA9A
 sub_800FA9A
 	ldr r0, [r0, #0x18]
 	lsls r1, r0, #6
 	lsrs r1, r1, #0x10
-	beq _0800FAAC
+	beq %3
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
-	beq _0800FAAC
+	beq %3
 	movs r0, #1
 	bx lr
-_0800FAAC
+3
 	movs r0, #0
 	bx lr
 
@@ -76,23 +76,23 @@ _0800FAAC
 sub_800FAB0
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0800FAC8
+	bne %5
 	movs r0, #0x6c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0800FAC8
+	bne %5
 	adds r0, r4, #0
-_0800FAC2
+4
 	pop {r4}
 	pop {r3}
 	bx r3
-_0800FAC8
+5
 	adds r0, r4, #0
 	bl sub_800FB48
 	ldr r0, _0800FB14
 	str r0, [r4]
 	adds r0, r4, #0
-	b _0800FAC2
+	b %4
 
 	non_word_aligned_thumb_func_start sub_800FAD6
 sub_800FAD6
@@ -105,24 +105,24 @@ sub_800FAD6
 	adds r0, r4, #0
 	bl sub_800FB72
 	cmp r5, #0
-	beq _0800FAF2
+	beq %6
 	adds r0, r4, #0
 	bl sub_803DA18
-_0800FAF2
+6
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
 
-	thumb_func_start nullsub_32
-nullsub_32
+	thumb_func_start sub_800FAF8
+sub_800FAF8
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_33
-nullsub_33
+	non_word_aligned_thumb_func_start sub_800FAFA
+sub_800FAFA
 	bx lr
 
-	thumb_func_start nullsub_34
-nullsub_34
+	thumb_func_start sub_800FAFC
+sub_800FAFC
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FAFE
@@ -140,12 +140,12 @@ sub_800FB06
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_35
-nullsub_35
+	non_word_aligned_thumb_func_start sub_800FB0A
+sub_800FB0A
 	bx lr
 
-	thumb_func_start nullsub_36
-nullsub_36
+	thumb_func_start sub_800FB0C
+sub_800FB0C
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FB0E
@@ -153,5 +153,5 @@ sub_800FB0E
 	movs r0, #0
 	bx lr
 	ALIGN
-_0800FB14 DCDU gUnknown_0803EAE0
+_0800FB14 DCDU __VTABLE__337dword_803EAE0
 	END

@@ -3,22 +3,22 @@
 
 	IMPORT gUnknown_030033F4
 	IMPORT gUnknown_03003EAC
-	IMPORT gUnknown_0803EEF0
+	IMPORT __VTABLE__384dword_803EEF0
 	IMPORT sub_800B12C
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8008008
 sub_8008008
 	push {r3, lr}
 	cmp r0, #0
-	bne _08008018
+	bne %1
 	movs r0, #0x18
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
-	beq _08008028
-_08008018
+	beq %2
+1
 	movs r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
@@ -27,7 +27,7 @@ _08008018
 	strb r2, [r0, #0xc]
 	str r1, [r0, #0x10]
 	str r1, [r0, #0x14]
-_08008028
+2
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -36,12 +36,12 @@ _08008028
 sub_800802E
 	push {r3, lr}
 	cmp r0, #0
-	bne _0800803E
+	bne %3
 	movs r0, #0x20
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
-	beq _08008058
-_0800803E
+	beq %4
+3
 	ldr r1, _080081C0
 	ldr r2, _080081C4
 	str r1, [r0]
@@ -55,7 +55,7 @@ _0800803E
 	str r1, [r0, #0x18]
 	str r1, [r0, #0x1c]
 	str r1, [r2]
-_08008058
+4
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -66,9 +66,9 @@ sub_800805E
 	push {r3, lr}
 	str r2, [r0]
 	cmp r1, #0
-	beq _0800806C
+	beq %5
 	bl sub_803DA18
-_0800806C
+5
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -80,8 +80,8 @@ sub_8008072
 	lsrs r0, r0, #0x18
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_25
-nullsub_25
+	non_word_aligned_thumb_func_start sub_800807A
+sub_800807A
 	bx lr
 
 	thumb_func_start sub_800807C
@@ -103,31 +103,31 @@ sub_800808E
 	ldrb r0, [r1, #0xc]
 	adds r5, r1, #0
 	cmp r0, #1
-	beq _080080A6
+	beq %6
 	cmp r0, #2
-	bne _080080C2
+	bne %9
 	ldr r0, [r5, #0x10]
 	subs r0, #1
 	str r0, [r4, #0x10]
-	b _080080C2
-_080080A6
+	b %9
+6
 	movs r0, #1
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0x10]
 	cmp r0, #1
-	bls _080080BC
-_080080B0
+	bls %8
+7
 	ldr r0, [r4, #0x10]
 	lsls r0, r0, #1
 	str r0, [r4, #0x10]
 	ldr r1, [r5, #0x10]
 	cmp r0, r1
-	blo _080080B0
-_080080BC
+	blo %7
+8
 	ldr r0, [r4, #0x10]
 	subs r0, #1
 	str r0, [r4, #0x10]
-_080080C2
+9
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x14]
@@ -168,9 +168,9 @@ sub_8008100
 	ldr r1, [r1, #0x18]
 	movs r0, #1
 	cmp r1, #0
-	beq _0800810C
+	beq %10
 	movs r0, #0
-_0800810C
+10
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800810E
@@ -183,8 +183,8 @@ sub_8008112
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_26
-nullsub_26
+	non_word_aligned_thumb_func_start sub_8008116
+sub_8008116
 	bx lr
 
 	thumb_func_start sub_8008118
@@ -197,8 +197,8 @@ sub_800811C
 	movs r0, #0
 	bx lr
 
-	thumb_func_start nullsub_27
-nullsub_27
+	thumb_func_start sub_8008120
+sub_8008120
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8008122
@@ -243,12 +243,12 @@ sub_8008160
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	cmp r1, #0
-	beq _0800816E
+	beq %11
 	adds r1, r0, #0
-	b _08008170
-_0800816E
+	b %12
+11
 	movs r1, #0
-_08008170
+12
 	ldr r2, _080081C8
 	ldrh r2, [r2, #8]
 	movs r3, #1
@@ -268,12 +268,12 @@ sub_8008182
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	cmp r1, #0
-	beq _08008196
+	beq %13
 	adds r1, r0, #0
-	b _08008198
-_08008196
+	b %14
+13
 	movs r1, #0
-_08008198
+14
 	ldrh r2, [r2, #8]
 	movs r3, #1
 	lsls r3, r3, #0x10
@@ -301,7 +301,7 @@ sub_80081B6
 	str r2, [r0, #4]
 	bx lr
 	ALIGN
-_080081C0 DCDU gUnknown_0803EEF0
+_080081C0 DCDU __VTABLE__384dword_803EEF0
 _080081C4 DCDU gUnknown_030033F4
 _080081C8 DCDU REG_TM0CNT
 _080081CC DCDU gUnknown_03003EAC

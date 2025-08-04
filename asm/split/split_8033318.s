@@ -4,34 +4,34 @@
 	IMPORT gUnknown_0300334A
 	IMPORT gUnknown_03003450
 	IMPORT gUnknown_03003458
-	IMPORT gUnknown_0803EA90
+	IMPORT __VTABLE__336WinxClub
 	IMPORT sub_8002004
-	IMPORT sub_801D564
-	IMPORT sub_801D714
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
 	IMPORT __call_via_r1
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8033318
-sub_8033318
+	thumb_func_start WinxClub__Create
+WinxClub__Create
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	bne _08033332
+	bne %2
 	movs r0, #0xff
 	adds r0, #1
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08033332
+	bne %2
 	adds r0, r4, #0
-_0803332C
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_08033332
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08033618
 	adds r5, r4, #0
 	str r0, [r4]
@@ -90,10 +90,10 @@ _08033332
 	bics r0, r1
 	str r0, [r5, #0xc]
 	adds r0, r4, #0
-	b _0803332C
+	b %1
 
-	thumb_func_start sub_80333B0
-sub_80333B0
+	thumb_func_start WinxClub__ctor
+WinxClub__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08033618
@@ -105,12 +105,12 @@ sub_80333B0
 	bl sub_8024EBC
 	movs r1, #0
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _080333D6
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080333D6
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -166,7 +166,7 @@ sub_80333DC
 	lsrs r7, r6, #5
 	lsls r3, r3, #0x12
 	cmp r2, r3
-	ble _08033456
+	ble %4
 	lsls r2, r3, #1
 	ldr r3, [r4, #0x7c]
 	adds r2, r0, r2
@@ -176,8 +176,8 @@ sub_80333DC
 	adds r0, r0, r7
 	adds r3, r3, r6
 	str r3, [r4, #0x7c]
-	b _0803346E
-_08033456
+	b %5
+4
 	movs r2, #5
 	lsls r2, r2, #0x13
 	movs r3, #0x23
@@ -190,13 +190,13 @@ _08033456
 	lsls r6, r6, #0x18
 	adds r3, r3, r6
 	str r3, [r4, #0x7c]
-_0803346E
+5
 	ldr r3, [sp]
 	subs r6, r3, r1
 	adds r3, r4, #0
 	adds r3, #0x90
 	cmp r6, r7
-	ble _0803348C
+	ble %6
 	movs r6, #0x23
 	lsls r6, r6, #0x13
 	movs r7, #0x2d
@@ -205,8 +205,8 @@ _0803346E
 	adds r1, r1, r7
 	movs r7, #2
 	strb r7, [r3, #8]
-	b _0803349C
-_0803348C
+	b %7
+6
 	movs r6, #5
 	lsls r6, r6, #0x13
 	movs r7, #0xf
@@ -215,33 +215,33 @@ _0803348C
 	adds r1, r1, r7
 	movs r7, #0
 	strb r7, [r3, #8]
-_0803349C
+7
 	cmp r6, #0
-	bgt _080334A4
+	bgt %8
 	movs r6, #0xf
 	lsls r6, r6, #0x11
-_080334A4
+8
 	cmp r2, #0
-	bgt _080334AC
+	bgt %9
 	movs r2, #0xf
 	lsls r2, r2, #0x11
-_080334AC
+9
 	ldr r3, _0803363C
 	ldr r7, [r3]
 	ldr r3, [r7, #0x14]
 	cmp r6, r3
-	blt _080334BC
+	blt %10
 	movs r6, #0xf
 	lsls r6, r6, #0x11
 	subs r6, r3, r6
-_080334BC
+10
 	ldr r3, [r7, #0x18]
 	cmp r2, r3
-	blt _080334C8
+	blt %11
 	movs r2, #0xf
 	lsls r2, r2, #0x11
 	subs r2, r3, r2
-_080334C8
+11
 	str r2, [r5, #0x70]
 	str r6, [r5, #0x6c]
 	str r2, [r4, #0x5c]
@@ -291,14 +291,14 @@ sub_8033512
 	NEGS r4, r2
 	subs r3, r1, r3
 	cmp r2, #0
-	blt _08033528
+	blt %12
 	adds r4, r2, #0
-_08033528
+12
 	NEGS r5, r3
 	cmp r3, #0
-	blt _08033530
+	blt %13
 	adds r5, r3, #0
-_08033530
+13
 	movs r1, #0xf
 	lsls r1, r1, #0x18
 	ldr r7, [r0, #0x7c]
@@ -307,42 +307,42 @@ _08033530
 	lsls r6, r6, #0x19
 	ands r1, r7
 	cmp r4, r5
-	ble _08033552
+	ble %16
 	cmp r2, #0
-	ble _0803354C
+	ble %15
 	str r1, [r0, #0x7c]
-_08033548
+14
 	pop {r4, r5, r6, r7}
 	bx lr
-_0803354C
+15
 	adds r1, r1, r6
 	str r1, [r0, #0x7c]
-	b _08033548
-_08033552
+	b %14
+16
 	cmp r5, r4
-	ble _0803356E
+	ble %18
 	cmp r3, #0
-	ble _08033564
+	ble %17
 	movs r2, #1
 	lsls r2, r2, #0x18
 	adds r1, r1, r2
 	str r1, [r0, #0x7c]
-	b _08033548
-_08033564
+	b %14
+17
 	movs r2, #3
 	lsls r2, r2, #0x18
 	adds r1, r1, r2
 	str r1, [r0, #0x7c]
-	b _08033548
-_0803356E
+	b %14
+18
 	cmp r2, #0
-	ble _08033576
+	ble %19
 	str r1, [r0, #0x7c]
-	b _08033548
-_08033576
+	b %14
+19
 	adds r1, r1, r6
 	str r1, [r0, #0x7c]
-	b _08033548
+	b %14
 
 	thumb_func_start sub_803357C
 sub_803357C
@@ -351,7 +351,7 @@ sub_803357C
 	adds r0, #0xa8
 	ldr r1, [r0, #4]
 	cmp r1, #0
-	beq _080335AA
+	beq %20
 	ldr r1, [r0]
 	adds r5, r0, #0
 	ldr r2, [r1, #0x10]
@@ -368,7 +368,7 @@ sub_803357C
 	lsls r1, r1, #1
 	ands r1, r0
 	str r1, [r5, #0x40]
-_080335AA
+20
 	adds r0, r4, #0
 	adds r0, #0x80
 	ldr r1, [r0, #0x6c]
@@ -423,7 +423,7 @@ _080335AA
 	pop {r3}
 	bx r3
 	ALIGN
-_08033618 DCDU gUnknown_0803EA90
+_08033618 DCDU __VTABLE__336WinxClub
 _0803361C DCDU 0x786E6957
 _08033620 DCDU 0x62756C43
 _08033624 DCDU 0x72635320

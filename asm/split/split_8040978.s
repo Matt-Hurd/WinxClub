@@ -10,7 +10,7 @@ sub_8040978
 	push {r4}
 	ldrh r1, [r0, #4]
 	lsls r2, r1, #0x1c
-	bpl _080409A6
+	bpl %1
 	movs r3, #0xe
 	ldrsb r4, [r0, r3]
 	ldrb r2, [r0, #0xc]
@@ -30,9 +30,9 @@ sub_8040978
 	muls r3, r2
 	lsrs r2, r3, #8
 	str r2, [r0, #0x44]
-_080409A6
+1
 	lsls r2, r1, #0x1b
-	bpl _080409CE
+	bpl %3
 	movs r3, #0xf
 	ldrsb r4, [r0, r3]
 	ldr r3, _080409E0
@@ -41,18 +41,18 @@ _080409A6
 	muls r4, r3
 	asrs r3, r4, #8
 	lsls r4, r1, #0x1d
-	bpl _080409C8
+	bpl %2
 	muls r3, r2
 	ldr r2, [r0, #0x1c]
 	muls r3, r2
 	lsrs r2, r3, #0x16
 	str r2, [r0, #0x38]
-	b _080409CE
-_080409C8
+	b %3
+2
 	muls r3, r2
 	lsrs r2, r3, #6
 	str r2, [r0, #0x38]
-_080409CE
+3
 	movs r2, #0x18
 	bics r1, r2
 	strh r1, [r0, #4]

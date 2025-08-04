@@ -19,19 +19,19 @@
 	IMPORT sub_80047BE
 	IMPORT sub_8004FFC
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B058
 	IMPORT sub_800B72A
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_8017620
 	IMPORT sub_8017B9A
 	IMPORT sub_8017CA0
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_8018C48
 	IMPORT sub_8028A7C
 	IMPORT sub_803D66C
@@ -46,7 +46,7 @@ sub_8031830
 	movs r1, #4
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldrb r2, [r4, #4]
 	ldr r0, _08031B2C
 	ldr r1, [r0]
@@ -82,21 +82,21 @@ sub_8031830
 	ldr r0, [r4]
 	bl sub_800B72A
 	cmp r0, #0
-	beq _080318A2
-_08031894
+	beq %2
+1
 	bl sub_800EF2A
 	ldr r0, [r4]
 	bl sub_800B72A
 	cmp r0, #0
-	bne _08031894
-_080318A2
+	bne %1
+2
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #0
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _08031B38
 	ldrb r0, [r0]
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -111,7 +111,7 @@ sub_80318BC
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _08031B3C
 	movs r1, #3
 	ldr r0, [r0]
@@ -124,7 +124,7 @@ sub_80318BC
 	ldrb r0, [r6]
 	lsls r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	adds r0, r5, #0
 	ldr r0, [r0]
 	bl sub_8017CA0
@@ -150,18 +150,18 @@ sub_80318BC
 	lsls r3, r0
 	ldr r0, _08031B4C
 	cmp r2, #0
-	beq _08031936
+	beq %3
 	lsrs r2, r2, #5
 	lsls r2, r2, #2
 	ldr r2, [r0, r2]
 	ands r2, r3
-	beq _0803193A
-_08031936
+	beq %4
+3
 	movs r2, #1
-	b _0803193C
-_0803193A
+	b %5
+4
 	movs r2, #0
-_0803193C
+5
 	adds r3, r1, #0
 	adds r3, #0xff
 	adds r3, #0x56
@@ -172,18 +172,18 @@ _0803193C
 	adds r7, r2, #0
 	lsls r7, r6
 	cmp r3, #0
-	beq _0803195C
+	beq %6
 	lsrs r3, r3, #5
 	lsls r3, r3, #2
 	ldr r3, [r0, r3]
 	ands r3, r7
-	beq _08031960
-_0803195C
+	beq %7
+6
 	movs r3, #1
-	b _08031962
-_08031960
+	b %8
+7
 	movs r3, #0
-_08031962
+8
 	str r3, [sp, #0x14]
 	adds r3, r1, #0
 	adds r3, #0xff
@@ -193,18 +193,18 @@ _08031962
 	adds r6, r2, #0
 	lsls r6, r7
 	cmp r3, #0
-	beq _08031980
+	beq %9
 	lsrs r3, r3, #5
 	lsls r3, r3, #2
 	ldr r3, [r0, r3]
 	ands r3, r6
-	beq _08031984
-_08031980
+	beq %10
+9
 	movs r3, #1
-	b _08031986
-_08031984
+	b %11
+10
 	movs r3, #0
-_08031986
+11
 	adds r1, #0xff
 	adds r1, #0x58
 	str r3, [sp, #0x18]
@@ -213,18 +213,18 @@ _08031986
 	movs r2, #1
 	lsls r2, r3
 	cmp r1, #0
-	beq _080319A2
+	beq %12
 	lsrs r1, r1, #5
 	lsls r1, r1, #2
 	ldr r0, [r0, r1]
 	ands r0, r2
-	beq _080319A6
-_080319A2
+	beq %13
+12
 	movs r0, #1
-	b _080319A8
-_080319A6
+	b %14
+13
 	movs r0, #0
-_080319A8
+14
 	ldr r6, _08031B64
 	str r0, [sp, #0x1c]
 	movs r7, #3
@@ -239,50 +239,50 @@ _080319A8
 	adds r6, r0, #0
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
-	beq _080319DC
+	beq %15
 	ldr r0, [sp, #0x14]
 	cmp r0, #0
-	beq _080319DC
+	beq %15
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
-	beq _080319DC
+	beq %15
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
-	bne _080319E0
-_080319DC
+	bne %16
+15
 	movs r0, #0xcc
-	b _080319E8
-_080319E0
+	b %17
+16
 	ldr r0, _08031B40
 	ldrb r0, [r0]
 	lsls r0, r0, #1
 	adds r0, #0xce
-_080319E8
+17
 	strh r0, [r4]
 	ldr r2, [r5]
 	add r0, pc, #0x18C
 	str r0, [sp, #8]
 	movs r5, #4
 	str r2, [sp, #4]
-	b _08031A00
-_080319F6
+	b %19
+18
 	adds r5, #1
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	cmp r5, #0x40
-	bhs _08031A0C
-_08031A00
+	bhs %20
+19
 	ldr r2, [sp, #4]
 	lsls r0, r5, #2
 	adds r0, r0, r2
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	bne _080319F6
-_08031A0C
+	bne %18
+20
 	ldr r0, _08031B8C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x1d
 	movs r3, #0
@@ -335,58 +335,58 @@ _08031A0C
 	strh r0, [r4, #2]
 	movs r0, #0
 	add r2, sp, #0x10
-_08031A84
+21
 	lsls r3, r0, #2
 	ldr r3, [r2, r3]
 	cmp r3, #0
-	beq _08031A92
+	beq %22
 	ldrh r3, [r4, #2]
 	adds r3, #1
 	strh r3, [r4, #2]
-_08031A92
+22
 	adds r0, #1
 	cmp r0, #4
-	blo _08031A84
+	blo %21
 	ldrh r0, [r4, #2]
 	cmp r0, #0xcb
-	bne _08031AA0
+	bne %23
 	strh r1, [r4, #2]
-_08031AA0
+23
 	movs r3, #0x1f
 	lsls r3, r3, #0xa
 	movs r1, #0
 	ldr r4, _08031B90
 	movs r5, #0x4b
 	lsls r5, r5, #9
-_08031AAC
+24
 	ldr r0, [sp, #0xc]
 	ldrh r0, [r0]
 	cmp r0, #0
-	bne _08031AB6
-	b _08031ACC
-_08031AB6
+	bne %25
+	b %28
+25
 	cmp r0, r3
-	bne _08031ABE
+	bne %26
 	movs r0, #1
-	b _08031ACC
-_08031ABE
+	b %28
+26
 	cmp r0, r4
-	bne _08031AC6
+	bne %27
 	movs r0, #2
-	b _08031ACC
-_08031AC6
+	b %28
+27
 	cmp r0, #0x1f
-	bne _08031AD4
+	bne %29
 	movs r0, #3
-_08031ACC
+28
 	lsls r0, r0, #2
 	ldr r0, [r2, r0]
 	cmp r0, #0
-	bne _08031AD8
-_08031AD4
+	bne %30
+29
 	ldrh r0, [r6]
 	strh r0, [r7]
-_08031AD8
+30
 	ldr r0, [sp, #0xc]
 	adds r7, #2
 	adds r0, #2
@@ -394,7 +394,7 @@ _08031AD8
 	adds r1, #1
 	cmp r1, r5
 	str r0, [sp, #0xc]
-	blo _08031AAC
+	blo %24
 	ldr r0, _08031B40
 	ldr r1, _08031B94
 	ldrb r0, [r0]
@@ -406,7 +406,7 @@ _08031AD8
 	movs r1, #3
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #0x3f
 	add r4, sp, #0x20

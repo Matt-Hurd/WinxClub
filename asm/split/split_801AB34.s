@@ -6,7 +6,7 @@
 	IMPORT sub_800EF2A
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801A760
 	IMPORT sub_801A82E
 	IMPORT sub_801A8B8
@@ -14,8 +14,8 @@
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
-	thumb_func_start sub_801AB34
-sub_801AB34
+	thumb_func_start HandleMainMenu
+HandleMainMenu
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	add r0, sp, #4
@@ -33,49 +33,49 @@ sub_801AB34
 	adds r0, r6, #0
 	bl sub_801A8B8
 	movs r7, #0
-_0801AB5C
+1
 	ldr r0, _0801ABF0
 	adds r1, r7, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _0801AB6A
+	bmi %2
 	ldrh r1, [r0, #6]
-_0801AB6A
+2
 	lsls r4, r1, #0x10
 	lsrs r4, r4, #0x10
 	lsls r0, r4, #0x19
-	bpl _0801AB7C
+	bpl %3
 	movs r1, #0
 	mvns r1, r1
 	adds r0, r6, #0
 	bl sub_801A82E
-_0801AB7C
+3
 	lsls r0, r4, #0x18
-	bpl _0801AB88
+	bpl %4
 	movs r1, #1
 	adds r0, r6, #0
 	bl sub_801A82E
-_0801AB88
+4
 	lsls r4, r4, #0x1f
 	lsrs r4, r4, #0x1f
 	bl sub_800EF2A
 	cmp r4, #0
-	beq _0801AB5C
+	beq %1
 	ldr r0, _0801ABF4
 	ldr r0, [r0]
 	bl sub_8028C2E
 	add r3, sp, #0
 	ldrb r0, [r3]
 	cmp r0, #0
-	beq _0801ABDA
+	beq %6
 	cmp r0, #1
-	beq _0801ABE2
+	beq %7
 	cmp r0, #2
-	bne _0801ABB2
+	bne %5
 	movs r0, #8
-	bl sub_8018386
-_0801ABB2
+	bl SetNextGlobalFunction
+5
 	adds r0, r6, #0
 	bl sub_801A760
 	movs r2, #0x77
@@ -93,14 +93,14 @@ _0801ABB2
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0801ABDA
+6
 	movs r0, #0x13
-	bl sub_8018386
-	b _0801ABB2
-_0801ABE2
+	bl SetNextGlobalFunction
+	b %5
+7
 	movs r0, #9
-	bl sub_8018386
-	b _0801ABB2
+	bl SetNextGlobalFunction
+	b %5
 	ALIGN
 _0801ABEC DCDU sub_80143E0
 _0801ABF0 DCDU gUnknown_03003444

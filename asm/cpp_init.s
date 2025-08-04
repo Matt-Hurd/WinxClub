@@ -10,15 +10,15 @@ __cpp_initialise
 	ldr r5, _0803B900
 	add r5, pc
 	cmp r4, r5
-	beq _0803B8F4
-_0803B8E6
+	beq %2
+1
 	ldr r0, [r4]
 	adds r0, r0, r4
 	bl __call_via_r0
 	adds r4, #4
 	cmp r4, r5
-	bne _0803B8E6
-_0803B8F4
+	bne %1
+2
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

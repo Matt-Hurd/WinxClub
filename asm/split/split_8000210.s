@@ -2,45 +2,45 @@
 	AREA text, CODE
 
 
-	thumb_func_start sub_8000210
-sub_8000210
-	b _08000216
-_08000212
+	thumb_func_start strStartsWith
+strStartsWith
+	b %2
+1
 	adds r0, #1
 	adds r1, #1
-_08000216
+2
 	ldrb r3, [r0]
 	cmp r3, #0
-	beq _08000228
+	beq %3
 	ldrb r2, [r1]
 	cmp r2, #0
-	beq _08000232
+	beq %4
 	cmp r3, r2
-	beq _08000212
-	b _08000232
-_08000228
+	beq %1
+	b %4
+3
 	ldrb r0, [r1]
 	cmp r0, #0
-	bne _08000232
+	bne %4
 	movs r0, #1
 	bx lr
-_08000232
+4
 	movs r0, #0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8000236
 sub_8000236
 	push {r4, r5}
-	b _0800026E
-_0800023A
+	b %10
+5
 	movs r3, #0
 	ldrsb r4, [r0, r3]
 	adds r3, r4, #0
 	subs r3, #0x61
 	cmp r3, #0x19
-	bhi _08000248
+	bhi %6
 	subs r4, #0x20
-_08000248
+6
 	lsls r5, r4, #0x18
 	movs r3, #0
 	ldrsb r4, [r1, r3]
@@ -48,99 +48,99 @@ _08000248
 	adds r3, r4, #0
 	subs r3, #0x61
 	cmp r3, #0x19
-	bhi _0800025A
+	bhi %7
 	subs r4, #0x20
-_0800025A
+7
 	lsls r3, r4, #0x18
 	asrs r3, r3, #0x18
 	cmp r5, r3
-	beq _08000268
+	beq %9
 	subs r0, r3, r5
-_08000264
+8
 	pop {r4, r5}
 	bx lr
-_08000268
+9
 	adds r0, #1
 	adds r1, #1
 	subs r2, #1
-_0800026E
+10
 	ldrb r3, [r0]
 	cmp r3, #0
-	beq _08000280
+	beq %11
 	ldrb r3, [r1]
 	cmp r3, #0
-	beq _08000280
+	beq %11
 	cmp r2, #0
-	bne _0800023A
-	b _08000284
-_08000280
+	bne %5
+	b %12
+11
 	cmp r2, #0
-	bne _08000288
-_08000284
+	bne %13
+12
 	movs r0, #0
-	b _08000264
-_08000288
+	b %8
+13
 	movs r3, #0
 	ldrsb r1, [r1, r3]
 	ldrsb r0, [r0, r3]
 	subs r0, r1, r0
-	b _08000264
+	b %8
 
-	non_word_aligned_thumb_func_start sub_8000292
-sub_8000292
+	non_word_aligned_thumb_func_start gameStrlen
+gameStrlen
 	ldrb r2, [r0]
 	movs r1, #0
 	cmp r2, #0
-	beq _080002A4
-_0800029A
+	beq %15
+14
 	adds r0, #1
 	ldrb r2, [r0]
 	adds r1, #1
 	cmp r2, #0
-	bne _0800029A
-_080002A4
+	bne %14
+15
 	adds r0, r1, #0
 	bx lr
 
-	thumb_func_start sub_80002A8
-sub_80002A8
+	thumb_func_start strToLower
+strToLower
 	ldrb r1, [r0]
 	cmp r1, #0
-	beq _080002C6
-_080002AE
+	beq %18
+16
 	movs r3, #0
 	ldrsb r1, [r0, r3]
 	adds r2, r1, #0
 	subs r2, #0x41
 	cmp r2, #0x19
-	bhi _080002BE
+	bhi %17
 	adds r1, #0x20
 	strb r1, [r0]
-_080002BE
+17
 	adds r0, #1
 	ldrb r1, [r0]
 	cmp r1, #0
-	bne _080002AE
-_080002C6
+	bne %16
+18
 	bx lr
 
-	thumb_func_start sub_80002C8
-sub_80002C8
+	thumb_func_start strchr
+strchr
 	ldrb r2, [r0]
 	cmp r2, #0
-	beq _080002DE
-_080002CE
+	beq %20
+19
 	movs r3, #0
 	ldrsb r2, [r0, r3]
 	cmp r2, r1
-	beq _080002E0
+	beq %21
 	adds r0, #1
 	ldrb r2, [r0]
 	cmp r2, #0
-	bne _080002CE
-_080002DE
+	bne %19
+20
 	movs r0, #0
-_080002E0
+21
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80002E2
@@ -169,8 +169,8 @@ sub_80002E2
 	strh r0, [r1]
 	ldr r0, _08000320
 	strh r3, [r0, #0x10]
-_08000312
-	b _08000312
+22
+	b %22
 	ALIGN
 _08000314 DCDU REG_IE
 _08000318 DCDU REG_DMA3

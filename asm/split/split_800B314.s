@@ -23,41 +23,41 @@ sub_800B314
 	movs r5, #0
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800B33E
+	beq %1
 	bl sub_800B66A
 	cmp r0, #0
-	beq _0800B33E
+	beq %1
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B652
 	movs r5, #1
-_0800B33E
+1
 	cmp r4, #0
-	beq _0800B366
+	beq %4
 	cmp r4, #1
-	bne _0800B34C
+	bne %2
 	movs r0, #0x40
 	bl IdentifyEeprom
-_0800B34C
+2
 	cmp r4, #0
-	beq _0800B354
+	beq %3
 	cmp r4, #1
-	bne _0800B3AA
-_0800B354
+	bne %9
+3
 	adds r6, #7
 	lsrs r6, r6, #3
 	movs r4, #0
 	cmp r6, #0
-	bls _0800B3AA
+	bls %9
 	lsrs r0, r7, #3
 	str r0, [sp, #8]
 	mov r7, sp
-	b _0800B36E
-_0800B366
+	b %5
+4
 	movs r0, #4
 	bl IdentifyEeprom
-	b _0800B34C
-_0800B36E
+	b %2
+5
 	ldr r1, [sp, #0x18]
 	lsls r0, r4, #3
 	adds r1, r0, r1
@@ -71,32 +71,32 @@ _0800B36E
 	adds r1, r7, #0
 	bl sub_803B81C
 	cmp r0, #0
-	beq _0800B3A4
+	beq %8
 	cmp r5, #0
-	beq _0800B39A
+	beq %6
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
-_0800B39A
+6
 	movs r0, #0
-_0800B39C
+7
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800B3A4
+8
 	adds r4, #1
 	cmp r4, r6
-	blo _0800B36E
-_0800B3AA
+	blo %5
+9
 	cmp r5, #0
-	beq _0800B3B6
+	beq %10
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
-_0800B3B6
+10
 	movs r0, #1
-	b _0800B39C
+	b %7
 
 	non_word_aligned_thumb_func_start sub_800B3BA
 sub_800B3BA
@@ -110,41 +110,41 @@ sub_800B3BA
 	movs r5, #0
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800B3E4
+	beq %11
 	bl sub_800B66A
 	cmp r0, #0
-	beq _0800B3E4
+	beq %11
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B652
 	movs r5, #1
-_0800B3E4
+11
 	cmp r4, #0
-	beq _0800B40C
+	beq %14
 	cmp r4, #1
-	bne _0800B3F2
+	bne %12
 	movs r0, #0x40
 	bl IdentifyEeprom
-_0800B3F2
+12
 	cmp r4, #0
-	beq _0800B3FA
+	beq %13
 	cmp r4, #1
-	bne _0800B450
-_0800B3FA
+	bne %19
+13
 	adds r6, #7
 	lsrs r6, r6, #3
 	movs r4, #0
 	cmp r6, #0
-	bls _0800B450
+	bls %19
 	lsrs r0, r7, #3
 	str r0, [sp, #8]
 	mov r7, sp
-	b _0800B414
-_0800B40C
+	b %15
+14
 	movs r0, #4
 	bl IdentifyEeprom
-	b _0800B3F2
-_0800B414
+	b %12
+15
 	ldr r0, [sp, #8]
 	adds r0, r0, r4
 	lsls r0, r0, #0x10
@@ -152,20 +152,20 @@ _0800B414
 	adds r1, r7, #0
 	bl sub_803B5A0
 	cmp r0, #0
-	beq _0800B43C
+	beq %18
 	cmp r5, #0
-	beq _0800B432
+	beq %16
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
-_0800B432
+16
 	movs r0, #0
-_0800B434
+17
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800B43C
+18
 	ldr r1, [sp, #0x18]
 	lsls r0, r4, #3
 	adds r0, r0, r1
@@ -174,16 +174,16 @@ _0800B43C
 	bl __16__rt_memcpy
 	adds r4, #1
 	cmp r4, r6
-	blo _0800B414
-_0800B450
+	blo %15
+19
 	cmp r5, #0
-	beq _0800B45C
+	beq %20
 	ldr r0, _0800B460
 	ldr r0, [r0]
 	bl sub_800B646
-_0800B45C
+20
 	movs r0, #1
-	b _0800B434
+	b %17
 	ALIGN
 _0800B460 DCDU gUnknown_03003E94
 	END

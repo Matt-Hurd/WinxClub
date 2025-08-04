@@ -1,44 +1,44 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EA18
+	IMPORT __VTABLE__333__vftable_GenericObject
 	IMPORT sub_80007A0
-	IMPORT sub_8018386
-	IMPORT sub_801D564
-	IMPORT sub_801D714
+	IMPORT SetNextGlobalFunction
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT maybeMallocEWRAM
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8026014
-sub_8026014
+	thumb_func_start MaybeHandleTransitionToArea
+MaybeHandleTransitionToArea
 	push {r3, lr}
 	movs r0, #0x10
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	add sp, #4
 	pop {r3}
 	bx r3
 	ALIGN
 
-	thumb_func_start sub_8026024
-sub_8026024
+	thumb_func_start GenericObject__Create
+GenericObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0802603C
+	bne %2
 	movs r0, #0xa4
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0802603C
+	bne %2
 	adds r0, r4, #0
-_08026036
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0802603C
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _080262AC
 	movs r1, #0x3c
 	str r0, [r4]
@@ -75,10 +75,10 @@ _0802603C
 	movs r1, #0xa0
 	strh r0, [r1, r4]
 	adds r0, r4, #0
-	b _08026036
+	b %1
 
-	thumb_func_start sub_802608C
-sub_802608C
+	thumb_func_start GenericObject__ctor
+GenericObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080262AC
@@ -86,12 +86,12 @@ sub_802608C
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _080260A8
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080260A8
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -104,10 +104,10 @@ sub_80260AE
 	adds r4, #0x80
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
-	bne _080260C2
+	bne %4
 	movs r0, #0x13
 	str r0, [r4, #0x1c]
-_080260C2
+4
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -125,34 +125,34 @@ sub_80260C8
 	str r3, [r2, #0x1c]
 	ldrb r4, [r1, #4]
 	cmp r4, #0xc
-	bhs _08026166
+	bhs %17
 	add r3, pc, #0x4
 	ldrb r3, [r3, r4]
 	lsls r3, r3, #1
 	add pc, r3
-_080260E8
+5
 	DCB 0x05
-_080260E9
+6
 	DCB 0x05
-_080260EA
+7
 	DCB 0x05
-_080260EB
+8
 	DCB 0x05
-_080260EC
+9
 	DCB 0x12
-_080260ED
+10
 	DCB 0x1B
-_080260EE
+11
 	DCB 0x27
-_080260EF
+12
 	DCB 0x33
-_080260F0
+13
 	DCB 0x3F
-_080260F1
+14
 	DCB 0x48
-_080260F2
+15
 	DCB 0x54
-_080260F3
+16
 	DCB 0x60
 loc_80260f4
 	ldrb r1, [r1, #4]
@@ -167,7 +167,7 @@ loc_80260f4
 	movs r1, #0xff
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08026166
+	b %17
 loc_802610e
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -177,7 +177,7 @@ loc_802610e
 	movs r1, #3
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08026166
+	b %17
 loc_8026120
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -190,7 +190,7 @@ loc_8026120
 	movs r1, #2
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08026166
+	b %17
 loc_8026138
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -203,7 +203,7 @@ loc_8026138
 	movs r1, #3
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08026166
+	b %17
 loc_8026150
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -216,8 +216,8 @@ loc_8026150
 	movs r1, #0
 	adds r0, #0x90
 	strb r1, [r0, #8]
-_08026166
-	b _080261C0
+17
+	b %18
 loc_8026168
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -227,7 +227,7 @@ loc_8026168
 	movs r1, #1
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080261C0
+	b %18
 loc_802617a
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -240,7 +240,7 @@ loc_802617a
 	movs r1, #0
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080261C0
+	b %18
 loc_8026192
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -253,7 +253,7 @@ loc_8026192
 	movs r1, #1
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080261C0
+	b %18
 loc_80261aa
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -266,7 +266,7 @@ loc_80261aa
 	movs r1, #2
 	adds r0, #0x90
 	strb r1, [r0, #8]
-_080261C0
+18
 	movs r0, #0x13
 	str r0, [r2, #0x1c]
 	pop {r4}
@@ -297,18 +297,18 @@ sub_80261C8
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80261F6
-sub_80261F6
+	non_word_aligned_thumb_func_start GenericObject__04
+GenericObject__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
 	ldrb r2, [r0]
 	cmp r2, #0x1c
-	beq _08026234
+	beq %20
 	cmp r2, #0x1f
-	beq _0802623C
+	beq %21
 	cmp r2, #0x26
-	bne _08026250
+	bne %22
 	ldrh r0, [r0, #4]
 	movs r2, #0xf
 	ldr r1, [r4, #0x7c]
@@ -326,77 +326,77 @@ sub_80261F6
 	ldr r0, [r4, #0x2c]
 	movs r2, #0
 	bl sub_80007A0
-_0802622E
+19
 	pop {r4}
 	pop {r3}
 	bx r3
-_08026234
+20
 	adds r0, r4, #0
 	bl sub_80260C8
-	b _0802622E
-_0802623C
+	b %19
+21
 	adds r0, r4, #0
 	bl sub_801DB90
 	adds r4, #0x80
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
-	bne _0802622E
+	bne %19
 	movs r0, #0x13
 	str r0, [r4, #0x1c]
-	b _0802622E
-_08026250
+	b %19
+22
 	adds r0, r4, #0
-	bl sub_801DD40
-	b _0802622E
+	bl DefaultScriptGroups__04
+	b %19
 
-	thumb_func_start sub_8026258
-sub_8026258
+	thumb_func_start GenericObject__08
+GenericObject__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
 	movs r5, #1
 	ldrb r0, [r0]
 	cmp r0, #0x1c
-	beq _08026276
+	beq %24
 	cmp r0, #0x1f
-	beq _08026282
+	beq %25
 	cmp r0, #0x26
-	bne _080262A2
+	bne %27
 	movs r0, #1
-_08026270
+23
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_08026276
+24
 	ldr r1, [r4, #0x78]
 	adds r0, r5, #0
 	cmp r1, #0
-	beq _08026270
+	beq %23
 	movs r0, #0
-	b _08026270
-_08026282
+	b %23
+25
 	adds r0, r4, #0
 	bl sub_801DB90
 	adds r0, r4, #0
 	adds r0, #0x80
 	ldr r1, [r0, #0x1c]
 	cmp r1, #0
-	bne _08026296
+	bne %26
 	movs r1, #0x13
 	str r1, [r0, #0x1c]
-_08026296
+26
 	ldr r1, [r4, #0x78]
 	adds r0, r5, #0
 	cmp r1, #0
-	beq _08026270
+	beq %23
 	movs r0, #0
-	b _08026270
-_080262A2
+	b %23
+27
 	adds r0, r4, #0
-	bl sub_801DF50
-	b _08026270
+	bl DefaultScriptGroups__08
+	b %23
 	ALIGN
-_080262AC DCDU gUnknown_0803EA18
+_080262AC DCDU __VTABLE__333__vftable_GenericObject
 _080262B0 DCDU 0x656E6547
 _080262B4 DCDU 0x20636972
 _080262B8 DCDU 0x656A624F

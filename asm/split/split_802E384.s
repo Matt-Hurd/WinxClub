@@ -14,7 +14,7 @@ sub_802E384
 	bl sub_802E5D2
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #2
-	bpl _0802E3C0
+	bpl %1
 	ldr r1, [r4, #0x14]
 	adds r0, r4, #0
 	adds r1, #0x2c
@@ -37,7 +37,7 @@ sub_802E384
 	adds r1, r0, #0
 	adds r0, r2, #0
 	bl sub_803FF24
-_0802E3C0
+1
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -66,7 +66,7 @@ sub_802E3C6
 	adds r0, r1, r0
 	bl sub_8028BE4
 	cmp r0, #0
-	beq _0802E408
+	beq %2
 	ldr r0, [r5]
 	ldr r1, [r4, #0x34]
 	lsls r1, r1, #6
@@ -75,7 +75,7 @@ sub_802E3C6
 	lsls r1, r1, #5
 	adds r0, r1, r0
 	bl sub_80268AC
-_0802E408
+2
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

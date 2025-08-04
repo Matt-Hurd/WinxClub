@@ -1,0 +1,32 @@
+    IMPORT  sub_800807A
+    IMPORT  sub_8008116
+    IMPORT  sub_8008118
+    IMPORT  sub_800811C
+    IMPORT  sub_8008120
+    IMPORT  sub_800A2B8
+    IMPORT  sub_800A334
+    IMPORT  sub_800A7A0
+    IMPORT  sub_800A9A4
+    IMPORT  sub_800A9AC
+    IMPORT  sub_80403C0
+
+    AREA    __VTABLE__379off_803EE14, DATA, READONLY
+
+    ; Human-readable label for assembly
+    GLOBAL  off_803EE14_VTABLE
+    EXPORT  off_803EE14_VTABLE
+off_803EE14_VTABLE
+    DCD     sub_80403C0 - __VTABLE__379off_803EE14
+    DCD     sub_800807A - __VTABLE__379off_803EE14
+    DCD     sub_800A2B8 - __VTABLE__379off_803EE14
+    DCD     sub_800A334 - __VTABLE__379off_803EE14
+    DCD     sub_800A7A0 - __VTABLE__379off_803EE14
+    DCD     sub_800A9A4 - __VTABLE__379off_803EE14
+    DCD     sub_800A9AC - __VTABLE__379off_803EE14
+    DCD     sub_8008116 - __VTABLE__379off_803EE14
+    DCD     sub_8008118 - __VTABLE__379off_803EE14
+    DCD     sub_800811C - __VTABLE__379off_803EE14
+    DCD     sub_8008120 - __VTABLE__379off_803EE14
+
+    GLOBAL  __VTABLE__379off_803EE14
+    END

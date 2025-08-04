@@ -18,21 +18,21 @@ sub_803F23C
 	movs r5, #0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x19
-	beq _0803F2C0
+	beq %6
 	lsls r0, r1, #0x1f
 	lsrs r3, r0, #0x12
 	str r3, [sp, #4]
-_0803F25A
+1
 	lsls r0, r5, #2
 	adds r0, r0, r7
 	ldr r0, [r0, #0x20]
 	movs r1, #0x97
 	ldrb r1, [r1, r0]
 	cmp r1, #4
-	beq _0803F26C
+	beq %2
 	cmp r1, #6
-	bne _0803F2B2
-_0803F26C
+	bne %5
+2
 	adds r2, r0, #0
 	adds r2, #0x80
 	ldr r1, [r2, #0xc]
@@ -46,37 +46,37 @@ _0803F26C
 	lsls r0, r1, #0x12
 	lsrs r6, r0, #0x1f
 	ldr r0, [r4]
-	beq _0803F298
+	beq %3
 	lsls r0, r0, #0x1c
-	bmi _0803F2A6
+	bmi %4
 	ldr r0, _0803F2C8
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_80012F0
-	b _0803F2A6
-_0803F298
+	b %4
+3
 	lsls r0, r0, #0x1c
-	bpl _0803F2A6
+	bpl %4
 	ldr r0, _0803F2C8
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_8001338
-_0803F2A6
+4
 	ldr r0, [r4]
 	movs r1, #8
 	bics r0, r1
 	lsls r1, r6, #3
 	orrs r0, r1
 	str r0, [r4]
-_0803F2B2
+5
 	ldr r0, [sp, #8]
 	adds r5, #1
 	ldr r0, [r0, #0x1c]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x19
 	cmp r0, r5
-	bhi _0803F25A
-_0803F2C0
+	bhi %1
+6
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}

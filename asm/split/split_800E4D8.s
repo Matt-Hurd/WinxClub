@@ -7,7 +7,7 @@
 	IMPORT gUnknown_0300142C
 	IMPORT gUnknown_03001444
 	IMPORT gUnknown_030033C8
-	IMPORT gUnknown_03003438
+	IMPORT gScriptDataMetadata
 	IMPORT gPlayerPointer
 	IMPORT gUnknown_03003D30
 	IMPORT gUnknown_03003D35
@@ -21,10 +21,10 @@
 	IMPORT gUnknown_03003EB8
 	IMPORT gUnknown_03003EBC
 	IMPORT gUnknown_03007FF8
-	IMPORT gUnknown_0803E86C
-	IMPORT gUnknown_0803ECCC
+	IMPORT __VTABLE__327dword_803E86C
+	IMPORT __VTABLE__359dword_803ECCC
 	IMPORT sub_80517C8
-	IMPORT sub_8000D64
+	IMPORT g3003448__Init
 	IMPORT sub_8000F4C
 	IMPORT sub_800106A
 	IMPORT sub_800194E
@@ -32,18 +32,18 @@
 	IMPORT sub_8004716
 	IMPORT sub_800474E
 	IMPORT sub_8004924
-	IMPORT sub_8004DE6
+	IMPORT LoadFiletable
 	IMPORT sub_8004FFC
-	IMPORT sub_80050C0
+	IMPORT SomehowInitEWRAMLinkedList
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80052C0
 	IMPORT sub_8008160
 	IMPORT sub_800B034
 	IMPORT sub_800B058
 	IMPORT sub_800B082
 	IMPORT sub_800B12C
-	IMPORT sub_800B190
+	IMPORT InitKeyinputIE
 	IMPORT sub_800B4F0
 	IMPORT sub_800B5EE
 	IMPORT sub_800B652
@@ -64,46 +64,46 @@
 	IMPORT sub_80139AC
 	IMPORT sub_8013DEA
 	IMPORT sub_8014DD4
-	IMPORT sub_8017474
+	IMPORT InitScriptData
 	IMPORT sub_8017884
 	IMPORT sub_8017DE6
-	IMPORT sub_8017FFE
-	IMPORT sub_801837C
-	IMPORT sub_8018386
-	IMPORT sub_8018398
-	IMPORT sub_80192CE
-	IMPORT sub_8019BE2
-	IMPORT sub_801A4DA
-	IMPORT sub_801AB34
-	IMPORT sub_801AED0
+	IMPORT HandleIntro
+	IMPORT SetGlobalFunction
+	IMPORT SetNextGlobalFunction
+	IMPORT MainLoop
+	IMPORT HandleFavorsScreen
+	IMPORT HandleInventoryScreen
+	IMPORT HandleMagicScreen
+	IMPORT HandleMainMenu
+	IMPORT HandleObjectivesScreen
 	IMPORT sub_801B10C
-	IMPORT sub_801D360
-	IMPORT sub_8022726
-	IMPORT sub_8022D6E
-	IMPORT sub_8023486
+	IMPORT HandleLoadGameScreen
+	IMPORT HandlePlayCreditsFromOptions
+	IMPORT HandleIngameOptionsScreen
+	IMPORT HandleMainMenuOptionsScreen
 	IMPORT sub_802363C
-	IMPORT sub_8026014
+	IMPORT MaybeHandleTransitionToArea
 	IMPORT sub_8026908
 	IMPORT sub_802693A
 	IMPORT sub_8026962
-	IMPORT sub_8028C7C
-	IMPORT sub_8028CE8
-	IMPORT sub_8028D60
+	IMPORT MaybeHandleIngameCutscene
+	IMPORT MaybeHandleBootIntoGame
+	IMPORT HandleMainIngameLoop
 	IMPORT sub_8028F64
 	IMPORT sub_802EF0A
-	IMPORT sub_80305CC
+	IMPORT HandleGameOverScreen
 	IMPORT sub_8031578
 	IMPORT sub_80315A2
 	IMPORT sub_80315CE
 	IMPORT sub_80315FC
 	IMPORT sub_8031600
 	IMPORT sub_8031622
-	IMPORT sub_8031B98
-	IMPORT sub_8035324
+	IMPORT HandleShowPictureScreen
+	IMPORT HandleAlbum
 	IMPORT sub_8038754
-	IMPORT sub_8038D2C
-	IMPORT sub_80397DC
-	IMPORT sub_803B406
+	IMPORT HandleTeleportMenu
+	IMPORT HandleNewGameScreen
+	IMPORT HandlePostGameCredits
 	IMPORT atoi
 	IMPORT __call_via_r2
 	IMPORT __16__rt_memset
@@ -145,30 +145,30 @@ sub_800E500
 	adds r5, r1, #0
 	adds r4, r2, #0
 	cmp r6, #0
-	beq _0800E528
+	beq %2
 	cmp r6, #1
-	bne _0800E522
+	bne %1
 	movs r2, #0
 	movs r1, #0
 	bl sub_80052C0
 	adds r2, r4, #0
 	adds r1, r5, #0
 	bl sub_80052C0
-_0800E522
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0800E528
+2
 	movs r1, #0
 	cmp r4, #0
-	bls _0800E522
-_0800E52E
+	bls %1
+3
 	ldrb r2, [r5, r1]
 	adds r1, #1
 	adds r0, r2, r0
 	cmp r1, r4
-	blo _0800E52E
-	b _0800E522
+	blo %3
+	b %1
 	ALIGN
 
 	thumb_func_start sub_800E53C
@@ -184,38 +184,38 @@ sub_800E53C
 	adds r0, r6, #0
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	beq _0800E564
+	beq %4
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
 	str r4, [r6, #0x18]
-_0800E564
+4
 	ldr r0, [r6, #0x24]
 	cmp r0, #0
-	beq _0800E576
+	beq %5
 	cmp r5, #0
-	bne _0800E576
+	bne %5
 	movs r1, #1
 	bl sub_802693A
 	str r4, [r6, #0x24]
-_0800E576
+5
 	ldr r0, [r6, #0x2c]
 	cmp r0, #0
-	beq _0800E58A
+	beq %6
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
 	str r4, [r6, #0x2c]
-_0800E58A
+6
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E5B6
+	beq %8
 	cmp r5, #0
-	bne _0800E5B6
+	bne %8
 	movs r1, #0
 	bl sub_800B782
 	movs r1, #0
@@ -223,32 +223,32 @@ _0800E58A
 	bl sub_800B6FA
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E5B4
+	beq %7
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_0800E5B4
+7
 	str r4, [r6, #0x28]
-_0800E5B6
+8
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	beq _0800E5DA
+	beq %10
 	movs r0, #1
 	bl sub_8013DEA
 	bl sub_8014DD4
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	beq _0800E5D8
+	beq %9
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_0800E5D8
+9
 	str r4, [r6, #0x10]
-_0800E5DA
+10
 	movs r0, #0
 	bl sub_80050FA
 	movs r0, #1
@@ -263,55 +263,55 @@ sub_800E5EA
 	ldr r6, _0800E924
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0
-	bne _0800E672
+	bne %17
 	movs r3, #1
 	str r3, [r6, #0x3c]
 	ldr r0, [r6, #0x28]
 	ldr r7, _0800E928
 	cmp r0, #0
-	beq _0800E606
+	beq %11
 	ldr r0, [r7]
 	bl sub_800B65E
-_0800E606
+11
 	ldr r0, _0800E92C
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800E63C
+	beq %13
 	movs r1, #0x67
 	lsls r1, r1, #6
 	adds r4, r0, r1
 	ldr r1, [r4, #0x28]
 	lsls r2, r1, #0xf
-	bpl _0800E624
+	bpl %12
 	movs r0, #1
 	lsls r0, r0, #0x11
 	orrs r0, r1
 	str r0, [r4, #0x28]
-	b _0800E63C
-_0800E624
+	b %13
+12
 	adds r0, #4
 	adds r5, r0, #0
 	bl sub_800CADA
 	cmp r0, #0
-	bne _0800E63C
+	bne %13
 	ldr r0, [r4, #0x28]
 	lsls r0, r0, #0xd
-	bmi _0800E63C
+	bmi %13
 	adds r0, r5, #0
 	bl sub_800C93A
-_0800E63C
+13
 	ldr r0, _0800E930
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800E648
+	beq %14
 	bl sub_800E178
-_0800E648
+14
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E654
+	beq %15
 	ldr r0, [r7]
 	bl sub_800B708
-_0800E654
+15
 	ldr r2, _0800E934
 	ldrh r1, [r2]
 	movs r0, #0
@@ -321,14 +321,14 @@ _0800E654
 	ldr r1, _0800E938
 	ldr r1, [r1]
 	cmp r1, #0
-	beq _0800E670
+	beq %16
 	adds r1, #8
 	ldr r2, [r1]
 	adds r2, #1
 	str r2, [r1]
-_0800E670
+16
 	str r0, [r6, #0x3c]
-_0800E672
+17
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -408,8 +408,8 @@ sub_800E678
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_800E71C
-sub_800E71C
+	thumb_func_start maybeInitTransitionLevelScreen
+maybeInitTransitionLevelScreen
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r5, _0800E938
 	ldr r0, [r5]
@@ -420,44 +420,44 @@ sub_800E71C
 	ldr r0, _0800E924
 	ldr r0, [r0, #8]
 	cmp r0, #0
-	bne _0800E756
-	bl sub_8005106
+	bne %19
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0xc
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E752
+	beq %18
 	movs r2, #0
 	lsls r1, r7, #0xa
 	adds r0, r5, #0
-	bl sub_8004DE6
-_0800E752
+	bl LoadFiletable
+18
 	ldr r0, _0800E924
 	str r5, [r0, #8]
-_0800E756
+19
 	ldr r6, _0800E924
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
-	bne _0800E77A
-	bl sub_8005106
+	bne %21
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0x18
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E778
+	beq %20
 	adds r0, r5, #0
 	bl sub_8004924
-_0800E778
+20
 	str r5, [r6, #0xc]
-_0800E77A
+21
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
-	bne _0800E7A0
-	bl sub_8005106
+	bne %23
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x67
 	adds r3, r4, #0
@@ -465,71 +465,71 @@ _0800E77A
 	lsls r0, r0, #4
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E79E
+	beq %22
 	add r1, pc, #0x1F8
 	adds r0, r5, #0
-	bl sub_8017474
-_0800E79E
+	bl InitScriptData
+22
 	str r5, [r6, #0x1c]
-_0800E7A0
+23
 	ldr r0, [r6, #0x14]
 	cmp r0, #0
-	bne _0800E7C8
-	bl sub_8005106
+	bne %25
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0xc
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E7C2
+	beq %24
 	movs r1, #1
 	adds r0, r5, #0
 	bl sub_801343C
-_0800E7C2
+24
 	str r5, [r6, #0x14]
 	bl sub_800E678
-_0800E7C8
+25
 	ldr r0, [r6, #0x20]
 	cmp r0, #0
-	bne _0800E7EA
-	bl sub_8005106
+	bne %27
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
 	ldr r0, _0800E9A0
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E7E8
+	beq %26
 	adds r0, r5, #0
 	bl sub_801B10C
-_0800E7E8
+26
 	str r5, [r6, #0x20]
-_0800E7EA
+27
 	ldr r0, [r6, #0x30]
 	bl sub_80050FA
 	ldr r0, [r6, #0x2c]
 	cmp r0, #0
-	bne _0800E814
+	bne %29
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #4
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0800E812
+	beq %28
 	ldr r1, _0800E9A4
 	ldr r2, _0800E9A8
 	str r1, [r0]
 	ldr r1, _0800E9AC
 	str r0, [r2]
 	str r1, [r0]
-_0800E812
+28
 	str r0, [r6, #0x2c]
-_0800E814
+29
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	bne _0800E842
+	bne %31
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0xdf
@@ -537,45 +537,45 @@ _0800E814
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E832
+	beq %30
 	adds r0, r5, #0
-	bl sub_8000D64
-_0800E832
+	bl g3003448__Init
+30
 	movs r2, #0
 	movs r1, #0
 	adds r0, r5, #0
 	str r5, [r6, #0x10]
 	bl sub_800194E
 	bl sub_8014DD4
-_0800E842
+31
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0800E860
+	bne %33
 	adds r3, r4, #0
 	movs r2, #0
 	ldr r0, _0800E9B0
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E85E
+	beq %32
 	adds r0, r5, #0
 	bl sub_8001A90
-_0800E85E
+32
 	str r5, [r6, #0x18]
-_0800E860
+33
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	bne _0800E8DC
+	bne %35
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0x14
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E87C
+	beq %34
 	adds r0, r5, #0
 	bl sub_800B4F0
-_0800E87C
+34
 	adds r0, r5, #0
 	adds r3, r4, #0
 	movs r1, #0
@@ -614,24 +614,24 @@ _0800E87C
 	bl sub_800B6FA
 	ldr r0, [r6, #0x28]
 	bl sub_800B652
-_0800E8DC
+35
 	ldr r0, [r6, #0x24]
 	cmp r0, #0
-	bne _0800E900
+	bne %37
 	adds r3, r4, #0
 	movs r2, #0
 	ldr r0, _0800E9CC
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E8F8
+	beq %36
 	adds r0, r5, #0
 	bl sub_8026908
-_0800E8F8
+36
 	adds r0, r5, #0
 	str r5, [r6, #0x24]
 	bl sub_8026962
-_0800E900
+37
 	ldr r5, _0800E938
 	ldr r0, [r5]
 	ldr r1, [sp]
@@ -642,13 +642,13 @@ _0800E900
 	ldr r0, [r6, #0x10]
 	movs r5, #1
 	cmp r0, #0
-	beq _0800E9FE
+	beq %39
 	movs r1, #0x67
 	lsls r1, r1, #6
-	b _0800E9D0
+	b %38
 	ALIGN
 _0800E920 DCDU REG_IE
-_0800E924 DCDU gUnknown_03003438
+_0800E924 DCDU gScriptDataMetadata
 _0800E928 DCDU gUnknown_03003E94
 _0800E92C DCDU gUnknown_03003EB8
 _0800E930 DCDU gUnknown_03003EA4
@@ -680,9 +680,9 @@ _0800E994 DCDU 0x61447470
 _0800E998 DCDU 0x622E6174
 _0800E99C DCDU 0x00006E69
 _0800E9A0 DCDU 0x00000524
-_0800E9A4 DCDU gUnknown_0803ECCC
+_0800E9A4 DCDU __VTABLE__359dword_803ECCC
 _0800E9A8 DCDU gUnknown_03003E90
-_0800E9AC DCDU gUnknown_0803E86C
+_0800E9AC DCDU __VTABLE__327dword_803E86C
 _0800E9B0 DCDU 0x00000A08
 _0800E9B4 DCDU 0x00003442
 _0800E9B8 DCDU 0x73754D58
@@ -691,11 +691,11 @@ _0800E9C0 DCDU 0x00006E69
 _0800E9C4 DCDU 0x2E784673
 _0800E9C8 DCDU 0x006E6962
 _0800E9CC DCDU 0x00001308
-_0800E9D0
+38
 	adds r0, r0, r1
 	ldr r0, [r0]
 	cmp r0, #0
-	bne _0800E9FE
+	bne %39
 	ldr r0, _0800ECBC
 	add r1, pc, #0x2E4
 	ldr r0, [r0]
@@ -711,13 +711,13 @@ _0800E9D0
 	bl sub_8000F4C
 	movs r2, #1
 	lsls r1, r2, #8
-	b _0800EA00
-_0800E9FE
-	b _0800EA06
-_0800EA00
+	b %40
+39
+	b %41
+40
 	ldr r0, [r6, #0x10]
 	bl sub_800106A
-_0800EA06
+41
 	movs r0, #0
 	bl sub_80050FA
 	ldr r0, _0800ECC8
@@ -731,8 +731,8 @@ _0800EA06
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_800EA22
-sub_800EA22
+	non_word_aligned_thumb_func_start maybeInitGame
+maybeInitGame
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, sp, #0x18
@@ -777,79 +777,79 @@ sub_800EA22
 	bl sub_8031622
 	movs r1, #1
 	ldr r0, _0800ED08
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0
 	ldr r0, _0800ED0C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x10
 	ldr r0, _0800ED10
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x13
 	ldr r0, _0800ED14
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x11
 	ldr r0, _0800ED18
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x12
 	ldr r0, _0800ED1C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x14
 	ldr r0, _0800ED20
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #2
 	ldr r0, _0800ED24
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xf
 	ldr r0, _0800ED28
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x15
 	ldr r0, _0800ED2C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #3
 	ldr r0, _0800ED30
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #4
 	ldr r0, _0800ED34
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #5
 	ldr r0, _0800ED38
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #6
 	ldr r0, _0800ED3C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #7
 	ldr r0, _0800ED40
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #8
 	ldr r0, _0800ED44
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #9
 	ldr r0, _0800ED48
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xa
 	ldr r0, _0800ED4C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xd
 	ldr r0, _0800ED50
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x16
 	ldr r0, _0800ED54
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x17
 	ldr r0, _0800ED58
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xb
 	ldr r0, _0800ED5C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xc
 	ldr r0, _0800ED60
-	bl sub_801837C
+	bl SetGlobalFunction
 	ldr r0, _0800ED64
 	movs r4, #0
 	strb r4, [r0]
 	ldr r0, _0800ED68
 	strb r4, [r0]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x31
 	adds r3, r4, #0
@@ -858,10 +858,10 @@ sub_800EA22
 	bl sub_803DA9C
 	movs r1, #0x31
 	lsls r1, r1, #0xc
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	ldr r6, _0800ED6C
 	str r0, [r6, #0x30]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #1
 	adds r3, r4, #0
@@ -870,10 +870,10 @@ sub_800EA22
 	bl sub_803DA9C
 	movs r1, #1
 	lsls r1, r1, #0xb
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	str r0, [r6, #0x34]
 	movs r0, #0
-	bl sub_800B190
+	bl InitKeyinputIE
 	bl sub_802363C
 	movs r2, #0x4b
 	lsls r2, r2, #0xa
@@ -882,7 +882,7 @@ sub_800EA22
 	lsls r0, r0, #0x19
 	bl __16__rt_memset
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r5, sp, #0xc
 	adds r0, r5, #0
 	bl sub_8004716
@@ -913,12 +913,12 @@ sub_800EA22
 	ldr r1, [r2]
 	bics r1, r0
 	str r1, [r2]
-_0800EBE4
+42
 	movs r0, #1
-	bl sub_8018386
-	bl sub_8018398
+	bl SetNextGlobalFunction
+	bl MainLoop
 	cmp r0, #0
-	bne _0800EBE4
+	bne %42
 	bl sub_800E53C
 	ldr r0, _0800ED70
 	ldr r0, [r0]
@@ -936,34 +936,34 @@ sub_800EC0E
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	cmp r0, #2
-	bne _0800EC78
+	bne %46
 	ldr r4, _0800ED6C
 	ldrb r0, [r4]
 	cmp r0, #0
-	beq _0800EC24
+	beq %43
 	ldrh r1, [r4, #4]
 	cmp r2, r1
-	blo _0800EC78
-_0800EC24
+	blo %46
+43
 	cmp r0, #0
-	bne _0800EC32
+	bne %44
 	bl sub_8008160
 	ldr r1, _0800ED74
 	cmp r0, r1
-	bhs _0800EC42
-_0800EC32
+	bhs %45
+44
 	ldrb r0, [r4]
 	cmp r0, #1
-	bne _0800EC78
+	bne %46
 	bl sub_8008160
 	ldr r1, _0800ED78
 	cmp r0, r1
-	blo _0800EC78
-_0800EC42
+	blo %46
+45
 	ldrb r0, [r4]
 	movs r5, #0
 	cmp r0, #0
-	bne _0800EC80
+	bne %47
 	ldr r0, [r4, #0x14]
 	ldrh r1, [r4, #2]
 	ldrb r2, [r0, #9]
@@ -985,12 +985,12 @@ _0800EC42
 	bl sub_80139AC
 	movs r0, #1
 	strb r0, [r4]
-_0800EC78
+46
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0800EC80
+47
 	movs r1, #2
 	ldr r0, [r4, #0x38]
 	bl sub_80139AC
@@ -1018,7 +1018,7 @@ _0800EC80
 	bl atoi
 	strh r0, [r4, #4]
 	strb r5, [r4]
-	b _0800EC78
+	b %46
 	ALIGN
 _0800ECBC DCDU gUnknown_03003EA8
 _0800ECC0 DCDU 0x69727073
@@ -1039,32 +1039,32 @@ _0800ECF8 DCDU 0x00000AFC
 _0800ECFC DCDU gUnknown_030033C8
 _0800ED00 DCDU 0x00001F84
 _0800ED04 DCDU gUnknown_03001444
-_0800ED08 DCDU sub_8017FFE
+_0800ED08 DCDU HandleIntro
 _0800ED0C DCDU sub_8017DE6
-_0800ED10 DCDU sub_8028CE8
-_0800ED14 DCDU sub_80397DC
-_0800ED18 DCDU sub_8028C7C
-_0800ED1C DCDU sub_8028D60
-_0800ED20 DCDU sub_8038D2C
-_0800ED24 DCDU sub_801AB34
-_0800ED28 DCDU sub_8026014
+_0800ED10 DCDU MaybeHandleBootIntoGame
+_0800ED14 DCDU HandleNewGameScreen
+_0800ED18 DCDU MaybeHandleIngameCutscene
+_0800ED1C DCDU HandleMainIngameLoop
+_0800ED20 DCDU HandleTeleportMenu
+_0800ED24 DCDU HandleMainMenu
+_0800ED28 DCDU MaybeHandleTransitionToArea
 _0800ED2C DCDU sub_8028F64
-_0800ED30 DCDU sub_80192CE
-_0800ED34 DCDU sub_8019BE2
-_0800ED38 DCDU sub_801A4DA
-_0800ED3C DCDU sub_801AED0
-_0800ED40 DCDU sub_8022D6E
-_0800ED44 DCDU sub_8023486
-_0800ED48 DCDU sub_801D360
-_0800ED4C DCDU sub_8022726
-_0800ED50 DCDU sub_8031B98
-_0800ED54 DCDU sub_80305CC
-_0800ED58 DCDU sub_803B406
-_0800ED5C DCDU sub_8035324
+_0800ED30 DCDU HandleFavorsScreen
+_0800ED34 DCDU HandleInventoryScreen
+_0800ED38 DCDU HandleMagicScreen
+_0800ED3C DCDU HandleObjectivesScreen
+_0800ED40 DCDU HandleIngameOptionsScreen
+_0800ED44 DCDU HandleMainMenuOptionsScreen
+_0800ED48 DCDU HandleLoadGameScreen
+_0800ED4C DCDU HandlePlayCreditsFromOptions
+_0800ED50 DCDU HandleShowPictureScreen
+_0800ED54 DCDU HandleGameOverScreen
+_0800ED58 DCDU HandlePostGameCredits
+_0800ED5C DCDU HandleAlbum
 _0800ED60 DCDU sub_8038754
 _0800ED64 DCDU gPlayerPointer
 _0800ED68 DCDU gUnknown_03003D35
-_0800ED6C DCDU gUnknown_03003438
+_0800ED6C DCDU gScriptDataMetadata
 _0800ED70 DCDU gPlayerEntity
 _0800ED74 DCDU 0x0000C350
 _0800ED78 DCDU 0x000249F0

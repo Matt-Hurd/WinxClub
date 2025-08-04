@@ -14,10 +14,10 @@ sub_80403A4
 	adds r0, #4
 	bl sub_8012334
 	cmp r5, #0
-	beq _080403BA
+	beq %1
 	adds r0, r4, #0
 	bl sub_803DA18
-_080403BA
+1
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

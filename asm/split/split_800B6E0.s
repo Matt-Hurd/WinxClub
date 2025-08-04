@@ -4,8 +4,8 @@
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB4
-	IMPORT gUnknown_0803EB3C
-	IMPORT gUnknown_0803ECDC
+	IMPORT __VTABLE__341dword_803EB3C
+	IMPORT __VTABLE__363dword_803ECDC
 	IMPORT sub_8000CCE
 	IMPORT sub_800B082
 	IMPORT sub_8011B28
@@ -23,7 +23,7 @@
 	IMPORT __16__rt_memclr
 	IMPORT __16__rt_memclr_w
 	IMPORT CpuSet
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B6E0
@@ -65,45 +65,45 @@ sub_800B714
 	push {r3, lr}
 	bl sub_8011E22
 	cmp r0, #0
-	beq _0800B726
+	beq %2
 	movs r0, #1
-_0800B720
+1
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800B726
+2
 	movs r0, #0
-	b _0800B720
+	b %1
 
 	non_word_aligned_thumb_func_start sub_800B72A
 sub_800B72A
 	push {r3, lr}
 	bl sub_8011E10
 	cmp r0, #0
-	beq _0800B73C
+	beq %4
 	movs r0, #1
-_0800B736
+3
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800B73C
+4
 	movs r0, #0
-	b _0800B736
+	b %3
 
 	thumb_func_start sub_800B740
 sub_800B740
 	push {r3, lr}
 	bl sub_8011E3C
 	cmp r0, #0
-	beq _0800B752
+	beq %6
 	movs r0, #1
-_0800B74C
+5
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800B752
+6
 	movs r0, #0
-	b _0800B74C
+	b %5
 
 	non_word_aligned_thumb_func_start sub_800B756
 sub_800B756
@@ -151,9 +151,9 @@ sub_800B790
 	adds r2, r3, #0
 	ldr r3, [r4, #8]
 	lsls r3, r3, #0x1b
-	bmi _0800B7A4
+	bmi %7
 	bl sub_8012126
-_0800B7A4
+7
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -164,15 +164,15 @@ sub_800B7AA
 	adds r0, r1, #0
 	bl sub_80121C4
 	cmp r0, #0
-	beq _0800B7BE
+	beq %9
 	movs r0, #1
-_0800B7B8
+8
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800B7BE
+9
 	movs r0, #0
-	b _0800B7B8
+	b %8
 
 	non_word_aligned_thumb_func_start sub_800B7C2
 sub_800B7C2
@@ -197,17 +197,17 @@ sub_800B7D2
 sub_800B7DC
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0800B7F4
+	bne %11
 	ldr r0, _0800BB94
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0800B7F4
+	bne %11
 	adds r0, r4, #0
-_0800B7EE
+10
 	pop {r4}
 	pop {r3}
 	bx r3
-_0800B7F4
+11
 	ldr r0, _0800BB98
 	adds r1, r4, #0
 	str r0, [r4]
@@ -286,7 +286,7 @@ _0800B7F4
 	adds r0, r4, r0
 	bl __16__rt_memclr_w
 	adds r0, r4, #0
-	b _0800B7EE
+	b %10
 
 	thumb_func_start sub_800B8A4
 sub_800B8A4
@@ -303,10 +303,10 @@ sub_800B8A4
 	movs r0, #0
 	str r0, [r1]
 	cmp r5, #0
-	beq _0800B8C8
+	beq %12
 	adds r0, r4, #0
 	bl sub_803DA18
-_0800B8C8
+12
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -331,16 +331,16 @@ sub_800B8CE
 	ldrb r1, [r1, #0xd]
 	movs r4, #0
 	cmp r1, #0
-	beq _0800B902
+	beq %14
 	ldr r1, _0800BBB8
 	adds r1, r0, r1
 	movs r2, #0x1f
-_0800B8FA
+13
 	strb r4, [r1, #0xb]
 	adds r1, #0xc
 	subs r2, #1
-	bhs _0800B8FA
-_0800B902
+	bhs %13
+14
 	movs r1, #3
 	lsls r1, r1, #0xb
 	adds r1, r0, r1
@@ -365,7 +365,7 @@ sub_800B916
 	movs r2, #0
 	adds r4, #1
 	add r5, pc, #0x290
-_0800B92C
+15
 	ldm r5!, {r6, r7}
 	stm r1!, {r6, r7}
 	ldr r6, [r0]
@@ -378,7 +378,7 @@ _0800B92C
 	subs r5, #8
 	adds r2, #1
 	cmp r2, #0x80
-	blt _0800B92C
+	blt %15
 	pop {r4, r5, r6, r7}
 	bx lr
 
@@ -392,20 +392,20 @@ sub_800B94A
 	cmp r0, #3
 	ldr r0, [r1]
 	ldr r3, _0800BBC8
-	blo _0800B98C
+	blo %18
 	ldr r1, _0800BBD0
 	cmp r0, #0
-	beq _0800B976
+	beq %17
 	movs r0, #0
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _0800BBD4
 	bl CpuSet
-_0800B970
+16
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800B976
+17
 	adds r2, r1, #0
 	movs r0, #0
 	str r0, [sp]
@@ -416,18 +416,18 @@ _0800B976
 	ldr r1, _0800BBD8
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _0800B970
-_0800B98C
+	b %16
+18
 	ldr r1, _0800BBDC
 	cmp r0, #0
-	beq _0800B9A0
+	beq %19
 	movs r0, #0
 	str r0, [sp]
 	mov r0, sp
 	ldr r2, _0800BBE0
 	bl CpuSet
-	b _0800B970
-_0800B9A0
+	b %16
+19
 	adds r2, r1, #0
 	movs r0, #0
 	str r0, [sp]
@@ -438,7 +438,7 @@ _0800B9A0
 	ldr r1, _0800BBE4
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _0800B970
+	b %16
 
 	non_word_aligned_thumb_func_start sub_800B9B6
 sub_800B9B6
@@ -453,7 +453,7 @@ sub_800B9B6
 	movs r0, #0
 	movs r3, #0x1d
 	lsls r3, r3, #5
-_0800B9D0
+20
 	adds r1, r0, #1
 	lsls r0, r0, #1
 	adds r0, r0, r4
@@ -463,7 +463,7 @@ _0800B9D0
 	strh r2, [r0]
 	adds r0, r1, #0
 	cmp r1, #0x10
-	blt _0800B9D0
+	blt %20
 	movs r0, #0xf
 	lsls r0, r0, #6
 	adds r0, r4, r0
@@ -473,7 +473,7 @@ _0800B9D0
 	movs r0, #0
 	movs r5, #0x1f
 	lsls r5, r5, #6
-_0800B9F6
+21
 	adds r1, r0, #1
 	movs r5, #0x1f
 	lsls r5, r5, #6
@@ -482,10 +482,10 @@ _0800B9F6
 	strb r1, [r0, #2]
 	adds r0, r1, #0
 	cmp r1, #8
-	blt _0800B9F6
+	blt %21
 	movs r0, #0
 	mov lr, r0
-_0800BA0C
+22
 	mov r0, lr
 	lsls r0, r0, #7
 	ldr r1, _0800BBE8
@@ -500,7 +500,7 @@ _0800BA0C
 	strb r1, [r0]
 	adds r0, #1
 	movs r2, #1
-_0800BA28
+23
 	subs r6, r2, #1
 	movs r5, #1
 	movs r1, #8
@@ -509,11 +509,11 @@ _0800BA28
 	movs r1, #0
 	cmp r5, #0
 	mov ip, r5
-	bls _0800BA60
+	bls %25
 	lsls r6, r3, #0x1d
 	lsrs r6, r6, #0x1d
 	lsls r5, r6, #3
-_0800BA40
+24
 	ldrb r3, [r0]
 	movs r7, #0x38
 	adds r1, #1
@@ -529,16 +529,16 @@ _0800BA40
 	strb r3, [r0]
 	adds r0, #1
 	cmp ip, r1
-	bhi _0800BA40
-_0800BA60
+	bhi %24
+25
 	adds r2, #1
 	cmp r2, #8
-	blo _0800BA28
+	blo %23
 	mov r0, lr
 	adds r0, #1
 	mov lr, r0
 	cmp r0, #8
-	blt _0800BA0C
+	blt %22
 	ldr r0, _0800BBC4
 	ldr r0, [r0]
 	bl sub_800B082
@@ -546,14 +546,14 @@ _0800BA60
 	lsls r1, r1, #6
 	adds r1, r4, r1
 	cmp r0, #3
-	blo _0800BA88
+	blo %26
 	movs r0, #4
 	strb r0, [r1, #0xa]
-	b _0800BA8C
-_0800BA88
+	b %27
+26
 	movs r5, #0
 	strb r5, [r1, #0xa]
-_0800BA8C
+27
 	movs r1, #1
 	ldr r0, _0800BBAC
 	lsls r1, r1, #0xa
@@ -564,7 +564,7 @@ _0800BA8C
 	movs r0, #0
 	movs r5, #0x1f
 	lsls r5, r5, #6
-_0800BAA2
+28
 	lsls r2, r0, #3
 	adds r2, r2, r4
 	adds r2, r2, r5
@@ -577,7 +577,7 @@ _0800BAA2
 	orrs r3, r1
 	str r3, [r2, #0x10]
 	cmp r0, #0x80
-	blt _0800BAA2
+	blt %28
 	movs r0, #0x2f
 	lsls r0, r0, #6
 	adds r0, r4, r0
@@ -597,7 +597,7 @@ _0800BAA2
 	movs r2, #0
 	movs r6, #3
 	lsls r6, r6, #8
-_0800BAE4
+29
 	add r7, pc, #0xD4
 	ldm r7!, {r3, r7}
 	stm r1!, {r3, r7}
@@ -612,10 +612,10 @@ _0800BAE4
 	adds r0, #8
 	adds r2, #1
 	cmp r2, #0x80
-	blt _0800BAE4
+	blt %29
 	movs r0, #0
 	movs r1, #0xff
-_0800BB06
+30
 	lsls r2, r0, #2
 	adds r2, r2, r0
 	lsls r2, r2, #1
@@ -640,7 +640,7 @@ _0800BB06
 	adds r2, r2, r3
 	strb r1, [r2]
 	cmp r0, #0x80
-	blt _0800BB06
+	blt %30
 	ldr r0, _0800BBF0
 	movs r7, #0xc1
 	adds r0, r4, r0
@@ -659,7 +659,7 @@ _0800BB06
 	movs r0, #0
 	movs r1, #0xff
 	adds r1, #1
-_0800BB5E
+31
 	lsls r2, r0, #1
 	adds r2, r2, r0
 	lsls r2, r2, #2
@@ -674,7 +674,7 @@ _0800BB5E
 	strb r0, [r2, #0xd]
 	strb r6, [r2, #0xe]
 	cmp r0, #0x20
-	blt _0800BB5E
+	blt %31
 	movs r0, #0xcd
 	lsls r0, r0, #5
 	adds r0, r4, r0
@@ -688,9 +688,9 @@ _0800BB5E
 	bx r3
 	ALIGN
 _0800BB94 DCDU 0x000019B0
-_0800BB98 DCDU gUnknown_0803ECDC
+_0800BB98 DCDU __VTABLE__363dword_803ECDC
 _0800BB9C DCDU gUnknown_03003EA0
-_0800BBA0 DCDU gUnknown_0803EB3C
+_0800BBA0 DCDU __VTABLE__341dword_803EB3C
 _0800BBA4 DCDU 0x00000409
 _0800BBA8 DCDU 0x00000404
 _0800BBAC DCDU 0x000007CC

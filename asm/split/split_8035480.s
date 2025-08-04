@@ -1,35 +1,35 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803E814
-	IMPORT sub_8005106
-	IMPORT sub_801D564
-	IMPORT sub_801D714
+	IMPORT __VTABLE__324ToggleObjectGroup
+	IMPORT GetEWRAMStart
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8035480
-sub_8035480
+	thumb_func_start ToggleObject__Create
+ToggleObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08035498
+	bne %2
 	movs r0, #0xac
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08035498
+	bne %2
 	adds r0, r4, #0
-_08035492
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08035498
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08035730
 	ldr r2, _08035734
 	str r0, [r4]
@@ -85,10 +85,10 @@ _08035498
 	bics r1, r2
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
-	b _08035492
+	b %1
 
-	non_word_aligned_thumb_func_start sub_803550E
-sub_803550E
+	non_word_aligned_thumb_func_start Toggle__ctor
+Toggle__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08035730
@@ -96,12 +96,12 @@ sub_803550E
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _0803552A
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0803552A
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -114,10 +114,10 @@ sub_8035530
 	adds r4, #0x80
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
-	bne _08035544
+	bne %4
 	movs r0, #0x13
 	str r0, [r4, #0x1c]
-_08035544
+4
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -135,35 +135,35 @@ sub_803554A
 	str r3, [r2, #0x1c]
 	ldrb r4, [r1, #4]
 	cmp r4, #0xc
-	bhs _080355EA
+	bhs %17
 	add r3, pc, #0x8
 	ldrb r3, [r3, r4]
 	lsls r3, r3, #1
 	add pc, r3
 	ALIGN
-_0803556C
+5
 	DCB 0x06
-_0803556D
+6
 	DCB 0x06
-_0803556E
+7
 	DCB 0x06
-_0803556F
+8
 	DCB 0x06
-_08035570
+9
 	DCB 0x13
-_08035571
+10
 	DCB 0x1C
-_08035572
+11
 	DCB 0x28
-_08035573
+12
 	DCB 0x34
-_08035574
+13
 	DCB 0x40
-_08035575
+14
 	DCB 0x49
-_08035576
+15
 	DCB 0x55
-_08035577
+16
 	DCB 0x61
 loc_8035578
 	ldrb r1, [r1, #4]
@@ -178,7 +178,7 @@ loc_8035578
 	movs r1, #0xff
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080355EA
+	b %17
 loc_8035592
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -188,7 +188,7 @@ loc_8035592
 	movs r1, #3
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080355EA
+	b %17
 loc_80355a4
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -201,7 +201,7 @@ loc_80355a4
 	movs r1, #2
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080355EA
+	b %17
 loc_80355bc
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -214,7 +214,7 @@ loc_80355bc
 	movs r1, #3
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _080355EA
+	b %17
 loc_80355d4
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -227,8 +227,8 @@ loc_80355d4
 	movs r1, #0
 	adds r0, #0x90
 	strb r1, [r0, #8]
-_080355EA
-	b _08035644
+17
+	b %18
 loc_80355ec
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -238,7 +238,7 @@ loc_80355ec
 	movs r1, #1
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08035644
+	b %18
 loc_80355fe
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -251,7 +251,7 @@ loc_80355fe
 	movs r1, #0
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08035644
+	b %18
 loc_8035616
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -264,7 +264,7 @@ loc_8035616
 	movs r1, #1
 	adds r0, #0x90
 	strb r1, [r0, #8]
-	b _08035644
+	b %18
 loc_803562e
 	movs r3, #0xf
 	ldr r1, [r0, #0x7c]
@@ -277,99 +277,99 @@ loc_803562e
 	movs r1, #2
 	adds r0, #0x90
 	strb r1, [r0, #8]
-_08035644
+18
 	movs r0, #0x13
 	str r0, [r2, #0x1c]
 	pop {r4}
 	bx lr
 
-	thumb_func_start sub_803564C
-sub_803564C
+	thumb_func_start ToggleObjectGroup__04
+ToggleObjectGroup__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
 	ldrb r0, [r0]
 	cmp r0, #0x1c
-	beq _08035672
+	beq %20
 	cmp r0, #0x1f
-	beq _0803567A
+	beq %21
 	cmp r0, #0x22
-	bne _0803568E
+	bne %22
 	ldr r2, [r4]
 	adds r0, r4, #0
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
 	bl __call_via_r2
-_0803566C
+19
 	pop {r4}
 	pop {r3}
 	bx r3
-_08035672
+20
 	adds r0, r4, #0
 	bl sub_803554A
-	b _0803566C
-_0803567A
+	b %19
+21
 	adds r0, r4, #0
 	bl sub_801DB90
 	adds r4, #0x80
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
-	bne _0803566C
+	bne %19
 	movs r0, #0x13
 	str r0, [r4, #0x1c]
-	b _0803566C
-_0803568E
+	b %19
+22
 	adds r0, r4, #0
-	bl sub_801DD40
-	b _0803566C
+	bl DefaultScriptGroups__04
+	b %19
 
-	non_word_aligned_thumb_func_start sub_8035696
-sub_8035696
+	non_word_aligned_thumb_func_start ToggleObjectGroup__08
+ToggleObjectGroup__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
 	movs r5, #1
 	ldrb r0, [r0]
 	cmp r0, #0x1c
-	beq _080356CC
+	beq %25
 	cmp r0, #0x1f
-	bne _080356D8
+	bne %26
 	adds r0, r4, #0
 	bl sub_801DB90
 	adds r0, r4, #0
 	adds r0, #0x80
 	ldr r1, [r0, #0x1c]
 	cmp r1, #0
-	bne _080356BC
+	bne %23
 	movs r1, #0x13
 	str r1, [r0, #0x1c]
-_080356BC
+23
 	ldr r1, [r4, #0x78]
 	adds r0, r5, #0
 	cmp r1, #0
-	beq _080356C6
+	beq %24
 	movs r0, #0
-_080356C6
+24
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_080356CC
+25
 	ldr r1, [r4, #0x78]
 	adds r0, r5, #0
 	cmp r1, #0
-	beq _080356C6
+	beq %24
 	movs r0, #0
-	b _080356C6
-_080356D8
+	b %24
+26
 	adds r0, r4, #0
-	bl sub_801DF50
-	b _080356C6
+	bl DefaultScriptGroups__08
+	b %24
 
-	thumb_func_start sub_80356E0
-sub_80356E0
+	thumb_func_start ToggleObjectGroup__38
+ToggleObjectGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -377,7 +377,7 @@ sub_80356E0
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08035708
+	beq %27
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -385,7 +385,7 @@ sub_80356E0
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_08035708
+27
 	movs r1, #7
 	strh r1, [r0]
 	strh r5, [r0, #2]
@@ -407,7 +407,7 @@ _08035708
 	pop {r3}
 	bx r3
 	ALIGN
-_08035730 DCDU gUnknown_0803E814
+_08035730 DCDU __VTABLE__324ToggleObjectGroup
 _08035734 DCDU 0xFF000FFF
 _08035738 DCDU 0x67676F54
 _0803573C DCDU 0x4F20656C

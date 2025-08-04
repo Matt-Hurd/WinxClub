@@ -20,7 +20,7 @@ sub_8000914
 	adds r4, r0, #0
 	ldr r0, [r0]
 	lsls r0, r0, #0x15
-	bmi _08000942
+	bmi %1
 	ldr r0, _08000B8C
 	adds r1, r4, #0
 	ldr r0, [r0]
@@ -38,7 +38,7 @@ sub_8000914
 	movs r1, #0x80
 	orrs r0, r1
 	str r0, [r4]
-_08000942
+1
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -49,7 +49,7 @@ sub_8000948
 	adds r4, r0, #0
 	ldr r0, [r0]
 	lsls r0, r0, #0x14
-	bmi _080009B8
+	bmi %12
 	ldrb r0, [r4, #3]
 	ldr r2, _08000B90
 	adds r0, #0xff
@@ -60,36 +60,36 @@ sub_8000948
 	adds r1, r1, r2
 	str r1, [r4, #8]
 	cmp r0, #0
-	bne _080009B8
+	bne %12
 	ldr r0, [r4, #0x48]
 	ldr r0, [r0]
 	lsls r0, r0, #8
 	lsrs r0, r0, #0x1c
 	cmp r0, #0xa
-	bhs _080009B8
+	bhs %12
 	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
-_0800097C
+2
 	DCB 0x04
-_0800097D
+3
 	DCB 0x20
-_0800097E
+4
 	DCB 0x1D
-_0800097F
+5
 	DCB 0x1D
-_08000980
+6
 	DCB 0x1D
-_08000981
+7
 	DCB 0x1D
-_08000982
+8
 	DCB 0x1D
-_08000983
+9
 	DCB 0x45
-_08000984
+10
 	DCB 0x50
-_08000985
+11
 	DCB 0x71
 loc_8000986
 	ldr r0, [r4, #0x48]
@@ -115,7 +115,7 @@ loc_8000986
 	movs r1, #0x20
 	orrs r0, r1
 	str r0, [r4]
-_080009B8
+12
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -154,7 +154,7 @@ loc_80009be
 	movs r1, #0x20
 	orrs r0, r1
 	str r0, [r4]
-	b _080009B8
+	b %12
 loc_8000a08
 	ldr r0, _08000B8C
 	adds r1, r4, #0
@@ -165,7 +165,7 @@ loc_8000a08
 	lsls r1, r1, #0xa
 	bics r0, r1
 	str r0, [r4]
-	b _080009B8
+	b %12
 loc_8000a1e
 	ldr r5, _08000B8C
 	adds r1, r4, #0
@@ -177,9 +177,9 @@ loc_8000a1e
 	bics r0, r1
 	str r0, [r4]
 	lsls r1, r0, #0x1f
-	beq _080009B8
+	beq %12
 	lsls r0, r0, #0x1f
-	bpl _080009B8
+	bpl %12
 	adds r1, r4, #0
 	ldr r0, [r5]
 	bl sub_8001232
@@ -188,15 +188,15 @@ loc_8000a1e
 	lsls r0, r0, #1
 	str r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _080009B8
+	bmi %12
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _080009B8
+	beq %12
 	ldr r0, _08000B94
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_800CD28
-	b _080009B8
+	b %12
 loc_8000a60
 	ldr r0, [r4, #0x48]
 	ldr r0, [r0]
@@ -205,9 +205,9 @@ loc_8000a60
 	adds r0, r4, #0
 	bl __call_via_r2
 	cmp r0, #0
-	beq _08000A92
+	beq %13
 	cmp r0, #7
-	bne _080009B8
+	bne %12
 	ldr r0, [r4, #0x48]
 	adds r0, #4
 	str r0, [r4, #0x48]
@@ -220,8 +220,8 @@ loc_8000a60
 	lsls r1, r1, #0xa
 	bics r0, r1
 	str r0, [r4]
-	b _080009B8
-_08000A92
+	b %12
+13
 	ldr r0, [r4, #0x48]
 	adds r0, #4
 	str r0, [r4, #0x48]
@@ -244,7 +244,7 @@ _08000A92
 	movs r1, #0x20
 	orrs r0, r1
 	str r0, [r4]
-	b _080009B8
+	b %12
 
 	thumb_func_start sub_8000AC4
 sub_8000AC4
@@ -259,17 +259,17 @@ sub_8000AC4
 	ldr r3, [sp, #8]
 	ldr r0, [r3]
 	cmp r0, #0
-	bne _08000AEC
+	bne %15
 	ldr r3, [sp, #8]
 	ldr r0, [r3, #4]
 	cmp r0, #0
-	bne _08000AEC
-_08000AE4
+	bne %15
+14
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08000AEC
+15
 	ldr r0, _08000B8C
 	movs r1, #0x67
 	ldr r0, [r0]
@@ -284,10 +284,10 @@ _08000AEC
 	adds r4, r2, r3
 	movs r7, #0
 	cmp r6, #0
-	ble _08000B4A
-_08000B0A
+	ble %18
+16
 	cmp r4, r5
-	beq _08000B2C
+	beq %17
 	ldr r0, _08000B8C
 	ldr r1, _08000BA0
 	ldr r0, [r0]
@@ -297,12 +297,12 @@ _08000B0A
 	ldr r3, [sp, #8]
 	bl sub_800F090
 	cmp r0, #0
-	beq _08000B2C
+	beq %17
 	movs r7, #1
 	ldr r1, [sp]
 	movs r0, #1
 	strb r0, [r1]
-_08000B2C
+17
 	ldr r0, _08000B8C
 	movs r1, #0x67
 	ldr r0, [r0]
@@ -317,14 +317,14 @@ _08000B2C
 	lsls r1, r1, #5
 	adds r4, r0, r1
 	cmp r6, #0
-	bgt _08000B0A
-_08000B4A
+	bgt %16
+18
 	ldr r0, [r5]
 	lsls r0, r0, #0x1d
-	bpl _08000B88
+	bpl %20
 	ldr r0, _08000BA4
 	cmp r7, #0
-	beq _08000B70
+	beq %19
 	ldr r1, _08000B8C
 	ldr r2, _08000BA8
 	ldr r1, [r1]
@@ -332,12 +332,12 @@ _08000B4A
 	adds r1, r5, #0
 	bl sub_801537C
 	cmp r0, #0
-	beq _08000B88
+	beq %20
 	ldr r1, [sp]
 	movs r0, #3
 	strb r0, [r1]
-	b _08000B88
-_08000B70
+	b %20
+19
 	ldr r1, _08000B8C
 	ldr r1, [r1]
 	ldr r2, [sp, #8]
@@ -345,13 +345,13 @@ _08000B70
 	adds r1, r5, #0
 	bl sub_801537C
 	adds r7, r0, #0
-	beq _08000B88
+	beq %20
 	ldr r1, [sp]
 	movs r0, #2
 	strb r0, [r1]
-_08000B88
+20
 	adds r0, r7, #0
-	b _08000AE4
+	b %14
 	ALIGN
 _08000B8C DCDU gUnknown_03003EB8
 _08000B90 DCDU 0xFFEF41E0

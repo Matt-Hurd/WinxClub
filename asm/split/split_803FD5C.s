@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT CpuSet
 	IMPORT sub_803DA9C
 
@@ -18,7 +18,7 @@ sub_803FD5C
 	orrs r5, r4
 	adds r0, r0, r6
 	cmp r5, #0
-	bne _0803FD9A
+	bne %1
 	ldr r5, [r0, #0x20]
 	ldr r4, [r5, #0x50]
 	ldr r5, [r5, #0x54]
@@ -39,7 +39,7 @@ sub_803FD5C
 	asrs r2, r2, #0x10
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
-_0803FD9A
+1
 	lsls r1, r1, #0x10
 	str r1, [r0, #0x28]
 	lsls r1, r3, #0x10
@@ -66,8 +66,8 @@ sub_803FDB8
 	ldm r6!, {r5, r6}
 	ldr r1, [r4, #0x14]
 	cmp r0, r1
-	bne _0803FE4C
-	bl sub_8005106
+	bne %6
+	bl GetEWRAMStart
 	movs r7, #1
 	lsls r7, r7, #9
 	adds r1, r0, #0
@@ -82,10 +82,10 @@ sub_803FDB8
 	adds r1, r0, #0
 	adds r2, r3, #0
 	cmp r3, r0
-	bhs _0803FE02
+	bhs %2
 	adds r7, r2, r7
 	cmp r7, r1
-	bls _0803FE02
+	bls %2
 	adds r2, r7, #0
 	movs r7, #1
 	lsls r7, r7, #9
@@ -93,23 +93,23 @@ sub_803FDB8
 	movs r7, #5
 	lsls r7, r7, #0x15
 	mov ip, r7
-_0803FE02
+2
 	ldr r7, _0803FE74
 	ldr r7, [r7]
 	cmp r7, #0
-	beq _0803FE16
+	beq %3
 	adds r1, r0, #0
 	adds r0, r3, #0
 	ldr r2, _0803FE78
 	bl CpuSet
-	b _0803FE4C
-_0803FE16
+	b %6
+3
 	lsls r3, r1, #0x1e
 	ldr r0, _0803FE7C
-	bmi _0803FE20
+	bmi %4
 	lsls r3, r2, #0x1e
-	bpl _0803FE38
-_0803FE20
+	bpl %5
+4
 	str r2, [r0]
 	str r1, [r0, #4]
 	movs r1, #0xff
@@ -121,8 +121,8 @@ _0803FE20
 	orrs r1, r2
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _0803FE4C
-_0803FE38
+	b %6
+5
 	str r2, [r0]
 	str r1, [r0, #4]
 	movs r1, #0x80
@@ -133,7 +133,7 @@ _0803FE38
 	orrs r1, r2
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-_0803FE4C
+6
 	ldr r0, [sp, #0xc]
 	ldr r1, [r4, #0x10]
 	ldr r2, [sp, #8]

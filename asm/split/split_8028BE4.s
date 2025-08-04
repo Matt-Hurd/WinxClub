@@ -14,15 +14,15 @@ sub_8028BE4
 	ldr r0, [r0, #8]
 	bl sub_80121C4
 	cmp r0, #0
-	beq _08028BF8
+	beq %2
 	movs r0, #1
-_08028BF2
+1
 	add sp, #4
 	pop {r3}
 	bx r3
-_08028BF8
+2
 	movs r0, #0
-	b _08028BF2
+	b %1
 
 	thumb_func_start sub_8028BFC
 sub_8028BFC
@@ -31,24 +31,24 @@ sub_8028BFC
 	ldr r0, _08028C78
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _08028C28
+	beq %5
 	movs r4, #0
-_08028C0A
+3
 	lsls r0, r4, #5
 	adds r5, r0, r6
 	ldr r0, [r5, #8]
 	bl sub_80121C4
 	cmp r0, #0
-	beq _08028C1E
+	beq %4
 	adds r0, r5, #4
 	bl sub_8012334
-_08028C1E
+4
 	adds r4, #1
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	cmp r4, #0x98
-	blo _08028C0A
-_08028C28
+	blo %3
+5
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -71,12 +71,12 @@ sub_8028C42
 	adds r4, r0, #0
 	ldrb r0, [r0]
 	cmp r0, #0
-	bne _08028C56
+	bne %6
 	adds r0, r4, #4
 	bl sub_80122F0
 	movs r0, #1
 	strb r0, [r4]
-_08028C56
+6
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -87,12 +87,12 @@ sub_8028C5C
 	adds r4, r0, #0
 	ldrb r0, [r0]
 	cmp r0, #0
-	beq _08028C70
+	beq %7
 	adds r0, r4, #4
 	bl sub_801230C
 	movs r0, #0
 	strb r0, [r4]
-_08028C70
+7
 	pop {r4}
 	pop {r3}
 	bx r3

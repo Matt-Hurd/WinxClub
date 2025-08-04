@@ -4,7 +4,7 @@
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
-	IMPORT gUnknown_0803E350
+	IMPORT __VTABLE__305dword_803E350
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_800116A
@@ -14,7 +14,7 @@
 	IMPORT sub_8028C2E
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 	IMPORT sub_8040148
@@ -24,17 +24,17 @@
 sub_8037E48
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08037E60
+	bne %2
 	movs r0, #0x48
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08037E60
+	bne %2
 	adds r0, r4, #0
-_08037E5A
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08037E60
+2
 	adds r0, r4, #0
 	bl sub_802E418
 	ldr r0, _0803818C
@@ -43,7 +43,7 @@ _08037E60
 	movs r0, #0
 	strb r0, [r1, r4]
 	adds r0, r4, #0
-	b _08037E5A
+	b %1
 
 	thumb_func_start sub_8037E74
 sub_8037E74
@@ -56,7 +56,7 @@ sub_8037E74
 	ldr r2, [r1]
 	lsls r0, r2, #0x14
 	lsrs r3, r0, #0x1f
-	beq _08037E9A
+	beq %3
 	asrs r0, r0, #0x1f
 	movs r3, #1
 	lsls r3, r3, #0xb
@@ -66,15 +66,15 @@ sub_8037E74
 	bics r2, r3
 	orrs r0, r2
 	str r0, [r1]
-_08037E9A
+3
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_802E4AA
 	cmp r5, #0
-	beq _08037EAC
+	beq %4
 	adds r0, r4, #0
 	bl sub_803DA18
-_08037EAC
+4
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -107,7 +107,7 @@ sub_8037EB2
 	movs r6, #1
 	str r6, [r4, #0x24]
 	cmn r5, r6
-	bne _08037EFC
+	bne %5
 	ldr r1, [r4, #0x10]
 	ldr r3, [r4, #0x34]
 	ldr r1, [r1, #0x7c]
@@ -117,8 +117,8 @@ sub_8037EB2
 	lsls r3, r3, #8
 	orrs r1, r3
 	str r1, [r4, #0x34]
-	b _08037F0A
-_08037EFC
+	b %6
+5
 	ldr r1, [r4, #0x34]
 	lsls r3, r5, #0x18
 	lsrs r1, r1, #8
@@ -126,7 +126,7 @@ _08037EFC
 	lsrs r3, r3, #0x18
 	orrs r1, r3
 	str r1, [r4, #0x34]
-_08037F0A
+6
 	movs r3, #0xf
 	ldr r1, [r4, #0x34]
 	lsls r3, r3, #0x16
@@ -144,60 +144,60 @@ _08037F0A
 	movs r7, #0
 	cmp r3, #0
 	str r1, [r4, #0x34]
-	beq _08037F50
+	beq %7
 	cmp r3, #1
-	beq _08037FAA
+	beq %12
 	cmp r3, #2
-	bne _08038004
+	bne %15
 	lsls r3, r1, #0x18
 	lsrs r3, r3, #0x18
-	beq _08038006
+	beq %16
 	cmp r3, #1
-	beq _08038008
+	beq %17
 	cmp r3, #2
-	beq _0803802A
+	beq %20
 	cmp r3, #3
-	bne _0803802C
+	bne %21
 	ldr r3, _08038190
 	str r3, [r4, #0x40]
 	str r6, [r4, #0x3c]
-	b _0803802C
-_08037F50
+	b %21
+7
 	lsls r3, r1, #0x18
 	lsrs r3, r3, #0x18
-	beq _08037F82
+	beq %10
 	cmp r3, #1
-	beq _08037F6C
+	beq %8
 	cmp r3, #2
-	beq _08037F76
+	beq %9
 	cmp r3, #3
-	bne _08037F8E
+	bne %11
 	ldr r3, _08038194
 	str r3, [r4, #0x3c]
 	ldr r3, _08038198
 	str r3, [r4, #0x40]
-	b _08037F8E
-_08037F6C
+	b %11
+8
 	movs r3, #0x33
 	lsls r3, r3, #0x10
 	str r3, [r4, #0x40]
 	str r6, [r4, #0x3c]
-	b _08037F8E
-_08037F76
+	b %11
+9
 	ldr r3, _0803819C
 	str r3, [r4, #0x3c]
 	movs r3, #0xb
 	lsls r3, r3, #0x10
 	str r3, [r4, #0x40]
-	b _08037F8E
-_08037F82
+	b %11
+10
 	movs r3, #5
 	lsls r3, r3, #0x13
 	str r3, [r4, #0x3c]
 	movs r3, #9
 	lsls r3, r3, #0x10
 	str r3, [r4, #0x40]
-_08037F8E
+11
 	adds r3, r1, #0
 	subs r1, r1, r5
 	ands r1, r0
@@ -211,17 +211,17 @@ _08037F8E
 	strb r7, [r2, #4]
 	movs r0, #3
 	strb r0, [r2, #5]
-	b _08038004
-_08037FAA
+	b %15
+12
 	lsls r3, r1, #0x18
 	lsrs r3, r3, #0x18
-	beq _0803800A
+	beq %18
 	cmp r3, #1
-	beq _08037FD2
+	beq %13
 	cmp r3, #2
-	beq _08037FEA
+	beq %14
 	cmp r3, #3
-	bne _08038020
+	bne %19
 	ldr r3, _080381A0
 	str r3, [r4, #0x40]
 	adds r3, r1, #0
@@ -232,8 +232,8 @@ _08037FAA
 	adds r0, r3, #0
 	str r7, [r4, #0x3c]
 	str r0, [r4, #0x34]
-	b _08038020
-_08037FD2
+	b %19
+13
 	movs r3, #0x15
 	lsls r3, r3, #0x11
 	str r3, [r4, #0x40]
@@ -245,8 +245,8 @@ _08037FD2
 	adds r0, r3, #0
 	str r6, [r4, #0x3c]
 	str r0, [r4, #0x34]
-	b _08038020
-_08037FEA
+	b %19
+14
 	ldr r3, _080381A4
 	str r3, [r4, #0x3c]
 	movs r3, #3
@@ -259,14 +259,14 @@ _08037FEA
 	orrs r3, r1
 	adds r0, r3, #0
 	str r0, [r4, #0x34]
-	b _08038020
-_08038004
-	b _0803806E
-_08038006
-	b _0803804C
-_08038008
-	b _08038034
-_0803800A
+	b %19
+15
+	b %27
+16
+	b %25
+17
+	b %23
+18
 	movs r3, #0x2d
 	lsls r3, r3, #0x10
 	str r3, [r4, #0x3c]
@@ -278,41 +278,41 @@ _0803800A
 	adds r0, r3, #0
 	str r6, [r4, #0x40]
 	str r0, [r4, #0x34]
-_08038020
+19
 	movs r0, #0xff
 	adds r0, #0xdf
 	str r0, [r4, #0x38]
 	strb r7, [r2, #4]
-	b _0803802E
-_0803802A
-	b _08038042
-_0803802C
-	b _08038056
-_0803802E
+	b %22
+20
+	b %24
+21
+	b %26
+22
 	movs r0, #3
 	strb r0, [r2, #5]
-	b _0803806E
-_08038034
+	b %27
+23
 	movs r3, #1
 	lsls r3, r3, #0x11
 	str r3, [r4, #0x3c]
 	movs r3, #5
 	lsls r3, r3, #0x13
 	str r3, [r4, #0x40]
-	b _08038056
-_08038042
+	b %26
+24
 	ldr r3, _08038190
 	str r3, [r4, #0x3c]
 	ldr r3, _080381A8
 	str r3, [r4, #0x40]
-	b _08038056
-_0803804C
+	b %26
+25
 	movs r3, #0x2b
 	lsls r3, r3, #0x10
 	str r3, [r4, #0x3c]
 	ldr r3, _080381AC
 	str r3, [r4, #0x40]
-_08038056
+26
 	adds r3, r1, #0
 	subs r1, r1, r5
 	ands r1, r0
@@ -325,7 +325,7 @@ _08038056
 	strb r7, [r2, #4]
 	movs r0, #3
 	strb r0, [r2, #5]
-_0803806E
+27
 	ldr r0, [r4, #0x14]
 	ldr r7, _080381B4
 	ldr r2, [r0]
@@ -369,11 +369,11 @@ _0803806E
 	ldr r5, [r4, #4]
 	ldr r0, [r5]
 	lsls r0, r0, #0x1c
-	bmi _080380D6
+	bmi %28
 	adds r1, r5, #0
 	ldr r0, [r7]
 	bl sub_80012F0
-_080380D6
+28
 	ldr r0, [r5]
 	movs r1, #8
 	bics r0, r1
@@ -417,42 +417,42 @@ _080380D6
 	strb r1, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _08038136
+	bmi %29
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_08038136
+29
 	ldr r0, [r4, #4]
 	bl sub_8000914
 	ldr r4, [r4, #4]
 	movs r6, #1
 	ldr r0, [r4]
 	lsls r0, r0, #0x1f
-	bmi _08038176
+	bmi %31
 	adds r1, r4, #0
 	ldr r0, [r7]
 	bl sub_80011D8
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _08038164
+	bmi %30
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _08038164
+	beq %30
 	ldr r0, _080381B8
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_800CD58
-_08038164
+30
 	ldr r0, [r4]
 	orrs r0, r6
 	str r0, [r4]
 	lsls r1, r0, #0x1e
-	bpl _08038176
+	bpl %31
 	movs r2, #0xff
 	adds r2, #1
 	orrs r0, r2
 	str r0, [r4]
-_08038176
+31
 	ldr r0, _080381BC
 	ldr r1, [r0]
 	movs r0, #0x49
@@ -464,7 +464,7 @@ _08038176
 	pop {r3}
 	bx r3
 	ALIGN
-_0803818C DCDU gUnknown_0803E350
+_0803818C DCDU __VTABLE__305dword_803E350
 _08038190 DCDU 0xFFD50000
 _08038194 DCDU 0xFFFF0000
 _08038198 DCDU 0xFFE10000

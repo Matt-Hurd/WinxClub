@@ -10,17 +10,17 @@ sub_803F708
 	movs r1, #1
 	lsls r1, r2
 	cmp r0, #0
-	beq _0803F720
+	beq %1
 	lsrs r0, r0, #5
 	ldr r2, _0803F728
 	lsls r0, r0, #2
 	ldr r0, [r2, r0]
 	ands r0, r1
-	beq _0803F724
-_0803F720
+	beq %2
+1
 	movs r0, #1
 	bx lr
-_0803F724
+2
 	movs r0, #0
 	bx lr
 	ALIGN

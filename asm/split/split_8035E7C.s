@@ -4,39 +4,39 @@
 	IMPORT gUnknown_03003454
 	IMPORT gUnknown_03003478
 	IMPORT gUnknown_03003EA0
-	IMPORT gUnknown_0803E528
+	IMPORT __VTABLE__311WallObject
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
-	IMPORT sub_801D564
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E124
-	IMPORT sub_801E2DA
+	IMPORT GetEWRAMStart
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__Dying
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8035E7C
-sub_8035E7C
+	thumb_func_start WallObject__Create
+WallObject__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bne _08035E94
+	bne %2
 	movs r0, #0xbc
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08035E94
+	bne %2
 	adds r0, r4, #0
-_08035E8E
+1
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_08035E94
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08036128
 	movs r1, #0
 	str r0, [r4]
@@ -84,10 +84,10 @@ _08035E94
 	str r3, [r0, #0xc]
 	strh r1, [r2, #0x16]
 	adds r0, r4, #0
-	b _08035E8E
+	b %1
 
-	non_word_aligned_thumb_func_start sub_8035EFA
-sub_8035EFA
+	non_word_aligned_thumb_func_start WallObject__ctor
+WallObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08036128
@@ -95,12 +95,12 @@ sub_8035EFA
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _08035F16
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08035F16
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -121,22 +121,22 @@ sub_8035F1C
 	movs r3, #1
 	lsls r3, r4
 	cmp r2, #0
-	beq _08035F4E
+	beq %5
 	lsrs r2, r2, #5
 	ldr r4, _08036144
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
 	ands r2, r3
-	bne _08035F4E
+	bne %5
 	ldrh r1, [r1, #4]
 	strh r1, [r0, #0x16]
-_08035F4A
+4
 	pop {r4}
 	bx lr
-_08035F4E
+5
 	movs r1, #0
 	strh r1, [r0, #0x16]
-	b _08035F4A
+	b %4
 
 	thumb_func_start sub_8035F54
 sub_8035F54
@@ -146,12 +146,12 @@ sub_8035F54
 	ldrh r0, [r5, #6]
 	ldr r6, [r4, #0x2c]
 	cmp r0, #0
-	beq _08035F6A
+	beq %6
 	ldr r0, [r6]
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x1f
-	bne _08035FAC
-_08035F6A
+	bne %9
+6
 	ldrh r0, [r5, #4]
 	movs r1, #0
 	mvns r1, r1
@@ -162,83 +162,83 @@ _08035F6A
 	ldr r0, [r0]
 	ldr r2, [r6, #0x44]
 	cmp r2, #0
-	beq _08035F8C
+	beq %7
 	bl sub_8000D5A
 	ldr r0, [r0, #0x24]
 	ldr r1, [r6, #0x44]
 	subs r0, r1, r0
 	asrs r1, r0, #3
-_08035F8C
+7
 	lsls r0, r1, #0x10
 	ldrh r1, [r5, #4]
 	lsrs r0, r0, #0x10
 	cmp r0, r1
-	beq _08035F9E
+	beq %8
 	movs r2, #0
 	ldr r0, [r4, #0x2c]
 	bl sub_80007A0
-_08035F9E
+8
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r0]
 	lsls r1, r1, #0x15
 	lsrs r1, r1, #0x1f
-	bne _08035FAC
+	bne %9
 	bl sub_8000914
-_08035FAC
+9
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8035FB2
-sub_8035FB2
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__04
+WallObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x22
-	beq _08035FCE
+	beq %11
 	cmp r2, #0x27
-	beq _08035FDA
+	beq %12
 	cmp r2, #0x28
-	bne _08035FE0
+	bne %13
 	bl sub_8035F1C
-_08035FC8
+10
 	add sp, #4
 	pop {r3}
 	bx r3
-_08035FCE
+11
 	ldr r2, [r0]
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
 	bl __call_via_r2
-	b _08035FC8
-_08035FDA
+	b %10
+12
 	bl sub_8035F54
-	b _08035FC8
-_08035FE0
-	bl sub_801DD40
-	b _08035FC8
+	b %10
+13
+	bl DefaultScriptGroups__04
+	b %10
 
-	non_word_aligned_thumb_func_start sub_8035FE6
-sub_8035FE6
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
+WallObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	bne _08035FF8
+	bne %15
 	movs r0, #1
-_08035FF2
+14
 	add sp, #4
 	pop {r3}
 	bx r3
-_08035FF8
-	bl sub_801DF50
-	b _08035FF2
+15
+	bl DefaultScriptGroups__08
+	b %14
 
-	non_word_aligned_thumb_func_start sub_8035FFE
-sub_8035FFE
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__38
+WallObjectScriptGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -246,7 +246,7 @@ sub_8035FFE
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08036026
+	beq %16
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -254,7 +254,7 @@ sub_8035FFE
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_08036026
+16
 	movs r1, #7
 	strh r1, [r0]
 	strh r5, [r0, #2]
@@ -276,8 +276,8 @@ _08036026
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803604E
-sub_803604E
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__4C
+WallObjectScriptGroup__4C
 	push {r4}
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
@@ -288,14 +288,14 @@ sub_803604E
 	str r2, [r0, #0x5c]
 	ldrh r2, [r1, #4]
 	cmp r2, #0
-	bne _08036092
+	bne %17
 	ldrh r1, [r1, #6]
 	cmp r1, #0
-	bne _08036092
+	bne %17
 	movs r1, #0x7d
 	ldrsb r1, [r1, r0]
 	cmp r1, #0
-	bge _08036092
+	bge %17
 	ldr r1, _0803614C
 	movs r2, #3
 	ldr r1, [r1]
@@ -312,16 +312,16 @@ sub_803604E
 	strh r0, [r1, #0x22]
 	strh r2, [r1, #0x24]
 	strh r3, [r1, #0x20]
-_08036092
+17
 	pop {r4}
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_8036096
-sub_8036096
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__20
+WallObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl DefaultScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -329,7 +329,7 @@ sub_8036096
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _080360C2
+	beq %18
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -337,7 +337,7 @@ sub_8036096
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_080360C2
+18
 	movs r1, #7
 	strh r1, [r0]
 	strh r5, [r0, #2]
@@ -359,15 +359,15 @@ _080360C2
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80360EA
-sub_80360EA
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__48
+WallObjectScriptGroup__48
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
 	cmp r3, #0x14
-	beq _08036118
+	beq %21
 	cmp r3, #0x1f
-	bne _08036122
+	bne %22
 	ldr r1, [r2, #4]
 	adds r2, r0, #0
 	lsls r1, r1, #0x18
@@ -375,28 +375,28 @@ sub_80360EA
 	adds r2, #0x70
 	strb r1, [r2, #0xd]
 	cmp r1, #0
-	bge _0803610A
+	bge %19
 	NEGS r1, r1
-_0803610A
+19
 	adds r0, #0xa0
 	strb r1, [r0, #8]
 	movs r0, #0
 	strb r0, [r2, #0xc]
-_08036112
+20
 	add sp, #4
 	pop {r3}
 	bx r3
-_08036118
+21
 	ldr r1, [r2, #4]
 	strh r1, [r0, #0x1a]
 	ldr r1, [r2, #4]
 	strh r1, [r0, #0x18]
-	b _08036112
-_08036122
-	bl sub_801E2DA
-	b _08036112
+	b %20
+22
+	bl DefaultScriptGroups__Dying
+	b %20
 	ALIGN
-_08036128 DCDU gUnknown_0803E528
+_08036128 DCDU __VTABLE__311WallObject
 _0803612C DCDU 0x6C6C6157
 _08036130 DCDU 0x6A624F20
 _08036134 DCDU 0x20746365

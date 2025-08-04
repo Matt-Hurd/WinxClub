@@ -14,6 +14,10 @@
 	GLOBAL gUnknown_03001A54
 	GLOBAL gUnknown_03001BBC
 	GLOBAL gUnknown_03001C24
+    GLOBAL sub_3001E8C
+    GLOBAL sub_300215C
+    GLOBAL sub_30023FC
+    GLOBAL sub_3002724
 	GLOBAL gUnknown_03002BEC
 	GLOBAL gUnknown_03002D28
 	GLOBAL gUnknown_03002D2C
@@ -54,7 +58,7 @@
 	GLOBAL gUnknown_030033F4
 	GLOBAL gUnknown_030033FC
 	GLOBAL gUnknown_03003434
-	GLOBAL gUnknown_03003438
+	GLOBAL gScriptDataMetadata
 	GLOBAL gUnknown_03003440
 	GLOBAL gUnknown_03003444
 	GLOBAL gUnknown_03003448
@@ -80,7 +84,7 @@
 	GLOBAL gUnknown_03003C40
 	GLOBAL gUnknown_03003C4C
 	GLOBAL gUnknown_03003C58
-	GLOBAL gUnknown_03003C84
+	GLOBAL gGlobalFunctionTable
 	GLOBAL gUnknown_03003D1C
 	GLOBAL gUnknown_03003D20
 	GLOBAL gUnknown_03003D24
@@ -141,8 +145,24 @@ gUnknown_03001BBC
 	SPACE 0x64
 
 gUnknown_03001C24
-	ANDEQ           R0, R0, R0
-	SPACE 0xfc4
+    ANDEQ           R0, R0, R0
+    SPACE 0x264
+
+sub_3001E8C
+    ANDEQ           R0, R0, R0
+    SPACE 0x2CC
+
+sub_300215C
+    ANDEQ           R0, R0, R0
+    SPACE 0x29C
+
+sub_30023FC
+    ANDEQ           R0, R0, R0
+    SPACE 0x324
+
+sub_3002724
+    ANDEQ           R0, R0, R0
+    SPACE 0x4C4
 
 gUnknown_03002BEC
 	SPACE 0x13c
@@ -265,7 +285,7 @@ gUnknown_030033FC
 gUnknown_03003434
 	SPACE 0x4
 
-gUnknown_03003438
+gScriptDataMetadata
 	SPACE 0x8
 
 gUnknown_03003440
@@ -343,7 +363,7 @@ gUnknown_03003C4C
 gUnknown_03003C58
 	SPACE 0x2c
 
-gUnknown_03003C84
+gGlobalFunctionTable
 	SPACE 0x98
 
 gUnknown_03003D1C

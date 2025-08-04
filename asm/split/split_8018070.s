@@ -18,11 +18,11 @@
 	IMPORT sub_803D97C
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8018070
-sub_8018070
+	thumb_func_start FadeToImage
+FadeToImage
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -41,8 +41,8 @@ sub_8018070
 	adds r0, r4, #0
 	bl sub_803D97C
 	cmp r0, #0
-	bne _080180B6
-_0801809C
+	bne %2
+1
 	adds r0, r4, #0
 	bl sub_803D834
 	adds r0, r4, #0
@@ -51,15 +51,15 @@ _0801809C
 	adds r0, r4, #0
 	bl sub_803D97C
 	cmp r0, #0
-	beq _0801809C
-_080180B6
+	beq %1
+2
 	add sp, #0x18
 	pop {r4}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80180BE
-sub_80180BE
+	non_word_aligned_thumb_func_start FadeToBlack
+FadeToBlack
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -79,8 +79,8 @@ sub_80180BE
 	adds r0, r4, #0
 	bl sub_803D97C
 	cmp r0, #0
-	bne _08018106
-_080180EC
+	bne %4
+3
 	adds r0, r4, #0
 	bl sub_803D834
 	adds r0, r4, #0
@@ -89,8 +89,8 @@ _080180EC
 	adds r0, r4, #0
 	bl sub_803D97C
 	cmp r0, #0
-	beq _080180EC
-_08018106
+	beq %3
+4
 	add sp, #0x18
 	pop {r4}
 	pop {r3}
@@ -98,23 +98,23 @@ _08018106
 
 	non_word_aligned_thumb_func_start sub_801810E
 sub_801810E
-	b sub_80180BE
+	b FadeToBlack
 
 	thumb_func_start sub_8018110
 sub_8018110
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08018128
+	bne %6
 	movs r0, #0x14
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08018128
+	bne %6
 	adds r0, r4, #0
-_08018122
+5
 	pop {r4}
 	pop {r3}
 	bx r3
-_08018128
+6
 	movs r0, #0
 	str r0, [r4, #0x10]
 	movs r2, #0
@@ -139,7 +139,7 @@ _08018128
 	ldr r0, [r4, #0xc]
 	bl sub_801047C
 	adds r0, r4, #0
-	b _08018122
+	b %5
 
 	thumb_func_start sub_8018160
 sub_8018160
@@ -157,19 +157,19 @@ sub_8018160
 	str r5, [r4, #0xc]
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _0801818C
+	beq %7
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_0801818C
+7
 	str r5, [r4, #0x10]
 	cmp r6, #0
-	beq _08018198
+	beq %8
 	adds r0, r4, #0
 	bl sub_803DA18
-_08018198
+8
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -184,36 +184,36 @@ sub_801819E
 	adds r5, r2, #0
 	cmp r0, #0
 	sub sp, #0x1c
-	beq _080181BE
+	beq %9
 	bl sub_8008072
 	ldr r1, [r5, #4]
 	lsls r1, r1, #0x1c
 	lsrs r1, r1, #0x1c
 	cmp r0, r1
-	beq _080181DE
-_080181BE
+	beq %11
+9
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _080181D0
+	beq %10
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_080181D0
+10
 	str r7, [r4, #0x10]
 	ldr r0, [r5, #4]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
 	bl sub_803D4A8
 	str r0, [r4, #0x10]
-_080181DE
+11
 	ldr r0, [r5, #4]
 	ldr r1, _08018378
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
 	ldr r0, [r1]
-	beq _0801827A
+	beq %13
 	ldr r1, [r5]
 	adds r3, r7, #0
 	lsrs r1, r1, #0x13
@@ -275,19 +275,19 @@ _080181DE
 	lsls r0, r0, #0x13
 	orrs r0, r1
 	str r0, [r5]
-_08018272
+12
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0801827A
+13
 	ldr r3, [r4, #4]
 	ldr r1, [r5]
 	lsrs r1, r1, #0x13
 	lsls r2, r1, #2
 	adds r1, r6, #0
 	bl sub_800529A
-	b _08018272
+	b %12
 
 	non_word_aligned_thumb_func_start sub_801828A
 sub_801828A
@@ -299,36 +299,36 @@ sub_801828A
 	adds r5, r2, #0
 	cmp r0, #0
 	sub sp, #0x1c
-	beq _080182AA
+	beq %14
 	bl sub_8008072
 	ldr r1, [r5, #4]
 	lsls r1, r1, #0x1c
 	lsrs r1, r1, #0x1c
 	cmp r0, r1
-	beq _080182CA
-_080182AA
+	beq %16
+14
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _080182BC
+	beq %15
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_080182BC
+15
 	str r7, [r4, #0x10]
 	ldr r0, [r5, #4]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
 	bl sub_803D4A8
 	str r0, [r4, #0x10]
-_080182CA
+16
 	ldr r1, [r5, #4]
 	ldr r2, _08018378
 	lsls r0, r1, #0x1c
 	lsrs r0, r0, #0x1c
 	ldr r0, [r2]
-	beq _08018364
+	beq %18
 	lsrs r1, r1, #4
 	lsls r2, r1, #2
 	adds r3, r7, #0
@@ -389,18 +389,18 @@ _080182CA
 	lsls r0, r0, #4
 	orrs r0, r1
 	str r0, [r5, #4]
-_0801835C
+17
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08018364
+18
 	lsrs r1, r1, #4
 	lsls r2, r1, #2
 	adds r1, r6, #0
 	ldr r3, [sp, #0x28]
 	bl sub_800529A
-	b _0801835C
+	b %17
 	ALIGN
 _08018374 DCDU 0x00015500
 _08018378 DCDU gUnknown_03003E84

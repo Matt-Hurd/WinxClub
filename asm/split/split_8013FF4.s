@@ -1,18 +1,18 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803E6A0
+	IMPORT __VTABLE__320dword_803E6A0
 	IMPORT sub_80134B8
 	IMPORT sub_801352C
 	IMPORT sub_8013E2C
 	IMPORT __call_via_r3
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F464
 	IMPORT sub_803F928
 
-	thumb_func_start nullsub_45
-nullsub_45
+	thumb_func_start sub_8013FF4
+sub_8013FF4
 	bx lr
 	ALIGN
 
@@ -20,17 +20,17 @@ nullsub_45
 sub_8013FF8
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08014010
+	bne %2
 	movs r0, #0x60
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08014010
+	bne %2
 	adds r0, r4, #0
-_0801400A
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08014010
+2
 	adds r0, r4, #0
 	bl sub_80134B8
 	ldr r0, _080142CC
@@ -42,7 +42,7 @@ _08014010
 	adds r0, r4, #0
 	bl sub_8013E2C
 	adds r0, r4, #0
-	b _0801400A
+	b %1
 
 	thumb_func_start sub_801402C
 sub_801402C
@@ -55,10 +55,10 @@ sub_801402C
 	adds r0, r4, #0
 	bl sub_801352C
 	cmp r5, #0
-	beq _08014048
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08014048
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -107,17 +107,17 @@ sub_801406E
 	movs r0, #0x24
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _08014180
+	ble %10
 	movs r0, #0x28
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _08014180
+	ble %10
 	ldr r1, [sp, #0x30]
 	ldr r5, [sp, #0x30]
 	adds r1, #0x40
 	str r1, [sp, #0x2c]
 	adds r5, #0x20
-_080140AE
+4
 	add r3, sp, #0
 	movs r0, #0xc
 	ldrsh r0, [r3, r0]
@@ -161,45 +161,45 @@ _080140AE
 	ldr r1, [sp, #0x30]
 	ldr r0, [r1, #0x40]
 	cmp r0, #0
-	beq _08014112
+	beq %5
 	movs r1, #0x24
 	ldrsh r1, [r3, r1]
 	ldr r2, [sp, #0x14]
 	adds r0, r4, #0
 	bl sub_803F464
-_08014112
+5
 	add r3, sp, #0
 	movs r0, #0x24
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _080141A0
-_0801411C
+	ble %13
+6
 	ldr r1, [r4]
 	ldr r0, [r6]
 	lsls r2, r1, #0x18
 	lsrs r2, r2, #0x18
 	lsls r3, r0, #0x1c
-	beq _08014132
+	beq %7
 	ldrb r3, [r5, #0xe]
 	lsls r2, r0, #0x1c
 	lsrs r2, r2, #0x1c
 	lsls r3, r3, #4
 	orrs r2, r3
-_08014132
+7
 	mov ip, r2
 	movs r2, #0xff
 	lsls r2, r2, #8
 	ands r2, r1
 	lsls r3, r0, #0x14
 	lsrs r3, r3, #0x1c
-	beq _0801414C
+	beq %8
 	movs r2, #0xf
 	ldrb r3, [r5, #0xe]
 	lsls r2, r2, #8
 	ands r2, r0
 	lsls r3, r3, #0xc
 	orrs r2, r3
-_0801414C
+8
 	mov r3, ip
 	orrs r3, r2
 	movs r2, #0xff
@@ -208,32 +208,32 @@ _0801414C
 	lsls r3, r0, #0xc
 	ands r2, r1
 	lsrs r3, r3, #0x1c
-	beq _0801416A
+	beq %9
 	movs r2, #0xf
 	ldrb r3, [r5, #0xe]
 	lsls r2, r2, #0x10
 	ands r2, r0
 	lsls r3, r3, #0x14
 	orrs r2, r3
-_0801416A
+9
 	mov r3, ip
 	orrs r2, r3
 	lsrs r1, r1, #0x18
 	lsls r1, r1, #0x18
 	lsls r3, r0, #4
 	lsrs r3, r3, #0x1c
-	beq _08014188
+	beq %12
 	movs r1, #0xf
 	lsls r1, r1, #0x18
 	ands r0, r1
-	b _08014182
-_08014180
-	b _080141AC
-_08014182
+	b %11
+10
+	b %14
+11
 	ldrb r1, [r5, #0xe]
 	lsls r1, r1, #0x1c
 	orrs r1, r0
-_08014188
+12
 	orrs r1, r2
 	adds r0, r1, #0
 	stm r4!, {r0}
@@ -245,15 +245,15 @@ _08014188
 	lsrs r7, r7, #0x10
 	adds r6, #4
 	cmp r7, r0
-	blt _0801411C
-_080141A0
+	blt %6
+13
 	add r3, sp, #0
 	movs r0, #0x28
 	ldrsh r0, [r3, r0]
 	ldr r1, [sp, #0x18]
 	cmp r1, r0
-	blt _080140AE
-_080141AC
+	blt %4
+14
 	add sp, #0x34
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -279,15 +279,15 @@ sub_80141B4
 	movs r0, #0x1c
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _080142C0
+	ble %23
 	movs r0, #0x20
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _080142C0
+	ble %23
 	ldr r1, [sp, #0x28]
 	adds r1, #0x40
 	str r1, [sp, #0x24]
-_080141EA
+15
 	add r3, sp, #0
 	movs r0, #0xc
 	ldrsh r0, [r3, r0]
@@ -328,39 +328,39 @@ _080141EA
 	ldr r1, [sp, #0x28]
 	ldr r0, [r1, #0x40]
 	cmp r0, #0
-	beq _08014248
+	beq %16
 	movs r1, #0x1c
 	movs r2, #0
 	adds r0, r4, #0
 	ldrsh r1, [r3, r1]
 	bl sub_803F464
-_08014248
+16
 	add r3, sp, #0
 	movs r0, #0x1c
 	ldrsh r0, [r3, r0]
 	cmp r0, #0
-	ble _080142B6
-_08014252
+	ble %22
+17
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsls r2, r1, #0x18
 	lsrs r2, r2, #0x18
 	lsls r3, r0, #0x18
-	beq _08014262
+	beq %18
 	lsls r2, r0, #0x18
 	lsrs r2, r2, #0x18
-_08014262
+18
 	mov ip, r2
 	movs r2, #0xff
 	lsls r2, r2, #8
 	ands r2, r1
 	lsls r3, r0, #0x10
 	lsrs r3, r3, #0x18
-	beq _08014276
+	beq %19
 	movs r2, #0xff
 	lsls r2, r2, #8
 	ands r2, r0
-_08014276
+19
 	mov r3, ip
 	orrs r3, r2
 	movs r2, #0xff
@@ -369,20 +369,20 @@ _08014276
 	lsls r3, r0, #8
 	ands r2, r1
 	lsrs r3, r3, #0x18
-	beq _0801428E
+	beq %20
 	movs r2, #0xff
 	lsls r2, r2, #0x10
 	ands r2, r0
-_0801428E
+20
 	mov r3, ip
 	lsrs r1, r1, #0x18
 	lsls r1, r1, #0x18
 	orrs r2, r3
 	lsrs r3, r0, #0x18
-	beq _0801429E
+	beq %21
 	lsrs r1, r0, #0x18
 	lsls r1, r1, #0x18
-_0801429E
+21
 	orrs r1, r2
 	adds r0, r1, #0
 	stm r4!, {r0}
@@ -394,22 +394,22 @@ _0801429E
 	lsrs r6, r6, #0x10
 	adds r5, #4
 	cmp r6, r0
-	blt _08014252
-_080142B6
+	blt %17
+22
 	add r3, sp, #0
 	movs r0, #0x20
 	ldrsh r0, [r3, r0]
 	cmp r7, r0
-	b _080142C2
-_080142C0
-	b _080142C4
-_080142C2
-	blt _080141EA
-_080142C4
+	b %24
+23
+	b %25
+24
+	blt %15
+25
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 	ALIGN
-_080142CC DCDU gUnknown_0803E6A0
+_080142CC DCDU __VTABLE__320dword_803E6A0
 	END

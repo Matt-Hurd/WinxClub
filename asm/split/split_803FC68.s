@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003468
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
@@ -13,70 +13,70 @@ sub_803FC68
 	adds r5, r0, #0
 	adds r6, r3, #0
 	sub sp, #4
-	bne _0803FCA2
+	bne %3
 	movs r1, #5
 	lsls r1, r1, #7
 	movs r4, #1
 	movs r2, #0xb
 	lsls r2, r2, #7
-	b _0803FC88
-_0803FC7E
+	b %2
+1
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #4
-	bhs _0803FD0E
-_0803FC88
+	bhs %9
+2
 	lsls r0, r4, #2
 	adds r0, r0, r5
 	adds r0, r0, r1
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	bne _0803FC7E
+	bne %1
 	lsls r0, r4, #1
 	adds r0, r0, r5
 	adds r0, r0, r2
 	ldrh r0, [r0, #0x18]
 	lsls r0, r0, #0x1f
-	bmi _0803FC7E
-	b _0803FD0E
-_0803FCA2
+	bmi %1
+	b %9
+3
 	movs r4, #4
-	b _0803FCB0
-_0803FCA6
+	b %5
+4
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #0x40
-	bhs _0803FCBA
-_0803FCB0
+	bhs %6
+5
 	lsls r0, r4, #2
 	adds r0, r0, r5
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	bne _0803FCA6
-_0803FCBA
+	bne %4
+6
 	ldr r0, _0803FD58
 	ldr r0, [r0]
 	bl sub_80050FA
 	lsrs r7, r6, #2
-	bl sub_8005106
+	bl GetEWRAMStart
 	cmp r7, #0
-	beq _0803FCDC
+	beq %7
 	lsls r7, r7, #2
 	movs r3, #0
 	movs r2, #0
 	adds r1, r0, #0
 	adds r0, r7, #0
 	bl sub_803DA9C
-	b _0803FCE8
-_0803FCDC
+	b %8
+7
 	movs r3, #0
 	movs r2, #0
 	adds r1, r0, #0
 	movs r0, #4
 	bl sub_803DA80
-_0803FCE8
+8
 	lsls r1, r4, #2
 	adds r1, r1, r5
 	str r0, [r1, #0x18]
@@ -95,10 +95,10 @@ _0803FCE8
 	lsls r2, r2, #9
 	adds r0, r0, r2
 	strh r1, [r0, #0x18]
-_0803FD0E
+9
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
-	beq _0803FD24
+	beq %10
 	lsls r1, r4, #1
 	movs r2, #0xb
 	lsls r2, r2, #7
@@ -106,8 +106,8 @@ _0803FD0E
 	movs r0, #1
 	adds r1, r1, r2
 	strh r0, [r1, #0x18]
-	b _0803FD32
-_0803FD24
+	b %11
+10
 	lsls r0, r4, #1
 	movs r2, #0xb
 	lsls r2, r2, #7
@@ -115,7 +115,7 @@ _0803FD24
 	movs r1, #0
 	adds r0, r0, r2
 	strh r1, [r0, #0x18]
-_0803FD32
+11
 	lsls r1, r4, #2
 	movs r2, #9
 	lsls r2, r2, #7

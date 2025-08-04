@@ -10,7 +10,7 @@ extern int *gUnknown_03003E98;
 
 extern char *gUnknown_08051038;
 
-extern int sub_8005106(void);
+extern int GetEWRAMStart(void);
 extern int sub_80237DA(unsigned char *);
 extern int *sub_8024084(struct Unknown_030034F8*);
 extern int *sub_802416A(void *);

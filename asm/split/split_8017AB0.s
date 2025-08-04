@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003E88
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_803F3E8
@@ -18,9 +18,9 @@ sub_8017AB0
 	adds r7, r3, #0
 	adds r6, r2, #0
 	cmp r5, #0xff
-	bne _08017AC0
+	bne %1
 	ldrb r5, [r0, #0x14]
-_08017AC0
+1
 	ldr r0, _08017DC4
 	adds r2, r5, #0
 	movs r1, #0x1c
@@ -58,9 +58,9 @@ sub_8017AFE
 	adds r7, r3, #0
 	adds r6, r2, #0
 	cmp r5, #0xff
-	bne _08017B0E
+	bne %2
 	ldrb r5, [r0, #0x14]
-_08017B0E
+2
 	ldr r0, _08017DC4
 	adds r2, r5, #0
 	movs r1, #0x1c
@@ -98,9 +98,9 @@ sub_8017B4C
 	adds r7, r3, #0
 	adds r6, r2, #0
 	cmp r5, #0xff
-	bne _08017B5C
+	bne %3
 	ldrb r5, [r0, #0x14]
-_08017B5C
+3
 	ldr r0, _08017DC4
 	adds r2, r5, #0
 	movs r1, #0x1c
@@ -137,7 +137,7 @@ sub_8017B9A
 	movs r5, #0
 	movs r2, #0
 	sub sp, #8
-_08017BA4
+4
 	ldr r1, [sp, #8]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -146,41 +146,41 @@ _08017BA4
 	adds r0, r0, r1
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	beq _08017BE2
+	beq %7
 	movs r3, #4
-_08017BB8
+5
 	movs r7, #1
 	ldr r1, [r0]
 	lsls r7, r7, #0x19
 	adds r5, #0x1c
 	cmp r1, r7
-	blo _08017BDC
+	blo %6
 	movs r7, #0x81
 	lsls r7, r7, #0x12
 	cmp r1, r7
-	bhs _08017BDC
+	bhs %6
 	ldrh r1, [r1, #2]
 	adds r5, r1, r5
 	lsls r1, r5, #0x1e
-	beq _08017BDC
+	beq %6
 	lsls r1, r5, #0x1e
 	lsrs r1, r1, #0x1e
 	subs r1, r3, r1
 	adds r5, r1, r5
-_08017BDC
+6
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
-	bne _08017BB8
-_08017BE2
+	bne %5
+7
 	adds r2, #1
 	lsls r2, r2, #0x18
 	lsrs r2, r2, #0x18
 	cmp r2, #0x40
-	blo _08017BA4
+	blo %4
 	movs r7, #0
 	cmp r5, #0
-	beq _08017C0A
-	bl sub_8005106
+	beq %8
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsrs r0, r5, #2
 	lsls r0, r0, #2
@@ -190,10 +190,10 @@ _08017BE2
 	ldr r1, [sp, #8]
 	adds r4, r0, #0
 	str r0, [r1, #4]
-_08017C0A
+8
 	movs r0, #0
 	str r0, [sp]
-_08017C0E
+9
 	ldr r0, [sp]
 	ldr r1, [sp, #8]
 	lsls r0, r0, #2
@@ -204,8 +204,8 @@ _08017C0E
 	adds r0, r0, r1
 	ldr r5, [r0, #0x18]
 	cmp r5, #0
-	beq _08017C70
-_08017C24
+	beq %13
+10
 	movs r2, #0x1c
 	adds r1, r5, #0
 	adds r0, r4, #0
@@ -214,19 +214,19 @@ _08017C24
 	adds r6, r4, #0
 	cmp r0, #0
 	str r0, [r4, #0x18]
-	beq _08017C3A
+	beq %11
 	str r6, [r0, #0x14]
-_08017C3A
+11
 	movs r0, #1
 	ldr r1, [r5]
 	lsls r0, r0, #0x19
 	adds r4, #0x1c
 	cmp r1, r0
-	blo _08017C6A
+	blo %12
 	movs r0, #0x81
 	lsls r0, r0, #0x12
 	cmp r1, r0
-	bhs _08017C6A
+	bhs %12
 	ldrh r7, [r1, #2]
 	adds r2, r7, #0
 	adds r0, r4, #0
@@ -234,38 +234,38 @@ _08017C3A
 	str r4, [r6]
 	adds r4, r4, r7
 	lsls r0, r4, #0x1e
-	beq _08017C6A
+	beq %12
 	lsls r0, r4, #0x1e
 	lsrs r0, r0, #0x1e
 	movs r1, #4
 	subs r0, r1, r0
 	adds r4, r0, r4
-_08017C6A
+12
 	ldr r5, [r5, #0x14]
 	cmp r5, #0
-	bne _08017C24
-_08017C70
+	bne %10
+13
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	beq _08017C82
+	beq %14
 	bl __da__FPv
 	ldr r1, [sp, #4]
 	movs r0, #0
 	str r0, [r1, #0x18]
-_08017C82
+14
 	ldr r0, [sp]
 	adds r0, #1
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	str r0, [sp]
 	cmp r0, #0x40
-	blo _08017C0E
+	blo %9
 	cmp r6, #0
-	beq _08017C98
+	beq %15
 	movs r0, #0
 	str r0, [r6, #0x14]
-_08017C98
+15
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -277,15 +277,15 @@ sub_8017CA0
 	adds r7, r0, #0
 	movs r5, #0
 	sub sp, #0xc
-_08017CA8
+16
 	lsls r0, r5, #1
 	adds r6, r0, r7
 	adds r6, #0xff
 	adds r6, #0x81
 	ldrh r0, [r6, #0x18]
 	cmp r0, #0
-	beq _08017CD0
-	bl sub_8005106
+	beq %17
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrh r0, [r6, #0x18]
 	movs r3, #0
@@ -296,27 +296,27 @@ _08017CA8
 	lsls r1, r5, #2
 	adds r1, r1, r7
 	str r0, [r1, #0x18]
-_08017CD0
+17
 	adds r5, #1
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	cmp r5, #0x40
-	blo _08017CA8
+	blo %16
 	movs r1, #0xff
 	str r1, [sp, #8]
 	ldr r6, [r7, #4]
 	movs r5, #0
 	cmp r6, #0
-	beq _08017DB2
-_08017CE6
+	beq %23
+18
 	ldrh r0, [r6, #0x10]
 	ldr r1, [sp, #8]
 	lsls r0, r0, #0x1a
 	lsrs r0, r0, #0x1a
 	cmp r0, r1
-	beq _08017D32
+	beq %20
 	cmp r5, #0
-	beq _08017D1A
+	beq %19
 	ldr r1, [sp, #8]
 	lsls r0, r1, #2
 	movs r1, #7
@@ -335,7 +335,7 @@ _08017CE6
 	adds r1, #0xff
 	adds r1, #1
 	strh r0, [r1, #0x18]
-_08017D1A
+19
 	ldrh r0, [r6, #0x10]
 	lsls r1, r0, #0x1a
 	lsrs r1, r1, #0x1a
@@ -348,7 +348,7 @@ _08017D1A
 	adds r0, r0, r1
 	str r4, [r0, #0x18]
 	movs r5, #0
-_08017D32
+20
 	movs r2, #0x1c
 	adds r1, r6, #0
 	adds r0, r4, #0
@@ -359,19 +359,19 @@ _08017D32
 	adds r5, r4, #0
 	cmp r0, #0
 	str r1, [r4, #0x14]
-	beq _08017D4C
+	beq %21
 	str r5, [r0, #0x14]
-_08017D4C
+21
 	movs r0, #1
 	ldr r1, [r6]
 	lsls r0, r0, #0x19
 	adds r4, #0x1c
 	cmp r1, r0
-	blo _08017D80
+	blo %22
 	movs r0, #0x81
 	lsls r0, r0, #0x12
 	cmp r1, r0
-	bhs _08017D80
+	bhs %22
 	ldrh r0, [r1, #2]
 	str r0, [sp, #4]
 	adds r2, r0, #0
@@ -381,18 +381,18 @@ _08017D4C
 	ldr r0, [sp, #4]
 	adds r4, r4, r0
 	lsls r0, r4, #0x1e
-	beq _08017D80
+	beq %22
 	lsls r0, r4, #0x1e
 	lsrs r0, r0, #0x1e
 	movs r1, #4
 	subs r0, r1, r0
 	adds r4, r0, r4
-_08017D80
+22
 	ldr r6, [r6, #0x14]
 	cmp r6, #0
-	bne _08017CE6
+	bne %18
 	cmp r5, #0
-	beq _08017DB2
+	beq %23
 	movs r1, #0
 	str r1, [r5, #0x14]
 	ldr r1, [sp, #8]
@@ -413,7 +413,7 @@ _08017D80
 	adds r1, #0xff
 	adds r1, #1
 	strh r0, [r1, #0x18]
-_08017DB2
+23
 	ldr r0, [r7, #4]
 	bl __da__FPv
 	movs r1, #0

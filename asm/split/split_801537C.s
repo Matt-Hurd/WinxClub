@@ -65,13 +65,13 @@ sub_801537C
 	adds r0, r4, #0
 	bl sub_8015240
 	cmp r0, #0
-	bne _080153F6
-_080153EE
+	bne %2
+1
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080153F6
+2
 	ldr r1, [r6]
 	str r1, [sp, #8]
 	adds r2, r1, #0
@@ -88,32 +88,32 @@ _080153F6
 	asrs r0, r0, #8
 	movs r5, #0
 	cmp r0, #2
-	bgt _08015422
+	bgt %3
 	movs r5, #1
-	b _08015438
-_08015422
+	b %6
+3
 	cmp r0, #4
-	bgt _0801542A
+	bgt %4
 	movs r5, #2
-	b _08015438
-_0801542A
+	b %6
+4
 	cmp r0, #8
-	bgt _08015432
+	bgt %5
 	movs r5, #3
-	b _08015438
-_08015432
+	b %6
+5
 	cmp r0, #0x10
-	bgt _08015438
+	bgt %6
 	movs r5, #4
-_08015438
+6
 	movs r0, #1
 	lsls r0, r5
 	movs r1, #1
 	str r1, [sp, #4]
 	cmp r0, #1
 	str r0, [sp, #0xc]
-	blt _08015496
-_08015446
+	blt %9
+7
 	ldr r0, [sp, #0x10]
 	ldr r1, [r0]
 	str r1, [r4, #0x10]
@@ -131,7 +131,7 @@ _08015446
 	bl sub_801505A
 	cmp r0, #0
 	ldr r0, [r6]
-	beq _08015480
+	beq %8
 	ldr r1, [sp, #8]
 	ldr r2, _080154D8
 	subs r0, r1, r0
@@ -141,8 +141,8 @@ _08015446
 	asrs r1, r5
 	stm r2!, {r0, r1}
 	movs r0, #1
-	b _080153EE
-_08015480
+	b %1
+8
 	ldr r2, [sp, #8]
 	adds r2, r0, r2
 	str r2, [sp, #8]
@@ -153,10 +153,10 @@ _08015480
 	adds r1, #1
 	str r1, [sp, #4]
 	cmp r0, r1
-	bge _08015446
-_08015496
+	bge %7
+9
 	movs r0, #0
-	b _080153EE
+	b %1
 
 	non_word_aligned_thumb_func_start sub_801549A
 sub_801549A

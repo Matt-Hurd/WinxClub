@@ -19,22 +19,22 @@
 	IMPORT sub_80401C0
 	IMPORT sub_80401E4
 
-	thumb_func_start sub_801DFD4
-sub_801DFD4
+	thumb_func_start DefaultScriptGroups__18
+DefaultScriptGroups__18
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
 	ldr r0, [r0, #0xc]
 	lsls r0, r0, #1
 	lsrs r0, r0, #0x14
-	beq _0801DFF0
+	beq %1
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r0]
 	lsls r1, r1, #0x1f
-	bne _0801DFF0
+	bne %1
 	movs r1, #1
 	bl sub_80401E4
-_0801DFF0
+1
 	adds r0, r4, #0
 	adds r0, #0x50
 	movs r1, #0
@@ -45,7 +45,7 @@ _0801DFF0
 	ldr r0, [r4, #0x2c]
 	lsls r7, r6, #4
 	cmp r0, #0
-	beq _0801E0B8
+	beq %3
 	bl sub_803F6B4
 	ldr r1, [r4, #0x50]
 	lsls r0, r0, #0x13
@@ -115,15 +115,15 @@ _0801DFF0
 	str r0, [r4, #0x50]
 	ldrb r2, [r1, #5]
 	cmp r2, #0x42
-	bhi _0801E09C
+	bhi %2
 	lsls r2, r3, #3
 	orrs r0, r2
 	str r0, [r4, #0x50]
-_0801E09C
+2
 	ldr r0, [r1]
 	lsls r2, r0, #0x15
 	lsrs r2, r2, #0x1f
-	beq _0801E0B8
+	beq %3
 	movs r2, #1
 	lsls r2, r2, #0xa
 	bics r0, r2
@@ -133,10 +133,10 @@ _0801E09C
 	ldr r0, _0801E2C8
 	ldr r0, [r0]
 	bl sub_8001432
-_0801E0B8
+3
 	ldr r5, [r4, #0x30]
 	cmp r5, #0
-	beq _0801E0EC
+	beq %4
 	ldr r0, _0801E2C4
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -159,40 +159,40 @@ _0801E0B8
 	orrs r0, r1
 	orrs r0, r7
 	str r0, [r4, #0x54]
-_0801E0EC
+4
 	movs r5, #0
-_0801E0EE
+5
 	lsls r0, r5, #2
 	adds r0, r0, r4
 	ldr r0, [r0, #0x38]
 	cmp r0, #0
-	beq _0801E102
+	beq %6
 	ldr r1, [r0]
 	ldr r2, [r1, #0xc]
 	adds r1, r2, r1
 	bl __call_via_r1
-_0801E102
+6
 	adds r5, #1
 	cmp r5, #5
-	blo _0801E0EE
+	blo %5
 	ldr r5, [r4, #0x28]
 	cmp r5, #0
-	beq _0801E11A
-_0801E10E
+	beq %8
+7
 	adds r0, r5, #0
 	ldr r5, [r5, #0x18]
 	bl sub_803DA18
 	cmp r5, #0
-	bne _0801E10E
-_0801E11A
+	bne %7
+8
 	movs r0, #0
 	str r0, [r4, #0x28]
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_801E124
-sub_801E124
+	thumb_func_start DefaultScriptGroups__20
+DefaultScriptGroups__20
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x50]
@@ -203,7 +203,7 @@ sub_801E124
 	lsls r0, r0, #2
 	cmp r0, #0
 	sub sp, #0xc
-	bge _0801E20A
+	bge %14
 	ldr r0, _0801E2C8
 	ldr r0, [r0]
 	bl sub_800116A
@@ -249,11 +249,11 @@ sub_801E124
 	str r1, [r0]
 	ldr r0, [r5, #0xc]
 	lsls r0, r0, #0x12
-	bpl _0801E1A4
+	bpl %9
 	movs r1, #1
 	ldr r0, [r4, #0x2c]
 	bl sub_803F170
-_0801E1A4
+9
 	ldr r0, [r4, #0x50]
 	lsls r0, r0, #4
 	lsrs r1, r0, #0x1f
@@ -268,44 +268,44 @@ _0801E1A4
 	lsrs r0, r0, #0x1e
 	lsls r6, r6, #0xe
 	cmp r0, #1
-	bne _0801E1D6
+	bne %10
 	movs r1, #0xbf
 	ldr r0, [r4, #0x2c]
 	bl sub_80401C0
 	ldr r0, [r5, #0xc]
 	bics r0, r6
 	str r0, [r5, #0xc]
-	b _0801E1F0
-_0801E1D6
+	b %12
+10
 	cmp r0, #2
 	ldr r0, [r4, #0x2c]
-	bne _0801E1EA
+	bne %11
 	movs r1, #0x7f
 	bl sub_80401C0
 	ldr r0, [r5, #0xc]
 	bics r0, r6
 	str r0, [r5, #0xc]
-	b _0801E1F0
-_0801E1EA
+	b %12
+11
 	movs r1, #0x82
 	bl sub_80401C0
-_0801E1F0
+12
 	ldr r0, [r4, #0x50]
 	lsls r0, r0, #7
-	bpl _0801E1FC
+	bpl %13
 	ldr r0, [r4, #0x2c]
 	bl sub_8000914
-_0801E1FC
+13
 	ldr r0, [r4, #0x50]
 	lsls r0, r0, #6
-	bpl _0801E20A
+	bpl %14
 	movs r1, #1
 	ldr r0, [r4, #0x2c]
 	bl sub_80401E4
-_0801E20A
+14
 	ldr r0, [r4, #0x54]
 	lsls r0, r0, #2
-	bpl _0801E284
+	bpl %16
 	ldr r0, _0801E2C8
 	ldr r0, [r0]
 	bl sub_800116A
@@ -329,11 +329,11 @@ _0801E20A
 	str r1, [r0]
 	ldr r0, [r5, #0xc]
 	lsls r0, r0, #0x13
-	bpl _0801E24C
+	bpl %15
 	movs r1, #1
 	ldr r0, [r4, #0x30]
 	bl sub_803F170
-_0801E24C
+15
 	ldr r0, [r4, #0x30]
 	movs r2, #3
 	ldrh r1, [r0, #0x26]
@@ -355,32 +355,32 @@ _0801E24C
 	bl sub_803FF24
 	ldr r0, [r4, #0x54]
 	lsls r0, r0, #6
-	bpl _0801E284
+	bpl %16
 	movs r1, #1
 	ldr r0, [r4, #0x30]
 	bl sub_80401E4
-_0801E284
+16
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x3c]
 	adds r1, r2, r1
 	bl __call_via_r1
 	movs r5, #0
-_0801E292
+17
 	lsls r0, r5, #2
 	adds r0, r0, r4
 	ldr r0, [r0, #0x38]
 	cmp r0, #0
-	beq _0801E2A8
+	beq %18
 	ldr r1, [r0]
 	ldr r2, [r1, #0x14]
 	adds r2, r2, r1
 	ldr r1, [r4, #0x2c]
 	bl __call_via_r2
-_0801E2A8
+18
 	adds r5, #1
 	cmp r5, #5
-	blo _0801E292
+	blo %17
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1

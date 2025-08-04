@@ -18,8 +18,8 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803F72C
 
-	thumb_func_start sub_8031B98
-sub_8031B98
+	thumb_func_start HandleShowPictureScreen
+HandleShowPictureScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x114
 	add r6, sp, #0x10
@@ -45,7 +45,7 @@ sub_8031B98
 	ldr r4, [r1, #0x1c]
 	movs r5, #0
 	add r6, sp, #0x18
-_08031BCE
+1
 	add r3, sp, #0
 	ldr r7, _08031CEC
 	ldrb r1, [r3, #0x14]
@@ -56,27 +56,27 @@ _08031BCE
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08031BE8
+	bmi %2
 	ldrh r1, [r0, #6]
-_08031BE8
+2
 	lsls r7, r1, #0x10
 	lsrs r7, r7, #0x10
 	lsls r0, r7, #0x1e
-	bpl _08031C00
+	bpl %3
 	adds r0, r4, #0
 	bl sub_80158E0
 	cmp r0, #0
-	bne _08031C00
+	bne %3
 	movs r0, #1
 	str r0, [sp, #0xc]
-	b _08031C94
-_08031C00
+	b %6
+3
 	lsls r0, r7, #0x1f
-	bpl _08031C94
+	bpl %6
 	adds r0, r4, #0
 	bl sub_80158E0
 	cmp r0, #0
-	bne _08031C94
+	bne %6
 	movs r3, #0
 	movs r2, #0
 	adds r0, r6, #0
@@ -89,11 +89,11 @@ _08031C00
 	str r0, [sp, #4]
 	ldrh r0, [r3, #0x12]
 	str r0, [sp, #8]
-	bne _08031C30
+	bne %4
 	ldr r7, _08031CEC
 	ldr r0, [r7]
 	ldrb r2, [r0, #0x14]
-_08031C30
+4
 	ldr r0, _08031CF4
 	movs r1, #0x10
 	ldr r0, [r0]
@@ -121,10 +121,10 @@ _08031C30
 	add r3, sp, #0
 	ldrb r2, [r3, #0x14]
 	cmp r2, #0xff
-	bne _08031C70
+	bne %5
 	ldr r0, [r7]
 	ldrb r2, [r0, #0x14]
-_08031C70
+5
 	ldr r0, _08031CF4
 	movs r1, #4
 	ldr r0, [r0]
@@ -141,29 +141,29 @@ _08031C70
 	ldr r0, [r7]
 	movs r1, #3
 	bl sub_8017A0A
-_08031C94
+6
 	adds r0, r4, #0
 	bl sub_80158E0
 	cmp r0, #0
-	beq _08031CA8
+	beq %7
 	movs r5, #1
 	adds r0, r4, #0
 	bl sub_8016108
-	b _08031CBA
-_08031CA8
+	b %8
+7
 	cmp r5, #0
-	beq _08031CBA
+	beq %8
 	movs r5, #0
 	movs r2, #6
 	adds r0, r6, #0
 	ldr r3, _08031CF8
 	ldr r1, [sp, #0x110]
 	bl sub_8018C48
-_08031CBA
+8
 	bl sub_800EF2A
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
-	beq _08031BCE
+	beq %1
 	add r6, sp, #0x10
 	adds r0, r6, #0
 	bl sub_8031830

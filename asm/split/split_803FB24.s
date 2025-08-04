@@ -7,11 +7,11 @@
 sub_803FB24
 	str r1, [r0]
 	cmp r3, #0xff
-	bne _0803FB30
+	bne %1
 	ldr r1, _0803FB50
 	ldr r1, [r1]
 	ldrb r3, [r1, #0x14]
-_0803FB30
+1
 	ldrh r1, [r0, #0x10]
 	lsls r3, r3, #0x1a
 	lsrs r1, r1, #6

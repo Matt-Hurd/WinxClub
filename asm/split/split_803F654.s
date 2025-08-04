@@ -21,11 +21,11 @@ sub_803F654
 	lsrs r5, r4, #6
 	cmp r3, #0
 	ldr r1, [r0, #0x2c]
-	bge _0803F698
+	bge %3
 	ldr r3, [r1]
 	lsls r4, r3, #0x15
 	lsrs r4, r4, #0x1f
-	beq _0803F68C
+	beq %1
 	lsls r4, r3, #0x14
 	asrs r4, r4, #0x1f
 	adds r4, #1
@@ -34,19 +34,19 @@ sub_803F654
 	bics r3, r5
 	orrs r3, r4
 	str r3, [r1]
-_0803F68C
+1
 	ldr r1, [r0, #0x70]
 	str r1, [r2, #0x20]
 	movs r1, #0
 	str r1, [r0, #0x70]
-_0803F694
+2
 	pop {r4, r5, r6}
 	bx lr
-_0803F698
+3
 	ldr r4, [r1]
 	lsls r3, r4, #0x14
 	lsrs r6, r3, #0x1f
-	beq _0803F6AE
+	beq %4
 	asrs r3, r3, #0x1f
 	adds r3, #1
 	lsls r3, r3, #0x1f
@@ -54,10 +54,10 @@ _0803F698
 	bics r4, r5
 	orrs r3, r4
 	str r3, [r1]
-_0803F6AE
+4
 	ldr r1, [r2, #0x20]
 	str r1, [r0, #0x70]
-	b _0803F694
+	b %2
 
 	thumb_func_start sub_803F6B4
 sub_803F6B4
@@ -69,13 +69,13 @@ sub_803F6B4
 	ldr r2, [r4, #0x44]
 	mvns r1, r1
 	cmp r2, #0
-	beq _0803F6D2
+	beq %5
 	bl sub_8000D5A
 	ldr r0, [r0, #0x24]
 	ldr r1, [r4, #0x44]
 	subs r0, r1, r0
 	asrs r1, r0, #3
-_0803F6D2
+5
 	pop {r4}
 	pop {r3}
 	lsls r0, r1, #0x10

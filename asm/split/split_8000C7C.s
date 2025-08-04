@@ -61,68 +61,68 @@ sub_8000CCE
 	ldr r0, [r0, #0x40]
 	movs r5, #0
 	cmp r0, #0
-	beq _08000CE4
+	beq %1
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x40]
-_08000CE4
+1
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
-	beq _08000CF4
+	beq %2
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x44]
-_08000CF4
+2
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
-	beq _08000D04
+	beq %3
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x58]
-_08000D04
+3
 	ldr r0, [r4, #0x5c]
 	cmp r0, #0
-	beq _08000D14
+	beq %4
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x5c]
-_08000D14
+4
 	ldr r0, [r4, #0x60]
 	cmp r0, #0
-	beq _08000D24
+	beq %5
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x60]
-_08000D24
+5
 	ldr r0, [r4, #0x64]
 	cmp r0, #0
-	beq _08000D34
+	beq %6
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x64]
-_08000D34
+6
 	ldr r0, [r4, #0x68]
 	cmp r0, #0
-	beq _08000D44
+	beq %7
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x68]
-_08000D44
+7
 	ldr r0, [r4, #0x6c]
 	cmp r0, #0
-	beq _08000D54
+	beq %8
 	movs r2, #0
 	movs r1, #0
 	bl sub_803D9A8
 	str r5, [r4, #0x6c]
-_08000D54
+8
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

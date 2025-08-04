@@ -8,19 +8,19 @@
 sub_803F07C
 	str r1, [r0, #4]
 	cmp r1, #0
-	beq _0803F092
+	beq %1
 	ldr r3, [r1]
 	str r3, [r0]
 	str r0, [r1]
 	ldr r1, [r0]
 	cmp r1, #0
-	beq _0803F096
+	beq %2
 	str r0, [r1, #4]
-	b _0803F096
-_0803F092
+	b %2
+1
 	movs r1, #0
 	str r1, [r0]
-_0803F096
+2
 	ldr r1, [r0, #8]
 	lsls r2, r2, #8
 	lsls r1, r1, #0x18
@@ -35,11 +35,11 @@ _0803F096
 sub_803F0A8
 	push {r4, r5, r6, r7}
 	cmp r0, #0xff
-	bne _0803F0B4
+	bne %3
 	ldr r0, _0803F108
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x14]
-_0803F0B4
+3
 	ldr r3, _0803F10C
 	movs r7, #6
 	ldr r4, [r3]
@@ -54,10 +54,10 @@ _0803F0B4
 	ldrh r5, [r5, #0x18]
 	adds r6, r6, r7
 	cmp r6, r5
-	bls _0803F0D6
+	bls %4
 	movs r5, #0
 	strh r5, [r3, #0x18]
-_0803F0D6
+4
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldrh r4, [r3, #0x18]
@@ -68,14 +68,14 @@ _0803F0D6
 	lsrs r4, r4, #0x10
 	strh r4, [r3, #0x18]
 	lsls r5, r4, #0x1e
-	beq _0803F0F8
+	beq %5
 	lsls r5, r4, #0x1e
 	lsrs r5, r5, #0x1e
 	movs r6, #4
 	subs r5, r6, r5
 	adds r4, r4, r5
 	strh r4, [r3, #0x18]
-_0803F0F8
+5
 	movs r3, #0x1c
 	strh r3, [r0]
 	strh r7, [r0, #2]

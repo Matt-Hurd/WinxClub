@@ -2,10 +2,10 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EBC
-	IMPORT gUnknown_0803ECB4
-	IMPORT gUnknown_0803ECF4
-	IMPORT sub_8005106
-	IMPORT maybeMallocEWRAM
+	IMPORT __VTABLE__353dword_803ECB4
+	IMPORT __VTABLE__369dword_803ECF4
+	IMPORT GetEWRAMStart
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
@@ -16,17 +16,17 @@ sub_801343C
 	adds r5, r1, #0
 	adds r4, r0, #0
 	cmp r0, #0
-	bne _08013458
+	bne %2
 	movs r0, #0xc
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08013458
+	bne %2
 	adds r0, r4, #0
-_08013452
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_08013458
+2
 	ldr r0, _080134AC
 	movs r6, #0
 	str r0, [r4]
@@ -36,7 +36,7 @@ _08013458
 	str r0, [r4]
 	strb r6, [r4, #9]
 	strb r5, [r4, #8]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r5, #4
 	adds r3, r6, #0
@@ -44,7 +44,7 @@ _08013458
 	bl sub_803DA9C
 	str r0, [r4, #4]
 	adds r0, r4, #0
-	b _08013452
+	b %1
 
 	thumb_func_start sub_8013480
 sub_8013480
@@ -61,15 +61,15 @@ sub_8013480
 	movs r0, #0
 	str r0, [r1]
 	cmp r5, #0
-	beq _080134A4
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080134A4
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
 	ALIGN
-_080134AC DCDU gUnknown_0803ECF4
+_080134AC DCDU __VTABLE__369dword_803ECF4
 _080134B0 DCDU gUnknown_03003EBC
-_080134B4 DCDU gUnknown_0803ECB4
+_080134B4 DCDU __VTABLE__353dword_803ECB4
 	END

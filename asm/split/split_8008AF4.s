@@ -2,8 +2,8 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
-	IMPORT gUnknown_0803EE6C
-	IMPORT maybeMallocEWRAM
+	IMPORT __VTABLE__381off_803EE6C
+	IMPORT __nw__FUi
 	IMPORT sub_800802E
 	IMPORT CpuSet
 
@@ -28,14 +28,14 @@ sub_8008B04
 sub_8008B14
 	STMFD SP!, {r4, lr}
 	movs r4, r0
-	bne _08008B38
+	bne %1
 	mov r0, #0x3c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
 	bxeq lr
-_08008B38
+1
 	mov r0, r4
 	bl sub_800802E
 	LDR r0, _08008EAC
@@ -54,14 +54,14 @@ sub_8008B5C
 	and ip, r3, #0xf0
 	cmp ip, #0x10
 	tsteq r3, #0xf
-	bne _08008B80
+	bne %2
 	bics r3, r3, #0xff
-	bne _08008B8C
-_08008B80
+	bne %3
+2
 	DCB 0x04, 0xE0, 0x9D, 0xE4 ; LDMFD SP!, {lr}
 	mov r0, #0
 	bx lr
-_08008B8C
+3
 	LDRB r3, [r1, #0xc]
 	mov ip, #0
 	strh r3, [r0, #4]
@@ -75,18 +75,18 @@ _08008B8C
 	LDRB r3, [r1, #0xc]
 	LDR r1, [r1, #8]
 	cmp r3, #2
-	bne _08008BD8
+	bne %4
 	STR r1, [r0, #0x2c]
 	LDR r1, [r2]
 	MOV r1, r1, LSR #8
 	STR r1, [r0, #0x30]
-	b _08008BE8
-_08008BD8
+	b %5
+4
 	LDR r2, [r2]
 	add r1, r1, r2, lsr #8
 	add r2, r0, #0x2c
 	STMIA r2, {r1, ip}
-_08008BE8
+5
 	STR ip, [r0, #0x34]
 	STR ip, [r0, #0x38]
 	DCB 0x04, 0xE0, 0x9D, 0xE4 ; LDMFD SP!, {lr}
@@ -102,18 +102,18 @@ sub_8008BFC
 	LDR r1, [r4, #0x2c]
 	sub sp, sp, #8
 	cmp r0, #1
-	bne _08008C34
+	bne %6
 	LDR r0, [r4, #0x28]
 	add r0, r0, r5
 	STR r0, [r4, #0x28]
 	cmp r0, r1
 	STRHI r1, [r4, #0x28]
-	b _08008D38
-_08008C34
+	b %13
+6
 	LDR ip, [r4, #0x24]
 	sub r0, ip, r1
 	cmp r0, #0x2000
-	blt _08008CF8
+	blt %11
 	add r0, r1, #0x1000
 	sub r2, ip, r0
 	add ip, r2, #4
@@ -121,23 +121,23 @@ _08008C34
 	mov r3, r0
 	cmp r0, r1
 	mov lr, #0
-	bhs _08008C78
+	bhs %7
 	add r6, r3, ip
 	cmp r6, r2
 	movhi r3, r6
 	addhi r2, r2, ip
 	movhi lr, #0xa00000
-_08008C78
+7
 	LDR r6, _08008EB0
 	LDR r6, [r6]
 	cmp r6, #0
-	beq _08008C9C
+	beq %8
 	MOV r2, ip, LSL #9
 	mov r3, #0x4000000
 	orr r2, r3, r2, lsr #11
 	bl CpuSet
-	b _08008CE0
-_08008C9C
+	b %10
+8
 	orr r0, r2, r3
 	mov r1, #0x4000000
 	add r1, r1, #0xd4
@@ -145,35 +145,35 @@ _08008C9C
 	tst r0, #2
 	STR r3, [r1]
 	STR r2, [r1, #4]
-	beq _08008CD0
+	beq %9
 	orr r0, lr, ip, lsr #1
 	orr r0, r0, #0x80000000
 	STR r0, [r1, #8]
 	LDR r0, [r1, #8]
-	b _08008CE0
-_08008CD0
+	b %10
+9
 	orr r0, lr, ip, lsr #2
 	orr r0, r0, #0x84000000
 	STR r0, [r1, #8]
 	LDR r0, [r1, #8]
-_08008CE0
+10
 	LDR r0, [r4, #0x28]
 	sub r0, r0, #0x1000
 	STR r0, [r4, #0x28]
 	LDR r0, [r4, #0x24]
 	sub r0, r0, #0x1000
 	STR r0, [r4, #0x24]
-_08008CF8
+11
 	LDR r0, [r4, #0x30]
 	cmp r0, r5
-	bhs _08008D1C
+	bhs %12
 	LDR r1, [r4, #0x24]
 	add r0, r1, r0
 	STR r0, [r4, #0x28]
 	mov r0, #0
 	STR r0, [r4, #0x30]
-	b _08008D38
-_08008D1C
+	b %13
+12
 	LDR r1, [r4, #0x28]
 	add r1, r1, r5
 	STR r1, [r4, #0x28]
@@ -181,28 +181,28 @@ _08008D1C
 	sub r1, r1, r2
 	sub r0, r0, r1
 	STR r0, [r4, #0x30]
-_08008D38
+13
 	add r1, r4, #0x24
 	LDMIA r1, {r0, r1}
 	cmp r0, r1
-	bhs _08008E2C
+	bhs %19
 	mov lr, #8
 	mov r6, #3
-_08008D50
+14
 	LDR r0, [r4, #0x38]
 	cmp r0, #0
-	bne _08008D74
+	bne %15
 	LDR r0, [r4, #0x20]
 	add r1, r0, #1
 	STR r1, [r4, #0x20]
 	LDRB r0, [r0]
 	add r1, r4, #0x34
 	STMIA r1, {r0, lr}
-_08008D74
+15
 	LDR r0, [r4, #0x34]
 	tst r0, #0x80
 	LDR r0, [r4, #0x20]
-	beq _08008DE8
+	beq %17
 	LDRB r1, [r0, #1]
 	LDRB r0, [r0]
 	orr r0, r1, r0, lsl #8
@@ -218,8 +218,8 @@ _08008D74
 	ldrh r0, [sp, #4]
 	add r0, r6, r0, lsr #12
 	cmp r0, #0
-	ble _08008E04
-_08008DC4
+	ble %18
+16
 	LDR r2, [r4, #0x24]
 	LDRB r3, [r1], #1
 	add ip, r2, #1
@@ -227,9 +227,9 @@ _08008DC4
 	sub r0, r0, #1
 	cmp r0, #0
 	STRB r3, [r2]
-	bgt _08008DC4
-	b _08008E04
-_08008DE8
+	bgt %16
+	b %18
+17
 	add r1, r0, #1
 	STR r1, [r4, #0x20]
 	LDRB r1, [r0]
@@ -237,7 +237,7 @@ _08008DE8
 	add r2, r0, #1
 	STR r2, [r4, #0x24]
 	STRB r1, [r0]
-_08008E04
+18
 	LDR r0, [r4, #0x34]
 	add r1, r4, #0x24
 	MOV r0, r0, LSL #1
@@ -247,18 +247,18 @@ _08008E04
 	STR r0, [r4, #0x38]
 	LDMIA r1, {r0, r1}
 	cmp r0, r1
-	blo _08008D50
-_08008E2C
+	blo %14
+19
 	ldrh r0, [r4, #4]
 	cmp r0, #0
-	beq _08008E50
+	beq %20
 	add r1, r4, #0x24
 	LDMIA r1, {r0, r1}
 	sub r0, r0, r1
 	LDR r1, [r4, #0x30]
 	sub r0, r1, r0
 	STR r0, [r4, #0x30]
-_08008E50
+20
 	LDR r0, [r4, #0x28]
 	add sp, sp, #8
 	sub r0, r0, r5
@@ -269,14 +269,14 @@ _08008E50
 sub_8008E64
 	ldrh r1, [r0, #4]
 	cmp r1, #0
-	bne _08008E88
+	bne %21
 	LDR r1, [r0, #0x24]
 	LDR r0, [r0, #0x2c]
 	cmp r1, r0
 	movlo r0, #0
 	movhs r0, #1
 	bx lr
-_08008E88
+21
 	LDR r0, [r0, #0x30]
 	rsbs r0, r0, #1
 	movlo r0, #0
@@ -293,6 +293,6 @@ sub_8008EA4
 	mov r0, #4
 	bx lr
 	ALIGN
-_08008EAC DCDU gUnknown_0803EE6C
+_08008EAC DCDU __VTABLE__381off_803EE6C
 _08008EB0 DCDU gUnknown_03003EB4
 	END

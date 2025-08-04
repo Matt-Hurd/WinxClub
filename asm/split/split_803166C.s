@@ -2,37 +2,37 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
-	IMPORT gUnknown_0803E488
+	IMPORT __VTABLE__309Kiko
 	IMPORT gUnknown_08051096
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
-	IMPORT sub_801D564
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801EBCA
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__10
 	IMPORT rand
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_80404B4
 
-	thumb_func_start sub_803166C
-sub_803166C
+	thumb_func_start Kiko__Create
+Kiko__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08031684
+	bne %2
 	movs r0, #0xa4
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08031684
+	bne %2
 	adds r0, r4, #0
-_0803167E
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08031684
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08031800
 	ldr r2, _08031810
 	str r0, [r4]
@@ -104,10 +104,10 @@ _08031684
 	movs r0, #0xcf
 	strh r0, [r1, r4]
 	adds r0, r4, #0
-	b _0803167E
+	b %1
 
-	non_word_aligned_thumb_func_start sub_803171A
-sub_803171A
+	non_word_aligned_thumb_func_start Kiko__ctor
+Kiko__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08031800
@@ -115,41 +115,41 @@ sub_803171A
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _08031736
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08031736
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_803173C
-sub_803173C
+	thumb_func_start Kiko__04
+Kiko__04
 	push {r3, lr}
-	bl sub_801DD40
+	bl DefaultScriptGroups__04
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031748
-sub_8031748
+	thumb_func_start Kiko__08
+Kiko__08
 	push {r3, lr}
-	bl sub_801DF50
+	bl DefaultScriptGroups__08
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031754
-sub_8031754
+	thumb_func_start Kiko__10
+Kiko__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl rand
 	movs r1, #0xa0
 	ldrh r1, [r1, r4]
 	ands r0, r1
-	bne _0803178C
+	bne %4
 	bl rand
 	bl sub_80404B4
 	adds r0, #1
@@ -168,11 +168,11 @@ sub_8031754
 	strh r0, [r4, #0x1c]
 	ldrh r0, [r3, r1]
 	strh r0, [r4, #0x1e]
-_0803178C
+4
 	movs r0, #0x9c
 	ldr r0, [r0, r4]
 	cmp r0, #0
-	bne _080317F4
+	bne %5
 	ldr r7, _0803182C
 	ldr r5, [r4, #0x30]
 	ldr r0, [r7]
@@ -200,7 +200,7 @@ _0803178C
 	adds r5, #0x18
 	ldrh r0, [r5, r0]
 	cmp r6, r0
-	beq _080317F4
+	beq %5
 	ldr r6, [r4, #0x2c]
 	ldr r0, [r7]
 	bl sub_8000D5A
@@ -217,14 +217,14 @@ _0803178C
 	ldrh r1, [r5, r0]
 	ldr r0, [r4, #0x30]
 	bl sub_800065C
-_080317F4
+5
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 	ALIGN
-_08031800 DCDU gUnknown_0803E488
+_08031800 DCDU __VTABLE__309Kiko
 _08031804 DCDU 0x6F6B694B
 _08031808 DCDU 0x6F724720
 _0803180C DCDU 0x00007075

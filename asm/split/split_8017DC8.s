@@ -3,15 +3,15 @@
 
 	IMPORT gUnknown_03003444
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT maybeLoadOrRenderBgImage
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 
 	thumb_func_start sub_8017DC8
 sub_8017DC8
 	push {r3, lr}
-	bl sub_80180BE
+	bl FadeToBlack
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -20,8 +20,8 @@ sub_8017DC8
 sub_8017DD4
 	push {r3, lr}
 	add r0, pc, #0x54
-	bl sub_800EF60
-	bl sub_8018070
+	bl maybeLoadOrRenderBgImage
+	bl FadeToImage
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -30,34 +30,34 @@ sub_8017DD4
 sub_8017DE6
 	push {r3, r4, r5, lr}
 	add r0, pc, #0x40
-	bl sub_800EF60
-	bl sub_8018070
+	bl maybeLoadOrRenderBgImage
+	bl FadeToImage
 	ldr r5, _08017E3C
 	movs r4, #0
 	ldr r0, [r5]
 	adds r1, r4, #0
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08017E02
+	bmi %1
 	ldrh r1, [r0, #6]
-_08017E02
+1
 	lsls r0, r1, #0x10
-	bne _08017E1A
-_08017E06
+	bne %4
+2
 	bl sub_800EF2A
 	ldr r0, [r5]
 	adds r1, r4, #0
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08017E16
+	bmi %3
 	ldrh r1, [r0, #6]
-_08017E16
+3
 	lsls r0, r1, #0x10
-	beq _08017E06
-_08017E1A
+	beq %2
+4
 	movs r0, #0x10
-	bl sub_8018386
-	bl sub_80180BE
+	bl SetNextGlobalFunction
+	bl FadeToBlack
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

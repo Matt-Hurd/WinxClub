@@ -12,9 +12,9 @@ sub_800B12C
 	str r2, [r5, r4]
 	movs r4, #0
 	cmp r2, #0
-	beq _0800B13C
+	beq %1
 	adds r4, r3, #0
-_0800B13C
+1
 	adds r2, r4, #0
 	bl sub_800B154
 	pop {r3, r4, r5}

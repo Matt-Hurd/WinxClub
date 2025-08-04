@@ -7,45 +7,45 @@
 	IMPORT gUnknown_03003478
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
-	IMPORT gUnknown_0803E4D8
+	IMPORT __VTABLE__310Object
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_8001432
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
-	IMPORT sub_801D564
-	IMPORT sub_801D714
+	IMPORT GetEWRAMStart
+	IMPORT Init_and_add_some_object
+	IMPORT GameObj__ctor
 	IMPORT sub_801DA2A
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E124
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
-	thumb_func_start sub_802E900
-sub_802E900
+	thumb_func_start Object__Create
+Object__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0802E918
+	bne %2
 	movs r0, #0xac
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0802E918
+	bne %2
 	adds r0, r4, #0
-_0802E912
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0802E918
+2
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _0802EC08
 	movs r1, #0x11
 	str r0, [r4]
@@ -79,10 +79,10 @@ _0802E918
 	bics r1, r2
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
-	b _0802E912
+	b %1
 
-	non_word_aligned_thumb_func_start sub_802E962
-sub_802E962
+	non_word_aligned_thumb_func_start Object__ctor
+Object__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802EC08
@@ -90,18 +90,18 @@ sub_802E962
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
-	beq _0802E97E
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0802E97E
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802E984
-sub_802E984
+	thumb_func_start ObjectScriptGroup__38
+ObjectScriptGroup__38
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _0802EC14
@@ -110,24 +110,24 @@ sub_802E984
 	add r0, pc, #0x288
 	str r0, [sp]
 	movs r4, #4
-	b _0802E9A0
-_0802E996
+	b %5
+4
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #0x40
-	bhs _0802E9AA
-_0802E9A0
+	bhs %6
+5
 	lsls r0, r4, #2
 	adds r0, r0, r6
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	bne _0802E996
-_0802E9AA
+	bne %4
+6
 	ldr r0, _0802EC2C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x80
 	movs r3, #0
@@ -176,7 +176,7 @@ _0802E9AA
 	lsls r1, r4, #0x10
 	orrs r0, r1
 	str r0, [r5, #0x7c]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r4, #0
 	adds r3, r4, #0
@@ -184,7 +184,7 @@ _0802E9AA
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0802EA3E
+	beq %7
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -192,7 +192,7 @@ _0802E9AA
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_0802EA3E
+7
 	strh r4, [r0]
 	strh r4, [r0, #2]
 	strh r4, [r0, #4]
@@ -220,7 +220,7 @@ _0802EA3E
 	ldr r0, [r0]
 	bl sub_8001432
 	adds r0, r5, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -241,67 +241,67 @@ sub_802EA80
 	movs r3, #1
 	lsls r3, r4
 	cmp r2, #0
-	beq _0802EAB2
+	beq %9
 	lsrs r2, r2, #5
 	ldr r4, _0802EC34
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
 	ands r2, r3
-	bne _0802EAB2
+	bne %9
 	ldrh r1, [r1, #4]
 	strh r1, [r0, #6]
-_0802EAAE
+8
 	pop {r4}
 	bx lr
-_0802EAB2
+9
 	movs r1, #0
 	strh r1, [r0, #6]
-	b _0802EAAE
+	b %8
 
-	thumb_func_start sub_802EAB8
-sub_802EAB8
+	thumb_func_start ObjectScriptGroup__04
+ObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	beq _0802EAD0
+	beq %11
 	cmp r2, #0x2c
-	bne _0802EAD6
+	bne %12
 	bl sub_801DA2A
-_0802EACA
+10
 	add sp, #4
 	pop {r3}
 	bx r3
-_0802EAD0
+11
 	bl sub_802EA80
-	b _0802EACA
-_0802EAD6
-	bl sub_801DD40
-	b _0802EACA
+	b %10
+12
+	bl DefaultScriptGroups__04
+	b %10
 
-	thumb_func_start sub_802EADC
-sub_802EADC
+	thumb_func_start ObjectScriptGroup__08
+ObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	beq _0802EAF2
+	beq %14
 	cmp r2, #0x2c
-	bne _0802EAF6
+	bne %15
 	movs r0, #1
-_0802EAEC
+13
 	add sp, #4
 	pop {r3}
 	bx r3
-_0802EAF2
+14
 	movs r0, #1
-	b _0802EAEC
-_0802EAF6
-	bl sub_801DF50
-	b _0802EAEC
+	b %13
+15
+	bl DefaultScriptGroups__08
+	b %13
 
-	thumb_func_start sub_802EAFC
-sub_802EAFC
+	thumb_func_start ObjectScriptGroup__44
+ObjectScriptGroup__44
 	push {r4, r5, r6, r7, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -312,23 +312,23 @@ sub_802EAFC
 	mvns r1, r1
 	cmp r2, #0
 	sub sp, #0x1c
-	beq _0802EB1E
+	beq %16
 	bl sub_8000D5A
 	ldr r0, [r0, #0x24]
 	ldr r1, [r5, #0x44]
 	subs r0, r1, r0
 	asrs r1, r0, #3
-_0802EB1E
+16
 	lsls r0, r1, #0x10
 	ldrh r1, [r4, #0x1a]
 	lsrs r0, r0, #0x10
 	cmp r0, r1
-	beq _0802EC00
+	beq %20
 	adds r5, r4, #0
 	adds r5, #0xa0
 	ldrh r0, [r5, #6]
 	cmp r0, #0
-	beq _0802EBDA
+	beq %19
 	ldr r0, [r4, #0x58]
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
@@ -347,7 +347,7 @@ _0802EB1E
 	ldr r7, [r0, r1]
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0802EB72
+	bne %17
 	ldr r0, _0802EC38
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -360,7 +360,7 @@ _0802EB1E
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_0802EB72
+17
 	ldr r0, [r0, #4]
 	add r3, sp, #0
 	lsls r1, r0, #0x14
@@ -376,7 +376,7 @@ _0802EB72
 	ldr r6, [r4, #0x2c]
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0802EBAC
+	bne %18
 	ldr r0, _0802EC38
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -389,7 +389,7 @@ _0802EB72
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_0802EBAC
+18
 	ldrh r1, [r0, #0x10]
 	ldrh r0, [r0, #0x12]
 	add r3, sp, #0
@@ -411,7 +411,7 @@ _0802EBAC
 	bl sub_802F926
 	movs r0, #0
 	strh r0, [r5, #6]
-_0802EBDA
+19
 	ldr r0, _0802EC3C
 	ldr r0, [r0]
 	ldrb r1, [r5]
@@ -428,13 +428,13 @@ _0802EBDA
 	adds r4, #0x70
 	strb r0, [r4, #0xc]
 	strb r0, [r4, #0xd]
-_0802EC00
+20
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 	ALIGN
-_0802EC08 DCDU gUnknown_0803E4D8
+_0802EC08 DCDU __VTABLE__310Object
 _0802EC0C DCDU 0xFF8007FF
 _0802EC10 DCDU 0x0027E000
 _0802EC14 DCDU gUnknown_03003454
@@ -449,12 +449,12 @@ _0802EC34 DCDU gUnknown_03003478
 _0802EC38 DCDU gUnknown_03003EA0
 _0802EC3C DCDU gUnknown_0300345C
 
-	thumb_func_start sub_802EC40
-sub_802EC40
+	thumb_func_start ObjectScriptGroup__20
+ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl DefaultScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -462,7 +462,7 @@ sub_802EC40
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0802EC6C
+	beq %21
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -470,7 +470,7 @@ sub_802EC40
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_0802EC6C
+21
 	strh r5, [r0]
 	strh r5, [r0, #2]
 	strh r5, [r0, #4]

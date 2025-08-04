@@ -8,18 +8,18 @@
 	IMPORT gUnknown_03003C58
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EB4
-	IMPORT sub_80050C0
-	IMPORT sub_8005106
+	IMPORT SomehowInitEWRAMLinkedList
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B058
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
-	IMPORT sub_800ED7C
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT PlayMovie
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_8017B9A
 	IMPORT sub_8017CA0
-	IMPORT sub_8018070
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801B170
 	IMPORT CpuSet
 	IMPORT __da__FPv
@@ -56,7 +56,7 @@ sub_8028F64
 	lsls r2, r2, #0x18
 	movs r7, #0
 	cmp r0, #0
-	beq _08028FBA
+	beq %1
 	movs r0, #0
 	ldr r2, _08029050
 	str r0, [sp]
@@ -64,8 +64,8 @@ sub_8028F64
 	subs r1, #0x20
 	mov r0, sp
 	bl CpuSet
-	b _08028FCC
-_08028FBA
+	b %2
+1
 	movs r0, #0
 	str r0, [sp]
 	ldr r0, _08029054
@@ -75,18 +75,18 @@ _08028FBA
 	ldr r1, _08029058
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-_08028FCC
+2
 	add r0, pc, #0x8C
-	bl sub_800EF60
-	bl sub_8018070
+	bl maybeLoadOrRenderBgImage
+	bl FadeToImage
 	ldr r5, _08029064
 	ldr r0, [r5]
 	bl __da__FPv
 	ldr r6, _08029068
 	movs r1, #0
 	ldrh r0, [r6]
-	bl sub_800ED7C
-	bl sub_8005106
+	bl PlayMovie
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x31
 	adds r3, r7, #0
@@ -95,10 +95,10 @@ _08028FCC
 	bl sub_803DA9C
 	movs r1, #0x31
 	lsls r1, r1, #0xc
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	str r0, [r5]
 	movs r0, #0
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, [r4]
 	bl sub_8017CA0
 	ldr r0, _08029040
@@ -110,20 +110,20 @@ _08028FCC
 	str r0, [r1, #8]
 	ldrh r0, [r6]
 	cmp r0, #6
-	bne _08029038
+	bne %4
 	ldr r0, _0802906C
 	ldr r0, [r0]
 	bl sub_801B170
 	movs r0, #0x17
-	bl sub_8018386
-_08029032
+	bl SetNextGlobalFunction
+3
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08029038
+4
 	movs r0, #0x11
-	bl sub_8018386
-	b _08029032
+	bl SetNextGlobalFunction
+	b %3
 	ALIGN
 _08029040 DCDU gUnknown_03003E98
 _08029044 DCDU gPlayerEntity

@@ -4,14 +4,14 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT sub_801F286
+	IMPORT DefaultScriptGroups__TakeDamage
 	IMPORT sub_801F450
 	IMPORT sub_8028C2E
 	IMPORT sub_802B0CA
 	IMPORT __call_via_r1
 
-	thumb_func_start sub_8030EEC
-sub_8030EEC
+	thumb_func_start Monster__Intersect
+Monster__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -20,78 +20,78 @@ sub_8030EEC
 	adds r5, r1, #0
 	cmp r0, #0xf
 	sub sp, #4
-	beq _08030F02
+	beq %1
 	cmp r0, #0x10
-	bne _08030F0C
-_08030F02
+	bne %3
+1
 	movs r0, #0
-_08030F04
+2
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08030F0C
+3
 	ldr r0, [r6, #0xc]
 	movs r7, #0
 	lsls r0, r0, #1
 	lsrs r0, r0, #0x14
 	cmp r0, #0
-	beq _08030F2C
+	beq %4
 	adds r0, r4, #0
-	bl sub_801F286
+	bl DefaultScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
 	str r0, [r4, #0x7c]
 	str r7, [r4, #0x34]
 	movs r0, #0
-	b _08030F04
-_08030F2C
+	b %2
+4
 	ldrh r0, [r5, #4]
 	cmp r0, #0xb
-	bne _08030F36
+	bne %5
 	movs r0, #0
-	b _08030F04
-_08030F36
+	b %2
+5
 	ldr r0, [r4, #0x68]
 	cmp r0, #0
-	bne _08030F4E
+	bne %6
 	ldr r0, [r4, #0x6c]
 	cmp r0, #0
-	bne _08030F4E
+	bne %6
 	movs r2, #3
 	lsls r2, r2, #0xf
 	adds r1, r5, #0
 	adds r0, r4, #0
 	bl sub_801F450
-_08030F4E
+6
 	movs r3, #0x97
 	ldrsb r0, [r5, r3]
 	ldr r1, [sp, #0xc]
 	adds r0, r0, r1
 	subs r0, #2
 	cmp r0, #6
-	bhs _08030FD8
+	bhs %14
 	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
-_08030F64
+7
 	DCB 0x02
-_08030F65
+8
 	DCB 0x02
-_08030F66
+9
 	DCB 0x35
-_08030F67
+10
 	DCB 0x06
-_08030F68
+11
 	DCB 0x13
-_08030F69
+12
 	DCB 0x06
 loc_8030f6a
 	adds r0, r4, #0
-	bl sub_801F286
-	b _08030FDE
+	bl DefaultScriptGroups__TakeDamage
+	b %15
 loc_8030f72
 	adds r0, r4, #0
 	adds r0, #0xb0
@@ -104,7 +104,7 @@ loc_8030f72
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
 	bl __call_via_r1
-	b _08030FDE
+	b %15
 loc_8030f8c
 	ldr r0, _0803107C
 	ldr r0, [r0]
@@ -112,12 +112,12 @@ loc_8030f8c
 	adds r0, #0xa0
 	ldr r1, [r0, #4]
 	cmp r1, #0
-	beq _08030FC8
+	beq %13
 	ldr r1, [r0, #0x34]
 	lsls r1, r1, #0x15
 	lsrs r1, r1, #0x1d
 	cmp r1, #1
-	bne _08030FC8
+	bne %13
 	ldr r1, [r0]
 	ldr r2, [r1, #0x1c]
 	adds r1, r2, r1
@@ -133,23 +133,23 @@ loc_8030f8c
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
 	bl __call_via_r1
-	b _08030FDE
-_08030FC8
+	b %15
+13
 	adds r0, r4, #0
-	bl sub_801F286
-	b _08030FDE
+	bl DefaultScriptGroups__TakeDamage
+	b %15
 loc_8030fd0
 	adds r0, r4, #0
-	bl sub_801F286
-	b _08030FDE
-_08030FD8
+	bl DefaultScriptGroups__TakeDamage
+	b %15
+14
 	adds r0, r4, #0
-	bl sub_801F286
-_08030FDE
+	bl DefaultScriptGroups__TakeDamage
+15
 	movs r0, #0xb6
 	ldrsb r0, [r0, r4]
 	cmp r0, #0
-	bgt _08031012
+	bgt %16
 	movs r0, #0xa8
 	ldrh r0, [r0, r4]
 	strh r0, [r4, #0x1e]
@@ -170,17 +170,17 @@ _08030FDE
 	bl sub_8028C2E
 	adds r0, r4, #0
 	bl sub_802B0CA
-_08031012
+16
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
 	str r0, [r4, #0x7c]
 	str r7, [r4, #0x34]
 	movs r0, #1
-	b _08030F04
+	b %2
 
-	thumb_func_start sub_8031020
-sub_8031020
+	thumb_func_start Monster_TakeDamage
+Monster_TakeDamage
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -202,19 +202,19 @@ sub_8031020
 	adds r0, r0, r1
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl sub_801F286
+	bl DefaultScriptGroups__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8031056
-sub_8031056
+	non_word_aligned_thumb_func_start Monster__50
+Monster__50
 	ldr r1, _08031088
 	push {r3, lr}
 	ldr r1, [r1]
 	ldr r1, [r1, #8]
 	lsls r1, r1, #0x1f
-	bpl _08031076
+	bpl %17
 	ldr r1, _08031080
 	adds r0, #0x80
 	ldr r1, [r1]
@@ -224,7 +224,7 @@ sub_8031056
 	lsls r0, r0, #5
 	adds r0, r0, r1
 	bl sub_8028C2E
-_08031076
+17
 	add sp, #4
 	pop {r3}
 	bx r3

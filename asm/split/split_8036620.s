@@ -2,36 +2,36 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
-	IMPORT gUnknown_0803E7B0
+	IMPORT __VTABLE__323Static1
 	IMPORT sub_80003F4
 	IMPORT sub_80007A0
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
-	IMPORT sub_8029070
-	IMPORT sub_802911C
+	IMPORT HostileCreature__Create
+	IMPORT HostileCreature__ctor
 	IMPORT sub_802913E
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8036620
-sub_8036620
+	thumb_func_start Static1__Create
+Static1__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08036638
+	bne %2
 	movs r0, #0xe4
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08036638
+	bne %2
 	adds r0, r4, #0
-_08036632
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08036638
+2
 	adds r0, r4, #0
-	bl sub_8029070
+	bl HostileCreature__Create
 	ldr r0, _080368CC
 	movs r1, #0x97
 	str r0, [r4]
@@ -54,7 +54,7 @@ _08036638
 	adds r1, r1, r2
 	str r1, [r0, #4]
 	adds r0, r4, #0
-	b _08036632
+	b %1
 
 	thumb_func_start sub_803666C
 sub_803666C
@@ -65,12 +65,12 @@ sub_803666C
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_802911C
+	bl HostileCreature__ctor
 	cmp r5, #0
-	beq _08036688
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08036688
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -90,11 +90,11 @@ sub_803668E
 	adds r6, #0x70
 	cmp r0, #0x3e
 	sub sp, #0x1c
-	beq _080366EC
+	beq %5
 	cmp r0, #0x3f
-	beq _0803675C
+	beq %6
 	cmp r0, #0x40
-	bne _080366E4
+	bne %4
 	movs r0, #0x93
 	lsls r0, r0, #2
 	strh r0, [r7]
@@ -120,12 +120,12 @@ sub_803668E
 	str r0, [r4, #0x30]
 	strb r1, [r6, #0xd]
 	strb r1, [r6, #0xc]
-_080366E4
+4
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080366EC
+5
 	movs r2, #2
 	movs r1, #7
 	movs r0, #0
@@ -180,8 +180,8 @@ _080366EC
 	movs r0, #0x1e
 	strb r0, [r6, #0xd]
 	strb r1, [r6, #0xc]
-	b _080366E4
-_0803675C
+	b %4
+6
 	movs r2, #2
 	movs r1, #7
 	str r1, [sp, #0x10]
@@ -230,10 +230,10 @@ _0803675C
 	movs r0, #0x1e
 	strb r0, [r6, #0xd]
 	strb r1, [r6, #0xc]
-	b _080366E4
+	b %4
 
-	thumb_func_start nullsub_56
-nullsub_56
+	thumb_func_start sub_80367C0
+sub_80367C0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80367C2
@@ -259,28 +259,28 @@ sub_80367C2
 	movs r6, #0x80
 	lsls r1, r0, #0x1e
 	cmp r1, #0
-	blt _0803687C
+	blt %10
 	ldr r1, [r4, #0x3c]
 	lsls r7, r6, #2
 	cmp r1, #0
 	ldr r2, _080368F0
-	blt _08036816
+	blt %7
 	movs r3, #0xf
 	ldr r1, [r4, #0x34]
 	lsls r3, r3, #0x14
 	cmp r1, r3
-	bge _08036816
+	bge %7
 	ldr r1, [r4, #0x40]
 	cmp r1, #0
-	blt _08036816
+	blt %7
 	movs r3, #5
 	ldr r1, [r4, #0x38]
 	lsls r3, r3, #0x15
 	cmp r1, r3
-	blt _0803682C
-_08036816
+	blt %8
+7
 	lsls r0, r0, #0x16
-	bmi _0803687C
+	bmi %10
 	adds r1, r4, #0
 	ldr r0, [r2]
 	bl sub_800C1CA
@@ -288,10 +288,10 @@ _08036816
 	orrs r0, r7
 	orrs r0, r6
 	str r0, [r4]
-	b _0803687C
-_0803682C
+	b %10
+8
 	lsls r0, r0, #0x16
-	bpl _08036846
+	bpl %9
 	adds r1, r4, #0
 	ldr r0, [r2]
 	bl sub_800BE0E
@@ -302,7 +302,7 @@ _0803682C
 	movs r1, #0x40
 	orrs r0, r1
 	str r0, [r4]
-_08036846
+9
 	ldr r0, [r4, #0x2c]
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
@@ -330,11 +330,11 @@ _08036846
 	ldr r0, [r4]
 	orrs r0, r6
 	str r0, [r4]
-_0803687C
+10
 	ldr r0, [r4]
 	orrs r0, r6
 	str r0, [r4]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r4, #0
 	adds r3, r4, #0
@@ -342,7 +342,7 @@ _0803687C
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _080368A6
+	beq %11
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -350,7 +350,7 @@ _0803687C
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_080368A6
+11
 	strh r4, [r0]
 	strh r4, [r0, #2]
 	strh r4, [r0, #4]
@@ -370,7 +370,7 @@ _080368A6
 	pop {r3}
 	bx r3
 	ALIGN
-_080368CC DCDU gUnknown_0803E7B0
+_080368CC DCDU __VTABLE__323Static1
 _080368D0 DCDU 0x74617453
 _080368D4 DCDU 0x53206369
 _080368D8 DCDU 0x70697263

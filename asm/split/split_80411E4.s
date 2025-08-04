@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EAC
-	IMPORT gUnknown_0803ECE8
+	IMPORT __VTABLE__366dword_803ECE8
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_80411E4
@@ -14,13 +14,13 @@ sub_80411E4
 	movs r2, #0
 	str r2, [r3]
 	cmp r1, #0
-	beq _080411F8
+	beq %1
 	bl sub_803DA18
-_080411F8
+1
 	add sp, #4
 	pop {r3}
 	bx r3
 	ALIGN
-_08041200 DCDU gUnknown_0803ECE8
+_08041200 DCDU __VTABLE__366dword_803ECE8
 _08041204 DCDU gUnknown_03003EAC
 	END

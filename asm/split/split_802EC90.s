@@ -2,27 +2,27 @@
 	AREA text, CODE
 
 
-	thumb_func_start sub_802EC90
-sub_802EC90
+	thumb_func_start ObjectScriptGroup__40
+ObjectScriptGroup__40
 	subs r1, #0x61
 	cmp r1, #6
-	bhs _0802ECB6
+	bhs %7
 	add r3, pc, #0x8
 	ldrb r3, [r3, r1]
 	lsls r3, r3, #1
 	add pc, r3
 	ALIGN
-_0802ECA0
+1
 	DCB 0x03
-_0802ECA1
+2
 	DCB 0x0C
-_0802ECA2
+3
 	DCB 0x14
-_0802ECA3
+4
 	DCB 0x1D
-_0802ECA4
+5
 	DCB 0x2D
-_0802ECA5
+6
 	DCB 0x25
 loc_802eca6
 	movs r1, #0xd9
@@ -33,7 +33,7 @@ loc_802eca6
 	movs r1, #0x25
 	adds r0, #0xa0
 	strb r1, [r0]
-_0802ECB6
+7
 	bx lr
 loc_802ecb8
 	ldr r1, _0802ED10
@@ -83,8 +83,8 @@ loc_802ecfa
 	strb r1, [r0]
 	bx lr
 
-	thumb_func_start nullsub_55
-nullsub_55
+	thumb_func_start ObjectScriptGroup__10
+ObjectScriptGroup__10
 	bx lr
 	ALIGN
 _0802ED10 DCDU 0x00000362

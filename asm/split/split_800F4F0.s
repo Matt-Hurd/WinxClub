@@ -52,7 +52,7 @@ sub_800F528
 	str r2, [sp, #8]
 	bl sub_800F4F0
 	cmp r5, #0
-	beq _0800F624
+	beq %9
 	adds r0, r5, #0
 	movs r1, #0
 	ldr r2, [r4, #0x60]
@@ -69,15 +69,15 @@ sub_800F528
 	adds r0, #0x80
 	ldr r1, [r0, #0x14]
 	cmp r1, r6
-	bhi _0800F570
+	bhi %2
 	movs r5, #0
 	str r5, [r0, #0x10]
-_0800F568
+1
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800F570
+2
 	ldr r2, [sp, #4]
 	subs r1, r1, r6
 	adds r1, r1, r2
@@ -91,7 +91,7 @@ _0800F570
 	lsls r6, r6, #2
 	adds r0, #0x80
 	ldr r7, [r0, #4]
-_0800F58A
+3
 	ldr r0, _0800F718
 	movs r3, #0
 	adds r2, r6, #0
@@ -104,8 +104,8 @@ _0800F58A
 	adds r1, r7, #0
 	ldr r0, [r0]
 	bl sub_803DABC
-	b _0800F5BE
-_0800F5A8
+	b %5
+4
 	ldr r2, [sp]
 	subs r0, #2
 	ldrh r1, [r2]
@@ -117,18 +117,18 @@ _0800F5A8
 	subs r6, #2
 	adds r7, #2
 	str r2, [sp, #8]
-_0800F5BE
+5
 	cmp r0, #0
-	beq _0800F5C8
+	beq %6
 	cmp r5, #0
-	bne _0800F5A8
-	b _0800F5D0
-_0800F5C8
+	bne %4
+	b %7
+6
 	cmp r5, #0
-	beq _0800F5D0
+	beq %7
 	cmp r6, #0
-	bne _0800F58A
-_0800F5D0
+	bne %3
+7
 	ldr r0, [r4, #0x70]
 	movs r1, #0x88
 	ldr r1, [r1, r0]
@@ -152,13 +152,13 @@ _0800F5D0
 	str r7, [r0, #0x34]
 	ldr r0, [sp, #4]
 	cmp r0, #0
-	beq _0800F624
+	beq %9
 	ldr r1, _0800F71C
 	ldr r0, _0800F720
 	ldr r5, [r1]
 	str r0, [r1]
 	movs r6, #1
-_0800F60A
+8
 	ldr r1, [r4, #0x70]
 	ldr r0, _0800F718
 	adds r1, #0x80
@@ -170,13 +170,13 @@ _0800F60A
 	ldr r0, [r4, #8]
 	adds r1, r6, #0
 	lsls r1, r0
-	b _0800F626
-_0800F624
-	b _0800F64C
-_0800F626
+	b %10
+9
+	b %12
+10
 	ldr r0, [sp, #4]
 	cmp r1, r0
-	bhs _0800F640
+	bhs %11
 	adds r0, r4, #0
 	bl sub_800F312
 	ldr r1, [r4, #8]
@@ -185,14 +185,14 @@ _0800F626
 	ldr r1, [sp, #4]
 	subs r0, r1, r0
 	str r0, [sp, #4]
-	b _0800F60A
-_0800F640
+	b %8
+11
 	adds r0, r4, #0
 	ldr r1, [sp, #4]
 	bl sub_800F312
 	ldr r1, _0800F71C
 	str r5, [r1]
-_0800F64C
+12
 	ldr r0, [r4, #0x70]
 	movs r5, #0
 	adds r0, #0x80
@@ -213,7 +213,7 @@ _0800F64C
 	bl sub_800F312
 	str r5, [r4, #0x10]
 	str r6, [r4, #0x5c]
-	b _0800F568
+	b %1
 
 	non_word_aligned_thumb_func_start sub_800F67A
 sub_800F67A
@@ -223,12 +223,12 @@ sub_800F67A
 	movs r3, #4
 	bl sub_800FC76
 	cmp r0, #0
-	bne _0800F690
-_0800F68A
+	bne %14
+13
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_0800F690
+14
 	ldrh r2, [r0, #0xc]
 	adds r1, r4, #0
 	adds r1, #0x6c
@@ -283,20 +283,20 @@ _0800F690
 	adds r0, r4, #0
 	bl sub_800F4F0
 	movs r0, #1
-	b _0800F68A
+	b %13
 
 	thumb_func_start sub_800F700
 sub_800F700
 	ldr r0, [r0, #0x18]
 	lsls r1, r0, #6
 	lsrs r1, r1, #0x10
-	beq _0800F712
+	beq %15
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
-	beq _0800F712
+	beq %15
 	movs r0, #1
 	bx lr
-_0800F712
+15
 	movs r0, #0
 	bx lr
 	ALIGN

@@ -24,9 +24,9 @@ sub_8018C48
 	adds r6, r1, #0
 	cmp r0, #0
 	sub sp, #0x14
-	bne _08018CE4
+	bne %3
 	movs r4, #0
-_08018C58
+1
 	ldr r0, _08018E24
 	ldr r0, [r0]
 	bl sub_800116A
@@ -58,11 +58,11 @@ _08018C58
 	strb r2, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _08018CA4
+	bmi %2
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_08018CA4
+2
 	ldr r1, _08018E2C
 	movs r2, #0xff
 	str r1, [sp, #4]
@@ -91,23 +91,23 @@ _08018CA4
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #2
-	blo _08018C58
-_08018CE4
+	blo %1
+3
 	ldr r3, [sp, #0x1c]
 	cmp r3, #0
-	beq _08018CF8
+	beq %4
 	movs r3, #0xff
 	movs r2, #0
 	adds r0, r6, #0
 	ldr r1, [sp, #0x1c]
 	bl sub_80138E2
-	b _08018D02
-_08018CF8
+	b %5
+4
 	movs r2, #0
 	adds r0, r6, #0
 	add r1, pc, #0x130
 	bl sub_80137F8
-_08018D02
+5
 	ldr r0, [r5]
 	movs r4, #1
 	ldr r1, [r0]
@@ -116,46 +116,46 @@ _08018D02
 	lsrs r2, r2, #0x1f
 	adds r1, r4, #0
 	cmp r3, #0
-	bne _08018D16
+	bne %6
 	movs r1, #0
-_08018D16
+6
 	cmp r2, r1
-	beq _08018D20
+	beq %7
 	ldr r3, [sp, #0x1c]
 	bl sub_80401E4
-_08018D20
+7
 	adds r7, r6, #0
 	ldr r0, [sp, #0x20]
 	adds r7, #0x78
 	cmp r0, #0
-	beq _08018D38
+	beq %8
 	movs r3, #0xff
 	movs r2, #0
 	adds r0, r7, #0
 	ldr r1, [sp, #0x20]
 	bl sub_80138E2
-	b _08018D42
-_08018D38
+	b %9
+8
 	movs r2, #0
 	adds r0, r7, #0
 	add r1, pc, #0xF0
 	bl sub_80137F8
-_08018D42
+9
 	ldr r0, [r5, #4]
 	ldr r1, [r0]
 	ldr r2, [sp, #0x20]
 	lsls r1, r1, #0x1f
 	lsrs r1, r1, #0x1f
 	cmp r2, #0
-	bne _08018D52
+	bne %10
 	movs r4, #0
-_08018D52
+10
 	cmp r1, r4
-	beq _08018D5E
+	beq %11
 	adds r1, r4, #0
 	ldr r2, [sp, #0x20]
 	bl sub_80401E4
-_08018D5E
+11
 	movs r1, #0
 	adds r0, r6, #0
 	bl sub_80139AC
@@ -175,8 +175,8 @@ sub_8018D76
 	movs r5, #0
 	cmp r0, #0
 	ldr r6, [sp, #0x2c]
-	bls _08018E1C
-_08018D84
+	bls %14
+12
 	lsls r0, r5, #4
 	subs r0, r0, r5
 	ldr r1, [sp, #8]
@@ -213,9 +213,9 @@ _08018D84
 	adds r3, r2, r1
 	movs r1, #0x10
 	cmp r6, #0
-	beq _08018DD6
+	beq %13
 	ldrb r1, [r6, r5]
-_08018DD6
+13
 	lsls r2, r1, #0x10
 	ldr r1, [sp, #0x10]
 	lsrs r2, r2, #0x10
@@ -246,8 +246,8 @@ _08018DD6
 	ldr r0, [sp, #4]
 	lsrs r5, r5, #0x18
 	cmp r5, r0
-	blo _08018D84
-_08018E1C
+	blo %12
+14
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -256,6 +256,6 @@ _08018E1C
 _08018E24 DCDU gUnknown_03003448
 _08018E28 DCDU 0x00000C8A
 _08018E2C DCDU 0x0000FFFF
-_08018E30
+15
 	DCB 0x20, 0x00, 0x00, 0x00
 	END

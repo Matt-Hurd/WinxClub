@@ -4,9 +4,9 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
-	IMPORT sub_801E124
-	IMPORT sub_801EBCA
+	IMPORT GetEWRAMStart
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
 	IMPORT rand
@@ -14,8 +14,8 @@
 	IMPORT sub_8040528
 	IMPORT sub_8040594
 
-	thumb_func_start sub_8031404
-sub_8031404
+	thumb_func_start Critter__10
+Critter__10
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -23,13 +23,13 @@ sub_8031404
 	ldr r0, [r5, #0x28]
 	sub sp, #8
 	adds r1, r0, #0
-	beq _080314AC
+	beq %3
 	movs r0, #0x5a
 	asrs r1, r1, #0x10
 	cmp r1, #0x5a
-	bge _0803141E
+	bge %1
 	adds r0, r1, #0
-_0803141E
+1
 	lsls r6, r0, #0x10
 	lsrs r6, r6, #0x10
 	adds r0, r6, #0
@@ -57,17 +57,17 @@ _0803141E
 	movs r1, #5
 	lsls r1, r1, #0xe
 	cmp r0, r1
-	bge _08031462
+	bge %2
 	movs r1, #1
 	lsls r1, r1, #0xb
 	adds r0, r0, r1
 	str r0, [r5, #0x2c]
-_08031462
+2
 	ldr r1, [r4, #0x2c]
 	ldr r0, [r1]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1f
-	beq _080314B2
+	beq %4
 	movs r2, #0
 	str r2, [r4, #0x58]
 	str r2, [r4, #0x5c]
@@ -99,24 +99,24 @@ _08031462
 	adds r2, #1
 	orrs r0, r2
 	str r0, [r1]
-	b _080314B2
-_080314AC
+	b %4
+3
 	adds r0, r4, #0
-	bl sub_801EBCA
-_080314B2
+	bl DefaultScriptGroups__10
+4
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
-	bne _08031512
+	bne %5
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0]
 	lsls r1, r0, #0x1f
-	beq _08031512
+	beq %5
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x1f
-	bne _08031512
+	bne %5
 	bl rand
 	lsls r0, r0, #0x19
-	bne _08031512
+	bne %5
 	ldr r0, _0803156C
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
@@ -147,18 +147,18 @@ _080314B2
 	str r0, [r5]
 	ldr r0, [r4, #0x2c]
 	bl sub_8000914
-_08031512
+5
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803151A
-sub_803151A
+	non_word_aligned_thumb_func_start Critter__20
+Critter__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl DefaultScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -166,7 +166,7 @@ sub_803151A
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08031546
+	beq %6
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -174,7 +174,7 @@ sub_803151A
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_08031546
+6
 	strh r5, [r0]
 	strh r5, [r0, #2]
 	strh r5, [r0, #4]

@@ -20,14 +20,14 @@
 	IMPORT sub_800C1CA
 	IMPORT sub_800CD58
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80138E2
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_802383A
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
@@ -40,7 +40,7 @@ sub_80301E8
 	ldr r1, [r0, #0xc]
 	movs r3, #0x20
 	cmp r1, #0
-	beq _0803021A
+	beq %3
 	adds r4, r0, #4
 	ldm r4!, {r2, r4}
 	ldr r6, [r0]
@@ -50,27 +50,27 @@ sub_80301E8
 	str r5, [r0]
 	adds r5, r1, r2
 	cmp r5, #0x20
-	bls _08030216
+	bls %2
 	subs r2, r3, r2
 	subs r1, r1, r2
 	str r1, [r0, #0xc]
 	lsls r4, r2
 	adds r0, #4
 	stm r0!, {r3, r4}
-_08030212
+1
 	pop {r4, r5, r6}
 	bx lr
-_08030216
+2
 	adds r1, r2, r1
 	str r1, [r0, #4]
-_0803021A
+3
 	ldr r1, [r0, #0x10]
 	adds r2, r1, #4
 	str r2, [r0, #0x10]
 	ldr r1, [r1]
 	ldr r2, [r0, #4]
 	cmp r2, #0x20
-	bhs _0803023E
+	bhs %4
 	adds r5, r1, #0
 	ldr r4, [r0]
 	lsrs r5, r2
@@ -81,11 +81,11 @@ _0803021A
 	str r1, [r0, #8]
 	str r2, [r0, #0xc]
 	str r3, [r0, #4]
-	b _08030212
-_0803023E
+	b %1
+4
 	adds r0, #8
 	stm r0!, {r1, r3}
-	b _08030212
+	b %1
 
 	thumb_func_start sub_8030244
 sub_8030244
@@ -96,19 +96,19 @@ sub_8030244
 	movs r1, #2
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r4, _08030598
 	ldr r0, [r4]
 	bl sub_800B72A
 	cmp r0, #0
-	beq _08030272
-_08030264
+	beq %6
+5
 	bl sub_800EF2A
 	ldr r0, [r4]
 	bl sub_800B72A
 	cmp r0, #0
-	bne _08030264
-_08030272
+	bne %5
+6
 	ldr r1, _0803059C
 	movs r0, #0
 	ldr r2, _080305A0
@@ -118,11 +118,11 @@ _08030272
 	bics r1, r0
 	str r1, [r2]
 	movs r5, #0
-_08030284
+7
 	movs r4, #0
 	lsls r0, r5, #3
 	adds r6, r0, r7
-_0803028A
+8
 	lsls r0, r4, #2
 	adds r1, r6, r0
 	ldr r0, _080305A4
@@ -134,49 +134,49 @@ _0803028A
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #2
-	blo _0803028A
+	blo %8
 	adds r5, #1
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	cmp r5, #2
-	blo _08030284
+	blo %7
 	ldrb r0, [r7]
 	cmp r0, #0
-	bne _080302C4
+	bne %10
 	bl sub_802383A
 	movs r0, #0x10
-	bl sub_8018386
-_080302BE
+	bl SetNextGlobalFunction
+9
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080302C4
+10
 	movs r0, #2
-	bl sub_8018386
-	b _080302BE
+	bl SetNextGlobalFunction
+	b %9
 
 	thumb_func_start sub_80302CC
 sub_80302CC
 	push {r3, r4, r5, r6, r7, lr}
 	mov ip, r1
 	cmp r1, #0
-	beq _080302DE
+	beq %11
 	ldrb r1, [r0]
 	adds r1, #1
 	lsls r1, r1, #0x1f
 	lsrs r1, r1, #0x1f
 	strb r1, [r0]
-_080302DE
+11
 	movs r2, #0
 	movs r7, #3
 	lsls r7, r7, #0xa
-_080302E4
+12
 	ldrb r1, [r0]
 	movs r4, #1
 	cmp r1, r2
-	bne _080302EE
+	bne %13
 	movs r4, #0
-_080302EE
+13
 	lsls r1, r2, #3
 	adds r5, r1, r0
 	adds r5, #0xff
@@ -186,7 +186,7 @@ _080302EE
 	lsls r1, r6, #0x14
 	lsrs r1, r1, #0x1e
 	cmp r1, r4
-	beq _08030326
+	beq %14
 	lsls r1, r4, #0x1e
 	lsrs r1, r1, #0x14
 	bics r6, r7
@@ -205,20 +205,20 @@ _080302EE
 	ldr r1, [r3]
 	orrs r1, r6
 	str r1, [r3]
-_08030326
+14
 	adds r2, #1
 	lsls r2, r2, #0x18
 	lsrs r2, r2, #0x18
 	cmp r2, #2
-	blo _080302E4
+	blo %12
 	mov r1, ip
 	cmp r1, #0
-	beq _08030340
+	beq %15
 	ldr r0, _08030594
 	ldr r0, [r0]
 	adds r0, #0x20
 	bl sub_8028C2E
-_08030340
+15
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -235,9 +235,9 @@ sub_8030346
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r0, pc, #0x244
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	movs r2, #4
 	str r2, [sp, #0xc]
 	movs r2, #0x3c
@@ -264,7 +264,7 @@ sub_8030346
 	bl sub_80138E2
 	movs r4, #0
 	movs r7, #0xe
-_080303A2
+16
 	movs r2, #4
 	str r2, [sp, #0xc]
 	lsls r2, r4, #5
@@ -298,9 +298,9 @@ _080303A2
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #2
-	blo _080303A2
+	blo %16
 	movs r7, #0
-_080303EE
+17
 	lsls r0, r7, #5
 	adds r0, #0x50
 	str r0, [sp, #0x1c]
@@ -309,7 +309,7 @@ _080303EE
 	movs r5, #0
 	adds r1, r0, r1
 	str r1, [sp, #0x18]
-_080303FE
+18
 	ldr r0, _080305A4
 	ldr r0, [r0]
 	bl sub_800116A
@@ -354,24 +354,24 @@ _080303FE
 	str r0, [r2, #0xc]
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
-	blt _08030476
+	blt %19
 	movs r1, #0xf
 	ldr r0, [r4, #0x34]
 	lsls r1, r1, #0x14
 	cmp r0, r1
-	bge _08030476
+	bge %19
 	ldr r0, [r4, #0x40]
 	cmp r0, #0
-	blt _08030476
+	blt %19
 	movs r1, #5
 	ldr r0, [r4, #0x38]
 	lsls r1, r1, #0x15
 	cmp r0, r1
-	blt _08030496
-_08030476
+	blt %20
+19
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _080304F0
+	bmi %22
 	ldr r0, _080305C4
 	adds r1, r4, #0
 	ldr r0, [r0]
@@ -383,11 +383,11 @@ _08030476
 	movs r1, #0x80
 	orrs r0, r1
 	str r0, [r4]
-	b _080304F0
-_08030496
+	b %22
+20
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bpl _080304B8
+	bpl %21
 	ldr r0, _080305C4
 	adds r1, r4, #0
 	ldr r0, [r0]
@@ -401,7 +401,7 @@ _08030496
 	movs r1, #0x40
 	orrs r0, r1
 	str r0, [r4]
-_080304B8
+21
 	ldr r0, [r4, #0x2c]
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
@@ -430,7 +430,7 @@ _080304B8
 	movs r1, #0x80
 	orrs r0, r1
 	str r0, [r4]
-_080304F0
+22
 	ldr r0, [r6, #0x2c]
 	movs r2, #3
 	ldrh r1, [r0, #0x2a]
@@ -443,56 +443,56 @@ _080304F0
 	strb r2, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _08030510
+	bmi %23
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_08030510
+23
 	ldr r4, [r6, #0x2c]
 	movs r6, #1
 	ldr r0, [r4]
 	lsls r0, r0, #0x1f
-	bmi _0803054C
+	bmi %25
 	ldr r0, _080305C8
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_80011D8
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _0803053A
+	bmi %24
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _0803053A
+	beq %24
 	ldr r0, _080305C4
 	adds r1, r4, #0
 	ldr r0, [r0]
 	bl sub_800CD58
-_0803053A
+24
 	ldr r0, [r4]
 	orrs r0, r6
 	str r0, [r4]
 	lsls r1, r0, #0x1e
-	bpl _0803054C
+	bpl %25
 	movs r1, #0xff
 	adds r1, #1
 	orrs r0, r1
 	str r0, [r4]
-_0803054C
+25
 	adds r5, #1
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	cmp r5, #2
-	bhs _08030558
-	b _080303FE
-_08030558
+	bhs %26
+	b %18
+26
 	adds r7, #1
 	lsls r7, r7, #0x18
 	lsrs r7, r7, #0x18
 	cmp r7, #2
-	bhs _08030564
-	b _080303EE
-_08030564
-	bl sub_8018070
+	bhs %27
+	b %17
+27
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #8
 	add r4, sp, #0x10

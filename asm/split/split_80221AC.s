@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003D20
 	IMPORT gUnknown_03003E98
 	IMPORT sub_800065C
-	IMPORT sub_801F286
+	IMPORT DefaultScriptGroups__TakeDamage
 	IMPORT sub_8028C2E
 	IMPORT sub_803F2CC
 	IMPORT sub_803F898
@@ -21,11 +21,11 @@ sub_80221AC
 	ldr r0, [r5, #0x1c]
 	movs r1, #0xd
 	cmp r0, #5
-	beq _080221D6
+	beq %1
 	ldr r2, _080222C0
 	ldrb r2, [r2]
 	cmp r2, #0
-	beq _080221D6
+	beq %1
 	movs r0, #0x44
 	strh r0, [r4, #0x1e]
 	movs r0, #0x45
@@ -34,12 +34,12 @@ sub_80221AC
 	strh r0, [r4, #0x1c]
 	strh r0, [r4, #0x18]
 	str r1, [r5, #0x1c]
-	b _080221EE
-_080221D6
+	b %2
+1
 	cmp r0, #5
-	beq _080221EE
+	beq %2
 	cmp r0, #0xb
-	beq _080221EE
+	beq %2
 	movs r0, #0x57
 	strh r0, [r4, #0x1e]
 	movs r0, #0x58
@@ -48,14 +48,14 @@ _080221D6
 	strh r0, [r4, #0x1c]
 	strh r0, [r4, #0x18]
 	str r1, [r5, #0x1c]
-_080221EE
+2
 	ldr r0, _080222C4
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	lsls r0, r0, #0x1e
 	lsrs r0, r0, #0x1e
 	cmp r0, #2
-	bhs _0802220C
+	bhs %3
 	ldr r1, _080222C8
 	adds r0, #0x4d
 	lsls r0, r0, #0x18
@@ -63,7 +63,7 @@ _080221EE
 	lsrs r0, r0, #0x13
 	adds r0, r0, r1
 	bl sub_8028C2E
-_0802220C
+3
 	ldr r1, _080222CC
 	ldr r0, [r5, #0xc]
 	ands r0, r1
@@ -73,10 +73,10 @@ _0802220C
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #0x1c]
 	cmp r0, #5
-	beq _08022226
+	beq %4
 	adds r0, r4, #0
-	bl sub_801F286
-_08022226
+	bl DefaultScriptGroups__TakeDamage
+4
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -93,21 +93,21 @@ sub_802222C
 	lsls r2, r1, #0xf
 	cmp r2, #0
 	ldr r0, [r0, #0x24]
-	blt _0802225C
+	blt %6
 	movs r2, #0xa4
 	ldr r2, [r2, r4]
 	cmp r2, #0
-	bne _0802225C
+	bne %6
 	ldr r1, [r0]
 	lsls r1, r1, #0x1f
-	beq _08022256
+	beq %5
 	movs r1, #0
 	bl sub_80401E4
-_08022256
+5
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0802225C
+6
 	movs r2, #1
 	lsls r2, r2, #0x10
 	orrs r1, r2
@@ -117,13 +117,13 @@ _0802225C
 	ldr r0, [r4, #0x2c]
 	bl sub_803F898
 	cmp r6, r0
-	beq _08022282
+	beq %7
 	ldr r0, [r4, #0x2c]
 	bl sub_803F898
 	adds r1, r0, #0
 	ldr r0, [r5, #0x24]
 	bl sub_800065C
-_08022282
+7
 	ldr r0, [r4, #0x2c]
 	adds r1, r0, #0
 	adds r1, #0x2c
@@ -140,18 +140,18 @@ _08022282
 	lsls r0, r0, #0x1f
 	ldr r0, [r5, #0x24]
 	ldr r1, [r0]
-	beq _080222B4
+	beq %8
 	lsls r1, r1, #0x1f
-	bne _08022256
+	bne %5
 	movs r1, #1
 	bl sub_80401E4
-	b _08022256
-_080222B4
+	b %5
+8
 	lsls r1, r1, #0x1f
-	beq _08022256
+	beq %5
 	movs r1, #0
 	bl sub_80401E4
-	b _08022256
+	b %5
 	ALIGN
 _080222C0 DCDU gUnknown_03003D20
 _080222C4 DCDU gUnknown_03003E98

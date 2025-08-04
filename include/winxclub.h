@@ -1,3 +1,6 @@
+# ifndef WINXCLUB_H
+# define WINXCLUB_H
+
 struct PlayerUnk1Unk1 {
   int field_0;
   int field_4;
@@ -35,45 +38,6 @@ struct Unknown_030034F8 {
   void *field_30[8]; //EWRAM Pointers
 };
 
-struct ScriptGroup {
-  //&ScriptGroup + script_offset = ROM code
-  int init_script;
-  int unknown_script04;
-  int unknown_script08;
-  int unknown_script0C;
-  int unknown_script10;
-  int unknown_script14;
-  int unknown_script18;
-  int unknown_script1C;
-  int unknown_script20;
-  int damage_player; // triggered when player takes damage
-  int player_iframe; // ran every frame while player is invincible after taking damage
-  int attack; // ran every frame while attacking
-  int take_damage; // ran single frame when hit by player
-  int intersect; // ran every frame while intersecting with another object
-  int unknown_script38;
-  int unknown_script3C;
-  int unknown_script40;
-  int unknown_script44;
-  int dying; // triggered for a few frames during death animation
-  int dead; // triggered for single frame after death animation
-  int start_attack; // triggered for single frame when starting an attack
-  int start_attack2; // called after start_attack
-  int unknown_script58;
-  int unknown_script5C;
-  int unknown_script60;
-};
-
-struct GameObj
-{
-  struct ScriptGroup *Scripts;
-  char unk04[124];
-  int unknown80;
-  char unk64[0x32];
-  char health;
-};
-
-
 struct Unknown_03003458 {
   int field_0;
   int field_4;
@@ -94,3 +58,82 @@ struct struct_8023AA2_a
   char gap6[18];
   int dword18;
 };
+
+
+enum GameObjDirectionAndMoreEnum
+{
+  Direction = 0x3,
+  GameObjDirectionAndMore_4 = 0x4,
+  GameObjDirectionAndMore_8 = 0x8,
+  GameObjDirectionAndMore_10 = 0x10,
+  GameObjDirectionAndMore_20 = 0x20,
+  GameObjDirectionAndMore_40 = 0x40,
+  GameObjDirectionAndMore_80 = 0x80,
+  GameObjDirectionAndMore_100 = 0x100,
+  GameObjDirectionAndMore_200 = 0x200,
+  GameObjDirectionAndMore_400 = 0x400,
+  GameObjDirectionAndMore_800 = 0x800,
+  GameObjDirectionAndMore_1000 = 0x1000,
+  GameObjDirectionAndMore_2000 = 0x2000,
+  GameObjDirectionAndMore_4000 = 0x4000,
+  GameObjDirectionAndMore_8000 = 0x8000,
+  GameObjDirectionAndMore_10000 = 0x10000,
+  GameObjDirectionAndMore_20000 = 0x20000,
+  GameObjDirectionAndMore_40000 = 0x40000,
+  GameObjDirectionAndMore_80000 = 0x80000,
+  GameObjDirectionAndMore_100000 = 0x100000,
+  GameObjDirectionAndMore_200000 = 0x200000,
+  GameObjDirectionAndMore_400000 = 0x400000,
+  GameObjDirectionAndMore_800000 = 0x800000,
+  GameObjDirectionAndMore_1000000 = 0x1000000,
+  GameObjDirectionAndMore_2000000 = 0x2000000,
+  GameObjDirectionAndMore_4000000 = 0x4000000,
+  GameObjDirectionAndMore_8000000 = 0x8000000,
+  GameObjDirectionAndMore_10000000 = 0x10000000,
+  GameObjDirectionAndMore_20000000 = 0x20000000,
+  GameObjDirectionAndMore_40000000 = 0x40000000,
+  unkBool_80000000 = 0x80000000,
+};
+
+enum EnemyAction
+{
+  ATTACKING = 0x9,
+  BLOCKING = 0xE,
+  DYING = 0xF,
+  DEAD = 0x10,
+};
+
+enum GameObjDirection
+{
+  RIGHT = 0x0,
+  DOWN = 0x1,
+  LEFT = 0x2,
+  UP = 0x3,
+};
+
+
+struct GameObjDirectionAndMore
+{
+  short unk1;
+  char unk3;
+  enum GameObjDirection direction;
+};
+
+struct GameObjUnknown {
+    int unk00;
+    int unk04;
+    int unk08;
+    int unk0C;
+    int unk10;
+    int unk14;
+    char unk18[4];
+    enum EnemyAction CurrentAction;
+};
+
+union GameObjDirectionAndMoreUnion
+{
+  enum GameObjDirectionAndMoreEnum flags;
+  struct GameObjDirectionAndMore struc;
+};
+
+#endif // WINXCLUB_H

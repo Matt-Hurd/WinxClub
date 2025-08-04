@@ -3,9 +3,9 @@
 
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT sub_8005106
-	IMPORT sub_801E124
-	IMPORT sub_801F286
+	IMPORT GetEWRAMStart
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__TakeDamage
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
 	IMPORT __call_via_r1
@@ -29,57 +29,57 @@ sub_8036B7C
 	adds r0, r1, r0
 	bl sub_8028BE4
 	cmp r0, #0
-	beq _08036BA8
+	beq %2
 	movs r0, #0
-_08036BA2
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_08036BA8
+2
 	movs r3, #0x97
 	ldrsb r0, [r5, r3]
 	adds r0, r0, r6
 	subs r0, #2
 	cmp r0, #6
-	bhs _08036BE6
+	bhs %9
 	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
-_08036BBC
+3
 	DCB 0x02
-_08036BBD
+4
 	DCB 0x02
-_08036BBE
+5
 	DCB 0x0D
-_08036BBF
+6
 	DCB 0x06
-_08036BC0
+7
 	DCB 0x0D
-_08036BC1
+8
 	DCB 0x06
 loc_8036bc2
 	adds r0, r4, #0
-	bl sub_801F286
-	b _08036BEC
+	bl DefaultScriptGroups__TakeDamage
+	b %10
 loc_8036bca
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
 	bl __call_via_r1
-	b _08036BEC
+	b %10
 loc_8036bd8
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, r1
 	bl __call_via_r1
-	b _08036BEC
-_08036BE6
+	b %10
+9
 	adds r0, r4, #0
-	bl sub_801F286
-_08036BEC
+	bl DefaultScriptGroups__TakeDamage
+10
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -87,7 +87,7 @@ _08036BEC
 	movs r0, #0
 	str r0, [r4, #0x34]
 	movs r0, #1
-	b _08036BA2
+	b %1
 
 	thumb_func_start sub_8036BFC
 sub_8036BFC
@@ -105,7 +105,7 @@ sub_8036BFC
 	adds r0, r1, r0
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl sub_801F286
+	bl DefaultScriptGroups__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -114,7 +114,7 @@ sub_8036BFC
 sub_8036C24
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl sub_801E124
+	bl DefaultScriptGroups__20
 	movs r0, #0xa4
 	ldr r0, [r0, r4]
 	ldr r1, [r4, #0x2c]
@@ -147,14 +147,14 @@ sub_8036C24
 	adds r2, #1
 	orrs r0, r2
 	str r0, [r1]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08036C8E
+	beq %11
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -162,7 +162,7 @@ sub_8036C24
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_08036C8E
+11
 	movs r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -190,7 +190,7 @@ sub_8036CB4
 	ldr r1, [r1]
 	ldr r1, [r1, #8]
 	lsls r1, r1, #0x1f
-	bpl _08036CD4
+	bpl %12
 	ldr r1, _08036CDC
 	adds r0, #0x80
 	ldr r1, [r1]
@@ -200,7 +200,7 @@ sub_8036CB4
 	lsls r0, r0, #5
 	adds r0, r0, r1
 	bl sub_8028C2E
-_08036CD4
+12
 	add sp, #4
 	pop {r3}
 	bx r3

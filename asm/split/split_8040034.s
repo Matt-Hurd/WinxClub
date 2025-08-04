@@ -38,24 +38,24 @@ sub_8040034
 	ldr r0, [r4, #0x3c]
 	ldr r1, _08040100
 	cmp r0, #0
-	blt _0804008E
+	blt %1
 	movs r2, #0xf
 	ldr r0, [r4, #0x34]
 	lsls r2, r2, #0x14
 	cmp r0, r2
-	bge _0804008E
+	bge %1
 	ldr r0, [r4, #0x40]
 	cmp r0, #0
-	blt _0804008E
+	blt %1
 	movs r2, #5
 	ldr r0, [r4, #0x38]
 	lsls r2, r2, #0x15
 	cmp r0, r2
-	blt _080400AA
-_0804008E
+	blt %3
+1
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _080400A4
+	bmi %2
 	ldr r0, [r1]
 	adds r1, r4, #0
 	bl sub_800C1CA
@@ -63,14 +63,14 @@ _0804008E
 	orrs r0, r6
 	orrs r0, r5
 	str r0, [r4]
-_080400A4
+2
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_080400AA
+3
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bpl _080400C6
+	bpl %4
 	ldr r0, [r1]
 	adds r1, r4, #0
 	bl sub_800BE0E
@@ -81,7 +81,7 @@ _080400AA
 	movs r1, #0x40
 	orrs r0, r1
 	str r0, [r4]
-_080400C6
+4
 	ldr r0, [r4, #0x2c]
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
@@ -109,7 +109,7 @@ _080400C6
 	ldr r0, [r4]
 	orrs r0, r5
 	str r0, [r4]
-	b _080400A4
+	b %2
 	ALIGN
 _08040100 DCDU gUnknown_03003EA0
 	END

@@ -24,28 +24,28 @@ sub_803F2CC
 	movs r5, #0x80
 	lsls r1, r0, #0x1e
 	cmp r1, #0
-	blt _0803F37A
+	blt %4
 	ldr r1, [r4, #0x3c]
 	lsls r6, r5, #2
 	cmp r1, #0
 	ldr r2, _0803F388
-	blt _0803F314
+	blt %1
 	movs r3, #0xf
 	ldr r1, [r4, #0x34]
 	lsls r3, r3, #0x14
 	cmp r1, r3
-	bge _0803F314
+	bge %1
 	ldr r1, [r4, #0x40]
 	cmp r1, #0
-	blt _0803F314
+	blt %1
 	movs r3, #5
 	ldr r1, [r4, #0x38]
 	lsls r3, r3, #0x15
 	cmp r1, r3
-	blt _0803F32A
-_0803F314
+	blt %2
+1
 	lsls r0, r0, #0x16
-	bmi _0803F37A
+	bmi %4
 	adds r1, r4, #0
 	ldr r0, [r2]
 	bl sub_800C1CA
@@ -53,10 +53,10 @@ _0803F314
 	orrs r0, r6
 	orrs r0, r5
 	str r0, [r4]
-	b _0803F37A
-_0803F32A
+	b %4
+2
 	lsls r0, r0, #0x16
-	bpl _0803F344
+	bpl %3
 	adds r1, r4, #0
 	ldr r0, [r2]
 	bl sub_800BE0E
@@ -67,7 +67,7 @@ _0803F32A
 	movs r1, #0x40
 	orrs r0, r1
 	str r0, [r4]
-_0803F344
+3
 	ldr r0, [r4, #0x2c]
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
@@ -95,7 +95,7 @@ _0803F344
 	ldr r0, [r4]
 	orrs r0, r5
 	str r0, [r4]
-_0803F37A
+4
 	ldr r0, [r4]
 	orrs r0, r5
 	str r0, [r4]

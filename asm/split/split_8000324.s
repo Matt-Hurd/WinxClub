@@ -14,7 +14,7 @@
 	IMPORT sub_800C4F0
 	IMPORT sub_800CD28
 	IMPORT __16__rt_memclr_w
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 
 	thumb_func_start sub_8000324
 sub_8000324
@@ -23,10 +23,10 @@ sub_8000324
 	ldr r0, [r0]
 	sub sp, #8
 	lsls r0, r0, #0xe
-	bmi _0800039A
+	bmi %4
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
-	bne _08000350
+	bne %1
 	ldr r0, _08000654
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -39,7 +39,7 @@ sub_8000324
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_08000350
+1
 	ldr r1, [r0, #4]
 	add r3, sp, #0
 	lsls r2, r1, #0x14
@@ -56,7 +56,7 @@ _08000350
 	ldrh r0, [r0, #0x12]
 	lsls r1, r1, #0x12
 	ldr r1, [r4, #0x30]
-	bpl _08000388
+	bpl %3
 	lsls r0, r0, #0x10
 	adds r0, r1, r0
 	str r0, [r4, #0x40]
@@ -64,12 +64,12 @@ _08000350
 	lsls r1, r1, #0x10
 	subs r0, r0, r1
 	str r0, [r4, #0x38]
-_08000380
+2
 	add sp, #8
 	pop {r4}
 	pop {r3}
 	bx r3
-_08000388
+3
 	lsls r0, r0, #0x10
 	subs r0, r1, r0
 	str r0, [r4, #0x38]
@@ -78,14 +78,14 @@ _08000388
 	lsls r1, r1, #0x10
 	adds r0, r0, r1
 	str r0, [r4, #0x40]
-	b _08000380
-_0800039A
+	b %2
+4
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _08000380
+	beq %2
 	ldr r1, [r0]
 	lsls r1, r1, #0xb
-	bpl _080003BE
+	bpl %5
 	ldr r2, [r0, #4]
 	ldr r1, [r4, #0x30]
 	lsls r2, r2, #0x16
@@ -97,13 +97,13 @@ _0800039A
 	lsrs r0, r0, #6
 	adds r0, r1, r0
 	str r0, [r4, #0x40]
-	b _08000380
-_080003BE
+	b %2
+5
 	ldrh r1, [r4, #0x28]
 	lsls r1, r1, #0x12
 	ldr r1, [r4, #0x30]
 	ldr r2, [r0, #4]
-	bge _080003DE
+	bge %6
 	lsrs r2, r2, #0x15
 	lsls r2, r2, #0x15
 	asrs r2, r2, #5
@@ -114,8 +114,8 @@ _080003BE
 	lsrs r0, r0, #6
 	subs r0, r1, r0
 	str r0, [r4, #0x38]
-	b _08000380
-_080003DE
+	b %2
+6
 	lsrs r2, r2, #0x15
 	lsls r2, r2, #0x15
 	asrs r2, r2, #5
@@ -126,7 +126,7 @@ _080003DE
 	lsrs r0, r0, #6
 	adds r0, r1, r0
 	str r0, [r4, #0x40]
-	b _08000380
+	b %2
 
 	thumb_func_start sub_80003F4
 sub_80003F4
@@ -135,10 +135,10 @@ sub_80003F4
 	ldr r0, [r0]
 	sub sp, #8
 	lsls r0, r0, #0xe
-	bmi _0800046A
+	bmi %10
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
-	bne _08000420
+	bne %7
 	ldr r0, _08000654
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -151,7 +151,7 @@ sub_80003F4
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_08000420
+7
 	ldr r1, [r0, #4]
 	add r3, sp, #0
 	lsls r2, r1, #0x14
@@ -168,7 +168,7 @@ _08000420
 	ldrh r0, [r0, #0x10]
 	lsls r1, r1, #0x13
 	ldr r1, [r4, #0x2c]
-	bpl _08000458
+	bpl %9
 	lsls r0, r0, #0x10
 	adds r0, r1, r0
 	str r0, [r4, #0x3c]
@@ -176,12 +176,12 @@ _08000420
 	lsls r1, r1, #0x10
 	subs r0, r0, r1
 	str r0, [r4, #0x34]
-_08000450
+8
 	add sp, #8
 	pop {r4}
 	pop {r3}
 	bx r3
-_08000458
+9
 	lsls r0, r0, #0x10
 	subs r0, r1, r0
 	str r0, [r4, #0x34]
@@ -190,14 +190,14 @@ _08000458
 	lsls r1, r1, #0x10
 	adds r0, r0, r1
 	str r0, [r4, #0x3c]
-	b _08000450
-_0800046A
+	b %8
+10
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _08000450
+	beq %8
 	ldr r2, [r0]
 	lsls r1, r2, #0xb
-	bpl _08000490
+	bpl %11
 	lsls r2, r2, #1
 	lsrs r2, r2, #0x16
 	ldr r1, [r4, #0x2c]
@@ -210,13 +210,13 @@ _0800046A
 	lsls r0, r0, #0x10
 	adds r0, r1, r0
 	str r0, [r4, #0x3c]
-	b _08000450
-_08000490
+	b %8
+11
 	ldrh r1, [r4, #0x28]
 	lsls r1, r1, #0x13
 	ldr r1, [r4, #0x2c]
 	ldr r2, [r0, #4]
-	bge _080004B2
+	bge %12
 	lsrs r2, r2, #0xa
 	lsls r2, r2, #0x15
 	asrs r2, r2, #5
@@ -228,8 +228,8 @@ _08000490
 	lsls r0, r0, #0x10
 	subs r0, r1, r0
 	str r0, [r4, #0x34]
-	b _08000450
-_080004B2
+	b %8
+12
 	lsrs r2, r2, #0xa
 	lsls r2, r2, #0x15
 	asrs r2, r2, #5
@@ -241,22 +241,22 @@ _080004B2
 	lsls r0, r0, #0x10
 	adds r0, r1, r0
 	str r0, [r4, #0x3c]
-	b _08000450
+	b %8
 
 	non_word_aligned_thumb_func_start sub_80004CA
 sub_80004CA
 	push {r3, lr}
 	cmp r0, #0
-	bne _080004DA
+	bne %13
 	movs r0, #0x60
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
-	beq _080004E0
-_080004DA
+	beq %14
+13
 	movs r1, #0
 	movs r2, #0x51
 	strb r1, [r2, r0]
-_080004E0
+14
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -265,10 +265,10 @@ _080004E0
 sub_80004E6
 	push {r3, lr}
 	cmp r0, #0
-	bne _080004F2
+	bne %15
 	movs r0, #0x60
-	bl maybeMallocEWRAM
-_080004F2
+	bl __nw__FUi
+15
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -310,7 +310,7 @@ sub_8000532
 	ldr r0, [r0]
 	ldr r7, _08000658
 	lsls r0, r0, #0x15
-	bpl _08000550
+	bpl %16
 	adds r1, r4, #0
 	ldr r0, [r7]
 	bl sub_8001432
@@ -319,67 +319,67 @@ sub_8000532
 	lsls r1, r1, #0xa
 	bics r0, r1
 	str r0, [r4]
-_08000550
+16
 	ldr r0, [r4]
 	ldr r5, _08000654
 	lsls r0, r0, #0x1f
-	bpl _08000586
+	bpl %18
 	adds r1, r4, #0
 	ldr r0, [r7]
 	bl sub_8001232
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _0800057E
+	beq %17
 	ldr r0, [r5]
 	cmp r0, #0
-	beq _0800057E
+	beq %17
 	ldr r1, [r4, #0x14]
 	ldr r1, [r1]
 	lsls r1, r1, #0xb
 	lsrs r1, r1, #0x18
 	cmp r1, #0xff
-	beq _0800057E
+	beq %17
 	adds r1, r4, #0
 	bl sub_800CD28
-_0800057E
+17
 	ldr r0, [r4]
 	lsrs r0, r0, #1
 	lsls r0, r0, #1
 	str r0, [r4]
-_08000586
+18
 	ldr r0, [r4]
 	lsls r0, r0, #0x1c
-	bpl _08000594
+	bpl %19
 	adds r1, r4, #0
 	ldr r0, [r7]
 	bl sub_8001338
-_08000594
+19
 	ldr r0, [r4]
 	lsls r0, r0, #0x13
-	bpl _080005A6
+	bpl %20
 	ldr r0, [r5]
 	cmp r0, #0
-	beq _080005A6
+	beq %20
 	adds r1, r4, #0
 	bl sub_800C1CA
-_080005A6
+20
 	ldr r1, [r4, #0x14]
 	ldr r0, [r1, #4]
 	lsls r0, r0, #0x1f
-	bpl _08000618
+	bpl %26
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
-	beq _080005B8
+	beq %21
 	ldr r6, [r4, #0x48]
-	b _080005BA
-_080005B8
+	b %22
+21
 	ldr r6, [r4, #0x10]
-_080005BA
+22
 	cmp r6, #0
-	beq _080005F2
+	beq %24
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
-	bne _080005DA
+	bne %23
 	ldr r0, [r5]
 	bl sub_8000D5A
 	ldr r0, [r0, #0x14]
@@ -390,7 +390,7 @@ _080005BA
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_080005DA
+23
 	adds r1, r0, #0
 	ldr r1, [r1, #0xc]
 	ldr r0, [r5]
@@ -401,15 +401,15 @@ _080005DA
 	lsls r1, r1, #0x13
 	lsrs r1, r1, #0x1b
 	bl sub_800C0EC
-	b _08000600
-_080005F2
+	b %25
+24
 	ldr r0, [r5]
 	ldr r1, [r1]
 	lsls r1, r1, #0x13
 	lsrs r1, r1, #0x1b
 	movs r2, #1
 	bl sub_800C0EC
-_08000600
+25
 	ldr r0, [r4, #0x14]
 	movs r2, #0x1f
 	ldr r1, [r0]
@@ -422,11 +422,11 @@ _08000600
 	lsrs r1, r1, #1
 	lsls r1, r1, #1
 	str r1, [r0]
-_08000618
+26
 	ldrh r0, [r4, #0x26]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1e
-	beq _08000636
+	beq %27
 	ldrh r1, [r4, #0x28]
 	ldr r0, [r5]
 	lsls r1, r1, #0x12
@@ -437,19 +437,19 @@ _08000618
 	lsls r1, r1, #8
 	bics r0, r1
 	strh r0, [r4, #0x26]
-_08000636
+27
 	ldr r2, [r4, #0x18]
 	cmp r2, #0
-	beq _0800064E
+	beq %28
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
-	beq _0800064E
+	beq %28
 	ldr r0, [r7]
 	bl sub_80016D8
 	movs r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0x18]
-_0800064E
+28
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

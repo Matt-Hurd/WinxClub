@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_03003438
+	IMPORT gScriptDataMetadata
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003E9C
 	IMPORT gUnknown_03003EA8
@@ -30,7 +30,7 @@
 	IMPORT sub_8013DEA
 	IMPORT sub_8013FF8
 	IMPORT sub_801402C
-	IMPORT sub_80180BE
+	IMPORT FadeToBlack
 	IMPORT sub_8028B2C
 	IMPORT sub_802EF0A
 	IMPORT sub_8031622
@@ -38,8 +38,8 @@
 	IMPORT __call_via_r2
 	IMPORT __call_via_r7
 
-	thumb_func_start sub_800ED7C
-sub_800ED7C
+	thumb_func_start PlayMovie
+PlayMovie
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r3, _0800EFC4
@@ -74,7 +74,7 @@ sub_800ED7C
 	str r0, [r3, #0x60]
 	ldrh r0, [r1, r0]
 	cmp r0, #0
-	beq _0800EE94
+	beq %1
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x18]
 	ldr r1, [sp, #8]
@@ -165,7 +165,7 @@ sub_800ED7C
 	movs r1, #1
 	ldr r0, [r6, #0x38]
 	bl sub_80139AC
-_0800EE94
+1
 	ldr r0, _0800EFDC
 	ldr r2, _0800EFD4
 	lsls r1, r4, #2
@@ -177,36 +177,36 @@ _0800EE94
 	str r7, [sp, #0x6c]
 	str r0, [sp, #0x68]
 	cmp r4, #0
-	beq _0800EEB2
+	beq %2
 	cmp r4, #1
-	bne _0800EEB8
-_0800EEB2
+	bne %3
+2
 	ldr r0, _0800EFE0
 	str r0, [sp, #0x70]
-	b _0800EEBE
-_0800EEB8
+	b %4
+3
 	movs r0, #1
 	lsls r0, r0, #0x13
 	str r0, [sp, #0x70]
-_0800EEBE
+4
 	ldrh r0, [r6, #4]
 	ldr r1, _0800EFE4
 	cmp r0, r1
-	beq _0800EECC
+	beq %5
 	ldr r0, _0800EFE8
 	str r0, [sp, #0x84]
-	b _0800EED0
-_0800EECC
+	b %6
+5
 	movs r0, #0
 	str r0, [sp, #0x84]
-_0800EED0
+6
 	ldr r0, [sp, #0x68]
 	cmp r0, #0
-	beq _0800EEDE
+	beq %7
 	add r1, sp, #0x68
 	add r0, sp, #0x88
 	bl sub_801006A
-_0800EEDE
+7
 	movs r1, #0
 	adds r0, r5, #0
 	bl sub_801402C
@@ -227,7 +227,7 @@ _0800EEDE
 	bl sub_800B12C
 	ldr r0, _0800EFCC
 	strh r4, [r0, #8]
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r3, _0800EFF0
 	add sp, r3
 	pop {r4, r5, r6, r7}
@@ -251,19 +251,19 @@ sub_800EF2A
 	ldr r4, _0800EFD0
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
-	beq _0800EF3E
+	beq %8
 	bl sub_80049B4
-_0800EF3E
+8
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _0800EF48
+	beq %9
 	bl sub_80014E4
-_0800EF48
+9
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
-	beq _0800EF52
+	beq %10
 	bl sub_8028B2C
-_0800EF52
+10
 	ldr r0, _0800EFF4
 	ldr r0, [r0]
 	bl sub_800B08E
@@ -271,8 +271,8 @@ _0800EF52
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_800EF60
-sub_800EF60
+	thumb_func_start maybeLoadOrRenderBgImage
+maybeLoadOrRenderBgImage
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EFD0
@@ -291,11 +291,11 @@ sub_800EF60
 	ldr r5, _0800F00C
 	lsrs r0, r0, #0x1c
 	cmp r0, #3
-	bne _0800EF94
+	bne %11
 	movs r1, #0
 	ldr r0, [r5]
 	bl sub_8031622
-_0800EF94
+11
 	ldr r0, _0800EFF4
 	ldr r0, [r0]
 	bl sub_800B09A
@@ -306,11 +306,11 @@ _0800EF94
 	ldr r0, [r4]
 	lsrs r0, r0, #0x1c
 	cmp r0, #3
-	bne _0800EFB6
+	bne %12
 	movs r1, #1
 	ldr r0, [r5]
 	bl sub_8031622
-_0800EFB6
+12
 	movs r0, #0
 	bl sub_80050FA
 	pop {r3, r4, r5}
@@ -320,7 +320,7 @@ _0800EFB6
 _0800EFC4 DCDU 0xFFFFE81C
 _0800EFC8 DCDU gUnknown_03003EAC
 _0800EFCC DCDU REG_IE
-_0800EFD0 DCDU gUnknown_03003438
+_0800EFD0 DCDU gScriptDataMetadata
 _0800EFD4 DCDU gUnknown_0804AE1E
 _0800EFD8 DCDU 0x060102C0
 _0800EFDC DCDU gUnknown_03003EA8
