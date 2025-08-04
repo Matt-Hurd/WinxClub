@@ -1,5 +1,3 @@
-; This file was auto-generated for the vtable: gUnknown_0803E4D8
-
     AREA data, DATA, READONLY
 
     GLOBAL gUnknown_0803E4D8

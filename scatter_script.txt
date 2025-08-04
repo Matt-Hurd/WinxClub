@@ -560,7 +560,7 @@ LOAD_ROM_1 0x08000000
     vtables 0x0803E2A0
     {
         vtable00.o
-        vtable01_NpcScriptGroup.o
+        vtable01.o
         vtable02.o
         vtable03.o
         vtable04.o

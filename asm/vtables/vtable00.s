@@ -1,10 +1,8 @@
-; This file was auto-generated for the vtable: __VTABLE__300Unknown
-
     AREA data, DATA, READONLY
 
-    AREA    __VTABLE__300Unknown, DATA, READONLY
-    GLOBAL __VTABLE__300Unknown
+    GLOBAL gUnknown_0803E2A0
 
+gUnknown_0803E2A0
     DCD     0xFFFF020B
     DCD     0xFFFF024B
     DCD     0xFFFF024D

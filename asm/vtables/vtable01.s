@@ -1,9 +1,9 @@
-    IMPORT  Npc__ctor
-
     AREA data, DATA, READONLY
 
-    AREA    __VTABLE__301Npc, DATA, READONLY
-    DCD     Npc__ctor - .
+    GLOBAL gUnknown_0803E2C4
+
+gUnknown_0803E2C4
+    DCD     0xFFFE715B
     DCD     0xFFFE717D
     DCD     0xFFFE7189
     DCD     0xFFFE04E3
@@ -24,5 +24,4 @@
     DCD     0xFFFE0017
     DCD     0xFFFE01FB
 
-    GLOBAL  __VTABLE__301Npc
     END
