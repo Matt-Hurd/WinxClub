@@ -9,7 +9,7 @@
 	IMPORT gUnknown_080507F4
 	IMPORT gUnknown_08050A24
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_8017620
 	IMPORT sub_8017862
 	IMPORT sub_8017884
@@ -72,7 +72,7 @@ _0801BC2A
 	ldr r0, _0801BE68
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #1
 	movs r3, #0

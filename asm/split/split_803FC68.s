@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003468
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
@@ -60,7 +60,7 @@ _0803FCBA
 	ldr r0, [r0]
 	bl sub_80050FA
 	lsrs r7, r6, #2
-	bl sub_8005106
+	bl GetEWRAMStart
 	cmp r7, #0
 	beq _0803FCDC
 	lsls r7, r7, #2

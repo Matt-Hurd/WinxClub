@@ -49,8 +49,8 @@ _0800B18C
 	pop {r4}
 	bx lr
 
-	thumb_func_start sub_800B190
-sub_800B190
+	thumb_func_start InitKeyinputIE
+InitKeyinputIE
 	ldr r2, _0800B2B4
 	push {r4}
 	movs r1, #1
@@ -91,8 +91,8 @@ sub_800B1CA
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_800B1D0
-sub_800B1D0
+	thumb_func_start CallSoftReset
+CallSoftReset
 	push {r3, lr}
 	movs r0, #0xfb
 	bl SoftReset
@@ -281,7 +281,7 @@ _0800B2F8 DCDU nullsub_12
 _0800B2FC DCDU nullsub_11
 _0800B300 DCDU nullsub_10
 _0800B304 DCDU nullsub_9
-_0800B308 DCDU sub_800B1D0
+_0800B308 DCDU CallSoftReset
 _0800B30C DCDU sub_800B1BC
 _0800B310 DCDU 0x$REG_SIOMULTI0
 	END

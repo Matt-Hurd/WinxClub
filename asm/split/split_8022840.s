@@ -34,14 +34,14 @@
 	IMPORT sub_800D912
 	IMPORT sub_800D9E0
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80138E2
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_80189BC
 	IMPORT sub_8018C48
 	IMPORT sub_80235E4
@@ -65,7 +65,7 @@
 sub_8022840
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r6, _08022C28
 	movs r4, #0
 _0802284C
@@ -673,7 +673,7 @@ _08022D1C
 	adds r0, r5, #0
 	strb r4, [r2, #8]
 	bl sub_80228D2
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #8
 	add r4, sp, #0x48
@@ -882,7 +882,7 @@ _08022EA6
 	cmp r0, #6
 	bne _08022F1C
 	movs r0, #0xb
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08022F1C
 _08022EF2
 	ldr r0, [r6]
@@ -890,7 +890,7 @@ _08022EF2
 	bl sub_8028C2E
 	lsls r0, r5, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08022F26
 _08022F04
 	ldr r0, [r6]
@@ -898,11 +898,11 @@ _08022F04
 	bl sub_8028C2E
 	lsls r0, r7, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08022F26
 _08022F16
 	movs r0, #0x11
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _08022F1C
 	movs r2, #0xff
 	movs r1, #4
@@ -958,7 +958,7 @@ sub_8022F8C
 	movs r1, #2
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	movs r0, #0xd5
 	lsls r0, r0, #2
 	ldr r6, _08023378
@@ -1282,7 +1282,7 @@ sub_80231B0
 	str r1, [r5]
 	str r1, [r5, #4]
 	add r0, pc, #0x174
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	ldr r6, _08023380
 	ldr r0, [r6]
 	cmp r0, #0
@@ -1542,7 +1542,7 @@ _0802342C
 	movs r1, #0
 	adds r0, r5, #0
 	bl sub_8022FFC
-	bl sub_8018070
+	bl FadeToImage
 	movs r1, #0
 	adds r0, r5, #0
 	bl sub_80230DC
@@ -1687,11 +1687,11 @@ _0802354C
 	cmp r0, #5
 	bne _0802358A
 	movs r0, #0xa
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0802358A
 _08023584
 	movs r0, #2
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _0802358A
 	adds r0, r6, #0
 	bl sub_8022F8C

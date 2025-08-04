@@ -6,7 +6,7 @@
 	IMPORT sub_800EF2A
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801A760
 	IMPORT sub_801A82E
 	IMPORT sub_801A8B8
@@ -74,7 +74,7 @@ _0801AB88
 	cmp r0, #2
 	bne _0801ABB2
 	movs r0, #8
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _0801ABB2
 	adds r0, r6, #0
 	bl sub_801A760
@@ -95,11 +95,11 @@ _0801ABB2
 	bx r3
 _0801ABDA
 	movs r0, #0x13
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0801ABB2
 _0801ABE2
 	movs r0, #9
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0801ABB2
 	ALIGN
 _0801ABEC DCDU sub_80143E0

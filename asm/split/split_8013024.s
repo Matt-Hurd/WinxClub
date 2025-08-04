@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003C3C
 	IMPORT gUnknown_03003EA8
 	IMPORT sub_8004FFC
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_8012BA0
 	IMPORT __16__rt_memclr_w
 	IMPORT __vec_ctor_p__FPvUiT2bPFPv_v
@@ -274,7 +274,7 @@ sub_801333E
 	ldr r2, _08013434
 	bl __vec_dtor__FPvUiPFPvi_vPFPv_v
 _08013358
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r4, #3
 	subs r0, r0, r4

@@ -13,13 +13,13 @@
 	IMPORT sub_8000D5A
 	IMPORT sub_8001432
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
+	IMPORT GameObj__ctor
 	IMPORT sub_801DA2A
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E124
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
+	IMPORT FewScriptGroups__20
 	IMPORT sub_801EBCA
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
@@ -29,8 +29,8 @@
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
-	thumb_func_start sub_802E900
-sub_802E900
+	thumb_func_start Object__Create
+Object__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0802E918
@@ -81,8 +81,8 @@ _0802E918
 	adds r0, r4, #0
 	b _0802E912
 
-	non_word_aligned_thumb_func_start sub_802E962
-sub_802E962
+	non_word_aligned_thumb_func_start Object__ctor
+Object__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802EC08
@@ -90,7 +90,7 @@ sub_802E962
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _0802E97E
 	adds r0, r4, #0
@@ -100,8 +100,8 @@ _0802E97E
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802E984
-sub_802E984
+	thumb_func_start ObjectScriptGroup__38
+ObjectScriptGroup__38
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _0802EC14
@@ -127,7 +127,7 @@ _0802E9AA
 	ldr r0, _0802EC2C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x80
 	movs r3, #0
@@ -176,7 +176,7 @@ _0802E9AA
 	lsls r1, r4, #0x10
 	orrs r0, r1
 	str r0, [r5, #0x7c]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r4, #0
 	adds r3, r4, #0
@@ -258,8 +258,8 @@ _0802EAB2
 	strh r1, [r0, #6]
 	b _0802EAAE
 
-	thumb_func_start sub_802EAB8
-sub_802EAB8
+	thumb_func_start ObjectScriptGroup__04
+ObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -276,11 +276,11 @@ _0802EAD0
 	bl sub_802EA80
 	b _0802EACA
 _0802EAD6
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _0802EACA
 
-	thumb_func_start sub_802EADC
-sub_802EADC
+	thumb_func_start ObjectScriptGroup__08
+ObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -297,11 +297,11 @@ _0802EAF2
 	movs r0, #1
 	b _0802EAEC
 _0802EAF6
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _0802EAEC
 
-	thumb_func_start sub_802EAFC
-sub_802EAFC
+	thumb_func_start ObjectScriptGroup__44
+ObjectScriptGroup__44
 	push {r4, r5, r6, r7, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -449,12 +449,12 @@ _0802EC34 DCDU gUnknown_03003478
 _0802EC38 DCDU gUnknown_03003EA0
 _0802EC3C DCDU gUnknown_0300345C
 
-	thumb_func_start sub_802EC40
-sub_802EC40
+	thumb_func_start ObjectScriptGroup__20
+ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl FewScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0

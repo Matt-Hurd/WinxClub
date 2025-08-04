@@ -4,12 +4,12 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_03003478
 	IMPORT gUnknown_030034F8
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800EF2A
-	IMPORT sub_8018070
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801B56C
-	IMPORT sub_801C7D2
+	IMPORT MaybeTickAllGameObjs
 	IMPORT sub_801CCA8
 	IMPORT sub_8023D0C
 	IMPORT sub_80247A4
@@ -18,7 +18,7 @@
 	thumb_func_start MaybeHandleIngameCutscene
 MaybeHandleIngameCutscene
 	push {r4, lr}
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0xff
 	movs r3, #0
@@ -51,10 +51,10 @@ _08028CAE
 	bl sub_801B56C
 	bl sub_800EF2A
 	ldr r0, [r4]
-	bl sub_801C7D2
-	bl sub_8018070
+	bl MaybeTickAllGameObjs
+	bl FadeToImage
 	movs r0, #0x12
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	pop {r4}
 	pop {r3}
 	bx r3

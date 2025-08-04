@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003C4C
 	IMPORT gUnknown_03003EB4
 	IMPORT gUnknown_0803E374
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80133A0
 	IMPORT CpuSet
 	IMPORT sub_803DA18
@@ -146,7 +146,7 @@ sub_801357A
 	adds r6, r0, #0
 	b _080135B6
 _080135A4
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -341,7 +341,7 @@ _08013710
 	str r0, [r5, #0x14]
 	b _0801372A
 _08013714
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r4, #1
 	adds r0, r0, r4

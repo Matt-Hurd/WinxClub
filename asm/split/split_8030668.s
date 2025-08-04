@@ -2,16 +2,16 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_0803E950
-	IMPORT sub_8029070
-	IMPORT sub_802911C
+	IMPORT HostileCreature__Create
+	IMPORT HostileCreature__ctor
 	IMPORT sub_802913E
 	IMPORT sub_8029290
 	IMPORT sub_80294EE
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8030668
-sub_8030668
+	thumb_func_start Monster__Create
+Monster__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08030680
@@ -26,7 +26,7 @@ _0803067A
 	bx r3
 _08030680
 	adds r0, r4, #0
-	bl sub_8029070
+	bl HostileCreature__Create
 	ldr r0, _08030A64
 	movs r1, #0x97
 	str r0, [r4]
@@ -51,8 +51,8 @@ _08030680
 	adds r0, r4, #0
 	b _0803067A
 
-	thumb_func_start sub_80306B4
-sub_80306B4
+	thumb_func_start Monster__ctor
+Monster__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08030A64
@@ -60,7 +60,7 @@ sub_80306B4
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_802911C
+	bl HostileCreature__ctor
 	cmp r5, #0
 	beq _080306D0
 	adds r0, r4, #0
@@ -86,8 +86,8 @@ _080306EA
 	bl sub_8029290
 	b _080306E4
 
-	thumb_func_start sub_80306F0
-sub_80306F0
+	thumb_func_start Monster__40
+Monster__40
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0

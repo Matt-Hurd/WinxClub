@@ -19,12 +19,12 @@
 	IMPORT sub_80158E0
 	IMPORT sub_8016108
 	IMPORT sub_8017620
-	IMPORT sub_80180BE
+	IMPORT FadeToBlack
 	IMPORT sub_801810E
-	IMPORT sub_8018386
-	IMPORT sub_8018390
+	IMPORT SetNextGlobalFunction
+	IMPORT GetNextGlobalFunction
 	IMPORT sub_801B170
-	IMPORT sub_801C7D2
+	IMPORT MaybeTickAllGameObjs
 	IMPORT sub_801CB4E
 	IMPORT sub_801CC3C
 	IMPORT sub_801CC72
@@ -90,7 +90,7 @@ HandleMainIngameLoop
 	lsls r2, r2, #8
 	orrs r0, r2
 	strh r0, [r1]
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x12
 	bne _08028E76
 _08028DD6
@@ -144,11 +144,11 @@ _08028E34
 	lsls r1, r4, #0x1d
 	bpl _08028E44
 	movs r0, #4
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08028E5C
 _08028E44
 	adds r4, r7, #0
-	bl sub_801C7D2
+	bl MaybeTickAllGameObjs
 	ldr r0, [r4]
 	ldr r0, [r0, #0x20]
 	adds r0, #0x80
@@ -156,7 +156,7 @@ _08028E44
 	cmp r0, #0x10
 	bne _08028E5C
 	movs r0, #0x16
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _08028E5C
 	ldr r0, [r7]
 	bl sub_801CB4E
@@ -164,7 +164,7 @@ _08028E5C
 	ldr r0, [r0]
 	bl sub_80241DA
 	bl sub_800EF2A
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x12
 	beq _08028DD6
 _08028E76
@@ -195,16 +195,16 @@ _08028E98
 	lsls r2, r2, #8
 	bics r0, r2
 	strh r0, [r1]
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #4
 	beq _08028EE6
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x15
 	beq _08028EE6
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0xd
 	beq _08028EE6
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x14
 	beq _08028EE6
 	bl sub_801810E
@@ -216,7 +216,7 @@ _08028E98
 	bl sub_801B170
 	b _08028F18
 _08028EE6
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x15
 	bne _08028EFE
 	bl sub_801810E
@@ -226,7 +226,7 @@ _08028EE6
 	bl sub_8028A7C
 	b _08028F0C
 _08028EFE
-	bl sub_80180BE
+	bl FadeToBlack
 	movs r2, #0xff
 	movs r1, #4
 	ldr r0, [r4]

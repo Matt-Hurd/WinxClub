@@ -30,10 +30,10 @@
 	IMPORT sub_80138E2
 	IMPORT sub_80147FA
 	IMPORT sub_8014B02
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
 	IMPORT sub_801810E
-	IMPORT sub_8018390
+	IMPORT GetNextGlobalFunction
 	IMPORT sub_8018C48
 	IMPORT sub_801B170
 	IMPORT sub_8028A7C
@@ -54,7 +54,7 @@ sub_8038888
 	movs r1, #4
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	adds r7, r4, #0
 	movs r1, #0x21
 	lsls r1, r1, #4
@@ -104,7 +104,7 @@ _080388FC
 	pop {r3}
 	bx r3
 _08038902
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r0, _08038C74
 	adds r1, r4, #0
 	ldr r0, [r0]
@@ -585,7 +585,7 @@ _08038CF6
 	movs r1, #1
 	ldr r0, [r4, #0x28]
 	bl sub_80401E4
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #8
 	add r4, sp, #0x2c

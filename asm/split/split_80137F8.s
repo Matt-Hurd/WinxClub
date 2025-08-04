@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EBC
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80133A0
 	IMPORT sub_801340A
 	IMPORT sub_801357A
@@ -40,7 +40,7 @@ _0801380E
 	bl strlen
 	lsls r7, r0, #0x10
 	lsrs r7, r7, #0x10
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r6, #0
 	movs r2, #0

@@ -3,28 +3,28 @@
 
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80154DC
 	IMPORT sub_80166FE
-	IMPORT sub_8018390
-	IMPORT sub_801F794
-	IMPORT sub_80253A8
-	IMPORT sub_8026024
+	IMPORT GetNextGlobalFunction
+	IMPORT Anonymous4__Create
+	IMPORT Npc__Create
+	IMPORT GenericObject__Create
 	IMPORT sub_8028BE4
-	IMPORT sub_802E900
-	IMPORT sub_802F118
-	IMPORT sub_802FC38
-	IMPORT sub_8030668
-	IMPORT sub_803108C
-	IMPORT sub_803166C
-	IMPORT sub_8033318
-	IMPORT sub_80344E4
-	IMPORT sub_8035480
-	IMPORT sub_8035E7C
-	IMPORT sub_8036620
-	IMPORT sub_8036CE4
+	IMPORT Object__Create
+	IMPORT Anonymous18__Create
+	IMPORT Bird__Create
+	IMPORT Monster__Create
+	IMPORT Critter__Create
+	IMPORT Kiko__Create
+	IMPORT WinxClub__Create
+	IMPORT Boss__Create
+	IMPORT ToggleObject__Create
+	IMPORT WallObject__Create
+	IMPORT Static1__Create
+	IMPORT Static2__Create
 	IMPORT sub_80399A4
-	IMPORT sub_803A050
+	IMPORT Scanner__Create
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_8017130
@@ -108,7 +108,7 @@ loc_8017172
 	subs r0, r1, r0
 	b _08017168
 loc_8017188
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x12
 	bne _08017194
 	movs r0, #1
@@ -117,7 +117,7 @@ _08017194
 	movs r0, #0
 	b _08017168
 loc_8017198
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	cmp r0, #0x12
 	bne _080171A4
 	movs r0, #1
@@ -139,8 +139,8 @@ _080171BA
 	movs r0, #1
 	b _08017168
 
-	non_word_aligned_thumb_func_start sub_80171BE
-sub_80171BE
+	non_word_aligned_thumb_func_start maybeGameObjFactory
+maybeGameObjFactory
 	subs r0, #3
 	cmp r0, #0x12
 	push {r4, lr}
@@ -190,7 +190,7 @@ _080171F4
 _080171F6
 	DCB 0xBC, 0x00
 loc_80171f8
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x6d
 	movs r3, #0
@@ -208,7 +208,7 @@ _08017216
 	pop {r3}
 	bx r3
 loc_801721c
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -217,12 +217,12 @@ loc_801721c
 	adds r4, r0, #0
 	beq _08017236
 	adds r0, r4, #0
-	bl sub_80253A8
+	bl Npc__Create
 _08017236
 	adds r0, r4, #0
 	b _08017216
 loc_801723a
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -231,12 +231,12 @@ loc_801723a
 	adds r4, r0, #0
 	beq _08017254
 	adds r0, r4, #0
-	bl sub_803166C
+	bl Kiko__Create
 _08017254
 	adds r0, r4, #0
 	b _08017216
 loc_8017258
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -245,12 +245,12 @@ loc_8017258
 	adds r4, r0, #0
 	beq _08017272
 	adds r0, r4, #0
-	bl sub_80344E4
+	bl Boss__Create
 _08017272
 	adds r0, r4, #0
 	b _08017216
 loc_8017276
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -264,7 +264,7 @@ _08017290
 	adds r0, r4, #0
 	b _08017216
 loc_8017294
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x4b
 	movs r3, #0
@@ -274,12 +274,12 @@ loc_8017294
 	adds r4, r0, #0
 	beq _080172B0
 	adds r0, r4, #0
-	bl sub_801F794
+	bl Anonymous4__Create
 _080172B0
 	adds r0, r4, #0
 	b _08017216
 loc_80172b4
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -288,12 +288,12 @@ loc_80172b4
 	adds r4, r0, #0
 	beq _080172CE
 	adds r0, r4, #0
-	bl sub_802FC38
+	bl Bird__Create
 _080172CE
 	adds r0, r4, #0
 	b _08017216
 loc_80172d2
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -302,12 +302,12 @@ loc_80172d2
 	adds r4, r0, #0
 	beq _080172EC
 	adds r0, r4, #0
-	bl sub_803108C
+	bl Critter__Create
 _080172EC
 	adds r0, r4, #0
 	b _08017216
 loc_80172f0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -316,12 +316,12 @@ loc_80172f0
 	adds r4, r0, #0
 	beq _0801730A
 	adds r0, r4, #0
-	bl sub_8026024
+	bl GenericObject__Create
 _0801730A
 	adds r0, r4, #0
 	b _08017216
 loc_801730e
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -330,12 +330,12 @@ loc_801730e
 	adds r4, r0, #0
 	beq _08017328
 	adds r0, r4, #0
-	bl sub_802E900
+	bl Object__Create
 _08017328
 	adds r0, r4, #0
 	b _08017216
 loc_801732c
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -344,12 +344,12 @@ loc_801732c
 	adds r4, r0, #0
 	beq _08017346
 	adds r0, r4, #0
-	bl sub_8035480
+	bl ToggleObject__Create
 _08017346
 	adds r0, r4, #0
 	b _08017216
 loc_801734a
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -358,12 +358,12 @@ loc_801734a
 	adds r4, r0, #0
 	beq _08017364
 	adds r0, r4, #0
-	bl sub_8035E7C
+	bl WallObject__Create
 _08017364
 	adds r0, r4, #0
 	b _08017216
 loc_8017368
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -372,12 +372,12 @@ loc_8017368
 	adds r4, r0, #0
 	beq _08017382
 	adds r0, r4, #0
-	bl sub_802F118
+	bl Anonymous18__Create
 _08017382
 	adds r0, r4, #0
 	b _08017216
 loc_8017386
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -386,12 +386,12 @@ loc_8017386
 	adds r4, r0, #0
 	beq _080173A0
 	adds r0, r4, #0
-	bl sub_8030668
+	bl Monster__Create
 _080173A0
 	adds r0, r4, #0
 	b _08017216
 loc_80173a4
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0xff
 	movs r3, #0
@@ -401,12 +401,12 @@ loc_80173a4
 	adds r4, r0, #0
 	beq _080173C0
 	adds r0, r4, #0
-	bl sub_8033318
+	bl WinxClub__Create
 _080173C0
 	adds r0, r4, #0
 	b _08017216
 loc_80173c4
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -415,12 +415,12 @@ loc_80173c4
 	adds r4, r0, #0
 	beq _080173DE
 	adds r0, r4, #0
-	bl sub_8036620
+	bl Static1__Create
 _080173DE
 	adds r0, r4, #0
 	b _08017216
 loc_80173e2
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -429,12 +429,12 @@ loc_80173e2
 	adds r4, r0, #0
 	beq _080173FC
 	adds r0, r4, #0
-	bl sub_8036CE4
+	bl Static2__Create
 _080173FC
 	adds r0, r4, #0
 	b _08017216
 loc_8017400
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -443,7 +443,7 @@ loc_8017400
 	adds r4, r0, #0
 	beq _0801741A
 	adds r0, r4, #0
-	bl sub_803A050
+	bl Scanner__Create
 _0801741A
 	adds r0, r4, #0
 	b _08017216

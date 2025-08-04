@@ -11,21 +11,21 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_8002004
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT sub_8028C2E
 	IMPORT rand
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_803108C
-sub_803108C
+	thumb_func_start Critter__Create
+Critter__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _080310A4
@@ -72,8 +72,8 @@ _080310A4
 	adds r0, r4, #0
 	b _0803109E
 
-	non_word_aligned_thumb_func_start sub_80310E6
-sub_80310E6
+	non_word_aligned_thumb_func_start Critter__ctor
+Critter__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080313D4
@@ -81,7 +81,7 @@ sub_80310E6
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _08031102
 	adds r0, r4, #0
@@ -91,27 +91,27 @@ _08031102
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031108
-sub_8031108
+	thumb_func_start Critter__04
+Critter__04
 	push {r3, lr}
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031114
-sub_8031114
+	thumb_func_start Critter__08
+Critter__08
 	push {r3, lr}
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031120
-sub_8031120
+	thumb_func_start Critter__38
+Critter__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -147,8 +147,8 @@ _08031148
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_803116C
-sub_803116C
+	thumb_func_start Critter__40
+Critter__40
 	cmp r1, #0x26
 	bne _0803118A
 	movs r1, #0xf1
@@ -167,8 +167,8 @@ sub_803116C
 _0803118A
 	bx lr
 
-	thumb_func_start sub_803118C
-sub_803118C
+	thumb_func_start Critter__44
+Critter__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80

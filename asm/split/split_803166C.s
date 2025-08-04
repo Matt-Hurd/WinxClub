@@ -7,17 +7,17 @@
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT sub_801EBCA
 	IMPORT rand
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_80404B4
 
-	thumb_func_start sub_803166C
-sub_803166C
+	thumb_func_start Kiko__Create
+Kiko__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08031684
@@ -106,8 +106,8 @@ _08031684
 	adds r0, r4, #0
 	b _0803167E
 
-	non_word_aligned_thumb_func_start sub_803171A
-sub_803171A
+	non_word_aligned_thumb_func_start Kiko__ctor
+Kiko__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08031800
@@ -115,7 +115,7 @@ sub_803171A
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _08031736
 	adds r0, r4, #0
@@ -125,24 +125,24 @@ _08031736
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_803173C
-sub_803173C
+	thumb_func_start Kiko__04
+Kiko__04
 	push {r3, lr}
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031748
-sub_8031748
+	thumb_func_start Kiko__08
+Kiko__08
 	push {r3, lr}
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8031754
-sub_8031754
+	thumb_func_start Kiko__10
+Kiko__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl rand

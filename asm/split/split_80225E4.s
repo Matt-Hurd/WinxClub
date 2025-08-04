@@ -12,7 +12,7 @@
 	IMPORT sub_800B6A8
 	IMPORT sub_800B72A
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80138E2
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
@@ -20,9 +20,9 @@
 	IMPORT sub_8014864
 	IMPORT sub_8014B02
 	IMPORT sub_80137F8
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_8018C48
 	IMPORT sub_8022306
 	IMPORT sub_8028A7C
@@ -48,7 +48,7 @@ sub_80225E4
 	str r5, [r4]
 	str r5, [r4, #4]
 	add r0, pc, #0x214
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	ldr r6, _08022824
 	ldr r0, [r6]
 	cmp r0, #0
@@ -157,7 +157,7 @@ _08022628
 	adds r0, r5, #0
 	add r1, pc, #0x138
 	bl sub_80137F8
-	bl sub_8018070
+	bl FadeToImage
 	movs r0, #0x17
 	lsls r0, r0, #5
 	adds r4, r4, r0
@@ -240,7 +240,7 @@ _0802279A
 	cmp r0, #0
 	beq _0802277E
 	movs r0, #8
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	movs r1, #0
 	adds r0, r5, #0
 	bl sub_8014864
@@ -248,7 +248,7 @@ _0802279A
 	movs r1, #2
 	ldr r0, [r7]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r4, _08022838
 	mov r1, sp
 	ldr r0, [r4]

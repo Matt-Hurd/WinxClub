@@ -12,19 +12,19 @@
 	IMPORT sub_80046F8
 	IMPORT sub_8004716
 	IMPORT sub_800474E
-	IMPORT sub_80050C0
-	IMPORT sub_8005106
+	IMPORT SomehowInitEWRAMLinkedList
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B058
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
-	IMPORT sub_800ED7C
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT PlayMovie
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_8017B9A
 	IMPORT sub_8017CA0
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT CpuSet
 	IMPORT sub_803D680
 	IMPORT sub_803D834
@@ -32,13 +32,13 @@
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 
-	thumb_func_start sub_8017E40
-sub_8017E40
+	thumb_func_start PlayIntroMovie
+PlayIntroMovie
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r0, sp, #8
 	bl sub_80046F8
-	bl sub_80180BE
+	bl FadeToBlack
 	movs r0, #0
 	bl sub_800E53C
 	ldr r0, _0801803C
@@ -75,8 +75,8 @@ _08017E86
 	ldr r0, [r0, #8]
 _08017E98
 	add r0, pc, #0x1B8
-	bl sub_800EF60
-	bl sub_8018070
+	bl maybeLoadOrRenderBgImage
+	bl FadeToImage
 	ldr r4, _0801805C
 	ldrb r0, [r4, #1]
 	cmp r0, #0xff
@@ -94,8 +94,8 @@ _08017EB8
 	bl __da__FPv
 	movs r1, #0
 	movs r0, #0
-	bl sub_800ED7C
-	bl sub_8005106
+	bl PlayMovie
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x31
 	adds r3, r6, #0
@@ -104,10 +104,10 @@ _08017EB8
 	bl sub_803DA9C
 	movs r1, #0x31
 	lsls r1, r1, #0xc
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	str r0, [r5]
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _0801803C
 	ldr r0, [r0]
 	bl sub_8017CA0
@@ -115,7 +115,7 @@ _08017EB8
 	cmp r0, #0xff
 	beq _08017F06
 	movs r0, #0xc
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _08017EFE
 	add sp, #0x10
 	pop {r4, r5, r6}
@@ -123,11 +123,11 @@ _08017EFE
 	bx r3
 _08017F06
 	movs r0, #2
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08017EFE
 
-	non_word_aligned_thumb_func_start sub_8017F0E
-sub_8017F0E
+	non_word_aligned_thumb_func_start PlayIntroLogo
+PlayIntroLogo
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #1]
@@ -155,7 +155,7 @@ sub_8017F0E
 	ldr r1, _0801806C
 	lsls r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	strb r6, [r4, #2]
 	ldrb r0, [r4, #1]
 	adds r0, #1
@@ -261,7 +261,7 @@ HandleIntro
 	bhs _0801802C
 _0801801A
 	adds r0, r4, #0
-	bl sub_8017F0E
+	bl PlayIntroLogo
 	bl sub_800EF2A
 	add r3, sp, #0
 	ldrb r0, [r3]
@@ -269,7 +269,7 @@ _0801801A
 	blo _0801801A
 _0801802C
 	adds r0, r4, #0
-	bl sub_8017E40
+	bl PlayIntroMovie
 	add sp, #0x10
 	pop {r4}
 	pop {r3}

@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003E88
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_803F3E8
@@ -180,7 +180,7 @@ _08017BE2
 	movs r7, #0
 	cmp r5, #0
 	beq _08017C0A
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsrs r0, r5, #2
 	lsls r0, r0, #2
@@ -285,7 +285,7 @@ _08017CA8
 	ldrh r0, [r6, #0x18]
 	cmp r0, #0
 	beq _08017CD0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrh r0, [r6, #0x18]
 	movs r3, #0

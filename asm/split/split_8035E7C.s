@@ -8,20 +8,20 @@
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E124
-	IMPORT sub_801E2DA
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
+	IMPORT FewScriptGroups__20
+	IMPORT MostNonHostileScriptGroups__Dying
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8035E7C
-sub_8035E7C
+	thumb_func_start WallObject__Create
+WallObject__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne _08035E94
@@ -86,8 +86,8 @@ _08035E94
 	adds r0, r4, #0
 	b _08035E8E
 
-	non_word_aligned_thumb_func_start sub_8035EFA
-sub_8035EFA
+	non_word_aligned_thumb_func_start WallObject__ctor
+WallObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08036128
@@ -95,7 +95,7 @@ sub_8035EFA
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _08035F16
 	adds r0, r4, #0
@@ -189,8 +189,8 @@ _08035FAC
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8035FB2
-sub_8035FB2
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__04
+WallObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -215,11 +215,11 @@ _08035FDA
 	bl sub_8035F54
 	b _08035FC8
 _08035FE0
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _08035FC8
 
-	non_word_aligned_thumb_func_start sub_8035FE6
-sub_8035FE6
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
+WallObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -231,14 +231,14 @@ _08035FF2
 	pop {r3}
 	bx r3
 _08035FF8
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _08035FF2
 
-	non_word_aligned_thumb_func_start sub_8035FFE
-sub_8035FFE
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__38
+WallObjectScriptGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -276,8 +276,8 @@ _08036026
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803604E
-sub_803604E
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__4C
+WallObjectScriptGroup__4C
 	push {r4}
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
@@ -316,12 +316,12 @@ _08036092
 	pop {r4}
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_8036096
-sub_8036096
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__20
+WallObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl FewScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -359,8 +359,8 @@ _080360C2
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80360EA
-sub_80360EA
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__48
+WallObjectScriptGroup__48
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -393,7 +393,7 @@ _08036118
 	strh r1, [r0, #0x18]
 	b _08036112
 _08036122
-	bl sub_801E2DA
+	bl MostNonHostileScriptGroups__Dying
 	b _08036112
 	ALIGN
 _08036128 DCDU gUnknown_0803E528

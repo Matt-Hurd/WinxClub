@@ -19,19 +19,19 @@
 	IMPORT sub_80047BE
 	IMPORT sub_8004FFC
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B058
 	IMPORT sub_800B72A
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_8017620
 	IMPORT sub_8017B9A
 	IMPORT sub_8017CA0
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_8018C48
 	IMPORT sub_8028A7C
 	IMPORT sub_803D66C
@@ -46,7 +46,7 @@ sub_8031830
 	movs r1, #4
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldrb r2, [r4, #4]
 	ldr r0, _08031B2C
 	ldr r1, [r0]
@@ -93,10 +93,10 @@ _080318A2
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #0
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _08031B38
 	ldrb r0, [r0]
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -111,7 +111,7 @@ sub_80318BC
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _08031B3C
 	movs r1, #3
 	ldr r0, [r0]
@@ -124,7 +124,7 @@ sub_80318BC
 	ldrb r0, [r6]
 	lsls r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	adds r0, r5, #0
 	ldr r0, [r0]
 	bl sub_8017CA0
@@ -282,7 +282,7 @@ _08031A0C
 	ldr r0, _08031B8C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x1d
 	movs r3, #0
@@ -406,7 +406,7 @@ _08031AD8
 	movs r1, #3
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #0x3f
 	add r4, sp, #0x20

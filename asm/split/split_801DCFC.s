@@ -51,8 +51,8 @@ _0801DD3A
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_801DD40
-sub_801DD40
+	thumb_func_start WinxClubScriptGroup__04
+WinxClubScriptGroup__04
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -364,8 +364,8 @@ loc_801df3a
 	bl sub_801D788
 	b _0801DD58
 
-	thumb_func_start sub_801DF50
-sub_801DF50
+	thumb_func_start WinxClubScriptGroup__08
+WinxClubScriptGroup__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]

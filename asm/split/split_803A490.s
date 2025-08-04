@@ -13,12 +13,12 @@
 	IMPORT sub_8001338
 	IMPORT sub_8001432
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80179BE
 	IMPORT sub_80187A0
 	IMPORT sub_801EBCA
-	IMPORT sub_801F286
-	IMPORT sub_802B054
+	IMPORT NonHostileScriptGroups__TakeDamage
+	IMPORT HostileCreature__20
 	IMPORT sub_8037E48
 	IMPORT __call_via_r1
 	IMPORT __call_via_r6
@@ -27,8 +27,8 @@
 	IMPORT sub_803F2CC
 	IMPORT sub_803FC14
 
-	thumb_func_start sub_803A490
-sub_803A490
+	thumb_func_start ScannerScriptGroup__60
+ScannerScriptGroup__60
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r4, r0, #0
@@ -166,8 +166,8 @@ _0803A56C
 	bl sub_80179BE
 	b _0803A4F4
 
-	non_word_aligned_thumb_func_start sub_803A59E
-sub_803A59E
+	non_word_aligned_thumb_func_start ScannerScriptGroup__38
+ScannerScriptGroup__38
 	adds r2, r0, #0
 	adds r2, #0x80
 	push {r4, r5, r6}
@@ -219,8 +219,8 @@ _0803A5F8
 	pop {r4, r5, r6}
 	bx lr
 
-	thumb_func_start sub_803A5FC
-sub_803A5FC
+	thumb_func_start ScannerScriptGroup__10
+ScannerScriptGroup__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -573,7 +573,7 @@ _0803A858
 _0803A8A4
 	ldr r0, [r1]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -634,7 +634,7 @@ _0803A914
 _0803A92E
 	ldr r0, [r1]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -768,7 +768,7 @@ _0803A9E6
 _0803AA2E
 	ldr r0, [r1]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -840,11 +840,11 @@ _0803AAC0
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803AAC6
-sub_803AAC6
+	non_word_aligned_thumb_func_start ScannerScriptGroup__Intersect
+ScannerScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -856,11 +856,11 @@ sub_803AAC6
 	movs r0, #1
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803AAE2
-sub_803AAE2
+	non_word_aligned_thumb_func_start ScannerScriptGroup__20
+ScannerScriptGroup__20
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	bl sub_802B054
+	bl HostileCreature__20
 	adds r1, r4, #0
 	adds r1, #0x80
 	ldr r0, [r1, #0x2c]

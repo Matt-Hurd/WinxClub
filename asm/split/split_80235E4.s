@@ -7,7 +7,7 @@
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_0804AE30
 	IMPORT gUnknown_08051040
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B314
 	IMPORT sub_800B3BA
 	IMPORT __16__rt_memclr_w
@@ -76,7 +76,7 @@ sub_802363C
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	bne _08023674
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r6, #0
 	adds r3, r6, #0
@@ -350,7 +350,7 @@ sub_802383A
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	bne _08023878
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r6, #0
 	movs r2, #0

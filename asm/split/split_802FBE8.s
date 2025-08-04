@@ -10,14 +10,14 @@
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8002004
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E124
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
+	IMPORT FewScriptGroups__20
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
 	IMPORT rand
@@ -29,8 +29,8 @@
 sub_802FBE8
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl FewScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -66,8 +66,8 @@ _0802FC14
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802FC38
-sub_802FC38
+	thumb_func_start Bird__Create
+Bird__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0802FC50
@@ -108,8 +108,8 @@ _0802FC50
 	adds r0, r4, #0
 	b _0802FC4A
 
-	non_word_aligned_thumb_func_start sub_802FC86
-sub_802FC86
+	non_word_aligned_thumb_func_start Bird__ctor
+Bird__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802FFD8
@@ -117,7 +117,7 @@ sub_802FC86
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _0802FCA2
 	adds r0, r4, #0
@@ -127,27 +127,27 @@ _0802FCA2
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802FCA8
-sub_802FCA8
+	thumb_func_start Bird__04
+Bird__04
 	push {r3, lr}
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802FCB4
-sub_802FCB4
+	thumb_func_start Bird__08
+Bird__08
 	push {r3, lr}
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802FCC0
-sub_802FCC0
+	thumb_func_start Bird__38
+Bird__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -183,8 +183,8 @@ _0802FCE8
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802FD0C
-sub_802FD0C
+	thumb_func_start Bird__40
+Bird__40
 	adds r2, r1, #0
 	adds r1, r0, #0
 	movs r3, #1
@@ -240,8 +240,8 @@ _0802FD58
 	str r3, [r0, #0x70]
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_802FD72
-sub_802FD72
+	non_word_aligned_thumb_func_start Bird__44
+Bird__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r7, #0x80

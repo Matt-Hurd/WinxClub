@@ -4,8 +4,8 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
-	IMPORT sub_801E124
+	IMPORT GetEWRAMStart
+	IMPORT FewScriptGroups__20
 	IMPORT sub_801EBCA
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
@@ -14,8 +14,8 @@
 	IMPORT sub_8040528
 	IMPORT sub_8040594
 
-	thumb_func_start sub_8031404
-sub_8031404
+	thumb_func_start Critter__10
+Critter__10
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -153,12 +153,12 @@ _08031512
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803151A
-sub_803151A
+	non_word_aligned_thumb_func_start Critter__20
+Critter__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl FewScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0

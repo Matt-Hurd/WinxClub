@@ -2,8 +2,8 @@
 	AREA text, CODE
 
 
-	thumb_func_start sub_8000210
-sub_8000210
+	thumb_func_start strStartsWith
+strStartsWith
 	b _08000216
 _08000212
 	adds r0, #1
@@ -86,8 +86,8 @@ _08000288
 	subs r0, r1, r0
 	b _08000264
 
-	non_word_aligned_thumb_func_start sub_8000292
-sub_8000292
+	non_word_aligned_thumb_func_start gameStrlen
+gameStrlen
 	ldrb r2, [r0]
 	movs r1, #0
 	cmp r2, #0
@@ -102,8 +102,8 @@ _080002A4
 	adds r0, r1, #0
 	bx lr
 
-	thumb_func_start sub_80002A8
-sub_80002A8
+	thumb_func_start strToLower
+strToLower
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq _080002C6
@@ -124,8 +124,8 @@ _080002BE
 _080002C6
 	bx lr
 
-	thumb_func_start sub_80002C8
-sub_80002C8
+	thumb_func_start strchr
+strchr
 	ldrb r2, [r0]
 	cmp r2, #0
 	beq _080002DE

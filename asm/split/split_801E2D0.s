@@ -42,8 +42,8 @@
 	IMPORT sub_80401C0
 	IMPORT sub_8040594
 
-	thumb_func_start sub_801E2D0
-sub_801E2D0
+	thumb_func_start NonHostileScriptGroups__Attack
+NonHostileScriptGroups__Attack
 	movs r0, #0
 	bx lr
 
@@ -51,13 +51,13 @@ sub_801E2D0
 nullsub_48
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_801E2D6
-sub_801E2D6
+	non_word_aligned_thumb_func_start NonHostileScriptGroups__PlayerIframe
+NonHostileScriptGroups__PlayerIframe
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_801E2DA
-sub_801E2DA
+	non_word_aligned_thumb_func_start MostNonHostileScriptGroups__Dying
+MostNonHostileScriptGroups__Dying
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -363,8 +363,8 @@ _0801E4B0
 nullsub_49
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_801E4BE
-sub_801E4BE
+	non_word_aligned_thumb_func_start LivingScriptGroups__Dead
+LivingScriptGroups__Dead
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	lsls r2, r2, #0x10
@@ -761,8 +761,8 @@ _0801E7A2
 	str r1, [r4, #0x34]
 	b _0801E540
 
-	non_word_aligned_thumb_func_start sub_801E7A6
-sub_801E7A6
+	non_word_aligned_thumb_func_start AllScriptGroups__0C
+AllScriptGroups__0C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -1973,8 +1973,8 @@ _0801F0E8
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_801F0F0
-sub_801F0F0
+	thumb_func_start AllScriptGroups__14
+AllScriptGroups__14
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -2182,8 +2182,8 @@ _0801F244
 	str r0, [r4, #0x10]
 	b _0801F144
 
-	non_word_aligned_thumb_func_start sub_801F252
-sub_801F252
+	non_word_aligned_thumb_func_start NonHostileScriptGroups__3C
+NonHostileScriptGroups__3C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -2205,8 +2205,8 @@ _0801F26E
 nullsub_51
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_801F276
-sub_801F276
+	non_word_aligned_thumb_func_start NonHostileScriptGroups__Intersect
+NonHostileScriptGroups__Intersect
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #1
 	lsrs r1, r1, #1
@@ -2216,8 +2216,8 @@ sub_801F276
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_801F286
-sub_801F286
+	non_word_aligned_thumb_func_start NonHostileScriptGroups__TakeDamage
+NonHostileScriptGroups__TakeDamage
 	movs r1, #0
 	str r1, [r0, #0x78]
 	bx lr

@@ -19,8 +19,8 @@
 	IMPORT sub_803F72C
 	IMPORT sub_803FEF8
 
-	thumb_func_start sub_801BEA0
-sub_801BEA0
+	thumb_func_start gameExit
+gameExit
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801BBE0

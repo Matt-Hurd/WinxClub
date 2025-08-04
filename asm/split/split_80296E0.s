@@ -18,13 +18,13 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT sub_8017884
 	IMPORT sub_80179BE
 	IMPORT sub_80187A0
-	IMPORT sub_801E124
+	IMPORT FewScriptGroups__20
 	IMPORT sub_801EBCA
 	IMPORT sub_801F65C
 	IMPORT sub_8023FE4
@@ -99,8 +99,8 @@ _0802972A
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_802972E
-sub_802972E
+	non_word_aligned_thumb_func_start Monster__10
+Monster__10
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -404,7 +404,7 @@ _0802997C
 	ldr r0, _08029B58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0xfd
 	movs r3, #0
@@ -472,7 +472,7 @@ _08029A08
 	cmp r1, #9
 	beq _08029A10
 _08029A0C
-	bl sub_802AC4E
+	bl maybeCall60IfActive
 _08029A10
 	ldr r1, [r5, #0x2c]
 	lsls r1, r1, #0x1d
@@ -583,7 +583,7 @@ loc_8029ab2
 	ldr r0, _08029B60
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -667,7 +667,7 @@ loc_8029b7c
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -729,7 +729,7 @@ loc_8029c02
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -792,7 +792,7 @@ loc_8029c88
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -854,7 +854,7 @@ loc_8029d0e
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -919,7 +919,7 @@ loc_8029d94
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -985,7 +985,7 @@ _08029E1E
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1049,7 +1049,7 @@ _08029EB2
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -1113,7 +1113,7 @@ _08029F38
 	ldr r0, _08029F5C
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -1177,7 +1177,7 @@ _08029FC4
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -1245,7 +1245,7 @@ loc_802a048
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1308,7 +1308,7 @@ _0802A0DC
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1374,7 +1374,7 @@ _0802A166
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1437,7 +1437,7 @@ loc_802a1ec
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1504,7 +1504,7 @@ loc_802a272
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1567,7 +1567,7 @@ _0802A302
 	ldr r0, _0802A374
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1639,7 +1639,7 @@ loc_802a392
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1702,7 +1702,7 @@ _0802A422
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1769,7 +1769,7 @@ loc_802a4a8
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1836,7 +1836,7 @@ _0802A538
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -1900,7 +1900,7 @@ _0802A5CC
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -1964,7 +1964,7 @@ _0802A652
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2024,7 +2024,7 @@ _0802A6D4
 	ldr r0, _0802A758
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2099,7 +2099,7 @@ loc_802a760
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -2163,7 +2163,7 @@ _0802A802
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2231,7 +2231,7 @@ _0802A88C
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2291,7 +2291,7 @@ _0802A90E
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2359,7 +2359,7 @@ _0802A99E
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -2425,7 +2425,7 @@ _0802AA24
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -2489,7 +2489,7 @@ _0802AAB8
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2549,7 +2549,7 @@ _0802AB3A
 	ldr r0, _0802AB58
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2614,7 +2614,7 @@ _0802ABC8
 	ldr r0, _0802AF74
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -2674,8 +2674,8 @@ _0802AC48
 	str r0, [r4, #0x7c]
 	b _0802A990
 
-	non_word_aligned_thumb_func_start sub_802AC4E
-sub_802AC4E
+	non_word_aligned_thumb_func_start maybeCall60IfActive
+maybeCall60IfActive
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0xf
 	bne _0802AC56
@@ -2761,8 +2761,8 @@ _0802ACD8
 	str r1, [r0, #0x7c]
 	b _0802ACAA
 
-	non_word_aligned_thumb_func_start sub_802ACDE
-sub_802ACDE
+	non_word_aligned_thumb_func_start HostileCreature__60
+HostileCreature__60
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -3161,8 +3161,8 @@ _0802AFB8
 	bl sub_80179BE
 	b _0802AD50
 
-	non_word_aligned_thumb_func_start sub_802AFEA
-sub_802AFEA
+	non_word_aligned_thumb_func_start HostileCreature__3C
+HostileCreature__3C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -3206,8 +3206,8 @@ _0802B036
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_802B03E
-sub_802B03E
+	non_word_aligned_thumb_func_start HostileCreature__DamagePlayer
+HostileCreature__DamagePlayer
 	adds r0, #0x80
 	ldr r1, [r0, #0x2c]
 	movs r2, #8
@@ -3215,20 +3215,20 @@ sub_802B03E
 	str r1, [r0, #0x2c]
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_802B04A
-sub_802B04A
+	non_word_aligned_thumb_func_start HostileCreature__PlayerIframe
+HostileCreature__PlayerIframe
 	adds r0, #0x80
 	ldr r0, [r0, #0x2c]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1f
 	bx lr
 
-	thumb_func_start sub_802B054
-sub_802B054
+	thumb_func_start HostileCreature__20
+HostileCreature__20
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
-	bl sub_801E124
+	bl FewScriptGroups__20
 	ldr r1, _0802B274
 	movs r0, #0x10
 	ldr r1, [r1]
@@ -3266,8 +3266,8 @@ _0802B098
 nullsub_52
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_802B0A2
-sub_802B0A2
+	non_word_aligned_thumb_func_start HostileCreature__54
+HostileCreature__54
 	ldr r0, _0802B27C
 	push {r3, lr}
 	ldr r0, [r0]
@@ -3424,8 +3424,8 @@ _0802B1C4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802B1CC
-sub_802B1CC
+	thumb_func_start HostileBaseObject__5C
+HostileBaseObject__5C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802B268

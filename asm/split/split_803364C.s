@@ -19,12 +19,12 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
-	IMPORT sub_801D6C4
-	IMPORT sub_801DFD4
-	IMPORT sub_801E124
+	IMPORT MostScriptGroups__1C
+	IMPORT MostScriptGroups__18
+	IMPORT FewScriptGroups__20
 	IMPORT sub_801EBCA
 	IMPORT sub_8023AA2
 	IMPORT sub_8032A90
@@ -40,8 +40,8 @@
 	IMPORT sub_803FF24
 
 
-	thumb_func_start sub_803364C
-sub_803364C
+	thumb_func_start WinxClub__38
+WinxClub__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -88,8 +88,8 @@ _08033698
 	movs r0, #1
 	b _08033694
 
-	thumb_func_start sub_803369C
-sub_803369C
+	thumb_func_start WinxClub__10
+WinxClub__10
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -429,7 +429,7 @@ _08033918
 	ldr r0, [r1]
 	bne _08033976
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -460,7 +460,7 @@ _0803394E
 	b _080339C2
 _08033976
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -657,8 +657,8 @@ _08033AFE
 	bl __call_via_r1
 	b _08033764
 
-	non_word_aligned_thumb_func_start sub_8033B0E
-sub_8033B0E
+	non_word_aligned_thumb_func_start WinxClub__3C
+WinxClub__3C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _08033C4C
@@ -773,11 +773,11 @@ _08033BD0
 	bl sub_803FF24
 	b _08033BC8
 
-	non_word_aligned_thumb_func_start sub_8033BEE
-sub_8033BEE
+	non_word_aligned_thumb_func_start WinxClub__18
+WinxClub__18
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801DFD4
+	bl MostScriptGroups__18
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]
@@ -788,11 +788,11 @@ sub_8033BEE
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8033C0A
-sub_8033C0A
+	non_word_aligned_thumb_func_start WinxClub__1C
+WinxClub__1C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801D6C4
+	bl MostScriptGroups__1C
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]
@@ -803,11 +803,11 @@ sub_8033C0A
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8033C26
-sub_8033C26
+	non_word_aligned_thumb_func_start WinxClub__20
+WinxClub__20
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801E124
+	bl FewScriptGroups__20
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]

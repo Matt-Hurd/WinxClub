@@ -19,7 +19,7 @@
 	IMPORT sub_8016BAC
 	IMPORT sub_8016BE0
 	IMPORT sub_8017884
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801CBAA
 	IMPORT sub_801CBDE
 	IMPORT sub_8020AB6
@@ -451,7 +451,7 @@ loc_801704e
 	ldr r1, _0801711C
 	strh r0, [r1]
 	movs r0, #0x15
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08016FEA
 loc_801705c
 	movs r3, #4
@@ -516,14 +516,14 @@ loc_80170c0
 	asrs r0, r0, #2
 	strb r0, [r1]
 	movs r0, #0xd
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08016FEA
 loc_80170e0
 	bl sub_80167AC
 	b _08016FEA
 loc_80170e6
 	movs r0, #0x14
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08016FEA
 loc_80170ee
 	ldr r0, _08017104

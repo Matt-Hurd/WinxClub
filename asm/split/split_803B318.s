@@ -4,11 +4,11 @@
 	IMPORT gUnknown_03003444
 	IMPORT gUnknown_03003468
 	IMPORT sub_80050FA
-	IMPORT sub_800B1D0
+	IMPORT CallSoftReset
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80138E2
 	IMPORT sub_80139AC
 	IMPORT sub_8013B76
@@ -18,9 +18,9 @@
 	IMPORT sub_8014436
 	IMPORT sub_80147FA
 	IMPORT sub_8014B02
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT __call_via_r1
 	IMPORT __call_via_r2
 	IMPORT __call_via_r3
@@ -31,7 +31,7 @@
 sub_803B318
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #4]
@@ -40,8 +40,8 @@ sub_803B318
 	movs r0, #0
 	bl sub_80050FA
 	movs r0, #2
-	bl sub_8018386
-	bl sub_800B1D0
+	bl SetNextGlobalFunction
+	bl CallSoftReset
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -54,9 +54,9 @@ sub_803B342
 	sub sp, #0xc
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r0, pc, #0x160
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	ldr r0, _0803B4C8
 	ldr r0, [r0]
 	bl sub_80050FA
@@ -125,7 +125,7 @@ sub_803B342
 	movs r3, #3
 	adds r0, r4, #0
 	bl sub_8013C40
-	bl sub_8018070
+	bl FadeToImage
 	add sp, #0xc
 	pop {r4, r5}
 	pop {r3}
@@ -195,7 +195,7 @@ _0803B466
 _0803B482
 	lsls r0, r1, #0x10
 	beq _0803B424
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r1, [sp, #8]
 	adds r0, r5, #0
 	ldr r1, [r1, #4]
@@ -205,8 +205,8 @@ _0803B482
 	movs r0, #0
 	bl sub_80050FA
 	movs r0, #2
-	bl sub_8018386
-	bl sub_800B1D0
+	bl SetNextGlobalFunction
+	bl CallSoftReset
 	movs r1, #0
 	add r0, sp, #8
 	bl sub_8014436

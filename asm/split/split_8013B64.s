@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003C40
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80133A0
 	IMPORT sub_80139AC
 	IMPORT __call_via_r1
@@ -65,7 +65,7 @@ _08013BB4
 	adds r7, r4, #0
 	adds r7, #0x20
 	strb r0, [r7, #0xc]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -156,7 +156,7 @@ _08013C56
 	lsrs r5, r5, #0x10
 	movs r0, #2
 	strb r0, [r7, #0xc]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

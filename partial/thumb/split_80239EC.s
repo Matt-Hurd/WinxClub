@@ -9,7 +9,7 @@
 	IMPORT gUnknown_03003E88
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_08051038
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B314
 	IMPORT sub_8017A0A
 	IMPORT sub_80237DA
@@ -105,7 +105,7 @@ _08023BAA
 	asrs r0, r0, #0x18
 	cmp r0, #4
 	blt _08023B88
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

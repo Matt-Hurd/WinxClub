@@ -35,9 +35,9 @@
 	IMPORT sub_8014436
 	IMPORT sub_80147FA
 	IMPORT sub_8014B02
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_80189BC
 	IMPORT sub_8018C48
 	IMPORT sub_8028A7C
@@ -54,7 +54,7 @@
 sub_80195D0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r6, _080199B8
 	movs r5, #0
 _080195DC
@@ -818,7 +818,7 @@ _08019BB2
 	movs r1, #3
 	bl sub_8028A7C
 _08019BBA
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #8
 	add r4, sp, #0x2c
@@ -1130,7 +1130,7 @@ _08019E14
 	cmp r0, #6
 	bne _08019E70
 	movs r0, #0xb
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08019E70
 _08019E46
 	ldr r0, [r6]
@@ -1138,7 +1138,7 @@ _08019E46
 	bl sub_8028C2E
 	lsls r0, r5, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08019E7A
 _08019E58
 	ldr r0, [r6]
@@ -1146,11 +1146,11 @@ _08019E58
 	bl sub_8028C2E
 	lsls r0, r7, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08019E7A
 _08019E6A
 	movs r0, #0x11
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _08019E70
 	movs r2, #0xff
 	movs r1, #4

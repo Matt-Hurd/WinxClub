@@ -5,15 +5,15 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0803E5F4
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8029070
-sub_8029070
+	thumb_func_start HostileCreature__Create
+HostileCreature__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne _08029088
@@ -101,8 +101,8 @@ _08029088
 	adds r0, r4, #0
 	b _08029082
 
-	thumb_func_start sub_802911C
-sub_802911C
+	thumb_func_start HostileCreature__ctor
+HostileCreature__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08029354
@@ -110,7 +110,7 @@ sub_802911C
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _08029138
 	adds r0, r4, #0
@@ -336,11 +336,11 @@ _080292CE
 	b _080292C6
 _080292DC
 	adds r0, r4, #0
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _080292C6
 
-	thumb_func_start sub_80292E4
-sub_80292E4
+	thumb_func_start HostileCreature__08
+HostileCreature__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -400,7 +400,7 @@ _0802934A
 	movs r0, #0
 	b _080292F4
 _0802934E
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _080292F4
 	ALIGN
 _08029354 DCDU gUnknown_0803E5F4

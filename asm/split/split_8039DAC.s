@@ -10,7 +10,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
-	IMPORT sub_801F286
+	IMPORT NonHostileScriptGroups__TakeDamage
 	IMPORT sub_801F450
 	IMPORT sub_8023AA2
 	IMPORT sub_8023FE4
@@ -187,7 +187,7 @@ _08039ED8
 	lsrs r0, r0, #0x14
 	beq _08039EF4
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -234,7 +234,7 @@ _08039F29
 	DCB 0x07
 loc_8039f2a
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08039FBA
 loc_8039f32
 	ldr r0, _0803A03C
@@ -291,15 +291,15 @@ loc_8039f60
 	b _08039FBA
 _08039FA4
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08039FBA
 loc_8039fac
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08039FBA
 _08039FB4
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 _08039FBA
 	movs r0, #0xb6
 	ldrsb r1, [r0, r4]

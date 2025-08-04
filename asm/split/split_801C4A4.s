@@ -470,8 +470,8 @@ _0801C7C0
 	str r6, [r0, #0xc]
 	b _0801C56E
 
-	non_word_aligned_thumb_func_start sub_801C7D2
-sub_801C7D2
+	non_word_aligned_thumb_func_start MaybeTickAllGameObjs
+MaybeTickAllGameObjs
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x29

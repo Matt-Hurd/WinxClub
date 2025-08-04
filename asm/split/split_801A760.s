@@ -17,14 +17,14 @@
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
-	IMPORT sub_800EF60
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80137F8
 	IMPORT sub_80138E2
 	IMPORT sub_8013B76
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
 	IMPORT __call_via_r2
@@ -112,7 +112,7 @@ _0801A7E2
 	movs r1, #2
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	movs r6, #0
 _0801A7FE
 	movs r4, #0
@@ -224,9 +224,9 @@ sub_801A8B8
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r0, pc, #0x244
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	ldr r4, _0801AB24
 	ldr r0, [r4]
 	cmp r0, #0
@@ -480,7 +480,7 @@ _0801AACA
 	bhs _0801AAD6
 	b _0801A992
 _0801AAD6
-	bl sub_8018070
+	bl FadeToImage
 	movs r1, #8
 	mov r4, sp
 	adds r4, r4, r1

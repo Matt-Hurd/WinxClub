@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_0803E59C
 	IMPORT gUnknown_0803ECB8
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800529A
 	IMPORT sub_800F264
 	IMPORT sub_800F72C
@@ -166,7 +166,7 @@ _0800FBFC
 _0800FBFD
 	DCB 0x21
 loc_800fbfe
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -180,7 +180,7 @@ _0800FC18
 	str r5, [r4]
 	b _0800FC5C
 loc_800fc1c
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -194,7 +194,7 @@ _0800FC36
 	str r5, [r4]
 	b _0800FC5C
 loc_800fc3a
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

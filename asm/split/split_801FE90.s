@@ -20,10 +20,10 @@
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8001432
-	IMPORT sub_8005106
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E7A6
+	IMPORT GetEWRAMStart
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
+	IMPORT AllScriptGroups__0C
 	IMPORT sub_801EBCA
 	IMPORT sub_801F906
 	IMPORT sub_8023A70
@@ -120,7 +120,7 @@ sub_801FEFE
 	push {r4, r5, r6, lr}
 	ldr r4, [r1]
 	adds r5, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -362,7 +362,7 @@ _08020090
 	bl sub_801F906
 	b _0801FF82
 _0802009E
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _0801FF82
 
 	thumb_func_start sub_80200A4
@@ -400,7 +400,7 @@ _080200D6
 	movs r0, #0
 	b _080200BC
 _080200DA
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _080200BC
 
 	thumb_func_start sub_80200E0
@@ -1625,7 +1625,7 @@ _080209D6
 	adds r0, #1
 	strh r0, [r5, #4]
 	adds r0, r4, #0
-	bl sub_801E7A6
+	bl AllScriptGroups__0C
 	ldrh r0, [r5]
 	adds r0, #1
 	strh r0, [r5]

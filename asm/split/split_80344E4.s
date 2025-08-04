@@ -3,17 +3,17 @@
 
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_0803E424
-	IMPORT sub_8029070
-	IMPORT sub_802911C
+	IMPORT HostileCreature__Create
+	IMPORT HostileCreature__ctor
 	IMPORT sub_802913E
 	IMPORT sub_8029290
-	IMPORT sub_80292E4
+	IMPORT HostileCreature__08
 	IMPORT sub_80294EE
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_80344E4
-sub_80344E4
+	thumb_func_start Boss__Create
+Boss__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _080344FC
@@ -28,7 +28,7 @@ _080344F6
 	bx r3
 _080344FC
 	adds r0, r4, #0
-	bl sub_8029070
+	bl HostileCreature__Create
 	ldr r0, _080348C4
 	movs r1, #0x97
 	str r0, [r4]
@@ -56,8 +56,8 @@ _080344FC
 	adds r0, r4, #0
 	b _080344F6
 
-	non_word_aligned_thumb_func_start sub_8034536
-sub_8034536
+	non_word_aligned_thumb_func_start Boss__ctor
+Boss__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080348C4
@@ -65,7 +65,7 @@ sub_8034536
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_802911C
+	bl HostileCreature__ctor
 	cmp r5, #0
 	beq _08034552
 	adds r0, r4, #0
@@ -90,8 +90,8 @@ sub_8034558
 	strb r0, [r1, #5]
 	bx lr
 
-	thumb_func_start sub_8034570
-sub_8034570
+	thumb_func_start Boss__04
+Boss__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r3, [r2]
@@ -120,8 +120,8 @@ _0803459E
 	bl sub_8029290
 	b _08034592
 
-	thumb_func_start sub_80345A4
-sub_80345A4
+	thumb_func_start Boss__08
+Boss__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -133,11 +133,11 @@ _080345B0
 	pop {r3}
 	bx r3
 _080345B6
-	bl sub_80292E4
+	bl HostileCreature__08
 	b _080345B0
 
-	thumb_func_start sub_80345BC
-sub_80345BC
+	thumb_func_start Boss__40
+Boss__40
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0xff
 	adds r5, r0, #0

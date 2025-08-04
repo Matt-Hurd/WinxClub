@@ -2,19 +2,19 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_0803E814
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
+	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8035480
-sub_8035480
+	thumb_func_start ToggleObject__Create
+ToggleObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08035498
@@ -87,8 +87,8 @@ _08035498
 	adds r0, r4, #0
 	b _08035492
 
-	non_word_aligned_thumb_func_start sub_803550E
-sub_803550E
+	non_word_aligned_thumb_func_start Toggle__ctor
+Toggle__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08035730
@@ -96,7 +96,7 @@ sub_803550E
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _0803552A
 	adds r0, r4, #0
@@ -283,8 +283,8 @@ _08035644
 	pop {r4}
 	bx lr
 
-	thumb_func_start sub_803564C
-sub_803564C
+	thumb_func_start ToggleObjectGroup__04
+ToggleObjectGroup__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -320,11 +320,11 @@ _0803567A
 	b _0803566C
 _0803568E
 	adds r0, r4, #0
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _0803566C
 
-	non_word_aligned_thumb_func_start sub_8035696
-sub_8035696
+	non_word_aligned_thumb_func_start ToggleObjectGroup__08
+ToggleObjectGroup__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -362,14 +362,14 @@ _080356CC
 	b _080356C6
 _080356D8
 	adds r0, r4, #0
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _080356C6
 
-	thumb_func_start sub_80356E0
-sub_80356E0
+	thumb_func_start ToggleObjectGroup__38
+ToggleObjectGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0

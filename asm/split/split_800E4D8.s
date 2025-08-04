@@ -24,7 +24,7 @@
 	IMPORT gUnknown_0803E86C
 	IMPORT gUnknown_0803ECCC
 	IMPORT sub_80517C8
-	IMPORT sub_8000D64
+	IMPORT g3003448__Init
 	IMPORT sub_8000F4C
 	IMPORT sub_800106A
 	IMPORT sub_800194E
@@ -32,18 +32,18 @@
 	IMPORT sub_8004716
 	IMPORT sub_800474E
 	IMPORT sub_8004924
-	IMPORT sub_8004DE6
+	IMPORT LoadFiletable
 	IMPORT sub_8004FFC
-	IMPORT sub_80050C0
+	IMPORT SomehowInitEWRAMLinkedList
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80052C0
 	IMPORT sub_8008160
 	IMPORT sub_800B034
 	IMPORT sub_800B058
 	IMPORT sub_800B082
 	IMPORT sub_800B12C
-	IMPORT sub_800B190
+	IMPORT InitKeyinputIE
 	IMPORT sub_800B4F0
 	IMPORT sub_800B5EE
 	IMPORT sub_800B652
@@ -64,13 +64,13 @@
 	IMPORT sub_80139AC
 	IMPORT sub_8013DEA
 	IMPORT sub_8014DD4
-	IMPORT sub_8017474
+	IMPORT InitScriptData
 	IMPORT sub_8017884
 	IMPORT sub_8017DE6
 	IMPORT HandleIntro
 	IMPORT SetGlobalFunction
-	IMPORT sub_8018386
-	IMPORT sub_8018398
+	IMPORT SetNextGlobalFunction
+	IMPORT MainLoop
 	IMPORT HandleFavorsScreen
 	IMPORT HandleInventoryScreen
 	IMPORT HandleMagicScreen
@@ -408,8 +408,8 @@ sub_800E678
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_800E71C
-sub_800E71C
+	thumb_func_start maybeInitTransitionLevelScreen
+maybeInitTransitionLevelScreen
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r5, _0800E938
 	ldr r0, [r5]
@@ -421,7 +421,7 @@ sub_800E71C
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	bne _0800E756
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
@@ -432,7 +432,7 @@ sub_800E71C
 	movs r2, #0
 	lsls r1, r7, #0xa
 	adds r0, r5, #0
-	bl sub_8004DE6
+	bl LoadFiletable
 _0800E752
 	ldr r0, _0800E924
 	str r5, [r0, #8]
@@ -441,7 +441,7 @@ _0800E756
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
 	bne _0800E77A
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
@@ -457,7 +457,7 @@ _0800E77A
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
 	bne _0800E7A0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x67
 	adds r3, r4, #0
@@ -468,14 +468,14 @@ _0800E77A
 	beq _0800E79E
 	add r1, pc, #0x1F8
 	adds r0, r5, #0
-	bl sub_8017474
+	bl InitScriptData
 _0800E79E
 	str r5, [r6, #0x1c]
 _0800E7A0
 	ldr r0, [r6, #0x14]
 	cmp r0, #0
 	bne _0800E7C8
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
@@ -493,7 +493,7 @@ _0800E7C8
 	ldr r0, [r6, #0x20]
 	cmp r0, #0
 	bne _0800E7EA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
 	movs r2, #0
@@ -539,7 +539,7 @@ _0800E814
 	adds r5, r0, #0
 	beq _0800E832
 	adds r0, r5, #0
-	bl sub_8000D64
+	bl g3003448__Init
 _0800E832
 	movs r2, #0
 	movs r1, #0
@@ -849,7 +849,7 @@ maybeInitGame
 	strb r4, [r0]
 	ldr r0, _0800ED68
 	strb r4, [r0]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x31
 	adds r3, r4, #0
@@ -858,10 +858,10 @@ maybeInitGame
 	bl sub_803DA9C
 	movs r1, #0x31
 	lsls r1, r1, #0xc
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	ldr r6, _0800ED6C
 	str r0, [r6, #0x30]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #1
 	adds r3, r4, #0
@@ -870,10 +870,10 @@ maybeInitGame
 	bl sub_803DA9C
 	movs r1, #1
 	lsls r1, r1, #0xb
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	str r0, [r6, #0x34]
 	movs r0, #0
-	bl sub_800B190
+	bl InitKeyinputIE
 	bl sub_802363C
 	movs r2, #0x4b
 	lsls r2, r2, #0xa
@@ -882,7 +882,7 @@ maybeInitGame
 	lsls r0, r0, #0x19
 	bl __16__rt_memset
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r5, sp, #0xc
 	adds r0, r5, #0
 	bl sub_8004716
@@ -915,8 +915,8 @@ maybeInitGame
 	str r1, [r2]
 _0800EBE4
 	movs r0, #1
-	bl sub_8018386
-	bl sub_8018398
+	bl SetNextGlobalFunction
+	bl MainLoop
 	cmp r0, #0
 	bne _0800EBE4
 	bl sub_800E53C

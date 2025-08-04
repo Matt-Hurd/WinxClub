@@ -4,9 +4,9 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT sub_8005106
-	IMPORT sub_801E124
-	IMPORT sub_801F286
+	IMPORT GetEWRAMStart
+	IMPORT FewScriptGroups__20
+	IMPORT NonHostileScriptGroups__TakeDamage
 	IMPORT sub_8028C2E
 	IMPORT sub_802B0CA
 	IMPORT __call_via_r1
@@ -45,7 +45,7 @@ _08037554
 	cmp r3, #0
 	beq _08037574
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -78,7 +78,7 @@ _0803758D
 	DCB 0x06
 loc_803758e
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08037600
 loc_8037596
 	adds r1, r4, #0
@@ -123,15 +123,15 @@ loc_80375ae
 	b _08037600
 _080375EA
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08037600
 loc_80375f2
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08037600
 _080375FA
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 _08037600
 	movs r0, #0xb6
 	ldrsb r0, [r0, r4]
@@ -182,7 +182,7 @@ sub_8037642
 	adds r0, r1, r0
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -191,7 +191,7 @@ sub_8037642
 sub_803766A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl sub_801E124
+	bl FewScriptGroups__20
 	movs r0, #0xa4
 	ldr r0, [r0, r4]
 	ldr r1, [r4, #0x2c]
@@ -223,7 +223,7 @@ sub_803766A
 	adds r2, #1
 	orrs r0, r2
 	str r0, [r1]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

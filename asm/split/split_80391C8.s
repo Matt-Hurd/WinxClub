@@ -28,7 +28,7 @@
 	IMPORT sub_800D912
 	IMPORT sub_800D9E0
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
 	IMPORT sub_80137F8
 	IMPORT sub_80138E2
@@ -36,8 +36,8 @@
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_8018C48
 	IMPORT sub_802383A
 	IMPORT sub_8028A7C
@@ -261,7 +261,7 @@ sub_8039336
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #0
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	ldr r0, _080395C0
 	ldr r0, [r0]
 	bl sub_80050FA
@@ -755,7 +755,7 @@ _080397C4
 	ldr r0, [r0]
 	bl sub_8028A7C
 _080397D0
-	bl sub_8018070
+	bl FadeToImage
 	add sp, #0x5c
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -867,7 +867,7 @@ _080398A0
 	cmp r0, #4
 	bne _080398BA
 	movs r0, #0x10
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _080398BA
 	adds r0, r6, #0
 	bl sub_8038E44
@@ -929,7 +929,7 @@ _080398BA
 	bx r3
 _0803993C
 	movs r0, #2
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _080398BA
 	ALIGN
 _08039944 DCDU 0x0000FFFF

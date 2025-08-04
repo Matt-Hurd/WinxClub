@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EBC
 	IMPORT gUnknown_0803ECB4
 	IMPORT gUnknown_0803ECF4
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
@@ -36,7 +36,7 @@ _08013458
 	str r0, [r4]
 	strb r6, [r4, #9]
 	strb r5, [r4, #8]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r5, #4
 	adds r3, r6, #0

@@ -10,7 +10,7 @@
 	IMPORT sub_8000C7C
 	IMPORT sub_8000CC6
 	IMPORT sub_8000CCA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B7DC
 	IMPORT sub_800B8A4
 	IMPORT sub_800B8CE
@@ -22,8 +22,8 @@
 	IMPORT sub_803DA9C
 	IMPORT sub_8040550
 
-	thumb_func_start sub_8000D64
-sub_8000D64
+	thumb_func_start g3003448__Init
+g3003448__Init
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08000D7E
@@ -294,7 +294,7 @@ _08000F68
 	beq _08000FA6
 	movs r3, #0
 	str r3, [r4, #0x18]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r6, r5, #1
 	movs r3, #0
@@ -362,7 +362,7 @@ _08000FEC
 	adds r6, #0x60
 	ldrh r0, [r6, #0x1a]
 	str r0, [r5, #0x20]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldr r0, [r4, #0x54]
 	lsls r0, r0, #1

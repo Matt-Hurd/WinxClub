@@ -8,7 +8,7 @@
 	IMPORT gUnknown_0803ECC4
 	IMPORT sub_8004FFC
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80164A8
 	IMPORT sub_801669C
 	IMPORT __call_via_r2
@@ -20,8 +20,8 @@
 	IMPORT sub_803F464
 	IMPORT sub_803FBBC
 
-	thumb_func_start sub_8017474
-sub_8017474
+	thumb_func_start InitScriptData
+InitScriptData
 	push {r0, r1, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -99,7 +99,7 @@ _08017492
 	strb r7, [r4, #0x14]
 	add r0, pc, #0x298
 	str r0, [r1, #0x18]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -111,7 +111,7 @@ _08017492
 	bl sub_801669C
 _08017534
 	str r5, [r4, #0xc]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r7, #0
 	movs r2, #0
@@ -127,7 +127,7 @@ _08017550
 	str r7, [r4, #4]
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	movs r5, #1
 	lsls r5, r5, #0xb
 	adds r3, r7, #0
@@ -142,7 +142,7 @@ _08017550
 	movs r5, #1
 	lsls r6, r5, #9
 _0801757C
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r3, r7, #0
 	movs r2, #0
 	adds r1, r0, #0

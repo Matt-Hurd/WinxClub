@@ -12,7 +12,7 @@
 	IMPORT sub_80139AC
 	IMPORT sub_8013C40
 	IMPORT sub_8014864
-	IMPORT sub_80180BE
+	IMPORT FadeToBlack
 	IMPORT sub_8028A7C
 	IMPORT __call_via_r3
 	IMPORT __16_ll_mulss
@@ -33,7 +33,7 @@ sub_80222D0
 	movs r1, #2
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r5, _080225CC
 	adds r1, r4, #0
 	ldr r0, [r5]

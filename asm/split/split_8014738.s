@@ -7,7 +7,7 @@
 	IMPORT gUnknown_03003EB8
 	IMPORT sub_800116A
 	IMPORT sub_80015F2
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800BBF4
 	IMPORT sub_80133A0
 	IMPORT sub_8013E64
@@ -359,7 +359,7 @@ _08014972
 	bgt _0801495C
 _0801498C
 	strb r0, [r5, #0xf]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrb r0, [r5, #0xe]
 	ldrb r2, [r5, #0xf]
@@ -369,7 +369,7 @@ _0801498C
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r4, #0x54]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrb r0, [r5, #0xe]
 	ldrb r2, [r5, #0xf]
@@ -381,7 +381,7 @@ _0801498C
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r4, #0x58]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrb r0, [r5, #0xe]
 	ldrb r2, [r5, #0xf]

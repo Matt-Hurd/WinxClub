@@ -7,15 +7,15 @@
 	IMPORT gUnknown_0803EA90
 	IMPORT sub_8002004
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
+	IMPORT GameObj__ctor
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
 	IMPORT __call_via_r1
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8033318
-sub_8033318
+	thumb_func_start WinxClub__Create
+WinxClub__Create
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne _08033332
@@ -92,8 +92,8 @@ _08033332
 	adds r0, r4, #0
 	b _0803332C
 
-	thumb_func_start sub_80333B0
-sub_80333B0
+	thumb_func_start WinxClub__ctor
+WinxClub__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08033618
@@ -105,7 +105,7 @@ sub_80333B0
 	bl sub_8024EBC
 	movs r1, #0
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _080333D6
 	adds r0, r4, #0

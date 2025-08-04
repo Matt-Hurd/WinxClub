@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003478
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_801D788
 	IMPORT __16_ll_mulls
 	IMPORT __16_ll_sdiv
@@ -111,7 +111,7 @@ sub_801DA46
 	push {r4, r5, r6, lr}
 	ldr r4, [r1]
 	adds r5, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

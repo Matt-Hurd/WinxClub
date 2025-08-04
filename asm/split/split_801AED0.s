@@ -10,7 +10,7 @@
 	IMPORT sub_800EF2A
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801ABFC
 	IMPORT sub_801AC60
 	IMPORT sub_801AD22
@@ -230,7 +230,7 @@ _0801B054
 	cmp r0, #6
 	bne _0801B0A6
 	movs r0, #0xb
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0801B0A6
 _0801B07C
 	ldr r0, [r6]
@@ -238,7 +238,7 @@ _0801B07C
 	bl sub_8028C2E
 	lsls r0, r4, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0801B0B0
 _0801B08E
 	ldr r0, [r6]
@@ -246,11 +246,11 @@ _0801B08E
 	bl sub_8028C2E
 	lsls r0, r7, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _0801B0B0
 _0801B0A0
 	movs r0, #0x11
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _0801B0A6
 	movs r2, #0xff
 	movs r1, #4

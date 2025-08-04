@@ -3,16 +3,16 @@
 
 	IMPORT gUnknown_0803E9B4
 	IMPORT sub_802913E
-	IMPORT sub_8029420
-	IMPORT sub_8030668
-	IMPORT sub_80306B4
+	IMPORT HostileCreature__Dying
+	IMPORT Monster__Create
+	IMPORT Monster__ctor
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_8041020
 
-	thumb_func_start sub_803A050
-sub_803A050
+	thumb_func_start Scanner__Create
+Scanner__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0803A068
@@ -27,7 +27,7 @@ _0803A062
 	bx r3
 _0803A068
 	adds r0, r4, #0
-	bl sub_8030668
+	bl Monster__Create
 	ldr r0, _0803A420
 	adds r1, r4, #0
 	str r0, [r4]
@@ -78,8 +78,8 @@ _0803A068
 	adds r0, r4, #0
 	b _0803A062
 
-	non_word_aligned_thumb_func_start sub_803A0D2
-sub_803A0D2
+	non_word_aligned_thumb_func_start Scanner__ctor
+Scanner__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0803A420
@@ -87,7 +87,7 @@ sub_803A0D2
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_80306B4
+	bl Monster__ctor
 	cmp r5, #0
 	beq _0803A0EE
 	adds r0, r4, #0
@@ -97,8 +97,8 @@ _0803A0EE
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_803A0F4
-sub_803A0F4
+	thumb_func_start ScannerScriptGroup__Dying
+ScannerScriptGroup__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -144,11 +144,11 @@ _0803A134
 	str r0, [r2, #0x30]
 	b _0803A11C
 _0803A146
-	bl sub_8029420
+	bl HostileCreature__Dying
 	b _0803A11C
 
-	thumb_func_start sub_803A14C
-sub_803A14C
+	thumb_func_start ScannerScriptGroup__40
+ScannerScriptGroup__40
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0

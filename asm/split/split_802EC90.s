@@ -2,8 +2,8 @@
 	AREA text, CODE
 
 
-	thumb_func_start sub_802EC90
-sub_802EC90
+	thumb_func_start ObjectScriptGroup__40
+ObjectScriptGroup__40
 	subs r1, #0x61
 	cmp r1, #6
 	bhs _0802ECB6

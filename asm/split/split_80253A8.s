@@ -3,17 +3,17 @@
 
 	IMPORT __VTABLE__301Npc
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT sub_801EBCA
 	IMPORT __call_via_r1
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 
-	thumb_func_start sub_80253A8
-sub_80253A8
+	thumb_func_start Npc__Create
+Npc__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _080253C0
@@ -83,7 +83,7 @@ Npc__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _0802543A
 	adds r0, r4, #0
@@ -93,24 +93,24 @@ _0802543A
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8025440
-sub_8025440
+	thumb_func_start Npc__04
+Npc__04
 	push {r3, lr}
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802544C
-sub_802544C
+	thumb_func_start Npc__08
+Npc__08
 	push {r3, lr}
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8025458
-sub_8025458
+	thumb_func_start Npc__38
+Npc__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -127,8 +127,8 @@ sub_8025458
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8025478
-sub_8025478
+	thumb_func_start Npc__3C
+Npc__3C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x58]
@@ -154,8 +154,8 @@ _080254A2
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80254AA
-sub_80254AA
+	non_word_aligned_thumb_func_start Npc__Intersect
+Npc__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -222,16 +222,16 @@ _080254FE
 	movs r0, #1
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8025512
-sub_8025512
+	non_word_aligned_thumb_func_start Npc__10
+Npc__10
 	push {r3, lr}
 	bl sub_801EBCA
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_802551E
-sub_802551E
+	non_word_aligned_thumb_func_start Npc__40
+Npc__40
 	push {r4, r5, r6, r7, lr}
 	movs r2, #5
 	lsls r2, r2, #0xe

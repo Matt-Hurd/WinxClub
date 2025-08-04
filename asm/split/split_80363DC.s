@@ -5,8 +5,8 @@
 	IMPORT sub_8000D5A
 	IMPORT sub_801EBCA
 
-	thumb_func_start sub_80363DC
-sub_80363DC
+	thumb_func_start WallObjectScriptGroup__40
+WallObjectScriptGroup__40
 	push {r4, r5, r6, r7}
 	adds r3, r1, #0
 	adds r1, r0, #0
@@ -263,8 +263,8 @@ loc_8036598
 	strb r0, [r1, #8]
 	b _08036426
 
-	thumb_func_start sub_80365B0
-sub_80365B0
+	thumb_func_start WallObjectScriptGroup__10
+WallObjectScriptGroup__10
 	push {r3, r4, r5, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0

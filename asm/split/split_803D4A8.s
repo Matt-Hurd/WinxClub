@@ -14,7 +14,7 @@
 	IMPORT sub_80047BA
 	IMPORT sub_80047BE
 	IMPORT sub_80047DA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80051D6
 	IMPORT sub_8005220
 	IMPORT __call_via_r2
@@ -26,7 +26,7 @@
 	IMPORT sub_800A270
 	IMPORT sub_80081D4
 	IMPORT sub_8008EB4
-	IMPORT sub_80050C0
+	IMPORT SomehowInitEWRAMLinkedList
 	IMPORT __16__rt_memclr
 
 	thumb_func_start sub_803D4A8
@@ -62,7 +62,7 @@ _0803D4C2
 	pop {r3}
 	bx r3
 loc_803d4c8
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -76,7 +76,7 @@ _0803D4E2
 	adds r0, r4, #0
 	b _0803D4C2
 loc_803d4e6
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -90,7 +90,7 @@ _0803D500
 	adds r0, r4, #0
 	b _0803D4C2
 loc_803d504
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -104,7 +104,7 @@ _0803D51E
 	adds r0, r4, #0
 	b _0803D4C2
 loc_803d522
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -118,7 +118,7 @@ _0803D53C
 	adds r0, r4, #0
 	b _0803D4C2
 loc_803d540
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -132,7 +132,7 @@ _0803D55A
 	adds r0, r4, #0
 	b _0803D4C2
 loc_803d55e
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -148,7 +148,7 @@ _0803D578
 _0803D57C
 	b _0803D59C
 loc_803d57e
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -893,7 +893,7 @@ __rt_stackheap_init
 	add r1, r1, #0x40000
 	STMFD SP!, {r0, r1, lr}
 	sub r1, r1, r0
-	bl sub_80050C0
+	bl SomehowInitEWRAMLinkedList
 	LDMFD SP!, {r0, r1, lr}
 	LDR r1, _0803DB30
 	STR r0, [r1]

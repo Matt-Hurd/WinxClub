@@ -7,8 +7,8 @@
 	IMPORT sub_80012F0
 	IMPORT sub_8001338
 	IMPORT sub_802913E
-	IMPORT sub_80344E4
-	IMPORT sub_8034536
+	IMPORT Boss__Create
+	IMPORT Boss__ctor
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
@@ -28,7 +28,7 @@ _080399B6
 	bx r3
 _080399BC
 	adds r0, r4, #0
-	bl sub_80344E4
+	bl Boss__Create
 	ldr r0, _08039D6C
 	movs r1, #0
 	str r0, [r4]
@@ -49,7 +49,7 @@ sub_80399D6
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_8034536
+	bl Boss__ctor
 	cmp r5, #0
 	beq _080399F2
 	adds r0, r4, #0

@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003EB8
 	IMPORT sub_800116A
 	IMPORT sub_80015F2
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_803DA9C
 	IMPORT sub_803F8BC
 	IMPORT sub_803FE80
@@ -30,7 +30,7 @@ sub_803EF2C
 	adds r4, r0, #0
 	movs r6, #0
 	sub sp, #0x14
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r5, r4, #0
 	adds r5, #0x60
 	adds r1, r0, #0
@@ -43,7 +43,7 @@ sub_803EF2C
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r4, #0x60]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrb r0, [r5, #0xe]
 	ldrb r2, [r5, #0xf]
@@ -55,7 +55,7 @@ sub_803EF2C
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r4, #0x64]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	ldrb r0, [r5, #0xe]
 	ldrb r2, [r5, #0xf]

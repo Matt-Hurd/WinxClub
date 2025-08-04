@@ -3,12 +3,12 @@
 
 	IMPORT gUnknown_0803EA18
 	IMPORT sub_80007A0
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
+	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
@@ -16,14 +16,14 @@
 MaybeHandleTransitionToArea
 	push {r3, lr}
 	movs r0, #0x10
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	add sp, #4
 	pop {r3}
 	bx r3
 	ALIGN
 
-	thumb_func_start sub_8026024
-sub_8026024
+	thumb_func_start GenericObject__Create
+GenericObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _0802603C
@@ -77,8 +77,8 @@ _0802603C
 	adds r0, r4, #0
 	b _08026036
 
-	thumb_func_start sub_802608C
-sub_802608C
+	thumb_func_start GenericObject__ctor
+GenericObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080262AC
@@ -86,7 +86,7 @@ sub_802608C
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _080260A8
 	adds r0, r4, #0
@@ -297,8 +297,8 @@ sub_80261C8
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80261F6
-sub_80261F6
+	non_word_aligned_thumb_func_start GenericObject__04
+GenericObject__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -346,11 +346,11 @@ _0802623C
 	b _0802622E
 _08026250
 	adds r0, r4, #0
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _0802622E
 
-	thumb_func_start sub_8026258
-sub_8026258
+	thumb_func_start GenericObject__08
+GenericObject__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -393,7 +393,7 @@ _08026296
 	b _08026270
 _080262A2
 	adds r0, r4, #0
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _08026270
 	ALIGN
 _080262AC DCDU gUnknown_0803EA18

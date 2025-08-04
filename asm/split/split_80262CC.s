@@ -6,8 +6,8 @@
 	IMPORT sub_801EBCA
 	IMPORT rand
 
-	thumb_func_start sub_80262CC
-sub_80262CC
+	thumb_func_start GenericObject__10
+GenericObject__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrh r0, [r0, #0x1a]
@@ -88,8 +88,8 @@ _08026360
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802636C
-sub_802636C
+	thumb_func_start GenericObject__40
+GenericObject__40
 	subs r1, #0x42
 	cmp r1, #0x14
 	push {r4, lr}

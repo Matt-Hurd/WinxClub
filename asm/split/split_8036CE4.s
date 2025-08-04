@@ -16,11 +16,11 @@
 	IMPORT sub_80012F0
 	IMPORT sub_8001338
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_8017884
 	IMPORT sub_80187A0
-	IMPORT sub_8029070
-	IMPORT sub_802911C
+	IMPORT HostileCreature__Create
+	IMPORT HostileCreature__ctor
 	IMPORT sub_802913E
 	IMPORT sub_802C884
 	IMPORT __call_via_r1
@@ -34,8 +34,8 @@
 	IMPORT sub_803F6B4
 	IMPORT sub_803FC14
 
-	thumb_func_start sub_8036CE4
-sub_8036CE4
+	thumb_func_start Static2__Create
+Static2__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne _08036CFC
@@ -50,7 +50,7 @@ _08036CF6
 	bx r3
 _08036CFC
 	adds r0, r4, #0
-	bl sub_8029070
+	bl HostileCreature__Create
 	ldr r0, _080370E0
 	movs r1, #0x97
 	str r0, [r4]
@@ -84,7 +84,7 @@ sub_8036D30
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_802911C
+	bl HostileCreature__ctor
 	cmp r5, #0
 	beq _08036D4C
 	adds r0, r4, #0
@@ -198,7 +198,7 @@ sub_8036E04
 	movs r0, #1
 	movs r1, #0x9c
 	str r0, [r1, r4]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -814,7 +814,7 @@ _08037278
 	ldr r0, _080374FC
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -1025,7 +1025,7 @@ _0803746C
 	ldr r0, _08037528
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0xfd
 	movs r3, #0

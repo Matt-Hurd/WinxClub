@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003D20
 	IMPORT gUnknown_03003E98
 	IMPORT sub_800065C
-	IMPORT sub_801F286
+	IMPORT NonHostileScriptGroups__TakeDamage
 	IMPORT sub_8028C2E
 	IMPORT sub_803F2CC
 	IMPORT sub_803F898
@@ -75,7 +75,7 @@ _0802220C
 	cmp r0, #5
 	beq _08022226
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 _08022226
 	pop {r3, r4, r5}
 	pop {r3}

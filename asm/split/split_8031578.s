@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003E9C
 	IMPORT gUnknown_0803EB38
 	IMPORT gUnknown_0803ECD8
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT __16__rt_memclr
 	IMPORT __16__rt_memcpy
 	IMPORT __nw__FUi
@@ -73,7 +73,7 @@ sub_80315CE
 	str r6, [r4, #0xc]
 	cmp r5, #0
 	beq _080315F6
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r5, #4
 	adds r3, r6, #0

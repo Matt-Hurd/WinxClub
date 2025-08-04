@@ -13,8 +13,8 @@
 	IMPORT __call_via_r1
 	IMPORT sub_803F110
 
-	thumb_func_start sub_8036150
-sub_8036150
+	thumb_func_start WallObjectScriptGroup__44
+WallObjectScriptGroup__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080363C4
@@ -92,8 +92,8 @@ _080361BE
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_80361E8
-sub_80361E8
+	thumb_func_start WallObjectScriptGroup__Intersect
+WallObjectScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -124,8 +124,8 @@ _0803620E
 	movs r0, #1
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8036222
-sub_8036222
+	non_word_aligned_thumb_func_start WallObjectScriptGroup__TakeDamage
+WallObjectScriptGroup__TakeDamage
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0xa0

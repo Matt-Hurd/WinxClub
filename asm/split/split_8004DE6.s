@@ -5,10 +5,10 @@
 	IMPORT gUnknown_03003EA8
 	IMPORT gUnknown_0803EC6C
 	IMPORT gUnknown_0803ECE4
-	IMPORT sub_8000210
-	IMPORT sub_8000292
-	IMPORT sub_80002A8
-	IMPORT sub_80002C8
+	IMPORT strStartsWith
+	IMPORT gameStrlen
+	IMPORT strToLower
+	IMPORT strchr
 	IMPORT sub_800529A
 	IMPORT __16__rt_memclr_w
 	IMPORT __16__rt_memcpy
@@ -22,8 +22,8 @@
 nullsub_24
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_8004DE6
-sub_8004DE6
+	non_word_aligned_thumb_func_start LoadFiletable
+LoadFiletable
 	push {r4, r5, r6, r7, lr}
 	adds r7, r1, #0
 	adds r5, r2, #0
@@ -219,16 +219,16 @@ _08004F50
 	beq _08004F90
 	movs r1, #0x5c
 	adds r0, r6, #0
-	bl sub_80002C8
+	bl strchr
 	adds r4, r0, #0
 	bne _08004F7E
 	movs r1, #0x2f
 	adds r0, r6, #0
-	bl sub_80002C8
+	bl strchr
 	adds r4, r0, #0
 	bne _08004F7E
 	adds r0, r6, #0
-	bl sub_8000292
+	bl gameStrlen
 	adds r4, r0, r6
 _08004F7E
 	subs r2, r4, r6
@@ -237,7 +237,7 @@ _08004F7E
 	adds r0, r6, #0
 	bl __16__rt_memcpy
 	adds r0, r6, #0
-	bl sub_80002A8
+	bl strToLower
 _08004F90
 	ldm r5!, {r0}
 	lsls r6, r0, #0x10
@@ -248,7 +248,7 @@ _08004F96
 	adds r0, r5, #0
 	adds r0, #8
 	add r1, sp, #8
-	bl sub_8000210
+	bl strStartsWith
 	cmp r0, #0
 	beq _08004FC8
 	ldrb r0, [r4]
@@ -286,7 +286,7 @@ _08004FE0
 	adds r0, r5, #0
 	adds r0, #8
 	str r0, [sp, #4]
-	bl sub_8000292
+	bl gameStrlen
 	adds r0, #4
 	lsrs r0, r0, #2
 	ldr r1, [sp, #4]

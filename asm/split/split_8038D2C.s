@@ -7,7 +7,7 @@
 	IMPORT sub_800EF2A
 	IMPORT sub_80143E0
 	IMPORT sub_8014436
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_8038888
 	IMPORT sub_803894A
 	IMPORT sub_80389CC
@@ -112,11 +112,11 @@ _08038DBC
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x18]
 	movs r0, #0xf
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _08038DFA
 _08038DF4
 	movs r0, #0x11
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _08038DFA
 	adds r0, r5, #0
 	bl sub_8038888

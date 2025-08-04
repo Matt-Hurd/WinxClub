@@ -9,7 +9,7 @@
 	IMPORT sub_80138E2
 	IMPORT sub_80139AC
 	IMPORT sub_80147FA
-	IMPORT sub_8018390
+	IMPORT GetNextGlobalFunction
 	IMPORT sub_80184BC
 	IMPORT sub_803F9C4
 	IMPORT sub_8040034
@@ -60,7 +60,7 @@ sub_80189BC
 	add r5, sp, #0x44
 	ldm r5!, {r4, r5}
 	adds r7, r0, #0
-	bl sub_8018390
+	bl GetNextGlobalFunction
 	movs r6, #0
 	ldr r2, _08018C34
 	b _080189D6

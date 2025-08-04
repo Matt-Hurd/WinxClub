@@ -38,7 +38,7 @@
 	IMPORT sub_8017444
 	IMPORT sub_8017450
 	IMPORT sub_80177D8
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_801CBAA
 	IMPORT sub_80236D4
 	IMPORT sub_80247A4
@@ -193,7 +193,7 @@ sub_801678C
 sub_801679E
 	push {r3, lr}
 	movs r0, #0x14
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -229,7 +229,7 @@ _080167D6
 	ldr r1, [r0, #0x24]
 	str r1, [r0, #0x18]
 	movs r0, #0xf
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _080167E8
 	add sp, #8
 	pop {r4}
@@ -263,7 +263,7 @@ _0801681A
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x18]
 	movs r0, #0xf
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _080167E8
 
 	thumb_func_start sub_8016828
@@ -283,7 +283,7 @@ sub_8016828
 	asrs r0, r0, #2
 	strb r0, [r1]
 	movs r0, #0xd
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -720,7 +720,7 @@ _08016BC6
 _08016BD2
 	movs r0, #0xf
 	str r4, [r3, #0x18]
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -908,7 +908,7 @@ sub_8016D0E
 	ldrh r0, [r0, #4]
 	strh r0, [r1]
 	movs r0, #0x15
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	add sp, #4
 	pop {r3}
 	bx r3

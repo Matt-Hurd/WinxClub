@@ -9,7 +9,7 @@
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
 	IMPORT sub_80012F0
-	IMPORT sub_801E2DA
+	IMPORT MostNonHostileScriptGroups__Dying
 	IMPORT __call_via_r1
 	IMPORT __call_via_r2
 	IMPORT rand
@@ -110,8 +110,8 @@ _080293E8
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_8029420
-sub_8029420
+	thumb_func_start HostileCreature__Dying
+HostileCreature__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -219,7 +219,7 @@ _080294AE
 	strb r1, [r0, #2]
 	b _08029456
 _080294E8
-	bl sub_801E2DA
+	bl MostNonHostileScriptGroups__Dying
 	b _08029456
 
 	non_word_aligned_thumb_func_start sub_80294EE
@@ -354,8 +354,8 @@ _080295BE
 	bl __call_via_r1
 	b _080295B8
 
-	thumb_func_start sub_80295CC
-sub_80295CC
+	thumb_func_start HostileCreature__Attack
+HostileCreature__Attack
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080296D4

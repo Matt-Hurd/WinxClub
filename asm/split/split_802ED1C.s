@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003E84
 	IMPORT nullsub_1
-	IMPORT sub_80002A8
+	IMPORT strToLower
 	IMPORT sub_800529A
 	IMPORT __16__rt_memclr_w
 	IMPORT strcpy
@@ -329,7 +329,7 @@ sub_802EF0A
 	ldr r1, [sp, #0x50]
 	bl strcpy
 	adds r0, r6, #0
-	bl sub_80002A8
+	bl strToLower
 	adds r0, r6, #0
 	bl sub_802ED1C
 _0802EF52

@@ -14,13 +14,13 @@
 	IMPORT sub_800065C
 	IMPORT sub_80007A0
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_8017A0A
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
-	IMPORT sub_801DD40
-	IMPORT sub_801DF50
-	IMPORT sub_801E2DA
+	IMPORT GameObj__ctor
+	IMPORT WinxClubScriptGroup__04
+	IMPORT WinxClubScriptGroup__08
+	IMPORT MostNonHostileScriptGroups__Dying
 	IMPORT sub_8023A70
 	IMPORT CollectFirefly
 	IMPORT sub_8028C2E
@@ -38,8 +38,8 @@
 	IMPORT sub_8040594
 
 
-	thumb_func_start sub_802F118
-sub_802F118
+	thumb_func_start Anonymous18__Create
+Anonymous18__Create
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
@@ -129,8 +129,8 @@ _0802F134
 	adds r0, r4, #0
 	b _0802F12C
 
-	non_word_aligned_thumb_func_start sub_802F1CE
-sub_802F1CE
+	non_word_aligned_thumb_func_start Anonymous18__ctor
+Anonymous18__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802F518
@@ -138,7 +138,7 @@ sub_802F1CE
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r5, #0
 	beq _0802F1EA
 	adds r0, r4, #0
@@ -164,7 +164,7 @@ _0802F204
 	pop {r3}
 	bx r3
 _0802F20A
-	bl sub_801DD40
+	bl WinxClubScriptGroup__04
 	b _0802F204
 
 	thumb_func_start sub_802F210
@@ -180,7 +180,7 @@ _0802F21C
 	pop {r3}
 	bx r3
 _0802F222
-	bl sub_801DF50
+	bl WinxClubScriptGroup__08
 	b _0802F21C
 
 	thumb_func_start sub_802F228
@@ -265,7 +265,7 @@ _0802F2AC
 	strh r2, [r0, #0xc]
 	strh r2, [r0, #8]
 _0802F2BC
-	bl sub_801E2DA
+	bl MostNonHostileScriptGroups__Dying
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -460,7 +460,7 @@ _0802F36A
 _0802F450
 	b _0802F452
 _0802F452
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -941,7 +941,7 @@ _0802F812
 sub_802F818
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0

@@ -20,14 +20,14 @@
 	IMPORT sub_800C1CA
 	IMPORT sub_800CD58
 	IMPORT sub_800E53C
-	IMPORT sub_800E71C
+	IMPORT maybeInitTransitionLevelScreen
 	IMPORT sub_800EF2A
-	IMPORT sub_800EF60
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_80138E2
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
-	IMPORT sub_8018386
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_802383A
 	IMPORT sub_8028A7C
 	IMPORT sub_8028C2E
@@ -96,7 +96,7 @@ sub_8030244
 	movs r1, #2
 	ldr r0, [r0]
 	bl sub_8028A7C
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r4, _08030598
 	ldr r0, [r4]
 	bl sub_800B72A
@@ -145,14 +145,14 @@ _0803028A
 	bne _080302C4
 	bl sub_802383A
 	movs r0, #0x10
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _080302BE
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
 _080302C4
 	movs r0, #2
-	bl sub_8018386
+	bl SetNextGlobalFunction
 	b _080302BE
 
 	thumb_func_start sub_80302CC
@@ -235,9 +235,9 @@ sub_8030346
 	movs r0, #1
 	bl sub_800E53C
 	movs r0, #3
-	bl sub_800E71C
+	bl maybeInitTransitionLevelScreen
 	add r0, pc, #0x244
-	bl sub_800EF60
+	bl maybeLoadOrRenderBgImage
 	movs r2, #4
 	str r2, [sp, #0xc]
 	movs r2, #0x3c
@@ -492,7 +492,7 @@ _08030558
 	bhs _08030564
 	b _080303EE
 _08030564
-	bl sub_8018070
+	bl FadeToImage
 	movs r2, #0x3f
 	movs r1, #8
 	add r4, sp, #0x10

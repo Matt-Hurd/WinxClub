@@ -70,8 +70,8 @@ sub_80050AC
 	str r2, [r0, #8]
 	bx lr
 
-	thumb_func_start sub_80050C0
-sub_80050C0
+	thumb_func_start SomehowInitEWRAMLinkedList
+SomehowInitEWRAMLinkedList
 	push {r3, r4, r5, lr}
 	cmp r1, #0
 	bne _080050CC
@@ -115,8 +115,8 @@ _08005102
 	str r0, [r1, #8]
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_8005106
-sub_8005106
+	non_word_aligned_thumb_func_start GetEWRAMStart
+GetEWRAMStart
 	ldr r0, _08005258
 	ldr r0, [r0, #8]
 	bx lr

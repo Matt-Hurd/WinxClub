@@ -11,9 +11,9 @@
 	IMPORT gUnknown_0803E760
 	IMPORT sub_8000DE6
 	IMPORT sub_80050FA
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT sub_801D714
+	IMPORT GameObj__ctor
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
 	IMPORT sub_8028C2E
@@ -29,8 +29,8 @@
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_801F794
-sub_801F794
+	thumb_func_start Anonymous4__Create
+Anonymous4__Create
 	push {r4, r5, r6, lr}
 	movs r5, #0x4b
 	lsls r5, r5, #3
@@ -175,8 +175,8 @@ _0801F89C
 	adds r0, r4, #0
 	b _0801F7AC
 
-	thumb_func_start sub_801F8B4
-sub_801F8B4
+	thumb_func_start Anonymous4__ctor
+Anonymous4__ctor
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -206,7 +206,7 @@ _0801F8DA
 	bl sub_802E02A
 	movs r1, #0
 	adds r0, r4, #0
-	bl sub_801D714
+	bl GameObj__ctor
 	cmp r6, #0
 	beq _0801F900
 	adds r0, r4, #0
@@ -288,7 +288,7 @@ _0801F97A
 	ldr r0, _0801FBB4
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -348,7 +348,7 @@ _0801FA00
 _0801FA02
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -394,7 +394,7 @@ _0801FA4C
 	ldr r0, _0801FBB4
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -450,7 +450,7 @@ _0801FAC8
 	ldr r0, _0801FBB4
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -479,7 +479,7 @@ _0801FB04
 	ldr r0, _0801FBB4
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -539,7 +539,7 @@ _0801FB84
 	ldr r0, _0801FBB4
 	ldr r0, [r0]
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	b _0801FBB8
 	ALIGN
 _0801FB98 DCDU gUnknown_0803E760
@@ -610,7 +610,7 @@ _0801FC06
 	blo _0801FCF4
 _0801FC2A
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -652,7 +652,7 @@ _0801FC76
 	blo _0801FCF4
 _0801FC80
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -681,7 +681,7 @@ _0801FCB4
 	blo _0801FCF4
 _0801FCBE
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -725,7 +725,7 @@ _0801FCF8
 	blo _0801FDE2
 _0801FD14
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -779,7 +779,7 @@ _0801FD76
 	blo _0801FDE2
 _0801FD80
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0
@@ -808,7 +808,7 @@ _0801FDB4
 	blo _0801FDE2
 _0801FDBE
 	bl sub_80050FA
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
 	movs r2, #0

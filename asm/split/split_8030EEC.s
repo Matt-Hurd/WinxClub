@@ -4,14 +4,14 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT sub_801F286
+	IMPORT NonHostileScriptGroups__TakeDamage
 	IMPORT sub_801F450
 	IMPORT sub_8028C2E
 	IMPORT sub_802B0CA
 	IMPORT __call_via_r1
 
-	thumb_func_start sub_8030EEC
-sub_8030EEC
+	thumb_func_start Monster__Intersect
+Monster__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -38,7 +38,7 @@ _08030F0C
 	cmp r0, #0
 	beq _08030F2C
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -90,7 +90,7 @@ _08030F69
 	DCB 0x06
 loc_8030f6a
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08030FDE
 loc_8030f72
 	adds r0, r4, #0
@@ -136,15 +136,15 @@ loc_8030f8c
 	b _08030FDE
 _08030FC8
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08030FDE
 loc_8030fd0
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	b _08030FDE
 _08030FD8
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 _08030FDE
 	movs r0, #0xb6
 	ldrsb r0, [r0, r4]
@@ -179,8 +179,8 @@ _08031012
 	movs r0, #1
 	b _08030F04
 
-	thumb_func_start sub_8031020
-sub_8031020
+	thumb_func_start Monster_TakeDamage
+Monster_TakeDamage
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -202,13 +202,13 @@ sub_8031020
 	adds r0, r0, r1
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl sub_801F286
+	bl NonHostileScriptGroups__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8031056
-sub_8031056
+	non_word_aligned_thumb_func_start Monster__50
+Monster__50
 	ldr r1, _08031088
 	push {r3, lr}
 	ldr r1, [r1]

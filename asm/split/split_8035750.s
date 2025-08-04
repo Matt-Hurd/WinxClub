@@ -9,21 +9,21 @@
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_80179BE
-	IMPORT sub_801E124
-	IMPORT sub_801E2DA
+	IMPORT FewScriptGroups__20
+	IMPORT MostNonHostileScriptGroups__Dying
 	IMPORT sub_801EBCA
 	IMPORT sub_80268AC
 	IMPORT sub_8028C2E
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8035750
-sub_8035750
+	thumb_func_start ToggleObjectGroup__20
+ToggleObjectGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_801E124
-	bl sub_8005106
+	bl FewScriptGroups__20
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
 	adds r3, r5, #0
@@ -61,8 +61,8 @@ _0803577C
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_80357A4
-sub_80357A4
+	thumb_func_start ToggleObjectGroup__10
+ToggleObjectGroup__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -150,8 +150,8 @@ _08035846
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8035852
-sub_8035852
+	non_word_aligned_thumb_func_start ToggleObjectGroup__48
+ToggleObjectGroup__48
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -183,11 +183,11 @@ _08035884
 	pop {r3}
 	bx r3
 _0803588A
-	bl sub_801E2DA
+	bl MostNonHostileScriptGroups__Dying
 	b _08035884
 
-	thumb_func_start sub_8035890
-sub_8035890
+	thumb_func_start ToggleObjectGroup__44
+ToggleObjectGroup__44
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _08035B9C
 	adds r5, r0, #0
@@ -343,8 +343,8 @@ _080359A2
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_80359C0
-sub_80359C0
+	thumb_func_start ToggleObjectGroup__40
+ToggleObjectGroup__40
 	push {r4, r5, r6, r7, lr}
 	ldr r4, _08035BA8
 	adds r3, r1, #0

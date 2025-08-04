@@ -6,7 +6,7 @@
 	IMPORT gUnknown_030034F8
 	IMPORT gUnknown_080414B8
 	IMPORT gUnknown_08051090
-	IMPORT sub_8018386
+	IMPORT SetNextGlobalFunction
 	IMPORT sub_802459E
 	IMPORT sub_8028C2E
 	IMPORT sub_802B2F8
@@ -453,7 +453,7 @@ _0802B9B0
 	cmp r0, #1
 	bne _0802B9F4
 	movs r0, #2
-	bl sub_8018386
+	bl SetNextGlobalFunction
 _0802B9F4
 	adds r0, r4, #0
 	bl sub_802B2F8

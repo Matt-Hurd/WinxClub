@@ -5,7 +5,7 @@
 	IMPORT sub_80004CA
 	IMPORT sub_80004F8
 	IMPORT sub_8000CCE
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT sub_800B8CE
 	IMPORT __16__rt_memclr_w
 	IMPORT __vec_ctor_p__FPvUiT2bPFPv_v
@@ -37,7 +37,7 @@ sub_800106A
 	ldr r0, _080012E4
 	ldr r0, [r0]
 	bl sub_800B8CE
-	bl sub_8005106
+	bl GetEWRAMStart
 	lsls r6, r5, #1
 	adds r6, r6, r5
 	lsls r6, r6, #5
@@ -94,7 +94,7 @@ _080010DC
 	lsrs r0, r0, #0x10
 	lsls r0, r0, #0x10
 	str r0, [r4, #0x28]
-	bl sub_8005106
+	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r5, #3
 	adds r0, #8

@@ -30,7 +30,7 @@
 	IMPORT sub_8013DEA
 	IMPORT sub_8013FF8
 	IMPORT sub_801402C
-	IMPORT sub_80180BE
+	IMPORT FadeToBlack
 	IMPORT sub_8028B2C
 	IMPORT sub_802EF0A
 	IMPORT sub_8031622
@@ -38,8 +38,8 @@
 	IMPORT __call_via_r2
 	IMPORT __call_via_r7
 
-	thumb_func_start sub_800ED7C
-sub_800ED7C
+	thumb_func_start PlayMovie
+PlayMovie
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r3, _0800EFC4
@@ -227,7 +227,7 @@ _0800EEDE
 	bl sub_800B12C
 	ldr r0, _0800EFCC
 	strh r4, [r0, #8]
-	bl sub_80180BE
+	bl FadeToBlack
 	ldr r3, _0800EFF0
 	add sp, r3
 	pop {r4, r5, r6, r7}
@@ -271,8 +271,8 @@ _0800EF52
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_800EF60
-sub_800EF60
+	thumb_func_start maybeLoadOrRenderBgImage
+maybeLoadOrRenderBgImage
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EFD0

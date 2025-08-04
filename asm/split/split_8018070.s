@@ -21,8 +21,8 @@
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8018070
-sub_8018070
+	thumb_func_start FadeToImage
+FadeToImage
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -58,8 +58,8 @@ _080180B6
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80180BE
-sub_80180BE
+	non_word_aligned_thumb_func_start FadeToBlack
+FadeToBlack
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -98,7 +98,7 @@ _08018106
 
 	non_word_aligned_thumb_func_start sub_801810E
 sub_801810E
-	b sub_80180BE
+	b FadeToBlack
 
 	thumb_func_start sub_8018110
 sub_8018110

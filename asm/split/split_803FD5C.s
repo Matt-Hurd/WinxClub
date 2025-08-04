@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EB4
-	IMPORT sub_8005106
+	IMPORT GetEWRAMStart
 	IMPORT CpuSet
 	IMPORT sub_803DA9C
 
@@ -67,7 +67,7 @@ sub_803FDB8
 	ldr r1, [r4, #0x14]
 	cmp r0, r1
 	bne _0803FE4C
-	bl sub_8005106
+	bl GetEWRAMStart
 	movs r7, #1
 	lsls r7, r7, #9
 	adds r1, r0, #0

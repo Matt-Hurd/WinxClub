@@ -18,8 +18,8 @@
 	IMPORT sub_80138E2
 	IMPORT sub_8013946
 	IMPORT sub_80147FA
-	IMPORT sub_8018070
-	IMPORT sub_80180BE
+	IMPORT FadeToImage
+	IMPORT FadeToBlack
 	IMPORT sub_80189BC
 	IMPORT sub_8018C48
 	IMPORT sub_8028C2E
@@ -31,7 +31,7 @@
 sub_801ABFC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
-	bl sub_80180BE
+	bl FadeToBlack
 	adds r0, r6, #0
 	adds r0, #0xff
 	adds r0, #0x8d
@@ -351,7 +351,7 @@ _0801AE80
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_801AC60
-	bl sub_8018070
+	bl FadeToImage
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}
