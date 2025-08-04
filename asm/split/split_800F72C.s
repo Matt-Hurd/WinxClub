@@ -12,7 +12,7 @@
 	IMPORT __call_via_r1
 	IMPORT __16_ll_mulls
 	IMPORT __16_ll_ushift_r
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DAC0
 	IMPORT sub_80130DC
@@ -24,7 +24,7 @@ sub_800F72C
 	adds r4, r0, #0
 	bne _0800F744
 	movs r0, #0x8c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0800F744
 	adds r0, r4, #0

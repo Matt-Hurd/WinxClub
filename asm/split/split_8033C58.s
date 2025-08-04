@@ -24,7 +24,7 @@
 	IMPORT __call_via_r1
 	IMPORT __call_via_r7
 	IMPORT __16__rt_udiv
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F654
 	IMPORT sub_803F6B4
@@ -39,7 +39,7 @@ sub_8033C58
 	adds r4, r0, #0
 	bne _08033C70
 	movs r0, #0x58
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08033C70
 	adds r0, r4, #0

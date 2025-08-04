@@ -4,7 +4,6 @@
 #include "winxclub.h"
 #include "GameObj.hpp"
 
-extern "C" void* maybeMallocEWRAM(unsigned int size);
 extern "C" void Init_and_add_some_object(void* obj);
 extern "C" void* sub_803DA18(void* obj);
 

@@ -1,14 +1,14 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803E2C4
+	IMPORT __VTABLE__301Npc
 	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
 	IMPORT sub_801EBCA
 	IMPORT __call_via_r1
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 
@@ -18,7 +18,7 @@ sub_80253A8
 	adds r4, r0, #0
 	bne _080253C0
 	movs r0, #0xa0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _080253C0
 	adds r0, r4, #0
@@ -74,8 +74,8 @@ _080253C0
 	adds r0, r4, #0
 	b _080253BA
 
-	non_word_aligned_thumb_func_start sub_802541E
-sub_802541E
+	non_word_aligned_thumb_func_start Npc__ctor
+Npc__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802576C
@@ -567,7 +567,7 @@ sub_8025726
 _08025768
 	b _0802554A
 	ALIGN
-_0802576C DCDU gUnknown_0803E2C4
+_0802576C DCDU __VTABLE__301Npc
 _08025770 DCDU 0x2063704E
 _08025774 DCDU 0x69726353
 _08025778 DCDU 0x47207470

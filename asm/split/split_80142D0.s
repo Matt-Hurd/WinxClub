@@ -11,7 +11,7 @@
 	IMPORT sub_801352C
 	IMPORT sub_8013E2C
 	IMPORT VBlankIntrWait
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F464
 	IMPORT sub_803F55C
@@ -170,7 +170,7 @@ sub_80143E0
 	adds r4, r0, #0
 	bne _080143F8
 	movs r0, #0x78
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _080143F8
 	adds r0, r4, #0

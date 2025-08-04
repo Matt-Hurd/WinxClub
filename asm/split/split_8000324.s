@@ -14,7 +14,7 @@
 	IMPORT sub_800C4F0
 	IMPORT sub_800CD28
 	IMPORT __16__rt_memclr_w
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 
 	thumb_func_start sub_8000324
 sub_8000324
@@ -249,7 +249,7 @@ sub_80004CA
 	cmp r0, #0
 	bne _080004DA
 	movs r0, #0x60
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _080004E0
 _080004DA
@@ -267,7 +267,7 @@ sub_80004E6
 	cmp r0, #0
 	bne _080004F2
 	movs r0, #0x60
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 _080004F2
 	add sp, #4
 	pop {r3}

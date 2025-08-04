@@ -26,7 +26,7 @@
 	IMPORT __call_via_r1
 	IMPORT __call_via_r5
 	IMPORT __call_via_r6
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
@@ -40,7 +40,7 @@ sub_8036CE4
 	adds r4, r0, #0
 	bne _08036CFC
 	movs r0, #0xe0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08036CFC
 	adds r0, r4, #0

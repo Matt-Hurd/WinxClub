@@ -25,7 +25,7 @@
 	IMPORT sub_802E02A
 	IMPORT __call_via_r6
 	IMPORT __call_via_r7
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803DA80
 
@@ -38,7 +38,7 @@ sub_801F794
 	cmp r0, #0
 	bne _0801F7B2
 	adds r0, r5, #0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0801F7B2
 	adds r0, r4, #0

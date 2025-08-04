@@ -15,7 +15,7 @@
 	IMPORT __16__rt_memclr_w
 	IMPORT __16__rt_memset
 	IMPORT __vecmap1c__FPvT1iPFPv_v
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_804036C
 
@@ -25,7 +25,7 @@ sub_8001A60
 	cmp r0, #0
 	bne _08001A70
 	movs r0, #0x2c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _08001A8A
 _08001A70
@@ -53,7 +53,7 @@ sub_8001A90
 	adds r4, r0, #0
 	bne _08001AA8
 	ldr r0, _08001E7C
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08001AA8
 	adds r0, r4, #0

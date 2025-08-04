@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
-	IMPORT gUnknown_0803E2A0
+	IMPORT __VTABLE__300Unknown
 	IMPORT sub_80003F4
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
@@ -17,7 +17,7 @@
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT sub_800CD58
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_802E418
@@ -26,7 +26,7 @@ sub_802E418
 	cmp r0, #0
 	bne _0802E428
 	movs r0, #0x3c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _0802E474
 _0802E428
@@ -537,7 +537,7 @@ _0802E7EA
 	pop {r3}
 	bx r3
 	ALIGN
-_0802E7F0 DCDU gUnknown_0803E2A0
+_0802E7F0 DCDU __VTABLE__300Unknown
 _0802E7F4 DCDU gUnknown_03003EB8
 _0802E7F8 DCDU gUnknown_03003EA0
 _0802E7FC DCDU 0x0010BE20

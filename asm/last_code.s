@@ -23,7 +23,7 @@
 	IMPORT CpuSet
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT __da__FPv
 	IMPORT sub_803DA9C
@@ -2570,7 +2570,7 @@ sub_8053CCC
 	LDR ip, _08053CD4
 	bx ip
 	ALIGN
-_08053CD4 DCDU maybeMallocEWRAM
+_08053CD4 DCDU __nw__FUi
 
 	arm_func_start sub_8053CD8
 sub_8053CD8

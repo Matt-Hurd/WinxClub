@@ -14,7 +14,7 @@
 	IMPORT sub_8012334
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_80403A4
 
@@ -43,7 +43,7 @@ sub_80268C8
 	cmp r0, #0
 	bne _080268D8
 	movs r0, #0x20
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _08026902
 _080268D8
@@ -79,7 +79,7 @@ sub_8026908
 	adds r4, r0, #0
 	bne _08026920
 	ldr r0, _08026CE0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08026920
 	adds r0, r4, #0

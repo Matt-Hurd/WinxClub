@@ -9,7 +9,7 @@
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8029070
@@ -18,7 +18,7 @@ sub_8029070
 	adds r4, r0, #0
 	bne _08029088
 	movs r0, #0xe0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08029088
 	adds r0, r4, #0

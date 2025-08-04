@@ -758,8 +758,8 @@ _0803D9EA
 	ALIGN
 _0803D9F4 DCDU gUnknown_030033E8
 
-	thumb_func_start maybeMallocEWRAM
-maybeMallocEWRAM
+	thumb_func_start __nw__FUi
+__nw__FUi
 	adds r1, r0, #0
 	ldr r0, _0803DA14
 	push {r3, lr}

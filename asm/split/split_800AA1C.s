@@ -5,7 +5,7 @@
 	IMPORT sub_8006FE4
 	IMPORT sub_8007040
 	IMPORT sub_8007104
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_800802E
 	IMPORT sub_800805E
 	IMPORT sub_803DA18
@@ -288,7 +288,7 @@ sub_800AD8C
 	movs r4, r0
 	bne _0800ADB0
 	mov r0, #0x80
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}

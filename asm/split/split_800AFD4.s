@@ -5,7 +5,7 @@
 	IMPORT gUnknown_0803EB34
 	IMPORT gUnknown_0803ECD4
 	IMPORT VBlankIntrWait
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800AFD4
@@ -14,7 +14,7 @@ sub_800AFD4
 	cmp r0, #0
 	bne _0800AFE4
 	movs r0, #0xc
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _0800B014
 _0800AFE4

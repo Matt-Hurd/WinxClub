@@ -9,7 +9,7 @@
 	IMPORT __16__rt_memcpy
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8004780
@@ -96,7 +96,7 @@ sub_80047EC
 	cmp r0, #0
 	bne _080047FC
 	movs r0, #0x14
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _0800480C
 _080047FC
@@ -277,7 +277,7 @@ sub_8004924
 	cmp r0, #0
 	bne _08004934
 	movs r0, #0x18
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _08004964
 _08004934

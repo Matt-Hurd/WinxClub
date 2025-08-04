@@ -14,7 +14,7 @@
 	IMPORT sub_8017A0A
 	IMPORT __call_via_r1
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F72C
 	IMPORT sub_803FC68
@@ -26,7 +26,7 @@ Init_and_add_some_object
 	adds r4, r0, #0
 	bne _0801D57C
 	movs r0, #0xa0
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0801D57C
 	adds r0, r4, #0

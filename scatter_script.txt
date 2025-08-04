@@ -557,9 +557,93 @@ LOAD_ROM_1 0x08000000
     {
         *(Veneer$$Code)
     }
-    DATABLOCK1 0x0803E2A0
+    vtables 0x0803E2A0
     {
-        mid_data.o (+RW)
+        vtable00.o
+        vtable01_NpcScriptGroup.o
+        vtable02.o
+        vtable03.o
+        vtable04.o
+        vtable05.o
+        vtable06.o
+        vtable07.o
+        vtable08.o
+        vtable09.o
+        vtable10.o
+        vtable11.o
+        vtable12.o
+        vtable13.o
+        vtable14.o
+        vtable15.o
+        vtable16.o
+        vtable17.o
+        vtable18.o
+        vtable19.o
+        vtable20.o
+        vtable21.o
+        vtable22.o
+        vtable23.o
+        vtable24.o
+        vtable25.o
+        vtable26.o
+        vtable27.o
+        vtable28.o
+        vtable29.o
+        vtable30.o
+        vtable31.o
+        vtable32.o
+        vtable33.o
+        vtable34.o
+        vtable35.o
+        vtable36.o
+        vtable37.o
+        vtable38.o
+        vtable39.o
+        vtable40.o
+        vtable41.o
+        vtable42.o
+        vtable43.o
+        vtable44.o
+        vtable45.o
+        vtable46.o
+        vtable47.o
+        vtable48.o
+        vtable49.o
+        vtable50.o
+        vtable51.o
+        vtable52.o
+        vtable53.o
+        vtable54.o
+        vtable55.o
+        vtable56.o
+        vtable57.o
+        vtable58.o
+        vtable59.o
+        vtable60.o
+        vtable61.o
+        vtable62.o
+        vtable63.o
+        vtable64.o
+        vtable65.o
+        vtable66.o
+        vtable67.o
+        vtable68.o
+        vtable69.o
+        vtable70.o
+        vtable71.o
+        vtable72.o
+        vtable73.o
+        vtable74.o
+        vtable75.o
+        vtable76.o
+        vtable77.o
+        vtable78.o
+        vtable79.o
+        vtable80.o
+        vtable81.o
+        vtable82.o
+        vtable83.o
+        vtable84.o
     }
     .text4 0x0803EF1C
     {

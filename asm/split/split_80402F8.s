@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003E90
 	IMPORT gUnknown_0803ECCC
 	IMPORT __call_via_r2
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_80402F8
@@ -75,7 +75,7 @@ sub_804036C
 	cmp r0, #0
 	bne _08040378
 	movs r0, #0x58
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 _08040378
 	add sp, #4
 	pop {r3}

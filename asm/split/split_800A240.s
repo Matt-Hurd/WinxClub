@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003EB4
 	IMPORT gUnknown_0803EE14
 	IMPORT sub_80095B8
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_800802E
 	IMPORT sub_800808E
 	IMPORT CpuSet
@@ -37,7 +37,7 @@ _0800A270
 	movs r4, r0
 	bne _0800A294
 	mov r0, #0x3c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}

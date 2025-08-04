@@ -8,7 +8,7 @@
 	IMPORT __rt_memcpy_w
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT gUnknown_03000000
 	IMPORT gUnknown_03000058
 
@@ -18,7 +18,7 @@ sub_80103C8
 	cmp r0, #0
 	bne _080103D8
 	movs r0, #0x1c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _080103E6
 _080103D8

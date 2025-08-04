@@ -9,7 +9,7 @@
 	IMPORT sub_801DB90
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start MaybeHandleTransitionToArea
@@ -28,7 +28,7 @@ sub_8026024
 	adds r4, r0, #0
 	bne _0802603C
 	movs r0, #0xa4
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0802603C
 	adds r0, r4, #0

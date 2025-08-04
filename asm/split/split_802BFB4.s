@@ -22,7 +22,7 @@
 	IMPORT sub_802E4AA
 	IMPORT sub_802E4EE
 	IMPORT __call_via_r1
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803FF24
 	IMPORT sub_8040148
@@ -43,7 +43,7 @@ sub_802BFBC
 	adds r4, r0, #0
 	bne _0802BFD4
 	movs r0, #0x4c
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0802BFD4
 	adds r0, r4, #0

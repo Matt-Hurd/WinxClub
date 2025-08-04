@@ -1,0 +1,18 @@
+; This file was auto-generated for the vtable: gUnknown_0803E350
+
+    AREA data, DATA, READONLY
+
+    GLOBAL gUnknown_0803E350
+
+gUnknown_0803E350
+    DCD     0xFFFF9B25
+    DCD     0xFFFF9B63
+    DCD     0xFFFF9E71
+    DCD     0xFFFF019F
+    DCD     0xFFFFA0DD
+    DCD     0xFFFFA11D
+    DCD     0xFFFF04B1
+    DCD     0xFFFFA1CF
+    DCD     0xFFFFA189
+
+    END

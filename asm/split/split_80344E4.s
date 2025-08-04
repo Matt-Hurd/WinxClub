@@ -9,7 +9,7 @@
 	IMPORT sub_8029290
 	IMPORT sub_80292E4
 	IMPORT sub_80294EE
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_80344E4
@@ -18,7 +18,7 @@ sub_80344E4
 	adds r4, r0, #0
 	bne _080344FC
 	movs r0, #0xe8
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _080344FC
 	adds r0, r4, #0

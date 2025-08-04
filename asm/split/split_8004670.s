@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT sub_803D66C
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 
 	thumb_func_start sub_8004670
 sub_8004670
@@ -21,7 +21,7 @@ sub_8004678
 	cmp r0, #0
 	bne _0800468A
 	movs r0, #0x10
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _080046A6
 _0800468A
@@ -106,7 +106,7 @@ sub_80046F8
 	cmp r0, #0
 	bne _08004708
 	movs r0, #6
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _08004710
 _08004708
@@ -125,7 +125,7 @@ sub_8004716
 	cmp r0, #0
 	bne _08004726
 	movs r0, #0xc
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	cmp r0, #0
 	beq _0800473C
 _08004726

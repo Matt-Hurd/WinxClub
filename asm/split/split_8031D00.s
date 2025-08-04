@@ -10,7 +10,7 @@
 	IMPORT sub_800116A
 	IMPORT sub_802E418
 	IMPORT sub_802E4AA
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F38C
 	IMPORT sub_803FF24
@@ -25,7 +25,7 @@ sub_8031D00
 	adds r4, r0, #0
 	bne _08031D18
 	movs r0, #0x54
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08031D18
 	adds r0, r4, #0

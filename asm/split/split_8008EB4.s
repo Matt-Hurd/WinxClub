@@ -6,7 +6,7 @@
 	IMPORT gUnknown_0804AB34
 	IMPORT __rt_memclr_w
 	IMPORT __rt_memcpy
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_800802E
 	IMPORT sub_800805E
 	IMPORT sub_803DA18
@@ -19,7 +19,7 @@ sub_8008EB4
 	bne _08008EDC
 	mov r0, #0x124
 	add r0, r0, #0x5400
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}

@@ -29,7 +29,7 @@
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
 	IMPORT __16_ll_srdv
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 	IMPORT sub_803F38C
 	IMPORT sub_803FF24
@@ -45,7 +45,7 @@ sub_8032A90
 	adds r4, r0, #0
 	bne _08032AA8
 	movs r0, #0x58
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _08032AA8
 	adds r0, r4, #0

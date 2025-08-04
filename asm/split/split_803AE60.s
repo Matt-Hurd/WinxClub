@@ -17,7 +17,7 @@
 	IMPORT __call_via_r5
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_803AE60
@@ -33,7 +33,7 @@ sub_803AE68
 	adds r4, r0, #0
 	bne _0803AE80
 	movs r0, #0x44
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	adds r4, r0, #0
 	bne _0803AE80
 	adds r0, r4, #0

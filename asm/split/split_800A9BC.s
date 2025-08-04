@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_0803EE40
-	IMPORT maybeMallocEWRAM
+	IMPORT __nw__FUi
 	IMPORT sub_800802E
 
 	arm_func_start sub_800A9BC
@@ -12,7 +12,7 @@ _0800A9BC
 	movs r4, r0
 	bne _0800A9E0
 	mov r0, #0x30
-	bl maybeMallocEWRAM
+	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
