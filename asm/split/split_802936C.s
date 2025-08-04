@@ -29,12 +29,12 @@ sub_802936C
 	ldr r5, [r4, #0x30]
 	ldr r0, [r5]
 	lsls r0, r0, #0x1c
-	bmi _08029390
+	bmi %1
 	ldr r0, _080296BC
 	adds r1, r5, #0
 	ldr r0, [r0]
 	bl sub_80012F0
-_08029390
+1
 	ldr r0, [r5]
 	movs r1, #8
 	bics r0, r1
@@ -49,7 +49,7 @@ _08029390
 	ldr r0, [r6, #0xc]
 	lsls r0, r0, #0xd
 	lsrs r1, r0, #0x1c
-	beq _080293C6
+	beq %3
 	lsrs r0, r0, #0x1c
 	ldr r1, _080296C0
 	lsls r0, r0, #1
@@ -58,15 +58,15 @@ _08029390
 	ldrh r1, [r0, #0x1e]
 	ldr r0, [r4, #0x30]
 	bl sub_800065C
-_080293C0
+2
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_080293C6
+3
 	ldr r1, _080296C4
 	ldr r0, [r4, #0x30]
 	bl sub_800065C
-	b _080293C0
+	b %2
 
 	thumb_func_start sub_80293D0
 sub_80293D0
@@ -78,10 +78,10 @@ sub_80293D0
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #5
 	lsrs r0, r0, #0x17
-	beq _080293E8
+	beq %4
 	adds r0, r5, #0
 	bl sub_802936C
-_080293E8
+4
 	ldr r1, _080296C8
 	ldr r0, [r4, #0x2c]
 	movs r2, #7
@@ -118,20 +118,20 @@ HostileCreature__Dying
 	ldrh r4, [r3, #8]
 	adds r2, #0x80
 	cmp r4, #0xd
-	beq _0802947A
-	bgt _0802945C
+	beq %8
+	bgt %7
 	cmp r4, #2
-	beq _080294A6
+	beq %10
 	cmp r4, #3
-	beq _08029456
+	beq %6
 	cmp r4, #4
-	bne _080294E8
+	bne %12
 	ldr r1, [r3, #4]
 	movs r0, #1
 	lsls r1, r1, #0x10
-	bne _08029446
+	bne %5
 	movs r0, #0
-_08029446
+5
 	movs r3, #1
 	lsls r3, r3, #0xe
 	ldr r1, [r2, #0x34]
@@ -140,17 +140,17 @@ _08029446
 	bics r1, r3
 	orrs r0, r1
 	str r0, [r2, #0x34]
-_08029456
+6
 	pop {r4}
 	pop {r3}
 	bx r3
-_0802945C
+7
 	cmp r4, #0xe
-	beq _08029494
+	beq %9
 	cmp r4, #0x13
-	beq _080294AE
+	beq %11
 	cmp r4, #0x18
-	bne _080294E8
+	bne %12
 	ldr r0, [r3, #4]
 	ldr r3, _080296CC
 	ldr r1, [r2, #0x2c]
@@ -159,8 +159,8 @@ _0802945C
 	ands r1, r3
 	orrs r0, r1
 	str r0, [r2, #0x2c]
-	b _08029456
-_0802947A
+	b %6
+8
 	ldr r1, [r3, #4]
 	ldr r3, [r2, #0x30]
 	ldr r4, _080296D0
@@ -173,8 +173,8 @@ _0802947A
 	lsrs r1, r1, #0x17
 	adds r0, #0xb0
 	strb r1, [r0, #6]
-	b _08029456
-_08029494
+	b %6
+9
 	ldr r1, [r2, #0x30]
 	ldr r0, [r3, #4]
 	lsrs r1, r1, #7
@@ -183,12 +183,12 @@ _08029494
 	lsrs r0, r0, #0x19
 	orrs r0, r1
 	str r0, [r2, #0x30]
-	b _08029456
-_080294A6
+	b %6
+10
 	ldr r1, [r3, #4]
 	bl sub_80293D0
-	b _08029456
-_080294AE
+	b %6
+11
 	ldr r0, _080296D4
 	movs r2, #5
 	ldr r0, [r0]
@@ -217,10 +217,10 @@ _080294AE
 	strb r1, [r0]
 	strb r1, [r0, #1]
 	strb r1, [r0, #2]
-	b _08029456
-_080294E8
+	b %6
+12
 	bl DefaultScriptGroups__Dying
-	b _08029456
+	b %6
 
 	non_word_aligned_thumb_func_start sub_80294EE
 sub_80294EE
@@ -240,32 +240,32 @@ sub_80294EE
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1d
 	cmp r0, #0xb
-	bhs _0802959C
+	bhs %24
 	add r3, pc, #0x4
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
-_08029518
+13
 	DCB 0x05
-_08029519
+14
 	DCB 0x05
-_0802951A
+15
 	DCB 0x1E
-_0802951B
+16
 	DCB 0x1E
-_0802951C
+17
 	DCB 0x1E
-_0802951D
+18
 	DCB 0x1E
-_0802951E
+19
 	DCB 0x41
-_0802951F
+20
 	DCB 0x30
-_08029520
+21
 	DCB 0x30
-_08029521
+22
 	DCB 0x30
-_08029522
+23
 	DCB 0x30, 0x00
 loc_8029524
 	bl rand
@@ -290,7 +290,7 @@ loc_8029524
 	lsls r2, r2, #0x16
 	bics r1, r2
 	str r1, [r0]
-	b _0802959C
+	b %24
 loc_8029556
 	ldr r0, [r4, #0x2c]
 	movs r2, #1
@@ -309,7 +309,7 @@ loc_8029556
 	lsls r2, r2, #0x16
 	bics r1, r2
 	str r1, [r0]
-	b _0802959C
+	b %24
 loc_802957a
 	ldr r0, [r4, #0x2c]
 	movs r2, #1
@@ -328,7 +328,7 @@ loc_802957a
 	lsls r2, r2, #0x16
 	orrs r1, r2
 	str r1, [r0]
-_0802959C
+24
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1a
@@ -336,23 +336,23 @@ _0802959C
 	adds r0, #0x80
 	ldr r0, [r0, #0x38]
 	lsls r0, r0, #0x1f
-	bmi _080295BE
+	bmi %26
 	ldr r1, [r5]
 	adds r0, r5, #0
 	ldr r2, [r1, #0x58]
 	adds r1, r2, r1
 	bl __call_via_r1
-_080295B8
+25
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_080295BE
+26
 	ldr r1, [r5]
 	adds r0, r5, #0
 	ldr r2, [r1, #0x5c]
 	adds r1, r2, r1
 	bl __call_via_r1
-	b _080295B8
+	b %25
 
 	thumb_func_start HostileCreature__Attack
 HostileCreature__Attack
@@ -374,7 +374,7 @@ HostileCreature__Attack
 	ldr r0, [r0, #0x3c]
 	lsls r0, r0, #0x12
 	lsrs r0, r0, #0x1a
-	beq _080296B8
+	beq %33
 	ldr r0, _080296D8
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
@@ -382,13 +382,13 @@ HostileCreature__Attack
 	movs r1, #0
 	mvns r1, r1
 	cmp r2, #0
-	beq _0802960E
+	beq %27
 	bl sub_8000D5A
 	ldr r0, [r0, #0x24]
 	ldr r1, [r5, #0x44]
 	subs r0, r1, r0
 	asrs r1, r0, #3
-_0802960E
+27
 	ldr r0, [r4, #0x7c]
 	lsls r1, r1, #0x10
 	lsls r0, r0, #4
@@ -398,7 +398,7 @@ _0802960E
 	ldrh r2, [r2, #0x10]
 	lsrs r1, r1, #0x10
 	cmp r1, r2
-	bne _080296B8
+	bne %33
 	ldr r1, [r4, #0x30]
 	ldr r2, _080296DC
 	ldr r1, [r1, #0x10]
@@ -407,43 +407,43 @@ _0802960E
 	lsrs r1, r1, #0x16
 	lsls r1, r1, #0x10
 	lsrs r0, r0, #0x1c
-	beq _0802964E
+	beq %28
 	cmp r0, #1
-	beq _0802965C
+	beq %29
 	cmp r0, #2
-	beq _08029668
+	beq %30
 	cmp r0, #3
-	bne _080296B8
+	bne %33
 	ldr r0, [r2]
 	ldr r2, [r4, #0x5c]
 	subs r0, r7, r0
 	subs r1, r2, r1
 	cmp r0, r1
-	bgt _080296B8
-	b _08029674
-_0802964E
+	bgt %33
+	b %31
+28
 	ldr r0, [r2]
 	ldr r2, [r4, #0x58]
 	subs r0, r6, r0
 	adds r1, r2, r1
 	cmp r0, r1
-	blt _080296B8
-	b _08029674
-_0802965C
+	blt %33
+	b %31
+29
 	ldr r0, [r2]
 	ldr r1, [r4, #0x5c]
 	subs r0, r7, r0
 	cmp r0, r1
-	blt _080296B8
-	b _08029674
-_08029668
+	blt %33
+	b %31
+30
 	ldr r0, [r2]
 	ldr r2, [r4, #0x58]
 	adds r0, r6, r0
 	subs r1, r2, r1
 	cmp r0, r1
-	bgt _080296B8
-_08029674
+	bgt %33
+31
 	ldr r0, _080296D8
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
@@ -467,20 +467,20 @@ _08029674
 	lsls r2, r1, #0xd
 	lsrs r2, r2, #0x1b
 	cmp r2, r0
-	bhi _080296B8
+	bhi %33
 	lsls r2, r1, #8
 	lsrs r2, r2, #0x1b
 	cmp r2, r0
-	blo _080296B8
+	blo %33
 	lsls r0, r1, #0x12
 	lsrs r0, r0, #0x1a
-_080296B2
+32
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080296B8
+33
 	movs r0, #0
-	b _080296B2
+	b %32
 	ALIGN
 _080296BC DCDU gUnknown_03003EB8
 _080296C0 DCDU gUnknown_08050FD4

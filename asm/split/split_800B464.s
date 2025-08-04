@@ -33,24 +33,24 @@ sub_800B464
 	ldr r0, [r0]
 	adds r0, #8
 	cmp r1, #0
-	beq _0800B482
+	beq %2
 	cmp r1, #1
-	beq _0800B48C
+	beq %3
 	cmp r1, #2
-	bne _0800B480
+	bne %1
 	ldr r1, [r0]
 	movs r2, #2
 	bics r1, r2
 	str r1, [r0]
-_0800B480
+1
 	bx lr
-_0800B482
+2
 	ldr r1, [r0]
 	lsrs r1, r1, #1
 	lsls r1, r1, #1
 	str r1, [r0]
 	bx lr
-_0800B48C
+3
 	ldr r1, [r0]
 	movs r2, #4
 	bics r1, r2
@@ -65,11 +65,11 @@ sub_800B496
 	adds r0, r1, #0
 	adds r0, #8
 	cmp r2, #0
-	beq _0800B4BE
+	beq %4
 	cmp r2, #1
-	beq _0800B4CA
+	beq %5
 	cmp r2, #2
-	bne _0800B4DC
+	bne %6
 	ldr r2, [r0]
 	movs r3, #2
 	orrs r2, r3
@@ -79,14 +79,14 @@ sub_800B496
 	lsls r1, r1, #5
 	adds r0, r0, r1
 	bx lr
-_0800B4BE
+4
 	ldr r2, [r0]
 	movs r3, #1
 	orrs r2, r3
 	str r2, [r0]
 	ldr r0, [r1, #4]
 	bx lr
-_0800B4CA
+5
 	ldr r2, [r0]
 	movs r3, #4
 	orrs r2, r3
@@ -96,7 +96,7 @@ _0800B4CA
 	lsls r1, r1, #8
 	adds r0, r0, r1
 	bx lr
-_0800B4DC
+6
 	movs r0, #0
 	bx lr
 
@@ -114,17 +114,17 @@ sub_800B4E0
 sub_800B4F0
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0800B508
+	bne %8
 	movs r0, #0x14
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0800B508
+	bne %8
 	adds r0, r4, #0
-_0800B502
+7
 	pop {r4}
 	pop {r3}
 	bx r3
-_0800B508
+8
 	ldr r0, _0800B6D8
 	movs r1, #0x61
 	str r0, [r4]
@@ -154,7 +154,7 @@ _0800B508
 	ldr r1, _0800B6D0
 	bl sub_80114B0
 	adds r0, r4, #0
-	b _0800B502
+	b %7
 
 	thumb_func_start sub_800B548
 sub_800B548
@@ -176,22 +176,22 @@ sub_800B554
 	movs r5, #0
 	lsls r0, r0, #0x1c
 	cmp r0, #0
-	blt _0800B578
+	blt %9
 	movs r2, #0
 	movs r1, #0
 	ldr r0, [r4, #4]
 	bl sub_803D9A8
 	str r5, [r4, #4]
-_0800B578
+9
 	ldr r0, _0800B6D8
 	cmp r6, #0
 	str r0, [r4]
 	ldr r0, _0800B6CC
 	str r5, [r0]
-	beq _0800B58A
+	beq %10
 	adds r0, r4, #0
 	bl sub_803DA18
-_0800B58A
+10
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -204,15 +204,15 @@ sub_800B590
 	bl sub_801175C
 	ldr r0, [r4, #8]
 	lsls r0, r0, #0x1c
-	bmi _0800B5AA
+	bmi %11
 	movs r2, #0
 	movs r1, #0
 	ldr r0, [r4, #4]
 	bl sub_803D9A8
-_0800B5AA
+11
 	movs r6, #8
 	cmp r5, #0
-	bne _0800B5C8
+	bne %12
 	movs r1, #0x61
 	lsls r1, r1, #5
 	movs r3, #0
@@ -223,13 +223,13 @@ _0800B5AA
 	ldr r0, [r4, #8]
 	bics r0, r6
 	str r0, [r4, #8]
-	b _0800B5D0
-_0800B5C8
+	b %13
+12
 	str r5, [r4, #4]
 	ldr r0, [r4, #8]
 	orrs r0, r6
 	str r0, [r4, #8]
-_0800B5D0
+13
 	ldr r0, [r4, #8]
 	movs r1, #2
 	lsrs r0, r0, #1

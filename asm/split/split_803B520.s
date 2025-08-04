@@ -41,17 +41,17 @@ SetEepromTimerIntr
 	ldrh r1, [r1]
 	ands r0, r1
 	cmp r0, #0
-	beq _0803B574
+	beq %2
 	ldr r2, _0803B59C
 	movs r0, #0x80
 	lsls r0, r0, #8
 	adds r1, r0, #0
-_0803B56C
+1
 	ldrh r0, [r2]
 	ands r0, r1
 	cmp r0, #0
-	bne _0803B56C
-_0803B574
+	bne %1
+2
 	ldr r0, _0803B580
 	strh r6, [r0]
 	pop {r4, r5, r6}

@@ -41,7 +41,7 @@ Boss__50
 	lsls r1, r1, #0x1e
 	lsrs r1, r1, #0x1e
 	cmp r1, #2
-	bhs _08034D86
+	bhs %1
 	ldr r2, _08034D90
 	adds r0, #0x80
 	ldr r2, [r2]
@@ -53,7 +53,7 @@ Boss__50
 	lsrs r0, r0, #0x13
 	adds r0, r0, r2
 	bl sub_8028C2E
-_08034D86
+1
 	add sp, #4
 	pop {r3}
 	bx r3

@@ -14,9 +14,9 @@ sub_8041154
 	movs r2, #0
 	str r2, [r3]
 	cmp r1, #0
-	beq _08041168
+	beq %1
 	bl sub_803DA18
-_08041168
+1
 	add sp, #4
 	pop {r3}
 	bx r3

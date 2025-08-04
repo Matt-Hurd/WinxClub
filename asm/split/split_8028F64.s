@@ -56,7 +56,7 @@ sub_8028F64
 	lsls r2, r2, #0x18
 	movs r7, #0
 	cmp r0, #0
-	beq _08028FBA
+	beq %1
 	movs r0, #0
 	ldr r2, _08029050
 	str r0, [sp]
@@ -64,8 +64,8 @@ sub_8028F64
 	subs r1, #0x20
 	mov r0, sp
 	bl CpuSet
-	b _08028FCC
-_08028FBA
+	b %2
+1
 	movs r0, #0
 	str r0, [sp]
 	ldr r0, _08029054
@@ -75,7 +75,7 @@ _08028FBA
 	ldr r1, _08029058
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-_08028FCC
+2
 	add r0, pc, #0x8C
 	bl maybeLoadOrRenderBgImage
 	bl FadeToImage
@@ -110,20 +110,20 @@ _08028FCC
 	str r0, [r1, #8]
 	ldrh r0, [r6]
 	cmp r0, #6
-	bne _08029038
+	bne %4
 	ldr r0, _0802906C
 	ldr r0, [r0]
 	bl sub_801B170
 	movs r0, #0x17
 	bl SetNextGlobalFunction
-_08029032
+3
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08029038
+4
 	movs r0, #0x11
 	bl SetNextGlobalFunction
-	b _08029032
+	b %3
 	ALIGN
 _08029040 DCDU gUnknown_03003E98
 _08029044 DCDU gPlayerEntity

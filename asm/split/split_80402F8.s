@@ -14,56 +14,56 @@ sub_80402F8
 	ldr r0, [r0, #0x30]
 	adds r5, r1, #0
 	cmp r0, #0
-	beq _0804033C
+	beq %3
 	ldrh r0, [r4, #0xe]
 	lsls r1, r0, #0x1f
-	bmi _08040314
+	bmi %1
 	lsls r0, r0, #0x1c
-	bpl _08040322
+	bpl %2
 	ldr r0, [r4, #0x48]
 	cmp r0, #0
-	bne _08040322
-_08040314
+	bne %2
+1
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x4c]
 	adds r2, r2, r1
 	adds r1, r5, #0
 	bl __call_via_r2
-_08040322
+2
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1c
-	bpl _0804033C
+	bpl %3
 	ldr r0, [r4, #0x48]
 	cmp r0, #0
-	beq _0804033C
+	beq %3
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x58]
 	adds r2, r2, r1
 	adds r1, r5, #0
 	bl __call_via_r2
-_0804033C
+3
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1e
-	bpl _08040350
+	bpl %4
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x50]
 	adds r2, r2, r1
 	adds r1, r5, #0
 	bl __call_via_r2
-_08040350
+4
 	ldrh r0, [r4, #0xe]
 	lsls r0, r0, #0x1d
-	bpl _08040364
+	bpl %5
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x54]
 	adds r2, r2, r1
 	adds r1, r5, #0
 	bl __call_via_r2
-_08040364
+5
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -73,10 +73,10 @@ _08040364
 sub_804036C
 	push {r3, lr}
 	cmp r0, #0
-	bne _08040378
+	bne %6
 	movs r0, #0x58
 	bl __nw__FUi
-_08040378
+6
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -91,9 +91,9 @@ sub_8040380
 	movs r2, #0
 	str r2, [r3]
 	cmp r1, #0
-	beq _08040394
+	beq %7
 	bl sub_803DA18
-_08040394
+7
 	add sp, #4
 	pop {r3}
 	bx r3

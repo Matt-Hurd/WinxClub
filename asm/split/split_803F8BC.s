@@ -11,7 +11,7 @@ sub_803F8BC
 	ldr r0, [r0, #0x18]
 	adds r5, r1, #0
 	cmp r0, #0
-	bne _0803F8E2
+	bne %1
 	ldr r0, _0803F900
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -24,7 +24,7 @@ sub_803F8BC
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_0803F8E2
+1
 	ldr r1, [r0, #4]
 	lsls r0, r1, #0x14
 	lsrs r0, r0, #0x18

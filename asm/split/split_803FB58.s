@@ -19,31 +19,31 @@ sub_803FB58
 	lsls r5, r5, #3
 	adds r2, r2, r5
 	cmp r1, #0
-	bne _0803FB78
+	bne %1
 	ldr r1, [r4]
-_0803FB78
+1
 	cmp r1, #0
-	bne _0803FB86
+	bne %2
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x18]
 	str r0, [r4]
 	str r0, [r2]
-	b _0803FB9E
-_0803FB86
+	b %4
+2
 	str r1, [r0, #0x18]
 	ldr r4, [r1, #0x14]
 	str r4, [r0, #0x14]
 	str r0, [r1, #0x14]
 	ldr r4, [r0, #0x14]
 	cmp r4, #0
-	beq _0803FB96
+	beq %3
 	str r0, [r4, #0x18]
-_0803FB96
+3
 	ldr r4, [r2]
 	cmp r4, r1
-	bne _0803FB9E
+	bne %4
 	str r0, [r2]
-_0803FB9E
+4
 	ldrh r0, [r0, #0x10]
 	movs r2, #0x43
 	lsls r2, r2, #3

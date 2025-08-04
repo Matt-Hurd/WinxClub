@@ -13,19 +13,19 @@ sub_803F3E8
 	adds r0, r4, #0
 	movs r5, #0
 	cmp r4, r3
-	bhs _0803F406
+	bhs %1
 	adds r6, r4, r2
 	cmp r6, r1
-	bls _0803F406
+	bls %1
 	adds r4, r6, #0
 	adds r1, r1, r2
 	movs r5, #5
 	lsls r5, r5, #0x15
-_0803F406
+1
 	ldr r6, _0803F45C
 	ldr r6, [r6]
 	cmp r6, #0
-	beq _0803F424
+	beq %3
 	lsls r1, r2, #9
 	movs r2, #1
 	lsls r2, r2, #0x1a
@@ -33,19 +33,19 @@ _0803F406
 	orrs r2, r1
 	adds r1, r3, #0
 	bl CpuSet
-_0803F41E
+2
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0803F424
+3
 	lsls r3, r1, #0x1e
 	ldr r0, _0803F460
-	bmi _0803F432
+	bmi %4
 	lsls r3, r4, #0x1e
-	bmi _0803F432
+	bmi %4
 	lsls r3, r2, #0x1e
-	bpl _0803F446
-_0803F432
+	bpl %5
+4
 	str r4, [r0]
 	str r1, [r0, #4]
 	lsrs r1, r2, #1
@@ -55,8 +55,8 @@ _0803F432
 	orrs r1, r2
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _0803F41E
-_0803F446
+	b %2
+5
 	str r4, [r0]
 	str r1, [r0, #4]
 	lsrs r1, r2, #2
@@ -66,7 +66,7 @@ _0803F446
 	orrs r1, r2
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _0803F41E
+	b %2
 	ALIGN
 _0803F45C DCDU gUnknown_03003EB4
 _0803F460 DCDU REG_DMA3

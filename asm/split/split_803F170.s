@@ -13,18 +13,18 @@ sub_803F170
 	adds r5, r1, #0
 	ldr r1, [r4]
 	ldr r0, [r0]
-	beq _0803F18A
+	beq %1
 	lsls r1, r1, #0x1c
-	bmi _0803F194
+	bmi %2
 	adds r1, r4, #0
 	bl sub_80012F0
-	b _0803F194
-_0803F18A
+	b %2
+1
 	lsls r1, r1, #0x1c
-	bpl _0803F194
+	bpl %2
 	adds r1, r4, #0
 	bl sub_8001338
-_0803F194
+2
 	ldr r0, [r4]
 	movs r1, #8
 	bics r0, r1

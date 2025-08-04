@@ -16,11 +16,11 @@ sub_803FE80
 	adds r5, r2, #0
 	lsls r0, r0, #0x13
 	ldr r6, _0803FEF4
-	bpl _0803FE98
+	bpl %1
 	adds r1, r4, #0
 	ldr r0, [r6]
 	bl sub_800C1CA
-_0803FE98
+1
 	str r7, [r4, #0x10]
 	movs r7, #1
 	adds r0, r4, #0
@@ -32,9 +32,9 @@ _0803FE98
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
 	cmp r0, #9
-	beq _0803FEB6
+	beq %2
 	movs r7, #0
-_0803FEB6
+2
 	ldrh r0, [r4, #0x26]
 	movs r1, #1
 	lsls r1, r1, #0xd
@@ -45,7 +45,7 @@ _0803FEB6
 	strh r0, [r4, #0x26]
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _0803FEE4
+	bmi %3
 	adds r1, r4, #0
 	ldr r0, [r6]
 	bl sub_800BE0E
@@ -57,7 +57,7 @@ _0803FEB6
 	movs r1, #0x80
 	orrs r0, r1
 	str r0, [r4]
-_0803FEE4
+3
 	movs r1, #1
 	ldr r0, [r4]
 	lsls r1, r1, #0x10

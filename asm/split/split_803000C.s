@@ -25,13 +25,13 @@ Bird__10
 	ldr r0, [r5, #0x28]
 	sub sp, #0xc
 	adds r1, r0, #0
-	beq _08030104
+	beq %5
 	movs r0, #0x5a
 	asrs r1, r1, #0x10
 	cmp r1, #0x5a
-	bge _08030026
+	bge %1
 	adds r0, r1, #0
-_08030026
+1
 	lsls r6, r0, #0x10
 	lsrs r6, r6, #0x10
 	adds r0, r6, #0
@@ -76,17 +76,17 @@ _08030026
 	movs r1, #3
 	lsls r1, r1, #0x10
 	cmp r0, r1
-	bge _08030090
+	bge %2
 	movs r1, #1
 	lsls r1, r1, #0xc
 	adds r0, r0, r1
 	str r0, [r5, #0x2c]
-_08030090
+2
 	ldr r0, [r4, #0x2c]
 	movs r2, #0
 	ldrb r1, [r0, #5]
 	cmp r1, #0x20
-	beq _080300B6
+	beq %3
 	ldrh r1, [r0, #0x2a]
 	movs r3, #3
 	lsls r3, r3, #0xa
@@ -97,23 +97,23 @@ _08030090
 	strb r3, [r0, #5]
 	ldr r1, [r0]
 	lsls r3, r1, #0x16
-	bmi _080300B6
+	bmi %3
 	movs r3, #0x80
 	orrs r1, r3
 	str r1, [r0]
-_080300B6
+3
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
-	blt _080300CC
+	blt %4
 	ldr r0, [r4, #0x5c]
 	cmp r0, #0
-	blt _080300CC
+	blt %4
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1f
-	beq _08030116
-_080300CC
+	beq %8
+4
 	str r2, [r4, #0x58]
 	str r2, [r4, #0x5c]
 	str r2, [r5, #0x28]
@@ -141,32 +141,32 @@ _080300CC
 	str r2, [r1, #0x2c]
 	str r3, [r1, #0x30]
 	ldr r0, [r1]
-	b _08030106
-_08030104
-	b _08030110
-_08030106
+	b %6
+5
+	b %7
+6
 	movs r2, #0xff
 	adds r2, #1
 	orrs r0, r2
 	str r0, [r1]
-	b _08030116
-_08030110
+	b %8
+7
 	adds r0, r4, #0
 	bl DefaultScriptGroups__10
-_08030116
+8
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
-	bne _08030176
+	bne %9
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0]
 	lsls r1, r0, #0x1f
-	beq _08030176
+	beq %9
 	lsls r0, r0, #0x15
 	lsrs r0, r0, #0x1f
-	bne _08030176
+	bne %9
 	bl rand
 	lsls r0, r0, #0x19
-	bne _08030176
+	bne %9
 	ldr r0, _080301DC
 	ldr r5, [r4, #0x2c]
 	ldr r0, [r0]
@@ -197,7 +197,7 @@ _08030116
 	str r0, [r5]
 	ldr r0, [r4, #0x2c]
 	bl sub_8000914
-_08030176
+9
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -216,7 +216,7 @@ Bird__20
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _080301AA
+	beq %10
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -224,7 +224,7 @@ Bird__20
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_080301AA
+10
 	strh r5, [r0]
 	strh r5, [r0, #2]
 	strh r5, [r0, #4]

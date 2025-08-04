@@ -34,24 +34,24 @@ sub_803B150
 sub_803B15C
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0803B174
+	bne %2
 	ldr r0, _0803B300
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0803B174
+	bne %2
 	adds r0, r4, #0
-_0803B16E
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0803B174
+2
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_8010574
 	ldr r0, _0803B304
 	str r0, [r4]
 	adds r0, r4, #0
-	b _0803B16E
+	b %1
 
 	thumb_func_start sub_803B184
 sub_803B184
@@ -64,10 +64,10 @@ sub_803B184
 	adds r0, r4, #0
 	bl sub_80105AE
 	cmp r5, #0
-	beq _0803B1A0
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0803B1A0
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -163,9 +163,9 @@ sub_803B1AE
 	lsrs r2, r2, #0x16
 	lsls r3, r0, #8
 	cmp r2, r3
-	bhi _0803B258
+	bhi %4
 	movs r0, #0
-_0803B258
+4
 	movs r2, #0x84
 	str r0, [r2, r4]
 	movs r2, #0
@@ -194,12 +194,12 @@ _0803B258
 	strb r0, [r6, #0xc]
 	movs r3, #0
 	strb r3, [r6, #0xe]
-_0803B296
+5
 	adds r0, r4, #0
 	bl sub_8010D60
 	ldrb r0, [r6, #0xc]
 	cmp r0, #0
-	bne _0803B296
+	bne %5
 	ldrb r1, [r6, #0xe]
 	ldr r0, [r7, #0x24]
 	lsls r3, r1, #1

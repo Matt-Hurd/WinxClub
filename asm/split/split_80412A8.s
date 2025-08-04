@@ -57,40 +57,40 @@ sub_80412A8
 	adds r5, r0, #0
 	adds r1, r6, #0
 	cmp r6, r0
-	bhi _080412FC
+	bhi %1
 	adds r1, r5, #0
-_080412FC
+1
 	adds r1, #3
 	lsrs r0, r1, #2
 	lsls r0, r0, #2
 	adds r0, #4
 	str r0, [sp, #0x1c]
 	lsls r0, r7, #0x1f
-	bpl _0804131A
+	bpl %2
 	movs r3, #0
 	movs r2, #0
 	movs r0, #1
 	ldr r1, [sp, #0x1c]
 	bl sub_803D9C4
 	adds r4, r0, #0
-	b _08041336
-_0804131A
+	b %5
+2
 	ldr r4, [sp, #0x84]
 	cmp r4, #0
-	bne _08041334
+	bne %4
 	movs r1, #0
 	add r0, sp, #0x24
 	ldr r4, [sp, #0x1c]
 	bl gUnknown_03000058
 	adds r0, r4, #0
-_0804132C
+3
 	add sp, #0x8c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08041334
+4
 	ldr r4, [sp, #0x84]
-_08041336
+5
 	ldr r0, [sp, #0x1c]
 	adds r0, r4, r0
 	subs r3, r0, r6
@@ -102,31 +102,31 @@ _08041336
 	bl sub_800529A
 	bl sub_80081A8
 	lsls r0, r7, #0x1e
-	bpl _08041360
+	bpl %6
 	movs r2, #0
 	movs r1, #0
 	ldr r0, _0804141C
 	bl sub_803D984
 	adds r6, r0, #0
-	b _08041362
-_08041360
+	b %7
+6
 	ldr r6, _08041420
-_08041362
+7
 	ldr r0, _08041424
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0804137A
+	beq %8
 	movs r0, #0
 	str r0, [sp, #0x14]
 	add r0, sp, #0x14
 	adds r1, r6, #0
 	ldr r2, _08041428
 	bl CpuSet
-	b _080413A4
-_0804137A
+	b %10
+8
 	lsls r1, r6, #0x1e
 	ldr r0, _0804142C
-	bpl _08041394
+	bpl %9
 	movs r1, #0
 	add r3, sp, #0
 	strh r1, [r3, #0x14]
@@ -136,8 +136,8 @@ _0804137A
 	ldr r1, _08041430
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-	b _080413A4
-_08041394
+	b %10
+9
 	movs r1, #0
 	str r1, [sp, #0x14]
 	add r1, sp, #0x14
@@ -146,7 +146,7 @@ _08041394
 	ldr r1, _08041434
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
-_080413A4
+10
 	ldr r2, _0804141C
 	adds r1, r6, #0
 	add r0, sp, #0x24
@@ -173,17 +173,17 @@ _080413A4
 	add r0, sp, #0x24
 	bl gUnknown_030001E0
 	lsls r0, r7, #0x1e
-	bpl _080413EC
+	bpl %11
 	movs r2, #0
 	movs r1, #0
 	adds r0, r6, #0
 	bl sub_803D9A8
-_080413EC
+11
 	lsls r0, r7, #0x1f
-	bpl _0804140A
+	bpl %12
 	ldr r0, [sp, #0x84]
 	cmp r0, #0
-	beq _0804140A
+	beq %12
 	adds r2, r5, #0
 	adds r1, r4, #0
 	ldr r0, [sp, #0x84]
@@ -192,12 +192,12 @@ _080413EC
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_803D9A8
-_0804140A
+12
 	movs r1, #0
 	add r0, sp, #0x24
 	bl gUnknown_03000058
 	adds r0, r5, #0
-	b _0804132C
+	b %3
 	ALIGN
 _08041418 DCDU gUnknown_03003E84
 _0804141C DCDU 0x0000146C

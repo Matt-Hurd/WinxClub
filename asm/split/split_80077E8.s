@@ -37,19 +37,19 @@ sub_80077E8
 	STR r6, [sp, #0xb0]
 	mov r3, r1
 	mov ip, r0
-_08007850
+1
 	LDR r5, [ip], #4
 	subs r3, r3, #1
 	add r5, r2, r5, lsl #2
 	LDR r8, [r5]
 	add r8, r8, #1
 	STR r8, [r5]
-	bne _08007850
+	bne %1
 	LDR r3, [sp, #0x90]
 	cmp r3, r1
 	movne r3, #1
 	LDRNE r5, [r7]
-	bne _0800789C
+	bne %2
 	LDR r1, [sp, #0x118]
 	mov r0, #0
 	STR r6, [r1]
@@ -57,26 +57,26 @@ _08007850
 	add sp, sp, #0xf0
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-_0800789C
+2
 	LDR ip, [r2, r3, lsl #2]
 	mov sb, r2
 	cmp ip, #0
-	bne _080078B8
+	bne %3
 	add r3, r3, #1
 	cmp r3, #0xf
-	bls _0800789C
-_080078B8
+	bls %2
+3
 	cmp r5, r3
 	movlo r5, r3
 	mov ip, r3
 	mov r2, #0xf
-_080078C8
+4
 	LDR r8, [sb, r2, lsl #2]
 	cmp r8, #0
-	bne _080078DC
+	bne %5
 	subs r2, r2, #1
-	bne _080078C8
-_080078DC
+	bne %4
+5
 	cmp r5, r2
 	movhi r5, r2
 	STR r2, [sp, #0x88]
@@ -84,8 +84,8 @@ _080078DC
 	mov r7, #1
 	MOV r7, r7, LSL r3
 	cmp r3, r2
-	bhs _08007928
-_080078FC
+	bhs %7
+6
 	LDR r8, [sb, r3, lsl #2]
 	sub r7, r7, r8
 	cmp r7, #0
@@ -96,8 +96,8 @@ _080078FC
 	add r3, r3, #1
 	cmp r3, r2
 	MOV r7, r7, LSL #1
-	blo _080078FC
-_08007928
+	blo %6
+7
 	LDR r8, [sb, r2, lsl #2]
 	mov r3, sb
 	sub r7, r7, r8
@@ -115,27 +115,27 @@ _08007928
 	add sb, r8, #8
 	STR r7, [sp, #8]
 	subs r2, r2, #1
-	beq _08007984
-_08007970
+	beq %9
+8
 	LDR fp, [r4], #4
 	subs r2, r2, #1
 	add r7, fp, r7
 	STR r7, [sb], #4
-	bne _08007970
-_08007984
+	bne %8
+9
 	mov r4, r0
-_08007988
+10
 	LDR r0, [r4], #4
 	cmp r0, #0
-	beq _080079A4
+	beq %11
 	LDR r7, [r8, r0, lsl #2]
 	add sb, r7, #1
 	STR sb, [r8, r0, lsl #2]
 	STR r2, [lr, r7, lsl #2]
-_080079A4
+11
 	add r2, r2, #1
 	cmp r2, r1
-	blo _08007988
+	blo %10
 	LDR r1, [sp, #0x88]
 	add r8, sp, #4
 	LDR r1, [r8, r1, lsl #2]
@@ -148,16 +148,16 @@ _080079A4
 	rsb r0, r5, #0
 	mov r7, #0
 	cmp ip, r8
-	bgt _08007C54
+	bgt %28
 	and r8, r5, #0xff
 	add r1, lr, r1, lsl #2
 	add sb, sp, #0xd8
 	STMIA sb, {r1, r8}
-_080079F4
+12
 	add r1, sp, #0x90
 	LDR r1, [r1, ip, lsl #2]
 	subs r3, r1, #1
-	blo _08007C44
+	blo %27
 	add r1, sp, #0x90
 	add r8, r1, ip, lsl #2
 	STR r8, [sp, #0xd4]
@@ -165,12 +165,12 @@ _080079F4
 	sub r1, ip, #1
 	MOV r1, r8, LSL r1
 	STR r1, [sp, #0xd0]
-_08007A20
+13
 	add r1, r0, r5
 	cmp r1, ip
-	bge _08007B2C
+	bge %18
 	add fp, r3, #1
-_08007A30
+14
 	LDR r1, [sp, #0x88]
 	add r0, r0, r5
 	sub sb, r1, r0
@@ -181,23 +181,23 @@ _08007A30
 	MOV r6, r6, LSL r1
 	cmp r6, fp
 	add r4, r4, #1
-	bls _08007A94
+	bls %16
 	cmp r1, sb
 	addlo r1, r1, #1
 	cmplo r1, sb
 	sub r6, r6, fp
 	LDR r8, [sp, #0xd4]
-	bhs _08007A94
-_08007A74
+	bhs %16
+15
 	LDR r7, [r8, #4]!
 	MOV r6, r6, LSL #1
 	cmp r6, r7
-	bls _08007A94
+	bls %16
 	add r1, r1, #1
 	cmp r1, sb
 	sub r6, r6, r7
-	blo _08007A74
-_08007A94
+	blo %15
+16
 	mov r6, #1
 	LDR r7, [sl]
 	MOV r6, r6, LSL r1
@@ -217,7 +217,7 @@ _08007A94
 	STR r8, [sl]
 	LDREQ r1, [sp, #0x118]
 	STREQ r7, [r1]
-	beq _08007B20
+	beq %17
 	add r8, sp, #4
 	STR r2, [r8, r4, lsl #2]
 	LDR r8, [sp, #0xdc]
@@ -233,30 +233,30 @@ _08007A94
 	LDR r8, [sp, #0x80]
 	STR sb, [sp, #0x84]
 	STMIA r1, {r8, sb}
-_08007B20
+17
 	add r1, r0, r5
 	cmp r1, ip
-	blt _08007A30
-_08007B2C
+	blt %14
+18
 	sub sb, ip, r0
 	STRB sb, [sp, #0x81]
 	LDR r1, [sp, #0xd8]
 	cmp r1, lr
 	movls r1, #0xc0
 	STRLSB r1, [sp, #0x80]
-	bls _08007BA4
+	bls %20
 	LDR r1, [lr]
 	LDR r8, [sp, #0xe8]
 	cmp r1, r8
-	bhs _08007B74
+	bhs %19
 	cmp r1, #0x100
 	movhs r8, #0x60
 	movlo r8, #0
 	STRB r8, [sp, #0x80]
 	STR r1, [sp, #0x84]
 	add lr, lr, #4
-	b _08007BA4
-_08007B74
+	b %20
+19
 	LDR r8, [sp, #0xe8]
 	LDR fp, [sp, #0x114]
 	sub r8, r1, r8
@@ -269,14 +269,14 @@ _08007B74
 	LDR r8, [sp, #0xec]
 	LDR r1, [r8, r1, lsl #2]
 	STR r1, [sp, #0x84]
-_08007BA4
+20
 	mov r8, #1
 	MOV r8, r8, LSL sb
 	MOV r1, r2, LSR r0
 	cmp r1, r6
 	STR r8, [sp, #0x8c]
-	bhs _08007BDC
-_08007BBC
+	bhs %22
+21
 	add fp, sp, #0x80
 	LDMIA fp, {sb, fp}
 	add r8, r7, r1, lsl #3
@@ -284,18 +284,18 @@ _08007BBC
 	LDR r8, [sp, #0x8c]
 	add r1, r1, r8
 	cmp r1, r6
-	blo _08007BBC
-_08007BDC
+	blo %21
+22
 	LDR r1, [sp, #0xd0]
 	mov r8, #1
 	tst r2, r1
-	beq _08007BFC
-_08007BEC
+	beq %24
+23
 	eor r2, r2, r1
 	MOV r1, r1, LSR #1
 	tst r2, r1
-	bne _08007BEC
-_08007BFC
+	bne %23
+24
 	eor r2, r2, r1
 	MOV r1, r8, LSL r0
 	add sb, sp, #4
@@ -303,8 +303,8 @@ _08007BFC
 	sub r1, r1, #1
 	and r1, r2, r1
 	cmp r1, fp
-	beq _08007C3C
-_08007C1C
+	beq %26
+25
 	sub r0, r0, r5
 	MOV r1, r8, LSL r0
 	sub r4, r4, #1
@@ -312,16 +312,16 @@ _08007C1C
 	sub r1, r1, #1
 	and r1, r2, r1
 	cmp r1, fp
-	bne _08007C1C
-_08007C3C
+	bne %25
+26
 	subs r3, r3, #1
-	bhs _08007A20
-_08007C44
+	bhs %13
+27
 	LDR r1, [sp, #0x88]
 	add ip, ip, #1
 	cmp ip, r1
-	ble _080079F4
-_08007C54
+	ble %12
+28
 	LDR r7, [sp]
 	cmp r7, #0
 	LDRNE r1, [sp, #0x88]
@@ -368,15 +368,15 @@ sub_8007C78
 	bl sub_80077E8
 	mov r7, r0
 	cmn r0, #5
-	beq _08007D18
+	beq %29
 	cmn r7, #3
-	beq _08007D1C
+	beq %30
 	LDR r0, [r6]
 	cmp r0, #0
-	bne _08007D1C
-_08007D18
+	bne %30
+29
 	mvn r7, #2
-_08007D1C
+30
 	LDR r3, [r4, #0x20]!
 	LDR r0, [r4, #4]
 	mov r2, #7
@@ -426,17 +426,17 @@ loc_8007D88
 	mov r1, r7
 	bl sub_80077E8
 	movs r6, r0
-	bne _08007DE4
+	bne %31
 	LDR r0, [fp]
 	cmp r0, #0
-	bne _08007E18
-	b _08007DEC
-_08007DE4
+	bne %34
+	b %32
+31
 	cmn r6, #4
-	beq _08007DF0
-_08007DEC
+	beq %33
+32
 	mvn r6, #2
-_08007DF0
+33
 	LDR r3, [r4, #0x20]!
 	LDR r0, [r4, #4]
 	mov r2, #8
@@ -447,7 +447,7 @@ _08007DF0
 	add sp, sp, #0x2c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-_08007E18
+34
 	add r2, sp, #0x18
 	add r0, sp, #0x10
 	STMIA r0, {r2, r5}
@@ -462,23 +462,23 @@ _08007E18
 	add r0, sl, r7, lsl #2
 	bl sub_80077E8
 	movs r6, r0
-	bne _08007E70
+	bne %35
 	LDR r0, [r8]
 	cmp r0, #0
-	bne _08007EB0
+	bne %38
 	subs ip, r7, #0x100
 	subhss ip, ip, #1
-	bls _08007EB0
-	b _08007E84
-_08007E70
+	bls %38
+	b %36
+35
 	cmn r6, #5
 	mvneq r6, #2
-	beq _08007E88
+	beq %37
 	cmn r6, #4
-	beq _08007E88
-_08007E84
+	beq %37
+36
 	mvn r6, #2
-_08007E88
+37
 	LDR r3, [r4, #0x20]!
 	LDR r0, [r4, #4]
 	mov r2, #8
@@ -489,7 +489,7 @@ _08007E88
 	add sp, sp, #0x2c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
-_08007EB0
+38
 	LDR r3, [r4, #0x20]!
 	LDR r0, [r4, #4]
 	mov r2, #8
@@ -538,10 +538,10 @@ sub_8007F18
 	cmp r0, r6
 	movlo r6, r0
 	cmp r6, #0
-	beq _08007F5C
+	beq %39
 	cmn r7, #5
 	moveq r7, #0
-_08007F5C
+39
 	sub r0, r0, r6
 	STR r0, [r4, #0x10]
 	LDR r0, [r4, #0x14]
@@ -555,7 +555,7 @@ _08007F5C
 	add r1, sb, r6
 	cmp r0, r1
 	add r8, r8, r6
-	bne _08007FF4
+	bne %41
 	LDR r1, [r5, #0x34]
 	LDR sb, [r5, #0x28]
 	cmp r1, r0
@@ -566,10 +566,10 @@ _08007F5C
 	cmp r0, r6
 	movlo r6, r0
 	cmp r6, #0
-	beq _08007FC8
+	beq %40
 	cmn r7, #5
 	moveq r7, #0
-_08007FC8
+40
 	sub r0, r0, r6
 	STR r0, [r4, #0x10]
 	LDR r0, [r4, #0x14]
@@ -581,7 +581,7 @@ _08007FC8
 	bl __rt_memcpy
 	add r8, r8, r6
 	add r1, sb, r6
-_08007FF4
+41
 	STR r8, [r4, #0xc]
 	STR r1, [r5, #0x30]
 	mov r0, r7

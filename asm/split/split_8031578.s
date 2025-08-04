@@ -16,12 +16,12 @@
 sub_8031578
 	push {r3, lr}
 	cmp r0, #0
-	bne _08031588
+	bne %1
 	movs r0, #0x10
 	bl __nw__FUi
 	cmp r0, #0
-	beq _0803159C
-_08031588
+	beq %2
+1
 	ldr r1, _08031660
 	str r1, [r0]
 	ldr r1, _08031664
@@ -32,7 +32,7 @@ _08031588
 	str r1, [r0, #4]
 	str r1, [r0, #8]
 	str r1, [r0, #0xc]
-_0803159C
+2
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -53,10 +53,10 @@ sub_80315A2
 	str r1, [r4, #0xc]
 	str r1, [r0]
 	cmp r5, #0
-	beq _080315C8
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080315C8
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -72,7 +72,7 @@ sub_80315CE
 	movs r6, #0
 	str r6, [r4, #0xc]
 	cmp r5, #0
-	beq _080315F6
+	beq %4
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r5, #4
@@ -80,7 +80,7 @@ sub_80315CE
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r4, #0xc]
-_080315F6
+4
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -119,16 +119,16 @@ sub_8031622
 	movs r2, #0
 	cmp r3, #0
 	ldr r0, [r0, #0xc]
-	bls _08031640
-_08031632
+	bls %6
+5
 	lsls r5, r2, #4
 	adds r5, r0, r5
 	ldr r5, [r5, #4]
 	adds r2, #1
 	adds r1, r5, r1
 	cmp r2, r3
-	blo _08031632
-_08031640
+	blo %5
+6
 	lsls r5, r3, #4
 	adds r2, r0, r5
 	ldr r2, [r2, #4]

@@ -69,11 +69,11 @@ sub_803EF2C
 	ldrb r1, [r5, #0xf]
 	muls r0, r1
 	cmp r0, #0
-	bls _0803F06A
+	bls %3
 	adds r1, r4, #0
 	adds r1, #0x70
 	str r1, [sp, #0x10]
-_0803EF96
+1
 	ldr r0, [r4, #0x54]
 	lsls r7, r6, #2
 	ldr r0, [r0, r7]
@@ -146,7 +146,7 @@ _0803EF96
 	ldrb r2, [r1, #5]
 	ldrb r0, [r5, #0xc]
 	cmp r2, r0
-	beq _0803F050
+	beq %2
 	ldrh r2, [r1, #0x2a]
 	bics r2, r3
 	lsls r3, r0, #0x18
@@ -157,11 +157,11 @@ _0803EF96
 	strb r0, [r1, #5]
 	ldr r0, [r1]
 	lsls r2, r0, #0x16
-	bmi _0803F050
+	bmi %2
 	movs r2, #0x80
 	orrs r0, r2
 	str r0, [r1]
-_0803F050
+2
 	ldr r0, [r4, #0x60]
 	movs r1, #1
 	ldr r0, [r0, r7]
@@ -173,8 +173,8 @@ _0803F050
 	lsrs r6, r6, #0x10
 	muls r0, r1
 	cmp r0, r6
-	bhi _0803EF96
-_0803F06A
+	bhi %1
+3
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}

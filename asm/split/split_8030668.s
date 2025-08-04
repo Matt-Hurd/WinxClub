@@ -14,17 +14,17 @@
 Monster__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08030680
+	bne %2
 	movs r0, #0xe0
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08030680
+	bne %2
 	adds r0, r4, #0
-_0803067A
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08030680
+2
 	adds r0, r4, #0
 	bl HostileCreature__Create
 	ldr r0, _08030A64
@@ -49,7 +49,7 @@ _08030680
 	adds r1, r1, r2
 	str r1, [r0, #4]
 	adds r0, r4, #0
-	b _0803067A
+	b %1
 
 	thumb_func_start Monster__ctor
 Monster__ctor
@@ -62,10 +62,10 @@ Monster__ctor
 	adds r0, r4, #0
 	bl HostileCreature__ctor
 	cmp r5, #0
-	beq _080306D0
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_080306D0
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -76,15 +76,15 @@ NonBossHostileScriptGroup__04
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x21
-	bne _080306EA
+	bne %5
 	bl sub_80294EE
-_080306E4
+4
 	add sp, #4
 	pop {r3}
 	bx r3
-_080306EA
+5
 	bl sub_8029290
-	b _080306E4
+	b %4
 
 	thumb_func_start Monster__40
 Monster__40
@@ -94,40 +94,40 @@ Monster__40
 	subs r0, #0x27
 	cmp r0, #0xc
 	sub sp, #0x1c
-	bhs _08030708
+	bhs %6
 	add r3, pc, #0x10
 	adds r3, r3, r0
 	ldrh r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
-_08030708
+6
 	add sp, #0x1c
 	pop {r4, r5}
 	pop {r3}
 	bx r3
-_08030710
+7
 	DCB 0x0F, 0x00
-_08030712
+8
 	DCB 0x64, 0x00
-_08030714
+9
 	DCB 0xBA, 0x00
-_08030716
+10
 	DCB 0x0F, 0x01
-_08030718
+11
 	DCB 0x64, 0x01
-_0803071A
+12
 	DCB 0xD1, 0x01
-_0803071C
+13
 	DCB 0x11, 0x02
-_0803071E
+14
 	DCB 0x51, 0x02
-_08030720
+15
 	DCB 0xA9, 0x02
-_08030722
+16
 	DCB 0xFF, 0x02
-_08030724
+17
 	DCB 0x3F, 0x03
-_08030726
+18
 	DCB 0x94, 0x03
 loc_8030728
 	movs r2, #3
@@ -212,7 +212,7 @@ loc_8030728
 	lsrs r2, r3, #7
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_80307d2
 	movs r2, #3
 	movs r1, #5
@@ -297,7 +297,7 @@ loc_80307d2
 	lsls r2, r2, #9
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_803087e
 	movs r2, #3
 	movs r1, #6
@@ -381,7 +381,7 @@ loc_803087e
 	lsls r2, r2, #8
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030928
 	movs r2, #3
 	movs r1, #6
@@ -465,7 +465,7 @@ loc_8030928
 	lsls r2, r2, #8
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_80309d2
 	movs r2, #1
 	movs r1, #5
@@ -538,7 +538,7 @@ loc_80309d2
 	ands r1, r2
 	movs r2, #0x19
 	lsls r2, r2, #0xd
-	b _08030A9C
+	b %19
 	ALIGN
 _08030A64 DCDU __VTABLE__331Monster
 _08030A68 DCDU 0x736E6F4D
@@ -554,7 +554,7 @@ _08030A8C DCDU 0x00000202
 _08030A90 DCDU 0x00017330
 _08030A94 DCDU 0xE00FFFFF
 _08030A98 DCDU 0xFFF007FF
-_08030A9C
+19
 	adds r1, r1, r2
 	str r1, [r0, #0x10]
 	ldr r1, [r0, #0x14]
@@ -562,7 +562,7 @@ _08030A9C
 	lsls r1, r1, #0xb
 	adds r1, #0xa6
 	str r1, [r0, #0x14]
-	b _08030708
+	b %6
 loc_8030aac
 	movs r2, #3
 	movs r1, #0x18
@@ -626,7 +626,7 @@ loc_8030aac
 	lsls r2, r2, #8
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030b2c
 	movs r2, #3
 	movs r1, #0x18
@@ -690,7 +690,7 @@ loc_8030b2c
 	lsls r2, r2, #8
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030bac
 	movs r2, #4
 	movs r1, #8
@@ -777,7 +777,7 @@ loc_8030bac
 	lsls r2, r2, #7
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030c5c
 	movs r2, #3
 	movs r1, #6
@@ -862,7 +862,7 @@ loc_8030c5c
 	lsls r2, r2, #7
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030d08
 	movs r2, #2
 	movs r1, #7
@@ -926,7 +926,7 @@ loc_8030d08
 	lsls r2, r2, #7
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030d88
 	movs r2, #3
 	movs r1, #6
@@ -1010,7 +1010,7 @@ loc_8030d88
 	lsls r2, r2, #9
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 loc_8030e32
 	movs r2, #3
 	movs r1, #4
@@ -1091,7 +1091,7 @@ loc_8030e32
 	lsls r2, r2, #7
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
-	b _08030708
+	b %6
 	ALIGN
 _08030ED8 DCDU 0xFFFF007F
 _08030EDC DCDU 0x00010CD0

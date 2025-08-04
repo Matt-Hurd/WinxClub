@@ -145,30 +145,30 @@ sub_800E500
 	adds r5, r1, #0
 	adds r4, r2, #0
 	cmp r6, #0
-	beq _0800E528
+	beq %2
 	cmp r6, #1
-	bne _0800E522
+	bne %1
 	movs r2, #0
 	movs r1, #0
 	bl sub_80052C0
 	adds r2, r4, #0
 	adds r1, r5, #0
 	bl sub_80052C0
-_0800E522
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0800E528
+2
 	movs r1, #0
 	cmp r4, #0
-	bls _0800E522
-_0800E52E
+	bls %1
+3
 	ldrb r2, [r5, r1]
 	adds r1, #1
 	adds r0, r2, r0
 	cmp r1, r4
-	blo _0800E52E
-	b _0800E522
+	blo %3
+	b %1
 	ALIGN
 
 	thumb_func_start sub_800E53C
@@ -184,38 +184,38 @@ sub_800E53C
 	adds r0, r6, #0
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	beq _0800E564
+	beq %4
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
 	str r4, [r6, #0x18]
-_0800E564
+4
 	ldr r0, [r6, #0x24]
 	cmp r0, #0
-	beq _0800E576
+	beq %5
 	cmp r5, #0
-	bne _0800E576
+	bne %5
 	movs r1, #1
 	bl sub_802693A
 	str r4, [r6, #0x24]
-_0800E576
+5
 	ldr r0, [r6, #0x2c]
 	cmp r0, #0
-	beq _0800E58A
+	beq %6
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
 	str r4, [r6, #0x2c]
-_0800E58A
+6
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E5B6
+	beq %8
 	cmp r5, #0
-	bne _0800E5B6
+	bne %8
 	movs r1, #0
 	bl sub_800B782
 	movs r1, #0
@@ -223,32 +223,32 @@ _0800E58A
 	bl sub_800B6FA
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E5B4
+	beq %7
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_0800E5B4
+7
 	str r4, [r6, #0x28]
-_0800E5B6
+8
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	beq _0800E5DA
+	beq %10
 	movs r0, #1
 	bl sub_8013DEA
 	bl sub_8014DD4
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	beq _0800E5D8
+	beq %9
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_0800E5D8
+9
 	str r4, [r6, #0x10]
-_0800E5DA
+10
 	movs r0, #0
 	bl sub_80050FA
 	movs r0, #1
@@ -263,55 +263,55 @@ sub_800E5EA
 	ldr r6, _0800E924
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0
-	bne _0800E672
+	bne %17
 	movs r3, #1
 	str r3, [r6, #0x3c]
 	ldr r0, [r6, #0x28]
 	ldr r7, _0800E928
 	cmp r0, #0
-	beq _0800E606
+	beq %11
 	ldr r0, [r7]
 	bl sub_800B65E
-_0800E606
+11
 	ldr r0, _0800E92C
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800E63C
+	beq %13
 	movs r1, #0x67
 	lsls r1, r1, #6
 	adds r4, r0, r1
 	ldr r1, [r4, #0x28]
 	lsls r2, r1, #0xf
-	bpl _0800E624
+	bpl %12
 	movs r0, #1
 	lsls r0, r0, #0x11
 	orrs r0, r1
 	str r0, [r4, #0x28]
-	b _0800E63C
-_0800E624
+	b %13
+12
 	adds r0, #4
 	adds r5, r0, #0
 	bl sub_800CADA
 	cmp r0, #0
-	bne _0800E63C
+	bne %13
 	ldr r0, [r4, #0x28]
 	lsls r0, r0, #0xd
-	bmi _0800E63C
+	bmi %13
 	adds r0, r5, #0
 	bl sub_800C93A
-_0800E63C
+13
 	ldr r0, _0800E930
 	ldr r0, [r0]
 	cmp r0, #0
-	beq _0800E648
+	beq %14
 	bl sub_800E178
-_0800E648
+14
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	beq _0800E654
+	beq %15
 	ldr r0, [r7]
 	bl sub_800B708
-_0800E654
+15
 	ldr r2, _0800E934
 	ldrh r1, [r2]
 	movs r0, #0
@@ -321,14 +321,14 @@ _0800E654
 	ldr r1, _0800E938
 	ldr r1, [r1]
 	cmp r1, #0
-	beq _0800E670
+	beq %16
 	adds r1, #8
 	ldr r2, [r1]
 	adds r2, #1
 	str r2, [r1]
-_0800E670
+16
 	str r0, [r6, #0x3c]
-_0800E672
+17
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -420,7 +420,7 @@ maybeInitTransitionLevelScreen
 	ldr r0, _0800E924
 	ldr r0, [r0, #8]
 	cmp r0, #0
-	bne _0800E756
+	bne %19
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
@@ -428,19 +428,19 @@ maybeInitTransitionLevelScreen
 	movs r0, #0xc
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E752
+	beq %18
 	movs r2, #0
 	lsls r1, r7, #0xa
 	adds r0, r5, #0
 	bl LoadFiletable
-_0800E752
+18
 	ldr r0, _0800E924
 	str r5, [r0, #8]
-_0800E756
+19
 	ldr r6, _0800E924
 	ldr r0, [r6, #0xc]
 	cmp r0, #0
-	bne _0800E77A
+	bne %21
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
@@ -448,15 +448,15 @@ _0800E756
 	movs r0, #0x18
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E778
+	beq %20
 	adds r0, r5, #0
 	bl sub_8004924
-_0800E778
+20
 	str r5, [r6, #0xc]
-_0800E77A
+21
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
-	bne _0800E7A0
+	bne %23
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r0, #0x67
@@ -465,16 +465,16 @@ _0800E77A
 	lsls r0, r0, #4
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E79E
+	beq %22
 	add r1, pc, #0x1F8
 	adds r0, r5, #0
 	bl InitScriptData
-_0800E79E
+22
 	str r5, [r6, #0x1c]
-_0800E7A0
+23
 	ldr r0, [r6, #0x14]
 	cmp r0, #0
-	bne _0800E7C8
+	bne %25
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
@@ -482,17 +482,17 @@ _0800E7A0
 	movs r0, #0xc
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E7C2
+	beq %24
 	movs r1, #1
 	adds r0, r5, #0
 	bl sub_801343C
-_0800E7C2
+24
 	str r5, [r6, #0x14]
 	bl sub_800E678
-_0800E7C8
+25
 	ldr r0, [r6, #0x20]
 	cmp r0, #0
-	bne _0800E7EA
+	bne %27
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r4, #0
@@ -500,36 +500,36 @@ _0800E7C8
 	ldr r0, _0800E9A0
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E7E8
+	beq %26
 	adds r0, r5, #0
 	bl sub_801B10C
-_0800E7E8
+26
 	str r5, [r6, #0x20]
-_0800E7EA
+27
 	ldr r0, [r6, #0x30]
 	bl sub_80050FA
 	ldr r0, [r6, #0x2c]
 	cmp r0, #0
-	bne _0800E814
+	bne %29
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #4
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0800E812
+	beq %28
 	ldr r1, _0800E9A4
 	ldr r2, _0800E9A8
 	str r1, [r0]
 	ldr r1, _0800E9AC
 	str r0, [r2]
 	str r1, [r0]
-_0800E812
+28
 	str r0, [r6, #0x2c]
-_0800E814
+29
 	ldr r0, [r6, #0x10]
 	cmp r0, #0
-	bne _0800E842
+	bne %31
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0xdf
@@ -537,45 +537,45 @@ _0800E814
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E832
+	beq %30
 	adds r0, r5, #0
 	bl g3003448__Init
-_0800E832
+30
 	movs r2, #0
 	movs r1, #0
 	adds r0, r5, #0
 	str r5, [r6, #0x10]
 	bl sub_800194E
 	bl sub_8014DD4
-_0800E842
+31
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0800E860
+	bne %33
 	adds r3, r4, #0
 	movs r2, #0
 	ldr r0, _0800E9B0
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E85E
+	beq %32
 	adds r0, r5, #0
 	bl sub_8001A90
-_0800E85E
+32
 	str r5, [r6, #0x18]
-_0800E860
+33
 	ldr r0, [r6, #0x28]
 	cmp r0, #0
-	bne _0800E8DC
+	bne %35
 	adds r3, r4, #0
 	movs r2, #0
 	movs r0, #0x14
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E87C
+	beq %34
 	adds r0, r5, #0
 	bl sub_800B4F0
-_0800E87C
+34
 	adds r0, r5, #0
 	adds r3, r4, #0
 	movs r1, #0
@@ -614,24 +614,24 @@ _0800E87C
 	bl sub_800B6FA
 	ldr r0, [r6, #0x28]
 	bl sub_800B652
-_0800E8DC
+35
 	ldr r0, [r6, #0x24]
 	cmp r0, #0
-	bne _0800E900
+	bne %37
 	adds r3, r4, #0
 	movs r2, #0
 	ldr r0, _0800E9CC
 	ldr r1, [r6, #0x30]
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800E8F8
+	beq %36
 	adds r0, r5, #0
 	bl sub_8026908
-_0800E8F8
+36
 	adds r0, r5, #0
 	str r5, [r6, #0x24]
 	bl sub_8026962
-_0800E900
+37
 	ldr r5, _0800E938
 	ldr r0, [r5]
 	ldr r1, [sp]
@@ -642,10 +642,10 @@ _0800E900
 	ldr r0, [r6, #0x10]
 	movs r5, #1
 	cmp r0, #0
-	beq _0800E9FE
+	beq %39
 	movs r1, #0x67
 	lsls r1, r1, #6
-	b _0800E9D0
+	b %38
 	ALIGN
 _0800E920 DCDU REG_IE
 _0800E924 DCDU gScriptDataMetadata
@@ -691,11 +691,11 @@ _0800E9C0 DCDU 0x00006E69
 _0800E9C4 DCDU 0x2E784673
 _0800E9C8 DCDU 0x006E6962
 _0800E9CC DCDU 0x00001308
-_0800E9D0
+38
 	adds r0, r0, r1
 	ldr r0, [r0]
 	cmp r0, #0
-	bne _0800E9FE
+	bne %39
 	ldr r0, _0800ECBC
 	add r1, pc, #0x2E4
 	ldr r0, [r0]
@@ -711,13 +711,13 @@ _0800E9D0
 	bl sub_8000F4C
 	movs r2, #1
 	lsls r1, r2, #8
-	b _0800EA00
-_0800E9FE
-	b _0800EA06
-_0800EA00
+	b %40
+39
+	b %41
+40
 	ldr r0, [r6, #0x10]
 	bl sub_800106A
-_0800EA06
+41
 	movs r0, #0
 	bl sub_80050FA
 	ldr r0, _0800ECC8
@@ -913,12 +913,12 @@ maybeInitGame
 	ldr r1, [r2]
 	bics r1, r0
 	str r1, [r2]
-_0800EBE4
+42
 	movs r0, #1
 	bl SetNextGlobalFunction
 	bl MainLoop
 	cmp r0, #0
-	bne _0800EBE4
+	bne %42
 	bl sub_800E53C
 	ldr r0, _0800ED70
 	ldr r0, [r0]
@@ -936,34 +936,34 @@ sub_800EC0E
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	cmp r0, #2
-	bne _0800EC78
+	bne %46
 	ldr r4, _0800ED6C
 	ldrb r0, [r4]
 	cmp r0, #0
-	beq _0800EC24
+	beq %43
 	ldrh r1, [r4, #4]
 	cmp r2, r1
-	blo _0800EC78
-_0800EC24
+	blo %46
+43
 	cmp r0, #0
-	bne _0800EC32
+	bne %44
 	bl sub_8008160
 	ldr r1, _0800ED74
 	cmp r0, r1
-	bhs _0800EC42
-_0800EC32
+	bhs %45
+44
 	ldrb r0, [r4]
 	cmp r0, #1
-	bne _0800EC78
+	bne %46
 	bl sub_8008160
 	ldr r1, _0800ED78
 	cmp r0, r1
-	blo _0800EC78
-_0800EC42
+	blo %46
+45
 	ldrb r0, [r4]
 	movs r5, #0
 	cmp r0, #0
-	bne _0800EC80
+	bne %47
 	ldr r0, [r4, #0x14]
 	ldrh r1, [r4, #2]
 	ldrb r2, [r0, #9]
@@ -985,12 +985,12 @@ _0800EC42
 	bl sub_80139AC
 	movs r0, #1
 	strb r0, [r4]
-_0800EC78
+46
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0800EC80
+47
 	movs r1, #2
 	ldr r0, [r4, #0x38]
 	bl sub_80139AC
@@ -1018,7 +1018,7 @@ _0800EC80
 	bl atoi
 	strh r0, [r4, #4]
 	strb r5, [r4]
-	b _0800EC78
+	b %46
 	ALIGN
 _0800ECBC DCDU gUnknown_03003EA8
 _0800ECC0 DCDU 0x69727073

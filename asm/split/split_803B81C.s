@@ -13,29 +13,29 @@ sub_803B81C
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	movs r6, #0
-	b _0803B82E
-_0803B828
+	b %2
+1
 	adds r0, r6, #1
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
-_0803B82E
+2
 	cmp r6, #2
-	bhi _0803B852
+	bhi %3
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Dma3Transmit
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0
-	bne _0803B828
+	bne %1
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl sub_803B7C4
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0
-	bne _0803B828
-_0803B852
+	bne %1
+3
 	adds r0, r2, #0
 	pop {r4, r5, r6}
 	pop {r1}

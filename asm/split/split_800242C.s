@@ -12,11 +12,11 @@ sub_800242C
 	adds r4, r1, #0
 	lsrs r0, r0, #0x10
 	sub sp, #0xc
-	bne _08002440
+	bne %1
 	ldr r0, [r4, #4]
 	lsrs r0, r0, #0x10
-	beq _080024BE
-_08002440
+	beq %9
+1
 	movs r0, #0
 	movs r1, #0x13
 	lsls r1, r1, #7
@@ -24,7 +24,7 @@ _08002440
 	adds r6, r5, r1
 	str r0, [sp, #4]
 	str r0, [sp, #8]
-_0800244E
+2
 	movs r0, #0
 	str r0, [sp, #4]
 	str r0, [sp, #8]
@@ -33,46 +33,46 @@ _0800244E
 	ldm r1!, {r0, r1}
 	ldr r2, [r4]
 	cmp r0, r2
-	beq _08002464
+	beq %3
 	subs r0, r2, r0
 	str r0, [sp, #4]
-_08002464
+3
 	ldr r0, [r4, #4]
 	cmp r1, r0
-	beq _0800246E
+	beq %4
 	subs r0, r0, r1
 	str r0, [sp, #8]
-_0800246E
+4
 	movs r1, #1
 	ldr r0, [sp, #4]
 	lsls r1, r1, #0x12
 	cmp r0, r1
-	blt _08002480
+	blt %5
 	movs r0, #3
 	lsls r0, r0, #0x10
 	str r0, [sp, #4]
-	b _0800248A
-_08002480
+	b %6
+5
 	ldr r2, _0800257C
 	ldr r0, [sp, #4]
 	cmp r0, r2
-	bgt _0800248A
+	bgt %6
 	str r7, [sp, #4]
-_0800248A
+6
 	ldr r0, [sp, #8]
 	cmp r0, r1
-	blt _08002498
+	blt %7
 	movs r0, #3
 	lsls r0, r0, #0x10
 	str r0, [sp, #8]
-	b _080024A2
-_08002498
+	b %8
+7
 	ldr r2, _0800257C
 	ldr r0, [sp, #8]
 	cmp r0, r2
-	bgt _080024A2
+	bgt %8
 	str r7, [sp, #8]
-_080024A2
+8
 	movs r2, #0
 	adds r0, r5, #0
 	add r1, sp, #4
@@ -81,11 +81,11 @@ _080024A2
 	bl sub_800E178
 	ldr r0, [sp, #4]
 	cmp r0, #0
-	bne _0800244E
+	bne %2
 	ldr r0, [sp, #8]
 	cmp r0, #0
-	bne _0800244E
-_080024BE
+	bne %2
+9
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -115,8 +115,8 @@ sub_80024D8
 	ldr r3, [r1, #0x10]
 	ldr r1, [r3, #8]
 	subs r1, #1
-	bmi _08002500
-_080024EE
+	bmi %11
+10
 	ldr r5, [r0, #0x10]
 	ldr r6, [r3, #0x20]
 	lsls r4, r1, #2
@@ -125,30 +125,30 @@ _080024EE
 	adds r4, r5, r4
 	str r4, [r0, #0x10]
 	subs r1, #1
-	bpl _080024EE
-_08002500
+	bpl %10
+11
 	movs r7, #0
 	str r7, [r3, #8]
 	ldr r1, [r0, #0x10]
 	movs r4, #0
 	adds r6, r1, #0
-	beq _08002526
-_0800250C
+	beq %14
+12
 	adds r4, #1
 	cmp r4, r2
-	beq _08002526
+	beq %14
 	ldr r5, [r1]
 	cmp r5, #0
-	beq _08002522
+	beq %13
 	adds r1, #4
 	cmp r5, r1
-	beq _08002522
+	beq %13
 	movs r4, #0
 	adds r6, r5, #0
-_08002522
+13
 	adds r1, r5, #0
-	bne _0800250C
-_08002526
+	bne %12
+14
 	lsls r1, r2, #2
 	adds r1, r1, r6
 	str r2, [r3, #8]
@@ -158,14 +158,14 @@ _08002526
 	str r1, [r0, #0x10]
 	movs r0, #0
 	cmp r2, #0
-	bls _08002544
-_0800253A
+	bls %16
+15
 	lsls r1, r0, #2
 	adds r0, #1
 	cmp r0, r2
 	str r7, [r6, r1]
-	blo _0800253A
-_08002544
+	blo %15
+16
 	pop {r4, r5, r6, r7}
 	bx lr
 

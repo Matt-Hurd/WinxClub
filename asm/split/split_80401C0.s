@@ -22,11 +22,11 @@ sub_80401C0
 	strb r1, [r0, #5]
 	ldr r1, [r0]
 	lsls r2, r1, #0x16
-	bmi _080401E0
+	bmi %1
 	movs r2, #0x80
 	orrs r1, r2
 	str r1, [r0]
-_080401E0
+1
 	bx lr
 	ALIGN
 
@@ -39,38 +39,38 @@ sub_80401E4
 	ldr r1, [r4]
 	ldr r0, [r0]
 	ldr r5, _08040254
-	beq _0804022C
+	beq %4
 	lsls r1, r1, #0x1f
-	bmi _08040226
+	bmi %3
 	adds r1, r4, #0
 	bl sub_80011D8
 	ldr r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _08040212
+	bmi %2
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _08040212
+	beq %2
 	adds r1, r4, #0
 	ldr r0, [r5]
 	bl sub_800CD58
-_08040212
+2
 	ldr r0, [r4]
 	movs r1, #1
 	orrs r0, r1
 	str r0, [r4]
 	lsls r1, r0, #0x1e
-	bpl _08040226
+	bpl %3
 	movs r1, #0xff
 	adds r1, #1
 	orrs r0, r1
 	str r0, [r4]
-_08040226
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_0804022C
+4
 	lsls r1, r1, #0x1f
-	bpl _08040226
+	bpl %3
 	adds r1, r4, #0
 	bl sub_8001232
 	ldr r0, [r4]
@@ -78,14 +78,14 @@ _0804022C
 	lsls r0, r0, #1
 	str r0, [r4]
 	lsls r0, r0, #0x16
-	bmi _08040226
+	bmi %3
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
-	beq _08040226
+	beq %3
 	adds r1, r4, #0
 	ldr r0, [r5]
 	bl sub_800CD28
-	b _08040226
+	b %3
 	ALIGN
 _08040254 DCDU gUnknown_03003EA0
 _08040258 DCDU gUnknown_03003EB8

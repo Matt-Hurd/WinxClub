@@ -33,32 +33,32 @@ HandleGameOverScreen
 	bl sub_8030346
 	movs r7, #0
 	mvns r7, r7
-_080305F6
+1
 	bl sub_800EF2A
 	ldr r0, _0803065C
 	movs r1, #0
 	ldr r0, [r0]
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08030608
+	bmi %2
 	ldrh r1, [r0, #6]
-_08030608
+2
 	lsls r4, r1, #0x10
 	lsrs r4, r4, #0x10
 	lsls r0, r4, #0x19
-	bpl _08030618
+	bpl %3
 	adds r1, r7, #0
 	adds r0, r6, #0
 	bl sub_80302CC
-_08030618
+3
 	lsls r0, r4, #0x18
-	bpl _08030624
+	bpl %4
 	movs r1, #1
 	adds r0, r6, #0
 	bl sub_80302CC
-_08030624
+4
 	lsls r0, r4, #0x1f
-	beq _080305F6
+	beq %1
 	ldr r0, _08030660
 	ldr r0, [r0]
 	bl sub_8028C2E

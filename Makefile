@@ -14,6 +14,7 @@ MID := $(abspath tools/mid2agb/mid2agb)
 SCANINC := tools/scaninc/scaninc
 PREPROC := tools/preproc/preproc
 GBAFIX := tools/gbafix/gbafix
+LABEL_PREPROC := python scripts/preprocess_compiler_labels.py
 
 CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
 CPPFLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
@@ -134,6 +135,7 @@ endif
 compile-partial-c:
 	@$(foreach yml,$(YML_FILES),\
 		$(PYTHON) $(MERGE_SCRIPT) "$(yml)" "$(PARTIAL_DECOMP_SUBDIR)" "$(PARTIAL_DECOMP_BUILDDIR)" "$(MERGED_BUILDDIR)" "$(TCC)" "$(CC1FLAGS)" "include" "$(MERGE_SCRIPT)";)
+	@find $(MERGED_BUILDDIR) -name "*.s" -exec $(LABEL_PREPROC) {} +
 
 compare: $(ROM)
 	sha1sum -c $(BUILD_NAME).sha1
@@ -198,10 +200,12 @@ endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
 	$(TCC) $(CC1FLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
+	$(LABEL_PREPROC) $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.cpp $$(cpp_dep)
 	$(CPP) $(CPPFLAGS) -I include -o $(C_BUILDDIR)/$*.s $<
+	$(LABEL_PREPROC) $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s

@@ -16,17 +16,17 @@
 HostileCreature__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bne _08029088
+	bne %2
 	movs r0, #0xe0
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08029088
+	bne %2
 	adds r0, r4, #0
-_08029082
+1
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_08029088
+2
 	adds r0, r4, #0
 	bl Init_and_add_some_object
 	ldr r0, _08029354
@@ -99,7 +99,7 @@ _08029088
 	orrs r1, r2
 	str r1, [r0, #0x34]
 	adds r0, r4, #0
-	b _08029082
+	b %1
 
 	thumb_func_start HostileCreature__ctor
 HostileCreature__ctor
@@ -112,10 +112,10 @@ HostileCreature__ctor
 	adds r0, r4, #0
 	bl GameObj__ctor
 	cmp r5, #0
-	beq _08029138
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08029138
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -302,9 +302,9 @@ sub_8029290
 	ldrb r0, [r3]
 	sub sp, #0x18
 	cmp r0, #0x22
-	beq _080292CE
+	beq %5
 	cmp r0, #0x24
-	bne _080292DC
+	bne %6
 	ldrb r1, [r3, #0xd]
 	ldrb r0, [r3, #0xc]
 	movs r2, #0
@@ -322,22 +322,22 @@ sub_8029290
 	adds r3, r0, #0
 	adds r0, r4, #0
 	bl sub_802913E
-_080292C6
+4
 	add sp, #0x18
 	pop {r4}
 	pop {r3}
 	bx r3
-_080292CE
+5
 	ldr r2, [r4]
 	adds r0, r4, #0
 	ldr r3, [r2, #0x48]
 	adds r2, r3, r2
 	bl __call_via_r2
-	b _080292C6
-_080292DC
+	b %4
+6
 	adds r0, r4, #0
 	bl DefaultScriptGroups__04
-	b _080292C6
+	b %4
 
 	thumb_func_start HostileCreature__08
 HostileCreature__08
@@ -345,20 +345,20 @@ HostileCreature__08
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x21
-	beq _080292FA
+	beq %8
 	cmp r2, #0x24
-	bne _0802934E
+	bne %12
 	movs r0, #1
-_080292F4
+7
 	add sp, #4
 	pop {r3}
 	bx r3
-_080292FA
+8
 	adds r1, r0, #0
 	adds r1, #0x80
 	ldr r2, [r1, #0x1c]
 	cmp r2, #4
-	bne _0802934A
+	bne %11
 	ldr r2, [r1, #0x2c]
 	movs r3, #8
 	bics r2, r3
@@ -369,19 +369,19 @@ _080292FA
 	adds r1, #0x80
 	ldr r2, [r1, #0x38]
 	lsls r1, r2, #0x1f
-	bmi _08029346
+	bmi %10
 	adds r1, r0, #0
 	adds r1, #0x90
 	ldrb r3, [r1, #9]
 	cmp r3, #0
-	beq _08029346
+	beq %10
 	lsls r2, r2, #0x1c
 	lsrs r2, r2, #0x1d
 	cmp r2, #1
-	bne _08029330
+	bne %9
 	ldr r2, [r0, #0x74]
 	str r2, [r0, #0x70]
-_08029330
+9
 	ldr r0, _08029368
 	movs r2, #0x29
 	ldr r0, [r0]
@@ -393,15 +393,15 @@ _08029330
 	ldrb r0, [r1, #9]
 	adds r0, #0xff
 	strb r0, [r1, #9]
-_08029346
+10
 	movs r0, #1
-	b _080292F4
-_0802934A
+	b %7
+11
 	movs r0, #0
-	b _080292F4
-_0802934E
+	b %7
+12
 	bl DefaultScriptGroups__08
-	b _080292F4
+	b %7
 	ALIGN
 _08029354 DCDU __VTABLE__315HostileBaseObject
 _08029358 DCDU 0xFFFF000F

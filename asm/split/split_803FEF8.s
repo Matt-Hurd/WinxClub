@@ -6,7 +6,7 @@
 	thumb_func_start sub_803FEF8
 sub_803FEF8
 	cmp r0, #0
-	beq _0803FF14
+	beq %1
 	lsls r3, r0, #0x1b
 	lsrs r3, r3, #0x1b
 	movs r2, #1
@@ -15,13 +15,13 @@ sub_803FEF8
 	lsls r0, r0, #2
 	cmp r1, #0
 	ldr r3, _0803FF20
-	beq _0803FF16
+	beq %2
 	ldr r1, [r3, r0]
 	orrs r1, r2
 	str r1, [r3, r0]
-_0803FF14
+1
 	bx lr
-_0803FF16
+2
 	ldr r1, [r3, r0]
 	bics r1, r2
 	str r1, [r3, r0]

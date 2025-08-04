@@ -16,36 +16,36 @@ sub_804025C
 	ldr r1, [r4]
 	ldr r0, [r0]
 	cmp r2, #0
-	blt _0804028A
+	blt %1
 	movs r3, #0xf
 	ldr r2, [r4, #0x34]
 	lsls r3, r3, #0x14
 	cmp r2, r3
-	bge _0804028A
+	bge %1
 	ldr r2, [r4, #0x40]
 	cmp r2, #0
-	blt _0804028A
+	blt %1
 	movs r3, #5
 	ldr r2, [r4, #0x38]
 	lsls r3, r3, #0x15
 	cmp r2, r3
-	blt _080402A2
-_0804028A
+	blt %3
+1
 	lsls r1, r1, #0x16
-	bmi _0804029C
+	bmi %2
 	adds r1, r4, #0
 	bl sub_800C1CA
 	ldr r0, [r4]
 	orrs r0, r6
 	orrs r0, r5
 	str r0, [r4]
-_0804029C
+2
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_080402A2
+3
 	lsls r1, r1, #0x16
-	bpl _080402BA
+	bpl %4
 	adds r1, r4, #0
 	bl sub_800BE0E
 	ldr r0, [r4]
@@ -55,7 +55,7 @@ _080402A2
 	movs r1, #0x40
 	orrs r0, r1
 	str r0, [r4]
-_080402BA
+4
 	ldr r0, [r4, #0x2c]
 	asrs r1, r0, #0x1f
 	lsrs r1, r1, #0x10
@@ -83,7 +83,7 @@ _080402BA
 	ldr r0, [r4]
 	orrs r0, r5
 	str r0, [r4]
-	b _0804029C
+	b %2
 	ALIGN
 _080402F4 DCDU gUnknown_03003EA0
 	END

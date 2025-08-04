@@ -16,17 +16,17 @@
 Boss__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _080344FC
+	bne %2
 	movs r0, #0xe8
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _080344FC
+	bne %2
 	adds r0, r4, #0
-_080344F6
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_080344FC
+2
 	adds r0, r4, #0
 	bl HostileCreature__Create
 	ldr r0, _080348C4
@@ -54,7 +54,7 @@ _080344FC
 	strb r0, [r1, #5]
 	strb r0, [r1, #6]
 	adds r0, r4, #0
-	b _080344F6
+	b %1
 
 	non_word_aligned_thumb_func_start Boss__ctor
 Boss__ctor
@@ -67,10 +67,10 @@ Boss__ctor
 	adds r0, r4, #0
 	bl HostileCreature__ctor
 	cmp r5, #0
-	beq _08034552
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08034552
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -96,9 +96,9 @@ Boss__04
 	ldr r2, [r1]
 	ldrb r3, [r2]
 	cmp r3, #0x21
-	beq _08034598
+	beq %5
 	cmp r3, #0x28
-	bne _0803459E
+	bne %6
 	adds r1, r0, #0
 	adds r1, #0xe0
 	ldrb r3, [r1, #5]
@@ -109,16 +109,16 @@ Boss__04
 	ldrb r0, [r1, #5]
 	adds r0, #1
 	strb r0, [r1, #5]
-_08034592
+4
 	add sp, #4
 	pop {r3}
 	bx r3
-_08034598
+5
 	bl sub_80294EE
-	b _08034592
-_0803459E
+	b %4
+6
 	bl sub_8029290
-	b _08034592
+	b %4
 
 	thumb_func_start Boss__08
 Boss__08
@@ -126,15 +126,15 @@ Boss__08
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	bne _080345B6
+	bne %8
 	movs r0, #1
-_080345B0
+7
 	add sp, #4
 	pop {r3}
 	bx r3
-_080345B6
+8
 	bl HostileCreature__08
-	b _080345B0
+	b %7
 
 	thumb_func_start Boss__40
 Boss__40
@@ -148,13 +148,13 @@ Boss__40
 	adds r4, r0, #0
 	cmp r1, #0x33
 	sub sp, #0x1c
-	beq _080346B8
+	beq %10
 	cmp r1, #0x34
-	beq _080346BA
+	beq %11
 	cmp r1, #0x35
-	beq _080346BC
+	beq %12
 	cmp r1, #0x36
-	bne _080346A4
+	bne %9
 	movs r2, #0
 	movs r0, #5
 	str r0, [sp, #0xc]
@@ -251,7 +251,7 @@ Boss__40
 	lsls r1, r1, #0xa
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-_080346A4
+9
 	ldr r0, [r5, #0x30]
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x17
@@ -261,21 +261,21 @@ _080346A4
 	strb r1, [r0, #9]
 	ldr r1, [r5, #0x30]
 	lsls r1, r1, #0x10
-	b _080346BE
-_080346B8
-	b _080346CA
-_080346BA
-	b _08034778
-_080346BC
-	b _08034820
-_080346BE
+	b %13
+10
+	b %14
+11
+	b %15
+12
+	b %16
+13
 	lsrs r1, r1, #0x17
 	strb r1, [r0, #8]
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080346CA
+14
 	movs r2, #5
 	movs r1, #7
 	movs r0, #5
@@ -360,8 +360,8 @@ _080346CA
 	lsls r1, r1, #8
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _080346A4
-_08034778
+	b %9
+15
 	movs r2, #4
 	movs r1, #5
 	movs r0, #3
@@ -443,8 +443,8 @@ _08034778
 	lsls r1, r1, #7
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _080346A4
-_08034820
+	b %9
+16
 	movs r2, #0
 	str r2, [sp, #0x14]
 	movs r1, #0
@@ -524,7 +524,7 @@ _08034820
 	lsls r1, r1, #0xa
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _080346A4
+	b %9
 	ALIGN
 _080348C4 DCDU __VTABLE__308Boss
 _080348C8 DCDU 0x73736F42

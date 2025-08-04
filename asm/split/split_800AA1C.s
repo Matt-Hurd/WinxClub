@@ -36,62 +36,62 @@ sub_800AA3C
 	cmp r2, #8
 	addls pc, pc, r2, lsl #2
 jmpt_0800AA50
-	b _0800AAE8
+	b %9
 jmpt_0800AA54
-	b _0800AAE8
+	b %9
 jmpt_0800AA58
-	b _0800AA78
+	b %1
 jmpt_0800AA5C
-	b _0800AA80
+	b %2
 jmpt_0800AA60
-	b _0800AA8C
+	b %3
 jmpt_0800AA64
-	b _0800AA98
+	b %4
 jmpt_0800AA68
-	b _0800AAA8
+	b %5
 jmpt_0800AA6C
-	b _0800AAB8
+	b %6
 jmpt_0800AA70
-	b _0800AAC8
+	b %7
 jmpt_0800AA74
-	b _0800AAD8
-_0800AA78
+	b %8
+1
 	LDR r0, [r0, #0x54]
 	bx lr
-_0800AA80
+2
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0x40
 	bx lr
-_0800AA8C
+3
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0x2d40
 	bx lr
-_0800AA98
+4
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0x8000
 	add r0, r0, #0x2d40
 	bx lr
-_0800AAA8
+5
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0x8000
 	add r0, r0, #0x3240
 	bx lr
-_0800AAB8
+6
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0xb000
 	add r0, r0, #0x25c
 	bx lr
-_0800AAC8
+7
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0xb000
 	add r0, r0, #0x274
 	bx lr
-_0800AAD8
+8
 	LDR r0, [r0, #0x54]
 	add r0, r0, #0x8000
 	add r0, r0, #0x32c0
 	bx lr
-_0800AAE8
+9
 	mov r0, #0
 	bx lr
 
@@ -121,13 +121,13 @@ sub_800AB00
 	STMIA r5, {r0, r1, r2, r3, ip, lr}
 	LDR r0, [r4, #0x54]
 	cmp r0, #0
-	beq _0800AB5C
+	beq %10
 	mov r2, #0
 	mov r1, #0
 	bl sub_803D9A8
 	mov r0, #0
 	STR r0, [r4, #0x54]
-_0800AB5C
+10
 	add r0, r4, #0x58
 	mov r4, #0
 	mov r1, #0
@@ -163,13 +163,13 @@ sub_800AB8C
 	STMIA r5, {r0, r1, r2, r3, ip, lr}
 	LDR r0, [r4, #0x54]
 	cmp r0, #0
-	beq _0800ABF4
+	beq %11
 	mov r2, #0
 	mov r1, #0
 	bl sub_803D9A8
 	mov r0, #0
 	STR r0, [r4, #0x54]
-_0800ABF4
+11
 	add r0, r4, #0x58
 	mov r1, #0
 	mov r2, #0
@@ -205,7 +205,7 @@ sub_800AC3C
 	bl sub_8007104
 	mov r7, #0
 	cmp r0, #1
-	bne _0800AC98
+	bne %12
 	mov r0, r6
 	bl sub_8006FE4
 	mov r2, #0
@@ -213,10 +213,10 @@ sub_800AC3C
 	LDR r0, [r4, #0x54]
 	bl sub_803D9A8
 	STR r7, [r4, #0x54]
-	b _0800ACC0
-_0800AC98
+	b %13
+12
 	cmp r0, #0
-	beq _0800ACC0
+	beq %13
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [r4, #0x54]
@@ -225,7 +225,7 @@ _0800AC98
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #0
 	bx lr
-_0800ACC0
+13
 	LDR r0, [r4, #0x30]
 	sub r0, r0, r5
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
@@ -286,14 +286,14 @@ loc_800ACF0
 sub_800AD8C
 	STMFD SP!, {r4, lr}
 	movs r4, r0
-	bne _0800ADB0
+	bne %14
 	mov r0, #0x80
 	bl __nw__FUi
 	movs r4, r0
 	moveq r0, r4
 	LDMEQFD SP!, {r4, lr}
 	bxeq lr
-_0800ADB0
+14
 	mov r0, r4
 	bl sub_800802E
 	LDR r0, _0800AFC8
@@ -368,7 +368,7 @@ sub_800AE20
 	STR sb, [sp, #0xc]
 	bl sub_800ACD0
 	cmp r0, #0
-	bne _0800AEF0
+	bne %15
 	mov r4, #0
 	mov r1, #0
 	mov r0, r5
@@ -377,7 +377,7 @@ sub_800AE20
 	add sp, sp, #0x9c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-_0800AEF0
+15
 	ldrh r0, [sp, #0x20]
 	mov r1, #2
 	cmp r0, #0
@@ -388,7 +388,7 @@ _0800AEF0
 	mov r0, r4
 	bl sub_8007104
 	cmp r0, #1
-	bne _0800AF3C
+	bne %16
 	mov r0, r4
 	bl sub_8006FE4
 	mov r2, #0
@@ -396,21 +396,21 @@ _0800AEF0
 	LDR r0, [sp, #0x70]
 	bl sub_803D9A8
 	STR r6, [sp, #0x70]
-	b _0800AF5C
-_0800AF3C
+	b %17
+16
 	cmp r0, #0
-	beq _0800AF5C
+	beq %17
 	mov r2, #0
 	mov r1, #0
 	LDR r0, [sp, #0x70]
 	bl sub_803D9A8
 	STR r6, [sp, #0x70]
-	b _0800AF68
-_0800AF5C
+	b %18
+17
 	LDR r0, [sp, #0x4c]
 	adds r0, r0, #-0x1000000
-	bne _0800AF88
-_0800AF68
+	bne %19
+18
 	mov r4, #0
 	mov r1, #0
 	mov r0, r5
@@ -419,7 +419,7 @@ _0800AF68
 	add sp, sp, #0x9c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
-_0800AF88
+19
 	mov r4, #1
 	mov r1, #0
 	mov r0, r5

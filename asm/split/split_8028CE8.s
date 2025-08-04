@@ -45,10 +45,10 @@ MaybeHandleBootIntoGame
 	adds r0, #0x95
 	bl sub_803DA80
 	adds r4, r0, #0
-	beq _08028D30
+	beq %1
 	adds r0, r4, #0
 	bl sub_8023D0C
-_08028D30
+1
 	ldr r0, _08028D5C
 	movs r1, #0
 	str r4, [r0]

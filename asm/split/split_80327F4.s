@@ -33,7 +33,7 @@ sub_80327F4
 	lsrs r6, r5, #4
 	lsrs r7, r5, #1
 	cmp r0, #3
-	bne _0803286E
+	bne %2
 	adds r0, r4, #0
 	adds r0, #0x2c
 	movs r1, #0
@@ -41,7 +41,7 @@ sub_80327F4
 	stm r0!, {r1, r2}
 	ldr r0, [r4, #4]
 	cmp r0, #0
-	beq _08032868
+	beq %1
 	bl sub_803F898
 	ldr r1, [r4, #0x2c]
 	lsls r0, r0, #0x13
@@ -76,20 +76,20 @@ sub_80327F4
 	str r1, [r4, #0x2c]
 	ldrb r0, [r0, #5]
 	cmp r0, #0x42
-	bhi _08032868
+	bhi %1
 	lsls r0, r5, #1
 	orrs r0, r1
 	str r0, [r4, #0x2c]
-_08032868
+1
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0803286E
+2
 	adds r0, r4, #0
 	bl sub_802E4EE
 	ldr r0, [r4, #8]
 	cmp r0, #0
-	beq _08032868
+	beq %1
 	ldr r0, [r4, #4]
 	bl sub_803F898
 	ldr r1, [r4, #0x30]
@@ -115,7 +115,7 @@ _0803286E
 	orrs r0, r1
 	orrs r0, r5
 	str r0, [r4, #0x30]
-	b _08032868
+	b %1
 
 	thumb_func_start sub_80328B0
 sub_80328B0
@@ -128,11 +128,11 @@ sub_80328B0
 	adds r0, r5, r0
 	bl sub_8028BE4
 	cmp r0, #0
-	beq _080328D0
+	beq %3
 	ldr r0, [r4]
 	adds r0, r5, r0
 	bl sub_80268AC
-_080328D0
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -148,11 +148,11 @@ sub_80328D6
 	adds r7, #0x1c
 	cmp r0, #3
 	sub sp, #0xc
-	bne _080329A8
+	bne %7
 	str r1, [r4, #0x14]
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #2
-	bpl _080329A0
+	bpl %6
 	ldr r0, _08032A8C
 	ldr r0, [r0]
 	bl sub_800116A
@@ -170,22 +170,22 @@ sub_80328D6
 	ldr r5, [r4, #4]
 	lsrs r6, r0, #0x1f
 	ldr r0, [r5]
-	beq _0803292C
+	beq %4
 	lsls r0, r0, #0x1c
-	bmi _0803293A
+	bmi %5
 	ldr r0, _08032A8C
 	adds r1, r5, #0
 	ldr r0, [r0]
 	bl sub_80012F0
-	b _0803293A
-_0803292C
+	b %5
+4
 	lsls r0, r0, #0x1c
-	bpl _0803293A
+	bpl %5
 	ldr r0, _08032A8C
 	adds r1, r5, #0
 	ldr r0, [r0]
 	bl sub_8001338
-_0803293A
+5
 	ldr r0, [r5]
 	movs r1, #8
 	bics r0, r1
@@ -228,21 +228,21 @@ _0803293A
 	str r0, [r5]
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #6
-	bpl _080329A0
+	bpl %6
 	movs r1, #1
 	ldr r0, [r4, #4]
 	bl sub_80401E4
-_080329A0
+6
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_080329A8
+7
 	adds r0, r4, #0
 	bl sub_802E5D2
 	ldr r0, [r4, #0x2c]
 	lsls r0, r0, #2
-	bpl _080329F8
+	bpl %8
 	movs r2, #0x20
 	movs r1, #1
 	ldr r0, [r4, #4]
@@ -275,10 +275,10 @@ _080329A8
 	movs r1, #0x10
 	orrs r0, r1
 	str r0, [r5]
-_080329F8
+8
 	ldr r0, [r4, #0x30]
 	lsls r0, r0, #2
-	bpl _080329A0
+	bpl %6
 	ldr r0, _08032A8C
 	ldr r0, [r0]
 	bl sub_800116A
@@ -313,11 +313,11 @@ _080329F8
 	bl sub_80401C0
 	ldr r0, [r4, #0x30]
 	lsls r0, r0, #6
-	bpl _080329A0
+	bpl %6
 	movs r1, #1
 	ldr r0, [r4, #8]
 	bl sub_80401E4
-	b _080329A0
+	b %6
 
 	thumb_func_start sub_8032A58
 sub_8032A58

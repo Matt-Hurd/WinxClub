@@ -33,17 +33,17 @@
 Object__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0802E918
+	bne %2
 	movs r0, #0xac
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0802E918
+	bne %2
 	adds r0, r4, #0
-_0802E912
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0802E918
+2
 	adds r0, r4, #0
 	bl Init_and_add_some_object
 	ldr r0, _0802EC08
@@ -79,7 +79,7 @@ _0802E918
 	bics r1, r2
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
-	b _0802E912
+	b %1
 
 	non_word_aligned_thumb_func_start Object__ctor
 Object__ctor
@@ -92,10 +92,10 @@ Object__ctor
 	adds r0, r4, #0
 	bl GameObj__ctor
 	cmp r5, #0
-	beq _0802E97E
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0802E97E
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -110,20 +110,20 @@ ObjectScriptGroup__38
 	add r0, pc, #0x288
 	str r0, [sp]
 	movs r4, #4
-	b _0802E9A0
-_0802E996
+	b %5
+4
 	adds r4, #1
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	cmp r4, #0x40
-	bhs _0802E9AA
-_0802E9A0
+	bhs %6
+5
 	lsls r0, r4, #2
 	adds r0, r0, r6
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
-	bne _0802E996
-_0802E9AA
+	bne %4
+6
 	ldr r0, _0802EC2C
 	ldr r0, [r0]
 	bl sub_80050FA
@@ -184,7 +184,7 @@ _0802E9AA
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0802EA3E
+	beq %7
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -192,7 +192,7 @@ _0802E9AA
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_0802EA3E
+7
 	strh r4, [r0]
 	strh r4, [r0, #2]
 	strh r4, [r0, #4]
@@ -241,22 +241,22 @@ sub_802EA80
 	movs r3, #1
 	lsls r3, r4
 	cmp r2, #0
-	beq _0802EAB2
+	beq %9
 	lsrs r2, r2, #5
 	ldr r4, _0802EC34
 	lsls r2, r2, #2
 	ldr r2, [r4, r2]
 	ands r2, r3
-	bne _0802EAB2
+	bne %9
 	ldrh r1, [r1, #4]
 	strh r1, [r0, #6]
-_0802EAAE
+8
 	pop {r4}
 	bx lr
-_0802EAB2
+9
 	movs r1, #0
 	strh r1, [r0, #6]
-	b _0802EAAE
+	b %8
 
 	thumb_func_start ObjectScriptGroup__04
 ObjectScriptGroup__04
@@ -264,20 +264,20 @@ ObjectScriptGroup__04
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	beq _0802EAD0
+	beq %11
 	cmp r2, #0x2c
-	bne _0802EAD6
+	bne %12
 	bl sub_801DA2A
-_0802EACA
+10
 	add sp, #4
 	pop {r3}
 	bx r3
-_0802EAD0
+11
 	bl sub_802EA80
-	b _0802EACA
-_0802EAD6
+	b %10
+12
 	bl DefaultScriptGroups__04
-	b _0802EACA
+	b %10
 
 	thumb_func_start ObjectScriptGroup__08
 ObjectScriptGroup__08
@@ -285,20 +285,20 @@ ObjectScriptGroup__08
 	ldr r2, [r1]
 	ldrb r2, [r2]
 	cmp r2, #0x28
-	beq _0802EAF2
+	beq %14
 	cmp r2, #0x2c
-	bne _0802EAF6
+	bne %15
 	movs r0, #1
-_0802EAEC
+13
 	add sp, #4
 	pop {r3}
 	bx r3
-_0802EAF2
+14
 	movs r0, #1
-	b _0802EAEC
-_0802EAF6
+	b %13
+15
 	bl DefaultScriptGroups__08
-	b _0802EAEC
+	b %13
 
 	thumb_func_start ObjectScriptGroup__44
 ObjectScriptGroup__44
@@ -312,23 +312,23 @@ ObjectScriptGroup__44
 	mvns r1, r1
 	cmp r2, #0
 	sub sp, #0x1c
-	beq _0802EB1E
+	beq %16
 	bl sub_8000D5A
 	ldr r0, [r0, #0x24]
 	ldr r1, [r5, #0x44]
 	subs r0, r1, r0
 	asrs r1, r0, #3
-_0802EB1E
+16
 	lsls r0, r1, #0x10
 	ldrh r1, [r4, #0x1a]
 	lsrs r0, r0, #0x10
 	cmp r0, r1
-	beq _0802EC00
+	beq %20
 	adds r5, r4, #0
 	adds r5, #0xa0
 	ldrh r0, [r5, #6]
 	cmp r0, #0
-	beq _0802EBDA
+	beq %19
 	ldr r0, [r4, #0x58]
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
@@ -347,7 +347,7 @@ _0802EB1E
 	ldr r7, [r0, r1]
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0802EB72
+	bne %17
 	ldr r0, _0802EC38
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -360,7 +360,7 @@ _0802EB1E
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_0802EB72
+17
 	ldr r0, [r0, #4]
 	add r3, sp, #0
 	lsls r1, r0, #0x14
@@ -376,7 +376,7 @@ _0802EB72
 	ldr r6, [r4, #0x2c]
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
-	bne _0802EBAC
+	bne %18
 	ldr r0, _0802EC38
 	ldr r0, [r0]
 	bl sub_8000D5A
@@ -389,7 +389,7 @@ _0802EB72
 	adds r1, r3, r1
 	lsls r1, r1, #2
 	adds r0, r0, r1
-_0802EBAC
+18
 	ldrh r1, [r0, #0x10]
 	ldrh r0, [r0, #0x12]
 	add r3, sp, #0
@@ -411,7 +411,7 @@ _0802EBAC
 	bl sub_802F926
 	movs r0, #0
 	strh r0, [r5, #6]
-_0802EBDA
+19
 	ldr r0, _0802EC3C
 	ldr r0, [r0]
 	ldrb r1, [r5]
@@ -428,7 +428,7 @@ _0802EBDA
 	adds r4, #0x70
 	strb r0, [r4, #0xc]
 	strb r0, [r4, #0xd]
-_0802EC00
+20
 	add sp, #0x1c
 	pop {r4, r5, r6, r7}
 	pop {r3}
@@ -462,7 +462,7 @@ ObjectScriptGroup__20
 	movs r0, #0x1c
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0802EC6C
+	beq %21
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
@@ -470,7 +470,7 @@ ObjectScriptGroup__20
 	stm r0!, {r1, r2, r3}
 	stm r0!, {r3}
 	subs r0, #0x1c
-_0802EC6C
+21
 	strh r5, [r0]
 	strh r5, [r0, #2]
 	strh r5, [r0, #4]

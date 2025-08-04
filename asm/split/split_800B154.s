@@ -24,28 +24,28 @@ sub_800B154
 	strh r4, [r1, #8]
 	ldrh r4, [r1]
 	cmp r2, #0
-	beq _0800B16E
+	beq %1
 	orrs r4, r0
 	strh r4, [r1]
-	b _0800B172
-_0800B16E
+	b %2
+1
 	bics r4, r0
 	strh r4, [r1]
-_0800B172
+2
 	strh r3, [r1, #8]
 	cmp r0, #4
-	bgt _0800B18C
+	bgt %3
 	ldr r3, _0800B2B8
 	ldrh r1, [r3]
 	lsls r0, r0, #3
 	bics r1, r0
 	strh r1, [r3]
 	cmp r2, #0
-	beq _0800B18C
+	beq %3
 	ldrh r1, [r3]
 	orrs r0, r1
 	strh r0, [r3]
-_0800B18C
+3
 	pop {r4}
 	bx lr
 
@@ -59,22 +59,22 @@ InitKeyinputIE
 	lsls r1, r1, #0xc
 	movs r4, #0
 	cmp r0, #0
-	beq _0800B1B2
+	beq %5
 	strh r4, [r3, #0x10]
 	ldrh r0, [r2]
 	orrs r0, r1
 	strh r0, [r2]
 	ldr r0, _0800B2BC
 	strh r0, [r3, #0x12]
-_0800B1AE
+4
 	pop {r4}
 	bx lr
-_0800B1B2
+5
 	ldrh r0, [r2]
 	bics r0, r1
 	strh r0, [r2]
 	strh r4, [r3, #0x12]
-	b _0800B1AE
+	b %4
 
 	thumb_func_start sub_800B1BC
 sub_800B1BC
@@ -152,17 +152,17 @@ nullsub_4
 sub_800B1F6
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0800B20E
+	bne %7
 	movs r0, #4
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0800B20E
+	bne %7
 	adds r0, r4, #0
-_0800B208
+6
 	pop {r4}
 	pop {r3}
 	bx r3
-_0800B20E
+7
 	ldr r0, _0800B2C0
 	ldr r3, _0800B2B4
 	str r0, [r4]
@@ -221,7 +221,7 @@ _0800B20E
 	adds r0, r4, #0
 	bl sub_800B154
 	adds r0, r4, #0
-	b _0800B208
+	b %6
 
 	non_word_aligned_thumb_func_start sub_800B286
 sub_800B286
@@ -232,9 +232,9 @@ sub_800B286
 	movs r2, #0
 	str r2, [r3]
 	cmp r1, #0
-	beq _0800B29A
+	beq %8
 	bl sub_803DA18
-_0800B29A
+8
 	add sp, #4
 	pop {r3}
 	bx r3

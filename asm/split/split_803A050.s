@@ -15,17 +15,17 @@
 Scanner__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _0803A068
+	bne %2
 	movs r0, #0xf4
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0803A068
+	bne %2
 	adds r0, r4, #0
-_0803A062
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_0803A068
+2
 	adds r0, r4, #0
 	bl Monster__Create
 	ldr r0, _0803A420
@@ -76,7 +76,7 @@ _0803A068
 	bics r1, r2
 	str r1, [r0, #0x30]
 	adds r0, r4, #0
-	b _0803A062
+	b %1
 
 	non_word_aligned_thumb_func_start Scanner__ctor
 Scanner__ctor
@@ -89,10 +89,10 @@ Scanner__ctor
 	adds r0, r4, #0
 	bl Monster__ctor
 	cmp r5, #0
-	beq _0803A0EE
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_0803A0EE
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -105,11 +105,11 @@ ScannerScriptGroup__Dying
 	ldrh r4, [r3, #8]
 	adds r2, #0xc0
 	cmp r4, #0xf
-	beq _0803A122
+	beq %5
 	cmp r4, #0x11
-	beq _0803A134
+	beq %6
 	cmp r4, #0x12
-	bne _0803A146
+	bne %7
 	ldr r0, [r3, #4]
 	movs r3, #1
 	lsls r3, r3, #0x10
@@ -119,11 +119,11 @@ ScannerScriptGroup__Dying
 	bics r1, r3
 	orrs r0, r1
 	str r0, [r2, #0x30]
-_0803A11C
+4
 	pop {r4}
 	pop {r3}
 	bx r3
-_0803A122
+5
 	ldr r0, [r3, #4]
 	ldr r1, [r2, #0x30]
 	movs r3, #8
@@ -132,8 +132,8 @@ _0803A122
 	bics r1, r3
 	orrs r0, r1
 	str r0, [r2, #0x30]
-	b _0803A11C
-_0803A134
+	b %4
+6
 	ldr r1, [r2, #0x30]
 	ldr r0, [r3, #4]
 	lsrs r1, r1, #3
@@ -142,10 +142,10 @@ _0803A134
 	lsrs r0, r0, #0x1d
 	orrs r0, r1
 	str r0, [r2, #0x30]
-	b _0803A11C
-_0803A146
+	b %4
+7
 	bl HostileCreature__Dying
-	b _0803A11C
+	b %4
 
 	thumb_func_start ScannerScriptGroup__40
 ScannerScriptGroup__40
@@ -163,11 +163,11 @@ ScannerScriptGroup__40
 	movs r7, #0
 	cmp r0, #0x37
 	sub sp, #0x2c
-	beq _0803A24E
+	beq %8
 	cmp r0, #0x38
-	beq _0803A250
+	beq %9
 	cmp r0, #0x39
-	bne _0803A252
+	bne %10
 	movs r1, #0
 	movs r0, #0x17
 	lsls r0, r0, #5
@@ -273,17 +273,17 @@ ScannerScriptGroup__40
 	str r0, [r5, #0x30]
 	movs r0, #1
 	lsls r0, r0, #0xc
-	b _0803A254
-_0803A24E
-	b _0803A2BE
-_0803A250
-	b _0803A3A8
-_0803A252
-	b _0803A258
-_0803A254
+	b %11
+8
+	b %14
+9
+	b %17
+10
+	b %12
+11
 	bics r1, r0
 	str r1, [r5, #0xc]
-_0803A258
+12
 	ldrh r0, [r4, #0x24]
 	str r0, [sp, #0x28]
 	adds r0, #0x1e
@@ -317,7 +317,7 @@ _0803A258
 	movs r6, #0xf
 	lsls r6, r6, #0x18
 	cmp r0, r7
-	ble _0803A380
+	ble %15
 	ldr r3, [sp, #0x1c]
 	subs r0, r3, r1
 	asrs r0, r0, #1
@@ -331,12 +331,12 @@ _0803A258
 	strh r0, [r4, #0x24]
 	ldr r3, [sp, #0x20]
 	strh r3, [r4, #0x20]
-_0803A2B6
+13
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0803A2BE
+14
 	movs r1, #0
 	movs r0, #0xff
 	adds r0, #0xd9
@@ -429,10 +429,10 @@ _0803A2BE
 	str r1, [r4, #0x70]
 	movs r1, #0xd
 	lsls r1, r1, #0x10
-	b _0803A382
-_0803A380
-	b _0803A458
-_0803A382
+	b %16
+15
+	b %18
+16
 	str r1, [r5, #0x24]
 	ldr r1, [r5, #0xc]
 	movs r2, #0xf
@@ -451,8 +451,8 @@ _0803A382
 	lsls r0, r0, #0xc
 	bics r1, r0
 	str r1, [r5, #0xc]
-	b _0803A258
-_0803A3A8
+	b %12
+17
 	movs r1, #0
 	movs r0, #0xff
 	adds r0, #0x15
@@ -510,7 +510,7 @@ _0803A3A8
 	ands r0, r2
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
-	b _0803A258
+	b %12
 	ALIGN
 _0803A420 DCDU __VTABLE__332Scanner
 _0803A424 DCDU sub_8041020
@@ -526,7 +526,7 @@ _0803A448 DCDU 0x000002E3
 _0803A44C DCDU 0x00010CD0
 _0803A450 DCDU 0xFFFF007F
 _0803A454 DCDU 0x00012668
-_0803A458
+18
 	subs r0, r3, r2
 	asrs r0, r0, #1
 	adds r0, r0, r2
@@ -541,23 +541,23 @@ _0803A458
 	mov r6, lr
 	strh r6, [r4, #0x26]
 	strh r5, [r4, #0x22]
-	b _0803A2B6
+	b %13
 
 	non_word_aligned_thumb_func_start sub_803A476
 sub_803A476
 	movs r1, #0
-_0803A478
+19
 	lsls r2, r1, #2
 	adds r2, r2, r0
 	ldr r2, [r2, #0x38]
 	cmp r2, #0
-	beq _0803A486
+	beq %20
 	movs r0, #1
 	bx lr
-_0803A486
+20
 	adds r1, #1
 	cmp r1, #5
-	blo _0803A478
+	blo %19
 	movs r0, #0
 	bx lr
 	END

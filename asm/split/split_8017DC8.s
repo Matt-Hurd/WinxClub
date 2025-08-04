@@ -38,23 +38,23 @@ sub_8017DE6
 	adds r1, r4, #0
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08017E02
+	bmi %1
 	ldrh r1, [r0, #6]
-_08017E02
+1
 	lsls r0, r1, #0x10
-	bne _08017E1A
-_08017E06
+	bne %4
+2
 	bl sub_800EF2A
 	ldr r0, [r5]
 	adds r1, r4, #0
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1c
-	bmi _08017E16
+	bmi %3
 	ldrh r1, [r0, #6]
-_08017E16
+3
 	lsls r0, r1, #0x10
-	beq _08017E06
-_08017E1A
+	beq %2
+4
 	movs r0, #0x10
 	bl SetNextGlobalFunction
 	bl FadeToBlack

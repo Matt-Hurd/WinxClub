@@ -15,13 +15,13 @@ sub_803B5A0
 	ldr r0, [r0]
 	ldrh r0, [r0, #4]
 	cmp r3, r0
-	blo _0803B5C0
+	blo %1
 	ldr r0, _0803B5BC
-	b _0803B642
+	b %6
 	ALIGN
 _0803B5B8 DCDU eeprom
 _0803B5BC DCDU 0x000080FF
-_0803B5C0
+1
 	ldr r0, _0803B64C
 	adds r6, r0, #0
 	ldr r0, [r0]
@@ -32,8 +32,8 @@ _0803B5C0
 	adds r2, #2
 	movs r4, #0
 	cmp r4, r1
-	bhs _0803B5EA
-_0803B5D6
+	bhs %3
+2
 	strh r3, [r2]
 	subs r2, #2
 	lsrs r3, r3, #1
@@ -43,8 +43,8 @@ _0803B5D6
 	ldr r0, [r6]
 	ldrb r0, [r0, #8]
 	cmp r4, r0
-	blo _0803B5D6
-_0803B5EA
+	blo %2
+3
 	movs r0, #1
 	strh r0, [r2]
 	subs r2, #2
@@ -66,10 +66,10 @@ _0803B5EA
 	adds r5, #6
 	movs r4, #0
 	movs r6, #1
-_0803B618
+4
 	movs r1, #0
 	movs r3, #0
-_0803B61C
+5
 	lsls r1, r1, #0x11
 	ldrh r0, [r2]
 	ands r0, r6
@@ -80,16 +80,16 @@ _0803B61C
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
 	cmp r3, #0xf
-	bls _0803B61C
+	bls %5
 	strh r1, [r5]
 	subs r5, #2
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	cmp r4, #3
-	bls _0803B618
+	bls %4
 	movs r0, #0
-_0803B642
+6
 	add sp, #0x88
 	pop {r4, r5, r6}
 	pop {r1}

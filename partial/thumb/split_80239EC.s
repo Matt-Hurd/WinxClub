@@ -34,32 +34,32 @@ CollectFirefly
 	adds r0, r0, r1
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bpl _08023B38
+	bpl %1
 	movs r0, #0
 	strb r0, [r4, #6]
-	b _08023B44
-_08023B38
+	b %3
+1
 	ldrb r1, [r4, #7]
 	cmp r1, r0
-	bge _08023B42
+	bge %2
 	strb r1, [r4, #6]
-	b _08023B44
-_08023B42
+	b %3
+2
 	strb r0, [r4, #6]
-_08023B44
+3
 	ldrb r5, [r4, #6]
 	adds r0, r5, #0
 	bl sub_8040684
 	cmp r0, #0
-	beq _08023B54
+	beq %4
 	cmp r5, #1
-	bne _08023C3A
-_08023B54
+	bne %8
+4
 	ldr r7, _08023CE8
 	movs r0, #0
 	ldr r2, [r7, #4]
 	add r6, sp, #0x28
-_08023B5C
+5
 	adds r1, r2, r0
 	adds r1, #0xb0
 	ldrb r1, [r1, #5]
@@ -68,7 +68,7 @@ _08023B5C
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #4
-	blt _08023B5C
+	blt %5
 	adds r0, r4, #0
 	bl sub_80237DA
 	movs r0, #0
@@ -81,14 +81,14 @@ _08023B5C
 	strb r0, [r3, #7]
 	ldr r6, [r1, #4]
 	add r7, sp, #0x24
-_08023B88
+6
 	add r1, sp, #0x28
 	ldrb r2, [r1, r0]
 	adds r1, r6, r0
 	adds r1, #0xb0
 	ldrb r1, [r1, #5]
 	cmp r2, r1
-	beq _08023BAA
+	beq %7
 	ldr r3, _08023CF8
 	lsls r2, r0, #1
 	ldrh r2, [r3, r2]
@@ -99,12 +99,12 @@ _08023B88
 	lsrs r2, r2, #0x18
 	adds r5, r2, #0
 	strb r1, [r7, r3]
-_08023BAA
+7
 	adds r0, #1
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #4
-	blt _08023B88
+	blt %6
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
@@ -163,10 +163,10 @@ _08023BAA
 	adds r2, r4, #0
 	str r1, [sp, #4]
 	ldr r3, [sp, #0x10]
-	b _08023C3C
-_08023C3A
-	b _08023CE0
-_08023C3C
+	b %9
+8
+	b %10
+9
 	adds r1, r5, #0
 	ldr r0, [sp, #0x20]
 	bl sprintf
@@ -240,7 +240,7 @@ _08023C3C
 	ldr r0, [r6]
 	movs r1, #3
 	bl sub_8017A0A
-_08023CE0
+10
 	add sp, #0x2c
 	pop {r4, r5, r6, r7}
 	pop {r3}

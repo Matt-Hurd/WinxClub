@@ -30,18 +30,18 @@ LoadFiletable
 	adds r4, r0, #0
 	cmp r0, #0
 	sub sp, #0x14
-	bne _08004E08
+	bne %2
 	movs r0, #0xc
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08004E08
+	bne %2
 	adds r0, r4, #0
-_08004E00
+1
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08004E08
+2
 	ldr r0, _08005034
 	movs r1, #0
 	str r0, [r4]
@@ -55,7 +55,7 @@ _08004E08
 	add r0, sp, #0xc
 	movs r2, #0
 	stm r0!, {r1, r2}
-_08004E22
+3
 	ldr r0, _08005040
 	movs r3, #0
 	adds r2, r7, #0
@@ -70,40 +70,40 @@ _08004E22
 	bl sub_803DABC
 	adds r2, r0, #0
 	adds r1, r6, #0
-_08004E42
+4
 	ldrb r3, [r1]
 	cmp r3, #0x53
-	bne _08004E5A
+	bne %5
 	ldrb r3, [r1, #1]
 	cmp r3, #0x46
-	bne _08004E5A
+	bne %5
 	ldrb r3, [r1, #2]
 	cmp r3, #0x43
-	bne _08004E5A
+	bne %5
 	ldrb r3, [r1, #3]
 	cmp r3, #0x44
-	beq _08004E64
-_08004E5A
+	beq %6
+5
 	adds r1, #4
 	subs r0, #4
 	cmp r0, #0
-	bgt _08004E42
+	bgt %4
 	movs r1, #0
-_08004E64
+6
 	cmp r1, #0
-	beq _08004E76
+	beq %7
 	subs r0, r1, r6
 	adds r5, r0, r5
 	ldr r0, [r1, #4]
 	ldr r2, [r1]
 	str r0, [sp, #0x10]
 	str r2, [sp, #0xc]
-	b _08004E7C
-_08004E76
+	b %8
+7
 	adds r5, r5, r2
 	subs r7, r7, r2
-	bne _08004E22
-_08004E7C
+	bne %3
+8
 	ldr r6, _08005040
 	movs r2, #8
 	adds r1, r5, #0
@@ -111,7 +111,7 @@ _08004E7C
 	bl sub_803DABC
 	adds r7, r0, #0
 	cmp r0, #8
-	bhs _08004EA8
+	bhs %9
 	adds r1, r5, r7
 	movs r3, #0
 	movs r2, #8
@@ -123,7 +123,7 @@ _08004E7C
 	add r0, sp, #0xc
 	adds r0, r0, r7
 	bl __16__rt_memcpy
-_08004EA8
+9
 	ldr r0, [sp, #0x10]
 	adds r7, r5, #0
 	lsls r0, r0, #0x10
@@ -149,7 +149,7 @@ _08004EA8
 	lsrs r5, r5, #0x10
 	adds r1, #8
 	str r1, [sp, #8]
-_08004EDC
+10
 	ldr r6, _08005040
 	movs r3, #0
 	adds r2, r5, #0
@@ -171,9 +171,9 @@ _08004EDC
 	adds r1, r1, r6
 	str r1, [sp, #8]
 	subs r5, r5, r6
-	bne _08004EDC
+	bne %10
 	adds r0, r4, #0
-	b _08004E00
+	b %1
 
 	non_word_aligned_thumb_func_start sub_8004F12
 sub_8004F12
@@ -193,10 +193,10 @@ sub_8004F12
 	subs r4, #8
 	cmp r5, #0
 	str r1, [r0]
-	beq _08004F3C
+	beq %11
 	adds r0, r4, #0
 	bl sub_803DA18
-_08004F3C
+11
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -210,27 +210,27 @@ sub_8004F42
 	ldr r5, [r0, #4]
 	adds r6, r1, #0
 	adds r5, #8
-_08004F50
+12
 	movs r4, #0
 	movs r1, #0x40
 	add r0, sp, #8
 	bl __16__rt_memclr_w
 	cmp r6, #0
-	beq _08004F90
+	beq %14
 	movs r1, #0x5c
 	adds r0, r6, #0
 	bl strchr
 	adds r4, r0, #0
-	bne _08004F7E
+	bne %13
 	movs r1, #0x2f
 	adds r0, r6, #0
 	bl strchr
 	adds r4, r0, #0
-	bne _08004F7E
+	bne %13
 	adds r0, r6, #0
 	bl gameStrlen
 	adds r4, r0, r6
-_08004F7E
+13
 	subs r2, r4, r6
 	adds r1, r6, #0
 	add r6, sp, #8
@@ -238,40 +238,40 @@ _08004F7E
 	bl __16__rt_memcpy
 	adds r0, r6, #0
 	bl strToLower
-_08004F90
+14
 	ldm r5!, {r0}
 	lsls r6, r0, #0x10
 	lsrs r6, r6, #0x10
-_08004F96
+15
 	cmp r4, #0
-	beq _08004FC8
+	beq %18
 	adds r0, r5, #0
 	adds r0, #8
 	add r1, sp, #8
 	bl strStartsWith
 	cmp r0, #0
-	beq _08004FC8
+	beq %18
 	ldrb r0, [r4]
 	cmp r0, #0
-	beq _08004FBE
+	beq %16
 	ldr r0, [r5, #4]
 	lsls r0, r0, #3
 	lsrs r0, r0, #3
 	adds r5, r0, r5
 	cmp r6, #0
-	beq _08004FF8
+	beq %20
 	adds r6, r4, #1
-	b _08004F50
-_08004FBE
+	b %12
+16
 	adds r0, r5, #0
-_08004FC0
+17
 	add sp, #0x54
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_08004FC8
+18
 	cmp r7, #0
-	beq _08004FE0
+	beq %19
 	ldr r0, [sp, #0x48]
 	ldr r0, [r0, #8]
 	ldr r1, [r5, #4]
@@ -279,10 +279,10 @@ _08004FC8
 	lsrs r1, r1, #3
 	adds r0, r0, r1
 	cmp r0, r7
-	bne _08004FE0
+	bne %19
 	adds r0, r5, #0
-	b _08004FC0
-_08004FE0
+	b %17
+19
 	adds r0, r5, #0
 	adds r0, #8
 	str r0, [sp, #4]
@@ -293,10 +293,10 @@ _08004FE0
 	lsls r0, r0, #2
 	adds r5, r0, r1
 	subs r6, #1
-	bne _08004F96
-_08004FF8
+	bne %15
+20
 	movs r0, #0
-	b _08004FC0
+	b %17
 
 	thumb_func_start sub_8004FFC
 sub_8004FFC
@@ -305,18 +305,18 @@ sub_8004FFC
 	movs r2, #0
 	bl sub_8004F42
 	cmp r0, #0
-	bne _08005010
-_0800500A
+	bne %22
+21
 	pop {r4}
 	pop {r3}
 	bx r3
-_08005010
+22
 	ldr r1, [r4, #8]
 	ldr r0, [r0, #4]
 	lsls r0, r0, #3
 	lsrs r0, r0, #3
 	adds r0, r1, r0
-	b _0800500A
+	b %21
 
 	thumb_func_start sub_800501C
 sub_800501C
@@ -325,9 +325,9 @@ sub_800501C
 	bl sub_8004F42
 	movs r1, #0
 	cmp r0, #0
-	beq _0800502C
+	beq %23
 	ldr r1, [r0]
-_0800502C
+23
 	add sp, #4
 	pop {r3}
 	adds r0, r1, #0

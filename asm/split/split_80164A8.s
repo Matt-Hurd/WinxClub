@@ -19,17 +19,17 @@
 sub_80164A8
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _080164C0
+	bne %2
 	movs r0, #0x18
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _080164C0
+	bne %2
 	adds r0, r4, #0
-_080164BA
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_080164C0
+2
 	adds r0, r4, #0
 	bl sub_8017444
 	ldr r0, _08016694
@@ -46,7 +46,7 @@ _080164C0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
 	adds r0, r4, #0
-	b _080164BA
+	b %1
 
 	non_word_aligned_thumb_func_start sub_80164E6
 sub_80164E6
@@ -55,26 +55,26 @@ sub_80164E6
 	ldrb r0, [r0, #8]
 	movs r4, #0
 	cmp r0, #0
-	bls _08016514
-_080164F2
+	bls %5
+3
 	ldr r0, [r5, #0x14]
 	lsls r1, r4, #2
 	ldr r0, [r0, r1]
 	cmp r0, #0
-	beq _08016508
+	beq %4
 	ldr r1, [r0]
 	ldr r2, [r1]
 	adds r2, r2, r1
 	movs r1, #1
 	bl __call_via_r2
-_08016508
+4
 	adds r4, #1
 	ldrb r0, [r5, #8]
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	cmp r0, r4
-	bhi _080164F2
-_08016514
+	bhi %3
+5
 	ldr r0, [r5, #0x14]
 	bl __da__FPv
 	movs r0, #0
@@ -93,19 +93,19 @@ sub_8016526
 	str r0, [r4]
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
-	beq _0801653E
+	beq %6
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_80164E6
-_0801653E
+6
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_8017450
 	cmp r5, #0
-	beq _08016550
+	beq %7
 	adds r0, r4, #0
 	bl sub_803DA18
-_08016550
+7
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -123,25 +123,25 @@ sub_8016556
 	movs r0, #8
 	bl sub_803DA80
 	cmp r0, #0
-	beq _0801657A
+	beq %8
 	movs r1, #0
 	movs r2, #0
 	stm r0!, {r1, r2}
 	subs r0, #8
-_0801657A
+8
 	ldrh r1, [r5, #4]
 	strh r1, [r0]
 	str r6, [r0, #4]
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
-	beq _0801658C
+	beq %9
 	str r0, [r1, #4]
 	str r0, [r4, #0x10]
-	b _08016590
-_0801658C
+	b %10
+9
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x10]
-_08016590
+10
 	ldrb r0, [r4, #8]
 	adds r0, #1
 	strb r0, [r4, #8]
@@ -163,8 +163,8 @@ sub_801659C
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r6, #0x14]
-	b _080165D0
-_080165BA
+	b %12
+11
 	ldrh r0, [r5]
 	bl maybeGameObjFactory
 	ldr r1, [r6, #0x14]
@@ -175,23 +175,23 @@ _080165BA
 	lsls r4, r4, #0x10
 	ldr r5, [r5, #4]
 	lsrs r4, r4, #0x10
-_080165D0
+12
 	cmp r5, #0
-	beq _080165DA
+	beq %13
 	ldrb r0, [r6, #8]
 	cmp r0, r4
-	bhi _080165BA
-_080165DA
+	bhi %11
+13
 	ldr r4, [r6, #0xc]
 	cmp r4, #0
-	beq _080165EC
-_080165E0
+	beq %15
+14
 	adds r0, r4, #0
 	ldr r4, [r4, #4]
 	bl sub_803DA18
 	cmp r4, #0
-	bne _080165E0
-_080165EC
+	bne %14
+15
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -202,11 +202,11 @@ sub_80165F2
 	adds r4, r0, #0
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
-	beq _08016604
+	beq %16
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_80164E6
-_08016604
+16
 	movs r0, #0
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x10]
@@ -223,13 +223,13 @@ sub_8016612
 	ldrb r0, [r5]
 	movs r6, #0
 	cmp r0, #0x15
-	beq _0801665A
+	beq %18
 	cmp r0, #0x16
-	beq _08016674
+	beq %21
 	cmp r0, #0x17
-	beq _0801667C
+	beq %22
 	cmp r0, #0x18
-	bne _0801666E
+	bne %20
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	adds r3, r6, #0
@@ -237,52 +237,52 @@ sub_8016612
 	movs r0, #8
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08016648
+	beq %17
 	movs r1, #0
 	movs r2, #0
 	stm r0!, {r1, r2}
 	subs r0, #8
-_08016648
+17
 	ldrh r1, [r5, #4]
 	strh r1, [r0]
 	str r6, [r0, #4]
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
-	beq _08016684
+	beq %23
 	str r0, [r1, #4]
 	str r0, [r4, #0x10]
-	b _08016688
-_0801665A
+	b %24
+18
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
-	beq _08016668
+	beq %19
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_80164E6
-_08016668
+19
 	str r6, [r4, #0xc]
 	str r6, [r4, #0x10]
 	strb r6, [r4, #8]
-_0801666E
+20
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_08016674
+21
 	adds r0, r4, #0
 	bl sub_801659C
-	b _0801666E
-_0801667C
+	b %20
+22
 	adds r0, r4, #0
 	bl sub_80164E6
-	b _0801666E
-_08016684
+	b %20
+23
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x10]
-_08016688
+24
 	ldrb r0, [r4, #8]
 	adds r0, #1
 	strb r0, [r4, #8]
-	b _0801666E
+	b %20
 
 	thumb_func_start sub_8016690
 sub_8016690

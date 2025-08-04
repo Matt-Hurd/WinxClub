@@ -74,11 +74,11 @@ sub_80050AC
 SomehowInitEWRAMLinkedList
 	push {r3, r4, r5, lr}
 	cmp r1, #0
-	bne _080050CC
+	bne %1
 	subs r1, #4
 	ldr r1, [r1, r0]
 	lsrs r1, r1, #8
-_080050CC
+1
 	movs r2, #0
 	str r2, [r0, #4]
 	str r2, [r0]
@@ -109,9 +109,9 @@ sub_80050F4
 sub_80050FA
 	ldr r1, _08005258
 	cmp r0, #0
-	bne _08005102
+	bne %2
 	ldr r0, [r1, #4]
-_08005102
+2
 	str r0, [r1, #8]
 	bx lr
 
@@ -125,13 +125,13 @@ GetEWRAMStart
 sub_800510C
 	ldr r2, [r0]
 	cmp r2, r1
-	bhi _0800511C
+	bhi %3
 	ldr r0, [r0, #4]
 	cmp r0, r1
-	bls _0800511C
+	bls %3
 	movs r0, #1
 	bx lr
-_0800511C
+3
 	movs r0, #0
 	bx lr
 
@@ -140,13 +140,13 @@ sub_8005120
 	subs r0, #0xc
 	ldr r1, [r0, #8]
 	lsrs r1, r1, #8
-	beq _08005130
-_08005128
+	beq %5
+4
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #8]
 	lsrs r1, r1, #8
-	bne _08005128
-_08005130
+	bne %4
+5
 	ldr r0, [r0, #4]
 	bx lr
 
@@ -156,20 +156,20 @@ sub_8005134
 	lsls r3, r2, #0x1f
 	lsrs r3, r3, #0x1f
 	cmp r3, r1
-	beq _08005156
+	beq %6
 	lsrs r2, r2, #1
 	lsls r2, r2, #1
 	orrs r2, r1
 	str r2, [r0, #8]
 	cmp r1, #0
-	bne _08005156
+	bne %6
 	str r1, [r0]
 	lsls r2, r2, #0x1f
 	lsrs r2, r2, #0x1f
 	str r1, [r0, #4]
 	str r2, [r0, #8]
 	str r1, [r0, #0xc]
-_08005156
+6
 	bx lr
 
 	thumb_func_start sub_8005158
@@ -203,10 +203,10 @@ sub_8005170
 	lsls r2, r2, #3
 	movs r3, #0
 	cmp r4, #0
-	beq _080051C0
+	beq %9
 	adds r5, r2, #0
 	adds r5, #0xc
-_08005186
+7
 	ldr r2, [r0, #8]
 	ldr r4, [r0]
 	lsrs r2, r2, #8
@@ -217,11 +217,11 @@ _08005186
 	adds r2, #0xc
 	subs r2, r4, r2
 	cmp r3, r2
-	bge _0800519E
+	bge %8
 	adds r3, r2, #0
-_0800519E
+8
 	cmp r2, r5
-	blt _080051C8
+	blt %11
 	ldr r2, [r0, #8]
 	lsrs r2, r2, #8
 	adds r2, #7
@@ -235,22 +235,22 @@ _0800519E
 	bl sub_803F07C
 	ldr r0, [r4]
 	cmp r0, #0
-	bne _080051D2
-_080051C0
+	bne %12
+9
 	movs r0, #0
-_080051C2
+10
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_080051C8
+11
 	ldr r2, [r4]
 	adds r0, r4, #0
 	cmp r2, #0
-	beq _080051C0
-	b _08005186
-_080051D2
+	beq %9
+	b %7
+12
 	adds r0, r4, #0
-	b _080051C2
+	b %10
 
 	non_word_aligned_thumb_func_start sub_80051D6
 sub_80051D6
@@ -259,13 +259,13 @@ sub_80051D6
 	ldr r0, [r0, #8]
 	adds r5, r2, #0
 	lsls r0, r0, #0x1f
-	bmi _080051EA
+	bmi %14
 	movs r0, #0
-_080051E4
+13
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
-_080051EA
+14
 	adds r0, r4, #0
 	bl sub_8005170
 	ldr r1, [r0, #8]
@@ -291,13 +291,13 @@ _080051EA
 	orrs r1, r5
 	str r1, [r0, #8]
 	adds r0, #0xc
-	b _080051E4
+	b %13
 
 	thumb_func_start sub_8005220
 sub_8005220
 	ldr r2, [r0, #8]
 	lsls r2, r2, #0x1f
-	bpl _08005254
+	bpl %15
 	subs r1, #0xc
 	ldr r2, [r1, #8]
 	ldr r3, [r0, #0xc]
@@ -321,7 +321,7 @@ sub_8005220
 	lsls r1, r1, #1
 	orrs r1, r2
 	str r1, [r0, #8]
-_08005254
+15
 	bx lr
 	ALIGN
 _08005258 DCDU gUnknown_030033E8

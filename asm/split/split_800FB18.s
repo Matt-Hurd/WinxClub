@@ -28,13 +28,13 @@ sub_800FB18
 	adds r4, r0, #0
 	ldr r0, [r0, #4]
 	cmp r0, #0
-	beq _0800FB2E
+	beq %1
 	ldr r2, [r4, #8]
 	movs r1, #1
 	lsls r1, r2
 	adds r1, #0x10
 	bl __16__rt_memclr
-_0800FB2E
+1
 	movs r0, #0
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x10]
@@ -105,12 +105,12 @@ sub_800FB9E
 sub_800FBA0
 	push {r3, lr}
 	adds r1, r0, #0
-	bne _0800FBAC
-_0800FBA6
+	bne %3
+2
 	add sp, #4
 	pop {r3}
 	bx r3
-_0800FBAC
+3
 	ldr r0, _0800FD3C
 	movs r3, #0
 	movs r2, #0x48
@@ -119,22 +119,22 @@ _0800FBAC
 	ldr r0, [r0, #4]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
-	b _0800FBA6
+	b %2
 
 	thumb_func_start sub_800FBC0
 sub_800FBC0
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
-	beq _0800FBCA
+	beq %4
 	cmp r0, #0
-	bne _0800FBD2
-_0800FBCA
+	bne %6
+4
 	movs r0, #0
-_0800FBCC
+5
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0800FBD2
+6
 	ldr r1, _0800FD3C
 	movs r3, #0
 	ldr r5, [r1]
@@ -147,23 +147,23 @@ _0800FBD2
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	cmp r0, #6
-	bhs _0800FC58
+	bhs %16
 	add r3, pc, #0x8
 	ldrb r3, [r3, r0]
 	lsls r3, r3, #1
 	add pc, r3
 	ALIGN
-_0800FBF8
+7
 	DCB 0x30
-_0800FBF9
+8
 	DCB 0x03
-_0800FBFA
+9
 	DCB 0x03
-_0800FBFB
+10
 	DCB 0x12
-_0800FBFC
+11
 	DCB 0x32
-_0800FBFD
+12
 	DCB 0x21
 loc_800fbfe
 	bl GetEWRAMStart
@@ -173,12 +173,12 @@ loc_800fbfe
 	movs r0, #0x6c
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800FC18
+	beq %13
 	adds r0, r5, #0
 	bl sub_800FAB0
-_0800FC18
+13
 	str r5, [r4]
-	b _0800FC5C
+	b %17
 loc_800fc1c
 	bl GetEWRAMStart
 	adds r1, r0, #0
@@ -187,12 +187,12 @@ loc_800fc1c
 	movs r0, #0x78
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800FC36
+	beq %14
 	adds r0, r5, #0
 	bl sub_800F264
-_0800FC36
+14
 	str r5, [r4]
-	b _0800FC5C
+	b %17
 loc_800fc3a
 	bl GetEWRAMStart
 	adds r1, r0, #0
@@ -201,24 +201,24 @@ loc_800fc3a
 	movs r0, #0x8c
 	bl sub_803DA80
 	adds r5, r0, #0
-	beq _0800FC54
+	beq %15
 	adds r0, r5, #0
 	bl sub_800F72C
-_0800FC54
+15
 	str r5, [r4]
-	b _0800FC5C
-_0800FC58
+	b %17
+16
 	movs r0, #0
 	str r0, [r4]
-_0800FC5C
+17
 	ldr r1, [r4]
 	movs r0, #0
 	cmp r1, #0
-	beq _0800FBCC
+	beq %5
 	ldr r0, [r6, #4]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
-	b _0800FBCC
+	b %5
 
 	thumb_func_start sub_800FC6C
 sub_800FC6C
@@ -240,19 +240,19 @@ sub_800FC76
 	adds r2, r3, #0
 	cmp r1, #0
 	sub sp, #4
-	bne _0800FC9C
+	bne %19
 	movs r1, #0x48
 	adds r0, r6, #0
 	bl __16__rt_memclr_w
 	movs r0, #8
 	str r0, [r4, #0x5c]
 	movs r0, #0
-_0800FC94
+18
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0800FC9C
+19
 	ldr r0, _0800FD3C
 	movs r3, #0
 	adds r2, #0x48
@@ -288,7 +288,7 @@ _0800FC9C
 	bl __16_ll_srdv
 	str r0, [r4, #0x60]
 	adds r0, r5, #0
-	b _0800FC94
+	b %18
 
 	thumb_func_start sub_800FCF0
 sub_800FCF0
@@ -299,7 +299,7 @@ sub_800FCF0
 	adds r6, r3, #0
 	bl sub_800FB18
 	cmp r5, #0
-	beq _0800FD24
+	beq %20
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0x10]
@@ -308,14 +308,14 @@ sub_800FCF0
 	adds r1, r5, #0
 	bl __call_via_r3
 	cmp r6, #0
-	beq _0800FD24
+	beq %20
 	ldr r1, [r4]
 	adds r0, r4, #0
 	ldr r2, [r1, #0xc]
 	adds r2, r2, r1
 	movs r1, #0
 	bl __call_via_r2
-_0800FD24
+20
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

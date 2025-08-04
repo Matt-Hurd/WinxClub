@@ -12,12 +12,12 @@
 sub_800AFD4
 	push {r3, lr}
 	cmp r0, #0
-	bne _0800AFE4
+	bne %1
 	movs r0, #0xc
 	bl __nw__FUi
 	cmp r0, #0
-	beq _0800B014
-_0800AFE4
+	beq %2
+1
 	ldr r1, _0800B0C8
 	str r1, [r0]
 	ldr r1, _0800B0CC
@@ -42,7 +42,7 @@ _0800AFE4
 	str r1, [r0, #4]
 	movs r1, #0
 	str r1, [r0, #8]
-_0800B014
+2
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -56,9 +56,9 @@ sub_800B01A
 	movs r2, #0
 	str r2, [r3]
 	cmp r1, #0
-	beq _0800B02E
+	beq %3
 	bl sub_803DA18
-_0800B02E
+3
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -70,11 +70,11 @@ sub_800B034
 	lsls r2, r0, #0xe
 	cmp r1, #0
 	ldrh r1, [r2]
-	beq _0800B046
+	beq %4
 	orrs r0, r1
 	strh r0, [r2]
 	bx lr
-_0800B046
+4
 	bics r1, r0
 	strh r1, [r2]
 	bx lr
@@ -100,7 +100,7 @@ sub_800B058
 	orrs r2, r1
 	strh r2, [r0]
 	cmp r1, #2
-	bls _0800B080
+	bls %5
 	ldrh r1, [r0]
 	movs r2, #0xf
 	lsls r2, r2, #8
@@ -110,7 +110,7 @@ sub_800B058
 	lsrs r2, r0, #0x10
 	orrs r1, r2
 	strh r1, [r0]
-_0800B080
+5
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800B082

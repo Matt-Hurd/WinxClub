@@ -17,17 +17,17 @@ sub_803F5FC
 	sub sp, #4
 	muls r0, r1
 	cmp r0, #0
-	bls _0803F634
+	bls %3
 	ldr r7, _0803F650
-_0803F614
+1
 	lsls r1, r4, #2
 	ldr r0, [r6, r1]
 	cmp r0, #0
-	beq _0803F624
+	beq %2
 	adds r1, r1, r6
 	ldr r0, [r7]
 	bl sub_8000DE6
-_0803F624
+2
 	ldrb r0, [r5, #0xe]
 	ldrb r1, [r5, #0xf]
 	adds r4, #1
@@ -35,8 +35,8 @@ _0803F624
 	lsrs r4, r4, #0x18
 	muls r0, r1
 	cmp r0, r4
-	bhi _0803F614
-_0803F634
+	bhi %1
+3
 	adds r0, r6, #0
 	bl __da__FPv
 	ldr r0, [sp, #0xc]

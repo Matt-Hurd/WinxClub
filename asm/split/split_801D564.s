@@ -24,17 +24,17 @@
 Init_and_add_some_object
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	bne _0801D57C
+	bne %2
 	movs r0, #0xa0
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _0801D57C
+	bne %2
 	adds r0, r4, #0
-_0801D576
+1
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
-_0801D57C
+2
 	adds r0, r4, #0
 	bl sub_8017444
 	ldr r0, _0801D92C
@@ -153,13 +153,13 @@ _0801D57C
 	str r1, [r4, #0x68]
 	str r1, [r4, #0x6c]
 	movs r3, #0
-_0801D66A
+3
 	lsls r2, r1, #2
 	adds r2, r2, r4
 	adds r1, #1
 	cmp r1, #5
 	str r3, [r2, #0x38]
-	blo _0801D66A
+	blo %3
 	ldr r1, _0801D944
 	ldr r2, [r1]
 	movs r1, #5
@@ -198,7 +198,7 @@ _0801D66A
 	ands r1, r2
 	str r1, [r0, #4]
 	adds r0, r4, #0
-	b _0801D576
+	b %1
 
 	thumb_func_start DefaultScriptGroups__1C
 DefaultScriptGroups__1C
@@ -208,38 +208,38 @@ DefaultScriptGroups__1C
 	movs r5, #0
 	cmp r0, #0
 	ldr r6, _0801D950
-	beq _0801D6DE
+	beq %4
 	adds r1, r4, #0
 	adds r1, #0x2c
 	ldr r0, [r6]
 	bl sub_8000DE6
 	str r5, [r4, #0x2c]
-_0801D6DE
+4
 	ldr r0, [r4, #0x30]
 	cmp r0, #0
-	beq _0801D6F0
+	beq %5
 	adds r1, r4, #0
 	adds r1, #0x30
 	ldr r0, [r6]
 	bl sub_8000DE6
 	str r5, [r4, #0x30]
-_0801D6F0
+5
 	str r5, [r4, #0x34]
 	movs r5, #0
-_0801D6F4
+6
 	lsls r0, r5, #2
 	adds r0, r0, r4
 	ldr r0, [r0, #0x38]
 	cmp r0, #0
-	beq _0801D708
+	beq %7
 	ldr r1, [r0]
 	ldr r2, [r1, #0x10]
 	adds r1, r2, r1
 	bl __call_via_r1
-_0801D708
+7
 	adds r5, #1
 	cmp r5, #5
-	blo _0801D6F4
+	blo %6
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
@@ -254,7 +254,7 @@ GameObj__ctor
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #8
 	lsrs r1, r0, #0x18
-	beq _0801D754
+	beq %8
 	ldr r1, _0801D954
 	lsrs r6, r0, #0x18
 	ldr r5, [r1]
@@ -277,29 +277,29 @@ GameObj__ctor
 	movs r0, #0
 	adds r1, r1, r2
 	str r0, [r1, #0x18]
-_0801D754
+8
 	adds r0, r4, #0
 	bl DefaultScriptGroups__1C
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
-	beq _0801D770
-_0801D760
+	beq %10
+9
 	ldr r0, [r4, #0x28]
 	ldr r1, [r0, #0x18]
 	str r1, [r4, #0x28]
 	bl sub_803DA18
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
-	bne _0801D760
-_0801D770
+	bne %9
+10
 	movs r1, #0
 	adds r0, r4, #0
 	bl sub_8017450
 	cmp r7, #0
-	beq _0801D782
+	beq %11
 	adds r0, r4, #0
 	bl sub_803DA18
-_0801D782
+11
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -312,7 +312,7 @@ sub_801D788
 	adds r4, r1, #0
 	ldr r5, _0801D954
 	cmp r0, #1
-	bne _0801D87A
+	bne %12
 	ldr r0, _0801D958
 	movs r2, #0
 	movs r1, #4
@@ -416,10 +416,10 @@ sub_801D788
 	bl sub_8017A0A
 	movs r2, #0
 	ldr r0, _0801D958
-	b _0801D87C
-_0801D87A
-	b _0801D89E
-_0801D87C
+	b %13
+12
+	b %14
+13
 	ldr r0, [r0]
 	movs r1, #4
 	bl sub_803F72C
@@ -434,10 +434,10 @@ _0801D87C
 	ldr r0, [r5]
 	movs r1, #3
 	bl sub_8017A0A
-	b _0801D8D2
-_0801D89E
+	b %16
+14
 	cmp r0, #2
-	bne _0801D8C0
+	bne %15
 	movs r3, #0xfd
 	lsls r3, r3, #5
 	movs r2, #0
@@ -450,61 +450,61 @@ _0801D89E
 	ldrh r1, [r4, #0x10]
 	ldr r0, [r5]
 	bl sub_8017884
-	b _0801D8D2
-_0801D8C0
+	b %16
+15
 	cmp r0, #3
-	bne _0801D8D2
+	bne %16
 	ldr r1, [r6]
 	adds r0, r6, #0
 	ldr r2, [r1, #0x44]
 	adds r2, r2, r1
 	adds r1, r4, #0
 	bl __call_via_r2
-_0801D8D2
+16
 	movs r3, #8
 	ldrsh r0, [r4, r3]
 	cmp r0, #0
-	bge _0801D8E8
+	bge %17
 	NEGS r0, r0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0
 	bl sub_803FEF8
-	b _0801D8F4
-_0801D8E8
+	b %18
+17
 	cmp r0, #0
-	ble _0801D8F4
+	ble %18
 	ldrh r0, [r4, #8]
 	movs r1, #1
 	bl sub_803FEF8
-_0801D8F4
+18
 	movs r3, #0xa
 	ldrsh r0, [r4, r3]
 	cmp r0, #0
-	bge _0801D90A
+	bge %19
 	NEGS r0, r0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0
 	bl sub_803FEF8
-	b _0801D916
-_0801D90A
+	b %20
+19
 	cmp r0, #0
-	ble _0801D916
+	ble %20
 	ldrh r0, [r4, #0xa]
 	movs r1, #1
 	bl sub_803FEF8
-_0801D916
+20
 	movs r3, #0xc
 	ldrsh r0, [r4, r3]
 	cmp r0, #0
-	bge _0801D97C
+	bge %21
 	NEGS r0, r0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0
 	bl sub_803FEF8
-	b _0801D988
+	b %22
 	ALIGN
 _0801D92C DCDU __VTABLE__342Default
 _0801D930 DCDU 0xFF8007FF
@@ -526,31 +526,31 @@ _0801D96C DCDU 0x63532072
 _0801D970 DCDU 0x74706972
 _0801D974 DCDU 0x6F724720
 _0801D978 DCDU 0x00007075
-_0801D97C
+21
 	cmp r0, #0
-	ble _0801D988
+	ble %22
 	ldrh r0, [r4, #0xc]
 	movs r1, #1
 	bl sub_803FEF8
-_0801D988
+22
 	movs r3, #0xe
 	ldrsh r0, [r4, r3]
 	cmp r0, #0
-	bge _0801D9A2
+	bge %24
 	NEGS r0, r0
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0
 	bl sub_803FEF8
-_0801D99C
+23
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
-_0801D9A2
+24
 	cmp r0, #0
-	ble _0801D99C
+	ble %23
 	ldrh r0, [r4, #0xe]
 	movs r1, #1
 	bl sub_803FEF8
-	b _0801D99C
+	b %23
 	END

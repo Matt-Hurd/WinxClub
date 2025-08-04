@@ -54,32 +54,32 @@ sub_80134F8
 	ldrb r1, [r0, #0xc]
 	ldr r2, [r0, #8]
 	cmp r2, #0
-	beq _08013504
+	beq %1
 	ldr r3, [r0, #4]
 	str r3, [r2, #4]
-_08013504
+1
 	ldr r2, [r0, #4]
 	cmp r2, #0
-	beq _0801350E
+	beq %2
 	ldr r3, [r0, #8]
 	str r3, [r2, #8]
-_0801350E
+2
 	ldr r3, _080137E4
 	lsls r1, r1, #2
 	ldr r2, [r3, r1]
 	cmp r2, r0
-	bne _0801351C
+	bne %3
 	ldr r2, [r0, #8]
 	str r2, [r3, r1]
-_0801351C
+3
 	ldr r3, _080137E4
 	subs r3, #0xc
 	ldr r2, [r3, r1]
 	cmp r2, r0
-	bne _0801352A
+	bne %4
 	ldr r0, [r0, #4]
 	str r0, [r3, r1]
-_0801352A
+4
 	bx lr
 
 	thumb_func_start sub_801352C
@@ -92,33 +92,33 @@ sub_801352C
 	bl sub_80134F8
 	ldr r1, [r4, #0x48]
 	cmp r1, #0
-	beq _08013556
+	beq %6
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
-	beq _08013550
+	beq %5
 	movs r3, #0
 	movs r2, #0
 	bl sub_8041274
-	b _08013556
-_08013550
+	b %6
+5
 	adds r0, r1, #0
 	bl __da__FPv
-_08013556
+6
 	ldr r0, [r4, #0x4c]
 	cmp r0, #0
-	beq _08013560
+	beq %7
 	bl sub_803DA18
-_08013560
+7
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
-	beq _0801356A
+	beq %8
 	bl __da__FPv
-_0801356A
+8
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
-	beq _08013574
+	beq %9
 	bl __da__FPv
-_08013574
+9
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -139,13 +139,13 @@ sub_801357A
 	adds r5, r0, #0
 	cmp r1, #0
 	ldr r6, _080137E8
-	beq _080135A4
+	beq %10
 	adds r0, r6, #0
 	movs r2, #0
 	bl sub_803DA9C
 	adds r6, r0, #0
-	b _080135B6
-_080135A4
+	b %11
+10
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r3, #0
@@ -153,7 +153,7 @@ _080135A4
 	adds r0, r6, #0
 	bl sub_803DA9C
 	adds r6, r0, #0
-_080135B6
+11
 	movs r0, #0x2d
 	ldrb r0, [r0, r5]
 	bl sub_80133A0
@@ -165,14 +165,14 @@ _080135B6
 	ldr r1, [r5, #0x30]
 	ldrb r1, [r1]
 	cmp r1, #0
-	beq _08013694
-_080135D0
+	beq %22
+12
 	ldr r1, [r5, #0x30]
 	ldrb r1, [r1, r4]
 	cmp r1, #0xa
-	beq _080135F2
+	beq %13
 	cmp r1, #0xd
-	beq _080135F2
+	beq %13
 	ldr r2, [r0, #8]
 	lsls r3, r1, #2
 	ldr r2, [r2, r3]
@@ -183,22 +183,22 @@ _080135D0
 	lsrs r3, r3, #0x10
 	str r3, [sp, #0xc]
 	cmp r1, #0x20
-	beq _080135FA
-_080135F2
+	beq %14
+13
 	cmp r4, #0
-	beq _08013600
+	beq %15
 	cmp r1, #0x2d
-	bne _08013600
-_080135FA
+	bne %15
+14
 	ldr r3, [sp, #0xc]
 	str r4, [sp, #0x10]
 	str r3, [sp, #4]
-_08013600
+15
 	cmp r1, #0xa
-	beq _08013608
+	beq %16
 	cmp r1, #0xd
-	bne _0801364C
-_08013608
+	bne %19
+16
 	ldr r1, [sp, #8]
 	lsls r3, r1, #1
 	adds r1, r3, r1
@@ -217,29 +217,29 @@ _08013608
 	ldrb r1, [r1, #1]
 	lsrs r7, r7, #0x10
 	cmp r1, #0xa
-	beq _08013632
+	beq %17
 	cmp r1, #0xd
-	bne _0801363E
-_08013632
+	bne %18
+17
 	ldrb r2, [r2, r4]
 	cmp r2, r1
-	beq _0801363E
+	beq %18
 	adds r7, #1
 	lsls r7, r7, #0x10
 	lsrs r7, r7, #0x10
-_0801363E
+18
 	ldr r1, [sp, #8]
 	adds r4, r7, #0
 	adds r1, #1
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	str r1, [sp, #8]
-	b _0801368C
-_0801364C
+	b %21
+19
 	ldrh r1, [r5, #0x20]
 	ldr r3, [sp, #0xc]
 	cmp r1, r3
-	bhs _08013686
+	bhs %20
 	ldr r1, [sp, #8]
 	lsls r3, r1, #1
 	adds r1, r3, r1
@@ -264,17 +264,17 @@ _0801364C
 	lsrs r1, r1, #0x18
 	str r1, [sp, #8]
 	str r3, [sp, #0xc]
-	b _0801368C
-_08013686
+	b %21
+20
 	adds r4, #1
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
-_0801368C
+21
 	ldr r1, [r5, #0x30]
 	ldrb r1, [r1, r4]
 	cmp r1, #0
-	bne _080135D0
-_08013694
+	bne %12
+22
 	ldr r1, [sp, #8]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -290,10 +290,10 @@ _08013694
 	lsls r4, r1, #0x18
 	lsrs r4, r4, #0x18
 	cmp r0, #0
-	beq _080136E0
+	beq %26
 	ldr r2, [r5, #0x50]
 	cmp r2, #0
-	beq _080136DC
+	beq %25
 	ldr r7, _080137EC
 	movs r1, #3
 	mvns r1, r1
@@ -302,45 +302,45 @@ _08013694
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	cmp r1, #2
-	bne _080136D2
+	bne %23
 	bl __da__FPv
-	b _080136D6
-_080136D2
+	b %24
+23
 	bl sub_803DA18
-_080136D6
+24
 	movs r3, #0
 	str r3, [r7]
-	b _080136E0
-_080136DC
+	b %26
+25
 	bl __da__FPv
-_080136E0
+26
 	ldr r1, [r5, #0x50]
 	cmp r1, #0
-	beq _08013714
+	beq %29
 	cmp r4, #0
-	beq _080136FA
+	beq %27
 	lsls r0, r4, #1
 	adds r0, r0, r4
 	lsls r0, r0, #1
 	movs r3, #0
 	movs r2, #0
 	bl sub_803DA9C
-	b _08013710
-_080136FA
+	b %28
+27
 	movs r7, #0
 	adds r3, r7, #0
 	movs r2, #0
 	movs r0, #6
 	bl sub_803DA80
 	cmp r0, #0
-	beq _08013710
+	beq %28
 	strh r7, [r0]
 	strh r7, [r0, #2]
 	strh r7, [r0, #4]
-_08013710
+28
 	str r0, [r5, #0x14]
-	b _0801372A
-_08013714
+	b %30
+29
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	lsls r0, r4, #1
@@ -350,7 +350,7 @@ _08013714
 	movs r2, #0
 	bl sub_803DA9C
 	str r0, [r5, #0x14]
-_0801372A
+30
 	ldr r0, [r5, #0x14]
 	lsls r2, r4, #1
 	adds r2, r2, r4
@@ -359,19 +359,19 @@ _0801372A
 	adds r1, r6, #0
 	cmp r6, r0
 	mov ip, r0
-	bhs _0801374A
+	bhs %31
 	adds r7, r1, r2
 	cmp r7, r0
-	bls _0801374A
+	bls %31
 	adds r1, r7, #0
 	adds r0, r0, r2
 	movs r3, #5
 	lsls r3, r3, #0x15
-_0801374A
+31
 	ldr r7, _080137F0
 	ldr r7, [r7]
 	cmp r7, #0
-	beq _08013768
+	beq %32
 	lsls r0, r2, #9
 	movs r1, #1
 	lsls r1, r1, #0x1a
@@ -381,15 +381,15 @@ _0801374A
 	adds r0, r6, #0
 	mov r1, ip
 	bl CpuSet
-	b _0801379C
-_08013768
+	b %35
+32
 	lsls r7, r0, #0x1e
-	bmi _08013774
+	bmi %33
 	lsls r7, r1, #0x1e
-	bmi _08013774
+	bmi %33
 	lsls r7, r2, #0x1e
-	bpl _08013788
-_08013774
+	bpl %34
+33
 	ldr r7, _080137F4
 	str r1, [r7]
 	str r0, [r7, #4]
@@ -399,8 +399,8 @@ _08013774
 	orrs r0, r1
 	str r0, [r7, #8]
 	ldr r0, [r7, #8]
-	b _0801379C
-_08013788
+	b %35
+34
 	ldr r7, _080137F4
 	str r1, [r7]
 	str r0, [r7, #4]
@@ -411,12 +411,12 @@ _08013788
 	orrs r0, r1
 	str r0, [r7, #8]
 	ldr r0, [r7, #8]
-_0801379C
+35
 	ldr r1, [r5, #0x50]
 	cmp r1, #0
-	beq _080137CC
+	beq %38
 	cmp r6, #0
-	beq _080137D2
+	beq %39
 	ldr r7, _080137EC
 	movs r0, #3
 	mvns r0, r0
@@ -425,21 +425,21 @@ _0801379C
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #2
-	bne _080137C0
+	bne %36
 	adds r0, r6, #0
 	bl __da__FPv
-	b _080137C6
-_080137C0
+	b %37
+36
 	adds r0, r6, #0
 	bl sub_803DA18
-_080137C6
+37
 	movs r3, #0
 	str r3, [r7]
-	b _080137D2
-_080137CC
+	b %39
+38
 	adds r0, r6, #0
 	bl __da__FPv
-_080137D2
+39
 	adds r5, #0x30
 	strb r4, [r5, #8]
 	add sp, #0x14

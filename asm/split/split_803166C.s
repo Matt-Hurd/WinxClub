@@ -20,17 +20,17 @@
 Kiko__Create
 	push {r4, lr}
 	adds r4, r0, #0
-	bne _08031684
+	bne %2
 	movs r0, #0xa4
 	bl __nw__FUi
 	adds r4, r0, #0
-	bne _08031684
+	bne %2
 	adds r0, r4, #0
-_0803167E
+1
 	pop {r4}
 	pop {r3}
 	bx r3
-_08031684
+2
 	adds r0, r4, #0
 	bl Init_and_add_some_object
 	ldr r0, _08031800
@@ -104,7 +104,7 @@ _08031684
 	movs r0, #0xcf
 	strh r0, [r1, r4]
 	adds r0, r4, #0
-	b _0803167E
+	b %1
 
 	non_word_aligned_thumb_func_start Kiko__ctor
 Kiko__ctor
@@ -117,10 +117,10 @@ Kiko__ctor
 	adds r0, r4, #0
 	bl GameObj__ctor
 	cmp r5, #0
-	beq _08031736
+	beq %3
 	adds r0, r4, #0
 	bl sub_803DA18
-_08031736
+3
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
@@ -149,7 +149,7 @@ Kiko__10
 	movs r1, #0xa0
 	ldrh r1, [r1, r4]
 	ands r0, r1
-	bne _0803178C
+	bne %4
 	bl rand
 	bl sub_80404B4
 	adds r0, #1
@@ -168,11 +168,11 @@ Kiko__10
 	strh r0, [r4, #0x1c]
 	ldrh r0, [r3, r1]
 	strh r0, [r4, #0x1e]
-_0803178C
+4
 	movs r0, #0x9c
 	ldr r0, [r0, r4]
 	cmp r0, #0
-	bne _080317F4
+	bne %5
 	ldr r7, _0803182C
 	ldr r5, [r4, #0x30]
 	ldr r0, [r7]
@@ -200,7 +200,7 @@ _0803178C
 	adds r5, #0x18
 	ldrh r0, [r5, r0]
 	cmp r6, r0
-	beq _080317F4
+	beq %5
 	ldr r6, [r4, #0x2c]
 	ldr r0, [r7]
 	bl sub_8000D5A
@@ -217,7 +217,7 @@ _0803178C
 	ldrh r1, [r5, r0]
 	ldr r0, [r4, #0x30]
 	bl sub_800065C
-_080317F4
+5
 	adds r0, r4, #0
 	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
