@@ -9,7 +9,7 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT sub_8005106
-	IMPORT sub_801D564
+	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
@@ -36,7 +36,7 @@ _08035E8E
 	bx r3
 _08035E94
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08036128
 	movs r1, #0
 	str r0, [r4]

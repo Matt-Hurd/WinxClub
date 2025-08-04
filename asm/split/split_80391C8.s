@@ -761,8 +761,8 @@ _080397D0
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_80397DC
-sub_80397DC
+	thumb_func_start HandleNewGameScreen
+HandleNewGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _08039980
 	ldr r4, _08039984

@@ -16,8 +16,8 @@
 	IMPORT sub_80247A4
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8028CE8
-sub_8028CE8
+	thumb_func_start MaybeHandleBootIntoGame
+MaybeHandleBootIntoGame
 	push {r4, lr}
 	movs r0, #1
 	bl sub_800E53C

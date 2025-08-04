@@ -19,8 +19,8 @@
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
-	thumb_func_start sub_801AED0
-sub_801AED0
+	thumb_func_start HandleObjectivesScreen
+HandleObjectivesScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0xa8

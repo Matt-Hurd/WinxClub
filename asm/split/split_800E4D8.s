@@ -7,7 +7,7 @@
 	IMPORT gUnknown_0300142C
 	IMPORT gUnknown_03001444
 	IMPORT gUnknown_030033C8
-	IMPORT gUnknown_03003438
+	IMPORT gScriptDataMetadata
 	IMPORT gPlayerPointer
 	IMPORT gUnknown_03003D30
 	IMPORT gUnknown_03003D35
@@ -67,43 +67,43 @@
 	IMPORT sub_8017474
 	IMPORT sub_8017884
 	IMPORT sub_8017DE6
-	IMPORT sub_8017FFE
-	IMPORT sub_801837C
+	IMPORT HandleIntro
+	IMPORT SetGlobalFunction
 	IMPORT sub_8018386
 	IMPORT sub_8018398
-	IMPORT sub_80192CE
-	IMPORT sub_8019BE2
-	IMPORT sub_801A4DA
-	IMPORT sub_801AB34
-	IMPORT sub_801AED0
+	IMPORT HandleFavorsScreen
+	IMPORT HandleInventoryScreen
+	IMPORT HandleMagicScreen
+	IMPORT HandleMainMenu
+	IMPORT HandleObjectivesScreen
 	IMPORT sub_801B10C
-	IMPORT sub_801D360
-	IMPORT sub_8022726
-	IMPORT sub_8022D6E
-	IMPORT sub_8023486
+	IMPORT HandleLoadGameScreen
+	IMPORT HandlePlayCreditsFromOptions
+	IMPORT HandleIngameOptionsScreen
+	IMPORT HandleMainMenuOptionsScreen
 	IMPORT sub_802363C
-	IMPORT sub_8026014
+	IMPORT MaybeHandleTransitionToArea
 	IMPORT sub_8026908
 	IMPORT sub_802693A
 	IMPORT sub_8026962
-	IMPORT sub_8028C7C
-	IMPORT sub_8028CE8
-	IMPORT sub_8028D60
+	IMPORT MaybeHandleIngameCutscene
+	IMPORT MaybeHandleBootIntoGame
+	IMPORT HandleMainIngameLoop
 	IMPORT sub_8028F64
 	IMPORT sub_802EF0A
-	IMPORT sub_80305CC
+	IMPORT HandleGameOverScreen
 	IMPORT sub_8031578
 	IMPORT sub_80315A2
 	IMPORT sub_80315CE
 	IMPORT sub_80315FC
 	IMPORT sub_8031600
 	IMPORT sub_8031622
-	IMPORT sub_8031B98
-	IMPORT sub_8035324
+	IMPORT HandleShowPictureScreen
+	IMPORT HandleAlbum
 	IMPORT sub_8038754
-	IMPORT sub_8038D2C
-	IMPORT sub_80397DC
-	IMPORT sub_803B406
+	IMPORT HandleTeleportMenu
+	IMPORT HandleNewGameScreen
+	IMPORT HandlePostGameCredits
 	IMPORT atoi
 	IMPORT __call_via_r2
 	IMPORT __16__rt_memset
@@ -648,7 +648,7 @@ _0800E900
 	b _0800E9D0
 	ALIGN
 _0800E920 DCDU REG_IE
-_0800E924 DCDU gUnknown_03003438
+_0800E924 DCDU gScriptDataMetadata
 _0800E928 DCDU gUnknown_03003E94
 _0800E92C DCDU gUnknown_03003EB8
 _0800E930 DCDU gUnknown_03003EA4
@@ -731,8 +731,8 @@ _0800EA06
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_800EA22
-sub_800EA22
+	non_word_aligned_thumb_func_start maybeInitGame
+maybeInitGame
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, sp, #0x18
@@ -777,73 +777,73 @@ sub_800EA22
 	bl sub_8031622
 	movs r1, #1
 	ldr r0, _0800ED08
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0
 	ldr r0, _0800ED0C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x10
 	ldr r0, _0800ED10
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x13
 	ldr r0, _0800ED14
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x11
 	ldr r0, _0800ED18
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x12
 	ldr r0, _0800ED1C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x14
 	ldr r0, _0800ED20
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #2
 	ldr r0, _0800ED24
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xf
 	ldr r0, _0800ED28
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x15
 	ldr r0, _0800ED2C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #3
 	ldr r0, _0800ED30
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #4
 	ldr r0, _0800ED34
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #5
 	ldr r0, _0800ED38
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #6
 	ldr r0, _0800ED3C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #7
 	ldr r0, _0800ED40
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #8
 	ldr r0, _0800ED44
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #9
 	ldr r0, _0800ED48
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xa
 	ldr r0, _0800ED4C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xd
 	ldr r0, _0800ED50
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x16
 	ldr r0, _0800ED54
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0x17
 	ldr r0, _0800ED58
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xb
 	ldr r0, _0800ED5C
-	bl sub_801837C
+	bl SetGlobalFunction
 	movs r1, #0xc
 	ldr r0, _0800ED60
-	bl sub_801837C
+	bl SetGlobalFunction
 	ldr r0, _0800ED64
 	movs r4, #0
 	strb r4, [r0]
@@ -1039,32 +1039,32 @@ _0800ECF8 DCDU 0x00000AFC
 _0800ECFC DCDU gUnknown_030033C8
 _0800ED00 DCDU 0x00001F84
 _0800ED04 DCDU gUnknown_03001444
-_0800ED08 DCDU sub_8017FFE
+_0800ED08 DCDU HandleIntro
 _0800ED0C DCDU sub_8017DE6
-_0800ED10 DCDU sub_8028CE8
-_0800ED14 DCDU sub_80397DC
-_0800ED18 DCDU sub_8028C7C
-_0800ED1C DCDU sub_8028D60
-_0800ED20 DCDU sub_8038D2C
-_0800ED24 DCDU sub_801AB34
-_0800ED28 DCDU sub_8026014
+_0800ED10 DCDU MaybeHandleBootIntoGame
+_0800ED14 DCDU HandleNewGameScreen
+_0800ED18 DCDU MaybeHandleIngameCutscene
+_0800ED1C DCDU HandleMainIngameLoop
+_0800ED20 DCDU HandleTeleportMenu
+_0800ED24 DCDU HandleMainMenu
+_0800ED28 DCDU MaybeHandleTransitionToArea
 _0800ED2C DCDU sub_8028F64
-_0800ED30 DCDU sub_80192CE
-_0800ED34 DCDU sub_8019BE2
-_0800ED38 DCDU sub_801A4DA
-_0800ED3C DCDU sub_801AED0
-_0800ED40 DCDU sub_8022D6E
-_0800ED44 DCDU sub_8023486
-_0800ED48 DCDU sub_801D360
-_0800ED4C DCDU sub_8022726
-_0800ED50 DCDU sub_8031B98
-_0800ED54 DCDU sub_80305CC
-_0800ED58 DCDU sub_803B406
-_0800ED5C DCDU sub_8035324
+_0800ED30 DCDU HandleFavorsScreen
+_0800ED34 DCDU HandleInventoryScreen
+_0800ED38 DCDU HandleMagicScreen
+_0800ED3C DCDU HandleObjectivesScreen
+_0800ED40 DCDU HandleIngameOptionsScreen
+_0800ED44 DCDU HandleMainMenuOptionsScreen
+_0800ED48 DCDU HandleLoadGameScreen
+_0800ED4C DCDU HandlePlayCreditsFromOptions
+_0800ED50 DCDU HandleShowPictureScreen
+_0800ED54 DCDU HandleGameOverScreen
+_0800ED58 DCDU HandlePostGameCredits
+_0800ED5C DCDU HandleAlbum
 _0800ED60 DCDU sub_8038754
 _0800ED64 DCDU gPlayerPointer
 _0800ED68 DCDU gUnknown_03003D35
-_0800ED6C DCDU gUnknown_03003438
+_0800ED6C DCDU gScriptDataMetadata
 _0800ED70 DCDU gPlayerEntity
 _0800ED74 DCDU 0x0000C350
 _0800ED78 DCDU 0x000249F0

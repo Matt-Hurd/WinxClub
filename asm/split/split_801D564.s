@@ -20,8 +20,8 @@
 	IMPORT sub_803FC68
 	IMPORT sub_803FEF8
 
-	thumb_func_start sub_801D564
-sub_801D564
+	thumb_func_start Init_and_add_some_object
+Init_and_add_some_object
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne _0801D57C

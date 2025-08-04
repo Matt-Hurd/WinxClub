@@ -690,8 +690,8 @@ _08022D1C
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8022D6E
-sub_8022D6E
+	non_word_aligned_thumb_func_start HandleIngameOptionsScreen
+HandleIngameOptionsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x140
@@ -1563,8 +1563,8 @@ _0802342C
 	bx r3
 
 
-	non_word_aligned_thumb_func_start sub_8023486
-sub_8023486
+	non_word_aligned_thumb_func_start HandleMainMenuOptionsScreen
+HandleMainMenuOptionsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x198

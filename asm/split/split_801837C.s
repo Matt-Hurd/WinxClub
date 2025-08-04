@@ -1,11 +1,11 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_03003C84
+	IMPORT gGlobalFunctionTable
 	IMPORT __call_via_r0
 
-	thumb_func_start sub_801837C
-sub_801837C
+	thumb_func_start SetGlobalFunction
+SetGlobalFunction
 	ldr r2, _080183B8
 	lsls r1, r1, #2
 	str r0, [r2, r1]
@@ -45,5 +45,5 @@ _0801839E
 	movs r0, #0
 	bx r3
 	ALIGN
-_080183B8 DCDU gUnknown_03003C84
+_080183B8 DCDU gGlobalFunctionTable
 	END

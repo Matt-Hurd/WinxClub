@@ -4,7 +4,7 @@
 	IMPORT gUnknown_0803EA18
 	IMPORT sub_80007A0
 	IMPORT sub_8018386
-	IMPORT sub_801D564
+	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_801DB90
 	IMPORT sub_801DD40
@@ -12,8 +12,8 @@
 	IMPORT maybeMallocEWRAM
 	IMPORT sub_803DA18
 
-	thumb_func_start sub_8026014
-sub_8026014
+	thumb_func_start MaybeHandleTransitionToArea
+MaybeHandleTransitionToArea
 	push {r3, lr}
 	movs r0, #0x10
 	bl sub_8018386
@@ -38,7 +38,7 @@ _08026036
 	bx r3
 _0802603C
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _080262AC
 	movs r1, #0x3c
 	str r0, [r4]

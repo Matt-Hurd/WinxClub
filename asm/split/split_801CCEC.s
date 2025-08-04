@@ -807,8 +807,8 @@ _0801D354
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_801D360
-sub_801D360
+	thumb_func_start HandleLoadGameScreen
+HandleLoadGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _0801D53C
 	ldr r4, _0801D540

@@ -598,8 +598,8 @@ _080192B0
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80192CE
-sub_80192CE
+	non_word_aligned_thumb_func_start HandleFavorsScreen
+HandleFavorsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc

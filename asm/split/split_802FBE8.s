@@ -13,7 +13,7 @@
 	IMPORT sub_8005106
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
-	IMPORT sub_801D564
+	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
@@ -82,7 +82,7 @@ _0802FC4A
 	bx r3
 _0802FC50
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _0802FFD8
 	ldr r2, _0802FFDC
 	str r0, [r4]

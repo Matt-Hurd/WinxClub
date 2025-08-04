@@ -13,8 +13,8 @@
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
-	thumb_func_start sub_80305CC
-sub_80305CC
+	thumb_func_start HandleGameOverScreen
+HandleGameOverScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x17c
 	add r0, sp, #4

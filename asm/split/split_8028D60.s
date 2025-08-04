@@ -39,8 +39,8 @@
 	IMPORT sub_802BA20
 	IMPORT sub_803D66C
 
-	thumb_func_start sub_8028D60
-sub_8028D60
+	thumb_func_start HandleMainIngameLoop
+HandleMainIngameLoop
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #8

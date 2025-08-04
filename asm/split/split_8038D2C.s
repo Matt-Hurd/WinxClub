@@ -14,8 +14,8 @@
 	IMPORT __vecmap1c__FPvT1iPFPv_v
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
-	thumb_func_start sub_8038D2C
-sub_8038D2C
+	thumb_func_start HandleTeleportMenu
+HandleTeleportMenu
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x20

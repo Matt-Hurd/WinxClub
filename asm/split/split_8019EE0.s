@@ -771,8 +771,8 @@ _0801A498
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_801A4DA
-sub_801A4DA
+	non_word_aligned_thumb_func_start HandleMagicScreen
+HandleMagicScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc

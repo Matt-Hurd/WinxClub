@@ -131,8 +131,8 @@ sub_803B342
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_803B406
-sub_803B406
+	non_word_aligned_thumb_func_start HandlePostGameCredits
+HandlePostGameCredits
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x84
 	add r5, sp, #8

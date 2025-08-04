@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_0803E2C4
-	IMPORT sub_801D564
+	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_801DD40
 	IMPORT sub_801DF50
@@ -28,7 +28,7 @@ _080253BA
 	bx r3
 _080253C0
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _0802576C
 	movs r1, #0x97
 	str r0, [r4]

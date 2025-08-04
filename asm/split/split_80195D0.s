@@ -835,8 +835,8 @@ _08019BBA
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_8019BE2
-sub_8019BE2
+	non_word_aligned_thumb_func_start HandleInventoryScreen
+HandleInventoryScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc

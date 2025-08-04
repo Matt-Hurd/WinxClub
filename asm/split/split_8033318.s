@@ -6,7 +6,7 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0803EA90
 	IMPORT sub_8002004
-	IMPORT sub_801D564
+	IMPORT Init_and_add_some_object
 	IMPORT sub_801D714
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
@@ -31,7 +31,7 @@ _0803332C
 	bx r3
 _08033332
 	adds r0, r4, #0
-	bl sub_801D564
+	bl Init_and_add_some_object
 	ldr r0, _08033618
 	adds r5, r4, #0
 	str r0, [r4]

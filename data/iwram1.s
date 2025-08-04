@@ -54,7 +54,7 @@
 	GLOBAL gUnknown_030033F4
 	GLOBAL gUnknown_030033FC
 	GLOBAL gUnknown_03003434
-	GLOBAL gUnknown_03003438
+	GLOBAL gScriptDataMetadata
 	GLOBAL gUnknown_03003440
 	GLOBAL gUnknown_03003444
 	GLOBAL gUnknown_03003448
@@ -80,7 +80,7 @@
 	GLOBAL gUnknown_03003C40
 	GLOBAL gUnknown_03003C4C
 	GLOBAL gUnknown_03003C58
-	GLOBAL gUnknown_03003C84
+	GLOBAL gGlobalFunctionTable
 	GLOBAL gUnknown_03003D1C
 	GLOBAL gUnknown_03003D20
 	GLOBAL gUnknown_03003D24
@@ -265,7 +265,7 @@ gUnknown_030033FC
 gUnknown_03003434
 	SPACE 0x4
 
-gUnknown_03003438
+gScriptDataMetadata
 	SPACE 0x8
 
 gUnknown_03003440
@@ -343,7 +343,7 @@ gUnknown_03003C4C
 gUnknown_03003C58
 	SPACE 0x2c
 
-gUnknown_03003C84
+gGlobalFunctionTable
 	SPACE 0x98
 
 gUnknown_03003D1C

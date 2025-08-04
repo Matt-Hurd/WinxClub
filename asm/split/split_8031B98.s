@@ -18,8 +18,8 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 	IMPORT sub_803F72C
 
-	thumb_func_start sub_8031B98
-sub_8031B98
+	thumb_func_start HandleShowPictureScreen
+HandleShowPictureScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x114
 	add r6, sp, #0x10

@@ -244,8 +244,8 @@ sub_8017FF4
 	strb r1, [r0, #2]
 	bx lr
 
-	non_word_aligned_thumb_func_start sub_8017FFE
-sub_8017FFE
+	non_word_aligned_thumb_func_start HandleIntro
+HandleIntro
 	push {r4, lr}
 	sub sp, #0x10
 	mov r4, sp

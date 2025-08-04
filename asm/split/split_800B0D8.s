@@ -7,7 +7,7 @@
 	IMPORT sub_800B01A
 	IMPORT sub_800B1F6
 	IMPORT sub_800B286
-	IMPORT sub_800EA22
+	IMPORT maybeInitGame
 
 	thumb_func_start main
 main
@@ -25,7 +25,7 @@ main
 	mov r7, sp
 	mov r0, sp
 	bl sub_800525C
-	bl sub_800EA22
+	bl maybeInitGame
 	movs r4, #0
 	movs r1, #0
 	adds r0, r7, #0

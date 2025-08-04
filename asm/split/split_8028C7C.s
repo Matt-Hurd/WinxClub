@@ -15,8 +15,8 @@
 	IMPORT sub_80247A4
 	IMPORT sub_803DA80
 
-	thumb_func_start sub_8028C7C
-sub_8028C7C
+	thumb_func_start MaybeHandleIngameCutscene
+MaybeHandleIngameCutscene
 	push {r4, lr}
 	bl sub_8005106
 	adds r1, r0, #0
