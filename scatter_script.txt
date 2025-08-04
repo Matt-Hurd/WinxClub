@@ -171,7 +171,7 @@ LOAD_ROM_1 0x08000000
         split_8022840.o
         split_80235E4.o
     }
-    .text7 0x080239EC
+    .src1 0x080239EC
     {
         split_80239EC.o
     }
@@ -557,7 +557,7 @@ LOAD_ROM_1 0x08000000
     {
         *(Veneer$$Code)
     }
-    vtables 0x0803E2A0
+    .text_vtables 0x0803E2A0
     {
         vtable00_dword_803E2A0.o
         vtable01_NpcScriptGroup.o
@@ -730,7 +730,7 @@ LOAD_ROM_1 0x08000000
     {
         printf1.o(x$fpl$printf1)
     }
-    DATABLOCK2 0x08041448
+    .data1 0x08041448
     {
         data1.o (+RW)
     }
@@ -742,7 +742,7 @@ LOAD_ROM_1 0x08000000
     {
         defsig.o(.constdata)
     }
-    DATABLOCK3 0x08051738
+    .data2 0x08051738
     {
         data2.o (+RW)
     }
@@ -750,7 +750,7 @@ LOAD_ROM_1 0x08000000
     {
         last_code.o
     }
-    DATABLOCK4 0x08055AC0
+    .data3 0x08055AC0
     {
         last_data.o (+RW)
     }
