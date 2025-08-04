@@ -20,26 +20,31 @@
     IMPORT  WinxClub__ctor
 
     AREA    __VTABLE__336WinxClub, DATA, READONLY
-    DCD     WinxClub__ctor - .
-    DCD     WinxClubScriptGroup__04 - .
-    DCD     WinxClubScriptGroup__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     WinxClub__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     WinxClub__18 - .
-    DCD     WinxClub__1C - .
-    DCD     WinxClub__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     WinxClub__38 - .
-    DCD     WinxClub__3C - .
-    DCD     KikoAndWinxClubScriptGroups__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  WinxClub_VTABLE
+    EXPORT  WinxClub_VTABLE
+WinxClub_VTABLE
+    DCD     WinxClub__ctor - __VTABLE__336WinxClub
+    DCD     WinxClubScriptGroup__04 - __VTABLE__336WinxClub
+    DCD     WinxClubScriptGroup__08 - __VTABLE__336WinxClub
+    DCD     AllScriptGroups__0C - __VTABLE__336WinxClub
+    DCD     WinxClub__10 - __VTABLE__336WinxClub
+    DCD     AllScriptGroups__14 - __VTABLE__336WinxClub
+    DCD     WinxClub__18 - __VTABLE__336WinxClub
+    DCD     WinxClub__1C - __VTABLE__336WinxClub
+    DCD     WinxClub__20 - __VTABLE__336WinxClub
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__336WinxClub
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__336WinxClub
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__336WinxClub
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__336WinxClub
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__336WinxClub
+    DCD     WinxClub__38 - __VTABLE__336WinxClub
+    DCD     WinxClub__3C - __VTABLE__336WinxClub
+    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__336WinxClub
+    DCD     MostScriptGroups__44 - __VTABLE__336WinxClub
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__336WinxClub
+    DCD     LivingScriptGroups__Dead - __VTABLE__336WinxClub
 
     GLOBAL  __VTABLE__336WinxClub
     END

@@ -9,17 +9,22 @@
     IMPORT  sub_800FE56
 
     AREA    __VTABLE__313dword_803E59C, DATA, READONLY
-    DCD     sub_800FB72 - .
-    DCD     sub_800FCF0 - .
-    DCD     sub_800FD48 - .
-    DCD     sub_800FD2A - .
-    DCD     sub_800FC72 - .
-    DCD     sub_800FD2C - .
-    DCD     sub_800FE56 - .
-    DCD     __pvfn__Fv - .
-    DCD     sub_800FB9E - .
-    DCD     __pvfn__Fv - .
-    DCD     __pvfn__Fv - .
+
+    ; Human-readable label for assembly
+    GLOBAL  dword_803E59C_VTABLE
+    EXPORT  dword_803E59C_VTABLE
+dword_803E59C_VTABLE
+    DCD     sub_800FB72 - __VTABLE__313dword_803E59C
+    DCD     sub_800FCF0 - __VTABLE__313dword_803E59C
+    DCD     sub_800FD48 - __VTABLE__313dword_803E59C
+    DCD     sub_800FD2A - __VTABLE__313dword_803E59C
+    DCD     sub_800FC72 - __VTABLE__313dword_803E59C
+    DCD     sub_800FD2C - __VTABLE__313dword_803E59C
+    DCD     sub_800FE56 - __VTABLE__313dword_803E59C
+    DCD     __pvfn__Fv - __VTABLE__313dword_803E59C
+    DCD     sub_800FB9E - __VTABLE__313dword_803E59C
+    DCD     __pvfn__Fv - __VTABLE__313dword_803E59C
+    DCD     __pvfn__Fv - __VTABLE__313dword_803E59C
 
     GLOBAL  __VTABLE__313dword_803E59C
     END

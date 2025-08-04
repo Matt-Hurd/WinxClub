@@ -9,15 +9,20 @@
     IMPORT  sub_802E800
 
     AREA    __VTABLE__372dword_803ED28, DATA, READONLY
-    DCD     sub_802D32E - .
-    DCD     sub_802D384 - .
-    DCD     sub_802D920 - .
-    DCD     sub_802DD08 - .
-    DCD     sub_802DDDC - .
-    DCD     sub_802DE2A - .
-    DCD     sub_802E800 - .
-    DCD     sub_802DFE4 - .
-    DCD     sub_802DFD8 - .
+
+    ; Human-readable label for assembly
+    GLOBAL  dword_803ED28_VTABLE
+    EXPORT  dword_803ED28_VTABLE
+dword_803ED28_VTABLE
+    DCD     sub_802D32E - __VTABLE__372dword_803ED28
+    DCD     sub_802D384 - __VTABLE__372dword_803ED28
+    DCD     sub_802D920 - __VTABLE__372dword_803ED28
+    DCD     sub_802DD08 - __VTABLE__372dword_803ED28
+    DCD     sub_802DDDC - __VTABLE__372dword_803ED28
+    DCD     sub_802DE2A - __VTABLE__372dword_803ED28
+    DCD     sub_802E800 - __VTABLE__372dword_803ED28
+    DCD     sub_802DFE4 - __VTABLE__372dword_803ED28
+    DCD     sub_802DFD8 - __VTABLE__372dword_803ED28
 
     GLOBAL  __VTABLE__372dword_803ED28
     END

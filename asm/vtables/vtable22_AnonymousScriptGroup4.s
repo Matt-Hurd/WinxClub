@@ -20,26 +20,31 @@
     IMPORT  sub_80221AC
 
     AREA    __VTABLE__322Anonymous4, DATA, READONLY
-    DCD     Anonymous4__ctor - .
-    DCD     sub_801FF68 - .
-    DCD     sub_80200A4 - .
-    DCD     sub_80200E0 - .
-    DCD     sub_8020B6E - .
-    DCD     sub_8021248 - .
-    DCD     sub_8021A38 - .
-    DCD     sub_8021A98 - .
-    DCD     sub_8021ADE - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     sub_80221AC - .
-    DCD     sub_8021F42 - .
-    DCD     sub_8021B84 - .
-    DCD     sub_8021CFC - .
-    DCD     KikoAndWinxClubScriptGroups__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Anonymous4_VTABLE
+    EXPORT  Anonymous4_VTABLE
+Anonymous4_VTABLE
+    DCD     Anonymous4__ctor - __VTABLE__322Anonymous4
+    DCD     sub_801FF68 - __VTABLE__322Anonymous4
+    DCD     sub_80200A4 - __VTABLE__322Anonymous4
+    DCD     sub_80200E0 - __VTABLE__322Anonymous4
+    DCD     sub_8020B6E - __VTABLE__322Anonymous4
+    DCD     sub_8021248 - __VTABLE__322Anonymous4
+    DCD     sub_8021A38 - __VTABLE__322Anonymous4
+    DCD     sub_8021A98 - __VTABLE__322Anonymous4
+    DCD     sub_8021ADE - __VTABLE__322Anonymous4
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__322Anonymous4
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__322Anonymous4
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__322Anonymous4
+    DCD     sub_80221AC - __VTABLE__322Anonymous4
+    DCD     sub_8021F42 - __VTABLE__322Anonymous4
+    DCD     sub_8021B84 - __VTABLE__322Anonymous4
+    DCD     sub_8021CFC - __VTABLE__322Anonymous4
+    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__322Anonymous4
+    DCD     MostScriptGroups__44 - __VTABLE__322Anonymous4
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__322Anonymous4
+    DCD     LivingScriptGroups__Dead - __VTABLE__322Anonymous4
 
     GLOBAL  __VTABLE__322Anonymous4
     END

@@ -20,26 +20,31 @@
     IMPORT  WallObject__ctor
 
     AREA    __VTABLE__311WallObject, DATA, READONLY
-    DCD     WallObject__ctor - .
-    DCD     WallObjectScriptGroup__04 - .
-    DCD     WallObjectScriptGroup__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     WallObjectScriptGroup__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     WallObjectScriptGroup__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     WallObjectScriptGroup__TakeDamage - .
-    DCD     WallObjectScriptGroup__Intersect - .
-    DCD     WallObjectScriptGroup__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     WallObjectScriptGroup__40 - .
-    DCD     WallObjectScriptGroup__44 - .
-    DCD     WallObjectScriptGroup__48 - .
-    DCD     WallObjectScriptGroup__4C - .
+
+    ; Human-readable label for assembly
+    GLOBAL  WallObject_VTABLE
+    EXPORT  WallObject_VTABLE
+WallObject_VTABLE
+    DCD     WallObject__ctor - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__04 - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__08 - __VTABLE__311WallObject
+    DCD     AllScriptGroups__0C - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__10 - __VTABLE__311WallObject
+    DCD     AllScriptGroups__14 - __VTABLE__311WallObject
+    DCD     MostScriptGroups__18 - __VTABLE__311WallObject
+    DCD     MostScriptGroups__1C - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__20 - __VTABLE__311WallObject
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__311WallObject
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__311WallObject
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__TakeDamage - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__Intersect - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__38 - __VTABLE__311WallObject
+    DCD     NonHostileScriptGroups__3C - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__40 - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__44 - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__48 - __VTABLE__311WallObject
+    DCD     WallObjectScriptGroup__4C - __VTABLE__311WallObject
 
     GLOBAL  __VTABLE__311WallObject
     END

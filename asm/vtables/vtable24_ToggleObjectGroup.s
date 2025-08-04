@@ -20,26 +20,31 @@
     IMPORT  Toggle__ctor
 
     AREA    __VTABLE__324ToggleObjectGroup, DATA, READONLY
-    DCD     Toggle__ctor - .
-    DCD     ToggleObjectGroup__04 - .
-    DCD     ToggleObjectGroup__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     ToggleObjectGroup__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     ToggleObjectGroup__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     ToggleObjectGroup__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     ToggleObjectGroup__40 - .
-    DCD     ToggleObjectGroup__44 - .
-    DCD     ToggleObjectGroup__48 - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  ToggleObjectGroup_VTABLE
+    EXPORT  ToggleObjectGroup_VTABLE
+ToggleObjectGroup_VTABLE
+    DCD     Toggle__ctor - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__04 - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__08 - __VTABLE__324ToggleObjectGroup
+    DCD     AllScriptGroups__0C - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__10 - __VTABLE__324ToggleObjectGroup
+    DCD     AllScriptGroups__14 - __VTABLE__324ToggleObjectGroup
+    DCD     MostScriptGroups__18 - __VTABLE__324ToggleObjectGroup
+    DCD     MostScriptGroups__1C - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__20 - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__38 - __VTABLE__324ToggleObjectGroup
+    DCD     NonHostileScriptGroups__3C - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__40 - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__44 - __VTABLE__324ToggleObjectGroup
+    DCD     ToggleObjectGroup__48 - __VTABLE__324ToggleObjectGroup
+    DCD     LivingScriptGroups__Dead - __VTABLE__324ToggleObjectGroup
 
     GLOBAL  __VTABLE__324ToggleObjectGroup
     END

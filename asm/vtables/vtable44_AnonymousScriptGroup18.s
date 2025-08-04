@@ -20,26 +20,31 @@
     IMPORT  sub_802FBE8
 
     AREA    __VTABLE__344Anonymous18, DATA, READONLY
-    DCD     Anonymous18__ctor - .
-    DCD     sub_802F1F0 - .
-    DCD     sub_802F210 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     sub_802F6F4 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     sub_802FBE8 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     sub_802F818 - .
-    DCD     sub_802F8A0 - .
-    DCD     KikoAndWinxClubScriptGroups__40 - .
-    DCD     sub_802F6BA - .
-    DCD     sub_802F228 - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Anonymous18_VTABLE
+    EXPORT  Anonymous18_VTABLE
+Anonymous18_VTABLE
+    DCD     Anonymous18__ctor - __VTABLE__344Anonymous18
+    DCD     sub_802F1F0 - __VTABLE__344Anonymous18
+    DCD     sub_802F210 - __VTABLE__344Anonymous18
+    DCD     AllScriptGroups__0C - __VTABLE__344Anonymous18
+    DCD     sub_802F6F4 - __VTABLE__344Anonymous18
+    DCD     AllScriptGroups__14 - __VTABLE__344Anonymous18
+    DCD     MostScriptGroups__18 - __VTABLE__344Anonymous18
+    DCD     MostScriptGroups__1C - __VTABLE__344Anonymous18
+    DCD     sub_802FBE8 - __VTABLE__344Anonymous18
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__344Anonymous18
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__344Anonymous18
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__344Anonymous18
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__344Anonymous18
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__344Anonymous18
+    DCD     sub_802F818 - __VTABLE__344Anonymous18
+    DCD     sub_802F8A0 - __VTABLE__344Anonymous18
+    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__344Anonymous18
+    DCD     sub_802F6BA - __VTABLE__344Anonymous18
+    DCD     sub_802F228 - __VTABLE__344Anonymous18
+    DCD     LivingScriptGroups__Dead - __VTABLE__344Anonymous18
 
     GLOBAL  __VTABLE__344Anonymous18
     END

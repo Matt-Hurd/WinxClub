@@ -25,31 +25,36 @@
     IMPORT  Scanner__ctor
 
     AREA    __VTABLE__332Scanner, DATA, READONLY
-    DCD     Scanner__ctor - .
-    DCD     NonBossHostileScriptGroup__04 - .
-    DCD     HostileCreature__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     ScannerScriptGroup__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     ScannerScriptGroup__20 - .
-    DCD     HostileCreature__DamagePlayer - .
-    DCD     HostileCreature__PlayerIframe - .
-    DCD     HostileCreature__Attack - .
-    DCD     Monster_TakeDamage - .
-    DCD     ScannerScriptGroup__Intersect - .
-    DCD     ScannerScriptGroup__38 - .
-    DCD     HostileCreature__3C - .
-    DCD     ScannerScriptGroup__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     ScannerScriptGroup__Dying - .
-    DCD     LivingScriptGroups__Dead - .
-    DCD     ScannerScriptGroup__StartAttack - .
-    DCD     ScannerScriptGroup__StartAttack2 - .
-    DCD     HostileScriptGroups__58 - .
-    DCD     HostileBaseObject__5C - .
-    DCD     ScannerScriptGroup__60 - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Scanner_VTABLE
+    EXPORT  Scanner_VTABLE
+Scanner_VTABLE
+    DCD     Scanner__ctor - __VTABLE__332Scanner
+    DCD     NonBossHostileScriptGroup__04 - __VTABLE__332Scanner
+    DCD     HostileCreature__08 - __VTABLE__332Scanner
+    DCD     AllScriptGroups__0C - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__10 - __VTABLE__332Scanner
+    DCD     AllScriptGroups__14 - __VTABLE__332Scanner
+    DCD     MostScriptGroups__18 - __VTABLE__332Scanner
+    DCD     MostScriptGroups__1C - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__20 - __VTABLE__332Scanner
+    DCD     HostileCreature__DamagePlayer - __VTABLE__332Scanner
+    DCD     HostileCreature__PlayerIframe - __VTABLE__332Scanner
+    DCD     HostileCreature__Attack - __VTABLE__332Scanner
+    DCD     Monster_TakeDamage - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__Intersect - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__38 - __VTABLE__332Scanner
+    DCD     HostileCreature__3C - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__40 - __VTABLE__332Scanner
+    DCD     MostScriptGroups__44 - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__Dying - __VTABLE__332Scanner
+    DCD     LivingScriptGroups__Dead - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__StartAttack - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__StartAttack2 - __VTABLE__332Scanner
+    DCD     HostileScriptGroups__58 - __VTABLE__332Scanner
+    DCD     HostileBaseObject__5C - __VTABLE__332Scanner
+    DCD     ScannerScriptGroup__60 - __VTABLE__332Scanner
 
     GLOBAL  __VTABLE__332Scanner
     END

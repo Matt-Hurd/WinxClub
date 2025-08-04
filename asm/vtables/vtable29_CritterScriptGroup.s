@@ -20,26 +20,31 @@
     IMPORT  NonHostileScriptGroups__TakeDamage
 
     AREA    __VTABLE__329Critter, DATA, READONLY
-    DCD     Critter__ctor - .
-    DCD     Critter__04 - .
-    DCD     Critter__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     Critter__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     Critter__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     Critter__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     Critter__40 - .
-    DCD     Critter__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Critter_VTABLE
+    EXPORT  Critter_VTABLE
+Critter_VTABLE
+    DCD     Critter__ctor - __VTABLE__329Critter
+    DCD     Critter__04 - __VTABLE__329Critter
+    DCD     Critter__08 - __VTABLE__329Critter
+    DCD     AllScriptGroups__0C - __VTABLE__329Critter
+    DCD     Critter__10 - __VTABLE__329Critter
+    DCD     AllScriptGroups__14 - __VTABLE__329Critter
+    DCD     MostScriptGroups__18 - __VTABLE__329Critter
+    DCD     MostScriptGroups__1C - __VTABLE__329Critter
+    DCD     Critter__20 - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__329Critter
+    DCD     Critter__38 - __VTABLE__329Critter
+    DCD     NonHostileScriptGroups__3C - __VTABLE__329Critter
+    DCD     Critter__40 - __VTABLE__329Critter
+    DCD     Critter__44 - __VTABLE__329Critter
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__329Critter
+    DCD     LivingScriptGroups__Dead - __VTABLE__329Critter
 
     GLOBAL  __VTABLE__329Critter
     END

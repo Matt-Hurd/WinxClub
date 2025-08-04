@@ -20,26 +20,31 @@
     IMPORT  NonHostileScriptGroups__TakeDamage
 
     AREA    __VTABLE__307Bird, DATA, READONLY
-    DCD     Bird__ctor - .
-    DCD     Bird__04 - .
-    DCD     Bird__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     Bird__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     Bird__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     Bird__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     Bird__40 - .
-    DCD     Bird__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Bird_VTABLE
+    EXPORT  Bird_VTABLE
+Bird_VTABLE
+    DCD     Bird__ctor - __VTABLE__307Bird
+    DCD     Bird__04 - __VTABLE__307Bird
+    DCD     Bird__08 - __VTABLE__307Bird
+    DCD     AllScriptGroups__0C - __VTABLE__307Bird
+    DCD     Bird__10 - __VTABLE__307Bird
+    DCD     AllScriptGroups__14 - __VTABLE__307Bird
+    DCD     MostScriptGroups__18 - __VTABLE__307Bird
+    DCD     MostScriptGroups__1C - __VTABLE__307Bird
+    DCD     Bird__20 - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__307Bird
+    DCD     Bird__38 - __VTABLE__307Bird
+    DCD     NonHostileScriptGroups__3C - __VTABLE__307Bird
+    DCD     Bird__40 - __VTABLE__307Bird
+    DCD     Bird__44 - __VTABLE__307Bird
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__307Bird
+    DCD     LivingScriptGroups__Dead - __VTABLE__307Bird
 
     GLOBAL  __VTABLE__307Bird
     END

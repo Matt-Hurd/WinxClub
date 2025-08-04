@@ -20,26 +20,31 @@
     IMPORT  NonHostileScriptGroups__TakeDamage
 
     AREA    __VTABLE__333__vftable_GenericObject, DATA, READONLY
-    DCD     GenericObject__ctor - .
-    DCD     GenericObject__04 - .
-    DCD     GenericObject__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     GenericObject__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     FewScriptGroups__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     FewScriptGroups__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     GenericObject__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  __vftable_GenericObject_VTABLE
+    EXPORT  __vftable_GenericObject_VTABLE
+__vftable_GenericObject_VTABLE
+    DCD     GenericObject__ctor - __VTABLE__333__vftable_GenericObject
+    DCD     GenericObject__04 - __VTABLE__333__vftable_GenericObject
+    DCD     GenericObject__08 - __VTABLE__333__vftable_GenericObject
+    DCD     AllScriptGroups__0C - __VTABLE__333__vftable_GenericObject
+    DCD     GenericObject__10 - __VTABLE__333__vftable_GenericObject
+    DCD     AllScriptGroups__14 - __VTABLE__333__vftable_GenericObject
+    DCD     MostScriptGroups__18 - __VTABLE__333__vftable_GenericObject
+    DCD     MostScriptGroups__1C - __VTABLE__333__vftable_GenericObject
+    DCD     FewScriptGroups__20 - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__333__vftable_GenericObject
+    DCD     FewScriptGroups__38 - __VTABLE__333__vftable_GenericObject
+    DCD     NonHostileScriptGroups__3C - __VTABLE__333__vftable_GenericObject
+    DCD     GenericObject__40 - __VTABLE__333__vftable_GenericObject
+    DCD     MostScriptGroups__44 - __VTABLE__333__vftable_GenericObject
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__333__vftable_GenericObject
+    DCD     LivingScriptGroups__Dead - __VTABLE__333__vftable_GenericObject
 
     GLOBAL  __VTABLE__333__vftable_GenericObject
     END

@@ -25,31 +25,36 @@
     IMPORT  HostileCreature__60
 
     AREA    __VTABLE__331Monster, DATA, READONLY
-    DCD    Monster__ctor - .
-    DCD    NonBossHostileScriptGroup__04 - .
-    DCD    HostileCreature__08 - .
-    DCD    AllScriptGroups__0C - .
-    DCD    Monster__10 - .
-    DCD    AllScriptGroups__14 - .
-    DCD    MostScriptGroups__18 - .
-    DCD    MostScriptGroups__1C - .
-    DCD    HostileCreature__20 - .
-    DCD    HostileCreature__DamagePlayer - .
-    DCD    HostileCreature__PlayerIframe - .
-    DCD    HostileCreature__Attack - .
-    DCD    Monster_TakeDamage - .
-    DCD    Monster__Intersect - .
-    DCD    FewScriptGroups__38 - .
-    DCD    HostileCreature__3C - .
-    DCD    Monster__40 - .
-    DCD    MostScriptGroups__44 - .
-    DCD    HostileCreature__Dying - .
-    DCD    LivingScriptGroups__Dead - .
-    DCD    Monster__50 - .
-    DCD    HostileCreature__54 - .
-    DCD    HostileScriptGroups__58 - .
-    DCD    HostileBaseObject__5C - .
-    DCD    HostileCreature__60 - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Monster_VTABLE
+    EXPORT  Monster_VTABLE
+Monster_VTABLE
+    DCD    Monster__ctor - __VTABLE__331Monster
+    DCD    NonBossHostileScriptGroup__04 - __VTABLE__331Monster
+    DCD    HostileCreature__08 - __VTABLE__331Monster
+    DCD    AllScriptGroups__0C - __VTABLE__331Monster
+    DCD    Monster__10 - __VTABLE__331Monster
+    DCD    AllScriptGroups__14 - __VTABLE__331Monster
+    DCD    MostScriptGroups__18 - __VTABLE__331Monster
+    DCD    MostScriptGroups__1C - __VTABLE__331Monster
+    DCD    HostileCreature__20 - __VTABLE__331Monster
+    DCD    HostileCreature__DamagePlayer - __VTABLE__331Monster
+    DCD    HostileCreature__PlayerIframe - __VTABLE__331Monster
+    DCD    HostileCreature__Attack - __VTABLE__331Monster
+    DCD    Monster_TakeDamage - __VTABLE__331Monster
+    DCD    Monster__Intersect - __VTABLE__331Monster
+    DCD    FewScriptGroups__38 - __VTABLE__331Monster
+    DCD    HostileCreature__3C - __VTABLE__331Monster
+    DCD    Monster__40 - __VTABLE__331Monster
+    DCD    MostScriptGroups__44 - __VTABLE__331Monster
+    DCD    HostileCreature__Dying - __VTABLE__331Monster
+    DCD    LivingScriptGroups__Dead - __VTABLE__331Monster
+    DCD    Monster__50 - __VTABLE__331Monster
+    DCD    HostileCreature__54 - __VTABLE__331Monster
+    DCD    HostileScriptGroups__58 - __VTABLE__331Monster
+    DCD    HostileBaseObject__5C - __VTABLE__331Monster
+    DCD    HostileCreature__60 - __VTABLE__331Monster
     
     GLOBAL __VTABLE__331Monster
     END

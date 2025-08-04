@@ -20,26 +20,31 @@
     IMPORT  Object__ctor
 
     AREA    __VTABLE__310Object, DATA, READONLY
-    DCD     Object__ctor - .
-    DCD     ObjectScriptGroup__04 - .
-    DCD     ObjectScriptGroup__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     ObjectScriptGroup__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     ObjectScriptGroup__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     ObjectScriptGroup__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     ObjectScriptGroup__40 - .
-    DCD     ObjectScriptGroup__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Object_VTABLE
+    EXPORT  Object_VTABLE
+Object_VTABLE
+    DCD     Object__ctor - __VTABLE__310Object
+    DCD     ObjectScriptGroup__04 - __VTABLE__310Object
+    DCD     ObjectScriptGroup__08 - __VTABLE__310Object
+    DCD     AllScriptGroups__0C - __VTABLE__310Object
+    DCD     ObjectScriptGroup__10 - __VTABLE__310Object
+    DCD     AllScriptGroups__14 - __VTABLE__310Object
+    DCD     MostScriptGroups__18 - __VTABLE__310Object
+    DCD     MostScriptGroups__1C - __VTABLE__310Object
+    DCD     ObjectScriptGroup__20 - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__310Object
+    DCD     ObjectScriptGroup__38 - __VTABLE__310Object
+    DCD     NonHostileScriptGroups__3C - __VTABLE__310Object
+    DCD     ObjectScriptGroup__40 - __VTABLE__310Object
+    DCD     ObjectScriptGroup__44 - __VTABLE__310Object
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__310Object
+    DCD     LivingScriptGroups__Dead - __VTABLE__310Object
 
     GLOBAL  __VTABLE__310Object
     END

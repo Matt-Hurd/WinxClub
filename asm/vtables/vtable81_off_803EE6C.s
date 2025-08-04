@@ -11,17 +11,22 @@
     IMPORT  sub_8040418
 
     AREA    __VTABLE__381off_803EE6C, DATA, READONLY
-    DCD     sub_8040418 - .
-    DCD     sub_800807A - .
-    DCD     sub_8008B5C - .
-    DCD     sub_8008BFC - .
-    DCD     sub_8008E64 - .
-    DCD     sub_8008E98 - .
-    DCD     sub_8008EA4 - .
-    DCD     sub_8008116 - .
-    DCD     sub_8008118 - .
-    DCD     sub_800811C - .
-    DCD     sub_8008120 - .
+
+    ; Human-readable label for assembly
+    GLOBAL  off_803EE6C_VTABLE
+    EXPORT  off_803EE6C_VTABLE
+off_803EE6C_VTABLE
+    DCD     sub_8040418 - __VTABLE__381off_803EE6C
+    DCD     sub_800807A - __VTABLE__381off_803EE6C
+    DCD     sub_8008B5C - __VTABLE__381off_803EE6C
+    DCD     sub_8008BFC - __VTABLE__381off_803EE6C
+    DCD     sub_8008E64 - __VTABLE__381off_803EE6C
+    DCD     sub_8008E98 - __VTABLE__381off_803EE6C
+    DCD     sub_8008EA4 - __VTABLE__381off_803EE6C
+    DCD     sub_8008116 - __VTABLE__381off_803EE6C
+    DCD     sub_8008118 - __VTABLE__381off_803EE6C
+    DCD     sub_800811C - __VTABLE__381off_803EE6C
+    DCD     sub_8008120 - __VTABLE__381off_803EE6C
 
     GLOBAL  __VTABLE__381off_803EE6C
     END

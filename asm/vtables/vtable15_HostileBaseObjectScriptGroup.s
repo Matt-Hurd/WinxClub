@@ -25,31 +25,36 @@
     IMPORT  sub_802B0A0
 
     AREA    __VTABLE__315HostileBaseObject, DATA, READONLY
-    DCD     HostileCreature__ctor - .
-    DCD     sub_8029290 - .
-    DCD     HostileCreature__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     Monster__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     HostileCreature__20 - .
-    DCD     HostileCreature__DamagePlayer - .
-    DCD     HostileCreature__PlayerIframe - .
-    DCD     HostileCreature__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     FewScriptGroups__38 - .
-    DCD     HostileCreature__3C - .
-    DCD     KikoAndWinxClubScriptGroups__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     HostileCreature__Dying - .
-    DCD     LivingScriptGroups__Dead - .
-    DCD     sub_802B0A0 - .
-    DCD     HostileCreature__54 - .
-    DCD     HostileScriptGroups__58 - .
-    DCD     HostileBaseObject__5C - .
-    DCD     HostileCreature__60 - .
+
+    ; Human-readable label for assembly
+    GLOBAL  HostileBaseObject_VTABLE
+    EXPORT  HostileBaseObject_VTABLE
+HostileBaseObject_VTABLE
+    DCD     HostileCreature__ctor - __VTABLE__315HostileBaseObject
+    DCD     sub_8029290 - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__08 - __VTABLE__315HostileBaseObject
+    DCD     AllScriptGroups__0C - __VTABLE__315HostileBaseObject
+    DCD     Monster__10 - __VTABLE__315HostileBaseObject
+    DCD     AllScriptGroups__14 - __VTABLE__315HostileBaseObject
+    DCD     MostScriptGroups__18 - __VTABLE__315HostileBaseObject
+    DCD     MostScriptGroups__1C - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__20 - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__DamagePlayer - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__PlayerIframe - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__Attack - __VTABLE__315HostileBaseObject
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__315HostileBaseObject
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__315HostileBaseObject
+    DCD     FewScriptGroups__38 - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__3C - __VTABLE__315HostileBaseObject
+    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__315HostileBaseObject
+    DCD     MostScriptGroups__44 - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__Dying - __VTABLE__315HostileBaseObject
+    DCD     LivingScriptGroups__Dead - __VTABLE__315HostileBaseObject
+    DCD     sub_802B0A0 - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__54 - __VTABLE__315HostileBaseObject
+    DCD     HostileScriptGroups__58 - __VTABLE__315HostileBaseObject
+    DCD     HostileBaseObject__5C - __VTABLE__315HostileBaseObject
+    DCD     HostileCreature__60 - __VTABLE__315HostileBaseObject
 
     GLOBAL  __VTABLE__315HostileBaseObject
     END

@@ -20,26 +20,31 @@
     IMPORT  Npc__ctor
 
     AREA    __VTABLE__301Npc, DATA, READONLY
-    DCD     Npc__ctor - .
-    DCD     Npc__04 - .
-    DCD     Npc__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     Npc__10 - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     FewScriptGroups__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     Npc__Intersect - .
-    DCD     Npc__38 - .
-    DCD     Npc__3C - .
-    DCD     Npc__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Npc_VTABLE
+    EXPORT  Npc_VTABLE
+Npc_VTABLE
+    DCD     Npc__ctor - __VTABLE__301Npc
+    DCD     Npc__04 - __VTABLE__301Npc
+    DCD     Npc__08 - __VTABLE__301Npc
+    DCD     AllScriptGroups__0C - __VTABLE__301Npc
+    DCD     Npc__10 - __VTABLE__301Npc
+    DCD     AllScriptGroups__14 - __VTABLE__301Npc
+    DCD     MostScriptGroups__18 - __VTABLE__301Npc
+    DCD     MostScriptGroups__1C - __VTABLE__301Npc
+    DCD     FewScriptGroups__20 - __VTABLE__301Npc
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__301Npc
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__301Npc
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__301Npc
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__301Npc
+    DCD     Npc__Intersect - __VTABLE__301Npc
+    DCD     Npc__38 - __VTABLE__301Npc
+    DCD     Npc__3C - __VTABLE__301Npc
+    DCD     Npc__40 - __VTABLE__301Npc
+    DCD     MostScriptGroups__44 - __VTABLE__301Npc
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__301Npc
+    DCD     LivingScriptGroups__Dead - __VTABLE__301Npc
 
     GLOBAL  __VTABLE__301Npc
     END

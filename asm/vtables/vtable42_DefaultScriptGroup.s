@@ -20,26 +20,31 @@
     IMPORT  sub_801EBCA
 
     AREA    __VTABLE__342Default, DATA, READONLY
-    DCD     GameObj__ctor - .
-    DCD     WinxClubScriptGroup__04 - .
-    DCD     WinxClubScriptGroup__08 - .
-    DCD     AllScriptGroups__0C - .
-    DCD     sub_801EBCA - .
-    DCD     AllScriptGroups__14 - .
-    DCD     MostScriptGroups__18 - .
-    DCD     MostScriptGroups__1C - .
-    DCD     FewScriptGroups__20 - .
-    DCD     NonHostileScriptGroups__DamagePlayer - .
-    DCD     NonHostileScriptGroups__PlayerIframe - .
-    DCD     NonHostileScriptGroups__Attack - .
-    DCD     NonHostileScriptGroups__TakeDamage - .
-    DCD     NonHostileScriptGroups__Intersect - .
-    DCD     FewScriptGroups__38 - .
-    DCD     NonHostileScriptGroups__3C - .
-    DCD     KikoAndWinxClubScriptGroups__40 - .
-    DCD     MostScriptGroups__44 - .
-    DCD     MostNonHostileScriptGroups__Dying - .
-    DCD     LivingScriptGroups__Dead - .
+
+    ; Human-readable label for assembly
+    GLOBAL  Default_VTABLE
+    EXPORT  Default_VTABLE
+Default_VTABLE
+    DCD     GameObj__ctor - __VTABLE__342Default
+    DCD     WinxClubScriptGroup__04 - __VTABLE__342Default
+    DCD     WinxClubScriptGroup__08 - __VTABLE__342Default
+    DCD     AllScriptGroups__0C - __VTABLE__342Default
+    DCD     sub_801EBCA - __VTABLE__342Default
+    DCD     AllScriptGroups__14 - __VTABLE__342Default
+    DCD     MostScriptGroups__18 - __VTABLE__342Default
+    DCD     MostScriptGroups__1C - __VTABLE__342Default
+    DCD     FewScriptGroups__20 - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__Attack - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__Intersect - __VTABLE__342Default
+    DCD     FewScriptGroups__38 - __VTABLE__342Default
+    DCD     NonHostileScriptGroups__3C - __VTABLE__342Default
+    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__342Default
+    DCD     MostScriptGroups__44 - __VTABLE__342Default
+    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__342Default
+    DCD     LivingScriptGroups__Dead - __VTABLE__342Default
 
     GLOBAL  __VTABLE__342Default
     END
