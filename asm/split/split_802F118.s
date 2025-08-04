@@ -18,9 +18,9 @@
 	IMPORT sub_8017A0A
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT MostNonHostileScriptGroups__Dying
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__Dying
 	IMPORT sub_8023A70
 	IMPORT CollectFirefly
 	IMPORT sub_8028C2E
@@ -164,7 +164,7 @@ _0802F204
 	pop {r3}
 	bx r3
 _0802F20A
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _0802F204
 
 	thumb_func_start sub_802F210
@@ -180,7 +180,7 @@ _0802F21C
 	pop {r3}
 	bx r3
 _0802F222
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _0802F21C
 
 	thumb_func_start sub_802F228
@@ -265,7 +265,7 @@ _0802F2AC
 	strh r2, [r0, #0xc]
 	strh r2, [r0, #8]
 _0802F2BC
-	bl MostNonHostileScriptGroups__Dying
+	bl DefaultScriptGroups__Dying
 	pop {r4}
 	pop {r3}
 	bx r3

@@ -24,8 +24,8 @@
 	IMPORT sub_8017884
 	IMPORT sub_80179BE
 	IMPORT sub_80187A0
-	IMPORT FewScriptGroups__20
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_801F65C
 	IMPORT sub_8023FE4
 	IMPORT sub_80268AC
@@ -110,7 +110,7 @@ Monster__10
 	lsls r0, r0, #0xe
 	bmi _08029822
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	movs r6, #0
 	ldr r1, [r5, #0x1c]
 	mvns r6, r6
@@ -3228,7 +3228,7 @@ HostileCreature__20
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	ldr r1, _0802B274
 	movs r0, #0x10
 	ldr r1, [r1]

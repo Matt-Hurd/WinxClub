@@ -1,14 +1,14 @@
-    IMPORT  AllScriptGroups__0C
-    IMPORT  AllScriptGroups__14
-    IMPORT  LivingScriptGroups__Dead
-    IMPORT  MostScriptGroups__18
-    IMPORT  MostScriptGroups__1C
-    IMPORT  NonHostileScriptGroups__3C
-    IMPORT  NonHostileScriptGroups__Attack
-    IMPORT  NonHostileScriptGroups__DamagePlayer
-    IMPORT  NonHostileScriptGroups__Intersect
-    IMPORT  NonHostileScriptGroups__PlayerIframe
-    IMPORT  NonHostileScriptGroups__TakeDamage
+    IMPORT  DefaultScriptGroups__0C
+    IMPORT  DefaultScriptGroups__14
+    IMPORT  DefaultScriptGroups__Dead
+    IMPORT  DefaultScriptGroups__18
+    IMPORT  DefaultScriptGroups__1C
+    IMPORT  DefaultScriptGroups__3C
+    IMPORT  DefaultScriptGroups__Attack
+    IMPORT  DefaultScriptGroups__DamagePlayer
+    IMPORT  DefaultScriptGroups__Intersect
+    IMPORT  DefaultScriptGroups__PlayerIframe
+    IMPORT  DefaultScriptGroups__TakeDamage
     IMPORT  ToggleObjectGroup__04
     IMPORT  ToggleObjectGroup__08
     IMPORT  ToggleObjectGroup__10
@@ -28,23 +28,23 @@ ToggleObjectGroup_VTABLE
     DCD     Toggle__ctor - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__04 - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__08 - __VTABLE__324ToggleObjectGroup
-    DCD     AllScriptGroups__0C - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__0C - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__10 - __VTABLE__324ToggleObjectGroup
-    DCD     AllScriptGroups__14 - __VTABLE__324ToggleObjectGroup
-    DCD     MostScriptGroups__18 - __VTABLE__324ToggleObjectGroup
-    DCD     MostScriptGroups__1C - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__14 - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__18 - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__1C - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__20 - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__Attack - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__Intersect - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__Attack - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__TakeDamage - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__Intersect - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__38 - __VTABLE__324ToggleObjectGroup
-    DCD     NonHostileScriptGroups__3C - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__3C - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__40 - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__44 - __VTABLE__324ToggleObjectGroup
     DCD     ToggleObjectGroup__48 - __VTABLE__324ToggleObjectGroup
-    DCD     LivingScriptGroups__Dead - __VTABLE__324ToggleObjectGroup
+    DCD     DefaultScriptGroups__Dead - __VTABLE__324ToggleObjectGroup
 
     GLOBAL  __VTABLE__324ToggleObjectGroup
     END

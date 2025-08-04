@@ -4,9 +4,9 @@
 	IMPORT __VTABLE__301Npc
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__10
 	IMPORT __call_via_r1
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -96,7 +96,7 @@ _0802543A
 	thumb_func_start Npc__04
 Npc__04
 	push {r3, lr}
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -104,7 +104,7 @@ Npc__04
 	thumb_func_start Npc__08
 Npc__08
 	push {r3, lr}
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -225,7 +225,7 @@ _080254FE
 	non_word_aligned_thumb_func_start Npc__10
 Npc__10
 	push {r3, lr}
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	add sp, #4
 	pop {r3}
 	bx r3

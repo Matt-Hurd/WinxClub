@@ -6,8 +6,8 @@
 	IMPORT __VTABLE__315HostileBaseObject
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -336,7 +336,7 @@ _080292CE
 	b _080292C6
 _080292DC
 	adds r0, r4, #0
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _080292C6
 
 	thumb_func_start HostileCreature__08
@@ -400,7 +400,7 @@ _0802934A
 	movs r0, #0
 	b _080292F4
 _0802934E
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _080292F4
 	ALIGN
 _08029354 DCDU __VTABLE__315HostileBaseObject

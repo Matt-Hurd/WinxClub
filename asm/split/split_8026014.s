@@ -7,8 +7,8 @@
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
@@ -346,7 +346,7 @@ _0802623C
 	b _0802622E
 _08026250
 	adds r0, r4, #0
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _0802622E
 
 	thumb_func_start GenericObject__08
@@ -393,7 +393,7 @@ _08026296
 	b _08026270
 _080262A2
 	adds r0, r4, #0
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _08026270
 	ALIGN
 _080262AC DCDU __VTABLE__333__vftable_GenericObject

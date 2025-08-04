@@ -11,9 +11,9 @@
 	IMPORT sub_8000D5A
 	IMPORT GetEWRAMStart
 	IMPORT sub_80179BE
-	IMPORT FewScriptGroups__20
-	IMPORT MostNonHostileScriptGroups__Dying
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__Dying
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_80268AC
 	IMPORT sub_8028C2E
 	IMPORT sub_803DA80
@@ -22,7 +22,7 @@
 ToggleObjectGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
@@ -145,7 +145,7 @@ _0803582A
 	bl sub_8028C2E
 _08035846
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -183,7 +183,7 @@ _08035884
 	pop {r3}
 	bx r3
 _0803588A
-	bl MostNonHostileScriptGroups__Dying
+	bl DefaultScriptGroups__Dying
 	b _08035884
 
 	thumb_func_start ToggleObjectGroup__44

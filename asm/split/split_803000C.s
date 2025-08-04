@@ -6,8 +6,8 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT GetEWRAMStart
-	IMPORT FewScriptGroups__20
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT __16_ll_mulss
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
@@ -152,7 +152,7 @@ _08030106
 	b _08030116
 _08030110
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 _08030116
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
@@ -207,7 +207,7 @@ _08030176
 Bird__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0

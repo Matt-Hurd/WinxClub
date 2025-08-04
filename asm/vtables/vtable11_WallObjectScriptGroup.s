@@ -1,11 +1,11 @@
-    IMPORT  AllScriptGroups__0C
-    IMPORT  AllScriptGroups__14
-    IMPORT  MostScriptGroups__18
-    IMPORT  MostScriptGroups__1C
-    IMPORT  NonHostileScriptGroups__3C
-    IMPORT  NonHostileScriptGroups__Attack
-    IMPORT  NonHostileScriptGroups__DamagePlayer
-    IMPORT  NonHostileScriptGroups__PlayerIframe
+    IMPORT  DefaultScriptGroups__0C
+    IMPORT  DefaultScriptGroups__14
+    IMPORT  DefaultScriptGroups__18
+    IMPORT  DefaultScriptGroups__1C
+    IMPORT  DefaultScriptGroups__3C
+    IMPORT  DefaultScriptGroups__Attack
+    IMPORT  DefaultScriptGroups__DamagePlayer
+    IMPORT  DefaultScriptGroups__PlayerIframe
     IMPORT  WallObjectScriptGroup__04
     IMPORT  WallObjectScriptGroup__08
     IMPORT  WallObjectScriptGroup__10
@@ -28,19 +28,19 @@ WallObject_VTABLE
     DCD     WallObject__ctor - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__04 - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__08 - __VTABLE__311WallObject
-    DCD     AllScriptGroups__0C - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__0C - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__10 - __VTABLE__311WallObject
-    DCD     AllScriptGroups__14 - __VTABLE__311WallObject
-    DCD     MostScriptGroups__18 - __VTABLE__311WallObject
-    DCD     MostScriptGroups__1C - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__14 - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__18 - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__1C - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__20 - __VTABLE__311WallObject
-    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__311WallObject
-    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__311WallObject
-    DCD     NonHostileScriptGroups__Attack - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__Attack - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__TakeDamage - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__Intersect - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__38 - __VTABLE__311WallObject
-    DCD     NonHostileScriptGroups__3C - __VTABLE__311WallObject
+    DCD     DefaultScriptGroups__3C - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__40 - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__44 - __VTABLE__311WallObject
     DCD     WallObjectScriptGroup__48 - __VTABLE__311WallObject

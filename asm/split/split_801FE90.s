@@ -21,10 +21,10 @@
 	IMPORT sub_8000914
 	IMPORT sub_8001432
 	IMPORT GetEWRAMStart
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT AllScriptGroups__0C
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__0C
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_801F906
 	IMPORT sub_8023A70
 	IMPORT sub_8023AA2
@@ -362,7 +362,7 @@ _08020090
 	bl sub_801F906
 	b _0801FF82
 _0802009E
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _0801FF82
 
 	thumb_func_start sub_80200A4
@@ -400,7 +400,7 @@ _080200D6
 	movs r0, #0
 	b _080200BC
 _080200DA
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _080200BC
 
 	thumb_func_start sub_80200E0
@@ -1625,7 +1625,7 @@ _080209D6
 	adds r0, #1
 	strh r0, [r5, #4]
 	adds r0, r4, #0
-	bl AllScriptGroups__0C
+	bl DefaultScriptGroups__0C
 	ldrh r0, [r5]
 	adds r0, #1
 	strh r0, [r5]
@@ -2680,7 +2680,7 @@ _0802121A
 	bl sub_8000914
 _0802122E
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3

@@ -16,8 +16,8 @@
 	IMPORT GetEWRAMStart
 	IMPORT sub_80179BE
 	IMPORT sub_80187A0
-	IMPORT sub_801EBCA
-	IMPORT NonHostileScriptGroups__TakeDamage
+	IMPORT DefaultScriptGroups__10
+	IMPORT DefaultScriptGroups__TakeDamage
 	IMPORT HostileCreature__20
 	IMPORT sub_8037E48
 	IMPORT __call_via_r1
@@ -516,7 +516,7 @@ _0803A834
 	b _0803A83C
 _0803A836
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 _0803A83C
 	ldr r1, _0803A90C
 	movs r0, #4
@@ -844,7 +844,7 @@ _0803AAC0
 ScannerScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1

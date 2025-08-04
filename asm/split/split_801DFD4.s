@@ -19,8 +19,8 @@
 	IMPORT sub_80401C0
 	IMPORT sub_80401E4
 
-	thumb_func_start MostScriptGroups__18
-MostScriptGroups__18
+	thumb_func_start DefaultScriptGroups__18
+DefaultScriptGroups__18
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -191,8 +191,8 @@ _0801E11A
 	pop {r3}
 	bx r3
 
-	thumb_func_start FewScriptGroups__20
-FewScriptGroups__20
+	thumb_func_start DefaultScriptGroups__20
+DefaultScriptGroups__20
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x50]

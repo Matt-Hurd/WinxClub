@@ -9,7 +9,7 @@
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
 	IMPORT sub_80012F0
-	IMPORT MostNonHostileScriptGroups__Dying
+	IMPORT DefaultScriptGroups__Dying
 	IMPORT __call_via_r1
 	IMPORT __call_via_r2
 	IMPORT rand
@@ -219,7 +219,7 @@ _080294AE
 	strb r1, [r0, #2]
 	b _08029456
 _080294E8
-	bl MostNonHostileScriptGroups__Dying
+	bl DefaultScriptGroups__Dying
 	b _08029456
 
 	non_word_aligned_thumb_func_start sub_80294EE

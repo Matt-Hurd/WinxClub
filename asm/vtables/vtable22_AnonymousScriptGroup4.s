@@ -1,11 +1,11 @@
     IMPORT  Anonymous4__ctor
-    IMPORT  KikoAndWinxClubScriptGroups__40
-    IMPORT  LivingScriptGroups__Dead
-    IMPORT  MostNonHostileScriptGroups__Dying
-    IMPORT  MostScriptGroups__44
-    IMPORT  NonHostileScriptGroups__Attack
-    IMPORT  NonHostileScriptGroups__DamagePlayer
-    IMPORT  NonHostileScriptGroups__PlayerIframe
+    IMPORT  DefaultScriptGroups__40
+    IMPORT  DefaultScriptGroups__Dead
+    IMPORT  DefaultScriptGroups__Dying
+    IMPORT  DefaultScriptGroups__44
+    IMPORT  DefaultScriptGroups__Attack
+    IMPORT  DefaultScriptGroups__DamagePlayer
+    IMPORT  DefaultScriptGroups__PlayerIframe
     IMPORT  sub_801FF68
     IMPORT  sub_80200A4
     IMPORT  sub_80200E0
@@ -34,17 +34,17 @@ Anonymous4_VTABLE
     DCD     sub_8021A38 - __VTABLE__322Anonymous4
     DCD     sub_8021A98 - __VTABLE__322Anonymous4
     DCD     sub_8021ADE - __VTABLE__322Anonymous4
-    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__322Anonymous4
-    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__322Anonymous4
-    DCD     NonHostileScriptGroups__Attack - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__Attack - __VTABLE__322Anonymous4
     DCD     sub_80221AC - __VTABLE__322Anonymous4
     DCD     sub_8021F42 - __VTABLE__322Anonymous4
     DCD     sub_8021B84 - __VTABLE__322Anonymous4
     DCD     sub_8021CFC - __VTABLE__322Anonymous4
-    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__322Anonymous4
-    DCD     MostScriptGroups__44 - __VTABLE__322Anonymous4
-    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__322Anonymous4
-    DCD     LivingScriptGroups__Dead - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__40 - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__44 - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__Dying - __VTABLE__322Anonymous4
+    DCD     DefaultScriptGroups__Dead - __VTABLE__322Anonymous4
 
     GLOBAL  __VTABLE__322Anonymous4
     END

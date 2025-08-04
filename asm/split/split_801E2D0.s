@@ -42,22 +42,22 @@
 	IMPORT sub_80401C0
 	IMPORT sub_8040594
 
-	thumb_func_start NonHostileScriptGroups__Attack
-NonHostileScriptGroups__Attack
+	thumb_func_start DefaultScriptGroups__Attack
+DefaultScriptGroups__Attack
 	movs r0, #0
 	bx lr
 
-	thumb_func_start NonHostileScriptGroups__DamagePlayer
-NonHostileScriptGroups__DamagePlayer
+	thumb_func_start DefaultScriptGroups__DamagePlayer
+DefaultScriptGroups__DamagePlayer
 	bx lr
 
-	non_word_aligned_thumb_func_start NonHostileScriptGroups__PlayerIframe
-NonHostileScriptGroups__PlayerIframe
+	non_word_aligned_thumb_func_start DefaultScriptGroups__PlayerIframe
+DefaultScriptGroups__PlayerIframe
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start MostNonHostileScriptGroups__Dying
-MostNonHostileScriptGroups__Dying
+	non_word_aligned_thumb_func_start DefaultScriptGroups__Dying
+DefaultScriptGroups__Dying
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -359,12 +359,12 @@ _0801E4B0
 	bl sub_80401C0
 	b _0801E2F0
 
-	thumb_func_start KikoAndWinxClubScriptGroups__40
-KikoAndWinxClubScriptGroups__40
+	thumb_func_start DefaultScriptGroups__40
+DefaultScriptGroups__40
 	bx lr
 
-	non_word_aligned_thumb_func_start LivingScriptGroups__Dead
-LivingScriptGroups__Dead
+	non_word_aligned_thumb_func_start DefaultScriptGroups__Dead
+DefaultScriptGroups__Dead
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	lsls r2, r2, #0x10
@@ -374,8 +374,8 @@ LivingScriptGroups__Dead
 	str r1, [r0, #0x5c]
 	bx lr
 
-	non_word_aligned_thumb_func_start MostScriptGroups__44
-MostScriptGroups__44
+	non_word_aligned_thumb_func_start DefaultScriptGroups__44
+DefaultScriptGroups__44
 	bx lr
 
 	thumb_func_start sub_801E4D0
@@ -764,8 +764,8 @@ _0801E7A2
 	str r1, [r4, #0x34]
 	b _0801E540
 
-	non_word_aligned_thumb_func_start AllScriptGroups__0C
-AllScriptGroups__0C
+	non_word_aligned_thumb_func_start DefaultScriptGroups__0C
+DefaultScriptGroups__0C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -1336,8 +1336,8 @@ _0801EBBC
 	bx r3
 
 
-	non_word_aligned_thumb_func_start sub_801EBCA
-sub_801EBCA
+	non_word_aligned_thumb_func_start DefaultScriptGroups__10
+DefaultScriptGroups__10
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -1976,8 +1976,8 @@ _0801F0E8
 	pop {r3}
 	bx r3
 
-	thumb_func_start AllScriptGroups__14
-AllScriptGroups__14
+	thumb_func_start DefaultScriptGroups__14
+DefaultScriptGroups__14
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -2185,8 +2185,8 @@ _0801F244
 	str r0, [r4, #0x10]
 	b _0801F144
 
-	non_word_aligned_thumb_func_start NonHostileScriptGroups__3C
-NonHostileScriptGroups__3C
+	non_word_aligned_thumb_func_start DefaultScriptGroups__3C
+DefaultScriptGroups__3C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -2204,12 +2204,12 @@ _0801F26E
 	pop {r3}
 	bx r3
 
-	thumb_func_start FewScriptGroups__38
-FewScriptGroups__38
+	thumb_func_start DefaultScriptGroups__38
+DefaultScriptGroups__38
 	bx lr
 
-	non_word_aligned_thumb_func_start NonHostileScriptGroups__Intersect
-NonHostileScriptGroups__Intersect
+	non_word_aligned_thumb_func_start DefaultScriptGroups__Intersect
+DefaultScriptGroups__Intersect
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #1
 	lsrs r1, r1, #1
@@ -2219,8 +2219,8 @@ NonHostileScriptGroups__Intersect
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start NonHostileScriptGroups__TakeDamage
-NonHostileScriptGroups__TakeDamage
+	non_word_aligned_thumb_func_start DefaultScriptGroups__TakeDamage
+DefaultScriptGroups__TakeDamage
 	movs r1, #0
 	str r1, [r0, #0x78]
 	bx lr

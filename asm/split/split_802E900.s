@@ -17,10 +17,10 @@
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
 	IMPORT sub_801DA2A
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT FewScriptGroups__20
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
@@ -220,7 +220,7 @@ _0802EA3E
 	ldr r0, [r0]
 	bl sub_8001432
 	adds r0, r5, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -276,7 +276,7 @@ _0802EAD0
 	bl sub_802EA80
 	b _0802EACA
 _0802EAD6
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _0802EACA
 
 	thumb_func_start ObjectScriptGroup__08
@@ -297,7 +297,7 @@ _0802EAF2
 	movs r0, #1
 	b _0802EAEC
 _0802EAF6
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _0802EAEC
 
 	thumb_func_start ObjectScriptGroup__44
@@ -453,7 +453,7 @@ _0802EC3C DCDU gUnknown_0300345C
 ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0

@@ -16,8 +16,8 @@
 	IMPORT sub_800C1CA
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
 	IMPORT sub_8028C2E
 	IMPORT rand
 	IMPORT __nw__FUi
@@ -94,7 +94,7 @@ _08031102
 	thumb_func_start Critter__04
 Critter__04
 	push {r3, lr}
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -102,7 +102,7 @@ Critter__04
 	thumb_func_start Critter__08
 Critter__08
 	push {r3, lr}
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	add sp, #4
 	pop {r3}
 	bx r3

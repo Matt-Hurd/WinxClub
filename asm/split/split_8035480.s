@@ -6,8 +6,8 @@
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
 	IMPORT sub_801DB90
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -320,7 +320,7 @@ _0803567A
 	b _0803566C
 _0803568E
 	adds r0, r4, #0
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _0803566C
 
 	non_word_aligned_thumb_func_start ToggleObjectGroup__08
@@ -362,7 +362,7 @@ _080356CC
 	b _080356C6
 _080356D8
 	adds r0, r4, #0
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _080356C6
 
 	thumb_func_start ToggleObjectGroup__38

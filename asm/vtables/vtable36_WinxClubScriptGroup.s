@@ -1,16 +1,16 @@
-    IMPORT  AllScriptGroups__0C
-    IMPORT  AllScriptGroups__14
-    IMPORT  KikoAndWinxClubScriptGroups__40
-    IMPORT  LivingScriptGroups__Dead
-    IMPORT  MostNonHostileScriptGroups__Dying
-    IMPORT  MostScriptGroups__44
-    IMPORT  NonHostileScriptGroups__Attack
-    IMPORT  NonHostileScriptGroups__DamagePlayer
-    IMPORT  NonHostileScriptGroups__Intersect
-    IMPORT  NonHostileScriptGroups__PlayerIframe
-    IMPORT  NonHostileScriptGroups__TakeDamage
-    IMPORT  WinxClubScriptGroup__04
-    IMPORT  WinxClubScriptGroup__08
+    IMPORT  DefaultScriptGroups__0C
+    IMPORT  DefaultScriptGroups__14
+    IMPORT  DefaultScriptGroups__40
+    IMPORT  DefaultScriptGroups__Dead
+    IMPORT  DefaultScriptGroups__Dying
+    IMPORT  DefaultScriptGroups__44
+    IMPORT  DefaultScriptGroups__Attack
+    IMPORT  DefaultScriptGroups__DamagePlayer
+    IMPORT  DefaultScriptGroups__Intersect
+    IMPORT  DefaultScriptGroups__PlayerIframe
+    IMPORT  DefaultScriptGroups__TakeDamage
+    IMPORT  DefaultScriptGroups__04
+    IMPORT  DefaultScriptGroups__08
     IMPORT  WinxClub__10
     IMPORT  WinxClub__18
     IMPORT  WinxClub__1C
@@ -26,25 +26,25 @@
     EXPORT  WinxClub_VTABLE
 WinxClub_VTABLE
     DCD     WinxClub__ctor - __VTABLE__336WinxClub
-    DCD     WinxClubScriptGroup__04 - __VTABLE__336WinxClub
-    DCD     WinxClubScriptGroup__08 - __VTABLE__336WinxClub
-    DCD     AllScriptGroups__0C - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__04 - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__08 - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__0C - __VTABLE__336WinxClub
     DCD     WinxClub__10 - __VTABLE__336WinxClub
-    DCD     AllScriptGroups__14 - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__14 - __VTABLE__336WinxClub
     DCD     WinxClub__18 - __VTABLE__336WinxClub
     DCD     WinxClub__1C - __VTABLE__336WinxClub
     DCD     WinxClub__20 - __VTABLE__336WinxClub
-    DCD     NonHostileScriptGroups__DamagePlayer - __VTABLE__336WinxClub
-    DCD     NonHostileScriptGroups__PlayerIframe - __VTABLE__336WinxClub
-    DCD     NonHostileScriptGroups__Attack - __VTABLE__336WinxClub
-    DCD     NonHostileScriptGroups__TakeDamage - __VTABLE__336WinxClub
-    DCD     NonHostileScriptGroups__Intersect - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__Attack - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__TakeDamage - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__Intersect - __VTABLE__336WinxClub
     DCD     WinxClub__38 - __VTABLE__336WinxClub
     DCD     WinxClub__3C - __VTABLE__336WinxClub
-    DCD     KikoAndWinxClubScriptGroups__40 - __VTABLE__336WinxClub
-    DCD     MostScriptGroups__44 - __VTABLE__336WinxClub
-    DCD     MostNonHostileScriptGroups__Dying - __VTABLE__336WinxClub
-    DCD     LivingScriptGroups__Dead - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__40 - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__44 - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__Dying - __VTABLE__336WinxClub
+    DCD     DefaultScriptGroups__Dead - __VTABLE__336WinxClub
 
     GLOBAL  __VTABLE__336WinxClub
     END

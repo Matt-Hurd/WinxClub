@@ -18,10 +18,10 @@
 	IMPORT GetEWRAMStart
 	IMPORT sub_80177D8
 	IMPORT sub_801CA1E
-	IMPORT MostScriptGroups__1C
-	IMPORT MostScriptGroups__18
-	IMPORT FewScriptGroups__20
-	IMPORT NonHostileScriptGroups__TakeDamage
+	IMPORT DefaultScriptGroups__1C
+	IMPORT DefaultScriptGroups__18
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__TakeDamage
 	IMPORT sub_801F450
 	IMPORT sub_8020A74
 	IMPORT sub_8020AB6
@@ -46,7 +46,7 @@
 sub_8021A38
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
-	bl MostScriptGroups__18
+	bl DefaultScriptGroups__18
 	adds r0, r6, #0
 	adds r0, #0xe0
 	ldr r1, [r0]
@@ -96,7 +96,7 @@ _08021A7A
 sub_8021A98
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl MostScriptGroups__1C
+	bl DefaultScriptGroups__1C
 	adds r5, r4, #0
 	adds r5, #0xff
 	adds r5, #1
@@ -131,7 +131,7 @@ _08021ABC
 sub_8021ADE
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	ldr r0, _08021E74
 	ldr r0, [r0]
 	bl sub_800116A
@@ -681,7 +681,7 @@ _08021F16
 	movs r1, #0x9c
 	str r0, [r1, r4]
 	adds r0, r4, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -712,7 +712,7 @@ _08021F62
 	lsrs r0, r0, #0x14
 	beq _08021F7E
 	adds r0, r4, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -734,7 +734,7 @@ _08021F7E
 	cmp r0, #1
 	bne _08022002
 	adds r0, r4, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -988,7 +988,7 @@ _0802216A
 	b _08022188
 loc_8022172
 	adds r0, r4, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 	b _08022188
 loc_802217a
 	movs r0, #0
@@ -997,7 +997,7 @@ loc_802217a
 	b _08022188
 _08022182
 	adds r0, r4, #0
-	bl NonHostileScriptGroups__TakeDamage
+	bl DefaultScriptGroups__TakeDamage
 _08022188
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1

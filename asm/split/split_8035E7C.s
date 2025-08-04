@@ -11,10 +11,10 @@
 	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT FewScriptGroups__20
-	IMPORT MostNonHostileScriptGroups__Dying
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__Dying
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -215,7 +215,7 @@ _08035FDA
 	bl sub_8035F54
 	b _08035FC8
 _08035FE0
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	b _08035FC8
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
@@ -231,7 +231,7 @@ _08035FF2
 	pop {r3}
 	bx r3
 _08035FF8
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	b _08035FF2
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__38
@@ -320,7 +320,7 @@ _08036092
 WallObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
@@ -393,7 +393,7 @@ _08036118
 	strh r1, [r0, #0x18]
 	b _08036112
 _08036122
-	bl MostNonHostileScriptGroups__Dying
+	bl DefaultScriptGroups__Dying
 	b _08036112
 	ALIGN
 _08036128 DCDU __VTABLE__311WallObject

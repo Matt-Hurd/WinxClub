@@ -22,10 +22,10 @@
 	IMPORT GetEWRAMStart
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
-	IMPORT MostScriptGroups__1C
-	IMPORT MostScriptGroups__18
-	IMPORT FewScriptGroups__20
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__1C
+	IMPORT DefaultScriptGroups__18
+	IMPORT DefaultScriptGroups__20
+	IMPORT DefaultScriptGroups__10
 	IMPORT sub_8023AA2
 	IMPORT sub_8032A90
 	IMPORT sub_8033512
@@ -189,7 +189,7 @@ _08033754
 	bne _0803376C
 _0803375E
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 _08033764
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
@@ -777,7 +777,7 @@ _08033BD0
 WinxClub__18
 	push {r4, lr}
 	adds r4, r0, #0
-	bl MostScriptGroups__18
+	bl DefaultScriptGroups__18
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]
@@ -792,7 +792,7 @@ WinxClub__18
 WinxClub__1C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl MostScriptGroups__1C
+	bl DefaultScriptGroups__1C
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]
@@ -807,7 +807,7 @@ WinxClub__1C
 WinxClub__20
 	push {r4, lr}
 	adds r4, r0, #0
-	bl FewScriptGroups__20
+	bl DefaultScriptGroups__20
 	adds r0, r4, #0
 	adds r0, #0xa8
 	ldr r1, [r0]

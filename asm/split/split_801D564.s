@@ -200,8 +200,8 @@ _0801D66A
 	adds r0, r4, #0
 	b _0801D576
 
-	thumb_func_start MostScriptGroups__1C
-MostScriptGroups__1C
+	thumb_func_start DefaultScriptGroups__1C
+DefaultScriptGroups__1C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -279,7 +279,7 @@ GameObj__ctor
 	str r0, [r1, #0x18]
 _0801D754
 	adds r0, r4, #0
-	bl MostScriptGroups__1C
+	bl DefaultScriptGroups__1C
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _0801D770

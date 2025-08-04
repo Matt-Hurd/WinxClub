@@ -1,5 +1,5 @@
-    IMPORT  AllScriptGroups__0C
-    IMPORT  AllScriptGroups__14
+    IMPORT  DefaultScriptGroups__0C
+    IMPORT  DefaultScriptGroups__14
     IMPORT  HostileBaseObject__5C
     IMPORT  HostileCreature__08
     IMPORT  HostileCreature__3C
@@ -7,11 +7,11 @@
     IMPORT  HostileCreature__DamagePlayer
     IMPORT  HostileCreature__PlayerIframe
     IMPORT  HostileScriptGroups__58
-    IMPORT  LivingScriptGroups__Dead
+    IMPORT  DefaultScriptGroups__Dead
     IMPORT  Monster_TakeDamage
-    IMPORT  MostScriptGroups__18
-    IMPORT  MostScriptGroups__1C
-    IMPORT  MostScriptGroups__44
+    IMPORT  DefaultScriptGroups__18
+    IMPORT  DefaultScriptGroups__1C
+    IMPORT  DefaultScriptGroups__44
     IMPORT  NonBossHostileScriptGroup__04
     IMPORT  ScannerScriptGroup__10
     IMPORT  ScannerScriptGroup__20
@@ -33,11 +33,11 @@ Scanner_VTABLE
     DCD     Scanner__ctor - __VTABLE__332Scanner
     DCD     NonBossHostileScriptGroup__04 - __VTABLE__332Scanner
     DCD     HostileCreature__08 - __VTABLE__332Scanner
-    DCD     AllScriptGroups__0C - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__0C - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__10 - __VTABLE__332Scanner
-    DCD     AllScriptGroups__14 - __VTABLE__332Scanner
-    DCD     MostScriptGroups__18 - __VTABLE__332Scanner
-    DCD     MostScriptGroups__1C - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__14 - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__18 - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__1C - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__20 - __VTABLE__332Scanner
     DCD     HostileCreature__DamagePlayer - __VTABLE__332Scanner
     DCD     HostileCreature__PlayerIframe - __VTABLE__332Scanner
@@ -47,9 +47,9 @@ Scanner_VTABLE
     DCD     ScannerScriptGroup__38 - __VTABLE__332Scanner
     DCD     HostileCreature__3C - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__40 - __VTABLE__332Scanner
-    DCD     MostScriptGroups__44 - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__44 - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__Dying - __VTABLE__332Scanner
-    DCD     LivingScriptGroups__Dead - __VTABLE__332Scanner
+    DCD     DefaultScriptGroups__Dead - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__StartAttack - __VTABLE__332Scanner
     DCD     ScannerScriptGroup__StartAttack2 - __VTABLE__332Scanner
     DCD     HostileScriptGroups__58 - __VTABLE__332Scanner

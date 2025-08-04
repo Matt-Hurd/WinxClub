@@ -8,9 +8,9 @@
 	IMPORT sub_8000D5A
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
-	IMPORT WinxClubScriptGroup__04
-	IMPORT WinxClubScriptGroup__08
-	IMPORT sub_801EBCA
+	IMPORT DefaultScriptGroups__04
+	IMPORT DefaultScriptGroups__08
+	IMPORT DefaultScriptGroups__10
 	IMPORT rand
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -128,7 +128,7 @@ _08031736
 	thumb_func_start Kiko__04
 Kiko__04
 	push {r3, lr}
-	bl WinxClubScriptGroup__04
+	bl DefaultScriptGroups__04
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -136,7 +136,7 @@ Kiko__04
 	thumb_func_start Kiko__08
 Kiko__08
 	push {r3, lr}
-	bl WinxClubScriptGroup__08
+	bl DefaultScriptGroups__08
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -219,7 +219,7 @@ _0803178C
 	bl sub_800065C
 _080317F4
 	adds r0, r4, #0
-	bl sub_801EBCA
+	bl DefaultScriptGroups__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

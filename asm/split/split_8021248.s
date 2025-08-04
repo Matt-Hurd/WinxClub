@@ -12,7 +12,7 @@
 	IMPORT sub_8001338
 	IMPORT sub_801D788
 	IMPORT sub_801D9B0
-	IMPORT AllScriptGroups__14
+	IMPORT DefaultScriptGroups__14
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
 	IMPORT rand
@@ -1053,7 +1053,7 @@ _08021A02
 	str r0, [r5]
 _08021A0E
 	adds r0, r4, #0
-	bl AllScriptGroups__14
+	bl DefaultScriptGroups__14
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r3}

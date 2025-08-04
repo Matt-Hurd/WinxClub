@@ -1,5 +1,5 @@
-    IMPORT  AllScriptGroups__0C
-    IMPORT  AllScriptGroups__14
+    IMPORT  DefaultScriptGroups__0C
+    IMPORT  DefaultScriptGroups__14
     IMPORT  HostileBaseObject__5C
     IMPORT  HostileCreature__08
     IMPORT  HostileCreature__3C
@@ -7,9 +7,9 @@
     IMPORT  HostileCreature__DamagePlayer
     IMPORT  HostileCreature__Dying
     IMPORT  HostileCreature__PlayerIframe
-    IMPORT  LivingScriptGroups__Dead
-    IMPORT  MostScriptGroups__18
-    IMPORT  MostScriptGroups__1C
+    IMPORT  DefaultScriptGroups__Dead
+    IMPORT  DefaultScriptGroups__18
+    IMPORT  DefaultScriptGroups__1C
     IMPORT  sub_8029290
     IMPORT  sub_803666C
     IMPORT  sub_803668E
@@ -33,11 +33,11 @@ Static1_VTABLE
     DCD     sub_803666C - __VTABLE__323Static1
     DCD     sub_8029290 - __VTABLE__323Static1
     DCD     HostileCreature__08 - __VTABLE__323Static1
-    DCD     AllScriptGroups__0C - __VTABLE__323Static1
+    DCD     DefaultScriptGroups__0C - __VTABLE__323Static1
     DCD     sub_803693C - __VTABLE__323Static1
-    DCD     AllScriptGroups__14 - __VTABLE__323Static1
-    DCD     MostScriptGroups__18 - __VTABLE__323Static1
-    DCD     MostScriptGroups__1C - __VTABLE__323Static1
+    DCD     DefaultScriptGroups__14 - __VTABLE__323Static1
+    DCD     DefaultScriptGroups__18 - __VTABLE__323Static1
+    DCD     DefaultScriptGroups__1C - __VTABLE__323Static1
     DCD     sub_8036C24 - __VTABLE__323Static1
     DCD     HostileCreature__DamagePlayer - __VTABLE__323Static1
     DCD     HostileCreature__PlayerIframe - __VTABLE__323Static1
@@ -49,7 +49,7 @@ Static1_VTABLE
     DCD     sub_803668E - __VTABLE__323Static1
     DCD     sub_80368F4 - __VTABLE__323Static1
     DCD     HostileCreature__Dying - __VTABLE__323Static1
-    DCD     LivingScriptGroups__Dead - __VTABLE__323Static1
+    DCD     DefaultScriptGroups__Dead - __VTABLE__323Static1
     DCD     sub_8036CB4 - __VTABLE__323Static1
     DCD     HostileCreature__54 - __VTABLE__323Static1
     DCD     sub_8036A68 - __VTABLE__323Static1
