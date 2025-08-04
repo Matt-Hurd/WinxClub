@@ -47,8 +47,8 @@ NonHostileScriptGroups__Attack
 	movs r0, #0
 	bx lr
 
-	thumb_func_start nullsub_48
-nullsub_48
+	thumb_func_start NonHostileScriptGroups__DamagePlayer
+NonHostileScriptGroups__DamagePlayer
 	bx lr
 
 	non_word_aligned_thumb_func_start NonHostileScriptGroups__PlayerIframe
@@ -359,8 +359,8 @@ _0801E4B0
 	bl sub_80401C0
 	b _0801E2F0
 
-	thumb_func_start nullsub_49
-nullsub_49
+	thumb_func_start KikoAndWinxClubScriptGroups__40
+KikoAndWinxClubScriptGroups__40
 	bx lr
 
 	non_word_aligned_thumb_func_start LivingScriptGroups__Dead
@@ -374,8 +374,8 @@ LivingScriptGroups__Dead
 	str r1, [r0, #0x5c]
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_50
-nullsub_50
+	non_word_aligned_thumb_func_start MostScriptGroups__44
+MostScriptGroups__44
 	bx lr
 
 	thumb_func_start sub_801E4D0
@@ -715,11 +715,14 @@ _0801E746
 	adds r6, r6, r4
 	ldr r6, [r6, #0x38]
 	cmp r6, #0
-	beq _0801E756
+	beq sub_801E756
 	ldr r6, [r6, #4]
 	cmp r6, r5
 	beq _0801E77A
-_0801E756
+
+
+	thumb_func_start sub_801E756
+sub_801E756
 	adds r3, #1
 	cmp r3, #5
 	b _0801E774
@@ -2201,8 +2204,8 @@ _0801F26E
 	pop {r3}
 	bx r3
 
-	thumb_func_start nullsub_51
-nullsub_51
+	thumb_func_start FewScriptGroups__38
+FewScriptGroups__38
 	bx lr
 
 	non_word_aligned_thumb_func_start NonHostileScriptGroups__Intersect

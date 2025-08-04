@@ -3262,8 +3262,8 @@ _0802B098
 	pop {r3}
 	bx r3
 
-	thumb_func_start nullsub_52
-nullsub_52
+	thumb_func_start sub_802B0A0
+sub_802B0A0
 	bx lr
 
 	non_word_aligned_thumb_func_start HostileCreature__54
@@ -3329,8 +3329,8 @@ _0802B10A
 	pop {r3}
 	bx r3
 
-	thumb_func_start sub_802B114
-sub_802B114
+	thumb_func_start HostileScriptGroups__58
+HostileScriptGroups__58
 	push {r4, r5, r6, lr}
 	ldr r6, _0802B268
 	adds r4, r0, #0

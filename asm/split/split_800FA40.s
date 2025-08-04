@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EAE0
+	IMPORT __VTABLE__337dword_803EAE0
 	IMPORT sub_800FB48
 	IMPORT sub_800FB72
 	IMPORT sub_800FC76
@@ -113,16 +113,16 @@ _0800FAF2
 	pop {r3}
 	bx r3
 
-	thumb_func_start nullsub_32
-nullsub_32
+	thumb_func_start sub_800FAF8
+sub_800FAF8
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_33
-nullsub_33
+	non_word_aligned_thumb_func_start sub_800FAFA
+sub_800FAFA
 	bx lr
 
-	thumb_func_start nullsub_34
-nullsub_34
+	thumb_func_start sub_800FAFC
+sub_800FAFC
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FAFE
@@ -140,12 +140,12 @@ sub_800FB06
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_35
-nullsub_35
+	non_word_aligned_thumb_func_start sub_800FB0A
+sub_800FB0A
 	bx lr
 
-	thumb_func_start nullsub_36
-nullsub_36
+	thumb_func_start sub_800FB0C
+sub_800FB0C
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_800FB0E
@@ -153,5 +153,5 @@ sub_800FB0E
 	movs r0, #0
 	bx lr
 	ALIGN
-_0800FB14 DCDU gUnknown_0803EAE0
+_0800FB14 DCDU __VTABLE__337dword_803EAE0
 	END

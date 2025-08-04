@@ -1,0 +1,7 @@
+    IMPORT  sub_800B8A4
+
+    AREA    __VTABLE__341dword_803EB3C, DATA, READONLY
+    DCD     sub_800B8A4 - .
+
+    GLOBAL  __VTABLE__341dword_803EB3C
+    END

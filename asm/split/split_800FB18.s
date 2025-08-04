@@ -3,8 +3,8 @@
 
 	IMPORT gUnknown_03003E7C
 	IMPORT gUnknown_03003E84
-	IMPORT gUnknown_0803E59C
-	IMPORT gUnknown_0803ECB8
+	IMPORT __VTABLE__313dword_803E59C
+	IMPORT __VTABLE__354dword_803ECB8
 	IMPORT GetEWRAMStart
 	IMPORT sub_800529A
 	IMPORT sub_800F264
@@ -97,8 +97,8 @@ sub_800FB96
 	lsrs r0, r0, #0x1c
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_37
-nullsub_37
+	non_word_aligned_thumb_func_start sub_800FB9E
+sub_800FB9E
 	bx lr
 
 	thumb_func_start sub_800FBA0
@@ -320,8 +320,8 @@ _0800FD24
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start nullsub_38
-nullsub_38
+	non_word_aligned_thumb_func_start sub_800FD2A
+sub_800FD2A
 	bx lr
 
 	thumb_func_start sub_800FD2C
@@ -329,9 +329,9 @@ sub_800FD2C
 	movs r0, #0
 	bx lr
 	ALIGN
-_0800FD30 DCDU gUnknown_0803ECB8
+_0800FD30 DCDU __VTABLE__354dword_803ECB8
 _0800FD34 DCDU gUnknown_03003E7C
-_0800FD38 DCDU gUnknown_0803E59C
+_0800FD38 DCDU __VTABLE__313dword_803E59C
 _0800FD3C DCDU gUnknown_03003E84
 _0800FD40 DCDU 0x01012B00
 _0800FD44 DCDU 0x00000000

@@ -664,20 +664,20 @@ sub_8013FAE
 	pop {r3}
 	bx r3
 
-	thumb_func_start nullsub_41
-nullsub_41
+	thumb_func_start sub_8013FBC
+sub_8013FBC
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_42
-nullsub_42
+	non_word_aligned_thumb_func_start sub_8013FBE
+sub_8013FBE
 	bx lr
 
-	thumb_func_start nullsub_43
-nullsub_43
+	thumb_func_start sub_8013FC0
+sub_8013FC0
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_44
-nullsub_44
+	non_word_aligned_thumb_func_start sub_8013FC2
+sub_8013FC2
 	bx lr
 
 	thumb_func_start sub_8013FC4

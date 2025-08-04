@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_030033F4
 	IMPORT gUnknown_03003EAC
-	IMPORT gUnknown_0803EEF0
+	IMPORT __VTABLE__384dword_803EEF0
 	IMPORT sub_800B12C
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
@@ -80,8 +80,8 @@ sub_8008072
 	lsrs r0, r0, #0x18
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_25
-nullsub_25
+	non_word_aligned_thumb_func_start sub_800807A
+sub_800807A
 	bx lr
 
 	thumb_func_start sub_800807C
@@ -183,8 +183,8 @@ sub_8008112
 	movs r0, #0
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_26
-nullsub_26
+	non_word_aligned_thumb_func_start sub_8008116
+sub_8008116
 	bx lr
 
 	thumb_func_start sub_8008118
@@ -197,8 +197,8 @@ sub_800811C
 	movs r0, #0
 	bx lr
 
-	thumb_func_start nullsub_27
-nullsub_27
+	thumb_func_start sub_8008120
+sub_8008120
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_8008122
@@ -301,7 +301,7 @@ sub_80081B6
 	str r2, [r0, #4]
 	bx lr
 	ALIGN
-_080081C0 DCDU gUnknown_0803EEF0
+_080081C0 DCDU __VTABLE__384dword_803EEF0
 _080081C4 DCDU gUnknown_030033F4
 _080081C8 DCDU REG_TM0CNT
 _080081CC DCDU gUnknown_03003EAC

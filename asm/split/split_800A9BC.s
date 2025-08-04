@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EE40
+	IMPORT __VTABLE__380off_803EE40
 	IMPORT __nw__FUi
 	IMPORT sub_800802E
 
@@ -39,5 +39,5 @@ sub_800AA10
 	mov r0, #4
 	bx lr
 	ALIGN
-_0800AA18 DCDU gUnknown_0803EE40
+_0800AA18 DCDU __VTABLE__380off_803EE40
 	END

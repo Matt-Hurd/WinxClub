@@ -14,6 +14,10 @@
 	GLOBAL gUnknown_03001A54
 	GLOBAL gUnknown_03001BBC
 	GLOBAL gUnknown_03001C24
+    GLOBAL sub_3001E8C
+    GLOBAL sub_300215C
+    GLOBAL sub_30023FC
+    GLOBAL sub_3002724
 	GLOBAL gUnknown_03002BEC
 	GLOBAL gUnknown_03002D28
 	GLOBAL gUnknown_03002D2C
@@ -141,8 +145,24 @@ gUnknown_03001BBC
 	SPACE 0x64
 
 gUnknown_03001C24
-	ANDEQ           R0, R0, R0
-	SPACE 0xfc4
+    ANDEQ           R0, R0, R0
+    SPACE 0x264
+
+sub_3001E8C
+    ANDEQ           R0, R0, R0
+    SPACE 0x2CC
+
+sub_300215C
+    ANDEQ           R0, R0, R0
+    SPACE 0x29C
+
+sub_30023FC
+    ANDEQ           R0, R0, R0
+    SPACE 0x324
+
+sub_3002724
+    ANDEQ           R0, R0, R0
+    SPACE 0x4C4
 
 gUnknown_03002BEC
 	SPACE 0x13c

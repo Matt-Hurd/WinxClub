@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_030033F4
-	IMPORT gUnknown_0803EEC4
+	IMPORT __VTABLE__383dword_803EEC4
 	IMPORT gUnknown_0804A934
 	IMPORT gUnknown_0804A948
 	IMPORT gUnknown_0804AA38
@@ -45,8 +45,8 @@ _080081F8
 	LDMFD SP!, {r4, lr}
 	bx lr
 
-	arm_func_start nullsub_28
-nullsub_28
+	arm_func_start sub_8008228
+sub_8008228
 	bx lr
 
 	arm_func_start sub_800822C
@@ -667,7 +667,7 @@ _08008AB8
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
 	ALIGN
-_08008AD8 DCDU gUnknown_0803EEC4
+_08008AD8 DCDU __VTABLE__383dword_803EEC4
 _08008ADC DCDU gUnknown_0804A948
 _08008AE0 DCDU gUnknown_030033F4
 _08008AE4 DCDU gUnknown_0804AA38

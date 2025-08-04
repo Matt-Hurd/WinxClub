@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EA0
 	IMPORT gUnknown_03003EB8
-	IMPORT gUnknown_0803E2A0
+	IMPORT __VTABLE__300dword_803E2A0
 	IMPORT sub_80003F4
 	IMPORT sub_80007A0
 	IMPORT sub_8000914
@@ -135,12 +135,12 @@ _0802E4E4
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start nullsub_53
-nullsub_53
+	non_word_aligned_thumb_func_start sub_802E4EA
+sub_802E4EA
 	bx lr
 
-	thumb_func_start nullsub_54
-nullsub_54
+	thumb_func_start sub_802E4EC
+sub_802E4EC
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_802E4EE
@@ -537,7 +537,7 @@ _0802E7EA
 	pop {r3}
 	bx r3
 	ALIGN
-_0802E7F0 DCDU gUnknown_0803E2A0
+_0802E7F0 DCDU __VTABLE__300dword_803E2A0
 _0802E7F4 DCDU gUnknown_03003EB8
 _0802E7F8 DCDU gUnknown_03003EA0
 _0802E7FC DCDU 0x0010BE20

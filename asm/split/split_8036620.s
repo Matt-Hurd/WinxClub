@@ -2,7 +2,7 @@
 	AREA text, CODE
 
 	IMPORT gUnknown_03003EA0
-	IMPORT gUnknown_0803E7B0
+	IMPORT __VTABLE__323Static1
 	IMPORT sub_80003F4
 	IMPORT sub_80007A0
 	IMPORT GetEWRAMStart
@@ -232,8 +232,8 @@ _0803675C
 	strb r1, [r6, #0xc]
 	b _080366E4
 
-	thumb_func_start nullsub_56
-nullsub_56
+	thumb_func_start sub_80367C0
+sub_80367C0
 	bx lr
 
 	non_word_aligned_thumb_func_start sub_80367C2
@@ -370,7 +370,7 @@ _080368A6
 	pop {r3}
 	bx r3
 	ALIGN
-_080368CC DCDU gUnknown_0803E7B0
+_080368CC DCDU __VTABLE__323Static1
 _080368D0 DCDU 0x74617453
 _080368D4 DCDU 0x53206369
 _080368D8 DCDU 0x70697263

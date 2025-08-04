@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803E814
+	IMPORT __VTABLE__324ToggleObjectGroup
 	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
@@ -407,7 +407,7 @@ _08035708
 	pop {r3}
 	bx r3
 	ALIGN
-_08035730 DCDU gUnknown_0803E814
+_08035730 DCDU __VTABLE__324ToggleObjectGroup
 _08035734 DCDU 0xFF000FFF
 _08035738 DCDU 0x67676F54
 _0803573C DCDU 0x4F20656C

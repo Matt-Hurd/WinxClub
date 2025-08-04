@@ -1,0 +1,7 @@
+    IMPORT  sub_804107C
+
+    AREA    __VTABLE__356dword_803ECC0, DATA, READONLY
+    DCD     sub_804107C - .
+
+    GLOBAL  __VTABLE__356dword_803ECC0
+    END

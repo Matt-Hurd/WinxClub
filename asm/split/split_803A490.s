@@ -933,12 +933,12 @@ _0803AB6C
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start nullsub_58
-nullsub_58
+	non_word_aligned_thumb_func_start ScannerScriptGroup__StartAttack
+ScannerScriptGroup__StartAttack
 	bx lr
 
-	thumb_func_start nullsub_59
-nullsub_59
+	thumb_func_start ScannerScriptGroup__StartAttack2
+ScannerScriptGroup__StartAttack2
 	bx lr
 	ALIGN
 _0803AB78 DCDU gUnknown_03003458

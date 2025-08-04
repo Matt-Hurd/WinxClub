@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803E950
+	IMPORT __VTABLE__330Static2
 	IMPORT HostileCreature__Create
 	IMPORT HostileCreature__ctor
 	IMPORT sub_802913E
@@ -70,8 +70,8 @@ _080306D0
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_80306D6
-sub_80306D6
+	non_word_aligned_thumb_func_start NonBossHostileScriptGroup__04
+NonBossHostileScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -540,7 +540,7 @@ loc_80309d2
 	lsls r2, r2, #0xd
 	b _08030A9C
 	ALIGN
-_08030A64 DCDU gUnknown_0803E950
+_08030A64 DCDU __VTABLE__330Static2
 _08030A68 DCDU 0x736E6F4D
 _08030A6C DCDU 0x73726574
 _08030A70 DCDU 0x72635320

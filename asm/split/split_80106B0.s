@@ -22,8 +22,8 @@ sub_80106B0
 	lsls r0, r0, #6
 	bx lr
 
-	non_word_aligned_thumb_func_start nullsub_40
-nullsub_40
+	non_word_aligned_thumb_func_start sub_80106BA
+sub_80106BA
 	bx lr
 
 	thumb_func_start sub_80106BC

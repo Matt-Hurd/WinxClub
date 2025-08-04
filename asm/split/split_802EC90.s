@@ -83,8 +83,8 @@ loc_802ecfa
 	strb r1, [r0]
 	bx lr
 
-	thumb_func_start nullsub_55
-nullsub_55
+	thumb_func_start ObjectScriptGroup__10
+ObjectScriptGroup__10
 	bx lr
 	ALIGN
 _0802ED10 DCDU 0x00000362

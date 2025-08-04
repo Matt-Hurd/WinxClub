@@ -22,10 +22,7 @@ def parse_ida_renames(rename_file_path):
                     replace_str = parts[1]
                     # Basic validation for the 'find' string pattern
                     # Checks for "sub_" followed by at least 4 hex characters.
-                    if re.match(r'^sub_[0-9a-fA-F]{4,}$', find_str):
-                        renames.append({'find': find_str, 'replace': replace_str})
-                    else:
-                        print(f"Warning: Line {i}: Malformed 'find' pattern in renames file: '{line}'. Should be 'sub_<hex_addr>'. Skipping.")
+                    renames.append({'find': find_str, 'replace': replace_str})
                 else:
                     print(f"Warning: Line {i}: Malformed line in renames file (expected 2 parts: 'sub_<addr> <new_name>'): '{line}'. Skipping.")
     except FileNotFoundError:

@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EDE8
+	IMPORT __VTABLE__378dword_803EDE8
 	IMPORT gUnknown_0804AA68
 	IMPORT gUnknown_0804AB34
 	IMPORT __rt_memclr_w
@@ -40,8 +40,8 @@ _08008EDC
 	LDMFD SP!, {r4, lr}
 	bx lr
 
-	arm_func_start nullsub_29
-nullsub_29
+	arm_func_start sub_8008F14
+sub_8008F14
 	bx lr
 
 	arm_func_start sub_8008F18
@@ -1127,7 +1127,7 @@ _08009DD8
 	STR r0, [r7, #0xc]
 	b _0800A174
 	ALIGN
-_08009E20 DCDU gUnknown_0803EDE8
+_08009E20 DCDU __VTABLE__378dword_803EDE8
 _08009E24 DCDU gUnknown_0804AB34
 _08009E28 DCDU gUnknown_0804AA68
 _08009E2C

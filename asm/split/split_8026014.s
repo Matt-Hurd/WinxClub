@@ -1,7 +1,7 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_0803EA18
+	IMPORT __VTABLE__333__vftable_GenericObject
 	IMPORT sub_80007A0
 	IMPORT SetNextGlobalFunction
 	IMPORT Init_and_add_some_object
@@ -396,7 +396,7 @@ _080262A2
 	bl WinxClubScriptGroup__08
 	b _08026270
 	ALIGN
-_080262AC DCDU gUnknown_0803EA18
+_080262AC DCDU __VTABLE__333__vftable_GenericObject
 _080262B0 DCDU 0x656E6547
 _080262B4 DCDU 0x20636972
 _080262B8 DCDU 0x656A624F

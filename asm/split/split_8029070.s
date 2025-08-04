@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_0300327E
 	IMPORT gUnknown_03003458
-	IMPORT gUnknown_0803E5F4
+	IMPORT __VTABLE__315HostileBaseObject
 	IMPORT Init_and_add_some_object
 	IMPORT GameObj__ctor
 	IMPORT WinxClubScriptGroup__04
@@ -403,7 +403,7 @@ _0802934E
 	bl WinxClubScriptGroup__08
 	b _080292F4
 	ALIGN
-_08029354 DCDU gUnknown_0803E5F4
+_08029354 DCDU __VTABLE__315HostileBaseObject
 _08029358 DCDU 0xFFFF000F
 _0802935C DCDU 0xF803FFFF
 _08029360 DCDU gUnknown_0300327E
