@@ -37,138 +37,795 @@ LOAD_ROM_1 0x08000000
 
     .text2 0x08000210
     {
-        split_8000210.o
+        split_8000210_01.o
+        split_8000210_02.o
+        split_8000210_03.o
+        split_8000210_04.o
+        split_8000236.o
+        split_80002E2.o
         split_8000324.o
+        split_80003F4.o
+        split_80004CA.o
+        split_80004E6.o
+        split_80004F8.o
+        split_8000532.o
         split_800065C.o
+        split_800069A.o
+        split_800075E.o
+        split_80007A0.o
+        split_800088C.o
         split_8000914.o
+        split_8000948.o
+        split_8000AC4.o
         split_8000BAC.o
+        split_8000BD8.o
+        split_8000C02.o
+        split_8000C2E.o
+        split_8000C58.o
+        split_8000C6E.o
         split_8000C7C.o
-        split_8000D64.o
+        split_8000C7C_01.o
+        split_8000CC6.o
+        split_8000CCA.o
+        split_8000CCE.o
+        split_8000D5A.o
+        split_8000D64_01.o
+        split_8000DE6.o
+        split_8000E6C.o
+        split_8000EF6.o
+        split_8000F4C.o
+        split_8000FCE.o
         split_800105C.o
+        split_800106A.o
+        split_800116A.o
+        split_80011CA.o
+        split_80011D8.o
+        split_8001232.o
+        split_800129A.o
         split_80012F0.o
+        split_80012F0_01.o
+        split_8001338.o
+        split_800138E.o
+        split_80013D8.o
+        split_8001432.o
+        split_800149A.o
+        split_80014E4.o
+        split_80015E6.o
+        split_80015F2.o
+        split_80016D8.o
+        split_8001710.o
+        split_8001740.o
+        split_8001778.o
         split_80017E4.o
+        split_80017E4_01.o
+        split_80017E4_02.o
+        split_8001818.o
+        split_800185E.o
+        split_8001868.o
+        split_800194E.o
+        split_80019A6.o
+        split_80019B4.o
+        split_80019C4.o
+        split_80019D4.o
+        split_80019E8.o
+        split_80019FC.o
+        split_8001A10.o
+        split_8001A26.o
         split_8001A60.o
+        split_8001A90.o
+        split_8001B4A.o
+        split_8001B80.o
+        split_8001BB4.o
+        split_8001C22.o
         split_8002004.o
+        split_8002010.o
+        split_8002020.o
+        split_800202A.o
+        split_80020F8.o
         split_800212C.o
+        split_8002230.o
+        split_80022E2.o
+        split_80023BA.o
         split_800242C.o
+        split_80024C6.o
+        split_80024D8.o
+        split_8002548.o
         split_8002580.o
+        split_80025D6.o
+        split_8002614.o
+        split_800263E.o
+        split_8002698.o
+        split_8002762.o
         split_8002828.o
+        split_800288A.o
         split_800423C.o
+        split_800442E.o
         split_8004670.o
+        split_8004674.o
+        split_8004678.o
+        split_80046AC.o
+        split_80046B8.o
+        split_80046D8.o
+        split_80046DC.o
+        split_80046E2.o
+        split_80046EE.o
+        split_80046F8.o
+        split_8004716.o
+        split_8004742.o
+        split_8004746.o
+        split_800474E.o
+        split_800475C.o
+        split_800476C.o
         split_8004780.o
+        split_8004784.o
+        split_80047A0.o
+        split_80047B6.o
+        split_80047BA.o
+        split_80047BE.o
+        split_80047DA.o
+        split_80047EC.o
+        split_8004812.o
+        split_8004836.o
+        split_8004866.o
+        split_80048B0.o
+        split_80048BE.o
+        split_80048F0.o
+        split_8004924.o
+        split_800496A.o
+        split_8004984.o
+        split_80049B4.o
+        split_8004ADC.o
+        split_8004AE6.o
+        split_8004AF4.o
+        split_8004AFC.o
+        split_8004B02.o
+        split_8004B38.o
+        split_8004B40.o
+        split_8004B76.o
+        split_8004B7E.o
+        split_8004B8C.o
         split_8004BA8.o
-        split_8004DE6.o
+        split_8004BA8_01.o
+        split_8004C22.o
+        split_8004C28.o
+        split_8004C2C.o
+        split_8004C44.o
+        split_8004D98.o
+        split_8004DE6_01.o
+        split_8004DE6_02.o
+        split_8004F12.o
+        split_8004F42.o
+        split_8004FFC.o
+        split_800501C.o
         split_8005044.o
+        split_8005044_01.o
+        split_8005044_02.o
+        split_80050AC.o
+        split_80050F4.o
+        split_80050FA.o
+        split_800510C.o
+        split_8005120.o
+        split_8005134.o
+        split_8005158.o
+        split_8005160.o
+        split_8005164.o
+        split_8005170.o
+        split_80051D6.o
+        split_8005220.o
         split_800525C.o
+        split_800525C_01.o
+        split_800527E.o
+        split_800529A.o
         split_80052C0.o
         split_8005380.o
+        split_80053F8.o
+        split_8005504.o
+        split_8006244.o
+        split_80062AC.o
+        split_80062D8.o
         split_80062F4.o
+        split_8006350.o
+        split_8006BA4.o
         split_8006BC0.o
         split_8006F90.o
+        split_8006FE4.o
+        split_8007040.o
+        split_8007104.o
+        split_8007664.o
+        split_80076D0.o
+        split_80077C0.o
         split_80077E8.o
+        split_8007C78.o
+        split_8007D44.o
+        split_8007ED8.o
         split_8008008.o
+        split_800802E.o
+        split_800805E.o
+        split_8008072.o
+        split_800807A.o
+        split_800807C.o
+        split_800808E.o
+        split_80080FC.o
+        split_8008100.o
+        split_800810E.o
+        split_8008112.o
+        split_8008116.o
+        split_8008118.o
+        split_800811C.o
+        split_8008120.o
+        split_8008122.o
+        split_800812A.o
+        split_8008160.o
+        split_8008182.o
+        split_80081A8.o
+        split_80081B6.o
         split_80081D4.o
+        split_8008228.o
+        split_800822C.o
+        split_8008264.o
+        split_8008298.o
+        split_800844C.o
+        split_80085A4.o
+        split_80087B8.o
         split_8008AF4.o
+        split_8008AFC.o
+        split_8008B04.o
+        split_8008B14.o
+        split_8008B5C.o
+        split_8008BFC.o
+        split_8008E64.o
+        split_8008E98.o
+        split_8008EA4.o
         split_8008EB4.o
+        split_8008F14.o
+        split_8008F18.o
+        split_8008F50.o
+        split_8008FFC.o
+        split_800904C.o
+        split_800905C.o
+        split_8009064.o
+        split_8009270.o
+        split_80095B8.o
         split_800A240.o
+        split_800A25C.o
+        split_800A268.o
+        split_800A270.o
+        split_800A2B8.o
+        split_800A334.o
+        split_800A7A0.o
+        split_800A7D4.o
+        split_800A9A4.o
+        split_800A9AC.o
         split_800A9BC.o
+        split_800AA04.o
+        split_800AA10.o
         split_800AA1C.o
+        split_800AA2C.o
+        split_800AA3C.o
+        split_800AAF0.o
+        split_800AB00.o
+        split_800AB8C.o
+        split_800AC3C.o
+        split_800ACD0.o
+        split_800AD8C.o
+        split_800AE20.o
+        split_800AFA8.o
+        split_800AFB8.o
+        split_800AFC0.o
         split_800AFD4.o
-        split_800B0D8.o
+        split_800B01A.o
+        split_800B034.o
+        split_800B04C.o
+        split_800B058.o
+        split_800B082.o
+        split_800B08E.o
+        split_800B09A.o
+        split_800B0A0.o
+        split_800B0C0.o
+        split_800B0D8_01.o
         split_800B12C.o
+        split_800B148.o
         split_800B154.o
+        split_800B154_01.o
+        split_800B154_02.o
+        split_800B154_03.o
+        split_800B154_04.o
+        split_800B154_05.o
+        split_800B154_06.o
+        split_800B154_07.o
+        split_800B154_08.o
+        split_800B154_09.o
+        split_800B154_10.o
+        split_800B154_11.o
+        split_800B154_12.o
+        split_800B154_13.o
+        split_800B154_14.o
+        split_800B154_15.o
+        split_800B154_16.o
+        split_800B1BC.o
+        split_800B1CA.o
+        split_800B1F6.o
+        split_800B286.o
+        split_800B2A4.o
+        split_800B2AE.o
         split_800B314.o
+        split_800B3BA.o
         split_800B464.o
+        split_800B496.o
+        split_800B4E0.o
+        split_800B4F0.o
+        split_800B548.o
+        split_800B554.o
+        split_800B590.o
+        split_800B5EE.o
+        split_800B600.o
+        split_800B60E.o
+        split_800B61C.o
+        split_800B62A.o
+        split_800B638.o
+        split_800B646.o
+        split_800B652.o
+        split_800B65E.o
+        split_800B66A.o
+        split_800B676.o
+        split_800B68A.o
+        split_800B698.o
+        split_800B6A8.o
+        split_800B6AC.o
+        split_800B6BE.o
         split_800B6E0.o
+        split_800B6EC.o
+        split_800B6FA.o
+        split_800B708.o
+        split_800B714.o
+        split_800B72A.o
+        split_800B740.o
+        split_800B756.o
+        split_800B764.o
+        split_800B772.o
+        split_800B782.o
+        split_800B790.o
+        split_800B7AA.o
+        split_800B7C2.o
+        split_800B7D2.o
+        split_800B7DC.o
+        split_800B8A4.o
+        split_800B8CE.o
+        split_800B916.o
+        split_800B94A.o
+        split_800B9B6.o
         split_800BBF4.o
+        split_800BC30.o
+        split_800BCE4.o
+        split_800BD7C.o
+        split_800BE0E.o
         split_800CD04.o
+        split_800CD28.o
+        split_800CD58.o
         split_800CD98.o
+        split_800CE6C.o
+        split_800D5A8.o
         split_800E178.o
         split_800E22C.o
+        split_800E254.o
+        split_800E2F6.o
         split_800E4D8.o
-        split_800ED7C.o
+        split_800E4D8_01.o
+        split_800E500.o
+        split_800E53C.o
+        split_800E5EA.o
+        split_800E678.o
+        split_800ED7C_01.o
+        split_800ED7C_02.o
+        split_800EF1C.o
+        split_800EF2A.o
         split_800F010.o
+        split_800F090.o
+        split_800F1DA.o
         split_800F1E8.o
+        split_800F220.o
+        split_800F264.o
+        split_800F292.o
+        split_800F2B4.o
+        split_800F2B8.o
+        split_800F2BC.o
+        split_800F2E2.o
+        split_800F312.o
+        split_800F408.o
         split_800F4F0.o
+        split_800F528.o
+        split_800F67A.o
+        split_800F700.o
         split_800F72C.o
+        split_800F75A.o
+        split_800F77C.o
+        split_800F782.o
+        split_800F786.o
+        split_800F7A8.o
+        split_800F7D6.o
+        split_800F87A.o
+        split_800F944.o
+        split_800F974.o
         split_800FA40.o
+        split_800FA9A.o
+        split_800FAB0.o
+        split_800FAD6.o
+        split_800FAF8.o
+        split_800FAFA.o
+        split_800FAFC.o
+        split_800FAFE.o
+        split_800FB02.o
+        split_800FB06.o
+        split_800FB0A.o
+        split_800FB0C.o
+        split_800FB0E.o
         split_800FB18.o
+        split_800FB48.o
+        split_800FB72.o
+        split_800FB96.o
+        split_800FB9E.o
+        split_800FBA0.o
+        split_800FBC0.o
+        split_800FC6C.o
+        split_800FC72.o
+        split_800FC76.o
+        split_800FCF0.o
+        split_800FD2A.o
+        split_800FD2C.o
         split_800FD48.o
+        split_800FD48_01.o
+        split_800FDA4.o
+        split_800FDCE.o
+        split_800FE3A.o
+        split_800FE56.o
         split_800FE90.o
+        split_800FEBC.o
+        split_800FF00.o
+        split_800FF5E.o
+        split_800FFBA.o
+        split_801006A.o
         split_8010234.o
+        split_8010278.o
+        split_801029A.o
+        split_80102D8.o
+        split_8010344.o
+        split_80103A8.o
         split_80103C8.o
+        split_80103EC.o
+        split_8010456.o
+        split_801047C.o
+        split_80104BC.o
+        split_801053C.o
+        split_8010574.o
+        split_80105AE.o
+        split_8010604.o
         split_80106B0.o
+        split_80106BA.o
+        split_80106BC.o
+        split_8010746.o
+        split_80108DA.o
+        split_8010920.o
         split_801099C.o
+        split_80109DE.o
+        split_80109EC.o
+        split_8010A0A.o
+        split_8010AB4.o
+        split_8010B3E.o
+        split_8010B6C.o
+        split_8010B8A.o
         split_8010D60.o
+        split_8010ED2.o
+        split_8010F10.o
+        split_8010F90.o
         split_8011040.o
+        split_8011106.o
+        split_801114E.o
+        split_801115C.o
         split_8011394.o
+        split_801145E.o
         split_80114B0.o
+        split_80114FA.o
+        split_8011562.o
+        split_8011596.o
+        split_80115EC.o
+        split_80116D4.o
         split_8011A80.o
+        split_8011AC2.o
+        split_8011B22.o
+        split_8011B28.o
+        split_8011B62.o
         split_80120BC.o
+        split_80120CA.o
+        split_80120E2.o
+        split_80120FA.o
+        split_8012126.o
+        split_8012180.o
+        split_80121C4.o
+        split_801220C.o
+        split_801228C.o
+        split_80122F0.o
+        split_801230C.o
         split_8012334.o
+        split_801234C.o
+        split_80123B4.o
+        split_80123E4.o
         split_8012468.o
+        split_80124C8.o
         split_8012674.o
+        split_80127C0.o
+        split_8012BA0.o
         split_8013024.o
+        split_80130DC.o
+        split_80132F4.o
+        split_8013318.o
+        split_801333E.o
+        split_8013386.o
+        split_80133A0.o
+        split_80133AE.o
+        split_80133F0.o
+        split_801340A.o
         split_801343C.o
+        split_8013480.o
         split_80134B8.o
+        split_80134F8.o
+        split_801352C.o
+        split_801357A.o
         split_80137F8.o
+        split_80138E2.o
+        split_801390A.o
+        split_8013946.o
+        split_80139A4.o
+        split_80139A8.o
+        split_80139AC.o
+        split_8013B0A.o
         split_8013B64.o
+        split_8013B76.o
+        split_8013B9C.o
+        split_8013C40.o
+        split_8013D52.o
+        split_8013DEA.o
+        split_8013E2C.o
+        split_8013E56.o
+        split_8013E64.o
+        split_8013E72.o
+        split_8013F1E.o
+        split_8013F2A.o
+        split_8013F5A.o
+        split_8013F66.o
+        split_8013F6C.o
+        split_8013FAE.o
+        split_8013FBC.o
+        split_8013FBE.o
+        split_8013FC0.o
+        split_8013FC2.o
+        split_8013FC4.o
         split_8013FF4.o
+        split_8013FF8.o
+        split_801402C.o
+        split_801404E.o
+        split_8014060.o
+        split_801406E.o
+        split_80141B4.o
         split_80142D0.o
+        split_80142D0_01.o
+        split_80143E0.o
+        split_8014436.o
+        split_8014492.o
+        split_8014582.o
         split_8014738.o
+        split_80147FA.o
+        split_8014864.o
+        split_80148BE.o
+        split_8014B02.o
+        split_8014B34.o
+        split_8014B58.o
+        split_8014B66.o
+        split_8014B7E.o
+        split_8014B96.o
         split_8014DD4.o
+        split_8014E04.o
+        split_8014E46.o
+        split_8014E76.o
         split_8014EB8.o
+        split_8015014.o
+        split_801505A.o
+        split_8015240.o
         split_801537C.o
+        split_801549A.o
+        split_80154AA.o
+        split_80154BA.o
+        split_80154CE.o
         split_80154DC.o
+        split_8015588.o
+        split_80155D6.o
+        split_80156B4.o
         split_80158E0.o
+        split_80158F0.o
+        split_8015A16.o
+        split_8015B1E.o
         split_8016108.o
+        split_801613E.o
+        split_8016176.o
+        split_80162D6.o
         split_80163D4.o
+        split_801642C.o
         split_80164A8.o
+        split_80164E6.o
+        split_8016526.o
+        split_8016556.o
+        split_801659C.o
+        split_80165F2.o
+        split_8016612.o
+        split_8016690.o
         split_801669C.o
+        split_80166DC.o
+        split_80166FE.o
+        split_801678C.o
+        split_801679E.o
+        split_80167AC.o
+        split_8016828.o
+        split_8016850.o
+        split_80168E8.o
         split_8016D90.o
+        split_8016E20.o
+        split_8016E8C.o
+        split_8016F50.o
+        split_8016F78.o
+        split_8016FA2.o
         split_8017130.o
+        split_8017130_01.o
         split_801742C.o
         split_8017444.o
-        split_8017474.o
+        split_8017450.o
+        split_8017474_01.o
+        split_80175D4.o
+        split_8017620.o
         split_80177D8.o
+        split_80177E8.o
+        split_8017862.o
+        split_8017884.o
+        split_80179BE.o
+        split_8017A0A.o
+        split_8017A56.o
         split_8017AB0.o
+        split_8017AFE.o
+        split_8017B4C.o
+        split_8017B9A.o
+        split_8017CA0.o
         split_8017DC8.o
-        split_8017E40.o
-        split_8018070.o
-        split_801837C.o
+        split_8017DD4.o
+        split_8017DE6.o
+        split_8017E40_01.o
+        split_8017E40_02.o
+        split_8017E40_03.o
+        split_8017FF4.o
+        split_8018070_01.o
+        split_8018070_02.o
+        split_801810E.o
+        split_8018110.o
+        split_8018160.o
+        split_801819E.o
+        split_801828A.o
+        split_801837C_01.o
+        split_801837C_02.o
+        split_801837C_03.o
+        split_801837C_04.o
         split_80183BC.o
+        split_80184BC.o
+        split_8018540.o
+        split_8018620.o
+        split_8018688.o
+        split_80186D8.o
+        split_8018712.o
+        split_8018734.o
+        split_801876E.o
+        split_80187A0.o
+        split_80187D2.o
+        split_8018884.o
         split_801897C.o
+        split_80189BC.o
         split_8018C48.o
+        split_8018D76.o
         split_8018E34.o
+        split_8018E7E.o
+        split_8018F5E.o
         split_80195D0.o
+        split_801966A.o
+        split_80197AC.o
         split_8019EE0.o
+        split_8019F60.o
+        split_801A0D2.o
         split_801A760.o
-        split_801AB34.o
+        split_801A82E.o
+        split_801A8B8.o
+        split_801AB34_01.o
         split_801ABFC.o
-        split_801AED0.o
+        split_801AC60.o
+        split_801AD22.o
+        split_801AED0_01.o
         split_801B10C.o
+        split_801B170.o
+        split_801B1EC.o
+        split_801B212.o
+        split_801B332.o
         split_801B48C.o
+        split_801B56C.o
         split_801BBE0.o
-        split_801BEA0.o
+        split_801BEA0_01.o
+        split_801BEA0_02.o
+        split_801BEB6.o
         split_801C210.o
+        split_801C352.o
         split_801C4A4.o
+        split_801C4A4_01.o
+        split_801CA1E.o
+        split_801CAC0.o
         split_801CB18.o
+        split_801CB4E.o
+        split_801CBAA.o
+        split_801CBDE.o
+        split_801CC3C.o
+        split_801CC72.o
+        split_801CCA8.o
         split_801CCEC.o
-        split_801D564.o
+        split_801CD96.o
+        split_801CEC6.o
+        split_801D564_01.o
+        split_801D564_02.o
+        split_801D564_03.o
+        split_801D788.o
         split_801D9B0.o
+        split_801DA2A.o
+        split_801DA46.o
+        split_801DAA0.o
+        split_801DAEC.o
+        split_801DB3E.o
+        split_801DB80.o
+        split_801DB90.o
         split_801DCFC.o
-        split_801DFD4.o
-        split_801E2D0.o
+        split_801DCFC_01.o
+        split_801DCFC_02.o
+        split_801DFD4_01.o
+        split_801DFD4_02.o
+        split_801E2D0_01.o
+        split_801E2D0_02.o
+        split_801E2D0_03.o
+        split_801E2D0_04.o
+        split_801E2D0_05.o
+        split_801E2D0_06.o
+        split_801E2D0_07.o
+        split_801E4D0.o
+        split_801E756.o
         split_801F2F8.o
+        split_801F450.o
+        split_801F4F0.o
         split_801F640.o
-        split_801F794.o
+        split_801F65C.o
+        split_801F6DE.o
+        split_801F794_01.o
+        split_801F794_02.o
+        split_801F906.o
         split_801FE90.o
+        split_801FEFE.o
+        split_801FF68.o
+        split_80200A4.o
+        split_80200E0.o
         split_8021248.o
         split_8021A38.o
+        split_8021A98.o
+        split_8021ADE.o
+        split_8021B84.o
+        split_8021CFC.o
         split_80221AC.o
+        split_802222C.o
         split_80222D0.o
+        split_8022306.o
         split_80225E4.o
+        split_80225E4_01.o
         split_8022840.o
+        split_80228D2.o
+        split_80229B2.o
+        split_8022A24.o
         split_80235E4.o
     }
     .src1 0x080239EC
@@ -177,95 +834,350 @@ LOAD_ROM_1 0x08000000
     }
     .text3 0x08023D0C
     {
+        split_802363C.o
+        split_80236D4.o
+        split_80237DA.o
+        split_802383A.o
         split_8023D0C.o
+        split_8023DD0.o
+        split_8023F88.o
+        split_8023FE4.o
         split_8024084.o
+        split_802416A.o
+        split_80241DA.o
         split_80247A4.o
         split_8024E54.o
+        split_8024E8A.o
+        split_8024EBC.o
+        split_8024F08.o
         split_80250E4.o
-        split_80253A8.o
-        split_8026014.o
-        split_80262CC.o
+        split_80251CA.o
+        split_8025214.o
+        split_80253A8_01.o
+        split_80253A8_02.o
+        split_80253A8_03.o
+        split_80253A8_04.o
+        split_80253A8_05.o
+        split_80253A8_06.o
+        split_80253A8_07.o
+        split_80253A8_08.o
+        split_80253A8_09.o
+        split_8026014_01.o
+        split_8026014_02.o
+        split_8026014_03.o
+        split_8026014_04.o
+        split_8026014_05.o
+        split_80260AE.o
+        split_80260C8.o
+        split_80261C8.o
+        split_80262CC_01.o
+        split_80262CC_02.o
         split_80268AC.o
+        split_80268BA.o
+        split_80268C8.o
+        split_8026908.o
+        split_802693A.o
+        split_8026962.o
         split_8028BE4.o
-        split_8028C7C.o
-        split_8028CE8.o
-        split_8028D60.o
+        split_8028BFC.o
+        split_8028C2E.o
+        split_8028C42.o
+        split_8028C5C.o
+        split_8028C7C_01.o
+        split_8028CE8_01.o
+        split_8028D60_01.o
         split_8028F64.o
-        split_8029070.o
+        split_8029070_01.o
+        split_8029070_02.o
+        split_8029070_03.o
+        split_802913E.o
+        split_802925C.o
+        split_8029290.o
         split_802936C.o
+        split_802936C_01.o
+        split_802936C_02.o
+        split_80293D0.o
+        split_80294EE.o
         split_80296E0.o
+        split_80296E0_01.o
+        split_8029B18.o
         split_802B288.o
+        split_802B2F8.o
+        split_802B382.o
+        split_802B390.o
+        split_802B3D6.o
         split_802B670.o
+        split_802B6F4.o
+        split_802B8B0.o
         split_802BA20.o
+        split_802BA4C.o
+        split_802BA72.o
+        split_802BA94.o
         split_802BCF0.o
+        split_802BEFC.o
+        split_802BF34.o
         split_802BFB4.o
+        split_802BFBC.o
+        split_802BFEA.o
+        split_802C022.o
         split_802C6D0.o
+        split_802C71E.o
+        split_802C86E.o
         split_802C884.o
+        split_802C8B0.o
+        split_802C8D2.o
         split_802D2E8.o
+        split_802D32E.o
+        split_802D384.o
         split_802DDDC.o
+        split_802DE2A.o
+        split_802DFD8.o
+        split_802DFE4.o
         split_802DFF4.o
+        split_802E02A.o
+        split_802E04C.o
+        split_802E1D6.o
         split_802E384.o
+        split_802E3C6.o
+        split_802E40E.o
         split_802E418.o
+        split_802E47A.o
+        split_802E4AA.o
+        split_802E4EA.o
+        split_802E4EC.o
+        split_802E4EE.o
+        split_802E5D2.o
         split_802E800.o
-        split_802E900.o
-        split_802EC90.o
+        split_802E8B0.o
+        split_802E8F8.o
+        split_802E900_01.o
+        split_802E900_02.o
+        split_802E900_03.o
+        split_802E900_04.o
+        split_802E900_05.o
+        split_802E900_06.o
+        split_802EA80.o
+        split_802EC90_01.o
+        split_802EC90_02.o
         split_802ED1C.o
-        split_802F118.o
+        split_802EF0A.o
+        split_802F00C.o
+        split_802F04E.o
+        split_802F0B8.o
+        split_802F0D4.o
+        split_802F118_01.o
+        split_802F118_02.o
+        split_802F118_03.o
+        split_802F1F0.o
+        split_802F210.o
+        split_802F228.o
         split_802F8A0.o
+        split_802F926.o
+        split_802F9E8.o
+        split_802FA92.o
         split_802FBE8.o
-        split_803000C.o
+        split_802FBE8_01.o
+        split_802FBE8_02.o
+        split_802FBE8_03.o
+        split_802FBE8_04.o
+        split_802FBE8_05.o
+        split_802FBE8_06.o
+        split_802FBE8_07.o
+        split_803000C_01.o
+        split_803000C_02.o
         split_80301E8.o
-        split_80305CC.o
-        split_8030668.o
-        split_8030EEC.o
-        split_803108C.o
-        split_8031404.o
+        split_8030244.o
+        split_80302CC.o
+        split_8030346.o
+        split_80305CC_01.o
+        split_8030668_01.o
+        split_8030668_02.o
+        split_8030668_03.o
+        split_8030668_04.o
+        split_8030EEC_01.o
+        split_8030EEC_02.o
+        split_8030EEC_03.o
+        split_803108C_01.o
+        split_803108C_02.o
+        split_803108C_03.o
+        split_803108C_04.o
+        split_803108C_05.o
+        split_803108C_06.o
+        split_803108C_07.o
+        split_8031404_01.o
+        split_8031404_02.o
         split_8031578.o
-        split_803166C.o
+        split_80315A2.o
+        split_80315CE.o
+        split_80315FC.o
+        split_8031600.o
+        split_8031622.o
+        split_803166C_01.o
+        split_803166C_02.o
+        split_803166C_03.o
+        split_803166C_04.o
+        split_803166C_05.o
         split_8031830.o
-        split_8031B98.o
+        split_80318BC.o
+        split_8031B98_01.o
         split_8031D00.o
+        split_8031D3E.o
+        split_8031D60.o
         split_803248C.o
         split_80327F4.o
+        split_80328B0.o
+        split_80328D6.o
+        split_8032A58.o
+        split_8032A7E.o
         split_8032A90.o
+        split_8032AC2.o
+        split_8032B12.o
+        split_8032CCC.o
         split_8033308.o
-        split_8033318.o
-        split_803364C.o
+        split_8033318_01.o
+        split_8033318_02.o
+        split_80333DC.o
+        split_8033512.o
+        split_803357C.o
+        split_803364C_01.o
+        split_803364C_02.o
+        split_803366C.o
         split_8033C58.o
+        split_8033CA4.o
+        split_8033D24.o
+        split_8033EBA.o
         split_8034358.o
-        split_80344E4.o
+        split_8034408.o
+        split_803442C.o
+        split_80344E4_01.o
+        split_80344E4_02.o
+        split_80344E4_03.o
+        split_80344E4_04.o
+        split_80344E4_05.o
+        split_8034558.o
         split_803490C.o
-        split_8034D2C.o
+        split_803490C_01.o
+        split_803490C_02.o
+        split_8034A86.o
+        split_8034D2C_01.o
+        split_8034D2C_02.o
         split_8034D98.o
-        split_8035480.o
-        split_8035750.o
-        split_8035E7C.o
-        split_8036150.o
-        split_80363DC.o
-        split_8036620.o
+        split_8034E4A.o
+        split_8034EE0.o
+        split_8035480_01.o
+        split_8035480_02.o
+        split_8035480_03.o
+        split_8035480_04.o
+        split_8035480_05.o
+        split_8035530.o
+        split_803554A.o
+        split_8035750_01.o
+        split_8035750_02.o
+        split_8035750_03.o
+        split_8035750_04.o
+        split_8035750_05.o
+        split_8035E7C_01.o
+        split_8035E7C_02.o
+        split_8035E7C_03.o
+        split_8035E7C_04.o
+        split_8035E7C_05.o
+        split_8035E7C_06.o
+        split_8035E7C_07.o
+        split_8035E7C_08.o
+        split_8035F1C.o
+        split_8035F54.o
+        split_8036150_01.o
+        split_8036150_02.o
+        split_8036150_03.o
+        split_80363DC_01.o
+        split_80363DC_02.o
+        split_8036620_01.o
+        split_803666C.o
+        split_803668E.o
+        split_80367C0.o
+        split_80367C2.o
         split_80368F4.o
+        split_803693C.o
+        split_8036A64.o
+        split_8036A68.o
         split_8036B7C.o
-        split_8036CE4.o
+        split_8036BFC.o
+        split_8036C24.o
+        split_8036CB4.o
+        split_8036CE4_01.o
+        split_8036D30.o
+        split_8036D52.o
+        split_8036E02.o
+        split_8036E04.o
+        split_8036E5E.o
+        split_8036E66.o
+        split_8036EEC.o
         split_8037530.o
+        split_8037534.o
+        split_8037642.o
+        split_803766A.o
+        split_80376F8.o
         split_803772C.o
+        split_8037756.o
+        split_803778E.o
         split_8037A10.o
+        split_8037BEE.o
         split_8037CC0.o
+        split_8037CE4.o
+        split_8037E34.o
         split_8037E48.o
+        split_8037E74.o
+        split_8037EB2.o
         split_80381C0.o
+        split_803842C.o
         split_803846C.o
+        split_80384D8.o
+        split_80384FA.o
+        split_803851E.o
         split_8038528.o
+        split_8038544.o
+        split_80385AC.o
+        split_8038754.o
         split_8038888.o
-        split_8038D2C.o
+        split_803894A.o
+        split_80389CC.o
+        split_8038D2C_01.o
         split_8038E44.o
+        split_8038EE2.o
         split_80391C8.o
+        split_8039206.o
+        split_8039336.o
         split_80399A4.o
+        split_80399D6.o
+        split_80399F8.o
         split_8039DAC.o
-        split_803A050.o
-        split_803A490.o
+        split_8039EB6.o
+        split_803A050_01.o
+        split_803A050_02.o
+        split_803A050_03.o
+        split_803A050_04.o
+        split_803A490_01.o
+        split_803A490_02.o
+        split_803A490_03.o
         split_803AB80.o
+        split_803ABA6.o
+        split_803ABC8.o
+        split_803AD40.o
         split_803AE60.o
+        split_803AE68.o
+        split_803AE92.o
+        split_803AEB4.o
+        split_803AFCC.o
         split_803B150.o
+        split_803B15C.o
+        split_803B184.o
+        split_803B1A6.o
+        split_803B1A8.o
+        split_803B1AC.o
+        split_803B1AE.o
         split_803B318.o
+        split_803B318_01.o
+        split_803B342.o
     }
     agbeeprom 0x803B4D8
     {
@@ -649,65 +1561,109 @@ LOAD_ROM_1 0x08000000
     .text4 0x0803EF1C
     {
         split_803EF1C.o
+        split_803EF2C.o
         split_803F07C.o
+        split_803F0A8.o
         split_803F110.o
         split_803F170.o
         split_803F1AC.o
         split_803F23C.o
         split_803F2CC.o
         split_803F38C.o
+        split_803F3B0.o
+        split_803F3B4.o
         split_803F3E8.o
         split_803F464.o
         split_803F4CC.o
+        split_803F528.o
+        split_803F55C.o
         split_803F5FC.o
         split_803F654.o
+        split_803F6B4.o
         split_803F6E0.o
         split_803F708.o
         split_803F72C.o
+        split_803F774.o
+        split_803F814.o
+        split_803F898.o
         split_803F8BC.o
         split_803F904.o
+        split_803F928.o
+        split_803F9C4.o
         split_803FA3C.o
         split_803FAB8.o
+        split_803FAD4.o
         split_803FB24.o
         split_803FB58.o
         split_803FBBC.o
         split_803FC14.o
         split_803FC68.o
         split_803FD5C.o
+        split_803FDB8.o
         split_803FE80.o
         split_803FEF8.o
         split_803FF24.o
+        split_803FF64.o
         split_8040034.o
         split_8040104.o
+        split_8040148.o
         split_80401C0.o
+        split_80401E4.o
         split_804025C.o
         split_80402F8.o
+        split_804036C.o
+        split_8040380.o
         split_80403A4.o
+        split_80403C0.o
+        split_80403EC.o
+        split_8040418.o
+        split_8040444.o
+        split_8040448.o
         split_8040468.o
+        split_804046C.o
         split_8040490.o
+        split_8040494.o
         split_80404B4.o
+        split_80404B8.o
         split_80404D8.o
+        split_80404DC.o
         split_8040504.o
+        split_8040508.o
         split_8040528.o
+        split_804052C.o
         split_8040550.o
+        split_8040554.o
         split_8040574.o
+        split_8040578.o
         split_8040594.o
+        split_8040598.o
         split_80405B4.o
+        split_80405B8.o
         split_80405D8.o
+        split_80405DC.o
         split_80405F8.o
+        split_80405FC.o
         split_804061C.o
+        split_8040620.o
         split_8040640.o
+        split_8040644.o
         split_8040660.o
+        split_8040664.o
         split_8040684.o
+        split_8040688.o
         split_80406A4.o
+        split_80406A8.o
         split_80406C4.o
+        split_80406C8.o
         split_80406E4.o
+        split_80406E8.o
         split_8040708.o
         split_8040978.o
         split_80409E4.o
         split_8040C38.o
         split_8040C78.o
         split_8041020.o
+        split_8041034.o
         split_8041058.o
         split_804107C.o
         split_80410A0.o

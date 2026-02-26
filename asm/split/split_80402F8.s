@@ -1,13 +1,10 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_03003E90
-	IMPORT __VTABLE__359dword_803ECCC
 	IMPORT __call_via_r2
-	IMPORT __nw__FUi
-	IMPORT sub_803DA18
 
 	thumb_func_start sub_80402F8
+
 sub_80402F8
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
@@ -69,35 +66,4 @@ sub_80402F8
 	bx r3
 	ALIGN
 
-	thumb_func_start sub_804036C
-sub_804036C
-	push {r3, lr}
-	cmp r0, #0
-	bne %6
-	movs r0, #0x58
-	bl __nw__FUi
-6
-	add sp, #4
-	pop {r3}
-	bx r3
-	ALIGN
-
-	thumb_func_start sub_8040380
-sub_8040380
-	push {r3, lr}
-	ldr r2, _0804039C
-	ldr r3, _080403A0
-	str r2, [r0]
-	movs r2, #0
-	str r2, [r3]
-	cmp r1, #0
-	beq %7
-	bl sub_803DA18
-7
-	add sp, #4
-	pop {r3}
-	bx r3
-	ALIGN
-_0804039C DCDU __VTABLE__359dword_803ECCC
-_080403A0 DCDU gUnknown_03003E90
 	END

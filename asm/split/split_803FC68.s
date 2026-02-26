@@ -1,13 +1,14 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT GetEWRAMStart
 	IMPORT gUnknown_03003468
 	IMPORT sub_80050FA
-	IMPORT GetEWRAMStart
 	IMPORT sub_803DA80
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_803FC68
+
 sub_803FC68
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
@@ -136,5 +137,8 @@ sub_803FC68
 	pop {r3}
 	bx r3
 	ALIGN
+
+	ALIGN
 _0803FD58 DCDU gUnknown_03003468
+
 	END

@@ -1,0 +1,22 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
+
+	arm_func_start sub_80403C0
+
+sub_80403C0
+	STMFD SP!, {r3, r4, r5, lr}
+	mov r5, r1
+	mov r1, #0
+	mov r4, r0
+	bl sub_800805E
+	cmp r5, #0
+	movne r0, r4
+	LDMNEFD SP!, {r3, r4, r5, lr}
+	bne sub_803DA18
+	LDMFD SP!, {r3, r4, r5, lr}
+	bx lr
+
+	END

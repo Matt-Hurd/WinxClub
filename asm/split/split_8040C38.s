@@ -4,6 +4,7 @@
 	IMPORT gUnknown_03003BC8
 
 	thumb_func_start sub_8040C38
+
 sub_8040C38
 	ldr r2, _08040C74
 	ldrb r1, [r2, #7]
@@ -38,5 +39,8 @@ sub_8040C38
 	str r0, [r2, #0x28]
 	bx lr
 	ALIGN
+
+	ALIGN
 _08040C74 DCDU gUnknown_03003BC8
+
 	END

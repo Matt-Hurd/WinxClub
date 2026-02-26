@@ -7,6 +7,7 @@
 	IMPORT sub_8002762
 
 	thumb_func_start sub_800E178
+
 sub_800E178
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
@@ -97,7 +98,10 @@ sub_800E178
 	str r6, [r5]
 	b %2
 	ALIGN
+
+	ALIGN
 _0800E220 DCDU gUnknown_03003434
 _0800E224 DCDU REG_BG0HOFS
 _0800E228 DCDU gUnknown_03003EB0
+
 	END

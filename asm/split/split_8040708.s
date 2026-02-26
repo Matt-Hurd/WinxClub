@@ -1,14 +1,15 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT Div
+	IMPORT __call_via_r3
 	IMPORT gUnknown_03003520
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT __call_via_r3
-	IMPORT Div
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040708
+
 sub_8040708
 	push {r4, lr}
 	ldrh r2, [r1, #4]
@@ -405,8 +406,11 @@ loc_804093a
 	bl __call_via_r3
 	b %34
 	ALIGN
+
+	ALIGN
 _08040968 DCDU gUnknown_03003BC8
 _0804096C DCDU 0x00333333
 _08040970 DCDU gUnknown_03003520
 _08040974 DCDU gUnknown_030037A0
+
 	END

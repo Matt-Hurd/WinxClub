@@ -1,15 +1,16 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT CpuSet
 	IMPORT gUnknown_03003530
 	IMPORT gUnknown_030037A0
 	IMPORT gUnknown_03003BC8
-	IMPORT CpuSet
 	IMPORT sub_8040708
 	IMPORT sub_8040978
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040C78
+
 sub_8040C78
 	ldr r2, _08041010
 	push {r4, r5, r6, r7, lr}
@@ -518,8 +519,11 @@ sub_8040C78
 	bl sub_8040C38
 	b %1
 	ALIGN
+
+	ALIGN
 _08041010 DCDU gUnknown_03003BC8
 _08041014 DCDU gUnknown_03003530
 _08041018 DCDU gUnknown_030037A0
 _0804101C DCDU 0x0000FFFF
+
 	END

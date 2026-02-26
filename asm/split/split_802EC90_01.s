@@ -1,0 +1,92 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+
+	thumb_func_start ObjectScriptGroup__40
+
+ObjectScriptGroup__40
+	subs r1, #0x61
+	cmp r1, #6
+	bhs %7
+	add r3, pc, #0x8
+	ldrb r3, [r3, r1]
+	lsls r3, r3, #1
+	add pc, r3
+	ALIGN
+1
+	DCB 0x03
+2
+	DCB 0x0C
+3
+	DCB 0x14
+4
+	DCB 0x1D
+5
+	DCB 0x2D
+6
+	DCB 0x25
+loc_802eca6
+	movs r1, #0xd9
+	lsls r1, r1, #2
+	strh r1, [r0, #0x18]
+	adds r1, #1
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+7
+	bx lr
+loc_802ecb8
+	ldr r1, _0802ED10
+	strh r1, [r0, #0x18]
+	adds r1, #3
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+	bx lr
+loc_802ecc8
+	movs r1, #0x6d
+	lsls r1, r1, #3
+	strh r1, [r0, #0x18]
+	adds r1, #1
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+	bx lr
+loc_802ecda
+	ldr r1, _0802ED14
+	strh r1, [r0, #0x18]
+	adds r1, #1
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+	bx lr
+loc_802ecea
+	ldr r1, _0802ED18
+	strh r1, [r0, #0x18]
+	adds r1, #1
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+	bx lr
+loc_802ecfa
+	movs r1, #0x1b
+	lsls r1, r1, #5
+	strh r1, [r0, #0x18]
+	adds r1, #1
+	strh r1, [r0, #0x1a]
+	movs r1, #0x25
+	adds r0, #0xa0
+	strb r1, [r0]
+	bx lr
+
+	ALIGN
+_0802ED10 DCDU 0x00000362
+_0802ED14 DCDU 0x00000366
+_0802ED18 DCDU 0x0000035E
+
+	END

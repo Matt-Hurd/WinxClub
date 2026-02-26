@@ -1,13 +1,13 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_03003E98
-	IMPORT gUnknown_0804AE70
-	IMPORT sub_800B09A
 	IMPORT __16__rt_udiv
+	IMPORT gUnknown_03003E98
+	IMPORT sub_800B09A
 	IMPORT sub_80405D8
 
 	thumb_func_start sub_8011394
+
 sub_8011394
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
@@ -115,37 +115,6 @@ sub_8011394
 	pop {r3}
 	bx r3
 
-	non_word_aligned_thumb_func_start sub_801145E
-sub_801145E
-	ldrh r2, [r1]
-	ldrh r1, [r1, #2]
-	lsls r2, r2, #0x1e
-	lsls r1, r1, #0x1e
-	lsrs r1, r1, #0x1c
-	lsrs r2, r2, #0x1e
-	adds r3, r2, r1
-	asrs r2, r0, #3
-	movs r1, #0x1f
-	cmp r2, #0x1f
-	bge %10
-	movs r1, #0
-	cmp r0, #0
-	blt %10
-	ldr r1, _080114AC
-	lsls r0, r0, #0x1d
-	ldrb r1, [r1, r3]
-	lsrs r0, r0, #0x1d
-	cmp r1, r0
-	bhs %8
-	movs r0, #1
-	b %9
-8
-	movs r0, #0
-9
-	adds r1, r0, r2
-10
-	adds r0, r1, #0
-	bx lr
 	ALIGN
 _08011494 DCDU gUnknown_03003E98
 _08011498 DCDU 0x00011760
@@ -153,5 +122,5 @@ _0801149C DCDU 0x00007FFF
 _080114A0 DCDU 0x000120C0
 _080114A4 DCDU 0x000003FF
 _080114A8 DCDU 0x00007C1F
-_080114AC DCDU gUnknown_0804AE70
+
 	END

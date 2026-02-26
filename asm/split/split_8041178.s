@@ -1,11 +1,12 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
-	IMPORT gUnknown_03003EA0
 	IMPORT __VTABLE__363dword_803ECDC
+	IMPORT gUnknown_03003EA0
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8041178
+
 sub_8041178
 	push {r3, lr}
 	ldr r2, _08041194
@@ -21,6 +22,9 @@ sub_8041178
 	pop {r3}
 	bx r3
 	ALIGN
+
+	ALIGN
 _08041194 DCDU __VTABLE__363dword_803ECDC
 _08041198 DCDU gUnknown_03003EA0
+
 	END

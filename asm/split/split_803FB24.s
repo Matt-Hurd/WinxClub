@@ -4,6 +4,7 @@
 	IMPORT gUnknown_03003E88
 
 	thumb_func_start sub_803FB24
+
 sub_803FB24
 	str r1, [r0]
 	cmp r3, #0xff
@@ -29,6 +30,9 @@ sub_803FB24
 	str r1, [r0, #0x18]
 	bx lr
 	ALIGN
+
+	ALIGN
 _0803FB50 DCDU gUnknown_03003E88
 _0803FB54 DCDU 0x0000FFFE
+
 	END

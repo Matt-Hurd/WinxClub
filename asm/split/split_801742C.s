@@ -5,6 +5,7 @@
 	IMPORT sub_801CBAA
 
 	thumb_func_start sub_801742C
+
 sub_801742C
 	ldr r0, _08017440
 	push {r3, lr}
@@ -15,5 +16,8 @@ sub_801742C
 	pop {r3}
 	bx r3
 	ALIGN
+
+	ALIGN
 _08017440 DCDU gUnknown_03003458
+
 	END

@@ -1,17 +1,18 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT CpuSet
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT gUnknown_03001BBC
+	IMPORT gUnknown_03001C24
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003EB4
 	IMPORT sub_800529A
 	IMPORT sub_8008008
-	IMPORT __call_via_r2
-	IMPORT __call_via_r3
-	IMPORT CpuSet
-	IMPORT gUnknown_03001BBC
-	IMPORT gUnknown_03001C24
 
 	thumb_func_start sub_8010D60
+
 sub_8010D60
 	push {r4, r5, r6, r7, lr}
 	movs r1, #0x6d
@@ -201,202 +202,11 @@ sub_8010D60
 	strb r4, [r6, #0xc]
 	b %6
 
-	non_word_aligned_thumb_func_start sub_8010ED2
-sub_8010ED2
-	cmp r1, #0xb
-	blo %11
-	movs r0, #0
-	bx lr
-11
-	movs r2, #0x1b
-	lsls r2, r2, #6
-	adds r2, r0, r2
-	ldr r2, [r2, #0x18]
-	cmp r2, #0
-	bne %12
-	movs r2, #0x6d
-	lsls r2, r2, #4
-	adds r2, r0, r2
-	ldrb r2, [r2]
-	cmp r2, r1
-	bne %12
-	movs r0, #0
-	bx lr
-12
-	lsls r3, r1, #1
-	adds r1, r3, r1
-	lsls r1, r1, #2
-	adds r0, r1, r0
-	movs r1, #0x19
-	lsls r1, r1, #6
-	adds r0, r0, r1
-	ldr r0, [r0, #0xc]
-	cmp r0, #0
-	bne %13
-	bx lr
-13
-	movs r0, #1
-	bx lr
-
-	thumb_func_start sub_8010F10
-sub_8010F10
-	push {r3, r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	movs r0, #0x1b
-	lsls r0, r0, #6
-	adds r5, r6, r0
-	ldr r0, [r5, #0x20]
-	cmp r0, #0
-	beq %20
-	movs r0, #0x6d
-	lsls r0, r0, #4
-	adds r4, r6, r0
-	ldrb r1, [r4, #0xf]
-	adds r0, r6, #0
-	bl sub_8010ED2
-	cmp r0, #0
-	beq %20
-	ldrb r2, [r4, #0xd]
-	movs r1, #1
-	ldr r0, [r5, #0x20]
-	lsls r1, r2
-	ands r0, r1
-	movs r7, #0
-	cmp r0, #0
-	beq %14
-	adds r0, r6, #0
-	bl sub_8010D60
-	b %15
-14
-	strb r7, [r4, #0xc]
-15
-	ldrb r0, [r4, #0xc]
-	cmp r0, #0
-	bne %18
-	ldrb r0, [r4, #0xd]
-	movs r2, #1
-	adds r3, r2, #0
-	ldr r1, [r5, #0x20]
-	lsls r3, r0
-	bics r1, r3
-	str r1, [r5, #0x20]
-	ldrb r1, [r4, #0xf]
-	adds r1, r1, r2
-	lsls r1, r1, #0x18
-	lsrs r1, r1, #0x18
-	strb r1, [r4, #0xf]
-	cmp r1, #0xb
-	blo %16
-	strb r7, [r4, #0xf]
-16
-	adds r0, #1
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	strb r0, [r4, #0xd]
-	cmp r0, #0xb
-	blo %17
-	strb r7, [r4, #0xd]
-17
-	strb r2, [r4, #0xc]
-	str r7, [r5, #0x28]
-	str r7, [r5, #0x2c]
-18
-	movs r0, #1
-19
-	pop {r3, r4, r5, r6, r7}
-	pop {r3}
-	bx r3
-20
-	movs r0, #0
-	b %19
-
-	thumb_func_start sub_8010F90
-sub_8010F90
-	push {r3, r4, r5, r6, r7, lr}
-	movs r1, #0x1b
-	lsls r1, r1, #6
-	adds r5, r0, r1
-	ldr r1, [r5, #0x14]
-	cmp r1, #0
-	beq %25
-	movs r2, #0x6d
-	lsls r2, r2, #4
-	adds r4, r0, r2
-	ldrb r2, [r4, #1]
-	cmp r2, #0
-	beq %25
-	ldr r2, [r5, #0x18]
-	cmp r2, #0
-	beq %25
-	ldrb r2, [r4]
-	movs r7, #0
-	lsls r3, r2, #1
-	adds r2, r3, r2
-	lsls r2, r2, #2
-	adds r0, r2, r0
-	movs r2, #0x19
-	lsls r2, r2, #6
-	adds r6, r0, r2
-	str r0, [sp]
-	ldr r0, _08011038
-	str r1, [r6, #0xc]
-	ldr r0, [r0]
-	adds r3, r7, #0
-	movs r2, #8
-	ldr r1, [r5, #0x14]
-	bl sub_800529A
-	movs r2, #3
-	ldr r1, [sp]
-	lsls r2, r2, #9
-	adds r1, r1, r2
-	ldr r2, [r0]
-	ldr r0, [r0, #4]
-	str r0, [r1, #0x54]
-	str r2, [r1, #0x50]
-	ldrb r0, [r4, #1]
-	adds r0, #0xff
-	strb r0, [r4, #1]
-	ldrb r0, [r4]
-	adds r0, #1
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	strb r0, [r4]
-	cmp r0, #0xb
-	blo %21
-	strb r7, [r4]
-21
-	ldr r0, [r5, #0x18]
-	subs r0, #1
-	str r0, [r5, #0x18]
-	bne %22
-	movs r0, #0xff
-	str r7, [r5, #0x14]
-	strb r0, [r4]
-	b %23
-22
-	ldr r1, [r6, #0x14]
-	ldr r0, [r6, #0xc]
-	lsls r2, r1, #0x13
-	lsrs r2, r2, #0x11
-	lsrs r1, r1, #0xd
-	lsls r1, r1, #2
-	adds r0, r0, r2
-	adds r0, r0, r1
-	adds r0, #8
-	str r0, [r5, #0x14]
-23
-	movs r0, #1
-24
-	pop {r3, r4, r5, r6, r7}
-	pop {r3}
-	bx r3
-25
-	movs r0, #0
-	b %24
 	ALIGN
 _0801102C DCDU 0x0000064C
 _08011030 DCDU gUnknown_03003EB4
 _08011034 DCDU 0x04000600
 _08011038 DCDU gUnknown_03003E84
 _0801103C DCDU REG_DMA3
+
 	END

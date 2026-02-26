@@ -1,26 +1,27 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT CpuSet
+	IMPORT gUnknown_03000000
+	IMPORT gUnknown_03000058
+	IMPORT gUnknown_03000090
+	IMPORT gUnknown_03000190
+	IMPORT gUnknown_030001E0
+	IMPORT gUnknown_03000284
+	IMPORT gUnknown_0300028C
 	IMPORT gUnknown_03003E84
 	IMPORT gUnknown_03003EB4
+	IMPORT strlen
 	IMPORT sub_800529A
 	IMPORT sub_8008008
 	IMPORT sub_80081A8
-	IMPORT strlen
-	IMPORT CpuSet
 	IMPORT sub_803D984
 	IMPORT sub_803D9A8
 	IMPORT sub_803D9C4
-	IMPORT gUnknown_03000000
-	IMPORT gUnknown_0300028C
-	IMPORT gUnknown_03000284
-	IMPORT gUnknown_03000058
-	IMPORT gUnknown_03000190
-	IMPORT gUnknown_03000090
-	IMPORT gUnknown_030001E0
 	IMPORT sub_803F3E8
 
 	thumb_func_start sub_80412A8
+
 sub_80412A8
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
@@ -199,6 +200,8 @@ sub_80412A8
 	adds r0, r5, #0
 	b %3
 	ALIGN
+
+	ALIGN
 _08041418 DCDU gUnknown_03003E84
 _0804141C DCDU 0x0000146C
 _08041420 DCDU 0x0601606C
@@ -208,12 +211,4 @@ _0804142C DCDU REG_DMA3
 _08041430 DCDU 0x81000A36
 _08041434 DCDU 0x8500051B
 
-	thumb_func_start _fp_init
-_fp_init
-	bx pc
-	ALIGN
-
-	arm_func_start __32_fp_init
-__32_fp_init
-	bx lr
 	END

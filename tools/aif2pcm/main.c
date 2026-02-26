@@ -289,7 +289,7 @@ void read_aif(struct Bytes *aif, AifData *aif_data)
 
 // This is a table of deltas between sample values in compressed PCM data.
 const int gDeltaEncodingTable[] = {
-	0, 1, 4, 9, 16, 25, 36, 49,
+0, 1, 4, 9, 16, 25, 36, 49,
 	-64, -49, -36, -25, -16, -9, -4, -1,
 };
 

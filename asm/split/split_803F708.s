@@ -4,6 +4,7 @@
 	IMPORT gUnknown_03003478
 
 	thumb_func_start sub_803F708
+
 sub_803F708
 	lsls r2, r0, #0x1b
 	lsrs r2, r2, #0x1b
@@ -24,5 +25,8 @@ sub_803F708
 	movs r0, #0
 	bx lr
 	ALIGN
+
+	ALIGN
 _0803F728 DCDU gUnknown_03003478
+
 	END

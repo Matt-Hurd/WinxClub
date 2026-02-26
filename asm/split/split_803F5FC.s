@@ -1,11 +1,12 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT __da__FPv
 	IMPORT gUnknown_03003EB8
 	IMPORT sub_8000DE6
-	IMPORT __da__FPv
 
 	thumb_func_start sub_803F5FC
+
 sub_803F5FC
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
@@ -48,5 +49,8 @@ sub_803F5FC
 	pop {r3}
 	bx r3
 	ALIGN
+
+	ALIGN
 _0803F650 DCDU gUnknown_03003EB8
+
 	END

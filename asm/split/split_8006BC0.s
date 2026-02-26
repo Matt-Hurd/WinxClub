@@ -4,6 +4,7 @@
 	IMPORT gUnknown_0804A8F0
 
 	arm_func_start sub_8006BC0
+
 sub_8006BC0
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #4
@@ -271,5 +272,8 @@ sub_8006BC0
 	mvn r0, #2
 	bx lr
 	ALIGN
+
+	ALIGN
 _08006F8C DCDU gUnknown_0804A8F0
+
 	END

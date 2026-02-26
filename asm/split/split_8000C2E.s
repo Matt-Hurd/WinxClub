@@ -1,0 +1,36 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030033C8
+	IMPORT gUnknown_03003EA4
+
+	non_word_aligned_thumb_func_start sub_8000C2E
+
+sub_8000C2E
+	ldr r1, _08000C74
+	movs r2, #0x13
+	ldr r1, [r1]
+	lsls r2, r2, #7
+	adds r1, r1, r2
+	ldr r1, [r1, #0x20]
+	ldr r2, [r0, #0x40]
+	ldr r0, _08000C78
+	ldr r1, [r1, #0x54]
+	ldrh r0, [r0, #6]
+	ldr r1, [r1, #4]
+	lsls r1, r1, #2
+	lsrs r1, r1, #0x1d
+	lsls r0, r0, #0x10
+	lsls r0, r1
+	ldr r1, _08000C78
+	subs r0, r0, r2
+	adds r1, #8
+	str r0, [r1, #4]
+	movs r0, #1
+	bx lr
+
+	ALIGN
+_08000C74 DCDU gUnknown_03003EA4
+_08000C78 DCDU gUnknown_030033C8
+
+	END

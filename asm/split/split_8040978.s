@@ -6,6 +6,7 @@
 	IMPORT gUnknown_0804AF2C
 
 	thumb_func_start sub_8040978
+
 sub_8040978
 	push {r4}
 	ldrh r1, [r0, #4]
@@ -59,7 +60,10 @@ sub_8040978
 	pop {r4}
 	bx lr
 	ALIGN
+
+	ALIGN
 _080409D8 DCDU gUnknown_0804AF2C
 _080409DC DCDU gUnknown_03003520
 _080409E0 DCDU gUnknown_03003BC8
+
 	END

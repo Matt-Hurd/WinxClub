@@ -1,6 +1,9 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT __call_via_r1
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003EA0
@@ -16,13 +19,10 @@
 	IMPORT sub_8020B60
 	IMPORT sub_80268AC
 	IMPORT sub_8028BE4
-	IMPORT sub_802E47A
-	IMPORT __call_via_r1
-	IMPORT __16_ll_sdiv
-	IMPORT __16_ll_shift_l
 	IMPORT sub_803FF24
 
 	thumb_func_start sub_80381C0
+
 sub_80381C0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
@@ -331,30 +331,10 @@ sub_80381C0
 	str r6, [r4, #4]
 	b %3
 
-	thumb_func_start sub_803842C
-sub_803842C
-	push {r3, r4, r5, lr}
-	bl sub_802E47A
-	ldr r4, _08038458
-	movs r5, #0x49
-	ldr r0, [r4]
-	lsls r5, r5, #6
-	adds r0, r5, r0
-	bl sub_8028BE4
-	cmp r0, #0
-	beq %18
-	ldr r0, [r4]
-	adds r0, r5, r0
-	bl sub_80268AC
-18
-	pop {r3, r4, r5}
-	pop {r3}
-	bx r3
 	ALIGN
 _08038454 DCDU gUnknown_03003458
 _08038458 DCDU gUnknown_0300345C
 _0803845C DCDU gUnknown_03003EA0
-_08038460 DCDU 0x0010BE20
-_08038464 DCDU 0x00000000
 _08038468 DCDU gUnknown_03003EB8
+
 	END

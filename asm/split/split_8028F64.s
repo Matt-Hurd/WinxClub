@@ -1,6 +1,13 @@
 	INCLUDE asm/macros.inc
 	AREA text, CODE
 
+	IMPORT CpuSet
+	IMPORT FadeToImage
+	IMPORT GetEWRAMStart
+	IMPORT PlayMovie
+	IMPORT SetNextGlobalFunction
+	IMPORT SomehowInitEWRAMLinkedList
+	IMPORT __da__FPv
 	IMPORT gPlayerEntity
 	IMPORT gUnknown_03003454
 	IMPORT gUnknown_03003458
@@ -8,25 +15,19 @@
 	IMPORT gUnknown_03003C58
 	IMPORT gUnknown_03003E98
 	IMPORT gUnknown_03003EB4
-	IMPORT SomehowInitEWRAMLinkedList
-	IMPORT GetEWRAMStart
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_800B058
 	IMPORT sub_800E53C
-	IMPORT maybeInitTransitionLevelScreen
-	IMPORT PlayMovie
 	IMPORT sub_800EF2A
-	IMPORT maybeLoadOrRenderBgImage
 	IMPORT sub_8017B9A
 	IMPORT sub_8017CA0
-	IMPORT FadeToImage
-	IMPORT SetNextGlobalFunction
 	IMPORT sub_801B170
-	IMPORT CpuSet
-	IMPORT __da__FPv
 	IMPORT sub_803DA9C
 	IMPORT sub_80406C4
 
 	thumb_func_start sub_8028F64
+
 sub_8028F64
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r5, _08029040
@@ -125,6 +126,8 @@ sub_8028F64
 	bl SetNextGlobalFunction
 	b %3
 	ALIGN
+
+	ALIGN
 _08029040 DCDU gUnknown_03003E98
 _08029044 DCDU gPlayerEntity
 _08029048 DCDU gUnknown_03003454
@@ -132,9 +135,8 @@ _0802904C DCDU gUnknown_03003EB4
 _08029050 DCDU 0x05000020
 _08029054 DCDU REG_DMA3
 _08029058 DCDU 0x85000020
-_0802905C DCDU 0x6F4D6742
-_08029060 DCDU 0x00656976
 _08029064 DCDU gUnknown_03003468
 _08029068 DCDU gUnknown_03003C58
 _0802906C DCDU gUnknown_03003458
+
 	END

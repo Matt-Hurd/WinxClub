@@ -4,6 +4,7 @@
 	IMPORT gUnknown_03003E88
 
 	thumb_func_start sub_803FB58
+
 sub_803FB58
 	push {r4, r5}
 	ldr r2, _0803FBB8
@@ -58,5 +59,8 @@ sub_803FB58
 	pop {r4, r5}
 	bx lr
 	ALIGN
+
+	ALIGN
 _0803FBB8 DCDU gUnknown_03003E88
+
 	END
