@@ -777,6 +777,8 @@ _0803DA14 DCDU gUnknown_030033E8
 
 	thumb_func_start sub_803DA18
 sub_803DA18
+	GLOBAL __dl__FPv
+__dl__FPv
 	push {lr}
 	adds r1, r0, #0
 	beq %59

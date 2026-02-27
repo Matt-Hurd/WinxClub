@@ -28,6 +28,7 @@ def convert_compiler_labels_in_file(file_path):
     new_lines = []
     modifications_made = False
 
+    current_vtable = None
     for line in lines:
         original_line = line
         
@@ -45,6 +46,19 @@ def convert_compiler_labels_in_file(file_path):
         # Force the AREA name to 'text' instead of '||.text||' to match original ASM
         if line.startswith('        AREA ||.text||'):
             line = line.replace('||.text||', 'text')
+
+        # Force C++ vtables to DATA so they don't get sorted before other vtables
+        if 'AREA __VTABLE__' in line:
+            if 'CODE' in line:
+                line = line.replace(', COMDEF, CODE, READONLY', ', DATA, READONLY')
+            match = re.search(r'__VTABLE_[a-zA-Z0-9_]+', line)
+            if match:
+                current_vtable = match.group(0)
+        elif line.startswith('        AREA '):
+            current_vtable = None
+            
+        if current_vtable and '- {PC}' in line:
+            line = line.replace('- {PC}', f'- {current_vtable}')
 
         new_lines.append(line)
         if original_line != line:

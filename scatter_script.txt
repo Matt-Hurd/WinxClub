@@ -615,21 +615,69 @@ LOAD_ROM_1 0x08000000
         vtable52_dword_803EC98.o
         vtable53_dword_803ECB4.o
         vtable54_dword_803ECB8.o
-        vtable55_dword_803ECBC.o
-        vtable56_dword_803ECC0.o
-        vtable57_dword_803ECC4.o
-        vtable58_dword_803ECC8.o
-        vtable59_dword_803ECCC.o
-        vtable60_dword_803ECD0.o
-        vtable61_dword_803ECD4.o
-        vtable62_dword_803ECD8.o
-        vtable63_dword_803ECDC.o
-        vtable64_dword_803ECE0.o
-        vtable65_dword_803ECE4.o
-        vtable66_dword_803ECE8.o
-        vtable67_dword_803ECEC.o
-        vtable68_dword_803ECF0.o
-        vtable69_dword_803ECF4.o
+    }
+    .text_vtable_55 +0
+    {
+        Singleton_3E80.o(__VTABLE__*)
+    }
+    .text_vtable_56 +0
+    {
+        Singleton_3E84.o(__VTABLE__*)
+    }
+    .text_vtable_57 +0
+    {
+        Singleton_3E88.o(__VTABLE__*)
+    }
+    .text_vtable_58 +0
+    {
+        Singleton_3E8C.o(__VTABLE__*)
+    }
+    .text_vtable_59 +0
+    {
+        Singleton_3E90.o(__VTABLE__*)
+    }
+    .text_vtable_60 +0
+    {
+        Singleton_3E94.o(__VTABLE__*)
+    }
+    .text_vtable_61 +0
+    {
+        Singleton_3E98.o(__VTABLE__*)
+    }
+    .text_vtable_62 +0
+    {
+        Singleton_3E9C.o(__VTABLE__*)
+    }
+    .text_vtable_63 +0
+    {
+        Singleton_3EA0.o(__VTABLE__*)
+    }
+    .text_vtable_64 +0
+    {
+        Singleton_3EA4.o(__VTABLE__*)
+    }
+    .text_vtable_65 +0
+    {
+        Singleton_3EA8.o(__VTABLE__*)
+    }
+    .text_vtable_66 +0
+    {
+        Singleton_3EAC.o(__VTABLE__*)
+    }
+    .text_vtable_67 +0
+    {
+        Singleton_3EB0.o(__VTABLE__*)
+    }
+    .text_vtable_68 +0
+    {
+        Singleton_3EB8.o(__VTABLE__*)
+    }
+    .text_vtable_69 +0
+    {
+        Singleton_3EBC.o(__VTABLE__*)
+    }
+    .text_vtables_tail +0
+    {
         vtable70_dword_803ECF8.o
         vtable71_dword_803ED1C.o
         vtable72_dword_803ED28.o
@@ -708,21 +756,27 @@ LOAD_ROM_1 0x08000000
         split_8040C38.o
         split_8040C78.o
         split_8041020.o
-        split_8041058.o
-        split_804107C.o
-        split_80410A0.o
-        split_80410C4.o
-        split_80410E8.o
-        split_804110C.o
-        split_8041130.o
-        split_8041154.o
-        split_8041178.o
-        split_804119C.o
-        split_80411C0.o
-        split_80411E4.o
-        split_8041208.o
-        split_804122C.o
-        split_8041250.o
+    }
+    .text4_destructors +0
+    {
+        Singleton_3E80.o (+RO-CODE)
+        Singleton_3E84.o (+RO-CODE)
+        Singleton_3E88.o (+RO-CODE)
+        Singleton_3E8C.o (+RO-CODE)
+        Singleton_3E90.o (+RO-CODE)
+        Singleton_3E94.o (+RO-CODE)
+        Singleton_3E98.o (+RO-CODE)
+        Singleton_3E9C.o (+RO-CODE)
+        Singleton_3EA0.o (+RO-CODE)
+        Singleton_3EA4.o (+RO-CODE)
+        Singleton_3EA8.o (+RO-CODE)
+        Singleton_3EAC.o (+RO-CODE)
+        Singleton_3EB0.o (+RO-CODE)
+        Singleton_3EB8.o (+RO-CODE)
+        Singleton_3EBC.o (+RO-CODE)
+    }
+    .text4_tail +0
+    {
         split_8041274.o
         split_80412A8.o
     }

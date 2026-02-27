@@ -3,7 +3,7 @@ include config.mk
 
 TCC	  := /opt/arm/linux/bin/tcc
 ACC	  := /opt/arm/linux/bin/armcc
-CPP	  := /opt/arm/linux/bin/armcpp
+CPP	  := /opt/arm/linux/bin/tcpp
 AS	   := /opt/arm/linux/bin/armasm
 LD	   := /opt/arm/linux/bin/armlink
 OBJCOPY  := /opt/arm/linux/bin/fromelf
