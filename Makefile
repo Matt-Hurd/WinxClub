@@ -13,7 +13,7 @@ AIF := tools/aif2pcm/aif2pcm
 MID := $(abspath tools/mid2agb/mid2agb)
 SCANINC := tools/scaninc/scaninc
 PREPROC := tools/preproc/preproc
-GBAFIX := tools/gbafix/gbafix
+GBAFIX := tools/gbafix/gbafix.exe
 LABEL_PREPROC := python scripts/preprocess_compiler_labels.py
 
 CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
