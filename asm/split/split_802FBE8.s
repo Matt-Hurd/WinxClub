@@ -14,10 +14,10 @@
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__20
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m20__7DefaultFv
 	IMPORT sub_8028BE4
 	IMPORT sub_8028C2E
 	IMPORT rand
@@ -29,7 +29,7 @@
 sub_802FBE8
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__20
+	bl m20__7DefaultFv
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
@@ -117,7 +117,7 @@ Bird__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %4
 	adds r0, r4, #0
@@ -130,7 +130,7 @@ Bird__ctor
 	thumb_func_start Bird__04
 Bird__04
 	push {r3, lr}
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -138,7 +138,7 @@ Bird__04
 	thumb_func_start Bird__08
 Bird__08
 	push {r3, lr}
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3

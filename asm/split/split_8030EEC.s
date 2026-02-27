@@ -4,7 +4,7 @@
 	IMPORT gUnknown_03003458
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_801F450
 	IMPORT sub_8028C2E
 	IMPORT sub_802B0CA
@@ -38,7 +38,7 @@ Monster__Intersect
 	cmp r0, #0
 	beq %4
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -90,7 +90,7 @@ Monster__Intersect
 	DCB 0x06
 loc_8030f6a
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %15
 loc_8030f72
 	adds r0, r4, #0
@@ -136,15 +136,15 @@ loc_8030f8c
 	b %15
 13
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %15
 loc_8030fd0
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %15
 14
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 15
 	movs r0, #0xb6
 	ldrsb r0, [r0, r4]
@@ -202,7 +202,7 @@ Monster_TakeDamage
 	adds r0, r0, r1
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	pop {r4}
 	pop {r3}
 	bx r3

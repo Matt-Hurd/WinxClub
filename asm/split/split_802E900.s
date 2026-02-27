@@ -15,12 +15,12 @@
 	IMPORT sub_80050FA
 	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
+	IMPORT m00__7DefaultFv
 	IMPORT sub_801DA2A
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__20
-	IMPORT DefaultScriptGroups__10
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m20__7DefaultFv
+	IMPORT m10__7DefaultFv
 	IMPORT sub_8028C2E
 	IMPORT sub_802F926
 	IMPORT sub_802FA92
@@ -90,7 +90,7 @@ Object__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -220,7 +220,7 @@ ObjectScriptGroup__38
 	ldr r0, [r0]
 	bl sub_8001432
 	adds r0, r5, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
@@ -276,7 +276,7 @@ ObjectScriptGroup__04
 	bl sub_802EA80
 	b %10
 12
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %10
 
 	thumb_func_start ObjectScriptGroup__08
@@ -297,7 +297,7 @@ ObjectScriptGroup__08
 	movs r0, #1
 	b %13
 15
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %13
 
 	thumb_func_start ObjectScriptGroup__44
@@ -453,7 +453,7 @@ _0802EC3C DCDU gUnknown_0300345C
 ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__20
+	bl m20__7DefaultFv
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0

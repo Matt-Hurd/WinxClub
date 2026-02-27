@@ -569,7 +569,7 @@ LOAD_ROM_1 0x08000000
         vtable07_BirdScriptGroup.o
         vtable08_BossScriptGroup.o
         vtable08_BossScriptGroup.o
-        vtable09_KikoScriptGroup.o
+        Kiko.o
         vtable10_ObjectScriptGroup.o
         vtable11_WallObjectScriptGroup.o
         vtable12_dword_803E578.o
@@ -602,7 +602,7 @@ LOAD_ROM_1 0x08000000
         vtable39_dword_803EB34.o
         vtable40_dword_803EB38.o
         vtable41_dword_803EB3C.o
-        vtable42_DefaultScriptGroup.o
+        Default.o
         vtable43_AnonymousScriptGroup14.o
         vtable44_AnonymousScriptGroup18.o
         vtable45_dword_803EC44.o

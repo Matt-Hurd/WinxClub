@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
-	IMPORT DefaultScriptGroups__10
+	IMPORT m10__7DefaultFv
 	IMPORT rand
 
 	thumb_func_start GenericObject__10
@@ -83,7 +83,7 @@ GenericObject__10
 	str r0, [r6, #0x1c]
 4
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

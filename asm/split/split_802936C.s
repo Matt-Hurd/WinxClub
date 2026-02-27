@@ -9,7 +9,7 @@
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
 	IMPORT sub_80012F0
-	IMPORT DefaultScriptGroups__Dying
+	IMPORT Dying__7DefaultFv
 	IMPORT __call_via_r1
 	IMPORT __call_via_r2
 	IMPORT rand
@@ -219,7 +219,7 @@ HostileCreature__Dying
 	strb r1, [r0, #2]
 	b %6
 12
-	bl DefaultScriptGroups__Dying
+	bl Dying__7DefaultFv
 	b %6
 
 	non_word_aligned_thumb_func_start sub_80294EE

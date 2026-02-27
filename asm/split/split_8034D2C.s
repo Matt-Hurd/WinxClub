@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_8028C2E
 
 	thumb_func_start Boss__TakeDamage
@@ -27,7 +27,7 @@ Boss__TakeDamage
 	adds r0, r0, r1
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	pop {r4}
 	pop {r3}
 	bx r3

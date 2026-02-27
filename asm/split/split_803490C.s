@@ -7,7 +7,7 @@
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003478
 	IMPORT gUnknown_030034F8
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_801F450
 	IMPORT sub_8023AA2
 	IMPORT sub_8023FE4
@@ -332,7 +332,7 @@ Boss__Intersect
 	lsrs r0, r0, #0x14
 	beq %22
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -382,7 +382,7 @@ Boss__Intersect
 	DCB 0x07
 loc_8034b9a
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %39
 loc_8034ba2
 	ldr r1, [r5, #0x2c]
@@ -433,7 +433,7 @@ loc_8034ba2
 	movs r0, #0xe
 	str r0, [r5, #0x1c]
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %39
 34
 	ldr r0, _08034D08
@@ -494,15 +494,15 @@ loc_8034c2e
 	b %39
 37
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %39
 loc_8034c7e
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %39
 38
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 39
 	movs r0, #0xb6
 	ldrsb r1, [r0, r4]

@@ -5,10 +5,10 @@
 	IMPORT sub_80007A0
 	IMPORT SetNextGlobalFunction
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
+	IMPORT m00__7DefaultFv
 	IMPORT sub_801DB90
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
 
@@ -86,7 +86,7 @@ GenericObject__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -346,7 +346,7 @@ GenericObject__04
 	b %19
 22
 	adds r0, r4, #0
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %19
 
 	thumb_func_start GenericObject__08
@@ -393,7 +393,7 @@ GenericObject__08
 	b %23
 27
 	adds r0, r4, #0
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %23
 	ALIGN
 _080262AC DCDU __VTABLE__333__vftable_GenericObject

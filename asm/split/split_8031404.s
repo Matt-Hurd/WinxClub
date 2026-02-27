@@ -5,8 +5,8 @@
 	IMPORT sub_8000914
 	IMPORT sub_8000D5A
 	IMPORT GetEWRAMStart
-	IMPORT DefaultScriptGroups__20
-	IMPORT DefaultScriptGroups__10
+	IMPORT m20__7DefaultFv
+	IMPORT m10__7DefaultFv
 	IMPORT __16_ll_sdiv
 	IMPORT __16_ll_shift_l
 	IMPORT rand
@@ -102,7 +102,7 @@ Critter__10
 	b %4
 3
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 4
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
@@ -157,7 +157,7 @@ Critter__10
 Critter__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__20
+	bl m20__7DefaultFv
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0

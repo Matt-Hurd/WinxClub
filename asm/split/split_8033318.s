@@ -7,7 +7,7 @@
 	IMPORT __VTABLE__336WinxClub
 	IMPORT sub_8002004
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
+	IMPORT m00__7DefaultFv
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
 	IMPORT __call_via_r1
@@ -105,7 +105,7 @@ WinxClub__ctor
 	bl sub_8024EBC
 	movs r1, #0
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0

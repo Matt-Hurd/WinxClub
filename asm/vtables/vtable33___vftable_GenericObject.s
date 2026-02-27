@@ -1,23 +1,23 @@
-    IMPORT  DefaultScriptGroups__0C
-    IMPORT  DefaultScriptGroups__14
-    IMPORT  DefaultScriptGroups__20
-    IMPORT  DefaultScriptGroups__38
+    IMPORT  m0C__7DefaultFv
+    IMPORT  m14__7DefaultFv
+    IMPORT  m20__7DefaultFv
+    IMPORT  m38__7DefaultFv
     IMPORT  GenericObject__04
     IMPORT  GenericObject__08
     IMPORT  GenericObject__10
     IMPORT  GenericObject__40
     IMPORT  GenericObject__ctor
-    IMPORT  DefaultScriptGroups__Dead
-    IMPORT  DefaultScriptGroups__Dying
-    IMPORT  DefaultScriptGroups__18
-    IMPORT  DefaultScriptGroups__1C
-    IMPORT  DefaultScriptGroups__44
-    IMPORT  DefaultScriptGroups__3C
-    IMPORT  DefaultScriptGroups__Attack
-    IMPORT  DefaultScriptGroups__DamagePlayer
-    IMPORT  DefaultScriptGroups__Intersect
-    IMPORT  DefaultScriptGroups__PlayerIframe
-    IMPORT  DefaultScriptGroups__TakeDamage
+    IMPORT  Dead__7DefaultFv
+    IMPORT  Dying__7DefaultFv
+    IMPORT  m18__7DefaultFv
+    IMPORT  m1C__7DefaultFv
+    IMPORT  m44__7DefaultFv
+    IMPORT  m3C__7DefaultFv
+    IMPORT  Attack__7DefaultFv
+    IMPORT  DamagePlayer__7DefaultFv
+    IMPORT  Intersect__7DefaultFv
+    IMPORT  PlayerIframe__7DefaultFv
+    IMPORT  TakeDamage__7DefaultFv
 
     AREA    __VTABLE__333__vftable_GenericObject, DATA, READONLY
 
@@ -28,23 +28,23 @@ __vftable_GenericObject_VTABLE
     DCD     GenericObject__ctor - __VTABLE__333__vftable_GenericObject
     DCD     GenericObject__04 - __VTABLE__333__vftable_GenericObject
     DCD     GenericObject__08 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__0C - __VTABLE__333__vftable_GenericObject
+    DCD     m0C__7DefaultFv - __VTABLE__333__vftable_GenericObject
     DCD     GenericObject__10 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__14 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__18 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__1C - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__20 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__Attack - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__TakeDamage - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__Intersect - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__38 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__3C - __VTABLE__333__vftable_GenericObject
+    DCD     m14__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     m18__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     m1C__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     m20__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     DamagePlayer__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     PlayerIframe__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     Attack__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     TakeDamage__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     Intersect__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     m38__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     m3C__7DefaultFv - __VTABLE__333__vftable_GenericObject
     DCD     GenericObject__40 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__44 - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__Dying - __VTABLE__333__vftable_GenericObject
-    DCD     DefaultScriptGroups__Dead - __VTABLE__333__vftable_GenericObject
+    DCD     m44__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     Dying__7DefaultFv - __VTABLE__333__vftable_GenericObject
+    DCD     Dead__7DefaultFv - __VTABLE__333__vftable_GenericObject
 
     GLOBAL  __VTABLE__333__vftable_GenericObject
     END

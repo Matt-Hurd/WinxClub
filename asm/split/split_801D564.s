@@ -200,8 +200,8 @@ Init_and_add_some_object
 	adds r0, r4, #0
 	b %1
 
-	thumb_func_start DefaultScriptGroups__1C
-DefaultScriptGroups__1C
+	thumb_func_start m1C__7DefaultFv
+m1C__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -244,8 +244,8 @@ DefaultScriptGroups__1C
 	pop {r3}
 	bx r3
 
-	thumb_func_start GameObj__ctor
-GameObj__ctor
+	thumb_func_start m00__7DefaultFv
+m00__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0801D92C
@@ -279,7 +279,7 @@ GameObj__ctor
 	str r0, [r1, #0x18]
 8
 	adds r0, r4, #0
-	bl DefaultScriptGroups__1C
+	bl m1C__7DefaultFv
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq %10

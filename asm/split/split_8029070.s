@@ -5,9 +5,9 @@
 	IMPORT gUnknown_03003458
 	IMPORT __VTABLE__315HostileBaseObject
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -110,7 +110,7 @@ HostileCreature__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -336,7 +336,7 @@ sub_8029290
 	b %4
 6
 	adds r0, r4, #0
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %4
 
 	thumb_func_start HostileCreature__08
@@ -400,7 +400,7 @@ HostileCreature__08
 	movs r0, #0
 	b %7
 12
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %7
 	ALIGN
 _08029354 DCDU __VTABLE__315HostileBaseObject

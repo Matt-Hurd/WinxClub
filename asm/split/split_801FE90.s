@@ -21,10 +21,10 @@
 	IMPORT sub_8000914
 	IMPORT sub_8001432
 	IMPORT GetEWRAMStart
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__0C
-	IMPORT DefaultScriptGroups__10
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m0C__7DefaultFv
+	IMPORT m10__7DefaultFv
 	IMPORT sub_801F906
 	IMPORT sub_8023A70
 	IMPORT sub_8023AA2
@@ -362,7 +362,7 @@ loc_802006c
 	bl sub_801F906
 	b %9
 30
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %9
 
 	thumb_func_start sub_80200A4
@@ -400,7 +400,7 @@ sub_80200A4
 	movs r0, #0
 	b %32
 36
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %32
 
 	thumb_func_start sub_80200E0
@@ -1625,7 +1625,7 @@ _080209B8 DCDU gUnknown_03003458
 	adds r0, #1
 	strh r0, [r5, #4]
 	adds r0, r4, #0
-	bl DefaultScriptGroups__0C
+	bl m0C__7DefaultFv
 	ldrh r0, [r5]
 	adds r0, #1
 	strh r0, [r5]
@@ -2680,7 +2680,7 @@ loc_80211d4
 	bl sub_8000914
 202
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3

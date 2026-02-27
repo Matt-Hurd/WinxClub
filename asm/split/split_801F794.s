@@ -13,7 +13,7 @@
 	IMPORT sub_80050FA
 	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
+	IMPORT m00__7DefaultFv
 	IMPORT sub_8024E54
 	IMPORT sub_8024EBC
 	IMPORT sub_8028C2E
@@ -206,7 +206,7 @@ Anonymous4__ctor
 	bl sub_802E02A
 	movs r1, #0
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r6, #0
 	beq %5
 	adds r0, r4, #0

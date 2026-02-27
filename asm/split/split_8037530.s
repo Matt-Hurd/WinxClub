@@ -5,8 +5,8 @@
 	IMPORT gUnknown_0300345C
 	IMPORT gUnknown_03003E98
 	IMPORT GetEWRAMStart
-	IMPORT DefaultScriptGroups__20
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT m20__7DefaultFv
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_8028C2E
 	IMPORT sub_802B0CA
 	IMPORT __call_via_r1
@@ -45,7 +45,7 @@ sub_8037534
 	cmp r3, #0
 	beq %4
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -78,7 +78,7 @@ sub_8037534
 	DCB 0x06
 loc_803758e
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %13
 loc_8037596
 	adds r1, r4, #0
@@ -123,15 +123,15 @@ loc_80375ae
 	b %13
 11
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %13
 loc_80375f2
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %13
 12
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 13
 	movs r0, #0xb6
 	ldrsb r0, [r0, r4]
@@ -182,7 +182,7 @@ sub_8037642
 	adds r0, r1, r0
 	bl sub_8028C2E
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	pop {r4}
 	pop {r3}
 	bx r3
@@ -191,7 +191,7 @@ sub_8037642
 sub_803766A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__20
+	bl m20__7DefaultFv
 	movs r0, #0xa4
 	ldr r0, [r0, r4]
 	ldr r1, [r4, #0x2c]

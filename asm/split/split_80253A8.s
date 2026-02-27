@@ -3,10 +3,10 @@
 
 	IMPORT __VTABLE__301Npc
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__10
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m10__7DefaultFv
 	IMPORT __call_via_r1
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -83,7 +83,7 @@ Npc__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -96,7 +96,7 @@ Npc__ctor
 	thumb_func_start Npc__04
 Npc__04
 	push {r3, lr}
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -104,7 +104,7 @@ Npc__04
 	thumb_func_start Npc__08
 Npc__08
 	push {r3, lr}
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -225,7 +225,7 @@ loc_80254e4
 	non_word_aligned_thumb_func_start Npc__10
 Npc__10
 	push {r3, lr}
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3

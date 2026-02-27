@@ -3,7 +3,7 @@
 
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_8000D5A
-	IMPORT DefaultScriptGroups__10
+	IMPORT m10__7DefaultFv
 
 	thumb_func_start WallObjectScriptGroup__40
 WallObjectScriptGroup__40
@@ -293,7 +293,7 @@ WallObjectScriptGroup__10
 	strh r0, [r4, #0x18]
 18
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3

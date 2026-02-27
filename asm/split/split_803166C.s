@@ -7,10 +7,10 @@
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__10
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m10__7DefaultFv
 	IMPORT rand
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -106,8 +106,8 @@ Kiko__Create
 	adds r0, r4, #0
 	b %1
 
-	non_word_aligned_thumb_func_start Kiko__ctor
-Kiko__ctor
+	non_word_aligned_thumb_func_start m00__4KikoFv
+m00__4KikoFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08031800
@@ -115,7 +115,7 @@ Kiko__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -125,24 +125,24 @@ Kiko__ctor
 	pop {r3}
 	bx r3
 
-	thumb_func_start Kiko__04
-Kiko__04
+	thumb_func_start m04__4KikoFv
+m04__4KikoFv
 	push {r3, lr}
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start Kiko__08
-Kiko__08
+	thumb_func_start m08__4KikoFv
+m08__4KikoFv
 	push {r3, lr}
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
 
-	thumb_func_start Kiko__10
-Kiko__10
+	thumb_func_start m10__4KikoFv
+m10__4KikoFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl rand
@@ -219,7 +219,7 @@ Kiko__10
 	bl sub_800065C
 5
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3

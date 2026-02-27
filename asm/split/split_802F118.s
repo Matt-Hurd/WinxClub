@@ -17,10 +17,10 @@
 	IMPORT GetEWRAMStart
 	IMPORT sub_8017A0A
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__Dying
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT Dying__7DefaultFv
 	IMPORT sub_8023A70
 	IMPORT CollectFirefly
 	IMPORT sub_8028C2E
@@ -138,7 +138,7 @@ Anonymous18__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -164,7 +164,7 @@ sub_802F1F0
 	pop {r3}
 	bx r3
 5
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %4
 
 	thumb_func_start sub_802F210
@@ -180,7 +180,7 @@ sub_802F210
 	pop {r3}
 	bx r3
 7
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %6
 
 	thumb_func_start sub_802F228
@@ -265,7 +265,7 @@ sub_802F228
 	strh r2, [r0, #0xc]
 	strh r2, [r0, #8]
 13
-	bl DefaultScriptGroups__Dying
+	bl Dying__7DefaultFv
 	pop {r4}
 	pop {r3}
 	bx r3

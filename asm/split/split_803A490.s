@@ -16,8 +16,8 @@
 	IMPORT GetEWRAMStart
 	IMPORT sub_80179BE
 	IMPORT sub_80187A0
-	IMPORT DefaultScriptGroups__10
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT m10__7DefaultFv
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT HostileCreature__20
 	IMPORT sub_8037E48
 	IMPORT __call_via_r1
@@ -516,7 +516,7 @@ ScannerScriptGroup__10
 	b %44
 43
 	adds r0, r4, #0
-	bl DefaultScriptGroups__10
+	bl m10__7DefaultFv
 44
 	ldr r1, _0803A90C
 	movs r0, #4
@@ -844,7 +844,7 @@ _0803A910 DCDU gUnknown_0300346C
 ScannerScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1

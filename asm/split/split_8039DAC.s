@@ -10,7 +10,7 @@
 	IMPORT gUnknown_03003EA0
 	IMPORT sub_800065C
 	IMPORT sub_8000D5A
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_801F450
 	IMPORT sub_8023AA2
 	IMPORT sub_8023FE4
@@ -187,7 +187,7 @@ sub_8039EB6
 	lsrs r0, r0, #0x14
 	beq %10
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	ldr r0, [r4, #0x7c]
 	lsls r0, r0, #1
 	lsrs r0, r0, #1
@@ -234,7 +234,7 @@ sub_8039EB6
 	DCB 0x07
 loc_8039f2a
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %20
 loc_8039f32
 	ldr r0, _0803A03C
@@ -291,15 +291,15 @@ loc_8039f60
 	b %20
 18
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %20
 loc_8039fac
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 	b %20
 19
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 20
 	movs r0, #0xb6
 	ldrsb r1, [r0, r4]

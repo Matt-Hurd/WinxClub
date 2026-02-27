@@ -15,9 +15,9 @@
 	IMPORT sub_800BE0E
 	IMPORT sub_800C1CA
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
 	IMPORT sub_8028C2E
 	IMPORT rand
 	IMPORT __nw__FUi
@@ -81,7 +81,7 @@ Critter__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -94,7 +94,7 @@ Critter__ctor
 	thumb_func_start Critter__04
 Critter__04
 	push {r3, lr}
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
@@ -102,7 +102,7 @@ Critter__04
 	thumb_func_start Critter__08
 Critter__08
 	push {r3, lr}
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3

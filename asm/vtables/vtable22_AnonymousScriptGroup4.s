@@ -1,11 +1,11 @@
     IMPORT  Anonymous4__ctor
-    IMPORT  DefaultScriptGroups__40
-    IMPORT  DefaultScriptGroups__Dead
-    IMPORT  DefaultScriptGroups__Dying
-    IMPORT  DefaultScriptGroups__44
-    IMPORT  DefaultScriptGroups__Attack
-    IMPORT  DefaultScriptGroups__DamagePlayer
-    IMPORT  DefaultScriptGroups__PlayerIframe
+    IMPORT  m40__7DefaultFv
+    IMPORT  Dead__7DefaultFv
+    IMPORT  Dying__7DefaultFv
+    IMPORT  m44__7DefaultFv
+    IMPORT  Attack__7DefaultFv
+    IMPORT  DamagePlayer__7DefaultFv
+    IMPORT  PlayerIframe__7DefaultFv
     IMPORT  sub_801FF68
     IMPORT  sub_80200A4
     IMPORT  sub_80200E0
@@ -34,17 +34,17 @@ Anonymous4_VTABLE
     DCD     sub_8021A38 - __VTABLE__322Anonymous4
     DCD     sub_8021A98 - __VTABLE__322Anonymous4
     DCD     sub_8021ADE - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__DamagePlayer - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__PlayerIframe - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__Attack - __VTABLE__322Anonymous4
+    DCD     DamagePlayer__7DefaultFv - __VTABLE__322Anonymous4
+    DCD     PlayerIframe__7DefaultFv - __VTABLE__322Anonymous4
+    DCD     Attack__7DefaultFv - __VTABLE__322Anonymous4
     DCD     sub_80221AC - __VTABLE__322Anonymous4
     DCD     sub_8021F42 - __VTABLE__322Anonymous4
     DCD     sub_8021B84 - __VTABLE__322Anonymous4
     DCD     sub_8021CFC - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__40 - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__44 - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__Dying - __VTABLE__322Anonymous4
-    DCD     DefaultScriptGroups__Dead - __VTABLE__322Anonymous4
+    DCD     m40__7DefaultFv - __VTABLE__322Anonymous4
+    DCD     m44__7DefaultFv - __VTABLE__322Anonymous4
+    DCD     Dying__7DefaultFv - __VTABLE__322Anonymous4
+    DCD     Dead__7DefaultFv - __VTABLE__322Anonymous4
 
     GLOBAL  __VTABLE__322Anonymous4
     END

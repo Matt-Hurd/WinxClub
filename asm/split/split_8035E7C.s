@@ -10,11 +10,11 @@
 	IMPORT sub_8000D5A
 	IMPORT GetEWRAMStart
 	IMPORT Init_and_add_some_object
-	IMPORT GameObj__ctor
-	IMPORT DefaultScriptGroups__04
-	IMPORT DefaultScriptGroups__08
-	IMPORT DefaultScriptGroups__20
-	IMPORT DefaultScriptGroups__Dying
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT m20__7DefaultFv
+	IMPORT Dying__7DefaultFv
 	IMPORT __call_via_r2
 	IMPORT __nw__FUi
 	IMPORT sub_803DA18
@@ -95,7 +95,7 @@ WallObject__ctor
 	movs r1, #0
 	str r0, [r4]
 	adds r0, r4, #0
-	bl GameObj__ctor
+	bl m00__7DefaultFv
 	cmp r5, #0
 	beq %3
 	adds r0, r4, #0
@@ -215,7 +215,7 @@ WallObjectScriptGroup__04
 	bl sub_8035F54
 	b %10
 13
-	bl DefaultScriptGroups__04
+	bl m04__7DefaultFv
 	b %10
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
@@ -231,7 +231,7 @@ WallObjectScriptGroup__08
 	pop {r3}
 	bx r3
 15
-	bl DefaultScriptGroups__08
+	bl m08__7DefaultFv
 	b %14
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__38
@@ -320,7 +320,7 @@ WallObjectScriptGroup__4C
 WallObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
-	bl DefaultScriptGroups__20
+	bl m20__7DefaultFv
 	bl GetEWRAMStart
 	adds r1, r0, #0
 	movs r5, #0
@@ -393,7 +393,7 @@ WallObjectScriptGroup__48
 	strh r1, [r0, #0x18]
 	b %20
 22
-	bl DefaultScriptGroups__Dying
+	bl Dying__7DefaultFv
 	b %20
 	ALIGN
 _08036128 DCDU __VTABLE__311WallObject

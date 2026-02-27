@@ -51,8 +51,8 @@ sub_801DCFC
 	pop {r3}
 	bx r3
 
-	thumb_func_start DefaultScriptGroups__04
-DefaultScriptGroups__04
+	thumb_func_start m04__7DefaultFv
+m04__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -364,8 +364,8 @@ loc_801df3a
 	bl sub_801D788
 	b %2
 
-	thumb_func_start DefaultScriptGroups__08
-DefaultScriptGroups__08
+	thumb_func_start m08__7DefaultFv
+m08__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]

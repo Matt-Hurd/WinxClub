@@ -5,7 +5,7 @@
 	IMPORT gUnknown_03003D20
 	IMPORT gUnknown_03003E98
 	IMPORT sub_800065C
-	IMPORT DefaultScriptGroups__TakeDamage
+	IMPORT TakeDamage__7DefaultFv
 	IMPORT sub_8028C2E
 	IMPORT sub_803F2CC
 	IMPORT sub_803F898
@@ -75,7 +75,7 @@ sub_80221AC
 	cmp r0, #5
 	beq %4
 	adds r0, r4, #0
-	bl DefaultScriptGroups__TakeDamage
+	bl TakeDamage__7DefaultFv
 4
 	pop {r3, r4, r5}
 	pop {r3}
