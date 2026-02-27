@@ -28,6 +28,20 @@ def convert_compiler_labels_in_file(file_path):
     new_lines = []
     modifications_made = False
 
+    # First pass: identify data pool labels that use offset syntax (|Ln.X| + Y).
+    # armasm doesn't support "|L.N| + offset" or "%N + offset" syntax.
+    # We expand these by inserting a unique named label before each DCD entry
+    # in the pool, and rewriting references to use those labels.
+    pool_offset_refs = {}  # key = "n.X", value = set of int offsets (including 0)
+    for line in lines:
+        for m in re.finditer(r'\|L(\d+)\.(\d+)\|(\s*\+\s*(\d+))?', line):
+            key = f"{m.group(1)}.{m.group(2)}"
+            offset = int(m.group(4)) if m.group(4) else 0
+            pool_offset_refs.setdefault(key, set()).add(offset)
+
+    # Identify pool labels: those that have *any* offset reference > 0
+    pool_labels = {k for k, offsets in pool_offset_refs.items() if max(offsets) > 0}
+
     current_vtable = None
     for line in lines:
         original_line = line
@@ -35,13 +49,40 @@ def convert_compiler_labels_in_file(file_path):
         # Check for a label definition on this line
         def_match = label_def_regex.match(line)
         if def_match:
+            key = f"{def_match.group(1)}.{def_match.group(2)}"
             label_num = def_match.group(2)
-            # Replace the entire line with just the number plus newline, stripping DATA
-            line = f"{label_num}\n"
+            if key in pool_labels:
+                # This is a data pool label definition — we'll insert individual
+                # labels for each DCD entry.  Replace the definition with the
+                # label for offset 0.
+                pool_name = f"_pool_{key.replace('.', '_')}"
+                line = f"{pool_name}_0\n"
+            else:
+                # Regular label — convert to numeric local
+                line = f"{label_num}\n"
         else:
-            # If it's not a definition, check for references
-            # Use a lambda to perform the replacement for all matches on the line
-            line = label_ref_regex.sub(lambda m: f"%{m.group(2)}", line)
+            # Handle references
+            def replace_label_ref(m):
+                full = m.group(0)
+                key = f"{m.group(1)}.{m.group(2)}"
+                if key in pool_labels:
+                    return full  # will be handled by the broader regex below
+                return f"%{m.group(2)}"
+            line = label_ref_regex.sub(replace_label_ref, line)
+            
+            # Now handle pool label + offset references
+            for key in pool_labels:
+                parts = key.split('.')
+                pipe_label = f"|L{parts[0]}.{parts[1]}|"
+                pool_name = f"_pool_{key.replace('.', '_')}"
+                # Replace |Ln.X| + Y with _pool_n_X_Y
+                line = re.sub(
+                    re.escape(pipe_label) + r'\s*\+\s*(\d+)',
+                    lambda m: f"{pool_name}_{m.group(1)}",
+                    line
+                )
+                # Replace bare |Ln.X| (no offset) with _pool_n_X_0
+                line = line.replace(pipe_label, f"{pool_name}_0")
 
         # Force the AREA name to 'text' instead of '||.text||' to match original ASM
         if line.startswith('        AREA ||.text||'):
@@ -58,21 +99,88 @@ def convert_compiler_labels_in_file(file_path):
             current_vtable = None
             
         if current_vtable and '- {PC}' in line:
-            # Strip cumulative offset (e.g., "+ 4 ", "+ 8 ") before replacing {PC}.
-            # tcpp generates: DCD func + N - {PC}  where N = slot_index * 4
-            # We need:        DCD func - vtable_label
-            # Slot 0 has no +N, slots 1+ have +4, +8, etc.
             line = re.sub(r'(\s*\+\s*\d+)?\s*-\s*\{PC\}', f' - {current_vtable}', line)
 
         new_lines.append(line)
         if original_line != line:
             modifications_made = True
 
+    # Expand data pool labels: insert individual labels before each DCD entry
+    # following a pool label definition.
+    if pool_labels:
+        expanded_lines = []
+        i = 0
+        while i < len(new_lines):
+            line = new_lines[i]
+            stripped = line.strip()
+            # Check if this line is a pool label definition (_pool_N_X_0)
+            pool_match = re.match(r'^(_pool_\d+_\d+)_0$', stripped)
+            if pool_match:
+                pool_base = pool_match.group(1)
+                expanded_lines.append(line)
+                i += 1
+                offset = 0
+                # Label each subsequent DCD entry
+                while i < len(new_lines):
+                    dcd_line = new_lines[i]
+                    dcd_stripped = dcd_line.strip()
+                    if dcd_stripped.startswith('DCD') or dcd_stripped.startswith('DCW'):
+                        if offset > 0:
+                            expanded_lines.append(f"{pool_base}_{offset}\n")
+                        expanded_lines.append(dcd_line)
+                        offset += 4 if dcd_stripped.startswith('DCD') else 2
+                        i += 1
+                    elif dcd_stripped.startswith('DCB'):
+                        # Count bytes in DCB: string like DCB "Kiko" = 4 bytes,
+                        # or DCB 0x4b,0x69,... = count commas+1
+                        if offset > 0:
+                            expanded_lines.append(f"{pool_base}_{offset}\n")
+                        expanded_lines.append(dcd_line)
+                        if '"' in dcd_stripped:
+                            # DCB "text" — count chars between quotes
+                            m = re.search(r'"([^"]*)"', dcd_stripped)
+                            if m:
+                                raw = m.group(1)
+                                # Handle escape sequences like \0
+                                byte_count = len(raw.replace('\\0', '\x00').replace('\\n', '\n').replace('\\t', '\t').replace('\\\\', '\\'))
+                                offset += byte_count
+                            else:
+                                offset += 1
+                        else:
+                            # DCB 0x4b,0x69,... — count comma-separated values
+                            vals = dcd_stripped[3:].split(',')
+                            offset += len(vals)
+                        i += 1
+                    elif dcd_stripped == '' or dcd_stripped.startswith(';'):
+                        expanded_lines.append(dcd_line)
+                        i += 1
+                    else:
+                        break
+                modifications_made = True
+            else:
+                expanded_lines.append(line)
+                i += 1
+        new_lines = expanded_lines
+
     # Strip stub constructor code from C++ files that define vtables.
-    # Only strip the __ct__ PROC block; preserve any other methods in the text section.
+    # Only strip the __ct__ PROC block if it's a stub (small body).
+    # Real constructors (>20 instructions) are preserved.
     has_vtable = any('AREA __VTABLE__' in line for line in new_lines)
     has_ctor = any('__ct__' in line and 'PROC' in line for line in new_lines)
-    if has_vtable and has_ctor:
+    ctor_is_stub = False
+    if has_ctor:
+        in_ct = False
+        ct_line_count = 0
+        for l in new_lines:
+            if '__ct__' in l and 'PROC' in l:
+                in_ct = True
+                continue
+            if in_ct and l.strip() == 'ENDP':
+                break
+            if in_ct and l.strip():
+                ct_line_count += 1
+        ctor_is_stub = ct_line_count < 20
+    if has_vtable and has_ctor and ctor_is_stub:
         filtered_lines = []
         in_ctor_proc = False
         ctor_name = None
@@ -99,9 +207,25 @@ def convert_compiler_labels_in_file(file_path):
             if ctor_name and f'EXPORT {ctor_name}' in line:
                 modifications_made = True
                 continue
-            # Remove IMPORT of __nw__FUi (operator new, only used by constructor)
-            # and IMPORT __ct__* (base class constructors called by derived ctors)
-            if 'IMPORT __nw__FUi' in line or ('IMPORT __ct__' in line):
+            # Remove IMPORT of __nw__FUi (operator new) only if no other code
+            # references it after constructor removal.
+            # Also remove IMPORT __ct__* (base class constructors called by derived ctors)
+            if 'IMPORT __nw__FUi' in line:
+                # Check if __nw__FUi is used outside the constructor
+                nw_used = False
+                in_ctor = False
+                for check_line in new_lines:
+                    if ctor_name and check_line.strip().startswith(f'{ctor_name} PROC'):
+                        in_ctor = True
+                    elif in_ctor and check_line.strip() == 'ENDP':
+                        in_ctor = False
+                    elif not in_ctor and 'IMPORT' not in check_line and '__nw__FUi' in check_line:
+                        nw_used = True
+                        break
+                if not nw_used:
+                    modifications_made = True
+                    continue
+            if 'IMPORT __ct__' in line:
                 modifications_made = True
                 continue
             filtered_lines.append(line)
@@ -153,6 +277,24 @@ def convert_compiler_labels_in_file(file_path):
                 modifications_made = True
         renamed_lines.append(line)
     new_lines = renamed_lines
+
+    # ── Kiko m10 register fixup ───────────────────────────────────
+    # tcpp generates: LSL r3,r0,#1 / ADD r0,r3,r0 / LDR r3,... / LSL r1,r0,#1
+    # Original has:   LSL r1,r0,#1 / ADD r1,r1,r0 / LDR r3,... / LSL r1,r1,#1
+    # Pattern-match the sequence after "LSR r0,r0,#24" and fix registers.
+    if 'Kiko' in file_path:
+        stripped = [l.strip() for l in new_lines]
+        for i in range(len(stripped) - 4):
+            if (stripped[i]   == 'LSR      r0,r0,#24' and
+                stripped[i+1] == 'LSL      r3,r0,#1' and
+                stripped[i+2] == 'ADD      r0,r3,r0'):
+                new_lines[i+1] = new_lines[i+1].replace('LSL      r3,r0,#1', 'LSL      r1,r0,#1')
+                new_lines[i+2] = new_lines[i+2].replace('ADD      r0,r3,r0', 'ADD      r1,r1,r0')
+                modifications_made = True
+                # Also fix the byteOff shift 2 lines later: LSL r1,r0,#1 -> LSL r1,r1,#1
+                if i+4 < len(stripped) and stripped[i+4] == 'LSL      r1,r0,#1':
+                    new_lines[i+4] = new_lines[i+4].replace('LSL      r1,r0,#1', 'LSL      r1,r1,#1')
+                break
 
     # Write the corrected content back to the file only if changes were made
     if modifications_made:

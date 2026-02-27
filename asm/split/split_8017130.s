@@ -16,7 +16,7 @@
 	IMPORT Bird__Create
 	IMPORT Monster__Create
 	IMPORT Critter__Create
-	IMPORT Kiko__Create
+	IMPORT __ct__4KikoFv
 	IMPORT WinxClub__Create
 	IMPORT Boss__Create
 	IMPORT ToggleObject__Create
@@ -231,7 +231,7 @@ loc_801723a
 	adds r4, r0, #0
 	beq %50
 	adds r0, r4, #0
-	bl Kiko__Create
+	bl __ct__4KikoFv
 50
 	adds r0, r4, #0
 	b %48

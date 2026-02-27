@@ -221,7 +221,13 @@ LOAD_ROM_1 0x08000000
         split_803108C.o
         split_8031404.o
         split_8031578.o
-        split_803166C.o
+    }
+    .text3_kiko_code +0
+    {
+        Kiko.o (+RO-CODE)
+    }
+    .text3b +0
+    {
         split_8031830.o
         split_8031B98.o
         split_8031D00.o
@@ -569,7 +575,7 @@ LOAD_ROM_1 0x08000000
         vtable07_BirdScriptGroup.o
         vtable08_BossScriptGroup.o
         vtable08_BossScriptGroup.o
-        Kiko.o
+        Kiko.o(__VTABLE__*)
         vtable10_ObjectScriptGroup.o
         vtable11_WallObjectScriptGroup.o
         vtable12_dword_803E578.o

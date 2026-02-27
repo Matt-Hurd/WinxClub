@@ -20,8 +20,11 @@
 	IMPORT sub_803FC68
 	IMPORT sub_803FEF8
 
+	EXPORT __ct__7DefaultFv
+
 	thumb_func_start Init_and_add_some_object
 Init_and_add_some_object
+__ct__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne %2
@@ -244,8 +247,11 @@ m1C__7DefaultFv
 	pop {r3}
 	bx r3
 
+	EXPORT __dt__7DefaultFv
+
 	thumb_func_start m00__7DefaultFv
 m00__7DefaultFv
+__dt__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0801D92C
