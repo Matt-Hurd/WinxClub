@@ -4,14 +4,14 @@
 #include "Default.hpp"
 
 extern "C" void sub_800065C(void *obj, unsigned short val);
-extern "C" void *sub_8000D5A(void *ptr);
+struct Singleton_3EA0_Data;
+extern "C" Singleton_3EA0_Data *sub_8000D5A(void *ptr);
 extern "C" int sub_80404B4(int val);
 extern "C" int rand(void);
 extern "C" void *sub_803DA18(void *obj);
 
 extern "C" unsigned short gUnknown_08051096[];
-class Singleton_3EA0;
-extern "C" Singleton_3EA0 *gUnknown_03003EA0;
+#include "Singleton_3EA0.hpp"
 
 class Kiko : public Default {
 public:
@@ -96,8 +96,8 @@ void Kiko::m10() {
   unsigned int action = *(unsigned int *)((char *)this + 0x9c);
   if (action == 0) {
     unsigned int r5_30 = field_30;
-    void *cam = sub_8000D5A((void *)gUnknown_03003EA0);
-    unsigned int cam_x = *(unsigned int *)((char *)cam + 0x20);
+    Singleton_3EA0_Data *cam = sub_8000D5A((void *)gUnknown_03003EA0);
+    unsigned int cam_x = cam->field_20;
     unsigned int obj_x = *(unsigned int *)(r5_30 + 0x10);
     unsigned int r5_2c = field_2c;
     int diff = (int)(obj_x - cam_x);
@@ -106,7 +106,7 @@ void Kiko::m10() {
 
     cam = sub_8000D5A((void *)gUnknown_03003EA0);
     unsigned int p44_val = *(unsigned int *)(r5_2c + 0x44);
-    unsigned int cam_y = *(unsigned int *)((char *)cam + 0x28);
+    unsigned int cam_y = cam->field_28;
     unsigned int field4 = *(unsigned int *)(p44_val + 4);
     field4 = (field4 << 16) >> 14;
     cam_y += field4;
@@ -119,7 +119,7 @@ void Kiko::m10() {
     if (r6 != val) {
       unsigned int r6_2c = field_2c;
       cam = sub_8000D5A((void *)gUnknown_03003EA0);
-      unsigned int cam_y2 = *(unsigned int *)((char *)cam + 0x28);
+      unsigned int cam_y2 = cam->field_28;
       unsigned int p44_val2 = *(unsigned int *)(r6_2c + 0x44);
       unsigned int field4_2 = *(unsigned int *)(p44_val2 + 4);
       field4_2 = (field4_2 << 16) >> 14;
