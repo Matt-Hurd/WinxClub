@@ -1,12 +1,12 @@
 #### Tools ####
 include config.mk
 
-TCC	  := tcc
-ACC	  := armcc
-CPP	  := armcpp
-AS	   := armasm
-LD	   := armlink
-OBJCOPY  := fromelf
+TCC	  := /opt/arm/linux/bin/tcc
+ACC	  := /opt/arm/linux/bin/armcc
+CPP	  := /opt/arm/linux/bin/armcpp
+AS	   := /opt/arm/linux/bin/armasm
+LD	   := /opt/arm/linux/bin/armlink
+OBJCOPY  := /opt/arm/linux/bin/fromelf
 
 GFX := tools/gbagfx/gbagfx.exe
 AIF := tools/aif2pcm/aif2pcm
@@ -16,8 +16,8 @@ PREPROC := tools/preproc/preproc
 GBAFIX := tools/gbafix/gbafix.exe
 LABEL_PREPROC := python scripts/preprocess_compiler_labels.py
 
-CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
-CPPFLAGS := -Wi -Wp -Wb -O2 -Otime -S -g -apcs "/interwork" -fpu none
+CC1FLAGS := -Wi -Wp -Wb -O2 -Otime -S -g- -apcs "/interwork" -fpu none
+CPPFLAGS := -Wi -Wp -Wb -O2 -Otime -S -g- -apcs "/interwork" -fpu none
 ASFLAGS  := -CPU arm7tdmi -LIttleend -fpu none -apcs "/interwork" -I asminclude -I include
 
 #### Files ####
@@ -26,7 +26,7 @@ ROM 	 := $(BUILD_NAME).gba
 MAP	  := $(ROM:%.gba=%.map)
 ELF	  := $(ROM:%.gba=%.elf)
 LDSCRIPT := scatter_script.txt
-LDFLAGS = -noremove -libpath /opt/arm/common/lib 
+LDFLAGS = -noremove -map -info sizes -list $(MAP) -libpath /opt/arm/common/lib 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
@@ -106,6 +106,7 @@ PYTHON := python # or just python, depending on your setup
 MERGE_SCRIPT := scripts/merge_partial_c.py
 
 OBJS := $(C_OBJS) $(CPP_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
+OBJS := $(shell python scripts/sort_objs.py $(OBJS))
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS)))

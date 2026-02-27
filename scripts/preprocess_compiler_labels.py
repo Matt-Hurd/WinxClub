@@ -19,8 +19,8 @@ def convert_compiler_labels_in_file(file_path):
     except FileNotFoundError:
         return # Silently ignore if file not found
 
-    # Regex to find a label definition, e.g., "|L.40|" at the start of a line.
-    label_def_regex = re.compile(r'^\|L(\d+)\.(\d+)\|$', re.IGNORECASE)
+    # Regex to find a label definition, e.g., "|L.40|" at the start of a line (or indented).
+    label_def_regex = re.compile(r'^\s*\|L(\d+)\.(\d+)\|', re.IGNORECASE)
     
     # Regex to find a reference to a label, e.g., "bne |L.40|".
     label_ref_regex = re.compile(r'\|L(\d+)\.(\d+)\|', re.IGNORECASE)
@@ -35,12 +35,16 @@ def convert_compiler_labels_in_file(file_path):
         def_match = label_def_regex.match(line)
         if def_match:
             label_num = def_match.group(2)
-            # Replace the entire line with just the number
+            # Replace the entire line with just the number plus newline, stripping DATA
             line = f"{label_num}\n"
         else:
             # If it's not a definition, check for references
             # Use a lambda to perform the replacement for all matches on the line
             line = label_ref_regex.sub(lambda m: f"%{m.group(2)}", line)
+
+        # Force the AREA name to 'text' instead of '||.text||' to match original ASM
+        if line.startswith('        AREA ||.text||'):
+            line = line.replace('||.text||', 'text')
 
         new_lines.append(line)
         if original_line != line:
