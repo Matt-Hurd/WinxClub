@@ -268,6 +268,74 @@ def convert_compiler_labels_in_file(file_path):
     vtable_renames = {
         '__VTABLE__7Default': '__VTABLE__342Default',
         '__VTABLE__4Kiko': '__VTABLE__309Kiko',
+        '__VTABLE__13dword_803E2A0': '__VTABLE__300dword_803E2A0',
+        '__VTABLE__3Npc': '__VTABLE__301Npc',
+        '__VTABLE__10Anonymous3': '__VTABLE__302Anonymous3',
+        '__VTABLE__13dword_803E320': '__VTABLE__303dword_803E320',
+        '__VTABLE__13dword_803E32C': '__VTABLE__304dword_803E32C',
+        '__VTABLE__13dword_803E350': '__VTABLE__305dword_803E350',
+        '__VTABLE__13dword_803E374': '__VTABLE__306dword_803E374',
+        '__VTABLE__4Bird': '__VTABLE__307Bird',
+        '__VTABLE__4Boss': '__VTABLE__308Boss',
+        '__VTABLE__6Object': '__VTABLE__310Object',
+        '__VTABLE__10WallObject': '__VTABLE__311WallObject',
+        '__VTABLE__13dword_803E578': '__VTABLE__312dword_803E578',
+        '__VTABLE__13dword_803E59C': '__VTABLE__313dword_803E59C',
+        '__VTABLE__13dword_803E5C8': '__VTABLE__314dword_803E5C8',
+        '__VTABLE__17HostileBaseObject': '__VTABLE__315HostileBaseObject',
+        '__VTABLE__13dword_803E658': '__VTABLE__316dword_803E658',
+        '__VTABLE__13dword_803E67C': '__VTABLE__317dword_803E67C',
+        '__VTABLE__13dword_803E680': '__VTABLE__318dword_803E680',
+        '__VTABLE__13dword_803E684': '__VTABLE__319dword_803E684',
+        '__VTABLE__13dword_803E6A0': '__VTABLE__320dword_803E6A0',
+        '__VTABLE__13dword_803E700': '__VTABLE__321dword_803E700',
+        '__VTABLE__10Anonymous4': '__VTABLE__322Anonymous4',
+        '__VTABLE__7Static1': '__VTABLE__323Static1',
+        '__VTABLE__17ToggleObjectGroup': '__VTABLE__324ToggleObjectGroup',
+        '__VTABLE__13dword_803E864': '__VTABLE__325dword_803E864',
+        '__VTABLE__13dword_803E868': '__VTABLE__326dword_803E868',
+        '__VTABLE__13dword_803E86C': '__VTABLE__327dword_803E86C',
+        '__VTABLE__13dword_803E870': '__VTABLE__328dword_803E870',
+        '__VTABLE__7Critter': '__VTABLE__329Critter',
+        '__VTABLE__7Static2': '__VTABLE__330Static2',
+        '__VTABLE__7Monster': '__VTABLE__331Monster',
+        '__VTABLE__7Scanner': '__VTABLE__332Scanner',
+        '__VTABLE__23__vftable_GenericObject': '__VTABLE__333__vftable_GenericObject',
+        '__VTABLE__13dword_803EA68': '__VTABLE__334dword_803EA68',
+        '__VTABLE__13dword_803EA8C': '__VTABLE__335dword_803EA8C',
+        '__VTABLE__8WinxClub': '__VTABLE__336WinxClub',
+        '__VTABLE__13dword_803EAE0': '__VTABLE__337dword_803EAE0',
+        '__VTABLE__13dword_803EB10': '__VTABLE__338dword_803EB10',
+        '__VTABLE__13dword_803EB34': '__VTABLE__339dword_803EB34',
+        '__VTABLE__13dword_803EB38': '__VTABLE__340dword_803EB38',
+        '__VTABLE__13dword_803EB3C': '__VTABLE__341dword_803EB3C',
+        '__VTABLE__11Anonymous14': '__VTABLE__343Anonymous14',
+        '__VTABLE__11Anonymous18': '__VTABLE__344Anonymous18',
+        '__VTABLE__13dword_803EC44': '__VTABLE__345dword_803EC44',
+        '__VTABLE__13dword_803EC68': '__VTABLE__346dword_803EC68',
+        '__VTABLE__13dword_803EC6C': '__VTABLE__347dword_803EC6C',
+        '__VTABLE__13dword_803EC70': '__VTABLE__348dword_803EC70',
+        '__VTABLE__13dword_803EC74': '__VTABLE__349dword_803EC74',
+        '__VTABLE__13dword_803EC78': '__VTABLE__350dword_803EC78',
+        '__VTABLE__13dword_803EC7C': '__VTABLE__351dword_803EC7C',
+        '__VTABLE__13dword_803EC98': '__VTABLE__352dword_803EC98',
+        '__VTABLE__13dword_803ECB4': '__VTABLE__353dword_803ECB4',
+        '__VTABLE__13dword_803ECB8': '__VTABLE__354dword_803ECB8',
+        '__VTABLE__13dword_803ECF8': '__VTABLE__370dword_803ECF8',
+        '__VTABLE__13dword_803ED1C': '__VTABLE__371dword_803ED1C',
+        '__VTABLE__13dword_803ED28': '__VTABLE__372dword_803ED28',
+        '__VTABLE__13dword_803ED4C': '__VTABLE__373dword_803ED4C',
+        '__VTABLE__13dword_803ED70': '__VTABLE__374dword_803ED70',
+        '__VTABLE__13dword_803ED94': '__VTABLE__375dword_803ED94',
+        '__VTABLE__13dword_803EDA0': '__VTABLE__376dword_803EDA0',
+        '__VTABLE__13dword_803EDC4': '__VTABLE__377dword_803EDC4',
+        '__VTABLE__13dword_803EDE8': '__VTABLE__378dword_803EDE8',
+        '__VTABLE__11off_803EE14': '__VTABLE__379off_803EE14',
+        '__VTABLE__11off_803EE40': '__VTABLE__380off_803EE40',
+        '__VTABLE__11off_803EE6C': '__VTABLE__381off_803EE6C',
+        '__VTABLE__13dword_803EE98': '__VTABLE__382dword_803EE98',
+        '__VTABLE__13dword_803EEC4': '__VTABLE__383dword_803EEC4',
+        '__VTABLE__13dword_803EEF0': '__VTABLE__384dword_803EEF0',
     }
     renamed_lines = []
     for line in new_lines:
@@ -277,6 +345,104 @@ def convert_compiler_labels_in_file(file_path):
                 modifications_made = True
         renamed_lines.append(line)
     new_lines = renamed_lines
+
+    # ── Vtable method symbol remapping ────────────────────────────
+    # tcpp generates mangled method names (e.g., m00__13dword_803EC68Fv) in
+    # IMPORT directives and DCD entries. We need to replace these with the
+    # original assembly symbols (e.g., sub_8001B4A) that the linker can find.
+    # Map: class_name -> [symbol_for_slot_0, symbol_for_slot_1, ...]
+    # Pure virtual slots (= 0) are not listed; tcpp handles __pvfn__Fv directly.
+    vtable_method_maps = {
+        'dword_803E2A0': ['sub_802E4AA', 'sub_802E4EA', 'sub_802E4EC', 'sub_802E4EE', 'sub_802E47A', 'sub_802E5D2', 'sub_802E800', 'sub_802E8F8', 'sub_802E8B0'],
+        'Npc': ['Npc__ctor', 'Npc__04', 'Npc__08', 'm0C__7DefaultFv', 'Npc__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'm20__7DefaultFv', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Npc__Intersect', 'Npc__38', 'Npc__3C', 'Npc__40', 'm44__7DefaultFv', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'Anonymous3': ['sub_8015588', 'sub_80163D4', 'sub_801642C'],
+        'dword_803E320': ['sub_80166DC', 'sub_8016FA2', 'sub_8017130'],
+        'dword_803E32C': ['sub_802BA72', 'sub_802BA94', 'sub_802BCF0', 'sub_802E4EE', 'sub_802BEFC', 'sub_802BF34', 'sub_802E800', 'sub_802BFB4', 'sub_802E8B0'],
+        'dword_803E350': ['sub_8037E74', 'sub_8037EB2', 'sub_80381C0', 'sub_802E4EE', 'sub_803842C', 'sub_803846C', 'sub_802E800', 'sub_803851E', 'sub_80384D8'],
+        'dword_803E374': ['sub_801352C', 'sub_8013F6C', 'sub_8013FAE', 'sub_80139A8', 'sub_8040104', 'sub_8013E56', 'sub_8013E64', 'sub_8013F5A', 'sub_8013E72', 'sub_8013F1E', 'sub_8013F66', 'sub_8013F2A', 'sub_80139A4', 'sub_8013FF4', 'sub_8013FBC', 'sub_8013FBE', 'sub_8013FC0', 'sub_8013FC2', 'sub_8013FC4', 'sub_3001E8C', 'sub_8013B0A', 'sub_8013B64', 'sub_300215C', None],
+        'Bird': ['Bird__ctor', 'Bird__04', 'Bird__08', 'm0C__7DefaultFv', 'Bird__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'Bird__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'Bird__38', 'm3C__7DefaultFv', 'Bird__40', 'Bird__44', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'Boss': ['Boss__ctor', 'Boss__04', 'Boss__08', 'm0C__7DefaultFv', 'Boss__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'HostileCreature__20', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'HostileCreature__Attack', 'Boss__TakeDamage', 'Boss__Intersect', 'm38__7DefaultFv', 'HostileCreature__3C', 'Boss__40', 'm44__7DefaultFv', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'Boss__50', 'HostileCreature__54', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'HostileCreature__60'],
+        'Object': ['Object__ctor', 'ObjectScriptGroup__04', 'ObjectScriptGroup__08', 'm0C__7DefaultFv', 'ObjectScriptGroup__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'ObjectScriptGroup__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'ObjectScriptGroup__38', 'm3C__7DefaultFv', 'ObjectScriptGroup__40', 'ObjectScriptGroup__44', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'WallObject': ['WallObject__ctor', 'WallObjectScriptGroup__04', 'WallObjectScriptGroup__08', 'm0C__7DefaultFv', 'WallObjectScriptGroup__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'WallObjectScriptGroup__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'WallObjectScriptGroup__TakeDamage', 'WallObjectScriptGroup__Intersect', 'WallObjectScriptGroup__38', 'm3C__7DefaultFv', 'WallObjectScriptGroup__40', 'WallObjectScriptGroup__44', 'WallObjectScriptGroup__48', 'WallObjectScriptGroup__4C'],
+        'dword_803E578': ['sub_802C8B0', 'sub_802C8D2', 'sub_802D100', 'sub_802E4EE', 'sub_802D23C', 'sub_802D274', 'sub_802E800', 'sub_802D2D0', 'sub_802E8B0'],
+        'dword_803E59C': ['sub_800FB72', 'sub_800FCF0', 'sub_800FD48', 'sub_800FD2A', 'sub_800FC72', 'sub_800FD2C', 'sub_800FE56', None, 'sub_800FB9E', None, None],
+        'dword_803E5C8': ['sub_800F75A', 'sub_800FCF0', 'sub_800FD48', 'sub_800F974', 'sub_800FA40', 'sub_800FA9A', 'sub_800FE56', 'sub_800F77C', 'sub_800F782', 'sub_800F786', 'sub_800F87A'],
+        'HostileBaseObject': ['HostileCreature__ctor', 'sub_8029290', 'HostileCreature__08', 'm0C__7DefaultFv', 'Monster__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'HostileCreature__20', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'HostileCreature__Attack', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'm38__7DefaultFv', 'HostileCreature__3C', 'm40__7DefaultFv', 'm44__7DefaultFv', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'sub_802B0A0', 'HostileCreature__54', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'HostileCreature__60'],
+        'dword_803E658': ['sub_802BFEA', 'sub_802C022', 'sub_802C41E', 'sub_802C5FA', 'sub_802C6D0', 'sub_802C71E', 'sub_802E800', 'sub_802C86E', 'sub_802E8B0'],
+        'dword_803E67C': ['sub_800496A'],
+        'dword_803E680': ['sub_800527E'],
+        'dword_803E684': ['sub_80105AE', 'sub_80106BA', 'sub_3002724', None, None, None, 'sub_8010AB4'],
+        'dword_803E6A0': ['sub_801402C', 'sub_8013F6C', 'sub_8013FAE', 'sub_80139A8', 'sub_8040104', 'sub_8014060', 'sub_8013E64', 'sub_8013F5A', 'sub_8013E72', 'sub_8013F1E', 'sub_8013F66', 'sub_8013F2A', 'sub_80139A4', 'sub_8013FF4', 'sub_8013FBC', 'sub_80141B4', 'sub_80142D0', 'sub_8013FC2', 'sub_8013FC4', 'sub_3001E8C', 'sub_8013B0A', 'sub_8013B64', 'sub_300215C', 'sub_801404E'],
+        'dword_803E700': ['sub_8014436', 'sub_8014E04', 'sub_8014E46', 'sub_8014B58', 'sub_80148BE', 'sub_8014738', 'sub_8014B7E', 'sub_8013F5A', 'sub_8013E72', 'sub_8013F1E', 'sub_8014B96', 'sub_8013F2A', 'sub_8014B66', 'sub_8014E76', 'sub_30023FC', 'sub_8013FBE', 'sub_8013FC0', 'maybePauseUnpauseTransition', 'sub_8014582', 'sub_3001E8C', 'sub_8014492', 'sub_8013B64', 'sub_300215C', 'sub_8014B34'],
+        'Anonymous4': ['Anonymous4__ctor', 'sub_801FF68', 'sub_80200A4', 'sub_80200E0', 'sub_8020B6E', 'sub_8021248', 'sub_8021A38', 'sub_8021A98', 'sub_8021ADE', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'sub_80221AC', 'sub_8021F42', 'sub_8021B84', 'sub_8021CFC', 'm40__7DefaultFv', 'm44__7DefaultFv', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'Static1': ['sub_803666C', 'sub_8029290', 'HostileCreature__08', 'm0C__7DefaultFv', 'sub_803693C', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'sub_8036C24', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'sub_8036A64', 'sub_8036BFC', 'sub_8036B7C', 'sub_80367C2', 'HostileCreature__3C', 'sub_803668E', 'sub_80368F4', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'sub_8036CB4', 'HostileCreature__54', 'sub_8036A68', 'HostileBaseObject__5C', 'sub_80367C0'],
+        'ToggleObjectGroup': ['Toggle__ctor', 'ToggleObjectGroup__04', 'ToggleObjectGroup__08', 'm0C__7DefaultFv', 'ToggleObjectGroup__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'ToggleObjectGroup__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'ToggleObjectGroup__38', 'm3C__7DefaultFv', 'ToggleObjectGroup__40', 'ToggleObjectGroup__44', 'ToggleObjectGroup__48', 'Dead__7DefaultFv'],
+        'dword_803E864': ['sub_80175D4'],
+        'dword_803E868': ['sub_800FF5E'],
+        'dword_803E86C': ['sub_8040380'],
+        'dword_803E870': ['sub_800F292', 'sub_800FCF0', 'sub_800FD48', 'sub_800F528', 'sub_800F67A', 'sub_800F700', 'sub_800FE56', 'sub_800F2B4', 'sub_800F2B8', 'sub_800F2BC', 'sub_800F408'],
+        'Critter': ['Critter__ctor', 'Critter__04', 'Critter__08', 'm0C__7DefaultFv', 'Critter__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'Critter__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'Critter__38', 'm3C__7DefaultFv', 'Critter__40', 'Critter__44', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'Static2': ['sub_8036D30', 'sub_8029290', 'HostileCreature__08', 'm0C__7DefaultFv', 'sub_8036EEC', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'sub_803766A', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'sub_8037530', 'sub_8037642', 'sub_8037534', 'sub_8036E04', 'HostileCreature__3C', 'sub_8036D52', 'sub_8036E5E', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'sub_80376F8', 'HostileCreature__54', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'sub_8036E02'],
+        'Monster': ['Monster__ctor', 'NonBossHostileScriptGroup__04', 'HostileCreature__08', 'm0C__7DefaultFv', 'Monster__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'HostileCreature__20', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'HostileCreature__Attack', 'Monster_TakeDamage', 'Monster__Intersect', 'm38__7DefaultFv', 'HostileCreature__3C', 'Monster__40', 'm44__7DefaultFv', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'Monster__50', 'HostileCreature__54', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'HostileCreature__60'],
+        'Scanner': ['Scanner__ctor', 'NonBossHostileScriptGroup__04', 'HostileCreature__08', 'm0C__7DefaultFv', 'ScannerScriptGroup__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'ScannerScriptGroup__20', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'HostileCreature__Attack', 'Monster_TakeDamage', 'ScannerScriptGroup__Intersect', 'ScannerScriptGroup__38', 'HostileCreature__3C', 'ScannerScriptGroup__40', 'm44__7DefaultFv', 'ScannerScriptGroup__Dying', 'Dead__7DefaultFv', 'ScannerScriptGroup__StartAttack', 'ScannerScriptGroup__StartAttack2', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'ScannerScriptGroup__60'],
+        '__vftable_GenericObject': ['GenericObject__ctor', 'GenericObject__04', 'GenericObject__08', 'm0C__7DefaultFv', 'GenericObject__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'm20__7DefaultFv', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'm38__7DefaultFv', 'm3C__7DefaultFv', 'GenericObject__40', 'm44__7DefaultFv', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'dword_803EA68': ['sub_8033CA4', 'sub_8033D24', 'sub_8033EBA', 'sub_8034358', 'sub_8034408', 'sub_803442C', 'sub_802E800', 'sub_802E8F8', 'sub_802E8B0'],
+        'dword_803EA8C': ['sub_800B554'],
+        'WinxClub': ['WinxClub__ctor', 'm04__7DefaultFv', 'm08__7DefaultFv', 'm0C__7DefaultFv', 'WinxClub__10', 'm14__7DefaultFv', 'WinxClub__18', 'WinxClub__1C', 'WinxClub__20', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'WinxClub__38', 'WinxClub__3C', 'm40__7DefaultFv', 'm44__7DefaultFv', 'Dying__7DefaultFv', 'Dead__7DefaultFv'],
+        'dword_803EAE0': ['sub_800FAD6', 'sub_800FAF8', 'sub_800FAFA', 'sub_800FAFC', 'sub_800FAFE', 'sub_800FB02', 'sub_800FE56', 'sub_800FB06', 'sub_800FB9E', 'sub_800FB0C', 'sub_800FB0E', 'sub_800FB0A'],
+        'dword_803EB10': ['sub_8037756', 'sub_803778E', 'sub_8037A10', 'sub_8037BEE', 'sub_8037CC0', 'sub_8037CE4', 'sub_802E800', 'sub_8037E34', 'sub_802E8B0'],
+        'dword_803EB34': ['sub_800B01A'],
+        'dword_803EB38': ['sub_80315A2'],
+        'dword_803EB3C': ['sub_800B8A4'],
+        'Anonymous14': ['sub_80399D6', 'Boss__04', 'Boss__08', 'm0C__7DefaultFv', 'Boss__10', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'HostileCreature__20', 'HostileCreature__DamagePlayer', 'HostileCreature__PlayerIframe', 'HostileCreature__Attack', 'Boss__TakeDamage', 'sub_8039EB6', 'm38__7DefaultFv', 'sub_8039DAC', 'sub_80399F8', 'm44__7DefaultFv', 'HostileCreature__Dying', 'Dead__7DefaultFv', 'Boss__50', 'HostileCreature__54', 'HostileScriptGroups__58', 'HostileBaseObject__5C', 'HostileCreature__60'],
+        'Anonymous18': ['Anonymous18__ctor', 'sub_802F1F0', 'sub_802F210', 'm0C__7DefaultFv', 'sub_802F6F4', 'm14__7DefaultFv', 'm18__7DefaultFv', 'm1C__7DefaultFv', 'sub_802FBE8', 'DamagePlayer__7DefaultFv', 'PlayerIframe__7DefaultFv', 'Attack__7DefaultFv', 'TakeDamage__7DefaultFv', 'Intersect__7DefaultFv', 'sub_802F818', 'sub_802F8A0', 'm40__7DefaultFv', 'sub_802F6BA', 'sub_802F228', 'Dead__7DefaultFv'],
+        'dword_803EC44': ['sub_8032AC2', 'sub_8032B12', 'sub_8032CCC', 'sub_8032F92', 'sub_803310E', 'sub_803315E', 'sub_802E800', 'sub_8033308', 'sub_802E8B0'],
+        'dword_803EC68': ['sub_8001B4A'],
+        'dword_803EC6C': ['sub_8004F12'],
+        'dword_803EC70': ['sub_800B286'],
+        'dword_803EC74': ['sub_8002614'],
+        'dword_803EC78': ['sub_8000EF6'],
+        'dword_803EC7C': ['sub_803B184', 'sub_80106BA', 'sub_3002724', 'sub_803B1A6', 'sub_803B1A8', 'sub_803B1AC', 'sub_8010AB4'],
+        'dword_803EC98': ['sub_8010278', 'sub_801029A', 'sub_3002724', 'sub_80102D8', 'sub_8010344', 'sub_80103A8', 'sub_8010AB4'],
+        'dword_803ECB4': ['sub_8013480'],
+        'dword_803ECB8': ['sub_8041034'],
+        'dword_803ECF8': ['sub_8024EBC', 'sub_8024F08', 'sub_80250E4', 'sub_80251CA', 'sub_8024E8A', 'sub_8025214', 'sub_802E800', 'sub_802E8F8', 'sub_802E8B0'],
+        'dword_803ED1C': ['sub_8017450', None, 'sub_803F3B0'],
+        'dword_803ED28': ['sub_802D32E', 'sub_802D384', 'sub_802D920', 'sub_802DD08', 'sub_802DDDC', 'sub_802DE2A', 'sub_802E800', 'sub_802DFE4', 'sub_802DFD8'],
+        'dword_803ED4C': ['sub_803ABA6', 'sub_803ABC8', 'sub_803AD40', 'sub_802E4EE', 'sub_802E47A', 'sub_802E5D2', 'sub_802E800', 'sub_803AE60', 'sub_802E8B0'],
+        'dword_803ED70': ['sub_8031D3E', 'sub_8031D60', 'sub_803248C', 'sub_80327F4', 'sub_80328B0', 'sub_80328D6', 'sub_802E800', 'sub_8032A7E', 'sub_8032A58'],
+        'dword_803ED94': ['sub_8016526', 'sub_8016612', 'sub_8016690'],
+        'dword_803EDA0': ['sub_802E02A', 'sub_802E04C', 'sub_802E1D6', 'sub_802E4EE', 'sub_802E47A', 'sub_802E384', 'sub_802E800', 'sub_802E40E', 'sub_802E8B0'],
+        'dword_803EDC4': ['sub_803AE92', 'sub_803AEB4', 'sub_803AFCC', 'sub_802E4EE', 'sub_803B150', 'sub_802E5D2', 'sub_802E800', 'sub_802E8F8', 'sub_802E8B0'],
+        'dword_803EDE8': ['sub_8008F18', 'sub_8008F14', 'sub_8008FFC', 'sub_800A240', 'sub_8008100', 'sub_800A25C', 'sub_800A268', 'sub_800904C', 'sub_800905C', 'sub_800811C', 'sub_8008120'],
+        'off_803EE14': ['sub_80403C0', 'sub_800807A', 'sub_800A2B8', 'sub_800A334', 'sub_800A7A0', 'sub_800A9A4', 'sub_800A9AC', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+        'off_803EE40': ['sub_80403EC', 'sub_800807A', 'sub_800808E', 'sub_80080FC', 'sub_8008100', 'sub_800AA04', 'sub_800AA10', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+        'off_803EE6C': ['sub_8040418', 'sub_800807A', 'sub_8008B5C', 'sub_8008BFC', 'sub_8008E64', 'sub_8008E98', 'sub_8008EA4', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+        'dword_803EE98': ['sub_800AB8C', 'sub_800AB00', 'sub_800ACD0', 'sub_800AC3C', 'sub_800AFA8', 'sub_800AFB8', 'sub_800AFC0', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+        'dword_803EEC4': ['sub_800822C', 'sub_8008228', 'sub_8008264', 'sub_80087B8', 'sub_8008100', 'sub_8008AF4', 'sub_8008AFC', 'sub_8008B04', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+        'dword_803EEF0': ['sub_800805E', 'sub_800807A', 'sub_800808E', 'sub_80080FC', 'sub_8008100', 'sub_800810E', 'sub_8008112', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
+    }
+    # Build a flat mangled-name → original-symbol dict from vtable_method_maps
+    _vtable_method_renames = {}
+    for cls_name, symbols in vtable_method_maps.items():
+        cls_len = len(cls_name)
+        for i, sym in enumerate(symbols):
+            if sym is None:  # pure virtual slot
+                continue
+            offset = i * 4
+            method_name = f'm{offset:02X}'
+            mangled = f'{method_name}__{cls_len}{cls_name}Fv'
+            _vtable_method_renames[mangled] = sym
+    # Apply method symbol renaming (IMPORT and DCD entries)
+    if _vtable_method_renames:
+        method_renamed_lines = []
+        for line in new_lines:
+            for mangled, original in _vtable_method_renames.items():
+                if mangled in line:
+                    line = line.replace(mangled, original)
+                    modifications_made = True
+            method_renamed_lines.append(line)
+        new_lines = method_renamed_lines
 
     # ── Kiko m10 register fixup ───────────────────────────────────
     # tcpp generates: LSL r3,r0,#1 / ADD r0,r3,r0 / LDR r3,... / LSL r1,r0,#1
