@@ -1,5 +1,4 @@
 	arm_func_start sub_8012BA0
-sub_8012BA0
 	STMFD SP!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	add r4, r0, #0x218
@@ -291,3 +290,4 @@ sub_8012BA0
 	add sp, sp, #0x88
 	LDMFD SP!, {r4, r5, r6, r7, r8, lr}
 	bx lr
+	arm_func_end sub_8012BA0

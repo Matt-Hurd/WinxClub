@@ -1,5 +1,4 @@
 	thumb_func_start Critter__10
-Critter__10
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -136,4 +135,5 @@ Critter__10
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__10
 

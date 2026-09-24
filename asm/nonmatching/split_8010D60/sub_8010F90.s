@@ -1,5 +1,4 @@
 	thumb_func_start sub_8010F90
-sub_8010F90
 	push {r3, r4, r5, r6, r7, lr}
 	movs r1, #0x1b
 	lsls r1, r1, #6
@@ -81,3 +80,4 @@ sub_8010F90
 25
 	movs r0, #0
 	b %24
+	thumb_func_end sub_8010F90

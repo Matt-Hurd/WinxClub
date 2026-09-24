@@ -1,5 +1,4 @@
 	thumb_func_start ScannerScriptGroup__Dying
-ScannerScriptGroup__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -47,4 +46,5 @@ ScannerScriptGroup__Dying
 7
 	bl HostileCreature__Dying
 	b %4
+	thumb_func_end ScannerScriptGroup__Dying
 

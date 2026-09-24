@@ -26,7 +26,6 @@
 	IMPORT sub_8040684
 
 	thumb_func_start sub_803490C
-sub_803490C
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	add r0, pc, #0x3E0
@@ -221,9 +220,9 @@ sub_803490C
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803490C
 
 	non_word_aligned_thumb_func_start sub_8034A86
-sub_8034A86
 	push {r4, r5, r6, r7}
 	movs r3, #0
 	movs r5, #0
@@ -296,17 +295,17 @@ sub_8034A86
 	blo %18
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_8034A86
 
 	thumb_func_start Boss__10
-Boss__10
 	push {r3, lr}
 	bl Monster__10
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Boss__10
 
 	thumb_func_start Boss__Intersect
-Boss__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -571,4 +570,5 @@ _08034D18 DCDU gUnknown_0300345C
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %20
+	thumb_func_end Boss__Intersect
 	END

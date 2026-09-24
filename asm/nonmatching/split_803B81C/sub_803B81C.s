@@ -1,5 +1,4 @@
 	thumb_func_start sub_803B81C
-sub_803B81C
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #0x10
@@ -33,4 +32,5 @@ sub_803B81C
 	pop {r1}
 	bx r1
 	ALIGN
+	thumb_func_end sub_803B81C
 

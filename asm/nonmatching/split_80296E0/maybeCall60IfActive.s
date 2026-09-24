@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start maybeCall60IfActive
-maybeCall60IfActive
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0xf
 	bne %132
@@ -20,4 +19,5 @@ maybeCall60IfActive
 	adds r1, r2, r1
 	bl __call_via_r1
 	b %118
+	thumb_func_end maybeCall60IfActive
 

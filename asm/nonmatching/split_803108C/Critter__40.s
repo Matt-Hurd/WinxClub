@@ -1,5 +1,4 @@
 	thumb_func_start Critter__40
-Critter__40
 	cmp r1, #0x26
 	bne %5
 	movs r1, #0xf1
@@ -17,4 +16,5 @@ Critter__40
 	str r1, [r0, #0x70]
 5
 	bx lr
+	thumb_func_end Critter__40
 

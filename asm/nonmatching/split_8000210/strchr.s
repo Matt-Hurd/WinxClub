@@ -1,5 +1,4 @@
 	thumb_func_start strchr
-strchr
 	ldrb r2, [r0]
 	cmp r2, #0
 	beq %20
@@ -16,4 +15,5 @@ strchr
 	movs r0, #0
 21
 	bx lr
+	thumb_func_end strchr
 

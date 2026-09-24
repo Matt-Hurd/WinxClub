@@ -1,5 +1,4 @@
 	thumb_func_start sub_8015014
-sub_8015014
 	lsls r3, r1, #2
 	adds r1, r3, r1
 	ldr r2, _08015374
@@ -35,4 +34,5 @@ sub_8015014
 	str r1, [r0, #0x34]
 	pop {r4, r5, r6, r7}
 	b %5
+	thumb_func_end sub_8015014
 

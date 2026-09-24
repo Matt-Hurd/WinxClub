@@ -10,7 +10,6 @@
 	IMPORT sub_80123B4
 
 	thumb_func_start sub_80120BC
-sub_80120BC
 	ldr r1, _08012328
 	movs r0, #0
 	ldr r1, [r1, #0x1c]
@@ -19,9 +18,9 @@ sub_80120BC
 	ldrb r0, [r1, #2]
 1
 	bx lr
+	thumb_func_end sub_80120BC
 
 	non_word_aligned_thumb_func_start sub_80120CA
-sub_80120CA
 	ldr r1, _08012328
 	ldr r1, [r1, #0x1c]
 	cmp r1, #0
@@ -35,9 +34,9 @@ sub_80120CA
 2
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80120CA
 
 	non_word_aligned_thumb_func_start sub_80120E2
-sub_80120E2
 	ldr r1, _08012328
 	ldr r1, [r1, #0x1c]
 	cmp r1, #0
@@ -51,9 +50,9 @@ sub_80120E2
 	ldr r0, _0801232C
 	ldrb r0, [r0, #0xf]
 	bx lr
+	thumb_func_end sub_80120E2
 
 	non_word_aligned_thumb_func_start sub_80120FA
-sub_80120FA
 	push {r3, r4, r5, lr}
 	ldr r5, _0801232C
 	adds r4, r0, #0
@@ -75,9 +74,9 @@ sub_80120FA
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80120FA
 
 	non_word_aligned_thumb_func_start sub_8012126
-sub_8012126
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r2, #0
@@ -123,9 +122,9 @@ sub_8012126
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8012126
 
 	thumb_func_start sub_8012180
-sub_8012180
 	ldr r2, _0801232C
 	push {r4, r5}
 	ldrb r1, [r2, #0xf]
@@ -164,9 +163,9 @@ sub_8012180
 	str r0, [r5, #4]
 	pop {r4, r5}
 	bx lr
+	thumb_func_end sub_8012180
 
 	thumb_func_start sub_80121C4
-sub_80121C4
 	ldr r1, _0801232C
 	push {r4, r5, r6}
 	ldrb r2, [r1, #0xe]
@@ -207,9 +206,9 @@ sub_80121C4
 13
 	movs r0, #0
 	b %11
+	thumb_func_end sub_80121C4
 
 	thumb_func_start sub_801220C
-sub_801220C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -277,9 +276,9 @@ sub_801220C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801220C
 
 	thumb_func_start sub_801228C
-sub_801228C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -332,9 +331,9 @@ sub_801228C
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801228C
 
 	thumb_func_start sub_80122F0
-sub_80122F0
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -349,9 +348,9 @@ sub_80122F0
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80122F0
 
 	thumb_func_start sub_801230C
-sub_801230C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -366,6 +365,7 @@ sub_801230C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801230C
 	ALIGN
 _08012328 DCDU gUnknown_03003BC8
 _0801232C DCDU gUnknown_03003530

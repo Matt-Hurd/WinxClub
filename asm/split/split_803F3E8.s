@@ -5,7 +5,6 @@
 	IMPORT CpuSet
 
 	thumb_func_start sub_803F3E8
-sub_803F3E8
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	adds r3, r0, #0
@@ -67,6 +66,7 @@ sub_803F3E8
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b %2
+	thumb_func_end sub_803F3E8
 	ALIGN
 _0803F45C DCDU gUnknown_03003EB4
 _0803F460 DCDU REG_DMA3

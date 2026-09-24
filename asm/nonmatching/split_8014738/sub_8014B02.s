@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8014B02
-sub_8014B02
 	push {r3, lr}
 	ldr r2, [r0, #0x70]
 	cmp r2, r1
@@ -25,4 +24,5 @@ sub_8014B02
 	ldr r3, [r0, #0x68]
 	bl sub_803F5FC
 	b %39
+	thumb_func_end sub_8014B02
 

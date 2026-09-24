@@ -1,5 +1,4 @@
 	thumb_func_start sub_8036EEC
-sub_8036EEC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r0, #0
@@ -755,3 +754,4 @@ _08037104 DCDU gUnknown_03003E98
 	ands r0, r1
 	str r0, [r5, #0x2c]
 	b %25
+	thumb_func_end sub_8036EEC

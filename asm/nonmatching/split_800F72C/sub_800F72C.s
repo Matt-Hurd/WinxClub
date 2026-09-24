@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F72C
-sub_800F72C
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -23,4 +22,5 @@ sub_800F72C
 	str r0, [r1, r4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end sub_800F72C
 

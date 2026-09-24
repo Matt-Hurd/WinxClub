@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HandlePostGameCredits
-HandlePostGameCredits
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x84
 	add r5, sp, #8
@@ -81,3 +80,4 @@ HandlePostGameCredits
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandlePostGameCredits

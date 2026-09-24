@@ -1,5 +1,4 @@
 	thumb_func_start sub_801CB18
-sub_801CB18
 	adds r3, r0, #0
 	adds r3, #0xff
 	adds r3, #0x81
@@ -29,4 +28,5 @@ sub_801CB18
 	strh r5, [r0, #0x1e]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_801CB18
 

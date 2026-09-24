@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B714
-sub_800B714
 	push {r3, lr}
 	bl sub_8011E22
 	cmp r0, #0
@@ -12,4 +11,5 @@ sub_800B714
 2
 	movs r0, #0
 	b %1
+	thumb_func_end sub_800B714
 

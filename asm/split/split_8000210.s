@@ -3,7 +3,6 @@
 
 
 	thumb_func_start strStartsWith
-strStartsWith
 	b %2
 1
 	adds r0, #1
@@ -27,9 +26,9 @@ strStartsWith
 4
 	movs r0, #0
 	bx lr
+	thumb_func_end strStartsWith
 
 	non_word_aligned_thumb_func_start sub_8000236
-sub_8000236
 	push {r4, r5}
 	b %10
 5
@@ -85,9 +84,9 @@ sub_8000236
 	ldrsb r0, [r0, r3]
 	subs r0, r1, r0
 	b %8
+	thumb_func_end sub_8000236
 
 	non_word_aligned_thumb_func_start gameStrlen
-gameStrlen
 	ldrb r2, [r0]
 	movs r1, #0
 	cmp r2, #0
@@ -101,9 +100,9 @@ gameStrlen
 15
 	adds r0, r1, #0
 	bx lr
+	thumb_func_end gameStrlen
 
 	thumb_func_start strToLower
-strToLower
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq %18
@@ -123,9 +122,9 @@ strToLower
 	bne %16
 18
 	bx lr
+	thumb_func_end strToLower
 
 	thumb_func_start strchr
-strchr
 	ldrb r2, [r0]
 	cmp r2, #0
 	beq %20
@@ -142,9 +141,9 @@ strchr
 	movs r0, #0
 21
 	bx lr
+	thumb_func_end strchr
 
 	non_word_aligned_thumb_func_start sub_80002E2
-sub_80002E2
 	ldr r1, _08000314
 	sub sp, #4
 	movs r3, #0
@@ -171,6 +170,7 @@ sub_80002E2
 	strh r3, [r0, #0x10]
 22
 	b %22
+	thumb_func_end sub_80002E2
 	ALIGN
 _08000314 DCDU REG_IE
 _08000318 DCDU REG_DMA3

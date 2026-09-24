@@ -14,7 +14,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start ToggleObject__Create
-ToggleObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -86,9 +85,9 @@ ToggleObject__Create
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end ToggleObject__Create
 
 	non_word_aligned_thumb_func_start Toggle__ctor
-Toggle__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08035730
@@ -105,9 +104,9 @@ Toggle__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Toggle__ctor
 
 	thumb_func_start sub_8035530
-sub_8035530
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801DB90
@@ -121,9 +120,9 @@ sub_8035530
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8035530
 
 	non_word_aligned_thumb_func_start sub_803554A
-sub_803554A
 	push {r4}
 	ldr r1, [r1]
 	movs r3, #0
@@ -282,9 +281,9 @@ loc_803562e
 	str r0, [r2, #0x1c]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_803554A
 
 	thumb_func_start ToggleObjectGroup__04
-ToggleObjectGroup__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -322,9 +321,9 @@ ToggleObjectGroup__04
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %19
+	thumb_func_end ToggleObjectGroup__04
 
 	non_word_aligned_thumb_func_start ToggleObjectGroup__08
-ToggleObjectGroup__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -364,9 +363,9 @@ ToggleObjectGroup__08
 	adds r0, r4, #0
 	bl m08__7DefaultFv
 	b %24
+	thumb_func_end ToggleObjectGroup__08
 
 	thumb_func_start ToggleObjectGroup__38
-ToggleObjectGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -406,6 +405,7 @@ ToggleObjectGroup__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end ToggleObjectGroup__38
 	ALIGN
 _08035730 DCDU __VTABLE__324ToggleObjectGroup
 _08035734 DCDU 0xFF000FFF

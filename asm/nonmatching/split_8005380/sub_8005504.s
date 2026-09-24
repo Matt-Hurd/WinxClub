@@ -1,5 +1,4 @@
 	arm_func_start sub_8005504
-sub_8005504
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	add r7, r0, #0x1c
 	LDMIA r7, {r5, r7}
@@ -918,4 +917,5 @@ jmptb_08005578
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mvn r2, #1
 	b sub_8007F18
+	arm_func_end sub_8005504
 

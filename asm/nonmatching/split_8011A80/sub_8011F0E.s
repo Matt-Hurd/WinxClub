@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011F0E
-sub_8011F0E
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _0801209C
 	ldrh r0, [r7]
@@ -210,3 +209,4 @@ sub_8011F0E
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8011F0E

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start WinxClub__3C
-WinxClub__3C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _08033C4C
@@ -113,4 +112,5 @@ WinxClub__3C
 	add r1, sp, #4
 	bl sub_803FF24
 	b %45
+	thumb_func_end WinxClub__3C
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_800D5A8
-sub_800D5A8
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	movs r7, #0
 	adds r5, r1, #0
@@ -465,4 +464,5 @@ _0800D884 DCDU 0x84000008
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800D5A8
 

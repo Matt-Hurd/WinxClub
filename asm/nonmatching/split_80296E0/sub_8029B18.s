@@ -1,5 +1,4 @@
 	thumb_func_start sub_8029B18
-sub_8029B18
 	ldr r1, [r4, #0x7c]
 	movs r0, #7
 	lsls r0, r0, #0x1c
@@ -2045,4 +2044,5 @@ _0802AB5C DCDU gUnknown_03003458
 	bics r0, r2
 	str r0, [r4, #0x7c]
 	b %117
+	thumb_func_end sub_8029B18
 

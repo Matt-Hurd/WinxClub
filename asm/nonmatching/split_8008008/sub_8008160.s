@@ -1,5 +1,4 @@
 	thumb_func_start sub_8008160
-sub_8008160
 	ldr r0, _080081C4
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
@@ -19,4 +18,5 @@ sub_8008160
 	subs r0, r0, r2
 	adds r0, r0, r1
 	bx lr
+	thumb_func_end sub_8008160
 

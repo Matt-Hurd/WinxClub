@@ -5,7 +5,6 @@
 	IMPORT CpuSet
 
 	thumb_func_start sub_803F464
-sub_803F464
 	ldr r3, _0803F4C4
 	push {r4, lr}
 	ldr r3, [r3]
@@ -57,6 +56,7 @@ sub_803F464
 	str r0, [r4, #8]
 	ldr r0, [r4, #8]
 	b %1
+	thumb_func_end sub_803F464
 	ALIGN
 _0803F4C4 DCDU gUnknown_03003EB4
 _0803F4C8 DCDU REG_DMA3

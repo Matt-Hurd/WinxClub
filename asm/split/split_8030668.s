@@ -11,7 +11,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start Monster__Create
-Monster__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -50,9 +49,9 @@ Monster__Create
 	str r1, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Monster__Create
 
 	thumb_func_start Monster__ctor
-Monster__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08030A64
@@ -69,9 +68,9 @@ Monster__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Monster__ctor
 
 	non_word_aligned_thumb_func_start NonBossHostileScriptGroup__04
-NonBossHostileScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -85,9 +84,9 @@ NonBossHostileScriptGroup__04
 5
 	bl sub_8029290
 	b %4
+	thumb_func_end NonBossHostileScriptGroup__04
 
 	thumb_func_start Monster__40
-Monster__40
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -1092,6 +1091,7 @@ loc_8030e32
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
 	b %6
+	thumb_func_end Monster__40
 	ALIGN
 _08030ED8 DCDU 0xFFFF007F
 _08030EDC DCDU 0x00010CD0

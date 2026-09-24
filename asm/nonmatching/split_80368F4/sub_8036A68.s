@@ -1,5 +1,4 @@
 	thumb_func_start sub_8036A68
-sub_8036A68
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _08036B6C
@@ -121,3 +120,4 @@ sub_8036A68
 	lsls r0, r0, #0x12
 	lsrs r0, r0, #0x1a
 	b %9
+	thumb_func_end sub_8036A68

@@ -1,5 +1,4 @@
 	thumb_func_start Boss__40
-Boss__40
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0xff
 	adds r5, r0, #0
@@ -387,3 +386,4 @@ Boss__40
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
 	b %9
+	thumb_func_end Boss__40

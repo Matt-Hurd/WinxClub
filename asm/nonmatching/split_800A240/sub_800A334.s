@@ -1,5 +1,4 @@
 	arm_func_start sub_800A334
-sub_800A334
 	STMFD SP!, {r4, r5, r6, lr}
 	mov r4, r0
 	ldrh r0, [r0, #4]
@@ -315,4 +314,5 @@ sub_800A334
 	sub r0, r0, r5
 	LDMFD SP!, {r4, r5, r6, lr}
 	bx lr
+	arm_func_end sub_800A334
 

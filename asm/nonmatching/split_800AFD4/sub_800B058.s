@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B058
-sub_800B058
 	movs r0, #1
 	lsls r0, r0, #0x1a
 	ldrh r2, [r0]
@@ -22,4 +21,5 @@ sub_800B058
 	strh r1, [r0]
 5
 	bx lr
+	thumb_func_end sub_800B058
 

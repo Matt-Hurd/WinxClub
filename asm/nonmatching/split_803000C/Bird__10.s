@@ -1,5 +1,4 @@
 	thumb_func_start Bird__10
-Bird__10
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -184,4 +183,5 @@ Bird__10
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__10
 

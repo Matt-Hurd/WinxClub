@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800FE56
-sub_800FE56
 	ldr r1, _0800FE70
 	ldrh r1, [r1, #4]
 	ldr r2, [r0, #8]
@@ -10,4 +9,5 @@ sub_800FE56
 	subs r0, r2, r0
 	subs r0, r1, r0
 	bx lr
+	thumb_func_end sub_800FE56
 

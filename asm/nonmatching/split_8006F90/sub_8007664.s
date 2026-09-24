@@ -1,5 +1,4 @@
 	arm_func_start sub_8007664
-sub_8007664
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -29,4 +28,5 @@ sub_8007664
 	LDMFD SP!, {r4, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8007664
 

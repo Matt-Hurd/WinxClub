@@ -18,7 +18,6 @@
 	IMPORT sub_80406C4
 
 	thumb_func_start sub_80235E4
-sub_80235E4
 	push {r4, r5, lr}
 	sub sp, #0x24
 	add r5, sp, #4
@@ -62,9 +61,9 @@ sub_80235E4
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80235E4
 
 	thumb_func_start sub_802363C
-sub_802363C
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r4, sp, #8
@@ -142,9 +141,9 @@ sub_802363C
 	ldrb r0, [r0]
 	strb r0, [r1, #3]
 	b %5
+	thumb_func_end sub_802363C
 
 	thumb_func_start sub_80236D4
-sub_80236D4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #8
@@ -276,9 +275,9 @@ sub_80236D4
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80236D4
 
 	non_word_aligned_thumb_func_start sub_80237DA
-sub_80237DA
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r0, _080239CC
 	movs r1, #0
@@ -333,9 +332,9 @@ sub_80237DA
 	ldr r1, [sp]
 	strb r0, [r1, #0xd]
 	b %16
+	thumb_func_end sub_80237DA
 
 	non_word_aligned_thumb_func_start sub_802383A
-sub_802383A
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #8
@@ -539,6 +538,7 @@ sub_802383A
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802383A
 	ALIGN
 _080239C8 DCDU 0xF0F0F022
 _080239CC DCDU gPlayerPointer

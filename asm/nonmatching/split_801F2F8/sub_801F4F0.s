@@ -1,5 +1,4 @@
 	thumb_func_start sub_801F4F0
-sub_801F4F0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x58
@@ -154,3 +153,4 @@ sub_801F4F0
 	movs r1, #0
 	bl sub_80401E4
 	b %18
+	thumb_func_end sub_801F4F0

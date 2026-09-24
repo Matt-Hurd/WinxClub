@@ -21,7 +21,6 @@
 	IMPORT __call_via_r1
 
 	thumb_func_start sub_8039DAC
-sub_8039DAC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r4, r0, #0
@@ -159,9 +158,9 @@ sub_8039DAC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8039DAC
 
 	non_word_aligned_thumb_func_start sub_8039EB6
-sub_8039EB6
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -356,6 +355,7 @@ loc_8039fac
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %8
+	thumb_func_end sub_8039EB6
 	ALIGN
 _0803A030 DCDU gUnknown_03003E98
 _0803A034 DCDU gUnknown_03003EA0

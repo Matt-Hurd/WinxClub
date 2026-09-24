@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Npc__40
-Npc__40
 	push {r4, r5, r6, r7, lr}
 	movs r2, #5
 	lsls r2, r2, #0xe
@@ -533,4 +532,5 @@ sub_80258D8
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end Npc__40
 

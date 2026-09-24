@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8025A32
-sub_8025A32
 	movs r7, #0x88
 	strh r7, [r0, #0xe]
 	movs r3, #0x89
@@ -462,4 +461,5 @@ sub_8025D02
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %44
+	thumb_func_end sub_8025A32
 

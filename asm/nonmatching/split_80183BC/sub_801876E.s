@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801876E
-sub_801876E
 	push {lr}
 	ldr r2, [r0]
 	ldr r3, [r1]
@@ -24,4 +23,5 @@ sub_801876E
 	add sp, #0xc
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801876E
 

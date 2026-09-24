@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F7A8
-sub_800F7A8
 	push {r4, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -24,4 +23,5 @@ sub_800F7A8
 	subs r1, r2, r1
 	adds r0, r1, r0
 	b %5
+	thumb_func_end sub_800F7A8
 

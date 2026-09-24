@@ -1,5 +1,4 @@
 	thumb_func_start sub_80401C0
-sub_80401C0
 	ldrh r2, [r0, #0x2a]
 	movs r3, #3
 	lsls r3, r3, #0xa
@@ -19,4 +18,5 @@ sub_80401C0
 1
 	bx lr
 	ALIGN
+	thumb_func_end sub_80401C0
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8025F7C
-sub_8025F7C
 	ldr r2, _0802600C
 	adds r3, r2, #1
 	strh r2, [r0, #0xe]
@@ -12,4 +11,5 @@ sub_8025F7C
 	strh r1, [r0, #0x1c]
 	strh r1, [r0, #0x18]
 	b %56
+	thumb_func_end sub_8025F7C
 

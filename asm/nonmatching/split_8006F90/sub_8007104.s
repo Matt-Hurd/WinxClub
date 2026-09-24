@@ -1,5 +1,4 @@
 	arm_func_start sub_8007104
-sub_8007104
 	STMFD SP!, {r4, r5, r6, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -379,4 +378,5 @@ jmpt_08007180
 	LDMFD SP!, {r4, r5, r6, lr}
 	mvn r0, #1
 	bx lr
+	arm_func_end sub_8007104
 

@@ -1,5 +1,4 @@
 	thumb_func_start Npc__3C
-Npc__3C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x58]
@@ -24,4 +23,5 @@ Npc__3C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__3C
 

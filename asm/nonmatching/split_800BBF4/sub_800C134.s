@@ -1,5 +1,4 @@
 	thumb_func_start sub_800C134
-sub_800C134
 	lsls r1, r1, #1
 	adds r2, r1, r0
 	adds r2, #0x80
@@ -25,4 +24,5 @@ sub_800C134
 46
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800C134
 

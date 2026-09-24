@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Npc__Intersect
-Npc__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -65,4 +64,5 @@ loc_80254e4
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end Npc__Intersect
 

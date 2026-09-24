@@ -1,5 +1,4 @@
 	thumb_func_start sub_8013C40
-sub_8013C40
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r6, [sp, #0x30]
@@ -168,4 +167,5 @@ loc_8013d14
 	movs r3, #0
 	strb r3, [r7, #0xc]
 	b %24
+	thumb_func_end sub_8013C40
 

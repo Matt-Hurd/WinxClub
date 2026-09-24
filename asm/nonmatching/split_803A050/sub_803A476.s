@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_803A476
-sub_803A476
 	movs r1, #0
 19
 	lsls r2, r1, #2
@@ -15,3 +14,4 @@ sub_803A476
 	blo %19
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_803A476

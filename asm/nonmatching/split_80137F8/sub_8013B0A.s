@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8013B0A
-sub_8013B0A
 	push {r3, lr}
 	ldrh r2, [r0, #0xe]
 	lsls r2, r2, #0x1f
@@ -40,3 +39,4 @@ sub_8013B0A
 	adds r1, r2, r1
 	bl __call_via_r1
 	b %23
+	thumb_func_end sub_8013B0A

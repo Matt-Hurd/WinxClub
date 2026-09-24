@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F1E8
-sub_800F1E8
 	push {r4}
 	movs r1, #0x11
 	lsls r1, r1, #0xb
@@ -30,4 +29,5 @@ sub_800F1E8
 	str r3, [r0, #0x34]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800F1E8
 

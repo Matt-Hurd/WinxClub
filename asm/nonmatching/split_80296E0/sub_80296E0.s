@@ -1,5 +1,4 @@
 	thumb_func_start sub_80296E0
-sub_80296E0
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #1
 	lsrs r1, r1, #0x1d
@@ -43,4 +42,5 @@ sub_80296E0
 4
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80296E0
 

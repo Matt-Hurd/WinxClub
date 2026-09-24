@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start PlayIntroLogo
-PlayIntroLogo
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #1]
@@ -107,4 +106,5 @@ PlayIntroLogo
 	adds r0, #1
 	strb r0, [r4]
 	b %6
+	thumb_func_end PlayIntroLogo
 

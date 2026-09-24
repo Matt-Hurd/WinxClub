@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B496
-sub_800B496
 	adds r2, r0, #0
 	ldr r0, _0800B6CC
 	ldr r1, [r0]
@@ -40,4 +39,5 @@ sub_800B496
 6
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800B496
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80259A4
-sub_80259A4
 	movs r3, #0xb1
 	lsls r3, r3, #2
 	strh r3, [r0, #0xe]
@@ -36,4 +35,5 @@ sub_80259A4
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_80259A4
 

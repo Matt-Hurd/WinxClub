@@ -1,5 +1,4 @@
 	arm_func_start sub_8006350
-sub_8006350
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	mov r0, r2
@@ -585,4 +584,5 @@ jmptb_080063C8
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mvn r2, #1
 	b sub_8007F18
+	arm_func_end sub_8006350
 

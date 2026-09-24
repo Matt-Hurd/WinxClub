@@ -1,5 +1,4 @@
 	thumb_func_start Boss__08
-Boss__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -13,4 +12,5 @@ Boss__08
 8
 	bl HostileCreature__08
 	b %7
+	thumb_func_end Boss__08
 

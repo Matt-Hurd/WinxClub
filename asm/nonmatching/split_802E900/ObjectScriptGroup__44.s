@@ -1,5 +1,4 @@
 	thumb_func_start ObjectScriptGroup__44
-ObjectScriptGroup__44
 	push {r4, r5, r6, r7, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -146,4 +145,5 @@ _0802EC30 DCDU gUnknown_03003EB8
 _0802EC34 DCDU gUnknown_03003478
 _0802EC38 DCDU gUnknown_03003EA0
 _0802EC3C DCDU gUnknown_0300345C
+	thumb_func_end ObjectScriptGroup__44
 

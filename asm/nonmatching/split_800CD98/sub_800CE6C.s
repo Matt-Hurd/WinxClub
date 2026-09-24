@@ -1,5 +1,4 @@
 	thumb_func_start sub_800CE6C
-sub_800CE6C
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r1, #0
 	ldrb r1, [r2, #3]
@@ -986,4 +985,5 @@ sub_800CE6C
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800CE6C
 

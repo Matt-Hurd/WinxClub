@@ -1,5 +1,4 @@
 	thumb_func_start HandleTeleportMenu
-HandleTeleportMenu
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x20
@@ -123,3 +122,4 @@ HandleTeleportMenu
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleTeleportMenu

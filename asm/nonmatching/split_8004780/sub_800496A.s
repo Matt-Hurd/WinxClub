@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800496A
-sub_800496A
 	push {r3, lr}
 	ldr r2, _08004B94
 	ldr r3, _08004B98
@@ -13,4 +12,5 @@ sub_800496A
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800496A
 

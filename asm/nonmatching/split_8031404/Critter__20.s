@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Critter__20
-Critter__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -38,3 +37,4 @@ Critter__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__20

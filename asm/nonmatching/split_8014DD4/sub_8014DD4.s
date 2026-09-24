@@ -1,5 +1,4 @@
 	thumb_func_start sub_8014DD4
-sub_8014DD4
 	push {r4, r5, r6, r7}
 	ldr r6, _08014EB0
 	ldr r4, _08014EAC
@@ -26,4 +25,5 @@ sub_8014DD4
 	blo %1
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_8014DD4
 

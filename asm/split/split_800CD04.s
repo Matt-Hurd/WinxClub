@@ -3,7 +3,6 @@
 
 
 	thumb_func_start sub_800CD04
-sub_800CD04
 	push {r4}
 	lsls r4, r2, #1
 	adds r0, r4, r0
@@ -22,9 +21,9 @@ sub_800CD04
 	str r0, [r1]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800CD04
 
 	thumb_func_start sub_800CD28
-sub_800CD28
 	ldr r1, [r1, #0x14]
 	ldr r2, _0800CD94
 	ldr r1, [r1]
@@ -49,9 +48,9 @@ sub_800CD28
 	adds r0, r0, r2
 	str r1, [r0, #0x18]
 	bx lr
+	thumb_func_end sub_800CD28
 
 	thumb_func_start sub_800CD58
-sub_800CD58
 	push {r4}
 	ldrh r2, [r1, #0x26]
 	ldr r1, [r1, #0x14]
@@ -79,6 +78,7 @@ sub_800CD58
 	str r1, [r0, #0x18]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800CD58
 	ALIGN
 _0800CD90 DCDU 0x00000FFF
 _0800CD94 DCDU 0x00001318

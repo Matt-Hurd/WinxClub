@@ -1,5 +1,4 @@
 	thumb_func_start Static2__Create
-Static2__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -38,4 +37,5 @@ Static2__Create
 	str r1, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Static2__Create
 

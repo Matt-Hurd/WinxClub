@@ -30,7 +30,6 @@
 
 
 	thumb_func_start sub_802D2E8
-sub_802D2E8
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -66,9 +65,9 @@ sub_802D2E8
 	str r0, [r4, #0x48]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end sub_802D2E8
 
 	non_word_aligned_thumb_func_start sub_802D32E
-sub_802D32E
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802D6C0
@@ -112,9 +111,9 @@ sub_802D32E
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802D32E
 
 	thumb_func_start sub_802D384
-sub_802D384
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	sub sp, #0xc
@@ -846,9 +845,9 @@ _0802D6E0 DCDU gUnknown_03003304
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802D384
 
 	thumb_func_start sub_802D920
-sub_802D920
 	push {r4, r5, r6, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -1367,9 +1366,9 @@ loc_802dbd6
 	mov r1, sp
 	bl sub_803FF24
 	b %50
+	thumb_func_end sub_802D920
 
 	thumb_func_start sub_802DD08
-sub_802DD08
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x2c
@@ -1467,6 +1466,7 @@ sub_802DD08
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802DD08
 	ALIGN
 _0802DDCC DCDU gUnknown_030032C0
 _0802DDD0 DCDU gUnknown_030032E8

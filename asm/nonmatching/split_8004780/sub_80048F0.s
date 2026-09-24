@@ -1,5 +1,4 @@
 	thumb_func_start sub_80048F0
-sub_80048F0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrh r0, [r0, #8]
@@ -28,4 +27,5 @@ sub_80048F0
 16
 	adds r0, r5, #0
 	b %14
+	thumb_func_end sub_80048F0
 

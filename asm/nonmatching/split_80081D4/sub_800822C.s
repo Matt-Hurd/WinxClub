@@ -1,5 +1,4 @@
 	arm_func_start sub_800822C
-sub_800822C
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, _08008AD8
@@ -14,4 +13,5 @@ sub_800822C
 	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_800822C
 

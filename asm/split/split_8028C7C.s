@@ -16,7 +16,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start MaybeHandleIngameCutscene
-MaybeHandleIngameCutscene
 	push {r4, lr}
 	bl GetEWRAMStart
 	adds r1, r0, #0
@@ -58,6 +57,7 @@ MaybeHandleIngameCutscene
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end MaybeHandleIngameCutscene
 	ALIGN
 _08028CDC DCDU gUnknown_030034F8
 _08028CE0 DCDU gUnknown_03003478

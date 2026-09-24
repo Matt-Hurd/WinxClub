@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004784
-sub_8004784
 	ldrh r3, [r0]
 	lsls r1, r1, #0x1a
 	lsrs r1, r1, #0x1a
@@ -14,4 +13,5 @@ sub_8004784
 	orrs r1, r2
 	strh r1, [r0]
 	bx lr
+	thumb_func_end sub_8004784
 

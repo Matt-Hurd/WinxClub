@@ -10,7 +10,12 @@
 	IMPORT __rt_entry
 	ENTRY
 
-	arm_func_start start
+; start cannot use arm_func_start: the ROM header it includes ends with its own
+; END, which closes an open FUNCTION and leaves the ENDFUNC unmatched. It is the
+; entry stub, never a decompilation target, so it gets no size.
+	ALIGN 2, 0
+	GLOBAL start
+	CODE32
 start
 	b %3
 	INCLUDE asm/rom_header.inc
@@ -43,7 +48,6 @@ _0800012C DCDU gUnknown_03007FA0
 _08000130 DCDU gbaMain
 
 	arm_func_start gbaMain
-gbaMain
 	add r8, pc, #0xC4
 	ldmia r8, {r0, r1}
 	add r0, r0, r8
@@ -100,6 +104,7 @@ gbaMain
 	stmhsia r4!, {r0, r6}
 	STRMI r7, [r4], #4
 	b %8
+	arm_func_end gbaMain
 	ALIGN
 _08000200 DCDU 0x00051578
 _08000204 DCDU 0x000515A8

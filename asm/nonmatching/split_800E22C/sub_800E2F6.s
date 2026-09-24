@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800E2F6
-sub_800E2F6
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _0800E4A8
@@ -210,3 +209,4 @@ sub_800E2F6
 	bl gUnknown_03000308
 	movs r0, #0
 	b %6
+	thumb_func_end sub_800E2F6

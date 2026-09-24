@@ -1,5 +1,4 @@
 	thumb_func_start sub_80250E4
-sub_80250E4
 	push {r4, r5, r6, lr}
 	ldr r1, _0802538C
 	adds r4, r0, #0
@@ -110,4 +109,5 @@ sub_80250E4
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80250E4
 

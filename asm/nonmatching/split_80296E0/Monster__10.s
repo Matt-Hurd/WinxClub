@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Monster__10
-Monster__10
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -524,4 +523,5 @@ loc_8029ab2
 	lsls r3, r3, #0x1c
 	adds r1, #1
 	strb r1, [r0, #0xa]
+	thumb_func_end Monster__10
 

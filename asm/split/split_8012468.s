@@ -6,7 +6,6 @@
 	IMPORT gUnknown_03002F48
 
 	thumb_func_start sub_8012468
-sub_8012468
 	push {r4, r5, r6, lr}
 	adds r4, r2, #0
 	ldr r2, [r0, #0x34]
@@ -54,9 +53,9 @@ sub_8012468
 	cmp r4, #0
 	bne %3
 	b %1
+	thumb_func_end sub_8012468
 
 	thumb_func_start sub_80124C8
-sub_80124C8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r0, #0
@@ -275,6 +274,7 @@ sub_80124C8
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80124C8
 	ALIGN
 _0801266C DCDU gUnknown_080503D6
 _08012670 DCDU 0x0000404A

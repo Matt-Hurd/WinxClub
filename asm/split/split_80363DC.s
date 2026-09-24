@@ -6,7 +6,6 @@
 	IMPORT m10__7DefaultFv
 
 	thumb_func_start WallObjectScriptGroup__40
-WallObjectScriptGroup__40
 	push {r4, r5, r6, r7}
 	adds r3, r1, #0
 	adds r1, r0, #0
@@ -262,9 +261,9 @@ loc_8036598
 	strb r0, [r2, #0xd]
 	strb r0, [r1, #8]
 	b %1
+	thumb_func_end WallObjectScriptGroup__40
 
 	thumb_func_start WallObjectScriptGroup__10
-WallObjectScriptGroup__10
 	push {r3, r4, r5, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -297,6 +296,7 @@ WallObjectScriptGroup__10
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObjectScriptGroup__10
 	ALIGN
 _080365F0 DCDU 0x0000026F
 _080365F4 DCDU 0x0000028E

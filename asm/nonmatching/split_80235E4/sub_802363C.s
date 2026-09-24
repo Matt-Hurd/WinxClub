@@ -1,5 +1,4 @@
 	thumb_func_start sub_802363C
-sub_802363C
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r4, sp, #8
@@ -77,4 +76,5 @@ sub_802363C
 	ldrb r0, [r0]
 	strb r0, [r1, #3]
 	b %5
+	thumb_func_end sub_802363C
 

@@ -1,5 +1,4 @@
 	thumb_func_start GenericObject__08
-GenericObject__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -44,3 +43,4 @@ GenericObject__08
 	adds r0, r4, #0
 	bl m08__7DefaultFv
 	b %23
+	thumb_func_end GenericObject__08

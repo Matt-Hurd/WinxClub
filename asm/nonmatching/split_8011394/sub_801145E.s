@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801145E
-sub_801145E
 	ldrh r2, [r1]
 	ldrh r1, [r1, #2]
 	lsls r2, r2, #0x1e
@@ -29,3 +28,4 @@ sub_801145E
 10
 	adds r0, r1, #0
 	bx lr
+	thumb_func_end sub_801145E

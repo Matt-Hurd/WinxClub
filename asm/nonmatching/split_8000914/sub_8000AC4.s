@@ -1,5 +1,4 @@
 	thumb_func_start sub_8000AC4
-sub_8000AC4
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r1, r5, #0
@@ -104,3 +103,4 @@ sub_8000AC4
 20
 	adds r0, r7, #0
 	b %14
+	thumb_func_end sub_8000AC4

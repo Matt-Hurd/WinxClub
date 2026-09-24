@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8036E66
-sub_8036E66
 	adds r1, r0, #0
 	ldr r0, _08037100
 	push {r4, r5}
@@ -83,4 +82,5 @@ sub_8036E66
 21
 	movs r0, #1
 	b %8
+	thumb_func_end sub_8036E66
 

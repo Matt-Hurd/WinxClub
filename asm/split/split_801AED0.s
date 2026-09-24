@@ -20,7 +20,6 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start HandleObjectivesScreen
-HandleObjectivesScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0xa8
@@ -281,6 +280,7 @@ HandleObjectivesScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleObjectivesScreen
 	ALIGN
 _0801B0EC DCDU sub_80143E0
 _0801B0F0 DCDU gUnknown_03003444

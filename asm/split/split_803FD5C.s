@@ -7,7 +7,6 @@
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_803FD5C
-sub_803FD5C
 	push {r4, r5, r6, r7}
 	adds r5, r1, #0
 	orrs r5, r2
@@ -55,9 +54,9 @@ sub_803FD5C
 	str r1, [r0, #0x38]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_803FD5C
 
 	thumb_func_start sub_803FDB8
-sub_803FDB8
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	add r6, sp, #0x28
@@ -153,6 +152,7 @@ sub_803FDB8
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803FDB8
 	ALIGN
 _0803FE74 DCDU gUnknown_03003EB4
 _0803FE78 DCDU REG_SOUNDCNT

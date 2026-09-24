@@ -9,15 +9,14 @@
 	IMPORT SetNextGlobalFunction
 
 	thumb_func_start sub_8017DC8
-sub_8017DC8
 	push {r3, lr}
 	bl FadeToBlack
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8017DC8
 
 	thumb_func_start sub_8017DD4
-sub_8017DD4
 	push {r3, lr}
 	add r0, pc, #0x54
 	bl maybeLoadOrRenderBgImage
@@ -25,9 +24,9 @@ sub_8017DD4
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8017DD4
 
 	non_word_aligned_thumb_func_start sub_8017DE6
-sub_8017DE6
 	push {r3, r4, r5, lr}
 	add r0, pc, #0x40
 	bl maybeLoadOrRenderBgImage
@@ -61,6 +60,7 @@ sub_8017DE6
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8017DE6
 	ALIGN
 _08017E2C DCDU 0x69544742
 _08017E30 DCDU 0x53656C74

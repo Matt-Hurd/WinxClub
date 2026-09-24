@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B1F6
-sub_800B1F6
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %7
@@ -72,4 +71,5 @@ sub_800B1F6
 	bl sub_800B154
 	adds r0, r4, #0
 	b %6
+	thumb_func_end sub_800B1F6
 

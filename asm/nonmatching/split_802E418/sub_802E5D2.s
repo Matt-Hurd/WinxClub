@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802E5D2
-sub_802E5D2
 	push {r3, r4, r5, r6, r7, lr}
 	str r1, [r0, #0x14]
 	adds r5, r0, #0
@@ -274,3 +273,4 @@ sub_802E5D2
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802E5D2

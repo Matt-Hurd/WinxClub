@@ -1,5 +1,4 @@
 	thumb_func_start sub_80123B4
-sub_80123B4
 	cmp r0, #0
 	beq %14
 	ldr r2, _08012460
@@ -28,4 +27,5 @@ sub_80123B4
 14
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80123B4
 

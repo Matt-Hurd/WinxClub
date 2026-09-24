@@ -1,5 +1,4 @@
 	thumb_func_start sub_8036BFC
-sub_8036BFC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08036CDC
@@ -18,4 +17,5 @@ sub_8036BFC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8036BFC
 

@@ -5,7 +5,6 @@
 	IMPORT __rt_udiv
 
 	thumb_func_start sub_8004BA8
-sub_8004BA8
 	push {r4, r5, r6}
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1e
@@ -73,23 +72,23 @@ sub_8004BA8
 6
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_8004BA8
 
 	non_word_aligned_thumb_func_start sub_8004C22
-sub_8004C22
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_8004C22
 
 	non_word_aligned_thumb_func_start nullsub_23
-nullsub_23
 	bx lr
+	thumb_func_end nullsub_23
 
 	thumb_func_start sub_8004C28
-sub_8004C28
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_8004C28
 
 	thumb_func_start sub_8004C2C
-sub_8004C2C
 	cmp r1, #0
 	beq %7
 	cmp r1, #1
@@ -104,9 +103,9 @@ sub_8004C2C
 	movs r0, #0
 	bx lr
 	ALIGN
+	thumb_func_end sub_8004C2C
 
 	arm_func_start sub_8004C44
-sub_8004C44
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	cmp r4, #0x10000
@@ -200,9 +199,9 @@ sub_8004C44
 	LDMFD SP!, {r3, r4, r5, lr}
 	subhi r0, r0, #1
 	bx lr
+	arm_func_end sub_8004C44
 
 	arm_func_start sub_8004D98
-sub_8004D98
 	mov r1, #1
 	mov r2, #0
 17
@@ -213,6 +212,7 @@ sub_8004D98
 	bgt %17
 	sub r0, r2, #1
 	bx lr
+	arm_func_end sub_8004D98
 	ALIGN
 _08004DBC DCDU gUnknown_080494B8
 _08004DC0 DCDU 0x78011C08

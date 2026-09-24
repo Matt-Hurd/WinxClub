@@ -30,7 +30,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start Anonymous4__Create
-Anonymous4__Create
 	push {r4, r5, r6, lr}
 	movs r5, #0x4b
 	lsls r5, r5, #3
@@ -174,9 +173,9 @@ Anonymous4__Create
 	blo %3
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Anonymous4__Create
 
 	thumb_func_start Anonymous4__ctor
-Anonymous4__ctor
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -215,9 +214,9 @@ Anonymous4__ctor
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end Anonymous4__ctor
 
 	non_word_aligned_thumb_func_start sub_801F906
-sub_801F906
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x7c]
@@ -903,6 +902,7 @@ _0801FBB4 DCDU gUnknown_0300346C
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801F906
 	ALIGN
 _0801FE7C DCDU gUnknown_03003458
 _0801FE80 DCDU gUnknown_0300346C

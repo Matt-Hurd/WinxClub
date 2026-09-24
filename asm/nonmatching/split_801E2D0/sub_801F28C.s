@@ -1,5 +1,4 @@
 	thumb_func_start sub_801F28C
-sub_801F28C
 	push {r4, r5}
 	ldm r1!, {r3, r4}
 	movs r1, #0x7c
@@ -53,3 +52,4 @@ sub_801F28C
 226
 	movs r0, #0
 	b %222
+	thumb_func_end sub_801F28C

@@ -28,7 +28,6 @@
 	IMPORT __call_via_r5
 
 	thumb_func_start sub_803B318
-sub_803B318
 	push {r4, lr}
 	adds r4, r0, #0
 	bl FadeToBlack
@@ -45,9 +44,9 @@ sub_803B318
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803B318
 
 	non_word_aligned_thumb_func_start sub_803B342
-sub_803B342
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	movs r0, #1
@@ -130,9 +129,9 @@ sub_803B342
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803B342
 
 	non_word_aligned_thumb_func_start HandlePostGameCredits
-HandlePostGameCredits
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x84
 	add r5, sp, #8
@@ -214,6 +213,7 @@ HandlePostGameCredits
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandlePostGameCredits
 	ALIGN
 _0803B4B8 DCDU 0x654D6742
 _0803B4BC DCDU 0x7243756E

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80142D0
-sub_80142D0
 	push {r4, r5, r6, r7, lr}
 	movs r1, #0
 	sub sp, #0x34
@@ -140,4 +139,5 @@ sub_80142D0
 	pop {r3}
 	bx r3
 	ALIGN
+	thumb_func_end sub_80142D0
 

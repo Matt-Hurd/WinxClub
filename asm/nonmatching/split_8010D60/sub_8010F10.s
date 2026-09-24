@@ -1,5 +1,4 @@
 	thumb_func_start sub_8010F10
-sub_8010F10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0x1b
@@ -69,4 +68,5 @@ sub_8010F10
 20
 	movs r0, #0
 	b %19
+	thumb_func_end sub_8010F10
 

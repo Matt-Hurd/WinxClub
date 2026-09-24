@@ -1,5 +1,4 @@
 	thumb_func_start sub_802F210
-sub_802F210
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -13,4 +12,5 @@ sub_802F210
 7
 	bl m08__7DefaultFv
 	b %6
+	thumb_func_end sub_802F210
 

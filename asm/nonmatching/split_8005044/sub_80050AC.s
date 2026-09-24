@@ -1,5 +1,4 @@
 	thumb_func_start sub_80050AC
-sub_80050AC
 	movs r1, #0
 	str r1, [r0, #4]
 	str r1, [r0]
@@ -10,4 +9,5 @@ sub_80050AC
 	str r1, [r0, #0xc]
 	str r2, [r0, #8]
 	bx lr
+	thumb_func_end sub_80050AC
 

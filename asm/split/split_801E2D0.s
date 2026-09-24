@@ -43,21 +43,20 @@
 	IMPORT sub_8040594
 
 	thumb_func_start Attack__7DefaultFv
-Attack__7DefaultFv
 	movs r0, #0
 	bx lr
+	thumb_func_end Attack__7DefaultFv
 
 	thumb_func_start DamagePlayer__7DefaultFv
-DamagePlayer__7DefaultFv
 	bx lr
+	thumb_func_end DamagePlayer__7DefaultFv
 
 	non_word_aligned_thumb_func_start PlayerIframe__7DefaultFv
-PlayerIframe__7DefaultFv
 	movs r0, #0
 	bx lr
+	thumb_func_end PlayerIframe__7DefaultFv
 
 	non_word_aligned_thumb_func_start Dying__7DefaultFv
-Dying__7DefaultFv
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -358,13 +357,13 @@ loc_801e466
 	movs r1, #0x7f
 	bl sub_80401C0
 	b %1
+	thumb_func_end Dying__7DefaultFv
 
 	thumb_func_start m40__7DefaultFv
-m40__7DefaultFv
 	bx lr
+	thumb_func_end m40__7DefaultFv
 
 	non_word_aligned_thumb_func_start Dead__7DefaultFv
-Dead__7DefaultFv
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	lsls r2, r2, #0x10
@@ -373,13 +372,13 @@ Dead__7DefaultFv
 	lsls r1, r1, #0x10
 	str r1, [r0, #0x5c]
 	bx lr
+	thumb_func_end Dead__7DefaultFv
 
 	non_word_aligned_thumb_func_start m44__7DefaultFv
-m44__7DefaultFv
 	bx lr
+	thumb_func_end m44__7DefaultFv
 
 	thumb_func_start sub_801E4D0
-sub_801E4D0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0801E764
@@ -719,10 +718,10 @@ sub_801E4D0
 	ldr r6, [r6, #4]
 	cmp r6, r5
 	beq %74
+	thumb_func_end sub_801E4D0
 
 
 	non_word_aligned_thumb_func_start sub_801E756
-sub_801E756
 	adds r3, #1
 	cmp r3, #5
 	b %73
@@ -763,9 +762,9 @@ _0801E770 DCDU 0x00000000
 77
 	str r1, [r4, #0x34]
 	b %44
+	thumb_func_end sub_801E756
 
 	non_word_aligned_thumb_func_start m0C__7DefaultFv
-m0C__7DefaultFv
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -1334,10 +1333,10 @@ _0801EBA0 DCDU sub_802E4AA
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end m0C__7DefaultFv
 
 
 	non_word_aligned_thumb_func_start m10__7DefaultFv
-m10__7DefaultFv
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -1975,9 +1974,9 @@ loc_801eff2
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end m10__7DefaultFv
 
 	thumb_func_start m14__7DefaultFv
-m14__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -2184,9 +2183,9 @@ loc_801f1be
 	orrs r0, r5
 	str r0, [r4, #0x10]
 	b %198
+	thumb_func_end m14__7DefaultFv
 
 	non_word_aligned_thumb_func_start m3C__7DefaultFv
-m3C__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -2203,13 +2202,13 @@ m3C__7DefaultFv
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end m3C__7DefaultFv
 
 	thumb_func_start m38__7DefaultFv
-m38__7DefaultFv
 	bx lr
+	thumb_func_end m38__7DefaultFv
 
 	non_word_aligned_thumb_func_start Intersect__7DefaultFv
-Intersect__7DefaultFv
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #1
 	lsrs r1, r1, #1
@@ -2218,15 +2217,15 @@ Intersect__7DefaultFv
 	str r1, [r0, #0x34]
 	movs r0, #0
 	bx lr
+	thumb_func_end Intersect__7DefaultFv
 
 	non_word_aligned_thumb_func_start TakeDamage__7DefaultFv
-TakeDamage__7DefaultFv
 	movs r1, #0
 	str r1, [r0, #0x78]
 	bx lr
+	thumb_func_end TakeDamage__7DefaultFv
 
 	thumb_func_start sub_801F28C
-sub_801F28C
 	push {r4, r5}
 	ldm r1!, {r3, r4}
 	movs r1, #0x7c
@@ -2280,6 +2279,7 @@ sub_801F28C
 226
 	movs r0, #0
 	b %222
+	thumb_func_end sub_801F28C
 	ALIGN
 _0801F2EC DCDU gUnknown_03003454
 _0801F2F0 DCDU gUnknown_0300345C

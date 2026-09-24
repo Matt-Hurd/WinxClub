@@ -11,7 +11,6 @@
 	IMPORT __call_via_r1
 
 	thumb_func_start Monster__Intersect
-Monster__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -178,9 +177,9 @@ loc_8030fd0
 	str r7, [r4, #0x34]
 	movs r0, #1
 	b %2
+	thumb_func_end Monster__Intersect
 
 	thumb_func_start Monster_TakeDamage
-Monster_TakeDamage
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -206,9 +205,9 @@ Monster_TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end Monster_TakeDamage
 
 	non_word_aligned_thumb_func_start Monster__50
-Monster__50
 	ldr r1, _08031088
 	push {r3, lr}
 	ldr r1, [r1]
@@ -228,6 +227,7 @@ Monster__50
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Monster__50
 	ALIGN
 _0803107C DCDU gUnknown_03003458
 _08031080 DCDU gUnknown_0300345C

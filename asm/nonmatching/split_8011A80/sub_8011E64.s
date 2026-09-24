@@ -1,5 +1,4 @@
 	thumb_func_start sub_8011E64
-sub_8011E64
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	ldrh r5, [r2, #4]
 	ldrh r4, [r2, #6]
@@ -90,4 +89,5 @@ sub_8011E64
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8011E64
 

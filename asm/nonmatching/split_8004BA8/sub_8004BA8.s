@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004BA8
-sub_8004BA8
 	push {r4, r5, r6}
 	ldr r2, [r0, #0x14]
 	lsls r2, r2, #0x1e
@@ -67,4 +66,5 @@ sub_8004BA8
 6
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_8004BA8
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_801DB90
-sub_801DB90
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r5, [r1]
 	adds r4, r0, #0
@@ -193,3 +192,4 @@ sub_801DB90
 52
 	str r7, [r4, #0x78]
 	b %51
+	thumb_func_end sub_801DB90

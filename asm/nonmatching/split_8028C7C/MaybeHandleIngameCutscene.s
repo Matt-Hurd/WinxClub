@@ -1,5 +1,4 @@
 	thumb_func_start MaybeHandleIngameCutscene
-MaybeHandleIngameCutscene
 	push {r4, lr}
 	bl GetEWRAMStart
 	adds r1, r0, #0
@@ -41,3 +40,4 @@ MaybeHandleIngameCutscene
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end MaybeHandleIngameCutscene

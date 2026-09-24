@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800F2E2
-sub_800F2E2
 	push {r4, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -25,4 +24,5 @@ sub_800F2E2
 	subs r1, r2, r1
 	adds r0, r1, r0
 	b %9
+	thumb_func_end sub_800F2E2
 

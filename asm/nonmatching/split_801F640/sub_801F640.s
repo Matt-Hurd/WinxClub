@@ -1,5 +1,4 @@
 	thumb_func_start sub_801F640
-sub_801F640
 	ldr r0, [r0, #0x2c]
 	cmp r0, #0
 	beq %1
@@ -15,4 +14,5 @@ sub_801F640
 	str r1, [r0]
 1
 	bx lr
+	thumb_func_end sub_801F640
 

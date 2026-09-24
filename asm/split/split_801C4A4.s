@@ -25,7 +25,6 @@
 	IMPORT sub_803FF24
 
 	thumb_func_start sub_801C4A4
-sub_801C4A4
 	push {r4, r5, r6, r7, lr}
 	mov lr, r1
 	lsls r1, r1, #2
@@ -469,9 +468,9 @@ sub_801C4A4
 	movs r6, #0
 	str r6, [r0, #0xc]
 	b %11
+	thumb_func_end sub_801C4A4
 
 	non_word_aligned_thumb_func_start MaybeTickAllGameObjs
-MaybeTickAllGameObjs
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x29
@@ -764,9 +763,9 @@ MaybeTickAllGameObjs
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end MaybeTickAllGameObjs
 
 	non_word_aligned_thumb_func_start sub_801CA1E
-sub_801CA1E
 	push {r4, r5, r6, r7, lr}
 	adds r2, r0, #0
 	movs r0, #5
@@ -848,9 +847,9 @@ sub_801CA1E
 	cmp r0, r1
 	bhi %73
 	b %75
+	thumb_func_end sub_801CA1E
 
 	thumb_func_start sub_801CAC0
-sub_801CAC0
 	movs r2, #5
 	lsls r2, r2, #8
 	adds r2, r0, r2
@@ -890,6 +889,7 @@ sub_801CAC0
 79
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_801CAC0
 	ALIGN
 _0801CB08 DCDU gUnknown_03003454
 _0801CB0C DCDU gUnknown_03003450

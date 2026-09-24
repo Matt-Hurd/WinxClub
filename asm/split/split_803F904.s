@@ -8,7 +8,6 @@
 	IMPORT __16__rt_udiv
 
 	thumb_func_start sub_803F904
-sub_803F904
 	push {r4}
 	cmp r3, #0xff
 	bne %1
@@ -28,9 +27,9 @@ sub_803F904
 	adds r0, r0, r1
 	bx lr
 	ALIGN
+	thumb_func_end sub_803F904
 
 	thumb_func_start sub_803F928
-sub_803F928
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -112,9 +111,9 @@ sub_803F928
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F928
 
 	thumb_func_start sub_803F9C4
-sub_803F9C4
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	add r7, sp, #0x2c
@@ -169,6 +168,7 @@ sub_803F9C4
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F9C4
 	ALIGN
 _0803FA38 DCDU 0x0000FFFF
 	END

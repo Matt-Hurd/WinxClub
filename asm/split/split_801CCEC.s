@@ -58,7 +58,6 @@
 	IMPORT sub_80406C4
 
 	thumb_func_start sub_801CCEC
-sub_801CCEC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _0801D0D4
@@ -137,9 +136,9 @@ sub_801CCEC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CCEC
 
 	non_word_aligned_thumb_func_start sub_801CD96
-sub_801CD96
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x4d
@@ -290,9 +289,9 @@ sub_801CD96
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CD96
 
 	non_word_aligned_thumb_func_start sub_801CEC6
-sub_801CEC6
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x4d
@@ -806,9 +805,9 @@ _0801D114 DCDU gPlayerEntity
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CEC6
 
 	thumb_func_start HandleLoadGameScreen
-HandleLoadGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _0801D53C
 	ldr r4, _0801D540
@@ -1029,4 +1028,5 @@ _0801D558 DCDU 0x000009CC
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %35
+	thumb_func_end HandleLoadGameScreen
 	END

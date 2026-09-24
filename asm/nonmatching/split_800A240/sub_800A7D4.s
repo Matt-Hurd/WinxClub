@@ -1,5 +1,4 @@
 	arm_func_start sub_800A7D4
-sub_800A7D4
 	STMFD SP!, {r4, r5, r6, lr}
 	mov lr, #1
 	mov r5, #1
@@ -127,4 +126,5 @@ sub_800A7D4
 	STRB r6, [r1], #1
 	bne %48
 	b %38
+	arm_func_end sub_800A7D4
 

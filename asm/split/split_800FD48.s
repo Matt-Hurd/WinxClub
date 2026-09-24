@@ -7,7 +7,6 @@
 	IMPORT __16__rt_udiv
 
 	thumb_func_start sub_800FD48
-sub_800FD48
 	ldr r1, _0800FE6C
 	push {r3, lr}
 	ldrh r2, [r1, #0xa]
@@ -53,9 +52,9 @@ sub_800FD48
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FD48
 
 	thumb_func_start sub_800FDA4
-sub_800FDA4
 	ldr r0, _0800FE6C
 	ldrh r1, [r0, #0xa]
 	movs r2, #0x1d
@@ -77,9 +76,9 @@ sub_800FDA4
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	bx lr
+	thumb_func_end sub_800FDA4
 
 	non_word_aligned_thumb_func_start sub_800FDCE
-sub_800FDCE
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, _0800FE78
@@ -133,9 +132,9 @@ sub_800FDCE
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FDCE
 
 	non_word_aligned_thumb_func_start sub_800FE3A
-sub_800FE3A
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -148,9 +147,9 @@ sub_800FE3A
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FE3A
 
 	non_word_aligned_thumb_func_start sub_800FE56
-sub_800FE56
 	ldr r1, _0800FE70
 	ldrh r1, [r1, #4]
 	ldr r2, [r0, #8]
@@ -161,10 +160,11 @@ sub_800FE56
 	subs r0, r2, r0
 	subs r0, r1, r0
 	bx lr
+	thumb_func_end sub_800FE56
 
 	non_word_aligned_thumb_func_start nullsub_6
-nullsub_6
 	bx lr
+	thumb_func_end nullsub_6
 	ALIGN
 _0800FE6C DCDU REG_DMA1
 _0800FE70 DCDU REG_TM0CNT

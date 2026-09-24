@@ -1,5 +1,4 @@
 	arm_func_start sub_8004C44
-sub_8004C44
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	cmp r4, #0x10000
@@ -93,4 +92,5 @@ sub_8004C44
 	LDMFD SP!, {r3, r4, r5, lr}
 	subhi r0, r0, #1
 	bx lr
+	arm_func_end sub_8004C44
 

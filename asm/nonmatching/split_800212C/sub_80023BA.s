@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80023BA
-sub_80023BA
 	push {r4, lr}
 	movs r2, #0x13
 	lsls r2, r2, #7
@@ -22,3 +21,4 @@ sub_80023BA
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80023BA

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8028C2E
-sub_8028C2E
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #4
@@ -9,4 +8,5 @@ sub_8028C2E
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8028C2E
 

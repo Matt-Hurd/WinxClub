@@ -1,5 +1,4 @@
 	thumb_func_start sub_80302CC
-sub_80302CC
 	push {r3, r4, r5, r6, r7, lr}
 	mov ip, r1
 	cmp r1, #0
@@ -65,4 +64,5 @@ sub_80302CC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80302CC
 

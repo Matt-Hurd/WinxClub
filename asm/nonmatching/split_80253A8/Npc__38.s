@@ -1,5 +1,4 @@
 	thumb_func_start Npc__38
-Npc__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -15,4 +14,5 @@ Npc__38
 	add sp, #0xc
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__38
 

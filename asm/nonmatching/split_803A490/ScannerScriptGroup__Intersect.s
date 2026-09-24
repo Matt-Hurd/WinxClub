@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start ScannerScriptGroup__Intersect
-ScannerScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	bl TakeDamage__7DefaultFv
@@ -13,4 +12,5 @@ ScannerScriptGroup__Intersect
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end ScannerScriptGroup__Intersect
 

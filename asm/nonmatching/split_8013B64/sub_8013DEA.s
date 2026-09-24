@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8013DEA
-sub_8013DEA
 	push {r3, r4, r5, r6, r7, lr}
 	movs r6, #3
 	movs r5, #0
@@ -37,4 +36,5 @@ sub_8013DEA
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8013DEA
 

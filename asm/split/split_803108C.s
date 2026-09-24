@@ -25,7 +25,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start Critter__Create
-Critter__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -71,9 +70,9 @@ Critter__Create
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Critter__Create
 
 	non_word_aligned_thumb_func_start Critter__ctor
-Critter__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080313D4
@@ -90,25 +89,25 @@ Critter__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__ctor
 
 	thumb_func_start Critter__04
-Critter__04
 	push {r3, lr}
 	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__04
 
 	thumb_func_start Critter__08
-Critter__08
 	push {r3, lr}
 	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__08
 
 	thumb_func_start Critter__38
-Critter__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -146,9 +145,9 @@ Critter__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__38
 
 	thumb_func_start Critter__40
-Critter__40
 	cmp r1, #0x26
 	bne %5
 	movs r1, #0xf1
@@ -166,9 +165,9 @@ Critter__40
 	str r1, [r0, #0x70]
 5
 	bx lr
+	thumb_func_end Critter__40
 
 	thumb_func_start Critter__44
-Critter__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -467,6 +466,7 @@ Critter__44
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__44
 	ALIGN
 _080313D4 DCDU __VTABLE__329Critter
 _080313D8 DCDU 0xF000FFFF

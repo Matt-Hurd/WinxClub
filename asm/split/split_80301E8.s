@@ -35,7 +35,6 @@
 	IMPORT sub_803F9C4
 
 	thumb_func_start sub_80301E8
-sub_80301E8
 	push {r4, r5, r6}
 	ldr r1, [r0, #0xc]
 	movs r3, #0x20
@@ -86,9 +85,9 @@ sub_80301E8
 	adds r0, #8
 	stm r0!, {r1, r3}
 	b %1
+	thumb_func_end sub_80301E8
 
 	thumb_func_start sub_8030244
-sub_8030244
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	ldr r0, _08030594
@@ -154,9 +153,9 @@ sub_8030244
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %9
+	thumb_func_end sub_8030244
 
 	thumb_func_start sub_80302CC
-sub_80302CC
 	push {r3, r4, r5, r6, r7, lr}
 	mov ip, r1
 	cmp r1, #0
@@ -222,9 +221,9 @@ sub_80302CC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80302CC
 
 	non_word_aligned_thumb_func_start sub_8030346
-sub_8030346
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r0, sp, #0x10
@@ -511,6 +510,7 @@ sub_8030346
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8030346
 	ALIGN
 _08030594 DCDU gUnknown_0300345C
 _08030598 DCDU gUnknown_03003460

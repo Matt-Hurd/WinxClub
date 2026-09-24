@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8037642
-sub_8037642
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08037724
@@ -18,4 +17,5 @@ sub_8037642
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8037642
 

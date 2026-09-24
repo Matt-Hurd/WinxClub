@@ -1,5 +1,4 @@
 	thumb_func_start sub_802EA80
-sub_802EA80
 	push {r4}
 	ldr r1, [r1]
 	adds r0, #0xa0
@@ -30,4 +29,5 @@ sub_802EA80
 	movs r1, #0
 	strh r1, [r0, #6]
 	b %8
+	thumb_func_end sub_802EA80
 

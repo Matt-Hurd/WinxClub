@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800C482
-sub_800C482
 	push {r4, r5}
 	movs r4, #0xc1
 	adds r2, r0, #0
@@ -58,4 +57,5 @@ sub_800C482
 	adds r2, #1
 	strb r2, [r1, #0xd]
 	b %68
+	thumb_func_end sub_800C482
 

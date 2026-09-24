@@ -28,7 +28,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_8017130
-sub_8017130
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrb r4, [r2]
@@ -138,9 +137,9 @@ loc_80171a8
 27
 	movs r0, #1
 	b %22
+	thumb_func_end sub_8017130
 
 	non_word_aligned_thumb_func_start maybeGameObjFactory
-maybeGameObjFactory
 	subs r0, #3
 	cmp r0, #0x12
 	push {r4, lr}
@@ -450,6 +449,7 @@ loc_8017400
 66
 	movs r0, #0
 	b %48
+	thumb_func_end maybeGameObjFactory
 	ALIGN
 _08017424 DCDU gUnknown_03003E98
 _08017428 DCDU gUnknown_0300345C

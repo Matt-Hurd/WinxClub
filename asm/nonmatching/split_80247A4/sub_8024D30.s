@@ -1,5 +1,4 @@
 	thumb_func_start sub_8024D30
-sub_8024D30
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r4, _08024E38
@@ -124,3 +123,4 @@ sub_8024D30
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8024D30

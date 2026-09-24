@@ -1,5 +1,4 @@
 	thumb_func_start sub_801B56C
-sub_801B56C
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0x16
 	ldr r6, _0801B87C
@@ -850,3 +849,4 @@ _0801B8B8 DCDU REG_BG0CNT
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801B56C

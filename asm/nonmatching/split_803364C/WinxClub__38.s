@@ -1,5 +1,4 @@
 	thumb_func_start WinxClub__38
-WinxClub__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -15,4 +14,5 @@ WinxClub__38
 	add sp, #0xc
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__38
 

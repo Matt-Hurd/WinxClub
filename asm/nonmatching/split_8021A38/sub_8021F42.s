@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8021F42
-sub_8021F42
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -319,3 +318,4 @@ loc_802217a
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %40
+	thumb_func_end sub_8021F42

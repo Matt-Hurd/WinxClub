@@ -1,5 +1,4 @@
 	thumb_func_start sub_8000C58
-sub_8000C58
 	movs r1, #0
 1
 	ldrb r2, [r0, r1]
@@ -13,4 +12,5 @@ sub_8000C58
 	blo %1
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_8000C58
 

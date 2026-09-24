@@ -1,5 +1,4 @@
 	thumb_func_start Bird__40
-Bird__40
 	adds r2, r1, #0
 	adds r1, r0, #0
 	movs r3, #1
@@ -54,4 +53,5 @@ Bird__40
 	strh r2, [r1, #0x14]
 	str r3, [r0, #0x70]
 	bx lr
+	thumb_func_end Bird__40
 

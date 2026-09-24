@@ -1,5 +1,4 @@
 	thumb_func_start WinxClub__Create
-WinxClub__Create
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne %2
@@ -75,4 +74,5 @@ WinxClub__Create
 	str r0, [r5, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end WinxClub__Create
 

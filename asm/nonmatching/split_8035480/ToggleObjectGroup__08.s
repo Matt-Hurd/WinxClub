@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start ToggleObjectGroup__08
-ToggleObjectGroup__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -39,4 +38,5 @@ ToggleObjectGroup__08
 	adds r0, r4, #0
 	bl m08__7DefaultFv
 	b %24
+	thumb_func_end ToggleObjectGroup__08
 

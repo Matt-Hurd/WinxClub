@@ -28,7 +28,6 @@
 	IMPORT sub_803FC14
 
 	thumb_func_start ScannerScriptGroup__60
-ScannerScriptGroup__60
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r4, r0, #0
@@ -165,9 +164,9 @@ ScannerScriptGroup__60
 	ldr r0, [r0]
 	bl sub_80179BE
 	b %3
+	thumb_func_end ScannerScriptGroup__60
 
 	non_word_aligned_thumb_func_start ScannerScriptGroup__38
-ScannerScriptGroup__38
 	adds r2, r0, #0
 	adds r2, #0x80
 	push {r4, r5, r6}
@@ -218,9 +217,9 @@ ScannerScriptGroup__38
 11
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end ScannerScriptGroup__38
 
 	thumb_func_start ScannerScriptGroup__10
-ScannerScriptGroup__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -839,9 +838,9 @@ _0803A910 DCDU gUnknown_0300346C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end ScannerScriptGroup__10
 
 	non_word_aligned_thumb_func_start ScannerScriptGroup__Intersect
-ScannerScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	bl TakeDamage__7DefaultFv
@@ -855,9 +854,9 @@ ScannerScriptGroup__Intersect
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end ScannerScriptGroup__Intersect
 
 	non_word_aligned_thumb_func_start ScannerScriptGroup__20
-ScannerScriptGroup__20
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl HostileCreature__20
@@ -932,14 +931,15 @@ ScannerScriptGroup__20
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end ScannerScriptGroup__20
 
 	non_word_aligned_thumb_func_start ScannerScriptGroup__StartAttack
-ScannerScriptGroup__StartAttack
 	bx lr
+	thumb_func_end ScannerScriptGroup__StartAttack
 
 	thumb_func_start ScannerScriptGroup__StartAttack2
-ScannerScriptGroup__StartAttack2
 	bx lr
+	thumb_func_end ScannerScriptGroup__StartAttack2
 	ALIGN
 _0803AB78 DCDU gUnknown_03003458
 _0803AB7C DCDU gUnknown_03003EB8

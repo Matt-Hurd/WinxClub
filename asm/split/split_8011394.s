@@ -8,7 +8,6 @@
 	IMPORT sub_80405D8
 
 	thumb_func_start sub_8011394
-sub_8011394
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _08011494
@@ -114,9 +113,9 @@ sub_8011394
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8011394
 
 	non_word_aligned_thumb_func_start sub_801145E
-sub_801145E
 	ldrh r2, [r1]
 	ldrh r1, [r1, #2]
 	lsls r2, r2, #0x1e
@@ -146,6 +145,7 @@ sub_801145E
 10
 	adds r0, r1, #0
 	bx lr
+	thumb_func_end sub_801145E
 	ALIGN
 _08011494 DCDU gUnknown_03003E98
 _08011498 DCDU 0x00011760

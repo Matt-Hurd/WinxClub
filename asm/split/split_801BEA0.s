@@ -20,7 +20,6 @@
 	IMPORT sub_803FEF8
 
 	thumb_func_start gameExit
-gameExit
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801BBE0
@@ -29,13 +28,13 @@ gameExit
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end gameExit
 
 	thumb_func_start nullsub_47
-nullsub_47
 	bx lr
+	thumb_func_end nullsub_47
 
 	non_word_aligned_thumb_func_start sub_801BEB6
-sub_801BEB6
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	adds r6, r0, #0
@@ -457,6 +456,7 @@ sub_801BEB6
 	orrs r1, r4
 	str r1, [r0]
 	b %20
+	thumb_func_end sub_801BEB6
 	ALIGN
 _0801C1F0 DCDU 0x000003E7
 _0801C1F4 DCDU gUnknown_03003D20

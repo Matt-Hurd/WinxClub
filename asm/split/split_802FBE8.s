@@ -26,7 +26,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_802FBE8
-sub_802FBE8
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -65,9 +64,9 @@ sub_802FBE8
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802FBE8
 
 	thumb_func_start Bird__Create
-Bird__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %3
@@ -107,9 +106,9 @@ Bird__Create
 	strb r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %2
+	thumb_func_end Bird__Create
 
 	non_word_aligned_thumb_func_start Bird__ctor
-Bird__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802FFD8
@@ -126,25 +125,25 @@ Bird__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__ctor
 
 	thumb_func_start Bird__04
-Bird__04
 	push {r3, lr}
 	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__04
 
 	thumb_func_start Bird__08
-Bird__08
 	push {r3, lr}
 	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__08
 
 	thumb_func_start Bird__38
-Bird__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -182,9 +181,9 @@ Bird__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__38
 
 	thumb_func_start Bird__40
-Bird__40
 	adds r2, r1, #0
 	adds r1, r0, #0
 	movs r3, #1
@@ -239,9 +238,9 @@ Bird__40
 	strh r2, [r1, #0x14]
 	str r3, [r0, #0x70]
 	bx lr
+	thumb_func_end Bird__40
 
 	non_word_aligned_thumb_func_start Bird__44
-Bird__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r7, #0x80
@@ -553,6 +552,7 @@ Bird__44
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__44
 	ALIGN
 _0802FFD8 DCDU __VTABLE__307Bird
 _0802FFDC DCDU 0xF000FFFF

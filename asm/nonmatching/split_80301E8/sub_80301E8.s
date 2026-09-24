@@ -1,5 +1,4 @@
 	thumb_func_start sub_80301E8
-sub_80301E8
 	push {r4, r5, r6}
 	ldr r1, [r0, #0xc]
 	movs r3, #0x20
@@ -50,4 +49,5 @@ sub_80301E8
 	adds r0, #8
 	stm r0!, {r1, r3}
 	b %1
+	thumb_func_end sub_80301E8
 

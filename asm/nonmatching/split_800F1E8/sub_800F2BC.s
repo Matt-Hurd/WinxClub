@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F2BC
-sub_800F2BC
 	push {r3, lr}
 	ldr r1, [r0, #0x74]
 	cmp r1, #0
@@ -19,4 +18,5 @@ sub_800F2BC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F2BC
 

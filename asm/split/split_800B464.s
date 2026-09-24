@@ -27,7 +27,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B464
-sub_800B464
 	adds r1, r0, #0
 	ldr r0, _0800B6CC
 	ldr r0, [r0]
@@ -56,9 +55,9 @@ sub_800B464
 	bics r1, r2
 	str r1, [r0]
 	bx lr
+	thumb_func_end sub_800B464
 
 	non_word_aligned_thumb_func_start sub_800B496
-sub_800B496
 	adds r2, r0, #0
 	ldr r0, _0800B6CC
 	ldr r1, [r0]
@@ -99,9 +98,9 @@ sub_800B496
 6
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800B496
 
 	thumb_func_start sub_800B4E0
-sub_800B4E0
 	push {r3, lr}
 	ldr r1, _0800B6D0
 	ldr r0, _0800B6D4
@@ -109,9 +108,9 @@ sub_800B4E0
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B4E0
 
 	thumb_func_start sub_800B4F0
-sub_800B4F0
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %8
@@ -155,17 +154,17 @@ sub_800B4F0
 	bl sub_80114B0
 	adds r0, r4, #0
 	b %7
+	thumb_func_end sub_800B4F0
 
 	thumb_func_start sub_800B548
-sub_800B548
 	push {r3, lr}
 	bl sub_801175C
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B548
 
 	thumb_func_start sub_800B554
-sub_800B554
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, _0800B6DC
@@ -195,9 +194,9 @@ sub_800B554
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B554
 
 	thumb_func_start sub_800B590
-sub_800B590
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -244,9 +243,9 @@ sub_800B590
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B590
 
 	non_word_aligned_thumb_func_start sub_800B5EE
-sub_800B5EE
 	adds r0, r1, #0
 	adds r1, r2, #0
 	push {r3, lr}
@@ -255,86 +254,86 @@ sub_800B5EE
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B5EE
 
 	thumb_func_start sub_800B600
-sub_800B600
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_80115EC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B600
 
 	non_word_aligned_thumb_func_start sub_800B60E
-sub_800B60E
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8011596
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B60E
 
 	thumb_func_start sub_800B61C
-sub_800B61C
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8011898
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B61C
 
 	non_word_aligned_thumb_func_start sub_800B62A
-sub_800B62A
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_801196A
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B62A
 
 	thumb_func_start sub_800B638
-sub_800B638
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_80117B0
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B638
 
 	non_word_aligned_thumb_func_start sub_800B646
-sub_800B646
 	push {r3, lr}
 	bl sub_801197C
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B646
 
 	non_word_aligned_thumb_func_start sub_800B652
-sub_800B652
 	push {r3, lr}
 	bl sub_8011562
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B652
 
 	non_word_aligned_thumb_func_start sub_800B65E
-sub_800B65E
 	push {r3, lr}
 	bl sub_8011A80
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B65E
 
 	non_word_aligned_thumb_func_start sub_800B66A
-sub_800B66A
 	push {r3, lr}
 	bl sub_80117A4
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B66A
 
 	non_word_aligned_thumb_func_start sub_800B676
-sub_800B676
 	push {r3, lr}
 	adds r3, r0, #0
 	adds r0, r1, #0
@@ -344,18 +343,18 @@ sub_800B676
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B676
 
 	non_word_aligned_thumb_func_start sub_800B68A
-sub_800B68A
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_8011B22
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B68A
 
 	thumb_func_start sub_800B698
-sub_800B698
 	push {r3, lr}
 	str r1, [r0, #0xc]
 	adds r0, r1, #0
@@ -363,14 +362,14 @@ sub_800B698
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B698
 
 	thumb_func_start sub_800B6A8
-sub_800B6A8
 	ldr r0, [r0, #0xc]
 	bx lr
+	thumb_func_end sub_800B6A8
 
 	thumb_func_start sub_800B6AC
-sub_800B6AC
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80116D4
@@ -379,14 +378,15 @@ sub_800B6AC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B6AC
 
 	non_word_aligned_thumb_func_start sub_800B6BE
-sub_800B6BE
 	push {r3, lr}
 	bl sub_8011D56
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B6BE
 	ALIGN
 _0800B6CC DCDU gUnknown_03003E94
 _0800B6D0 DCDU sub_800B464

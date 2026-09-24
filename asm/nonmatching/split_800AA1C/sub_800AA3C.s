@@ -1,5 +1,4 @@
 	arm_func_start sub_800AA3C
-sub_800AA3C
 	mov r1, #1
 	add r3, r0, r2, lsl #2
 	STR r1, [r3, #0x58]
@@ -64,4 +63,5 @@ jmpt_0800AA74
 9
 	mov r0, #0
 	bx lr
+	arm_func_end sub_800AA3C
 

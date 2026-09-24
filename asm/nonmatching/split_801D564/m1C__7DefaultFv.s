@@ -1,5 +1,4 @@
 	thumb_func_start m1C__7DefaultFv
-m1C__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -43,4 +42,5 @@ m1C__7DefaultFv
 	bx r3
 
 	EXPORT __dt__7DefaultFv
+	thumb_func_end m1C__7DefaultFv
 

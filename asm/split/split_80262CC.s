@@ -7,7 +7,6 @@
 	IMPORT rand
 
 	thumb_func_start GenericObject__10
-GenericObject__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrh r0, [r0, #0x1a]
@@ -87,9 +86,9 @@ GenericObject__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end GenericObject__10
 
 	thumb_func_start GenericObject__40
-GenericObject__40
 	subs r1, #0x42
 	cmp r1, #0x14
 	push {r4, lr}
@@ -755,6 +754,7 @@ loc_802682c
 	movs r1, #0x14
 	strb r1, [r0, #0xc]
 	b %5
+	thumb_func_end GenericObject__40
 	ALIGN
 _08026874 DCDU 0x00000297
 _08026878 DCDU 0x00000526

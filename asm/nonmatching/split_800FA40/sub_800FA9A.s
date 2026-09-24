@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800FA9A
-sub_800FA9A
 	ldr r0, [r0, #0x18]
 	lsls r1, r0, #6
 	lsrs r1, r1, #0x10
@@ -12,4 +11,5 @@ sub_800FA9A
 3
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FA9A
 

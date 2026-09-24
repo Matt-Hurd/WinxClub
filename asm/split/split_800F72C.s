@@ -19,7 +19,6 @@
 	IMPORT sub_804061C
 
 	thumb_func_start sub_800F72C
-sub_800F72C
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -43,9 +42,9 @@ sub_800F72C
 	str r0, [r1, r4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end sub_800F72C
 
 	non_word_aligned_thumb_func_start sub_800F75A
-sub_800F75A
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800FA38
@@ -62,20 +61,20 @@ sub_800F75A
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F75A
 
 	thumb_func_start sub_800F77C
-sub_800F77C
 	movs r0, #0x89
 	lsls r0, r0, #2
 	bx lr
+	thumb_func_end sub_800F77C
 
 	non_word_aligned_thumb_func_start sub_800F782
-sub_800F782
 	str r1, [r0, #0x6c]
 	bx lr
+	thumb_func_end sub_800F782
 
 	non_word_aligned_thumb_func_start sub_800F786
-sub_800F786
 	adds r2, r0, #0
 	adds r2, #0x80
 	push {r3, lr}
@@ -93,9 +92,9 @@ sub_800F786
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F786
 
 	thumb_func_start sub_800F7A8
-sub_800F7A8
 	push {r4, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -120,9 +119,9 @@ sub_800F7A8
 	subs r1, r2, r1
 	adds r0, r1, r0
 	b %5
+	thumb_func_end sub_800F7A8
 
 	non_word_aligned_thumb_func_start sub_800F7D6
-sub_800F7D6
 	push {r4, r5, r6, r7, lr}
 	ldr r2, [r0, #4]
 	sub sp, #0xc
@@ -208,9 +207,9 @@ sub_800F7D6
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F7D6
 
 	non_word_aligned_thumb_func_start sub_800F87A
-sub_800F87A
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x5c]
@@ -319,9 +318,9 @@ sub_800F87A
 22
 	movs r0, #1
 	b %13
+	thumb_func_end sub_800F87A
 
 	thumb_func_start sub_800F944
-sub_800F944
 	push {r3, r4, r5, lr}
 	movs r5, #0
 	adds r4, r0, #0
@@ -345,9 +344,9 @@ sub_800F944
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F944
 
 	thumb_func_start sub_800F974
-sub_800F974
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -442,6 +441,7 @@ sub_800F974
 	str r5, [r4, #0x5c]
 	str r6, [r4, #0x10]
 	b %23
+	thumb_func_end sub_800F974
 	ALIGN
 _0800FA38 DCDU __VTABLE__314dword_803E5C8
 _0800FA3C DCDU gUnknown_03003E84

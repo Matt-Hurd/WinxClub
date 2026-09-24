@@ -10,7 +10,6 @@
 	IMPORT sub_80062D8
 
 	arm_func_start sub_8006F90
-sub_8006F90
 	STMFD SP!, {r3, lr}
 	movs r1, r0
 	LDRNE r0, [r1, #0x18]
@@ -32,9 +31,9 @@ sub_8006F90
 	LDMFD SP!, {r3, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8006F90
 
 	arm_func_start sub_8006FE4
-sub_8006FE4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -58,9 +57,9 @@ sub_8006FE4
 	STR r0, [r4, #0x18]
 	LDMFD SP!, {r4, lr}
 	bx lr
+	arm_func_end sub_8006FE4
 
 	arm_func_start sub_8007040
-sub_8007040
 	STMFD SP!, {r4, r5, r6, lr}
 	LDR r3, [r0, #0x1c]
 	mov r4, r0
@@ -113,9 +112,9 @@ loc_08007064
 	LDMFD SP!, {r4, r5, r6, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8007040
 
 	arm_func_start sub_8007104
-sub_8007104
 	STMFD SP!, {r4, r5, r6, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -495,9 +494,9 @@ jmpt_08007180
 	LDMFD SP!, {r4, r5, r6, lr}
 	mvn r0, #1
 	bx lr
+	arm_func_end sub_8007104
 
 	arm_func_start sub_8007664
-sub_8007664
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -527,9 +526,9 @@ sub_8007664
 	LDMFD SP!, {r4, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8007664
 
 	arm_func_start sub_80076D0
-sub_80076D0
 	STMFD SP!, {r4, r5, r6, lr}
 	movs r4, r0
 	LDRNE r0, [r4, #0x18]
@@ -595,9 +594,9 @@ sub_80076D0
 	LDMFD SP!, {r4, r5, r6, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_80076D0
 
 	arm_func_start sub_80077C0
-sub_80077C0
 	cmp r0, #0
 	LDRNE r0, [r0, #0x18]
 	cmpne r0, #0
@@ -606,6 +605,7 @@ sub_80077C0
 	bne sub_80062D8
 	mvn r0, #1
 	bx lr
+	arm_func_end sub_80077C0
 	ALIGN
 _080077E0 DCDU 0x42108421
 _080077E4 DCDU gUnknown_08049604

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8010B3E
-sub_8010B3E
 	push {r4}
 	ldr r2, [r0, #0x58]
 	ldr r3, [r0, #0x7c]
@@ -23,4 +22,5 @@ sub_8010B3E
 	str r1, [r0, #0x64]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8010B3E
 

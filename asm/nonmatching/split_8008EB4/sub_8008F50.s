@@ -1,5 +1,4 @@
 	arm_func_start sub_8008F50
-sub_8008F50
 	mov r0, #1
 	cmp r2, #0xf
 	blo %2
@@ -48,4 +47,5 @@ sub_8008F50
 	blt %6
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8008F50
 

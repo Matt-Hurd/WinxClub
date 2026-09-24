@@ -3,12 +3,11 @@
 
 
 	thumb_func_start sub_8040468
-sub_8040468
 	bx pc
 	ALIGN
+	thumb_func_end sub_8040468
 
 	arm_func_start sub_804046C
-sub_804046C
 	LDR r3, _0804048C
 	MOV r2, r0, ASR #0x1f
 	smull ip, r1, r3, r0
@@ -17,6 +16,7 @@ sub_804046C
 	rsb r1, r2, r1, asr #3
 	mla r0, r3, r1, r0
 	bx lr
+	arm_func_end sub_804046C
 	ALIGN
 _0804048C DCDU 0x88888889
 	END

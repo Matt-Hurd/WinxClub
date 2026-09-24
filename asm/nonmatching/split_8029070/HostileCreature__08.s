@@ -1,5 +1,4 @@
 	thumb_func_start HostileCreature__08
-HostileCreature__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -61,3 +60,4 @@ HostileCreature__08
 12
 	bl m08__7DefaultFv
 	b %7
+	thumb_func_end HostileCreature__08

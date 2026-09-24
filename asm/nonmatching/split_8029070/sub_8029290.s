@@ -1,5 +1,4 @@
 	thumb_func_start sub_8029290
-sub_8029290
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r4, r0, #0
@@ -42,4 +41,5 @@ sub_8029290
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %4
+	thumb_func_end sub_8029290
 

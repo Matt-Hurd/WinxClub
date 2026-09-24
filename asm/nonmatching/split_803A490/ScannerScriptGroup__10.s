@@ -1,5 +1,4 @@
 	thumb_func_start ScannerScriptGroup__10
-ScannerScriptGroup__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -618,4 +617,5 @@ _0803A910 DCDU gUnknown_0300346C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end ScannerScriptGroup__10
 

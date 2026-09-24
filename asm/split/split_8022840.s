@@ -62,7 +62,6 @@
 
 
 	thumb_func_start sub_8022840
-sub_8022840
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	bl FadeToBlack
@@ -133,9 +132,9 @@ sub_8022840
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8022840
 
 	non_word_aligned_thumb_func_start sub_80228D2
-sub_80228D2
 	push {r0, r1, r4, r5, r6, r7, lr}
 	movs r6, #0x2f
 	lsls r6, r6, #4
@@ -248,9 +247,9 @@ sub_80228D2
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80228D2
 
 	non_word_aligned_thumb_func_start sub_80229B2
-sub_80229B2
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r0, #0x2f
@@ -308,9 +307,9 @@ sub_80229B2
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80229B2
 
 	thumb_func_start sub_8022A24
-sub_8022A24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x5c
 	adds r5, r0, #0
@@ -689,9 +688,9 @@ _08022C5C DCDU 0x00000CA8
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8022A24
 
 	non_word_aligned_thumb_func_start HandleIngameOptionsScreen
-HandleIngameOptionsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x140
@@ -948,9 +947,9 @@ _08022F7C DCDU gUnknown_03003D30
 _08022F80 DCDU gUnknown_080506E8
 _08022F84 DCDU gUnknown_0300345C
 _08022F88 DCDU sub_8014436
+	thumb_func_end HandleIngameOptionsScreen
 
 	thumb_func_start sub_8022F8C
-sub_8022F8C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _08023374
@@ -1000,9 +999,9 @@ sub_8022F8C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8022F8C
 
 	thumb_func_start sub_8022FFC
-sub_8022FFC
 	push {r0, r1, r4, r5, r6, r7, lr}
 	movs r6, #0x35
 	lsls r6, r6, #4
@@ -1115,9 +1114,9 @@ sub_8022FFC
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8022FFC
 
 	thumb_func_start sub_80230DC
-sub_80230DC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x35
@@ -1230,9 +1229,9 @@ sub_80230DC
 	adds r0, r4, #0
 	bl sub_8018C48
 	b %57
+	thumb_func_end sub_80230DC
 
 	thumb_func_start sub_80231B0
-sub_80231B0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	adds r5, r0, #0
@@ -1561,10 +1560,10 @@ _08023398 DCDU 0x00000CF3
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80231B0
 
 
 	non_word_aligned_thumb_func_start HandleMainMenuOptionsScreen
-HandleMainMenuOptionsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x198
@@ -1721,6 +1720,7 @@ HandleMainMenuOptionsScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleMainMenuOptionsScreen
 	ALIGN
 _080235CC DCDU gUnknown_03003448
 _080235D0 DCDU sub_80143E0

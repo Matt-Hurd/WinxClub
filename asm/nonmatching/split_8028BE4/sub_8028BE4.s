@@ -1,5 +1,4 @@
 	thumb_func_start sub_8028BE4
-sub_8028BE4
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	bl sub_80121C4
@@ -13,4 +12,5 @@ sub_8028BE4
 2
 	movs r0, #0
 	b %1
+	thumb_func_end sub_8028BE4
 

@@ -26,7 +26,6 @@
 	IMPORT sub_8040684
 
 	non_word_aligned_thumb_func_start CollectFirefly
-CollectFirefly
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #6]
@@ -245,6 +244,7 @@ CollectFirefly
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end CollectFirefly
 	ALIGN
 _08023CE8 DCDU gPlayerPointer
 _08023CEC DCDU gUnknown_03003464

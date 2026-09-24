@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B916
-sub_800B916
 	push {r4, r5, r6, r7}
 	movs r3, #1
 	lsls r3, r3, #9
@@ -27,4 +26,5 @@ sub_800B916
 	blt %15
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_800B916
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start GenericObject__04
-GenericObject__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -49,4 +48,5 @@ GenericObject__04
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %19
+	thumb_func_end GenericObject__04
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8040708
-sub_8040708
 	push {r4, lr}
 	ldrh r2, [r1, #4]
 	cmp r2, #0x20
@@ -394,3 +393,4 @@ loc_804093a
 	adds r0, r2, #0
 	bl __call_via_r3
 	b %34
+	thumb_func_end sub_8040708

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80187D2
-sub_80187D2
 	push {r4, r5, r6, r7, lr}
 	adds r5, r1, #0
 	ldr r1, [r2]
@@ -88,4 +87,5 @@ sub_80187D2
 53
 	movs r0, #0
 	b %50
+	thumb_func_end sub_80187D2
 

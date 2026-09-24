@@ -1,5 +1,4 @@
 	thumb_func_start sub_800CD04
-sub_800CD04
 	push {r4}
 	lsls r4, r2, #1
 	adds r0, r4, r0
@@ -18,4 +17,5 @@ sub_800CD04
 	str r0, [r1]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800CD04
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FE90
-sub_800FE90
 	push {r3, lr}
 	cmp r0, #0
 	bne %1
@@ -23,4 +22,5 @@ sub_800FE90
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FE90
 

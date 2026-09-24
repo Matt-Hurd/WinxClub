@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8034A86
-sub_8034A86
 	push {r4, r5, r6, r7}
 	movs r3, #0
 	movs r5, #0
@@ -72,4 +71,5 @@ sub_8034A86
 	blo %18
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_8034A86
 

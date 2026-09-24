@@ -1,5 +1,4 @@
 	thumb_func_start ObjectScriptGroup__40
-ObjectScriptGroup__40
 	subs r1, #0x61
 	cmp r1, #6
 	bhs %7
@@ -78,4 +77,5 @@ loc_802ecfa
 	adds r0, #0xa0
 	strb r1, [r0]
 	bx lr
+	thumb_func_end ObjectScriptGroup__40
 

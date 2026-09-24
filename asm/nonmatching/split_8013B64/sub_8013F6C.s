@@ -1,5 +1,4 @@
 	thumb_func_start sub_8013F6C
-sub_8013F6C
 	push {r3, r4, r5, lr}
 	ldr r1, [r0, #0x48]
 	movs r5, #0
@@ -34,4 +33,5 @@ sub_8013F6C
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8013F6C
 

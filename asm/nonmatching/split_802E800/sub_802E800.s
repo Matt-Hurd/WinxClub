@@ -1,5 +1,4 @@
 	thumb_func_start sub_802E800
-sub_802E800
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -89,4 +88,5 @@ sub_802E800
 	ldr r0, [sp, #0xc]
 	str r0, [r4, #0xc]
 	b %1
+	thumb_func_end sub_802E800
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800BE0E
-sub_800BE0E
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x78]
@@ -261,6 +260,7 @@ _0800C004 DCDU 0x000007CC
 _0800C008 DCDU 0x00001310
 _0800C00C DCDU gUnknown_0804AB68
 _0800C010 DCDU 0x0FFFFFFF
+	thumb_func_end sub_800BE0E
 
 
 

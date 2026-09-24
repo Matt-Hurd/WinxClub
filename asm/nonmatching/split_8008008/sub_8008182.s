@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8008182
-sub_8008182
 	ldr r2, _080081C8
 	movs r0, #0
 	strh r0, [r2, #0xa]
@@ -21,4 +20,5 @@ sub_8008182
 	subs r0, r0, r2
 	adds r0, r0, r1
 	bx lr
+	thumb_func_end sub_8008182
 

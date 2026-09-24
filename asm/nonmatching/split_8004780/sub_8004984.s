@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004984
-sub_8004984
 	ldr r1, [r0, #0x14]
 	lsls r2, r1, #0x1f
 	bpl %20
@@ -26,4 +25,5 @@ sub_8004984
 	bics r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004984
 

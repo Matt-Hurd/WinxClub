@@ -1,5 +1,4 @@
 	thumb_func_start sub_802BA20
-sub_802BA20
 	push {r3, lr}
 	ldrb r1, [r0, #2]
 	cmp r1, #0
@@ -22,4 +21,5 @@ sub_802BA20
 	bl sub_802B670
 	b %1
 	ALIGN
+	thumb_func_end sub_802BA20
 

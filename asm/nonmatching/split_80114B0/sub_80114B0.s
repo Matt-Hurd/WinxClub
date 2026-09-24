@@ -1,5 +1,4 @@
 	thumb_func_start sub_80114B0
-sub_80114B0
 	push {r3, r4}
 	ldr r3, _08011730
 	ldr r2, _0801172C
@@ -37,4 +36,5 @@ sub_80114B0
 	stm r3!, {r0, r1}
 	pop {r3, r4}
 	bx lr
+	thumb_func_end sub_80114B0
 

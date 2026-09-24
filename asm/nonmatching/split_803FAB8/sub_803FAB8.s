@@ -1,5 +1,4 @@
 	thumb_func_start sub_803FAB8
-sub_803FAB8
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #4
 	lsrs r1, r1, #0x1c
@@ -15,4 +14,5 @@ sub_803FAB8
 	movs r0, #0
 	bx lr
 	ALIGN
+	thumb_func_end sub_803FAB8
 

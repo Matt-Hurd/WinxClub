@@ -20,7 +20,6 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_803248C
-sub_803248C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -430,6 +429,7 @@ sub_803248C
 	movs r7, #0
 	str r7, [r4, #4]
 	b %12
+	thumb_func_end sub_803248C
 	ALIGN
 _080327CC DCDU gUnknown_03003EB8
 _080327D0 DCDU gUnknown_0300345C

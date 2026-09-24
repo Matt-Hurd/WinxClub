@@ -27,7 +27,6 @@
 	IMPORT sub_80406C4
 
 	thumb_func_start sub_8028F64
-sub_8028F64
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r5, _08029040
 	ldr r1, _08029044
@@ -124,6 +123,7 @@ sub_8028F64
 	movs r0, #0x11
 	bl SetNextGlobalFunction
 	b %3
+	thumb_func_end sub_8028F64
 	ALIGN
 _08029040 DCDU gUnknown_03003E98
 _08029044 DCDU gPlayerEntity

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80138E2
-sub_80138E2
 	push {r4, r5}
 	ldr r4, _08013B5C
 	cmp r3, #0xff
@@ -21,4 +20,5 @@ sub_80138E2
 	adds r1, r2, r1
 	movs r2, #0
 	b sub_80137F8
+	thumb_func_end sub_80138E2
 

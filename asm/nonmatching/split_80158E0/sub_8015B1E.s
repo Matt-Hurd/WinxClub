@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8015B1E
-sub_8015B1E
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x19
@@ -464,4 +463,5 @@ _08015CFC DCDU gUnknown_08050664
 	adds r0, r7, #0
 	bl __call_via_r3
 	b %51
+	thumb_func_end sub_8015B1E
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80294EE
-sub_80294EE
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r1]
@@ -129,4 +128,5 @@ loc_802957a
 	adds r1, r2, r1
 	bl __call_via_r1
 	b %25
+	thumb_func_end sub_80294EE
 

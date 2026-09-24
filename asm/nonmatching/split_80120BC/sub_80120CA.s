@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80120CA
-sub_80120CA
 	ldr r1, _08012328
 	ldr r1, [r1, #0x1c]
 	cmp r1, #0
@@ -13,4 +12,5 @@ sub_80120CA
 2
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80120CA
 

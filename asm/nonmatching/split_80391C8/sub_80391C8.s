@@ -1,5 +1,4 @@
 	thumb_func_start sub_80391C8
-sub_80391C8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080395AC
@@ -30,4 +29,5 @@ sub_80391C8
 	adds r0, r4, #0
 	bl sub_8038EE2
 	b %1
+	thumb_func_end sub_80391C8
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80116D4
-sub_80116D4
 	ldr r2, _08011730
 	push {r3, r4, r5, lr}
 	adds r2, #0x34
@@ -59,4 +58,5 @@ _0801174C DCDU REG_TM0CNT
 _08011750 DCDU REG_DMA1DAD
 _08011754 DCDU 0x84400004
 _08011758 DCDU gUnknown_030037A0
+	thumb_func_end sub_80116D4
 

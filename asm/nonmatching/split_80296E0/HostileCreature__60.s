@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HostileCreature__60
-HostileCreature__60
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -397,4 +396,5 @@ _0802AF84 DCDU gUnknown_03003E88
 	ldr r0, [r0]
 	bl sub_80179BE
 	b %142
+	thumb_func_end HostileCreature__60
 

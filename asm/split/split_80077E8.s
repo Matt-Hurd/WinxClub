@@ -10,7 +10,6 @@
 	IMPORT __rt_memcpy
 
 	arm_func_start sub_80077E8
-sub_80077E8
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe0
 	LDR r7, [sp, #0x11c]
@@ -331,9 +330,9 @@ sub_80077E8
 	moveq r0, #0
 	mvnne r0, #4
 	bx lr
+	arm_func_end sub_80077E8
 
 	arm_func_start sub_8007C78
-sub_8007C78
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x1c
 	mov r7, r0
@@ -387,9 +386,9 @@ sub_8007C78
 	add sp, sp, #0x1c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	arm_func_end sub_8007C78
 
 	arm_func_start sub_8007D44
-sub_8007D44
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	mov r7, r0
@@ -500,9 +499,9 @@ loc_8007D88
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8007D44
 
 	arm_func_start sub_8007ED8
-sub_8007ED8
 	mov ip, #9
 	STR ip, [r0]
 	mov r0, #5
@@ -520,10 +519,10 @@ _08007F08 DCDU gUnknown_08049778
 _08007F0C DCDU gUnknown_08049700
 _08007F10 DCDU gUnknown_080497F0
 _08007F14 DCDU gUnknown_0804A7F0
+	arm_func_end sub_8007ED8
 
 
 	arm_func_start sub_8007F18
-sub_8007F18
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	LDR sb, [r0, #0x30]
 	mov r5, r0
@@ -587,4 +586,5 @@ sub_8007F18
 	mov r0, r7
 	LDMFD SP!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	arm_func_end sub_8007F18
 	END

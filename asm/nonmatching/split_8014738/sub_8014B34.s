@@ -1,5 +1,4 @@
 	thumb_func_start sub_8014B34
-sub_8014B34
 	push {r4, lr}
 	lsls r3, r1, #0x1d
 	beq %41
@@ -18,4 +17,5 @@ sub_8014B34
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8014B34
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F408
-sub_800F408
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x5c]
@@ -118,3 +117,4 @@ sub_800F408
 	bl nullsub_6
 	movs r0, #1
 	b %19
+	thumb_func_end sub_800F408

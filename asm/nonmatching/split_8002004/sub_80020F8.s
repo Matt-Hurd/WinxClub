@@ -1,5 +1,4 @@
 	thumb_func_start sub_80020F8
-sub_80020F8
 	push {r3, lr}
 	movs r3, #0x58
 	muls r1, r3
@@ -21,3 +20,4 @@ sub_80020F8
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80020F8

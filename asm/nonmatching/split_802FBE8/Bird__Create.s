@@ -1,5 +1,4 @@
 	thumb_func_start Bird__Create
-Bird__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %3
@@ -39,4 +38,5 @@ Bird__Create
 	strb r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %2
+	thumb_func_end Bird__Create
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801CC72
-sub_801CC72
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	movs r0, #5
@@ -28,4 +27,5 @@ sub_801CC72
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CC72
 

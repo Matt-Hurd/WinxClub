@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80047BE
-sub_80047BE
 	ldrh r3, [r0, #2]
 	lsls r1, r1, #0x1b
 	lsrs r1, r1, #0x1b
@@ -14,4 +13,5 @@ sub_80047BE
 	orrs r1, r2
 	strh r1, [r0, #2]
 	bx lr
+	thumb_func_end sub_80047BE
 

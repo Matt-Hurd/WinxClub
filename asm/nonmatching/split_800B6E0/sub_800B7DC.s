@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B7DC
-sub_800B7DC
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %11
@@ -92,4 +91,5 @@ sub_800B7DC
 	bl __16__rt_memclr_w
 	adds r0, r4, #0
 	b %10
+	thumb_func_end sub_800B7DC
 

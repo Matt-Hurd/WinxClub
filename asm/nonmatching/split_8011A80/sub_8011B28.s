@@ -1,5 +1,4 @@
 	thumb_func_start sub_8011B28
-sub_8011B28
 	cmp r0, #6
 	bhs %13
 	add r3, pc, #0x4
@@ -44,4 +43,5 @@ loc_8011b56
 	movs r0, #0
 	mvns r0, r0
 	bx lr
+	thumb_func_end sub_8011B28
 

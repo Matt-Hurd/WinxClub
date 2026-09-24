@@ -1,5 +1,4 @@
 	thumb_func_start FadeToImage
-FadeToImage
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -34,4 +33,5 @@ FadeToImage
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end FadeToImage
 

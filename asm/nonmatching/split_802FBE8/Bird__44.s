@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Bird__44
-Bird__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r7, #0x80
@@ -311,3 +310,4 @@ Bird__44
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__44

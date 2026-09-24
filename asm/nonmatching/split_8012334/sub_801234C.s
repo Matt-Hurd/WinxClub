@@ -1,5 +1,4 @@
 	thumb_func_start sub_801234C
-sub_801234C
 	ldr r1, _08012460
 	push {r4, r5, r6}
 	ldrb r2, [r1, #0xe]
@@ -61,4 +60,5 @@ sub_801234C
 10
 	movs r0, #0
 	b %8
+	thumb_func_end sub_801234C
 

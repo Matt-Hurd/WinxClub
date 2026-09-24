@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F974
-sub_800F974
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -94,3 +93,4 @@ sub_800F974
 	str r5, [r4, #0x5c]
 	str r6, [r4, #0x10]
 	b %23
+	thumb_func_end sub_800F974

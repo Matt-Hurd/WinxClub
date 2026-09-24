@@ -14,7 +14,6 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_803EF1C
-sub_803EF1C
 	movs r1, #0x29
 	lsls r1, r1, #5
 	adds r0, r0, r1
@@ -23,9 +22,9 @@ sub_803EF1C
 	strb r1, [r0, #1]
 	bx lr
 	ALIGN
+	thumb_func_end sub_803EF1C
 
 	thumb_func_start sub_803EF2C
-sub_803EF2C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r6, #0
@@ -179,6 +178,7 @@ sub_803EF2C
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803EF2C
 	ALIGN
 _0803F074 DCDU gUnknown_03003EB8
 _0803F078 DCDU gUnknown_030031EE

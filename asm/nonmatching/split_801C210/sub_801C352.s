@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801C352
-sub_801C352
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	ldr r1, [sp, #0x18]
@@ -173,3 +172,4 @@ sub_801C352
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801C352

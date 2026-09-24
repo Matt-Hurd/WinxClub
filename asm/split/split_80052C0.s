@@ -4,7 +4,6 @@
 	IMPORT sub_80406E4
 
 	thumb_func_start sub_80052C0
-sub_80052C0
 	push {r3, r4, r5, r6, r7, lr}
 	lsls r5, r0, #0x10
 	lsrs r5, r5, #0x10
@@ -106,6 +105,7 @@ sub_80052C0
 	lsls r0, r6, #0x10
 	orrs r0, r5
 	b %1
+	thumb_func_end sub_80052C0
 	ALIGN
 _0800537C DCDU 0x000015B0
 	END

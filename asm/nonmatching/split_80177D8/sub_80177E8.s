@@ -1,5 +1,4 @@
 	thumb_func_start sub_80177E8
-sub_80177E8
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r4, r1, #0
@@ -65,4 +64,5 @@ sub_80177E8
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80177E8
 

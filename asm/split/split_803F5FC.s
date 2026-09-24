@@ -6,7 +6,6 @@
 	IMPORT __da__FPv
 
 	thumb_func_start sub_803F5FC
-sub_803F5FC
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x60
@@ -47,6 +46,7 @@ sub_803F5FC
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F5FC
 	ALIGN
 _0803F650 DCDU gUnknown_03003EB8
 	END

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80002E2
-sub_80002E2
 	ldr r1, _08000314
 	sub sp, #4
 	movs r3, #0
@@ -26,3 +25,4 @@ sub_80002E2
 	strh r3, [r0, #0x10]
 22
 	b %22
+	thumb_func_end sub_80002E2

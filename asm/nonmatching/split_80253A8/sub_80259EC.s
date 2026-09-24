@@ -1,5 +1,4 @@
 	thumb_func_start sub_80259EC
-sub_80259EC
 	ldr r3, _08025C00
 	strh r3, [r0, #0xe]
 	adds r3, #1
@@ -35,4 +34,5 @@ sub_80259EC
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_80259EC
 

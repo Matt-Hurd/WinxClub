@@ -1,5 +1,4 @@
 	thumb_func_start sub_803DA18
-sub_803DA18
 	GLOBAL __dl__FPv
 __dl__FPv
 	push {lr}
@@ -30,4 +29,5 @@ __dl__FPv
 	bx r3
 	ALIGN
 _0803DA48 DCDU gUnknown_030033E8
+	thumb_func_end sub_803DA18
 

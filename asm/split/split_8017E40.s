@@ -33,7 +33,6 @@
 	IMPORT sub_803DA9C
 
 	thumb_func_start PlayIntroMovie
-PlayIntroMovie
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r0, sp, #8
@@ -125,9 +124,9 @@ PlayIntroMovie
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %4
+	thumb_func_end PlayIntroMovie
 
 	non_word_aligned_thumb_func_start PlayIntroLogo
-PlayIntroLogo
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0, #1]
@@ -235,17 +234,17 @@ PlayIntroLogo
 	adds r0, #1
 	strb r0, [r4]
 	b %6
+	thumb_func_end PlayIntroLogo
 
 	thumb_func_start sub_8017FF4
-sub_8017FF4
 	movs r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #1]
 	strb r1, [r0, #2]
 	bx lr
+	thumb_func_end sub_8017FF4
 
 	non_word_aligned_thumb_func_start HandleIntro
-HandleIntro
 	push {r4, lr}
 	sub sp, #0x10
 	mov r4, sp
@@ -274,6 +273,7 @@ HandleIntro
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleIntro
 	ALIGN
 _0801803C DCDU gUnknown_03003454
 _08018040 DCDU gUnknown_03003E98

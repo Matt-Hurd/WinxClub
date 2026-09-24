@@ -1,5 +1,4 @@
 	thumb_func_start sub_802BA94
-sub_802BA94
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	sub sp, #0xc
@@ -298,3 +297,4 @@ loc_802bbf0
 	add r1, sp, #4
 	bl sub_803FF24
 	b %19
+	thumb_func_end sub_802BA94

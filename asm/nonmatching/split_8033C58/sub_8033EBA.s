@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8033EBA
-sub_8033EBA
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x3c]
@@ -569,3 +568,4 @@ _08034064 DCDU gUnknown_03003454
 	beq %45
 	bl sub_80401C0
 	b %16
+	thumb_func_end sub_8033EBA

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8004F42
-sub_8004F42
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	ldr r0, [sp, #0x48]
@@ -94,4 +93,5 @@ sub_8004F42
 20
 	movs r0, #0
 	b %17
+	thumb_func_end sub_8004F42
 

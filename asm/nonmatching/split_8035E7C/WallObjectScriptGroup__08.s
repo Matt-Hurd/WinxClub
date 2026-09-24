@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
-WallObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -13,4 +12,5 @@ WallObjectScriptGroup__08
 15
 	bl m08__7DefaultFv
 	b %14
+	thumb_func_end WallObjectScriptGroup__08
 

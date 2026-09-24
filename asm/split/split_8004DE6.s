@@ -19,11 +19,10 @@
 	IMPORT sub_803DABC
 
 	thumb_func_start nullsub_24
-nullsub_24
 	bx lr
+	thumb_func_end nullsub_24
 
 	non_word_aligned_thumb_func_start LoadFiletable
-LoadFiletable
 	push {r4, r5, r6, r7, lr}
 	adds r7, r1, #0
 	adds r5, r2, #0
@@ -174,9 +173,9 @@ LoadFiletable
 	bne %10
 	adds r0, r4, #0
 	b %1
+	thumb_func_end LoadFiletable
 
 	non_word_aligned_thumb_func_start sub_8004F12
-sub_8004F12
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800503C
@@ -200,9 +199,9 @@ sub_8004F12
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004F12
 
 	non_word_aligned_thumb_func_start sub_8004F42
-sub_8004F42
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	sub sp, #0x48
 	ldr r0, [sp, #0x48]
@@ -297,9 +296,9 @@ sub_8004F42
 20
 	movs r0, #0
 	b %17
+	thumb_func_end sub_8004F42
 
 	thumb_func_start sub_8004FFC
-sub_8004FFC
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r2, #0
@@ -317,9 +316,9 @@ sub_8004FFC
 	lsrs r0, r0, #3
 	adds r0, r1, r0
 	b %21
+	thumb_func_end sub_8004FFC
 
 	thumb_func_start sub_800501C
-sub_800501C
 	push {r3, lr}
 	movs r2, #0
 	bl sub_8004F42
@@ -332,6 +331,7 @@ sub_800501C
 	pop {r3}
 	adds r0, r1, #0
 	bx r3
+	thumb_func_end sub_800501C
 	ALIGN
 _08005034 DCDU __VTABLE__14Singleton_3EA8
 _08005038 DCDU gUnknown_03003EA8

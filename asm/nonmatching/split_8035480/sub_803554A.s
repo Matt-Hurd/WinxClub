@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_803554A
-sub_803554A
 	push {r4}
 	ldr r1, [r1]
 	movs r3, #0
@@ -158,4 +157,5 @@ loc_803562e
 	str r0, [r2, #0x1c]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_803554A
 

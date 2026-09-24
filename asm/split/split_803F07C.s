@@ -5,7 +5,6 @@
 	IMPORT gUnknown_03003E88
 
 	thumb_func_start sub_803F07C
-sub_803F07C
 	str r1, [r0, #4]
 	cmp r1, #0
 	beq %1
@@ -30,9 +29,9 @@ sub_803F07C
 	lsls r1, r1, #8
 	str r1, [r0, #8]
 	bx lr
+	thumb_func_end sub_803F07C
 
 	thumb_func_start sub_803F0A8
-sub_803F0A8
 	push {r4, r5, r6, r7}
 	cmp r0, #0xff
 	bne %3
@@ -83,6 +82,7 @@ sub_803F0A8
 	strb r2, [r0, #5]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_803F0A8
 	ALIGN
 _0803F108 DCDU gUnknown_03003454
 _0803F10C DCDU gUnknown_03003E88

@@ -18,7 +18,6 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_8034358
-sub_8034358
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl sub_802E4EE
@@ -104,9 +103,9 @@ sub_8034358
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8034358
 
 	thumb_func_start sub_8034408
-sub_8034408
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_802E47A
@@ -124,9 +123,9 @@ sub_8034408
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8034408
 
 	thumb_func_start sub_803442C
-sub_803442C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl sub_802E5D2
@@ -208,6 +207,7 @@ sub_803442C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803442C
 	ALIGN
 _080344D8 DCDU gUnknown_03003EA0
 _080344DC DCDU gUnknown_03003EB8

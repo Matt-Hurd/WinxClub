@@ -1,5 +1,4 @@
 	thumb_func_start __nw__FUi
-__nw__FUi
 	adds r1, r0, #0
 	ldr r0, _0803DA14
 	push {r3, lr}
@@ -14,4 +13,5 @@ __nw__FUi
 	bx r3
 	ALIGN
 _0803DA14 DCDU gUnknown_030033E8
+	thumb_func_end __nw__FUi
 

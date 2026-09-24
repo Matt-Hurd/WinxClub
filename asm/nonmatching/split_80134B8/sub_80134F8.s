@@ -1,5 +1,4 @@
 	thumb_func_start sub_80134F8
-sub_80134F8
 	ldrb r1, [r0, #0xc]
 	ldr r2, [r0, #8]
 	cmp r2, #0
@@ -30,4 +29,5 @@ sub_80134F8
 	str r0, [r3, r1]
 4
 	bx lr
+	thumb_func_end sub_80134F8
 

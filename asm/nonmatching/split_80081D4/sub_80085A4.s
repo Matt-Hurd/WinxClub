@@ -1,5 +1,4 @@
 	arm_func_start sub_80085A4
-sub_80085A4
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x50]
@@ -141,4 +140,5 @@ sub_80085A4
 	STREQ sl, [r4, #0x4c]
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
+	arm_func_end sub_80085A4
 

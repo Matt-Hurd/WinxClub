@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B154
-sub_800B154
 	movs r0, #1
 	lsls r0, r1
 	ldr r1, _0800B2B4
@@ -33,4 +32,5 @@ sub_800B154
 3
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800B154
 

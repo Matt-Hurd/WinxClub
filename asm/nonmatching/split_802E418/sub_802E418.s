@@ -1,5 +1,4 @@
 	thumb_func_start sub_802E418
-sub_802E418
 	push {r4, lr}
 	cmp r0, #0
 	bne %1
@@ -50,4 +49,5 @@ sub_802E418
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802E418
 

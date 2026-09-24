@@ -1,5 +1,4 @@
 	thumb_func_start InitScriptData
-InitScriptData
 	push {r0, r1, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -162,4 +161,5 @@ InitScriptData
 7
 	adds r0, r4, #0
 	b %1
+	thumb_func_end InitScriptData
 

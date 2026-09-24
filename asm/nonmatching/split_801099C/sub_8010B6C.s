@@ -1,5 +1,4 @@
 	thumb_func_start sub_8010B6C
-sub_8010B6C
 	push {r3, lr}
 	ldr r1, [r0, #0x64]
 	ldr r2, [r0, #0x68]
@@ -14,4 +13,5 @@ sub_8010B6C
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8010B6C
 

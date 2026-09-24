@@ -14,7 +14,6 @@
 	IMPORT sub_803F110
 
 	thumb_func_start WallObjectScriptGroup__44
-WallObjectScriptGroup__44
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080363C4
@@ -91,9 +90,9 @@ WallObjectScriptGroup__44
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObjectScriptGroup__44
 
 	thumb_func_start WallObjectScriptGroup__Intersect
-WallObjectScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -123,9 +122,9 @@ WallObjectScriptGroup__Intersect
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end WallObjectScriptGroup__Intersect
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__TakeDamage
-WallObjectScriptGroup__TakeDamage
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0xa0
@@ -341,6 +340,7 @@ WallObjectScriptGroup__TakeDamage
 	adds r0, r1, r0
 	bl sub_8028C2E
 	b %15
+	thumb_func_end WallObjectScriptGroup__TakeDamage
 	ALIGN
 _080363C4 DCDU gUnknown_03003454
 _080363C8 DCDU gUnknown_03003478

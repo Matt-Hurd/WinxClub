@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start maybeGameObjFactory
-maybeGameObjFactory
 	subs r0, #3
 	cmp r0, #0x12
 	push {r4, lr}
@@ -309,3 +308,4 @@ loc_8017400
 66
 	movs r0, #0
 	b %48
+	thumb_func_end maybeGameObjFactory

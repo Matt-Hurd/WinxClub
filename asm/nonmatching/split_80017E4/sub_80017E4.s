@@ -1,5 +1,4 @@
 	thumb_func_start sub_80017E4
-sub_80017E4
 	movs r0, #0
 	cmp r1, #1
 	beq %2
@@ -32,4 +31,5 @@ sub_80017E4
 6
 	muls r0, r2
 	bx lr
+	thumb_func_end sub_80017E4
 

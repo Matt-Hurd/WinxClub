@@ -1,5 +1,4 @@
 	thumb_func_start IdentifyEeprom
-IdentifyEeprom
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -32,3 +31,4 @@ _0803B504 DCDU gUnknown_08051750
 	adds r0, r2, #0
 	pop {r1}
 	bx r1
+	thumb_func_end IdentifyEeprom

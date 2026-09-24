@@ -31,14 +31,13 @@
 
 
 	thumb_func_start sub_802BFB4
-sub_802BFB4
 	adds r0, #0x30
 	ldrb r0, [r0, #0xc]
 	bx lr
 	ALIGN
+	thumb_func_end sub_802BFB4
 
 	thumb_func_start sub_802BFBC
-sub_802BFBC
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -62,9 +61,9 @@ sub_802BFBC
 	str r0, [r4, #0x44]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end sub_802BFBC
 
 	non_word_aligned_thumb_func_start sub_802BFEA
-sub_802BFEA
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802C3BC
@@ -92,9 +91,9 @@ sub_802BFEA
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802BFEA
 
 	non_word_aligned_thumb_func_start sub_802C022
-sub_802C022
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r1, [r0, #0x10]
@@ -610,9 +609,9 @@ _0802C3D0 DCDU gPlayerEntity
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802C022
 
 	non_word_aligned_thumb_func_start sub_802C41E
-sub_802C41E
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x3c]
@@ -849,9 +848,9 @@ sub_802C41E
 	movs r5, #0
 	str r5, [r4, #0x3c]
 	b %39
+	thumb_func_end sub_802C41E
 
 	non_word_aligned_thumb_func_start sub_802C5FA
-sub_802C5FA
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl sub_802E4EE
@@ -950,6 +949,7 @@ sub_802C5FA
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802C5FA
 	ALIGN
 _0802C6C4 DCDU gUnknown_0300345C
 _0802C6C8 DCDU gUnknown_03003EA0

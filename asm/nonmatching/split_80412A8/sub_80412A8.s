@@ -1,5 +1,4 @@
 	thumb_func_start sub_80412A8
-sub_80412A8
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	sub sp, #0x80
@@ -185,4 +184,5 @@ _08041428 DCDU 0x0500051B
 _0804142C DCDU REG_DMA3
 _08041430 DCDU 0x81000A36
 _08041434 DCDU 0x8500051B
+	thumb_func_end sub_80412A8
 

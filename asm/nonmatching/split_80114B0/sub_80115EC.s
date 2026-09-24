@@ -1,5 +1,4 @@
 	thumb_func_start sub_80115EC
-sub_80115EC
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r6, _08011730
 	adds r4, r0, #0
@@ -125,4 +124,5 @@ sub_80115EC
 	movs r0, #0
 	strh r0, [r1]
 	b %25
+	thumb_func_end sub_80115EC
 

@@ -1,5 +1,4 @@
 	thumb_func_start WallObjectScriptGroup__Intersect
-WallObjectScriptGroup__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -29,4 +28,5 @@ WallObjectScriptGroup__Intersect
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end WallObjectScriptGroup__Intersect
 

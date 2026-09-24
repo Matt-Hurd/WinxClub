@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FDA4
-sub_800FDA4
 	ldr r0, _0800FE6C
 	ldrh r1, [r0, #0xa]
 	movs r2, #0x1d
@@ -21,4 +20,5 @@ sub_800FDA4
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	bx lr
+	thumb_func_end sub_800FDA4
 

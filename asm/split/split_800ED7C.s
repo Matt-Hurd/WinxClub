@@ -39,7 +39,6 @@
 	IMPORT __call_via_r7
 
 	thumb_func_start PlayMovie
-PlayMovie
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r3, _0800EFC4
@@ -233,18 +232,18 @@ PlayMovie
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end PlayMovie
 
 	thumb_func_start sub_800EF1C
-sub_800EF1C
 	push {r3, lr}
 	movs r0, #3
 	bl sub_8013DEA
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800EF1C
 
 	non_word_aligned_thumb_func_start sub_800EF2A
-sub_800EF2A
 	push {r4, lr}
 	movs r0, #1
 	bl sub_8013D52
@@ -270,9 +269,9 @@ sub_800EF2A
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800EF2A
 
 	thumb_func_start maybeLoadOrRenderBgImage
-maybeLoadOrRenderBgImage
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EFD0
@@ -316,6 +315,7 @@ maybeLoadOrRenderBgImage
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeLoadOrRenderBgImage
 	ALIGN
 _0800EFC4 DCDU 0xFFFFE81C
 _0800EFC8 DCDU gUnknown_03003EAC

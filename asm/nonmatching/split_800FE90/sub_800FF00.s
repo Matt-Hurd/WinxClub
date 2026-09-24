@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FF00
-sub_800FF00
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne %6
@@ -45,4 +44,5 @@ sub_800FF00
 	bl sub_800B058
 	adds r0, r4, #0
 	b %5
+	thumb_func_end sub_800FF00
 

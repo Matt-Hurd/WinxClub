@@ -15,7 +15,6 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start HandleMainMenu
-HandleMainMenu
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	add r0, sp, #4
@@ -101,6 +100,7 @@ HandleMainMenu
 	movs r0, #9
 	bl SetNextGlobalFunction
 	b %5
+	thumb_func_end HandleMainMenu
 	ALIGN
 _0801ABEC DCDU sub_80143E0
 _0801ABF0 DCDU gUnknown_03003444

@@ -13,12 +13,11 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_8004780
-sub_8004780
 	lsrs r0, r0, #0x1e
 	bx lr
+	thumb_func_end sub_8004780
 
 	thumb_func_start sub_8004784
-sub_8004784
 	ldrh r3, [r0]
 	lsls r1, r1, #0x1a
 	lsrs r1, r1, #0x1a
@@ -33,9 +32,9 @@ sub_8004784
 	orrs r1, r2
 	strh r1, [r0]
 	bx lr
+	thumb_func_end sub_8004784
 
 	thumb_func_start sub_80047A0
-sub_80047A0
 	ldrh r0, [r0]
 	cmp r1, #0
 	beq %1
@@ -49,19 +48,19 @@ sub_80047A0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bx lr
+	thumb_func_end sub_80047A0
 
 	non_word_aligned_thumb_func_start sub_80047B6
-sub_80047B6
 	strh r1, [r0, #4]
 	bx lr
+	thumb_func_end sub_80047B6
 
 	non_word_aligned_thumb_func_start sub_80047BA
-sub_80047BA
 	ldrh r0, [r0, #4]
 	bx lr
+	thumb_func_end sub_80047BA
 
 	non_word_aligned_thumb_func_start sub_80047BE
-sub_80047BE
 	ldrh r3, [r0, #2]
 	lsls r1, r1, #0x1b
 	lsrs r1, r1, #0x1b
@@ -76,9 +75,9 @@ sub_80047BE
 	orrs r1, r2
 	strh r1, [r0, #2]
 	bx lr
+	thumb_func_end sub_80047BE
 
 	non_word_aligned_thumb_func_start sub_80047DA
-sub_80047DA
 	ldrh r0, [r0, #2]
 	cmp r1, #0
 	beq %3
@@ -89,9 +88,9 @@ sub_80047DA
 	lsls r0, r0, #0x13
 	lsrs r0, r0, #0x1b
 	bx lr
+	thumb_func_end sub_80047DA
 
 	thumb_func_start sub_80047EC
-sub_80047EC
 	push {r3, lr}
 	cmp r0, #0
 	bne %4
@@ -112,9 +111,9 @@ sub_80047EC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80047EC
 
 	non_word_aligned_thumb_func_start sub_8004812
-sub_8004812
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -133,9 +132,9 @@ sub_8004812
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004812
 
 	non_word_aligned_thumb_func_start sub_8004836
-sub_8004836
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -160,9 +159,9 @@ sub_8004836
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004836
 
 	non_word_aligned_thumb_func_start sub_8004866
-sub_8004866
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -200,9 +199,9 @@ sub_8004866
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004866
 
 	thumb_func_start sub_80048B0
-sub_80048B0
 	adds r1, r0, #0
 	ldrh r1, [r1, #8]
 	movs r0, #1
@@ -211,9 +210,9 @@ sub_80048B0
 	movs r0, #0
 12
 	bx lr
+	thumb_func_end sub_80048B0
 
 	non_word_aligned_thumb_func_start sub_80048BE
-sub_80048BE
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -239,9 +238,9 @@ sub_80048BE
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80048BE
 
 	thumb_func_start sub_80048F0
-sub_80048F0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrh r0, [r0, #8]
@@ -270,9 +269,9 @@ sub_80048F0
 16
 	adds r0, r5, #0
 	b %14
+	thumb_func_end sub_80048F0
 
 	thumb_func_start sub_8004924
-sub_8004924
 	push {r3, lr}
 	cmp r0, #0
 	bne %17
@@ -309,9 +308,9 @@ sub_8004924
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004924
 
 	non_word_aligned_thumb_func_start sub_800496A
-sub_800496A
 	push {r3, lr}
 	ldr r2, _08004B94
 	ldr r3, _08004B98
@@ -325,9 +324,9 @@ sub_800496A
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800496A
 
 	thumb_func_start sub_8004984
-sub_8004984
 	ldr r1, [r0, #0x14]
 	lsls r2, r1, #0x1f
 	bpl %20
@@ -354,9 +353,9 @@ sub_8004984
 	bics r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004984
 
 	thumb_func_start sub_80049B4
-sub_80049B4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x14]
@@ -515,17 +514,17 @@ sub_80049B4
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80049B4
 
 	thumb_func_start sub_8004ADC
-sub_8004ADC
 	movs r1, #0
 	strh r1, [r0, #6]
 	strh r1, [r0, #8]
 	strh r1, [r0, #4]
 	bx lr
+	thumb_func_end sub_8004ADC
 
 	non_word_aligned_thumb_func_start sub_8004AE6
-sub_8004AE6
 	ldr r2, [r0, #0x14]
 	movs r3, #8
 	bics r2, r3
@@ -533,22 +532,22 @@ sub_8004AE6
 	orrs r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004AE6
 
 	thumb_func_start sub_8004AF4
-sub_8004AF4
 	ldr r0, [r0, #0x14]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_8004AF4
 
 	thumb_func_start sub_8004AFC
-sub_8004AFC
 	strh r3, [r0, #0xa]
 	strh r1, [r0, #0xc]
 	bx lr
+	thumb_func_end sub_8004AFC
 
 	non_word_aligned_thumb_func_start sub_8004B02
-sub_8004B02
 	movs r3, #0
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
@@ -576,16 +575,16 @@ sub_8004B02
 	bics r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004B02
 
 	thumb_func_start sub_8004B38
-sub_8004B38
 	ldr r0, [r0, #0x14]
 	lsls r0, r0, #0x1f
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_8004B38
 
 	thumb_func_start sub_8004B40
-sub_8004B40
 	push {r4}
 	str r1, [r0, #0x10]
 	ldr r3, [r1]
@@ -613,16 +612,16 @@ sub_8004B40
 	str r1, [r0, #0x14]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8004B40
 
 	non_word_aligned_thumb_func_start sub_8004B76
-sub_8004B76
 	ldr r0, [r0, #0x14]
 	lsls r0, r0, #0x1e
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_8004B76
 
 	non_word_aligned_thumb_func_start sub_8004B7E
-sub_8004B7E
 	ldr r2, [r0, #0x14]
 	movs r3, #4
 	bics r2, r3
@@ -630,13 +629,14 @@ sub_8004B7E
 	orrs r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004B7E
 
 	thumb_func_start sub_8004B8C
-sub_8004B8C
 	ldr r0, [r0, #0x14]
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_8004B8C
 	ALIGN
 _08004B94 DCDU __VTABLE__14Singleton_3E80
 _08004B98 DCDU gUnknown_03003E80

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800CAE2
-sub_800CAE2
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0800CCF8
@@ -269,3 +268,4 @@ sub_800CAE2
 	lsls r0, r0, #1
 	str r0, [r4, #0x78]
 	b %126
+	thumb_func_end sub_800CAE2

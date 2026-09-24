@@ -1,5 +1,4 @@
 	thumb_func_start sub_803DA9C
-sub_803DA9C
 	push {r4, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -13,4 +12,5 @@ sub_803DA9C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803DA9C
 

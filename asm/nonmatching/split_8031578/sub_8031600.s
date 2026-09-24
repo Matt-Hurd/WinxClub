@@ -1,5 +1,4 @@
 	thumb_func_start sub_8031600
-sub_8031600
 	push {r4, r5, r6}
 	add r5, sp, #0xc
 	ldr r6, [r0, #0xc]
@@ -17,4 +16,5 @@ sub_8031600
 	str r5, [r0, #0xc]
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_8031600
 

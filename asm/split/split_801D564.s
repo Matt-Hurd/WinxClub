@@ -23,7 +23,6 @@
 	EXPORT __ct__7DefaultFv
 
 	thumb_func_start Init_and_add_some_object
-Init_and_add_some_object
 __ct__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
@@ -202,9 +201,9 @@ __ct__7DefaultFv
 	str r1, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Init_and_add_some_object
 
 	thumb_func_start m1C__7DefaultFv
-m1C__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -248,9 +247,9 @@ m1C__7DefaultFv
 	bx r3
 
 	EXPORT __dt__7DefaultFv
+	thumb_func_end m1C__7DefaultFv
 
 	thumb_func_start m00__7DefaultFv
-m00__7DefaultFv
 __dt__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
@@ -309,9 +308,9 @@ __dt__7DefaultFv
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end m00__7DefaultFv
 
 	thumb_func_start sub_801D788
-sub_801D788
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldrb r0, [r1, #0x14]
@@ -559,4 +558,5 @@ _0801D978 DCDU 0x00007075
 	movs r1, #1
 	bl sub_803FEF8
 	b %23
+	thumb_func_end sub_801D788
 	END

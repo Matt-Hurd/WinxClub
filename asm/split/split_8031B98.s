@@ -19,7 +19,6 @@
 	IMPORT sub_803F72C
 
 	thumb_func_start HandleShowPictureScreen
-HandleShowPictureScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x114
 	add r6, sp, #0x10
@@ -179,6 +178,7 @@ HandleShowPictureScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleShowPictureScreen
 	ALIGN
 _08031CE8 DCDU sub_80143E0
 _08031CEC DCDU gUnknown_03003454

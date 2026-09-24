@@ -1,5 +1,4 @@
 	thumb_func_start sub_8002548
-sub_8002548
 	push {r4, r5}
 	adds r5, r3, #0
 	movs r3, #0x58
@@ -22,3 +21,4 @@ sub_8002548
 	str r0, [r1, r2]
 	pop {r4, r5}
 	bx lr
+	thumb_func_end sub_8002548

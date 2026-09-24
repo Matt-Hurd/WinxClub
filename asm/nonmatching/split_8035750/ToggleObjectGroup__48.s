@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start ToggleObjectGroup__48
-ToggleObjectGroup__48
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -33,4 +32,5 @@ ToggleObjectGroup__48
 9
 	bl Dying__7DefaultFv
 	b %8
+	thumb_func_end ToggleObjectGroup__48
 

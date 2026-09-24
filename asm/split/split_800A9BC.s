@@ -6,7 +6,6 @@
 	IMPORT sub_800802E
 
 	arm_func_start sub_800A9BC
-sub_800A9BC
 1
 	STMFD SP!, {r4, lr}
 	movs r4, r0
@@ -27,17 +26,18 @@ sub_800A9BC
 	mov r0, r4
 	LDMFD SP!, {r4, lr}
 	bx lr
+	arm_func_end sub_800A9BC
 
 	arm_func_start sub_800AA04
-sub_800AA04
 	LDR r0, [r1]
 	MOV r0, r0, LSR #8
 	bx lr
+	arm_func_end sub_800AA04
 
 	arm_func_start sub_800AA10
-sub_800AA10
 	mov r0, #4
 	bx lr
+	arm_func_end sub_800AA10
 	ALIGN
 _0800AA18 DCDU __VTABLE__380off_803EE40
 	END

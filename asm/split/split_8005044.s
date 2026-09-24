@@ -6,7 +6,6 @@
 	IMPORT sub_803F07C
 
 	thumb_func_start sub_8005044
-sub_8005044
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r1, #3
@@ -56,9 +55,9 @@ sub_8005044
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end sub_8005044
 
 	thumb_func_start sub_80050AC
-sub_80050AC
 	movs r1, #0
 	str r1, [r0, #4]
 	str r1, [r0]
@@ -69,9 +68,9 @@ sub_80050AC
 	str r1, [r0, #0xc]
 	str r2, [r0, #8]
 	bx lr
+	thumb_func_end sub_80050AC
 
 	thumb_func_start SomehowInitEWRAMLinkedList
-SomehowInitEWRAMLinkedList
 	push {r3, r4, r5, lr}
 	cmp r1, #0
 	bne %1
@@ -98,15 +97,15 @@ SomehowInitEWRAMLinkedList
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end SomehowInitEWRAMLinkedList
 
 	thumb_func_start sub_80050F4
-sub_80050F4
 	ldr r0, _08005258
 	ldr r0, [r0, #4]
 	bx lr
+	thumb_func_end sub_80050F4
 
 	non_word_aligned_thumb_func_start sub_80050FA
-sub_80050FA
 	ldr r1, _08005258
 	cmp r0, #0
 	bne %2
@@ -114,15 +113,15 @@ sub_80050FA
 2
 	str r0, [r1, #8]
 	bx lr
+	thumb_func_end sub_80050FA
 
 	non_word_aligned_thumb_func_start GetEWRAMStart
-GetEWRAMStart
 	ldr r0, _08005258
 	ldr r0, [r0, #8]
 	bx lr
+	thumb_func_end GetEWRAMStart
 
 	thumb_func_start sub_800510C
-sub_800510C
 	ldr r2, [r0]
 	cmp r2, r1
 	bhi %3
@@ -134,9 +133,9 @@ sub_800510C
 3
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800510C
 
 	thumb_func_start sub_8005120
-sub_8005120
 	subs r0, #0xc
 	ldr r1, [r0, #8]
 	lsrs r1, r1, #8
@@ -149,9 +148,9 @@ sub_8005120
 5
 	ldr r0, [r0, #4]
 	bx lr
+	thumb_func_end sub_8005120
 
 	thumb_func_start sub_8005134
-sub_8005134
 	ldr r2, [r0, #8]
 	lsls r3, r2, #0x1f
 	lsrs r3, r3, #0x1f
@@ -171,30 +170,30 @@ sub_8005134
 	str r1, [r0, #0xc]
 6
 	bx lr
+	thumb_func_end sub_8005134
 
 	thumb_func_start sub_8005158
-sub_8005158
 	ldr r0, [r0, #8]
 	lsls r0, r0, #0x1f
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_8005158
 
 	thumb_func_start sub_8005160
-sub_8005160
 	ldr r0, [r0, #0xc]
 	bx lr
+	thumb_func_end sub_8005160
 
 	thumb_func_start sub_8005164
-sub_8005164
 	ldr r1, [r0, #4]
 	ldr r2, [r0]
 	ldr r0, [r0, #0xc]
 	subs r1, r1, r2
 	subs r0, r1, r0
 	bx lr
+	thumb_func_end sub_8005164
 
 	thumb_func_start sub_8005170
-sub_8005170
 	push {r3, r4, r5, lr}
 	ldr r0, [r0]
 	adds r2, r1, #7
@@ -251,9 +250,9 @@ sub_8005170
 12
 	adds r0, r4, #0
 	b %10
+	thumb_func_end sub_8005170
 
 	non_word_aligned_thumb_func_start sub_80051D6
-sub_80051D6
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #8]
@@ -292,9 +291,9 @@ sub_80051D6
 	str r1, [r0, #8]
 	adds r0, #0xc
 	b %13
+	thumb_func_end sub_80051D6
 
 	thumb_func_start sub_8005220
-sub_8005220
 	ldr r2, [r0, #8]
 	lsls r2, r2, #0x1f
 	bpl %15
@@ -323,6 +322,7 @@ sub_8005220
 	str r1, [r0, #8]
 15
 	bx lr
+	thumb_func_end sub_8005220
 	ALIGN
 _08005258 DCDU gUnknown_030033E8
 	END

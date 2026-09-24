@@ -21,7 +21,6 @@
 	IMPORT sub_803FBBC
 
 	thumb_func_start InitScriptData
-InitScriptData
 	push {r0, r1, r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -184,9 +183,9 @@ InitScriptData
 7
 	adds r0, r4, #0
 	b %1
+	thumb_func_end InitScriptData
 
 	thumb_func_start sub_80175D4
-sub_80175D4
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, _080177A8
@@ -225,9 +224,9 @@ sub_80175D4
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80175D4
 
 	thumb_func_start sub_8017620
-sub_8017620
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0
@@ -435,6 +434,7 @@ sub_8017620
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8017620
 	ALIGN
 _080177A0 DCDU __VTABLE__14Singleton_3E88
 _080177A4 DCDU gUnknown_03003E88

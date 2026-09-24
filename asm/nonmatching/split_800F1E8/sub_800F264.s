@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F264
-sub_800F264
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %6
@@ -23,4 +22,5 @@ sub_800F264
 	str r0, [r4, #0x6c]
 	adds r0, r4, #0
 	b %5
+	thumb_func_end sub_800F264
 

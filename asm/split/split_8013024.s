@@ -14,7 +14,6 @@
 	IMPORT sub_803DA9C
 
 	arm_func_start sub_8013024
-sub_8013024
 	STMFD SP!, {r4, r5, lr}
 	mov r5, #0x8000
 	sub r5, r5, #8
@@ -64,9 +63,9 @@ sub_8013024
 	LDMFD SP!, {r4, r5, lr}
 	mov r0, r2
 	bx lr
+	arm_func_end sub_8013024
 	
 	arm_func_start sub_80130DC
-sub_80130DC
 4
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x144
@@ -216,9 +215,9 @@ sub_80130DC
 	add sp, sp, #0x144
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_80130DC
 
 	thumb_func_start sub_80132F4
-sub_80132F4
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x43
@@ -236,9 +235,9 @@ sub_80132F4
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80132F4
 
 	thumb_func_start sub_8013318
-sub_8013318
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, #0x10
@@ -258,9 +257,9 @@ sub_8013318
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8013318
 
 	non_word_aligned_thumb_func_start sub_801333E
-sub_801333E
 	push {r4, r5, r6, lr}
 	ldr r5, _08013430
 	adds r4, r0, #0
@@ -294,9 +293,9 @@ sub_801333E
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801333E
 
 	non_word_aligned_thumb_func_start sub_8013386
-sub_8013386
 	ldr r0, _08013430
 	push {r3, lr}
 	ldr r0, [r0]
@@ -310,9 +309,9 @@ sub_8013386
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8013386
 
 	thumb_func_start sub_80133A0
-sub_80133A0
 	ldr r1, _08013430
 	lsls r3, r0, #3
 	subs r0, r3, r0
@@ -320,9 +319,9 @@ sub_80133A0
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	bx lr
+	thumb_func_end sub_80133A0
 
 	non_word_aligned_thumb_func_start sub_80133AE
-sub_80133AE
 	lsls r3, r0, #3
 	subs r0, r3, r0
 	ldr r3, _08013430
@@ -356,9 +355,9 @@ sub_80133AE
 	pop {r4}
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_80133AE
 
 	thumb_func_start sub_80133F0
-sub_80133F0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08013438
@@ -370,9 +369,9 @@ sub_80133F0
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80133F0
 
 	non_word_aligned_thumb_func_start sub_801340A
-sub_801340A
 	ldrb r3, [r1]
 	adds r2, r0, #0
 	movs r0, #0
@@ -393,6 +392,7 @@ sub_801340A
 	bne %23
 24
 	bx lr
+	thumb_func_end sub_801340A
 	ALIGN
 _08013430 DCDU gUnknown_03003C3C
 _08013434 DCDU sub_8013318

@@ -1,5 +1,4 @@
 	thumb_func_start sub_802F228
-sub_802F228
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -84,4 +83,5 @@ sub_802F228
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F228
 

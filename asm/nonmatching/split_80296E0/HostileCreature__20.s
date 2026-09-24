@@ -1,5 +1,4 @@
 	thumb_func_start HostileCreature__20
-HostileCreature__20
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
@@ -36,4 +35,5 @@ HostileCreature__20
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__20
 

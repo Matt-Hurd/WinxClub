@@ -1,5 +1,4 @@
 	thumb_func_start ToggleObjectGroup__04
-ToggleObjectGroup__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -37,4 +36,5 @@ ToggleObjectGroup__04
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %19
+	thumb_func_end ToggleObjectGroup__04
 

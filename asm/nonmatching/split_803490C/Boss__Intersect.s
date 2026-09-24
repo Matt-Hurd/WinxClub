@@ -1,5 +1,4 @@
 	thumb_func_start Boss__Intersect
-Boss__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -264,3 +263,4 @@ _08034D18 DCDU gUnknown_0300345C
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %20
+	thumb_func_end Boss__Intersect

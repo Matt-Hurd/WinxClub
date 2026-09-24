@@ -1,5 +1,4 @@
 	thumb_func_start sub_800CD28
-sub_800CD28
 	ldr r1, [r1, #0x14]
 	ldr r2, _0800CD94
 	ldr r1, [r1]
@@ -24,4 +23,5 @@ sub_800CD28
 	adds r0, r0, r2
 	str r1, [r0, #0x18]
 	bx lr
+	thumb_func_end sub_800CD28
 

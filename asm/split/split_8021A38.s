@@ -43,7 +43,6 @@
 
 
 	thumb_func_start sub_8021A38
-sub_8021A38
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	bl m18__7DefaultFv
@@ -91,9 +90,9 @@ sub_8021A38
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021A38
 
 	thumb_func_start sub_8021A98
-sub_8021A98
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m1C__7DefaultFv
@@ -126,9 +125,9 @@ sub_8021A98
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021A98
 
 	non_word_aligned_thumb_func_start sub_8021ADE
-sub_8021ADE
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -209,9 +208,9 @@ sub_8021ADE
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021ADE
 
 	thumb_func_start sub_8021B84
-sub_8021B84
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _08021E78
@@ -395,9 +394,9 @@ sub_8021B84
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021B84
 
 	thumb_func_start sub_8021CFC
-sub_8021CFC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
@@ -639,9 +638,9 @@ _08021EA0 DCDU gUnknown_03003E98
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021CFC
 
 	thumb_func_start sub_8021EEC
-sub_8021EEC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0802219C
@@ -685,9 +684,9 @@ sub_8021EEC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021EEC
 
 	non_word_aligned_thumb_func_start sub_8021F42
-sub_8021F42
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -1007,6 +1006,7 @@ loc_802217a
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %40
+	thumb_func_end sub_8021F42
 	ALIGN
 _08022198 DCDU 0x000011EF
 _0802219C DCDU gUnknown_03003D20

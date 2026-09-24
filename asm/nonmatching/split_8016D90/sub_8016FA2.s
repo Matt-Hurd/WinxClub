@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8016FA2
-sub_8016FA2
 	push {r3, r4, r5, lr}
 	ldr r4, [r1]
 	ldrb r2, [r4]
@@ -211,3 +210,4 @@ loc_80170fa
 	str r2, [r0, #8]
 	bl sub_80166FE
 	b %50
+	thumb_func_end sub_8016FA2

@@ -15,21 +15,20 @@
 	IMPORT sub_8008008
 
 	arm_func_start sub_800AA1C
-sub_800AA1C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
 	b sub_803D984
+	arm_func_end sub_800AA1C
 
 	arm_func_start sub_800AA2C
-sub_800AA2C
 	mov r0, r1
 	mov r1, #0
 	mov r2, #0
 	b sub_803D9A8
+	arm_func_end sub_800AA2C
 
 	arm_func_start sub_800AA3C
-sub_800AA3C
 	mov r1, #1
 	add r3, r0, r2, lsl #2
 	STR r1, [r3, #0x58]
@@ -94,16 +93,16 @@ jmpt_0800AA74
 9
 	mov r0, #0
 	bx lr
+	arm_func_end sub_800AA3C
 
 	arm_func_start sub_800AAF0
-sub_800AAF0
 	mov r1, #0
 	add r0, r0, r2, lsl #2
 	STR r1, [r0, #0x58]
 	bx lr
+	arm_func_end sub_800AAF0
 
 	arm_func_start sub_800AB00
-sub_800AB00
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x28]
@@ -140,9 +139,9 @@ sub_800AB00
 	STMIA r0, {r1, r2, r3}
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_800AB00
 
 	arm_func_start sub_800AB8C
-sub_800AB8C
 	STMFD SP!, {r4, r5, r6, lr}
 	mov r4, r0
 	LDR r0, _0800AFC8
@@ -188,9 +187,9 @@ sub_800AB8C
 	bne sub_803DA18
 	LDMFD SP!, {r4, r5, r6, lr}
 	bx lr
+	arm_func_end sub_800AB8C
 
 	arm_func_start sub_800AC3C
-sub_800AC3C
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	ldrh r0, [r0, #4]
@@ -230,9 +229,9 @@ sub_800AC3C
 	sub r0, r0, r5
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
+	arm_func_end sub_800AC3C
 
 	arm_func_start sub_800ACD0
-sub_800ACD0
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r1
 	LDR r1, [r0]
@@ -281,9 +280,9 @@ loc_800ACF0
 	LDMFD SP!, {r3, r4, r5, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_800ACD0
 
 	arm_func_start sub_800AD8C
-sub_800AD8C
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne %14
@@ -322,9 +321,9 @@ sub_800AD8C
 	mov r0, r4
 	LDMFD SP!, {r4, lr}
 	bx lr
+	arm_func_end sub_800AD8C
 
 	arm_func_start sub_800AE20
-sub_800AE20
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x9c
 	add r5, sp, #0x1c
@@ -428,23 +427,24 @@ sub_800AE20
 	add sp, sp, #0x9c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	arm_func_end sub_800AE20
 
 	arm_func_start sub_800AFA8
-sub_800AFA8
 	LDR r0, [r0, #0x3c]
 	rsbs r0, r0, #1
 	movlo r0, #0
 	bx lr
+	arm_func_end sub_800AFA8
 
 	arm_func_start sub_800AFB8
-sub_800AFB8
 	LDR r0, [r1]
 	bx lr
+	arm_func_end sub_800AFB8
 
 	arm_func_start sub_800AFC0
-sub_800AFC0
 	mov r0, #4
 	bx lr
+	arm_func_end sub_800AFC0
 	ALIGN
 _0800AFC8 DCDU __VTABLE__382dword_803EE98
 _0800AFCC DCDU sub_800AA3C

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8002762
-sub_8002762
 	push {r3, r4, r5, r6, r7, lr}
 	movs r2, #1
 	lsls r2, r2, #0xb
@@ -88,3 +87,4 @@ sub_8002762
 	cmp r1, r5
 	bne %21
 	b %19
+	thumb_func_end sub_8002762

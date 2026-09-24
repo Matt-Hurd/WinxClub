@@ -26,7 +26,6 @@
 	IMPORT sub_80404B4
 
 	thumb_func_start sub_8021248
-sub_8021248
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -1058,6 +1057,7 @@ loc_8021856
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8021248
 	ALIGN
 _08021A1C DCDU gPlayerEntity
 _08021A20 DCDU 0x00000307

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80047EC
-sub_80047EC
 	push {r3, lr}
 	cmp r0, #0
 	bne %4
@@ -20,4 +19,5 @@ sub_80047EC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80047EC
 

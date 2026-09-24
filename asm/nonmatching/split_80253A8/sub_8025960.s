@@ -1,5 +1,4 @@
 	thumb_func_start sub_8025960
-sub_8025960
 	movs r3, #6
 	strh r3, [r0, #0xe]
 	movs r3, #7
@@ -34,4 +33,5 @@ sub_8025960
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_8025960
 

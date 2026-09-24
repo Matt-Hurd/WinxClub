@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011B62
-sub_8011B62
 	push {r4, lr}
 	cmp r0, #8
 	bhs %22
@@ -255,4 +254,5 @@ _08011D2C DCDU 0x0000B660
 _08011D30 DCDU gUnknown_03003BC8
 _08011D34 DCDU gUnknown_030037A0
 _08011D38 DCDU 0x00333333
+	thumb_func_end sub_8011B62
 

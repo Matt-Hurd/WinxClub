@@ -1,5 +1,4 @@
 	thumb_func_start sub_8001710
-sub_8001710
 	adds r2, r0, #0
 	movs r1, #0x67
 	lsls r1, r1, #6
@@ -24,4 +23,5 @@ sub_8001710
 	strh r1, [r2, r3]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8001710
 

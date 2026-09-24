@@ -1,5 +1,4 @@
 	thumb_func_start sub_80409E4
-sub_80409E4
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, _08040C28
 	ldr r5, _08040C30
@@ -331,3 +330,4 @@ loc_8040b6e
 	lsls r0, r0, #1
 	strh r0, [r4, #4]
 	b %11
+	thumb_func_end sub_80409E4

@@ -1,5 +1,4 @@
 	thumb_func_start SetEepromTimerIntr
-SetEepromTimerIntr
 	str r1, [r0]
 	ldr r1, _0803B598
 	movs r0, #0x80
@@ -29,3 +28,4 @@ SetEepromTimerIntr
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
+	thumb_func_end SetEepromTimerIntr

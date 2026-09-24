@@ -1,5 +1,4 @@
 	thumb_func_start sub_8019F60
-sub_8019F60
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x19
@@ -185,4 +184,5 @@ sub_8019F60
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8019F60
 

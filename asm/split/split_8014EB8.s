@@ -7,7 +7,6 @@
 	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_8014EB8
-sub_8014EB8
 	movs r3, #0
 	NEGS r0, r2
 	cmp r1, #0
@@ -178,9 +177,9 @@ sub_8014EB8
 9
 	movs r0, #0
 	b %6
+	thumb_func_end sub_8014EB8
 
 	thumb_func_start sub_8015014
-sub_8015014
 	lsls r3, r1, #2
 	adds r1, r3, r1
 	ldr r2, _08015374
@@ -216,9 +215,9 @@ sub_8015014
 	str r1, [r0, #0x34]
 	pop {r4, r5, r6, r7}
 	b %5
+	thumb_func_end sub_8015014
 
 	non_word_aligned_thumb_func_start sub_801505A
-sub_801505A
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -470,9 +469,9 @@ sub_801505A
 23
 	movs r0, #0
 	b %22
+	thumb_func_end sub_801505A
 
 	thumb_func_start sub_8015240
-sub_8015240
 	push {r4, r5, r6, r7, lr}
 	ldr r2, [r0, #0x10]
 	adds r6, r0, #0
@@ -638,6 +637,7 @@ sub_8015240
 39
 	movs r0, #0
 	b %34
+	thumb_func_end sub_8015240
 	ALIGN
 _08015374 DCDU gUnknown_08050410
 _08015378 DCDU gUnknown_03003EA4

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start NonBossHostileScriptGroup__04
-NonBossHostileScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -13,4 +12,5 @@ NonBossHostileScriptGroup__04
 5
 	bl sub_8029290
 	b %4
+	thumb_func_end NonBossHostileScriptGroup__04
 

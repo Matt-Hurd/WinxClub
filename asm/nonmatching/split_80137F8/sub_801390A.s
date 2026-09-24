@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801390A
-sub_801390A
 	push {r0, r1, r2, r3}
 	push {r4, r5, lr}
 	sub sp, #0x1fc
@@ -28,4 +27,5 @@ sub_801390A
 	pop {r3}
 	add sp, #0x10
 	bx r3
+	thumb_func_end sub_801390A
 

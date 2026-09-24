@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800FC76
-sub_800FC76
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x14
@@ -56,4 +55,5 @@ sub_800FC76
 	str r0, [r4, #0x60]
 	adds r0, r5, #0
 	b %18
+	thumb_func_end sub_800FC76
 

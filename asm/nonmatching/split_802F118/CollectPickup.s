@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start CollectPickup
-CollectPickup
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -480,4 +479,5 @@ _0802F55C DCDU 0x000004E6
 	movs r1, #3
 	bl sub_8017A0A
 	b %16
+	thumb_func_end CollectPickup
 

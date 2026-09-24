@@ -1,5 +1,4 @@
 	thumb_func_start HostileCreature__Dying
-HostileCreature__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -109,4 +108,5 @@ HostileCreature__Dying
 12
 	bl Dying__7DefaultFv
 	b %6
+	thumb_func_end HostileCreature__Dying
 

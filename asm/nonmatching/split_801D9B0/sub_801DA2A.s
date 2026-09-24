@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801DA2A
-sub_801DA2A
 	push {r4, lr}
 	ldr r1, [r0, #0x28]
 	adds r4, r0, #0
@@ -13,4 +12,5 @@ sub_801DA2A
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801DA2A
 

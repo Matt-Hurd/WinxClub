@@ -14,7 +14,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800B154
-sub_800B154
 	movs r0, #1
 	lsls r0, r1
 	ldr r1, _0800B2B4
@@ -48,9 +47,9 @@ sub_800B154
 3
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800B154
 
 	thumb_func_start InitKeyinputIE
-InitKeyinputIE
 	ldr r2, _0800B2B4
 	push {r4}
 	movs r1, #1
@@ -75,81 +74,81 @@ InitKeyinputIE
 	strh r0, [r2]
 	strh r4, [r3, #0x12]
 	b %4
+	thumb_func_end InitKeyinputIE
 
 	thumb_func_start sub_800B1BC
-sub_800B1BC
 	ldr r1, _0800B2B4
 	push {r3, lr}
 	movs r0, #0
 	strh r0, [r1, #8]
 	movs r0, #0x1f
 	bl sub_80002E2
+	thumb_func_end sub_800B1BC
 
 	non_word_aligned_thumb_func_start sub_800B1CA
-sub_800B1CA
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B1CA
 
 	thumb_func_start CallSoftReset
-CallSoftReset
 	push {r3, lr}
 	movs r0, #0xfb
 	bl SoftReset
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end CallSoftReset
 
 	non_word_aligned_thumb_func_start nullsub_9
-nullsub_9
 	bx lr
+	thumb_func_end nullsub_9
 
 	thumb_func_start nullsub_10
-nullsub_10
 	bx lr
+	thumb_func_end nullsub_10
 
 	non_word_aligned_thumb_func_start nullsub_11
-nullsub_11
 	bx lr
+	thumb_func_end nullsub_11
 
 	thumb_func_start nullsub_12
-nullsub_12
 	bx lr
+	thumb_func_end nullsub_12
 
 	non_word_aligned_thumb_func_start nullsub_13
-nullsub_13
 	bx lr
+	thumb_func_end nullsub_13
 
 	thumb_func_start nullsub_14
-nullsub_14
 	bx lr
+	thumb_func_end nullsub_14
 
 	non_word_aligned_thumb_func_start nullsub_15
-nullsub_15
 	bx lr
+	thumb_func_end nullsub_15
 
 	thumb_func_start nullsub_16
-nullsub_16
 	bx lr
+	thumb_func_end nullsub_16
 
 	non_word_aligned_thumb_func_start nullsub_17
-nullsub_17
 	bx lr
+	thumb_func_end nullsub_17
 
 	thumb_func_start nullsub_18
-nullsub_18
 	bx lr
+	thumb_func_end nullsub_18
 
 	non_word_aligned_thumb_func_start nullsub_19
-nullsub_19
 	bx lr
+	thumb_func_end nullsub_19
 
 	thumb_func_start nullsub_4
-nullsub_4
 	bx lr
+	thumb_func_end nullsub_4
 
 	non_word_aligned_thumb_func_start sub_800B1F6
-sub_800B1F6
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %7
@@ -222,9 +221,9 @@ sub_800B1F6
 	bl sub_800B154
 	adds r0, r4, #0
 	b %6
+	thumb_func_end sub_800B1F6
 
 	non_word_aligned_thumb_func_start sub_800B286
-sub_800B286
 	push {r3, lr}
 	ldr r2, _0800B2C0
 	ldr r3, _0800B2C4
@@ -238,27 +237,28 @@ sub_800B286
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B286
 
 	thumb_func_start nullsub_30
-nullsub_30
 	bx lr
+	thumb_func_end nullsub_30
 
 	non_word_aligned_thumb_func_start nullsub_31
-nullsub_31
 	bx lr
+	thumb_func_end nullsub_31
 
 	thumb_func_start sub_800B2A4
-sub_800B2A4
 	ldr r0, _0800B2B4
 	ldrh r0, [r0]
 	lsls r0, r0, #0x13
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_800B2A4
 
 	non_word_aligned_thumb_func_start sub_800B2AE
-sub_800B2AE
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800B2AE
 	ALIGN
 _0800B2B4 DCDU REG_IE
 _0800B2B8 DCDU REG_DISPSTAT

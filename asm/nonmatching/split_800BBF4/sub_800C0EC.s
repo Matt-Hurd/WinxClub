@@ -1,5 +1,4 @@
 	thumb_func_start sub_800C0EC
-sub_800C0EC
 	push {r4, r5, r6, r7}
 	movs r3, #0
 	subs r4, r2, #1
@@ -38,4 +37,5 @@ sub_800C0EC
 	strb r0, [r3, #1]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_800C0EC
 

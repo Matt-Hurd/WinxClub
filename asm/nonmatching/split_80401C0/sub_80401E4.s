@@ -1,5 +1,4 @@
 	thumb_func_start sub_80401E4
-sub_80401E4
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08040258
@@ -54,3 +53,4 @@ sub_80401E4
 	ldr r0, [r5]
 	bl sub_800CD28
 	b %3
+	thumb_func_end sub_80401E4

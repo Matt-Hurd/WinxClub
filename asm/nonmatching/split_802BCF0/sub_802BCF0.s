@@ -1,5 +1,4 @@
 	thumb_func_start sub_802BCF0
-sub_802BCF0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r1, [r0, #0x34]
@@ -272,4 +271,5 @@ loc_802bdd6
 	movs r6, #0
 	str r6, [r4, #4]
 	b %3
+	thumb_func_end sub_802BCF0
 

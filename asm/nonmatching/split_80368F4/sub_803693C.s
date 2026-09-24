@@ -1,5 +1,4 @@
 	thumb_func_start sub_803693C
-sub_803693C
 	push {r4, r5, r6, r7, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -143,4 +142,5 @@ sub_803693C
 	ldr r0, [r4, #0x2c]
 	bl sub_8000914
 	b %6
+	thumb_func_end sub_803693C
 

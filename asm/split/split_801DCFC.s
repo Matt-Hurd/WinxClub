@@ -17,7 +17,6 @@
 	IMPORT sub_8040594
 
 	thumb_func_start sub_801DCFC
-sub_801DCFC
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -50,9 +49,9 @@ sub_801DCFC
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801DCFC
 
 	thumb_func_start m04__7DefaultFv
-m04__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -363,9 +362,9 @@ loc_801df3a
 	adds r0, r4, #0
 	bl sub_801D788
 	b %2
+	thumb_func_end m04__7DefaultFv
 
 	thumb_func_start m08__7DefaultFv
-m08__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -456,6 +455,7 @@ loc_801dfa6
 52
 	movs r0, #0
 	b %50
+	thumb_func_end m08__7DefaultFv
 	ALIGN
 _0801DFC8 DCDU gUnknown_03003454
 _0801DFCC DCDU gUnknown_03003450

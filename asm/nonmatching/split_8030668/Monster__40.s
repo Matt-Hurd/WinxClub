@@ -1,5 +1,4 @@
 	thumb_func_start Monster__40
-Monster__40
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -1004,3 +1003,4 @@ loc_8030e32
 	adds r1, r1, r2
 	str r1, [r0, #0x30]
 	b %6
+	thumb_func_end Monster__40

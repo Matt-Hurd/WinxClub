@@ -1,5 +1,4 @@
 	thumb_func_start sub_8013FC4
-sub_8013FC4
 	movs r3, #0
 	cmp r1, #0
 	push {r4}
@@ -26,3 +25,4 @@ sub_8013FC4
 	cmp r1, #0
 	bne %59
 	b %57
+	thumb_func_end sub_8013FC4

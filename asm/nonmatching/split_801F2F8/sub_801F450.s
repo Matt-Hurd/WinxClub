@@ -1,5 +1,4 @@
 	thumb_func_start sub_801F450
-sub_801F450
 	push {r4, r5, r6, r7, lr}
 	adds r6, r1, #0
 	adds r4, r0, #0
@@ -73,4 +72,5 @@ sub_801F450
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801F450
 

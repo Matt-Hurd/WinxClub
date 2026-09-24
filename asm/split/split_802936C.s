@@ -16,7 +16,6 @@
 	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_802936C
-sub_802936C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r4, r0, #0
@@ -67,9 +66,9 @@ sub_802936C
 	ldr r0, [r4, #0x30]
 	bl sub_800065C
 	b %2
+	thumb_func_end sub_802936C
 
 	thumb_func_start sub_80293D0
-sub_80293D0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -109,9 +108,9 @@ sub_80293D0
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80293D0
 
 	thumb_func_start HostileCreature__Dying
-HostileCreature__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -221,9 +220,9 @@ HostileCreature__Dying
 12
 	bl Dying__7DefaultFv
 	b %6
+	thumb_func_end HostileCreature__Dying
 
 	non_word_aligned_thumb_func_start sub_80294EE
-sub_80294EE
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r1]
@@ -353,9 +352,9 @@ loc_802957a
 	adds r1, r2, r1
 	bl __call_via_r1
 	b %25
+	thumb_func_end sub_80294EE
 
 	thumb_func_start HostileCreature__Attack
-HostileCreature__Attack
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080296D4
@@ -481,6 +480,7 @@ HostileCreature__Attack
 33
 	movs r0, #0
 	b %32
+	thumb_func_end HostileCreature__Attack
 	ALIGN
 _080296BC DCDU gUnknown_03003EB8
 _080296C0 DCDU gUnknown_08050FD4

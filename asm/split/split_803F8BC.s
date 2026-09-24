@@ -5,7 +5,6 @@
 	IMPORT sub_8000D5A
 
 	thumb_func_start sub_803F8BC
-sub_803F8BC
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x18]
@@ -39,6 +38,7 @@ sub_803F8BC
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F8BC
 	ALIGN
 _0803F900 DCDU gUnknown_03003EA0
 	END

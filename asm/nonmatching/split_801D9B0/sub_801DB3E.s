@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801DB3E
-sub_801DB3E
 	push {r4, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -32,4 +31,5 @@ sub_801DB3E
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801DB3E
 

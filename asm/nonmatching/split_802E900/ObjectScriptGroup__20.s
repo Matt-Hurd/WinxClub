@@ -1,5 +1,4 @@
 	thumb_func_start ObjectScriptGroup__20
-ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -38,3 +37,4 @@ ObjectScriptGroup__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end ObjectScriptGroup__20

@@ -1,5 +1,4 @@
 	thumb_func_start Critter__38
-Critter__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -37,4 +36,5 @@ Critter__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__38
 

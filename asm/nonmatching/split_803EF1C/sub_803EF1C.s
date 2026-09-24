@@ -1,5 +1,4 @@
 	thumb_func_start sub_803EF1C
-sub_803EF1C
 	movs r1, #0x29
 	lsls r1, r1, #5
 	adds r0, r0, r1
@@ -8,4 +7,5 @@ sub_803EF1C
 	strb r1, [r0, #1]
 	bx lr
 	ALIGN
+	thumb_func_end sub_803EF1C
 

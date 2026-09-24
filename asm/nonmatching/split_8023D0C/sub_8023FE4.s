@@ -1,5 +1,4 @@
 	thumb_func_start sub_8023FE4
-sub_8023FE4
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r0, _08024074
 	movs r3, #8
@@ -69,3 +68,4 @@ sub_8023FE4
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8023FE4

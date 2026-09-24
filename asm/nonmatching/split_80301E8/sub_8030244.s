@@ -1,5 +1,4 @@
 	thumb_func_start sub_8030244
-sub_8030244
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	ldr r0, _08030594
@@ -65,4 +64,5 @@ sub_8030244
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %9
+	thumb_func_end sub_8030244
 

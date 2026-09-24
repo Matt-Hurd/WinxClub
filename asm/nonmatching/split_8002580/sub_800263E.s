@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800263E
-sub_800263E
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800281C
@@ -47,4 +46,5 @@ sub_800263E
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	b %9
+	thumb_func_end sub_800263E
 

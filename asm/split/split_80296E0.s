@@ -54,7 +54,6 @@
 
 
 	thumb_func_start sub_80296E0
-sub_80296E0
 	ldr r1, [r0, #0x7c]
 	lsls r1, r1, #1
 	lsrs r1, r1, #0x1d
@@ -98,9 +97,9 @@ sub_80296E0
 4
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80296E0
 
 	non_word_aligned_thumb_func_start Monster__10
-Monster__10
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -625,9 +624,9 @@ loc_8029ab2
 	lsls r3, r3, #0x1c
 	adds r1, #1
 	strb r1, [r0, #0xa]
+	thumb_func_end Monster__10
 
 	thumb_func_start sub_8029B18
-sub_8029B18
 	ldr r1, [r4, #0x7c]
 	movs r0, #7
 	lsls r0, r0, #0x1c
@@ -2673,9 +2672,9 @@ _0802AB5C DCDU gUnknown_03003458
 	bics r0, r2
 	str r0, [r4, #0x7c]
 	b %117
+	thumb_func_end sub_8029B18
 
 	non_word_aligned_thumb_func_start maybeCall60IfActive
-maybeCall60IfActive
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0xf
 	bne %132
@@ -2696,9 +2695,9 @@ maybeCall60IfActive
 	adds r1, r2, r1
 	bl __call_via_r1
 	b %118
+	thumb_func_end maybeCall60IfActive
 
 	thumb_func_start sub_802AC74
-sub_802AC74
 	push {r4, r5, r6, r7}
 	ldr r2, [r1]
 	ldr r3, [r0, #0x58]
@@ -2760,9 +2759,9 @@ sub_802AC74
 	adds r1, r1, r6
 	str r1, [r0, #0x7c]
 	b %135
+	thumb_func_end sub_802AC74
 
 	non_word_aligned_thumb_func_start HostileCreature__60
-HostileCreature__60
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0
@@ -3160,9 +3159,9 @@ _0802AF84 DCDU gUnknown_03003E88
 	ldr r0, [r0]
 	bl sub_80179BE
 	b %142
+	thumb_func_end HostileCreature__60
 
 	non_word_aligned_thumb_func_start HostileCreature__3C
-HostileCreature__3C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -3205,26 +3204,26 @@ HostileCreature__3C
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__3C
 
 	non_word_aligned_thumb_func_start HostileCreature__DamagePlayer
-HostileCreature__DamagePlayer
 	adds r0, #0x80
 	ldr r1, [r0, #0x2c]
 	movs r2, #8
 	orrs r1, r2
 	str r1, [r0, #0x2c]
 	bx lr
+	thumb_func_end HostileCreature__DamagePlayer
 
 	non_word_aligned_thumb_func_start HostileCreature__PlayerIframe
-HostileCreature__PlayerIframe
 	adds r0, #0x80
 	ldr r0, [r0, #0x2c]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end HostileCreature__PlayerIframe
 
 	thumb_func_start HostileCreature__20
-HostileCreature__20
 	push {r4, r5, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
@@ -3261,13 +3260,13 @@ HostileCreature__20
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__20
 
 	thumb_func_start sub_802B0A0
-sub_802B0A0
 	bx lr
+	thumb_func_end sub_802B0A0
 
 	non_word_aligned_thumb_func_start HostileCreature__54
-HostileCreature__54
 	ldr r0, _0802B27C
 	push {r3, lr}
 	ldr r0, [r0]
@@ -3288,9 +3287,9 @@ HostileCreature__54
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__54
 
 	non_word_aligned_thumb_func_start sub_802B0CA
-sub_802B0CA
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801F65C
@@ -3328,9 +3327,9 @@ sub_802B0CA
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802B0CA
 
 	thumb_func_start HostileScriptGroups__58
-HostileScriptGroups__58
 	push {r4, r5, r6, lr}
 	ldr r6, _0802B268
 	adds r4, r0, #0
@@ -3423,9 +3422,9 @@ HostileScriptGroups__58
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileScriptGroups__58
 
 	thumb_func_start HostileBaseObject__5C
-HostileBaseObject__5C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802B268
@@ -3501,6 +3500,7 @@ HostileBaseObject__5C
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileBaseObject__5C
 	ALIGN
 _0802B268 DCDU gUnknown_03003458
 _0802B26C DCDU gUnknown_03003454

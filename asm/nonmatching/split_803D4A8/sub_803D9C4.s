@@ -1,5 +1,4 @@
 	thumb_func_start sub_803D9C4
-sub_803D9C4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, _0803D9F4
@@ -25,4 +24,5 @@ sub_803D9C4
 	bx r3
 	ALIGN
 _0803D9F4 DCDU gUnknown_030033E8
+	thumb_func_end sub_803D9C4
 

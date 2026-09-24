@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801114E
-sub_801114E
 	adds r1, r0, #0
 	ldr r1, [r1, #0x5c]
 	movs r0, #1
@@ -8,4 +7,5 @@ sub_801114E
 	movs r0, #0
 15
 	bx lr
+	thumb_func_end sub_801114E
 

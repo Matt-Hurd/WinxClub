@@ -22,7 +22,6 @@
 	IMPORT sub_803FC68
 
 	thumb_func_start sub_801BBE0
-sub_801BBE0
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #5
@@ -338,6 +337,7 @@ sub_801BBE0
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801BBE0
 	ALIGN
 _0801BE64 DCDU gUnknown_03003454
 _0801BE68 DCDU gUnknown_03003468

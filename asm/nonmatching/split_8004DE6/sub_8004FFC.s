@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004FFC
-sub_8004FFC
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r2, #0
@@ -17,4 +16,5 @@ sub_8004FFC
 	lsrs r0, r0, #3
 	adds r0, r1, r0
 	b %21
+	thumb_func_end sub_8004FFC
 

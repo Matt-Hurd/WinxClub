@@ -46,7 +46,6 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_8018E34
-sub_8018E34
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	bl FadeToBlack
@@ -80,9 +79,9 @@ sub_8018E34
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8018E34
 
 	non_word_aligned_thumb_func_start sub_8018E7E
-sub_8018E7E
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0xff
@@ -191,9 +190,9 @@ sub_8018E7E
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8018E7E
 
 	non_word_aligned_thumb_func_start sub_8018F5E
-sub_8018F5E
 	push {r4, r5, r6, r7, lr}
 	ldr r1, _08019220
 	sub sp, #0x4c
@@ -597,9 +596,9 @@ _08019250 DCDU gUnknown_03003EA0
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8018F5E
 
 	non_word_aligned_thumb_func_start HandleFavorsScreen
-HandleFavorsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc
@@ -950,6 +949,7 @@ HandleFavorsScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleFavorsScreen
 	ALIGN
 _080195AC DCDU gUnknown_03003478
 _080195B0 DCDU sub_80143E0

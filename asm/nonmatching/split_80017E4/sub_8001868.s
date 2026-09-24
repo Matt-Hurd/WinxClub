@@ -1,5 +1,4 @@
 	thumb_func_start sub_8001868
-sub_8001868
 	push {r3, r4, r5, r6, r7, lr}
 	movs r0, #0xff
 	lsls r0, r0, #8
@@ -102,4 +101,5 @@ sub_8001868
 19
 	adds r0, r5, #0
 	b %16
+	thumb_func_end sub_8001868
 

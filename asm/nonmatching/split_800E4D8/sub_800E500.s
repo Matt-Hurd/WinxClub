@@ -1,5 +1,4 @@
 	thumb_func_start sub_800E500
-sub_800E500
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r0, r3, #0
@@ -31,4 +30,5 @@ sub_800E500
 	blo %3
 	b %1
 	ALIGN
+	thumb_func_end sub_800E500
 

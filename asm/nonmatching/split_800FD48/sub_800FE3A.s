@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800FE3A
-sub_800FE3A
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -12,4 +11,5 @@ sub_800FE3A
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FE3A
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80231B0
-sub_80231B0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	adds r5, r0, #0
@@ -328,5 +327,6 @@ _08023398 DCDU 0x00000CF3
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80231B0
 
 

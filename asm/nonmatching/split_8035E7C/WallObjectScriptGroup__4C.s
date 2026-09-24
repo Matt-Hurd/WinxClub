@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__4C
-WallObjectScriptGroup__4C
 	push {r4}
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
@@ -37,4 +36,5 @@ WallObjectScriptGroup__4C
 17
 	pop {r4}
 	bx lr
+	thumb_func_end WallObjectScriptGroup__4C
 

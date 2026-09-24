@@ -1,3 +1,3 @@
 	thumb_func_start ScannerScriptGroup__StartAttack2
-ScannerScriptGroup__StartAttack2
 	bx lr
+	thumb_func_end ScannerScriptGroup__StartAttack2

@@ -1,5 +1,4 @@
 	thumb_func_start sub_803F904
-sub_803F904
 	push {r4}
 	cmp r3, #0xff
 	bne %1
@@ -19,4 +18,5 @@ sub_803F904
 	adds r0, r0, r1
 	bx lr
 	ALIGN
+	thumb_func_end sub_803F904
 

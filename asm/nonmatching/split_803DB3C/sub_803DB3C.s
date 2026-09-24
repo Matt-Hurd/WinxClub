@@ -1,5 +1,4 @@
 	arm_func_start sub_803DB3C
-sub_803DB3C
 	STMFD SP!, {r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	mov r3, r2
 	LDR r8, [r0, #0x38]
@@ -118,4 +117,5 @@ sub_803DB3C
 	STR r6, [r0, #0x28]
 	LDMFD SP!, {r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	bx lr
+	arm_func_end sub_803DB3C
 

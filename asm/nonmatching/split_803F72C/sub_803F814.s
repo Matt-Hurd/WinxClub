@@ -1,5 +1,4 @@
 	thumb_func_start sub_803F814
-sub_803F814
 	push {r4, r5, r6}
 	movs r4, #0x38
 	ldrb r4, [r4, r0]
@@ -75,4 +74,5 @@ sub_803F814
 	pop {r4, r5, r6}
 	bx lr
 	ALIGN
+	thumb_func_end sub_803F814
 

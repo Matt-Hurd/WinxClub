@@ -1,5 +1,4 @@
 	thumb_func_start sub_801CAC0
-sub_801CAC0
 	movs r2, #5
 	lsls r2, r2, #8
 	adds r2, r0, r2
@@ -39,3 +38,4 @@ sub_801CAC0
 79
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_801CAC0

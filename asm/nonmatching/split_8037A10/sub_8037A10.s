@@ -1,5 +1,4 @@
 	thumb_func_start sub_8037A10
-sub_8037A10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x3c]
@@ -242,4 +241,5 @@ sub_8037A10
 	movs r5, #0
 	str r5, [r4, #0x3c]
 	b %7
+	thumb_func_end sub_8037A10
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8017862
-sub_8017862
 	lsls r1, r1, #2
 	adds r0, r1, r0
 	movs r1, #5
@@ -18,4 +17,5 @@ sub_8017862
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8017862
 

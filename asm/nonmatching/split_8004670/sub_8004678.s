@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004678
-sub_8004678
 	push {r4, lr}
 	adds r4, r1, #0
 	cmp r0, #0
@@ -27,4 +26,5 @@ sub_8004678
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004678
 

@@ -9,7 +9,6 @@
 	IMPORT vsprintf
 
 	arm_func_start sub_803F4CC
-sub_803F4CC
 	mov r2, r0
 	LDR r0, [r0, #4]
 	cmp r0, r1
@@ -34,9 +33,9 @@ sub_803F4CC
 	MOV r1, r3, LSL r1
 	STMIA r2, {r1, ip}
 	bx lr
+	arm_func_end sub_803F4CC
 
 	thumb_func_start sub_803F528
-sub_803F528
 	push {r4, lr}
 	sub sp, #8
 	add r4, sp, #0x14
@@ -63,9 +62,9 @@ sub_803F528
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F528
 
 	thumb_func_start sub_803F55C
-sub_803F55C
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x70
@@ -141,6 +140,7 @@ sub_803F55C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F55C
 	ALIGN
 _0803F5E8 DCDU gUnknown_03003C40
 _0803F5EC DCDU 0x0000FFFF

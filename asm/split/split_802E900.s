@@ -30,7 +30,6 @@
 	IMPORT sub_803DA9C
 
 	thumb_func_start Object__Create
-Object__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -80,9 +79,9 @@ Object__Create
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Object__Create
 
 	non_word_aligned_thumb_func_start Object__ctor
-Object__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802EC08
@@ -99,9 +98,9 @@ Object__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Object__ctor
 
 	thumb_func_start ObjectScriptGroup__38
-ObjectScriptGroup__38
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, _0802EC14
@@ -224,9 +223,9 @@ ObjectScriptGroup__38
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end ObjectScriptGroup__38
 
 	thumb_func_start sub_802EA80
-sub_802EA80
 	push {r4}
 	ldr r1, [r1]
 	adds r0, #0xa0
@@ -257,9 +256,9 @@ sub_802EA80
 	movs r1, #0
 	strh r1, [r0, #6]
 	b %8
+	thumb_func_end sub_802EA80
 
 	thumb_func_start ObjectScriptGroup__04
-ObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -278,9 +277,9 @@ ObjectScriptGroup__04
 12
 	bl m04__7DefaultFv
 	b %10
+	thumb_func_end ObjectScriptGroup__04
 
 	thumb_func_start ObjectScriptGroup__08
-ObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -299,9 +298,9 @@ ObjectScriptGroup__08
 15
 	bl m08__7DefaultFv
 	b %13
+	thumb_func_end ObjectScriptGroup__08
 
 	thumb_func_start ObjectScriptGroup__44
-ObjectScriptGroup__44
 	push {r4, r5, r6, r7, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -448,9 +447,9 @@ _0802EC30 DCDU gUnknown_03003EB8
 _0802EC34 DCDU gUnknown_03003478
 _0802EC38 DCDU gUnknown_03003EA0
 _0802EC3C DCDU gUnknown_0300345C
+	thumb_func_end ObjectScriptGroup__44
 
 	thumb_func_start ObjectScriptGroup__20
-ObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -489,4 +488,5 @@ ObjectScriptGroup__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end ObjectScriptGroup__20
 	END

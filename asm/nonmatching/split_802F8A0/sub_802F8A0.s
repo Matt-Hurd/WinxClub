@@ -1,5 +1,4 @@
 	thumb_func_start sub_802F8A0
-sub_802F8A0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -66,4 +65,5 @@ sub_802F8A0
 	mov r1, sp
 	bl sub_803FF24
 	b %2
+	thumb_func_end sub_802F8A0
 

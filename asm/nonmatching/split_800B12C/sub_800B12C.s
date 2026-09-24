@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B12C
-sub_800B12C
 	push {r3, r4, r5, lr}
 	ldr r5, _0800B150
 	lsls r4, r1, #2
@@ -14,4 +13,5 @@ sub_800B12C
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800B12C
 

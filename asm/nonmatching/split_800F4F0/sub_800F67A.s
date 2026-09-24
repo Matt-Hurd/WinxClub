@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800F67A
-sub_800F67A
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -67,4 +66,5 @@ sub_800F67A
 	bl sub_800F4F0
 	movs r0, #1
 	b %13
+	thumb_func_end sub_800F67A
 

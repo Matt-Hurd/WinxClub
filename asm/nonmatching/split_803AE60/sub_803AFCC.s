@@ -1,5 +1,4 @@
 	thumb_func_start sub_803AFCC
-sub_803AFCC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -180,3 +179,4 @@ sub_803AFCC
 	orrs r0, r1
 	str r0, [r2]
 	b %8
+	thumb_func_end sub_803AFCC

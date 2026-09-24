@@ -41,7 +41,6 @@
 
 
 	thumb_func_start WinxClub__38
-WinxClub__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -57,9 +56,9 @@ WinxClub__38
 	add sp, #0xc
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__38
 
 	thumb_func_start sub_803366C
-sub_803366C
 	push {r4}
 	ldr r2, [r0, #0x58]
 	cmp r2, #0
@@ -87,9 +86,9 @@ sub_803366C
 3
 	movs r0, #1
 	b %2
+	thumb_func_end sub_803366C
 
 	thumb_func_start WinxClub__10
-WinxClub__10
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -656,9 +655,9 @@ _08033A7C DCDU gUnknown_08051086
 	ldr r0, [sp, #8]
 	bl __call_via_r1
 	b %8
+	thumb_func_end WinxClub__10
 
 	non_word_aligned_thumb_func_start WinxClub__3C
-WinxClub__3C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _08033C4C
@@ -772,9 +771,9 @@ WinxClub__3C
 	add r1, sp, #4
 	bl sub_803FF24
 	b %45
+	thumb_func_end WinxClub__3C
 
 	non_word_aligned_thumb_func_start WinxClub__18
-WinxClub__18
 	push {r4, lr}
 	adds r4, r0, #0
 	bl m18__7DefaultFv
@@ -787,9 +786,9 @@ WinxClub__18
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__18
 
 	non_word_aligned_thumb_func_start WinxClub__1C
-WinxClub__1C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl m1C__7DefaultFv
@@ -802,9 +801,9 @@ WinxClub__1C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__1C
 
 	non_word_aligned_thumb_func_start WinxClub__20
-WinxClub__20
 	push {r4, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -818,6 +817,7 @@ WinxClub__20
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__20
 	ALIGN
 _08033C44 DCDU gUnknown_08051072
 _08033C48 DCDU gUnknown_08051076

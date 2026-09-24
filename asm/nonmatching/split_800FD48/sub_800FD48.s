@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FD48
-sub_800FD48
 	ldr r1, _0800FE6C
 	push {r3, lr}
 	ldrh r2, [r1, #0xa]
@@ -45,4 +44,5 @@ sub_800FD48
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FD48
 

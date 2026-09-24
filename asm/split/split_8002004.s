@@ -5,16 +5,15 @@
 	IMPORT __16__rt_sdiv
 
 	thumb_func_start sub_8002004
-sub_8002004
 	movs r1, #0x13
 	lsls r1, r1, #7
 	adds r0, r0, r1
 	ldr r0, [r0, #0x20]
 	adds r0, #0x38
 	bx lr
+	thumb_func_end sub_8002004
 
 	thumb_func_start sub_8002010
-sub_8002010
 	lsls r1, r1, #2
 	adds r1, r1, r0
 	movs r0, #0x27
@@ -23,17 +22,17 @@ sub_8002010
 	str r2, [r0, #0x1c]
 	str r3, [r0, #0x2c]
 	bx lr
+	thumb_func_end sub_8002010
 
 	thumb_func_start sub_8002020
-sub_8002020
 	movs r2, #0x27
 	lsls r2, r2, #6
 	adds r0, r0, r2
 	str r1, [r0, #0x18]
 	bx lr
+	thumb_func_end sub_8002020
 
 	non_word_aligned_thumb_func_start sub_800202A
-sub_800202A
 	push {r0, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r1, [sp, #8]
@@ -145,9 +144,9 @@ sub_800202A
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800202A
 
 	thumb_func_start sub_80020F8
-sub_80020F8
 	push {r3, lr}
 	movs r3, #0x58
 	muls r1, r3
@@ -169,6 +168,7 @@ sub_80020F8
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80020F8
 	ALIGN
 _08002124 DCDU 0x00000000
 _08002128 DCDU 0x00000007

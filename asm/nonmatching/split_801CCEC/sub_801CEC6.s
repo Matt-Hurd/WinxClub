@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801CEC6
-sub_801CEC6
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x4d
@@ -513,4 +512,5 @@ _0801D114 DCDU gPlayerEntity
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CEC6
 

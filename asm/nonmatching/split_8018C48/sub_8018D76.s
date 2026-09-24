@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8018D76
-sub_8018D76
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r0, [sp, #4]
@@ -89,3 +88,4 @@ _08018E28 DCDU 0x00000C8A
 _08018E2C DCDU 0x0000FFFF
 15
 	DCB 0x20, 0x00, 0x00, 0x00
+	thumb_func_end sub_8018D76

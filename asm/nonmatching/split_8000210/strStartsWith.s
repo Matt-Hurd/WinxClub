@@ -1,5 +1,4 @@
 	thumb_func_start strStartsWith
-strStartsWith
 	b %2
 1
 	adds r0, #1
@@ -23,4 +22,5 @@ strStartsWith
 4
 	movs r0, #0
 	bx lr
+	thumb_func_end strStartsWith
 

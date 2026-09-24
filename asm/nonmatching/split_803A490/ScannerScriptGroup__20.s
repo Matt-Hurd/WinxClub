@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start ScannerScriptGroup__20
-ScannerScriptGroup__20
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl HostileCreature__20
@@ -74,4 +73,5 @@ ScannerScriptGroup__20
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end ScannerScriptGroup__20
 

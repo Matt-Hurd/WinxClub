@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801819E
-sub_801819E
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x10]
@@ -112,4 +111,5 @@ sub_801819E
 	adds r1, r6, #0
 	bl sub_800529A
 	b %12
+	thumb_func_end sub_801819E
 

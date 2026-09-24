@@ -1,5 +1,4 @@
 	thumb_func_start sub_801B170
-sub_801B170
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r4, _0801B468
 	movs r6, #0
@@ -60,4 +59,5 @@ sub_801B170
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801B170
 

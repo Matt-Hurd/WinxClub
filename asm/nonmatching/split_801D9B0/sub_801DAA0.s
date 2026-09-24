@@ -1,5 +1,4 @@
 	thumb_func_start sub_801DAA0
-sub_801DAA0
 	push {r4, r5}
 	ldr r3, [r1]
 	ldrh r1, [r3, #4]
@@ -43,4 +42,5 @@ sub_801DAA0
 	strh r4, [r2, #0x18]
 	blo %20
 	b %19
+	thumb_func_end sub_801DAA0
 

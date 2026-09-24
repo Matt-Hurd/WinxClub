@@ -16,7 +16,6 @@
 	IMPORT sub_803DAC0
 
 	thumb_func_start sub_800F1E8
-sub_800F1E8
 	push {r4}
 	movs r1, #0x11
 	lsls r1, r1, #0xb
@@ -47,9 +46,9 @@ sub_800F1E8
 	str r3, [r0, #0x34]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800F1E8
 
 	thumb_func_start sub_800F220
-sub_800F220
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x80
@@ -85,9 +84,9 @@ sub_800F220
 	pop {r3}
 	bx r3
 	ALIGN
+	thumb_func_end sub_800F220
 
 	thumb_func_start sub_800F264
-sub_800F264
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %6
@@ -111,9 +110,9 @@ sub_800F264
 	str r0, [r4, #0x6c]
 	adds r0, r4, #0
 	b %5
+	thumb_func_end sub_800F264
 
 	non_word_aligned_thumb_func_start sub_800F292
-sub_800F292
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800F4E8
@@ -130,19 +129,19 @@ sub_800F292
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F292
 
 	thumb_func_start sub_800F2B4
-sub_800F2B4
 	movs r0, #0x98
 	bx lr
+	thumb_func_end sub_800F2B4
 
 	thumb_func_start sub_800F2B8
-sub_800F2B8
 	str r1, [r0, #0x70]
 	bx lr
+	thumb_func_end sub_800F2B8
 
 	thumb_func_start sub_800F2BC
-sub_800F2BC
 	push {r3, lr}
 	ldr r1, [r0, #0x74]
 	cmp r1, #0
@@ -162,9 +161,9 @@ sub_800F2BC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F2BC
 
 	non_word_aligned_thumb_func_start sub_800F2E2
-sub_800F2E2
 	push {r4, lr}
 	ldr r1, [r0]
 	adds r4, r0, #0
@@ -190,9 +189,9 @@ sub_800F2E2
 	subs r1, r2, r1
 	adds r0, r1, r0
 	b %9
+	thumb_func_end sub_800F2E2
 
 	non_word_aligned_thumb_func_start sub_800F312
-sub_800F312
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, [r0, #4]
 	adds r4, r0, #0
@@ -319,9 +318,9 @@ sub_800F312
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800F312
 
 	thumb_func_start sub_800F408
-sub_800F408
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x5c]
@@ -440,6 +439,7 @@ sub_800F408
 	bl nullsub_6
 	movs r0, #1
 	b %19
+	thumb_func_end sub_800F408
 	ALIGN
 _0800F4E8 DCDU __VTABLE__328dword_803E870
 _0800F4EC DCDU gUnknown_03003E84

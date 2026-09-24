@@ -1,5 +1,4 @@
 	thumb_func_start sub_801047C
-sub_801047C
 	push {r4, r5, r6, r7}
 	movs r6, #0xff
 	ldr r5, _08010698
@@ -37,4 +36,5 @@ sub_801047C
 	blo %6
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_801047C
 

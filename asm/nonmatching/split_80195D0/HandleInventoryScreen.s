@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HandleInventoryScreen
-HandleInventoryScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc
@@ -360,3 +359,4 @@ _08019E08 DCDU 0x00000C87
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleInventoryScreen

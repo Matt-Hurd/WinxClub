@@ -15,7 +15,6 @@
 	IMPORT __vecmap1ci__FPvT1iPFPvi_v
 
 	thumb_func_start HandleTeleportMenu
-HandleTeleportMenu
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x20
@@ -139,6 +138,7 @@ HandleTeleportMenu
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleTeleportMenu
 	ALIGN
 _08038E2C DCDU sub_80143E0
 _08038E30 DCDU gUnknown_03003444

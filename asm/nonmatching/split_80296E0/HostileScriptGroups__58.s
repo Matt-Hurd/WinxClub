@@ -1,5 +1,4 @@
 	thumb_func_start HostileScriptGroups__58
-HostileScriptGroups__58
 	push {r4, r5, r6, lr}
 	ldr r6, _0802B268
 	adds r4, r0, #0
@@ -92,4 +91,5 @@ HostileScriptGroups__58
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileScriptGroups__58
 

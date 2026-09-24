@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801CA1E
-sub_801CA1E
 	push {r4, r5, r6, r7, lr}
 	adds r2, r0, #0
 	movs r0, #5
@@ -81,4 +80,5 @@ sub_801CA1E
 	cmp r0, r1
 	bhi %73
 	b %75
+	thumb_func_end sub_801CA1E
 

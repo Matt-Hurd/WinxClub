@@ -1,5 +1,4 @@
 	thumb_func_start sub_801C4A4
-sub_801C4A4
 	push {r4, r5, r6, r7, lr}
 	mov lr, r1
 	lsls r1, r1, #2
@@ -443,4 +442,5 @@ sub_801C4A4
 	movs r6, #0
 	str r6, [r0, #0xc]
 	b %11
+	thumb_func_end sub_801C4A4
 

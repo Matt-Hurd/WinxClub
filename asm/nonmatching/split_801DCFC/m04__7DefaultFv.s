@@ -1,5 +1,4 @@
 	thumb_func_start m04__7DefaultFv
-m04__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -310,4 +309,5 @@ loc_801df3a
 	adds r0, r4, #0
 	bl sub_801D788
 	b %2
+	thumb_func_end m04__7DefaultFv
 

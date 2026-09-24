@@ -13,7 +13,6 @@
 	IMPORT sub_800808E
 
 	arm_func_start sub_8008EB4
-sub_8008EB4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne %1
@@ -39,13 +38,13 @@ sub_8008EB4
 	mov r0, r4
 	LDMFD SP!, {r4, lr}
 	bx lr
+	arm_func_end sub_8008EB4
 
 	arm_func_start sub_8008F14
-sub_8008F14
 	bx lr
+	arm_func_end sub_8008F14
 
 	arm_func_start sub_8008F18
-sub_8008F18
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, _08009E20
@@ -60,9 +59,9 @@ sub_8008F18
 	bne sub_803DA18
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_8008F18
 
 	arm_func_start sub_8008F50
-sub_8008F50
 	mov r0, #1
 	cmp r2, #0xf
 	blo %2
@@ -111,9 +110,9 @@ sub_8008F50
 	blt %6
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8008F50
 
 	arm_func_start sub_8008FFC
-sub_8008FFC
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r4, r0
@@ -134,21 +133,21 @@ sub_8008FFC
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8008FFC
 
 	arm_func_start sub_800904C
-sub_800904C
 	STR r1, [r0, #0x20]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x24]
 	bx lr
+	arm_func_end sub_800904C
 
 	arm_func_start sub_800905C
-sub_800905C
 	mov r0, #0
 	bx lr
+	arm_func_end sub_800905C
 
 	arm_func_start sub_8009064
-sub_8009064
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDR lr, [sp, #8]
 	mov r2, #1
@@ -298,9 +297,9 @@ sub_8009064
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8009064
 
 	arm_func_start sub_8009270
-sub_8009270
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #4
 	LDR sb, [sp, #0x3c]
@@ -537,9 +536,9 @@ sub_8009270
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8009270
 
 	arm_func_start sub_80095B8
-sub_80095B8
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDMIA r1, {r6, sb, fp}
 	mov sl, r1
@@ -1421,4 +1420,5 @@ _08009E28 DCDU gUnknown_0804AA68
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_80095B8
 	END

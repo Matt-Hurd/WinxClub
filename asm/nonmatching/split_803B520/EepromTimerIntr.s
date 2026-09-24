@@ -1,5 +1,4 @@
 	thumb_func_start EepromTimerIntr
-EepromTimerIntr
 	push {r4, r5, r6, lr}
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -20,4 +19,5 @@ EepromTimerIntr
 	ldr r3, _0803B590
 	str r0, [r3]
 	ldr r0, _0803B594
+	thumb_func_end EepromTimerIntr
 

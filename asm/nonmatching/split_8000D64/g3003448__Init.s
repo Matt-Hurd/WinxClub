@@ -1,5 +1,4 @@
 	thumb_func_start g3003448__Init
-g3003448__Init
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -65,4 +64,5 @@ g3003448__Init
 	str r1, [r0, #0x28]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end g3003448__Init
 

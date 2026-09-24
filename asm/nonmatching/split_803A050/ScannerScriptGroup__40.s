@@ -1,5 +1,4 @@
 	thumb_func_start ScannerScriptGroup__40
-ScannerScriptGroup__40
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -393,4 +392,5 @@ _0803A454 DCDU 0x00012668
 	strh r6, [r4, #0x26]
 	strh r5, [r4, #0x22]
 	b %13
+	thumb_func_end ScannerScriptGroup__40
 

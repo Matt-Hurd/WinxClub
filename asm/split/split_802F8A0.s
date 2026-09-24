@@ -13,7 +13,6 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_802F8A0
-sub_802F8A0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -80,9 +79,9 @@ sub_802F8A0
 	mov r1, sp
 	bl sub_803FF24
 	b %2
+	thumb_func_end sub_802F8A0
 
 	non_word_aligned_thumb_func_start sub_802F926
-sub_802F926
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -180,9 +179,9 @@ sub_802F926
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F926
 
 	thumb_func_start sub_802F9E8
-sub_802F9E8
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -268,9 +267,9 @@ sub_802F9E8
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F9E8
 
 	non_word_aligned_thumb_func_start sub_802FA92
-sub_802FA92
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r4, #0
@@ -429,6 +428,7 @@ sub_802FA92
 	movs r0, #5
 	strb r0, [r5, #8]
 	b %13
+	thumb_func_end sub_802FA92
 	ALIGN
 _0802FBD4 DCDU gUnknown_03003EA0
 _0802FBD8 DCDU gPlayerEntity

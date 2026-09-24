@@ -1,5 +1,4 @@
 	thumb_func_start GenericObject__40
-GenericObject__40
 	subs r1, #0x42
 	cmp r1, #0x14
 	push {r4, lr}
@@ -665,3 +664,4 @@ loc_802682c
 	movs r1, #0x14
 	strb r1, [r0, #0xc]
 	b %5
+	thumb_func_end GenericObject__40

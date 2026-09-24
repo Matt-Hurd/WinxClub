@@ -1,5 +1,4 @@
 	thumb_func_start sub_801D788
-sub_801D788
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldrb r0, [r1, #0x14]
@@ -247,3 +246,4 @@ _0801D978 DCDU 0x00007075
 	movs r1, #1
 	bl sub_803FEF8
 	b %23
+	thumb_func_end sub_801D788

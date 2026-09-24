@@ -1,5 +1,4 @@
 	thumb_func_start HandleGameOverScreen
-HandleGameOverScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x17c
 	add r0, sp, #4
@@ -63,3 +62,4 @@ HandleGameOverScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleGameOverScreen

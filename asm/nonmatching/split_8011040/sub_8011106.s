@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011106
-sub_8011106
 	movs r1, #0x1b
 	lsls r1, r1, #6
 	push {r4, lr}
@@ -39,4 +38,5 @@ sub_8011106
 14
 	movs r0, #1
 	b %11
+	thumb_func_end sub_8011106
 

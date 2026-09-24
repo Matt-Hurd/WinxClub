@@ -1,5 +1,4 @@
 	thumb_func_start sub_801ABFC
-sub_801ABFC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	bl FadeToBlack
@@ -44,4 +43,5 @@ sub_801ABFC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801ABFC
 

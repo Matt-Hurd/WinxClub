@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Boss__50
-Boss__50
 	ldr r1, _08034D94
 	push {r3, lr}
 	ldr r1, [r1]
@@ -23,3 +22,4 @@ Boss__50
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Boss__50

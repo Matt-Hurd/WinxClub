@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FAB0
-sub_800FAB0
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %5
@@ -19,4 +18,5 @@ sub_800FAB0
 	str r0, [r4]
 	adds r0, r4, #0
 	b %4
+	thumb_func_end sub_800FAB0
 

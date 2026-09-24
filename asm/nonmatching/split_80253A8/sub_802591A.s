@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802591A
-sub_802591A
 	movs r3, #0x83
 	lsls r3, r3, #2
 	strh r3, [r0, #0xe]
@@ -35,4 +34,5 @@ sub_802591A
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_802591A
 

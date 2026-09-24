@@ -7,7 +7,6 @@
 	IMPORT sub_80019B4
 
 	thumb_func_start sub_802E800
-sub_802E800
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -97,9 +96,9 @@ sub_802E800
 	ldr r0, [sp, #0xc]
 	str r0, [r4, #0xc]
 	b %1
+	thumb_func_end sub_802E800
 
 	thumb_func_start sub_802E8B0
-sub_802E8B0
 	push {r4, r5, r6, lr}
 	ldr r5, [r0, #4]
 	adds r4, r0, #0
@@ -136,11 +135,12 @@ sub_802E8B0
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802E8B0
 
 	thumb_func_start sub_802E8F8
-sub_802E8F8
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_802E8F8
 	ALIGN
 _0802E8FC DCDU gUnknown_03003EB8
 	END

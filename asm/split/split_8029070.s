@@ -13,7 +13,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start HostileCreature__Create
-HostileCreature__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne %2
@@ -100,9 +99,9 @@ HostileCreature__Create
 	str r1, [r0, #0x34]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end HostileCreature__Create
 
 	thumb_func_start HostileCreature__ctor
-HostileCreature__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08029354
@@ -119,9 +118,9 @@ HostileCreature__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__ctor
 
 	non_word_aligned_thumb_func_start sub_802913E
-sub_802913E
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	mov ip, r1
 	adds r1, r0, #0
@@ -265,9 +264,9 @@ sub_802913E
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802913E
 
 	thumb_func_start sub_802925C
-sub_802925C
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r4, r0, #0
@@ -293,9 +292,9 @@ sub_802925C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802925C
 
 	thumb_func_start sub_8029290
-sub_8029290
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r4, r0, #0
@@ -338,9 +337,9 @@ sub_8029290
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %4
+	thumb_func_end sub_8029290
 
 	thumb_func_start HostileCreature__08
-HostileCreature__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -402,6 +401,7 @@ HostileCreature__08
 12
 	bl m08__7DefaultFv
 	b %7
+	thumb_func_end HostileCreature__08
 	ALIGN
 _08029354 DCDU __VTABLE__315HostileBaseObject
 _08029358 DCDU 0xFFFF000F

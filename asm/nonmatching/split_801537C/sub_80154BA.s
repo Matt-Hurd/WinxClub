@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80154BA
-sub_80154BA
 	lsls r3, r2, #2
 	adds r2, r3, r2
 	lsls r2, r2, #2
@@ -10,4 +9,5 @@ sub_80154BA
 	strb r1, [r0]
 	strb r2, [r0, #1]
 	bx lr
+	thumb_func_end sub_80154BA
 

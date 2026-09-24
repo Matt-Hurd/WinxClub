@@ -10,7 +10,6 @@
 	IMPORT sub_8040C38
 
 	thumb_func_start sub_8040C78
-sub_8040C78
 	ldr r2, _08041010
 	push {r4, r5, r6, r7, lr}
 	ldrb r0, [r2, #5]
@@ -517,6 +516,7 @@ sub_8040C78
 	movs r0, #0
 	bl sub_8040C38
 	b %1
+	thumb_func_end sub_8040C78
 	ALIGN
 _08041010 DCDU gUnknown_03003BC8
 _08041014 DCDU gUnknown_03003530

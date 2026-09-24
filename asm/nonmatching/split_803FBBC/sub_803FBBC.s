@@ -1,5 +1,4 @@
 	thumb_func_start sub_803FBBC
-sub_803FBBC
 	push {r4, r5}
 	ldrh r2, [r0, #0x10]
 	ldr r1, _0803FC10
@@ -45,3 +44,4 @@ sub_803FBBC
 	strh r0, [r1]
 	pop {r4, r5}
 	bx lr
+	thumb_func_end sub_803FBBC

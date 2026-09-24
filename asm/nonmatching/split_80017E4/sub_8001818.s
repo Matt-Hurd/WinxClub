@@ -1,5 +1,4 @@
 	thumb_func_start sub_8001818
-sub_8001818
 	ldr r1, [r1]
 	lsls r3, r1, #0x1c
 	lsls r0, r1, #0xd
@@ -42,4 +41,5 @@ sub_8001818
 13
 	muls r0, r1
 	bx lr
+	thumb_func_end sub_8001818
 

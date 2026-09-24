@@ -1,5 +1,4 @@
 	thumb_func_start sub_803FAD4
-sub_803FAD4
 	ldr r1, _0803FB20
 	push {r4}
 	ldr r2, [r1]
@@ -39,3 +38,4 @@ sub_803FAD4
 	strh r0, [r1]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_803FAD4

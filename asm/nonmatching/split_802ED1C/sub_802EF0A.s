@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802EF0A
-sub_802EF0A
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	ldr r6, _0802F114
 	adds r5, r0, #0
@@ -142,4 +141,5 @@ loc_802efac
 56
 	movs r0, #0
 	b %54
+	thumb_func_end sub_802EF0A
 

@@ -1,5 +1,4 @@
 	thumb_func_start HandleShowPictureScreen
-HandleShowPictureScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x114
 	add r6, sp, #0x10
@@ -159,3 +158,4 @@ HandleShowPictureScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleShowPictureScreen

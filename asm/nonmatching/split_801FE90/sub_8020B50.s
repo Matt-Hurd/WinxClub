@@ -1,5 +1,4 @@
 	thumb_func_start sub_8020B50
-sub_8020B50
 	adds r1, r0, #0
 	adds r1, #0xff
 	adds r1, #1
@@ -8,4 +7,5 @@ sub_8020B50
 	str r1, [r0, #0x5c]
 	str r2, [r0, #0x58]
 	b sub_8020AB6
+	thumb_func_end sub_8020B50
 

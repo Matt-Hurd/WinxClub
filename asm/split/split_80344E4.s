@@ -13,7 +13,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start Boss__Create
-Boss__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -55,9 +54,9 @@ Boss__Create
 	strb r0, [r1, #6]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Boss__Create
 
 	non_word_aligned_thumb_func_start Boss__ctor
-Boss__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080348C4
@@ -74,9 +73,9 @@ Boss__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Boss__ctor
 
 	thumb_func_start sub_8034558
-sub_8034558
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	adds r1, r0, #0
@@ -89,9 +88,9 @@ sub_8034558
 	adds r0, #1
 	strb r0, [r1, #5]
 	bx lr
+	thumb_func_end sub_8034558
 
 	thumb_func_start Boss__04
-Boss__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r3, [r2]
@@ -119,9 +118,9 @@ Boss__04
 6
 	bl sub_8029290
 	b %4
+	thumb_func_end Boss__04
 
 	thumb_func_start Boss__08
-Boss__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -135,9 +134,9 @@ Boss__08
 8
 	bl HostileCreature__08
 	b %7
+	thumb_func_end Boss__08
 
 	thumb_func_start Boss__40
-Boss__40
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0xff
 	adds r5, r0, #0
@@ -525,6 +524,7 @@ Boss__40
 	adds r0, r0, r1
 	str r0, [r5, #0x30]
 	b %9
+	thumb_func_end Boss__40
 	ALIGN
 _080348C4 DCDU __VTABLE__308Boss
 _080348C8 DCDU 0x73736F42

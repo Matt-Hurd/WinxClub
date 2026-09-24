@@ -5,7 +5,6 @@
 	IMPORT EepromTimerIntr
 
 	thumb_func_start sub_803B5A0
-sub_803B5A0
 	push {r4, r5, r6, lr}
 	sub sp, #0x88
 	adds r5, r1, #0
@@ -94,6 +93,7 @@ _0803B5BC DCDU 0x000080FF
 	pop {r4, r5, r6}
 	pop {r1}
 	bx r1
+	thumb_func_end sub_803B5A0
 	ALIGN
 _0803B64C DCDU eeprom
 	END

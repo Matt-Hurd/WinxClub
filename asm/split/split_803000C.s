@@ -17,7 +17,6 @@
 	IMPORT sub_8040594
 
 	thumb_func_start Bird__10
-Bird__10
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -202,9 +201,9 @@ Bird__10
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__10
 
 	non_word_aligned_thumb_func_start Bird__20
-Bird__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -243,6 +242,7 @@ Bird__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Bird__20
 	ALIGN
 _080301D0 DCDU gUnknown_080414B8
 _080301D4 DCDU 0x00010000

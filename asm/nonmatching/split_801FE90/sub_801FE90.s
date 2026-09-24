@@ -1,5 +1,4 @@
 	thumb_func_start sub_801FE90
-sub_801FE90
 	push {r3, lr}
 	ldr r0, [r1]
 	ldrb r1, [r0, #4]
@@ -63,4 +62,5 @@ loc_801feee
 	adds r0, #0xac
 	bl sub_8023AE0
 	b %6
+	thumb_func_end sub_801FE90
 

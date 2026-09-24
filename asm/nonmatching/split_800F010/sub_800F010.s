@@ -1,5 +1,4 @@
 	thumb_func_start sub_800F010
-sub_800F010
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, [r1, #0x10]
 	adds r4, r1, #0
@@ -73,4 +72,5 @@ sub_800F010
 9
 	movs r0, #1
 	b %5
+	thumb_func_end sub_800F010
 

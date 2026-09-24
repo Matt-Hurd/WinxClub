@@ -40,7 +40,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800FE90
-sub_800FE90
 	push {r3, lr}
 	cmp r0, #0
 	bne %1
@@ -64,9 +63,9 @@ sub_800FE90
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FE90
 
 	thumb_func_start sub_800FEBC
-sub_800FEBC
 	ldr r0, _080101E4
 	push {r4, lr}
 	ldr r0, [r0]
@@ -100,9 +99,9 @@ sub_800FEBC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FEBC
 
 	thumb_func_start sub_800FF00
-sub_800FF00
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne %6
@@ -148,9 +147,9 @@ sub_800FF00
 	bl sub_800B058
 	adds r0, r4, #0
 	b %5
+	thumb_func_end sub_800FF00
 
 	non_word_aligned_thumb_func_start sub_800FF5E
-sub_800FF5E
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080101F8
@@ -197,9 +196,9 @@ sub_800FF5E
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FF5E
 
 	non_word_aligned_thumb_func_start sub_800FFBA
-sub_800FFBA
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r5, [sp, #0x28]
@@ -283,9 +282,9 @@ sub_800FFBA
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FFBA
 
 	non_word_aligned_thumb_func_start sub_801006A
-sub_801006A
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _08010210
 	adds r5, r0, #0
@@ -468,6 +467,7 @@ sub_801006A
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801006A
 	ALIGN
 _080101E4 DCDU gUnknown_03003E98
 _080101E8 DCDU gUnknown_03003E8C

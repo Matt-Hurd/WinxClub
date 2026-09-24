@@ -1,5 +1,4 @@
 	thumb_func_start sub_800E4D8
-sub_800E4D8
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r2, #0
@@ -17,4 +16,5 @@ sub_800E4D8
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E4D8
 

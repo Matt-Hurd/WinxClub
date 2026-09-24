@@ -1,5 +1,4 @@
 	thumb_func_start sub_8028B2C
-sub_8028B2C
 	ldr r1, _08028BDC
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
@@ -91,3 +90,4 @@ loc_8028bb0
 	strb r0, [r4]
 	strb r0, [r4, #5]
 	b %43
+	thumb_func_end sub_8028B2C

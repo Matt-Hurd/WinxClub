@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__48
-WallObjectScriptGroup__48
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -34,3 +33,4 @@ WallObjectScriptGroup__48
 22
 	bl Dying__7DefaultFv
 	b %20
+	thumb_func_end WallObjectScriptGroup__48

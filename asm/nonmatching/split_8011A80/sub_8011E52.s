@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011E52
-sub_8011E52
 	ldr r1, _0801209C
 	cmp r0, #0
 	strh r0, [r1, #0x12]
@@ -10,4 +9,5 @@ sub_8011E52
 	strh r0, [r1, #0x16]
 49
 	bx lr
+	thumb_func_end sub_8011E52
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_803D4A8
-sub_803D4A8
 	push {r4, lr}
 	cmp r0, #8
 	bhs %16
@@ -135,4 +134,5 @@ loc_803d57e
 	b %9
 	ALIGN
 _0803D5A0 DCDU 0x00005524
+	thumb_func_end sub_803D4A8
 

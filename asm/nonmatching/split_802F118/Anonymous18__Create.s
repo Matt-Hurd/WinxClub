@@ -1,5 +1,4 @@
 	thumb_func_start Anonymous18__Create
-Anonymous18__Create
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
@@ -88,4 +87,5 @@ Anonymous18__Create
 	str r7, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Anonymous18__Create
 

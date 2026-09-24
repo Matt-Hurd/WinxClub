@@ -1,5 +1,4 @@
 	thumb_func_start sub_8028A7C
-sub_8028A7C
 	push {r3, r4, r5, r6, r7, lr}
 24
 	adds r6, r0, #0
@@ -98,4 +97,5 @@ loc_8028b1e
 	strb r0, [r5, #6]
 	strb r4, [r5]
 	b %33
+	thumb_func_end sub_8028A7C
 

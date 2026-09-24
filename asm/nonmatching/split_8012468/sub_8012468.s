@@ -1,5 +1,4 @@
 	thumb_func_start sub_8012468
-sub_8012468
 	push {r4, r5, r6, lr}
 	adds r4, r2, #0
 	ldr r2, [r0, #0x34]
@@ -47,4 +46,5 @@ sub_8012468
 	cmp r4, #0
 	bne %3
 	b %1
+	thumb_func_end sub_8012468
 

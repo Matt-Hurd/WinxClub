@@ -5,7 +5,6 @@
 	IMPORT __16_ll_sdiv
 
 	thumb_func_start sub_803F38C
-sub_803F38C
 	movs r2, #0xff
 	adds r2, #1
 	push {r4}
@@ -26,14 +25,14 @@ sub_803F38C
 	str r4, [r0]
 	b %1
 	ALIGN
+	thumb_func_end sub_803F38C
 
 	thumb_func_start sub_803F3B0
-sub_803F3B0
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_803F3B0
 
 	thumb_func_start sub_803F3B4
-sub_803F3B4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -53,6 +52,7 @@ sub_803F3B4
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F3B4
 	ALIGN
 _0803F3E0 DCDU 0x00000100
 _0803F3E4 DCDU 0x00000000

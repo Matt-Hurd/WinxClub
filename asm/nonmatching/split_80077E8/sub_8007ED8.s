@@ -1,5 +1,4 @@
 	arm_func_start sub_8007ED8
-sub_8007ED8
 	mov ip, #9
 	STR ip, [r0]
 	mov r0, #5
@@ -17,5 +16,6 @@ _08007F08 DCDU gUnknown_08049778
 _08007F0C DCDU gUnknown_08049700
 _08007F10 DCDU gUnknown_080497F0
 _08007F14 DCDU gUnknown_0804A7F0
+	arm_func_end sub_8007ED8
 
 

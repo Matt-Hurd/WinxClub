@@ -6,7 +6,6 @@
 	IMPORT sub_800C1CA
 
 	thumb_func_start sub_8040034
-sub_8040034
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrh r0, [r1]
@@ -110,6 +109,7 @@ sub_8040034
 	orrs r0, r5
 	str r0, [r4]
 	b %2
+	thumb_func_end sub_8040034
 	ALIGN
 _08040100 DCDU gUnknown_03003EA0
 	END

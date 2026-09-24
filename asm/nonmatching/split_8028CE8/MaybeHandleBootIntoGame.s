@@ -1,5 +1,4 @@
 	thumb_func_start MaybeHandleBootIntoGame
-MaybeHandleBootIntoGame
 	push {r4, lr}
 	movs r0, #1
 	bl sub_800E53C
@@ -43,3 +42,4 @@ MaybeHandleBootIntoGame
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end MaybeHandleBootIntoGame

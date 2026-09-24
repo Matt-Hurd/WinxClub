@@ -1,5 +1,4 @@
 	thumb_func_start sub_8000BD8
-sub_8000BD8
 	ldr r1, _08000C74
 	movs r2, #0x13
 	ldr r1, [r1]
@@ -21,4 +20,5 @@ sub_8000BD8
 	str r0, [r1]
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8000BD8
 

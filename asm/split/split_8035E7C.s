@@ -21,7 +21,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start WallObject__Create
-WallObject__Create
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bne %2
@@ -85,9 +84,9 @@ WallObject__Create
 	strh r1, [r2, #0x16]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end WallObject__Create
 
 	non_word_aligned_thumb_func_start WallObject__ctor
-WallObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08036128
@@ -104,9 +103,9 @@ WallObject__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObject__ctor
 
 	thumb_func_start sub_8035F1C
-sub_8035F1C
 	push {r4}
 	ldr r1, [r1]
 	adds r0, #0xa0
@@ -137,9 +136,9 @@ sub_8035F1C
 	movs r1, #0
 	strh r1, [r0, #0x16]
 	b %4
+	thumb_func_end sub_8035F1C
 
 	thumb_func_start sub_8035F54
-sub_8035F54
 	push {r4, r5, r6, lr}
 	ldr r5, [r1]
 	adds r4, r0, #0
@@ -188,9 +187,9 @@ sub_8035F54
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8035F54
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__04
-WallObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -217,9 +216,9 @@ WallObjectScriptGroup__04
 13
 	bl m04__7DefaultFv
 	b %10
+	thumb_func_end WallObjectScriptGroup__04
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__08
-WallObjectScriptGroup__08
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -233,9 +232,9 @@ WallObjectScriptGroup__08
 15
 	bl m08__7DefaultFv
 	b %14
+	thumb_func_end WallObjectScriptGroup__08
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__38
-WallObjectScriptGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -275,9 +274,9 @@ WallObjectScriptGroup__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObjectScriptGroup__38
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__4C
-WallObjectScriptGroup__4C
 	push {r4}
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
@@ -315,9 +314,9 @@ WallObjectScriptGroup__4C
 17
 	pop {r4}
 	bx lr
+	thumb_func_end WallObjectScriptGroup__4C
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__20
-WallObjectScriptGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -358,9 +357,9 @@ WallObjectScriptGroup__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObjectScriptGroup__20
 
 	non_word_aligned_thumb_func_start WallObjectScriptGroup__48
-WallObjectScriptGroup__48
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -395,6 +394,7 @@ WallObjectScriptGroup__48
 22
 	bl Dying__7DefaultFv
 	b %20
+	thumb_func_end WallObjectScriptGroup__48
 	ALIGN
 _08036128 DCDU __VTABLE__311WallObject
 _0803612C DCDU 0x6C6C6157

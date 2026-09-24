@@ -1,5 +1,4 @@
 	thumb_func_start Dma3Transmit
-Dma3Transmit
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -9,4 +8,5 @@ Dma3Transmit
 	lsrs r0, r0, #0x10
 	pop {r1}
 	bx r1
+	thumb_func_end Dma3Transmit
 

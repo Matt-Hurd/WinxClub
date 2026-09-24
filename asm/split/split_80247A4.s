@@ -50,7 +50,6 @@
 
 
 	thumb_func_start sub_80247A4
-sub_80247A4
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x28]
@@ -692,9 +691,9 @@ _08024BC0 DCDU 0x0000088D
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80247A4
 
 	thumb_func_start sub_8024D30
-sub_8024D30
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r4, _08024E38
@@ -819,6 +818,7 @@ sub_8024D30
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8024D30
 	ALIGN
 _08024E24 DCDU 0x00000020
 _08024E28 DCDU gUnknown_03003478

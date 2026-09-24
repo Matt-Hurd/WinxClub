@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801340A
-sub_801340A
 	ldrb r3, [r1]
 	adds r2, r0, #0
 	movs r0, #0
@@ -20,3 +19,4 @@ sub_801340A
 	bne %23
 24
 	bx lr
+	thumb_func_end sub_801340A

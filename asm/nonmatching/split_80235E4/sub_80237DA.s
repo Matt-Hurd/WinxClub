@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80237DA
-sub_80237DA
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r0, _080239CC
 	movs r1, #0
@@ -54,4 +53,5 @@ sub_80237DA
 	ldr r1, [sp]
 	strb r0, [r1, #0xd]
 	b %16
+	thumb_func_end sub_80237DA
 

@@ -1,5 +1,4 @@
 	arm_func_start sub_8007F18
-sub_8007F18
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	LDR sb, [r0, #0x30]
 	mov r5, r0
@@ -63,3 +62,4 @@ sub_8007F18
 	mov r0, r7
 	LDMFD SP!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	arm_func_end sub_8007F18

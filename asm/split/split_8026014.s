@@ -13,7 +13,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start MaybeHandleTransitionToArea
-MaybeHandleTransitionToArea
 	push {r3, lr}
 	movs r0, #0x10
 	bl SetNextGlobalFunction
@@ -21,9 +20,9 @@ MaybeHandleTransitionToArea
 	pop {r3}
 	bx r3
 	ALIGN
+	thumb_func_end MaybeHandleTransitionToArea
 
 	thumb_func_start GenericObject__Create
-GenericObject__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -76,9 +75,9 @@ GenericObject__Create
 	strh r0, [r1, r4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end GenericObject__Create
 
 	thumb_func_start GenericObject__ctor
-GenericObject__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080262AC
@@ -95,9 +94,9 @@ GenericObject__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end GenericObject__ctor
 
 	non_word_aligned_thumb_func_start sub_80260AE
-sub_80260AE
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801DB90
@@ -111,9 +110,9 @@ sub_80260AE
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80260AE
 
 	thumb_func_start sub_80260C8
-sub_80260C8
 	push {r4}
 	ldr r1, [r1]
 	movs r3, #0
@@ -271,9 +270,9 @@ loc_80261aa
 	str r0, [r2, #0x1c]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_80260C8
 
 	thumb_func_start sub_80261C8
-sub_80261C8
 	push {r3, lr}
 	ldr r1, [r1]
 	movs r3, #0xf
@@ -296,9 +295,9 @@ sub_80261C8
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80261C8
 
 	non_word_aligned_thumb_func_start GenericObject__04
-GenericObject__04
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -348,9 +347,9 @@ GenericObject__04
 	adds r0, r4, #0
 	bl m04__7DefaultFv
 	b %19
+	thumb_func_end GenericObject__04
 
 	thumb_func_start GenericObject__08
-GenericObject__08
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -395,6 +394,7 @@ GenericObject__08
 	adds r0, r4, #0
 	bl m08__7DefaultFv
 	b %23
+	thumb_func_end GenericObject__08
 	ALIGN
 _080262AC DCDU __VTABLE__333__vftable_GenericObject
 _080262B0 DCDU 0x656E6547

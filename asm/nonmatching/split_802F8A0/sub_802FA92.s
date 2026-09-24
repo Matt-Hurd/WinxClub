@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802FA92
-sub_802FA92
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r4, #0
@@ -158,3 +157,4 @@ sub_802FA92
 	movs r0, #5
 	strb r0, [r5, #8]
 	b %13
+	thumb_func_end sub_802FA92

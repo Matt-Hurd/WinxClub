@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8010456
-sub_8010456
 	movs r2, #0x1f
 	asrs r3, r0, #3
 	cmp r3, #0x1f
@@ -22,4 +21,5 @@ sub_8010456
 5
 	adds r0, r2, #0
 	bx lr
+	thumb_func_end sub_8010456
 

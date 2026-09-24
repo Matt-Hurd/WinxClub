@@ -1,5 +1,4 @@
 	thumb_func_start sub_80167AC
-sub_80167AC
 	ldr r0, _08016AA8
 	push {r4, lr}
 	ldr r0, [r0]
@@ -65,4 +64,5 @@ sub_80167AC
 	movs r0, #0xf
 	bl SetNextGlobalFunction
 	b %7
+	thumb_func_end sub_80167AC
 

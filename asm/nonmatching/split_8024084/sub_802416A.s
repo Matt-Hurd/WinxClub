@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802416A
-sub_802416A
 	push {r0, r4, r5, r6, r7, lr}
 	movs r4, #0
 8
@@ -59,4 +58,5 @@ sub_802416A
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802416A
 

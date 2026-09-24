@@ -1,5 +1,4 @@
 	thumb_func_start sub_8011DE4
-sub_8011DE4
 	ldr r3, _0801209C
 	push {r4}
 	movs r2, #0
@@ -25,4 +24,5 @@ sub_8011DE4
 46
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8011DE4
 

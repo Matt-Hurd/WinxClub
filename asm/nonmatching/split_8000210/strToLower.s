@@ -1,5 +1,4 @@
 	thumb_func_start strToLower
-strToLower
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq %18
@@ -19,4 +18,5 @@ strToLower
 	bne %16
 18
 	bx lr
+	thumb_func_end strToLower
 

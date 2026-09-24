@@ -3,7 +3,6 @@
 
 	IMPORT __call_via_r0
 	thumb_func_start __cpp_initialise
-__cpp_initialise
 	push {r3, r4, r5, lr}
 	ldr r4, _0803B8FC
 	add r4, pc
@@ -22,6 +21,7 @@ __cpp_initialise
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end __cpp_initialise
 	ALIGN
 _0803B8FC DCDU 0x00001BC4
 _0803B900 DCDU 0x00001BC4

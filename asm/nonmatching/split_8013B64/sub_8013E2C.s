@@ -1,5 +1,4 @@
 	thumb_func_start sub_8013E2C
-sub_8013E2C
 	push {r4}
 	ldrb r1, [r0, #0xc]
 	ldr r2, _08013FF0
@@ -23,4 +22,5 @@ sub_8013E2C
 	str r1, [r0, #4]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8013E2C
 

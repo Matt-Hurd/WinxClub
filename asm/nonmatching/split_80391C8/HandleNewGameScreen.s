@@ -1,5 +1,4 @@
 	thumb_func_start HandleNewGameScreen
-HandleNewGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _08039980
 	ldr r4, _08039984
@@ -168,3 +167,4 @@ HandleNewGameScreen
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %32
+	thumb_func_end HandleNewGameScreen

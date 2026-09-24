@@ -4,7 +4,6 @@
 	IMPORT eeprom
 
 	thumb_func_start EepromTimerIntr
-EepromTimerIntr
 	push {r4, r5, r6, lr}
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
@@ -25,9 +24,9 @@ EepromTimerIntr
 	ldr r3, _0803B590
 	str r0, [r3]
 	ldr r0, _0803B594
+	thumb_func_end EepromTimerIntr
 
 	thumb_func_start SetEepromTimerIntr
-SetEepromTimerIntr
 	str r1, [r0]
 	ldr r1, _0803B598
 	movs r0, #0x80
@@ -57,6 +56,7 @@ SetEepromTimerIntr
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
+	thumb_func_end SetEepromTimerIntr
 	ALIGN
 _0803B580 DCDU REG_IME
 _0803B584 DCDU REG_WAITCNT

@@ -1,5 +1,4 @@
 	thumb_func_start GenericObject__10
-GenericObject__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldrh r0, [r0, #0x1a]
@@ -79,4 +78,5 @@ GenericObject__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end GenericObject__10
 

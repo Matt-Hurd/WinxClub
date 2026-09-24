@@ -57,7 +57,6 @@
 	IMPORT sub_8040684
 
 	thumb_func_start sub_8019EE0
-sub_8019EE0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl FadeToBlack
@@ -120,9 +119,9 @@ sub_8019EE0
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8019EE0
 
 	thumb_func_start sub_8019F60
-sub_8019F60
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x19
@@ -308,9 +307,9 @@ sub_8019F60
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8019F60
 
 	non_word_aligned_thumb_func_start sub_801A0D2
-sub_801A0D2
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x4c
 	adds r4, r0, #0
@@ -770,9 +769,9 @@ _0801A318 DCDU 0x0000FFFF
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801A0D2
 
 	non_word_aligned_thumb_func_start HandleMagicScreen
-HandleMagicScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc
@@ -1054,6 +1053,7 @@ HandleMagicScreen
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleMagicScreen
 	ALIGN
 _0801A724 DCDU 0x000005BC
 _0801A728 DCDU gUnknown_03003448

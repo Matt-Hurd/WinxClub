@@ -22,7 +22,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start FadeToImage
-FadeToImage
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -57,9 +56,9 @@ FadeToImage
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end FadeToImage
 
 	non_word_aligned_thumb_func_start FadeToBlack
-FadeToBlack
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -95,13 +94,13 @@ FadeToBlack
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end FadeToBlack
 
 	non_word_aligned_thumb_func_start sub_801810E
-sub_801810E
 	b FadeToBlack
+	thumb_func_end sub_801810E
 
 	thumb_func_start sub_8018110
-sub_8018110
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %6
@@ -140,9 +139,9 @@ sub_8018110
 	bl sub_801047C
 	adds r0, r4, #0
 	b %5
+	thumb_func_end sub_8018110
 
 	thumb_func_start sub_8018160
-sub_8018160
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -173,9 +172,9 @@ sub_8018160
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8018160
 
 	non_word_aligned_thumb_func_start sub_801819E
-sub_801819E
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x10]
@@ -288,9 +287,9 @@ sub_801819E
 	adds r1, r6, #0
 	bl sub_800529A
 	b %12
+	thumb_func_end sub_801819E
 
 	non_word_aligned_thumb_func_start sub_801828A
-sub_801828A
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x10]
@@ -401,6 +400,7 @@ sub_801828A
 	ldr r3, [sp, #0x28]
 	bl sub_800529A
 	b %17
+	thumb_func_end sub_801828A
 	ALIGN
 _08018374 DCDU 0x00015500
 _08018378 DCDU gUnknown_03003E84

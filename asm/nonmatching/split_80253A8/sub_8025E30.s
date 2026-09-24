@@ -1,5 +1,4 @@
 	thumb_func_start sub_8025E30
-sub_8025E30
 	movs r7, #0x82
 	strh r7, [r0, #0xe]
 	movs r3, #0x83
@@ -103,4 +102,5 @@ sub_8025E30
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %54
+	thumb_func_end sub_8025E30
 

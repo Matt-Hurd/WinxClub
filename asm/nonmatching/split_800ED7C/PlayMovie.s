@@ -1,5 +1,4 @@
 	thumb_func_start PlayMovie
-PlayMovie
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r3, _0800EFC4
@@ -193,4 +192,5 @@ PlayMovie
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end PlayMovie
 

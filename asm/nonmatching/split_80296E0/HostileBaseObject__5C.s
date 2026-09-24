@@ -1,5 +1,4 @@
 	thumb_func_start HostileBaseObject__5C
-HostileBaseObject__5C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802B268
@@ -75,3 +74,4 @@ HostileBaseObject__5C
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileBaseObject__5C

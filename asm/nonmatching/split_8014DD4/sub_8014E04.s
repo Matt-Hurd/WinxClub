@@ -1,5 +1,4 @@
 	thumb_func_start sub_8014E04
-sub_8014E04
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_803F55C
@@ -31,4 +30,5 @@ sub_8014E04
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8014E04
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800FFBA
-sub_800FFBA
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldr r5, [sp, #0x28]
@@ -83,4 +82,5 @@ sub_800FFBA
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FFBA
 

@@ -10,7 +10,6 @@
 	IMPORT maybeInitGame
 
 	thumb_func_start main
-main
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _0800B124
 	ldr r1, _0800B128
@@ -41,6 +40,7 @@ main
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end main
 	ALIGN
 _0800B124 DCDU 0x00004014
 _0800B128 DCDU REG_IE

@@ -1,5 +1,4 @@
 	thumb_func_start sub_803F07C
-sub_803F07C
 	str r1, [r0, #4]
 	cmp r1, #0
 	beq %1
@@ -24,4 +23,5 @@ sub_803F07C
 	lsls r1, r1, #8
 	str r1, [r0, #8]
 	bx lr
+	thumb_func_end sub_803F07C
 

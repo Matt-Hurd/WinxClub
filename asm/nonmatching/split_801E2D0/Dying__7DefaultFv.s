@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Dying__7DefaultFv
-Dying__7DefaultFv
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -300,4 +299,5 @@ loc_801e466
 	movs r1, #0x7f
 	bl sub_80401C0
 	b %1
+	thumb_func_end Dying__7DefaultFv
 

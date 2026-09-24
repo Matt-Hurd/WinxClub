@@ -1,5 +1,4 @@
 	thumb_func_start sub_800501C
-sub_800501C
 	push {r3, lr}
 	movs r2, #0
 	bl sub_8004F42
@@ -12,3 +11,4 @@ sub_800501C
 	pop {r3}
 	adds r0, r1, #0
 	bx r3
+	thumb_func_end sub_800501C

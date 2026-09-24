@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802F04E
-sub_802F04E
 	subs r1, r0, #4
 	ldr r0, _0802F114
 	push {r4, lr}
@@ -70,4 +69,5 @@ loc_802f09e
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F04E
 

@@ -1,5 +1,4 @@
 	thumb_func_start HandleMainIngameLoop
-HandleMainIngameLoop
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #8
@@ -213,3 +212,4 @@ HandleMainIngameLoop
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleMainIngameLoop

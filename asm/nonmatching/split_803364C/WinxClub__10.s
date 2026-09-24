@@ -1,5 +1,4 @@
 	thumb_func_start WinxClub__10
-WinxClub__10
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -566,4 +565,5 @@ _08033A7C DCDU gUnknown_08051086
 	ldr r0, [sp, #8]
 	bl __call_via_r1
 	b %8
+	thumb_func_end WinxClub__10
 

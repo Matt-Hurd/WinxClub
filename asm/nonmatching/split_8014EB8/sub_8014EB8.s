@@ -1,5 +1,4 @@
 	thumb_func_start sub_8014EB8
-sub_8014EB8
 	movs r3, #0
 	NEGS r0, r2
 	cmp r1, #0
@@ -170,4 +169,5 @@ sub_8014EB8
 9
 	movs r0, #0
 	b %6
+	thumb_func_end sub_8014EB8
 

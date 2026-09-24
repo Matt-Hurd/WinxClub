@@ -39,7 +39,6 @@
 
 
 	thumb_func_start Anonymous18__Create
-Anonymous18__Create
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
@@ -128,9 +127,9 @@ Anonymous18__Create
 	str r7, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Anonymous18__Create
 
 	non_word_aligned_thumb_func_start Anonymous18__ctor
-Anonymous18__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802F518
@@ -147,9 +146,9 @@ Anonymous18__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Anonymous18__ctor
 
 	thumb_func_start sub_802F1F0
-sub_802F1F0
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -166,9 +165,9 @@ sub_802F1F0
 5
 	bl m04__7DefaultFv
 	b %4
+	thumb_func_end sub_802F1F0
 
 	thumb_func_start sub_802F210
-sub_802F210
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -182,9 +181,9 @@ sub_802F210
 7
 	bl m08__7DefaultFv
 	b %6
+	thumb_func_end sub_802F210
 
 	thumb_func_start sub_802F228
-sub_802F228
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -269,9 +268,9 @@ sub_802F228
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F228
 
 	non_word_aligned_thumb_func_start CollectPickup
-CollectPickup
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x2c]
@@ -752,9 +751,9 @@ _0802F55C DCDU 0x000004E6
 	movs r1, #3
 	bl sub_8017A0A
 	b %16
+	thumb_func_end CollectPickup
 
 	non_word_aligned_thumb_func_start sub_802F6BA
-sub_802F6BA
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0xa0
@@ -786,9 +785,9 @@ sub_802F6BA
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F6BA
 
 	thumb_func_start sub_802F6F4
-sub_802F6F4
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r7, #0xa0
@@ -936,9 +935,9 @@ sub_802F6F4
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F6F4
 
 	thumb_func_start sub_802F818
-sub_802F818
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -976,6 +975,7 @@ sub_802F818
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F818
 	ALIGN
 _0802F864 DCDU gUnknown_0300344C
 _0802F868 DCDU 0x000004E7

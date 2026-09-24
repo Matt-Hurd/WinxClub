@@ -1,5 +1,4 @@
 	thumb_func_start m08__7DefaultFv
-m08__7DefaultFv
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r1]
@@ -90,3 +89,4 @@ loc_801dfa6
 52
 	movs r0, #0
 	b %50
+	thumb_func_end m08__7DefaultFv

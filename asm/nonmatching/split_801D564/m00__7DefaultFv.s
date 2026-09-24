@@ -1,5 +1,4 @@
 	thumb_func_start m00__7DefaultFv
-m00__7DefaultFv
 __dt__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
@@ -58,4 +57,5 @@ __dt__7DefaultFv
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end m00__7DefaultFv
 

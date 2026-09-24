@@ -5,7 +5,6 @@
 	IMPORT EepromTimerIntr
 
 	thumb_func_start Dma3Transmit
-Dma3Transmit
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -15,9 +14,9 @@ Dma3Transmit
 	lsrs r0, r0, #0x10
 	pop {r1}
 	bx r1
+	thumb_func_end Dma3Transmit
 
 	thumb_func_start sub_803B664
-sub_803B664
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xb0
 	adds r5, r1, #0
@@ -204,4 +203,5 @@ _0803B78C DCDU 0x0000C001
 	pop {r4, r5, r6, r7}
 	pop {r1}
 	bx r1
+	thumb_func_end sub_803B664
 	END

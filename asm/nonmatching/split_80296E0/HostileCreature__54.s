@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HostileCreature__54
-HostileCreature__54
 	ldr r0, _0802B27C
 	push {r3, lr}
 	ldr r0, [r0]
@@ -20,4 +19,5 @@ HostileCreature__54
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__54
 

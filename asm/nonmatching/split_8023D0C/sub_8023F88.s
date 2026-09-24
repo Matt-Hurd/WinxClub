@@ -1,5 +1,4 @@
 	thumb_func_start sub_8023F88
-sub_8023F88
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldr r0, [r0, #0x28]
@@ -46,4 +45,5 @@ sub_8023F88
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8023F88
 

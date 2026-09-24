@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800075E
-sub_800075E
 	push {r4}
 	ldr r3, [r0, #0x10]
 	ldrh r2, [r0, #0x28]
@@ -33,4 +32,5 @@ sub_800075E
 	str r0, [r1, #0xc]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800075E
 

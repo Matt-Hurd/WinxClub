@@ -1,5 +1,4 @@
 	thumb_func_start sub_8036C24
-sub_8036C24
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -70,4 +69,5 @@ sub_8036C24
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8036C24
 

@@ -19,7 +19,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start ToggleObjectGroup__20
-ToggleObjectGroup__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -60,9 +59,9 @@ ToggleObjectGroup__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end ToggleObjectGroup__20
 
 	thumb_func_start ToggleObjectGroup__10
-ToggleObjectGroup__10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -149,9 +148,9 @@ ToggleObjectGroup__10
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end ToggleObjectGroup__10
 
 	non_word_aligned_thumb_func_start ToggleObjectGroup__48
-ToggleObjectGroup__48
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrh r3, [r2, #8]
@@ -185,9 +184,9 @@ ToggleObjectGroup__48
 9
 	bl Dying__7DefaultFv
 	b %8
+	thumb_func_end ToggleObjectGroup__48
 
 	thumb_func_start ToggleObjectGroup__44
-ToggleObjectGroup__44
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _08035B9C
 	adds r5, r0, #0
@@ -342,9 +341,9 @@ ToggleObjectGroup__44
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end ToggleObjectGroup__44
 
 	thumb_func_start ToggleObjectGroup__40
-ToggleObjectGroup__40
 	push {r4, r5, r6, r7, lr}
 	ldr r4, _08035BA8
 	adds r3, r1, #0
@@ -961,6 +960,7 @@ loc_8035dd0
 	str r0, [r1, #0x28]
 	str r2, [r1, #0x24]
 	b %19
+	thumb_func_end ToggleObjectGroup__40
 	ALIGN
 _08035E68 DCDU 0x0000025D
 _08035E6C DCDU 0x00000257

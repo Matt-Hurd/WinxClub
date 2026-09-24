@@ -1,5 +1,4 @@
 	thumb_func_start sub_80200E0
-sub_80200E0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _08020270
@@ -1294,5 +1293,6 @@ _080209B8 DCDU gUnknown_03003458
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80200E0
 
 

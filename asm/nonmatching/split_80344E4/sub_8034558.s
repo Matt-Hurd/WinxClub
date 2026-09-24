@@ -1,5 +1,4 @@
 	thumb_func_start sub_8034558
-sub_8034558
 	ldr r1, [r1]
 	ldrh r2, [r1, #4]
 	adds r1, r0, #0
@@ -12,4 +11,5 @@ sub_8034558
 	adds r0, #1
 	strb r0, [r1, #5]
 	bx lr
+	thumb_func_end sub_8034558
 

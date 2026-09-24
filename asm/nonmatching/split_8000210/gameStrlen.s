@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start gameStrlen
-gameStrlen
 	ldrb r2, [r0]
 	movs r1, #0
 	cmp r2, #0
@@ -13,4 +12,5 @@ gameStrlen
 15
 	adds r0, r1, #0
 	bx lr
+	thumb_func_end gameStrlen
 

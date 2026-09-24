@@ -1,5 +1,5 @@
 	thumb_func_start sub_8040660
-sub_8040660
 	bx pc
 	ALIGN
+	thumb_func_end sub_8040660
 

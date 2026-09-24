@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8025F36
-sub_8025F36
 	movs r3, #0xff
 	adds r3, #0x12
 	strh r3, [r0, #0xe]
@@ -35,4 +34,5 @@ sub_8025F36
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %56
+	thumb_func_end sub_8025F36
 

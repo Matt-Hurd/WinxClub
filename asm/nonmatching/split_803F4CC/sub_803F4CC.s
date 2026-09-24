@@ -1,5 +1,4 @@
 	arm_func_start sub_803F4CC
-sub_803F4CC
 	mov r2, r0
 	LDR r0, [r0, #4]
 	cmp r0, r1
@@ -24,4 +23,5 @@ sub_803F4CC
 	MOV r1, r3, LSL r1
 	STMIA r2, {r1, ip}
 	bx lr
+	arm_func_end sub_803F4CC
 

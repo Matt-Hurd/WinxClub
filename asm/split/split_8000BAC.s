@@ -5,7 +5,6 @@
 	IMPORT gUnknown_03003EA4
 
 	thumb_func_start sub_8000BAC
-sub_8000BAC
 	ldr r1, _08000C74
 	movs r2, #0x13
 	ldr r1, [r1]
@@ -28,9 +27,9 @@ sub_8000BAC
 	str r0, [r1]
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8000BAC
 
 	thumb_func_start sub_8000BD8
-sub_8000BD8
 	ldr r1, _08000C74
 	movs r2, #0x13
 	ldr r1, [r1]
@@ -52,9 +51,9 @@ sub_8000BD8
 	str r0, [r1]
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8000BD8
 
 	non_word_aligned_thumb_func_start sub_8000C02
-sub_8000C02
 	ldr r1, _08000C74
 	movs r2, #0x13
 	ldr r1, [r1]
@@ -77,9 +76,9 @@ sub_8000C02
 	str r0, [r1, #4]
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8000C02
 
 	non_word_aligned_thumb_func_start sub_8000C2E
-sub_8000C2E
 	ldr r1, _08000C74
 	movs r2, #0x13
 	ldr r1, [r1]
@@ -101,9 +100,9 @@ sub_8000C2E
 	str r0, [r1, #4]
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8000C2E
 
 	thumb_func_start sub_8000C58
-sub_8000C58
 	movs r1, #0
 1
 	ldrb r2, [r0, r1]
@@ -117,11 +116,12 @@ sub_8000C58
 	blo %1
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_8000C58
 
 	non_word_aligned_thumb_func_start sub_8000C6E
-sub_8000C6E
 	str r1, [r0, #0x1c]
 	bx lr
+	thumb_func_end sub_8000C6E
 	ALIGN
 _08000C74 DCDU gUnknown_03003EA4
 _08000C78 DCDU gUnknown_030033C8

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B7AA
-sub_800B7AA
 	push {r3, lr}
 	adds r0, r1, #0
 	bl sub_80121C4
@@ -13,4 +12,5 @@ sub_800B7AA
 9
 	movs r0, #0
 	b %8
+	thumb_func_end sub_800B7AA
 

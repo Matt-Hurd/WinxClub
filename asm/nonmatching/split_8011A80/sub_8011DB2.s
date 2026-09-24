@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011DB2
-sub_8011DB2
 	ldr r2, _0801209C
 	push {r4}
 	ldrh r0, [r2]
@@ -27,4 +26,5 @@ sub_8011DB2
 43
 	pop {r4}
 	bx lr
+	thumb_func_end sub_8011DB2
 

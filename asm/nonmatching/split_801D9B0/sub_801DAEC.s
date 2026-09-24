@@ -1,5 +1,4 @@
 	thumb_func_start sub_801DAEC
-sub_801DAEC
 	push {r3, r4, r5, lr}
 	ldr r5, [r1]
 	adds r4, r0, #0
@@ -40,4 +39,5 @@ sub_801DAEC
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801DAEC
 

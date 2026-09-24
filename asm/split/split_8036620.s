@@ -16,7 +16,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start Static1__Create
-Static1__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -55,9 +54,9 @@ Static1__Create
 	str r1, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Static1__Create
 
 	thumb_func_start sub_803666C
-sub_803666C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080368CC
@@ -74,9 +73,9 @@ sub_803666C
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803666C
 
 	non_word_aligned_thumb_func_start sub_803668E
-sub_803668E
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -231,13 +230,13 @@ sub_803668E
 	strb r0, [r6, #0xd]
 	strb r1, [r6, #0xc]
 	b %4
+	thumb_func_end sub_803668E
 
 	thumb_func_start sub_80367C0
-sub_80367C0
 	bx lr
+	thumb_func_end sub_80367C0
 
 	non_word_aligned_thumb_func_start sub_80367C2
-sub_80367C2
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r0, #0xe0
@@ -369,6 +368,7 @@ sub_80367C2
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80367C2
 	ALIGN
 _080368CC DCDU __VTABLE__323Static1
 _080368D0 DCDU 0x74617453

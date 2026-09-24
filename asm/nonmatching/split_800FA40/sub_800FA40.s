@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FA40
-sub_800FA40
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -45,4 +44,5 @@ sub_800FA40
 	str r5, [r0, #0x1c]
 	movs r0, #1
 	b %1
+	thumb_func_end sub_800FA40
 

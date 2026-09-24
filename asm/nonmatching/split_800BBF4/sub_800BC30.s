@@ -1,5 +1,4 @@
 	thumb_func_start sub_800BC30
-sub_800BC30
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	lsls r0, r1, #1
@@ -92,4 +91,5 @@ sub_800BC30
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x1c
 	bx r3
+	thumb_func_end sub_800BC30
 

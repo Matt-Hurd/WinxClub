@@ -1,5 +1,4 @@
 	thumb_func_start sub_8010D60
-sub_8010D60
 	push {r4, r5, r6, r7, lr}
 	movs r1, #0x6d
 	lsls r1, r1, #4
@@ -187,4 +186,5 @@ sub_8010D60
 10
 	strb r4, [r6, #0xc]
 	b %6
+	thumb_func_end sub_8010D60
 

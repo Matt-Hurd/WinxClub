@@ -1,5 +1,4 @@
 	thumb_func_start maybeLoadOrRenderBgImage
-maybeLoadOrRenderBgImage
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EFD0
@@ -43,3 +42,4 @@ maybeLoadOrRenderBgImage
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeLoadOrRenderBgImage

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8032CCC
-sub_8032CCC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x3c]
@@ -339,4 +338,5 @@ _08032EAC DCDU 0x00000000
 	adds r1, #1
 	strb r1, [r0]
 	b %16
+	thumb_func_end sub_8032CCC
 

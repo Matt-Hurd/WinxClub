@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B72A
-sub_800B72A
 	push {r3, lr}
 	bl sub_8011E10
 	cmp r0, #0
@@ -12,4 +11,5 @@ sub_800B72A
 4
 	movs r0, #0
 	b %3
+	thumb_func_end sub_800B72A
 

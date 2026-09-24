@@ -1,5 +1,4 @@
 	thumb_func_start sub_8016BAC
-sub_8016BAC
 	push {r4, lr}
 	ldr r0, [r1]
 	ldr r2, _08016D64
@@ -27,4 +26,5 @@ sub_8016BAC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8016BAC
 

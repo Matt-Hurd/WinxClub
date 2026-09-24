@@ -53,7 +53,6 @@
 
 
 	thumb_func_start sub_8034D98
-sub_8034D98
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _08035180
@@ -139,9 +138,9 @@ sub_8034D98
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8034D98
 
 	non_word_aligned_thumb_func_start sub_8034E4A
-sub_8034E4A
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r0, #0x25
@@ -216,9 +215,9 @@ sub_8034E4A
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8034E4A
 
 	thumb_func_start sub_8034EE0
-sub_8034EE0
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _08035190
@@ -737,9 +736,9 @@ _080351C4 DCDU 0x00000CE3
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8034EE0
 
 	thumb_func_start HandleAlbum
-HandleAlbum
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x58
@@ -890,6 +889,7 @@ HandleAlbum
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleAlbum
 	ALIGN
 _0803545C DCDU 0x0000FFFF
 _08035460 DCDU gUnknown_03003448

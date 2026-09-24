@@ -1,5 +1,4 @@
 	thumb_func_start HandleLoadGameScreen
-HandleLoadGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _0801D53C
 	ldr r4, _0801D540
@@ -220,3 +219,4 @@ _0801D558 DCDU 0x000009CC
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %35
+	thumb_func_end HandleLoadGameScreen

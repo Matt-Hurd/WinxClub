@@ -29,7 +29,6 @@
 	IMPORT sub_803DA9C
 
 	arm_func_start sub_80517C8
-sub_80517C8
 	STMFD SP!, {r4, r5, r6, lr}
 	LDR r2, [r0, #4]
 	mvn lr, #0
@@ -103,9 +102,9 @@ sub_80517C8
 	LDRB r0, [r0, #4]
 	LDMFD SP!, {r4, r5, r6, lr}
 	bx lr
+	arm_func_end sub_80517C8
 
 	arm_func_start sub_80518D4
-sub_80518D4
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r0
 	add r0, r0, r2, lsl #11
@@ -244,9 +243,9 @@ sub_80518D4
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_80518D4
 
 	arm_func_start sub_8051AD0
-sub_8051AD0
 	STMFD SP!, {r0, r1, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x400
 	mov r1, #0x244
@@ -968,9 +967,9 @@ _08052328 DCDU 0x030013EC
 	add sp, sp, #0x37c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_8051AD0
 
 	arm_func_start sub_8052570
-sub_8052570
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x11c
 	mov r3, r0
@@ -1272,69 +1271,69 @@ sub_8052570
 	ALIGN
 _08052A08 DCDU 0xFFFFC4DF
 _08052A0C DCDU 0xFFFFE333
+	arm_func_end sub_8052570
 
 	arm_func_start sub_8052A10
-sub_8052A10
 	LDR pc, _08052A14
 	ALIGN
 _08052A14 DCDU __rt_memclr_w
+	arm_func_end sub_8052A10
 
 	arm_func_start sub_8052A18
-sub_8052A18
 	LDR pc, _08052A1C
 	ALIGN
 _08052A1C DCDU __rt_memcpy
+	arm_func_end sub_8052A18
 
 	arm_func_start sub_8052A20
-sub_8052A20
 	LDR ip, _08052A28
 	bx ip
 	ALIGN
 _08052A28 DCDU sub_803D9C4
+	arm_func_end sub_8052A20
 
 	arm_func_start sub_8052A2C
-sub_8052A2C
 	LDR ip, _08052A34
 	bx ip
 	ALIGN
 _08052A34 DCDU sub_802F04E
+	arm_func_end sub_8052A2C
 
 	arm_func_start sub_8052A38
-sub_8052A38
 	LDR pc, _08052A3C
 	ALIGN
 _08052A3C DCDU strcmp
+	arm_func_end sub_8052A38
 
 	arm_func_start sub_8052A40
-sub_8052A40
 	LDR ip, _08052A48
 	bx ip
 	ALIGN
 _08052A48 DCDU GetEWRAMStart
+	arm_func_end sub_8052A40
 
 	arm_func_start sub_8052A4C
-sub_8052A4C
 	LDR ip, _08052A54
 	bx ip
 	ALIGN
 _08052A54 DCDU sub_803DA9C
+	arm_func_end sub_8052A4C
 
 	arm_func_start sub_8052A58
-sub_8052A58
 	LDR ip, _08052A60
 	bx ip
 	ALIGN
 _08052A60 DCDU sub_803D9A8
+	arm_func_end sub_8052A58
 
 	arm_func_start sub_8052A64
-sub_8052A64
 	LDR ip, _08052A6C
 	bx ip
 	ALIGN
 _08052A6C DCDU sub_801145E
+	arm_func_end sub_8052A64
 
 	arm_func_start sub_8052A70
-sub_8052A70
 	STMFD SP!, {r4, r5, lr}
 	mov r4, #1
 	mov r2, #0
@@ -1376,9 +1375,9 @@ sub_8052A70
 	LDMFD SP!, {r4, r5, lr}
 	movle r0, r2
 	bx lr
+	arm_func_end sub_8052A70
 
 	arm_func_start sub_8052B08
-sub_8052B08
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	sub r0, r2, #0x80
@@ -1429,9 +1428,9 @@ _08052BB0 DCDU 0x000166E9
 	DCB 0x1F, 0x28, 0x2C, 0x35, 0x0A, 0x13, 0x17, 0x20, 0x27, 0x2D, 0x34, 0x36, 0x14, 0x16, 0x21, 0x26
 	DCB 0x2E, 0x33, 0x37, 0x3C, 0x15, 0x22, 0x25, 0x2F, 0x32, 0x38, 0x3B, 0x3D, 0x23, 0x24, 0x30, 0x31
 	DCB 0x39, 0x3A, 0x3E, 0x3F
+	arm_func_end sub_8052B08
 
 	arm_func_start sub_8052BF4
-sub_8052BF4
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne %66
@@ -1456,9 +1455,9 @@ sub_8052BF4
 	bx lr
 67
 	DCB 0x1E, 0xFF, 0x2F, 0xE1
+	arm_func_end sub_8052BF4
 
 	arm_func_start sub_8052C4C
-sub_8052C4C
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, _08052E88
@@ -1473,9 +1472,9 @@ sub_8052C4C
 	bne %88
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_8052C4C
 
 	arm_func_start sub_8052C84
-sub_8052C84
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r0
@@ -1543,16 +1542,16 @@ sub_8052C84
 	LDMFD SP!, {r3, r4, r5, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8052C84
 
 	arm_func_start sub_8052D84
-sub_8052D84
 	STR r1, [r0, #0x20]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x24]
 	bx lr
+	arm_func_end sub_8052D84
 
 	arm_func_start sub_8052D94
-sub_8052D94
 	LDR r0, [r1, #4]
 	MOV r1, r0, LSL #0x16
 	MOV r1, r1, LSR #0x1c
@@ -1564,20 +1563,20 @@ sub_8052D94
 	add r0, r0, #0x36
 	MOV r0, r0, LSL #1
 	bx lr
+	arm_func_end sub_8052D94
 
 	arm_func_start sub_8052DC0
-sub_8052DC0
 	LDR r0, [r0, #0x28]
 	bx lr
+	arm_func_end sub_8052DC0
 
 	arm_func_start sub_8052DC8
-sub_8052DC8
 	STR r1, [r0, #0x28]
 	STR r1, [r0, #0x2c]
 	bx lr
+	arm_func_end sub_8052DC8
 
 	arm_func_start sub_8052DD4
-sub_8052DD4
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r3, [r4, #0x18]
@@ -1621,22 +1620,22 @@ sub_8052DD4
 	mov r0, r5
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_8052DD4
 
 	arm_func_start sub_8052E78
-sub_8052E78
 	LDR r0, [r1]
 	bx lr
+	arm_func_end sub_8052E78
 
 	arm_func_start sub_8052E80
-sub_8052E80
 	mov r0, #8
 	bx lr
 	ALIGN
 _08052E88 DCDU 0x03001114
 _08052E8C DCDU 0x030033F4
+	arm_func_end sub_8052E80
 
 	arm_func_start sub_8052E90
-sub_8052E90
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	sub sp, sp, #8
 	STR r0, [sp]
@@ -2564,23 +2563,23 @@ sub_8052E90
 	bx lr
 	ALIGN
 _08053CC8 DCDU 0x030033F4
+	arm_func_end sub_8052E90
 
 	arm_func_start sub_8053CCC
-sub_8053CCC
 	LDR ip, _08053CD4
 	bx ip
 	ALIGN
 _08053CD4 DCDU __nw__FUi
+	arm_func_end sub_8053CCC
 
 	arm_func_start sub_8053CD8
-sub_8053CD8
 	LDR ip, _08053CE0
 	bx ip
 	ALIGN
 _08053CE0 DCDU sub_800802E
+	arm_func_end sub_8053CD8
 
 	arm_func_start sub_8053CE4
-sub_8053CE4
 	LDR ip, _08053CEC
 	bx ip
 	ALIGN
@@ -2590,9 +2589,9 @@ _08053CEC DCDU sub_800805E
 	bx ip
 	ALIGN
 _08053CF8 DCDU sub_803DA18
+	arm_func_end sub_8053CE4
 
 	arm_func_start sub_8053CFC
-sub_8053CFC
 	LDR ip, _08053D04
 	bx ip
 	ALIGN
@@ -2602,9 +2601,9 @@ _08053D04 DCDU sub_800808E
 	DCB 0x7C, 0xEF, 0xFF, 0xFF, 0xCC, 0xF0, 0xFF, 0xFF, 0xED, 0x6F, 0x00, 0x05, 0x70, 0xF1, 0xFF, 0xFF
 	DCB 0x78, 0xF1, 0xFF, 0xFF, 0x7C, 0xF0, 0xFF, 0xFF, 0x8C, 0xF0, 0xFF, 0xFF, 0xB8, 0xF0, 0xFF, 0xFF
 	DCB 0xC0, 0xF0, 0xFF, 0xFF
+	arm_func_end sub_8053CFC
 
 	arm_func_start sub_8053D34
-sub_8053D34
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRB r7, [r2]
 	sub sp, sp, #8
@@ -3026,9 +3025,9 @@ _8053E60
 	add sp, sp, #8
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_8053D34
 
 	arm_func_start sub_8054344
-sub_8054344
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRB r2, [r0, #0x54]
 	sub sp, sp, #0xc
@@ -3138,9 +3137,9 @@ _8054398
 	add sp, sp, #0xc
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_8054344
 
 	arm_func_start sub_80544AC
-sub_80544AC
 	LDR r3, _080545E0
 	add r1, r3, r1, lsl #1
 	LDRB r3, [r1]
@@ -3168,9 +3167,9 @@ sub_80544AC
 	STRB r2, [r1], #1
 	bne %115
 	bx lr
+	arm_func_end sub_80544AC
 
 	arm_func_start sub_8054514
-sub_8054514
 	LDR r3, _080545E0
 	cmp r1, #7
 	add ip, r3, r1, lsl #1
@@ -3240,9 +3239,9 @@ _8054548
 _080545D8 DCDU gUnknown_0804AE90
 _080545DC DCDU gUnknown_0804AEA0
 _080545E0 DCDU gUnknown_0804AE80
+	arm_func_end sub_8054514
 
 	arm_func_start sub_80545E4
-sub_80545E4
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	LDR r7, [sp, #0x40]
@@ -3353,9 +3352,9 @@ sub_80545E4
 	add sp, sp, #0x1c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_80545E4
 
 	arm_func_start sub_805477C
-sub_805477C
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs fp, r1
 	cmpne fp, #1
@@ -3557,9 +3556,9 @@ sub_805477C
 	STR r5, [r4, #0x48]
 	LDMFD SP!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_805477C
 
 	arm_func_start sub_8054A4C
-sub_8054A4C
 	STMFD SP!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	ldrh r0, [r0, #0x3c]
@@ -3741,9 +3740,9 @@ sub_8054A4C
 	bx r1
 	ALIGN
 _08054CE8 DCDU 0x030033E8
+	arm_func_end sub_8054A4C
 
 	arm_func_start sub_8054CEC
-sub_8054CEC
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	mov r0, #0
@@ -3956,9 +3955,9 @@ sub_8054CEC
 	ALIGN
 _0805500C DCDU 0x030031D8
 _08055010 DCDU 0x03003EA0
+	arm_func_end sub_8054CEC
 
 	arm_func_start sub_8055014
-sub_8055014
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x84]
@@ -4298,9 +4297,9 @@ _8055068
 _080554D0 DCDU 0x03003E98
 _080554D4 DCDU 0xAAAAAAAB
 _080554D8 DCDU 0x03003EB4
+	arm_func_end sub_8055014
 
 	arm_func_start sub_80554DC
-sub_80554DC
 	mov r3, #0x4000000
 	add r3, r3, #0x200
 	LDR r2, [r3]
@@ -4382,13 +4381,13 @@ sub_80554DC
 	ALIGN
 _08055610 DCDU 0x000020D0
 _08055614 DCDU 0x030033FC
+	arm_func_end sub_80554DC
 
 	arm_func_start nullsub_23
-nullsub_23
 	bx lr
+	arm_func_end nullsub_23
 
 	arm_func_start sub_805561C
-sub_805561C
 	STMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	LDR r1, _080557B0
 	mov r7, #1
@@ -4406,9 +4405,9 @@ sub_805561C
 	bxne r8
 	LDMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	bx lr
+	arm_func_end sub_805561C
 
 	arm_func_start sub_805565C
-sub_805565C
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip}
@@ -4423,9 +4422,9 @@ sub_805565C
 	STR ip, [r1, #-4]
 	LDR r8, [r1], #0x4c
 	bx r8
+	arm_func_end sub_805565C
 
 	arm_func_start sub_8055694
-sub_8055694
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip}
@@ -4440,25 +4439,25 @@ sub_8055694
 	STRLT ip, [r1, #-4]
 	LDR r8, [r1], #0x4c
 	bx r8
+	arm_func_end sub_8055694
 
 	arm_func_start sub_80556CC
-sub_80556CC
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	LDR r8, [r1], #0x4c
 	bx r8
+	arm_func_end sub_80556CC
 
 	arm_func_start sub_80556DC
-sub_80556DC
 	STMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	LDR r1, _080557B0
 	LDMIA r1, {r2, r3, r4, r5}
 	adds r6, r3, r0
 	STR r6, [r1, #4]
 	b %199
+	arm_func_end sub_80556DC
 
 	arm_func_start sub_80556F4
-sub_80556F4
 	LDRB r7, [r4, r7, asr #6]
 	LDRB r6, [r4, r6, asr #6]
 	STRB r7, [r3, r5]
@@ -4472,9 +4471,9 @@ sub_80556F4
 	bxne r8
 	LDMFD SP!, {r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	bx lr
+	arm_func_end sub_80556F4
 
 	arm_func_start sub_8055724
-sub_8055724
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip, lr}
@@ -4490,9 +4489,9 @@ sub_8055724
 	STR lr, [r1, #-4]
 	LDR r8, [r1], #0x4c
 	bx r8
+	arm_func_end sub_8055724
 
 	arm_func_start sub_8055760
-sub_8055760
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	ldmdb r1, {r8, sb, sl, fp, ip, lr}
@@ -4509,99 +4508,99 @@ sub_8055760
 	STRLT lr, [r1, #-4]
 	LDR r8, [r1], #0x4c
 	bx r8
+	arm_func_end sub_8055760
 
 	arm_func_start sub_80557A0
-sub_80557A0
 	add r1, r1, #0x4c
 	add r1, r1, #0x4c
 	LDR r8, [r1], #0x4c
 	bx r8
 	ALIGN
 _080557B0 DCDU 0x03003520
+	arm_func_end sub_80557A0
 
 	arm_func_start sub_80557B4
-sub_80557B4
 	LDR pc, _080557B8
 	ALIGN
 _080557B8 DCDU __rt_udiv
+	arm_func_end sub_80557B4
 
 	arm_func_start sub_80557BC
-sub_80557BC
 	LDR pc, _080557C0
 	ALIGN
 _080557C0 DCDU __rt_sdiv
+	arm_func_end sub_80557BC
 
 	arm_func_start sub_80557C4
-sub_80557C4
 	LDR ip, _080557CC
 	bx ip
 	ALIGN
 _080557CC DCDU sub_80133A0
+	arm_func_end sub_80557C4
 
 	arm_func_start sub_80557D0
-sub_80557D0
 	LDR ip, _080557D8
 	bx ip
 	ALIGN
 _080557D8 DCDU GetEWRAMStart
+	arm_func_end sub_80557D0
 
 	arm_func_start sub_80557DC
-sub_80557DC
 	LDR ip, _080557E4
 	bx ip
 	ALIGN
 _080557E4 DCDU sub_80050FA
+	arm_func_end sub_80557DC
 
 	arm_func_start sub_80557E8
-sub_80557E8
 	LDR ip, _080557F0
 	bx ip
 	ALIGN
 _080557F0 DCDU sub_803DA9C
+	arm_func_end sub_80557E8
 
 	arm_func_start sub_80557F4
-sub_80557F4
 	LDR pc, _080557F8
 	ALIGN
 _080557F8 DCDU __rt_memclr
+	arm_func_end sub_80557F4
 
 	arm_func_start sub_80557FC
-sub_80557FC
 	LDR ip, _08055804
 	bx ip
 	ALIGN
 _08055804 DCDU __da__FPv
+	arm_func_end sub_80557FC
 
 	arm_func_start sub_8055808
-sub_8055808
 	LDR ip, _08055810
 	bx ip
 	ALIGN
 _08055810 DCDU sub_803DA18
+	arm_func_end sub_8055808
 
 	arm_func_start sub_8055814
-sub_8055814
 	LDR ip, _0805581C
 	bx ip
 	ALIGN
 _0805581C DCDU CpuSet
+	arm_func_end sub_8055814
 
 	arm_func_start sub_8055820
-sub_8055820
 	LDR ip, _08055828
 	bx ip
 	ALIGN
 _08055828 DCDU sub_8000D5A
+	arm_func_end sub_8055820
 
 	arm_func_start sub_805582C
-sub_805582C
 	LDR ip, _08055834
 	bx ip
 	ALIGN
 _08055834 DCDU sub_800B09A
+	arm_func_end sub_805582C
 
 	arm_func_start sub_8055838
-sub_8055838
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	sub sp, sp, #4
 	LDR r5, [r0, #0x34]
@@ -4772,6 +4771,7 @@ sub_8055838
 	STR fp, [r0, #0x24]
 	STR lr, [r0, #0x28]
 	b %201
+	arm_func_end sub_8055838
 	ALIGN
 _08055ABC DCDU 0x030031D0
 	END

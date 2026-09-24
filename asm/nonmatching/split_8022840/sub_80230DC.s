@@ -1,5 +1,4 @@
 	thumb_func_start sub_80230DC
-sub_80230DC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r0, #0x35
@@ -112,4 +111,5 @@ sub_80230DC
 	adds r0, r4, #0
 	bl sub_8018C48
 	b %57
+	thumb_func_end sub_80230DC
 

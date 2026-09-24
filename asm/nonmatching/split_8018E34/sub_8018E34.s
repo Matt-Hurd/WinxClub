@@ -1,5 +1,4 @@
 	thumb_func_start sub_8018E34
-sub_8018E34
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	bl FadeToBlack
@@ -33,4 +32,5 @@ sub_8018E34
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8018E34
 

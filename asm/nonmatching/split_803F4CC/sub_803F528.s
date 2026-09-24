@@ -1,5 +1,4 @@
 	thumb_func_start sub_803F528
-sub_803F528
 	push {r4, lr}
 	sub sp, #8
 	add r4, sp, #0x14
@@ -26,4 +25,5 @@ sub_803F528
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803F528
 

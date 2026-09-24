@@ -1,5 +1,4 @@
 	thumb_func_start InitKeyinputIE
-InitKeyinputIE
 	ldr r2, _0800B2B4
 	push {r4}
 	movs r1, #1
@@ -24,4 +23,5 @@ InitKeyinputIE
 	strh r0, [r2]
 	strh r4, [r3, #0x12]
 	b %4
+	thumb_func_end InitKeyinputIE
 

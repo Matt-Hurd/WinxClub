@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B8CE
-sub_800B8CE
 	movs r1, #0xbd
 	lsls r1, r1, #4
 	adds r2, r0, r1
@@ -38,4 +37,5 @@ sub_800B8CE
 	str r4, [r0, #0x24]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_800B8CE
 

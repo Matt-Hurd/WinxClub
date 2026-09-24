@@ -118,7 +118,6 @@
 	IMPORT sub_80412A8
 
 	thumb_func_start sub_800E4D8
-sub_800E4D8
 	push {r3, r4, r5, lr}
 	adds r5, r0, #0
 	movs r2, #0
@@ -136,9 +135,9 @@ sub_800E4D8
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E4D8
 
 	thumb_func_start sub_800E500
-sub_800E500
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r0, r3, #0
@@ -170,9 +169,9 @@ sub_800E500
 	blo %3
 	b %1
 	ALIGN
+	thumb_func_end sub_800E500
 
 	thumb_func_start sub_800E53C
-sub_800E53C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _0800E920
 	adds r5, r0, #0
@@ -256,9 +255,9 @@ sub_800E53C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E53C
 
 	non_word_aligned_thumb_func_start sub_800E5EA
-sub_800E5EA
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r6, _0800E924
 	ldr r0, [r6, #0x3c]
@@ -332,9 +331,9 @@ sub_800E5EA
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E5EA
 
 	thumb_func_start sub_800E678
-sub_800E678
 	push {r4, lr}
 	sub sp, #8
 	movs r0, #2
@@ -407,9 +406,9 @@ sub_800E678
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E678
 
 	thumb_func_start maybeInitTransitionLevelScreen
-maybeInitTransitionLevelScreen
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r5, _0800E938
 	ldr r0, [r5]
@@ -730,9 +729,9 @@ _0800E9CC DCDU 0x00001308
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeInitTransitionLevelScreen
 
 	non_word_aligned_thumb_func_start maybeInitGame
-maybeInitGame
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, sp, #0x18
@@ -930,9 +929,9 @@ maybeInitGame
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeInitGame
 
 	non_word_aligned_thumb_func_start sub_800EC0E
-sub_800EC0E
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	cmp r0, #2
@@ -1019,6 +1018,7 @@ sub_800EC0E
 	strh r0, [r4, #4]
 	strb r5, [r4]
 	b %46
+	thumb_func_end sub_800EC0E
 	ALIGN
 _0800ECBC DCDU gUnknown_03003EA8
 _0800ECC0 DCDU 0x69727073

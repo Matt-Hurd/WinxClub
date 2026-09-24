@@ -1,5 +1,4 @@
 	thumb_func_start SomehowInitEWRAMLinkedList
-SomehowInitEWRAMLinkedList
 	push {r3, r4, r5, lr}
 	cmp r1, #0
 	bne %1
@@ -26,4 +25,5 @@ SomehowInitEWRAMLinkedList
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end SomehowInitEWRAMLinkedList
 

@@ -1,5 +1,4 @@
 	arm_func_start sub_8008E64
-sub_8008E64
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	bne %21
@@ -14,4 +13,5 @@ sub_8008E64
 	rsbs r0, r0, #1
 	movlo r0, #0
 	bx lr
+	arm_func_end sub_8008E64
 

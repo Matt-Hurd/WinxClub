@@ -1,5 +1,4 @@
 	thumb_func_start Init_and_add_some_object
-Init_and_add_some_object
 __ct__7DefaultFv
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
@@ -178,4 +177,5 @@ __ct__7DefaultFv
 	str r1, [r0, #4]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Init_and_add_some_object
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_80024D8
-sub_80024D8
 	movs r3, #0x58
 	muls r1, r3
 	movs r3, #0x11
@@ -63,4 +62,5 @@ sub_80024D8
 16
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_80024D8
 

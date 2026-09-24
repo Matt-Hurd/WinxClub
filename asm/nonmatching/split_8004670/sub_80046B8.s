@@ -1,5 +1,4 @@
 	thumb_func_start sub_80046B8
-sub_80046B8
 	ldrh r1, [r1]
 	sub sp, #4
 	add r3, sp, #0
@@ -16,4 +15,5 @@ sub_80046B8
 	strh r1, [r0]
 	add sp, #4
 	bx lr
+	thumb_func_end sub_80046B8
 

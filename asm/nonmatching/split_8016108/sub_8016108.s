@@ -1,5 +1,4 @@
 	thumb_func_start sub_8016108
-sub_8016108
 	push {r3, lr}
 	movs r1, #0xf8
 	ldrb r1, [r1, r0]
@@ -35,4 +34,5 @@ loc_8016132
 loc_8016138
 	bl sub_80158F0
 	b %6
+	thumb_func_end sub_8016108
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8022FFC
-sub_8022FFC
 	push {r0, r1, r4, r5, r6, r7, lr}
 	movs r6, #0x35
 	lsls r6, r6, #4
@@ -112,4 +111,5 @@ sub_8022FFC
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8022FFC
 

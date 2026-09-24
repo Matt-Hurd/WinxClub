@@ -1,5 +1,4 @@
 	thumb_func_start sub_800BBF4
-sub_800BBF4
 	push {r4, r5, r6, r7}
 	movs r2, #0xf
 	lsls r2, r2, #6
@@ -32,4 +31,5 @@ sub_800BBF4
 	adds r0, r7, #0
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_800BBF4
 

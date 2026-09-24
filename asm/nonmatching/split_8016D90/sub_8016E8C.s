@@ -1,5 +1,4 @@
 	thumb_func_start sub_8016E8C
-sub_8016E8C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r6, _08017114
 	ldr r0, [r1]
@@ -101,4 +100,5 @@ sub_8016E8C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8016E8C
 

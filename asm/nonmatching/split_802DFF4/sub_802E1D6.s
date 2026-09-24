@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_802E1D6
-sub_802E1D6
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r4, r0, #0
@@ -204,3 +203,4 @@ sub_802E1D6
 	orrs r0, r1
 	str r0, [r2]
 	b %23
+	thumb_func_end sub_802E1D6

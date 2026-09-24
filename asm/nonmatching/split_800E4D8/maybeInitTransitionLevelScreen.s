@@ -1,5 +1,4 @@
 	thumb_func_start maybeInitTransitionLevelScreen
-maybeInitTransitionLevelScreen
 	push {r0, r4, r5, r6, r7, lr}
 	ldr r5, _0800E938
 	ldr r0, [r5]
@@ -320,4 +319,5 @@ _0800E9CC DCDU 0x00001308
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeInitTransitionLevelScreen
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8018540
-sub_8018540
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #4
 	add r7, sp, #0x28
@@ -134,4 +133,5 @@ sub_8018540
 	movs r0, #1
 	b %31
 	ALIGN
+	thumb_func_end sub_8018540
 

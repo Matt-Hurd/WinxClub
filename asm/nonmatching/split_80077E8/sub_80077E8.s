@@ -1,5 +1,4 @@
 	arm_func_start sub_80077E8
-sub_80077E8
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe0
 	LDR r7, [sp, #0x11c]
@@ -320,4 +319,5 @@ sub_80077E8
 	moveq r0, #0
 	mvnne r0, #4
 	bx lr
+	arm_func_end sub_80077E8
 

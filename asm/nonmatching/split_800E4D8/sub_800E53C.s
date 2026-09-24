@@ -1,5 +1,4 @@
 	thumb_func_start sub_800E53C
-sub_800E53C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _0800E920
 	adds r5, r0, #0
@@ -83,4 +82,5 @@ sub_800E53C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800E53C
 

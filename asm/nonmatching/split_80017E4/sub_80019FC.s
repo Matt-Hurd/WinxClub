@@ -1,5 +1,4 @@
 	thumb_func_start sub_80019FC
-sub_80019FC
 	push {r3, lr}
 	ldr r3, _08001A5C
 	lsls r2, r2, #0x10
@@ -9,4 +8,5 @@ sub_80019FC
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80019FC
 

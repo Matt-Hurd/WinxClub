@@ -1,5 +1,4 @@
 	arm_func_start sub_80095B8
-sub_80095B8
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDMIA r1, {r6, sb, fp}
 	mov sl, r1
@@ -881,3 +880,4 @@ _08009E28 DCDU gUnknown_0804AA68
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_80095B8

@@ -15,7 +15,6 @@
 	IMPORT sub_8040594
 
 	thumb_func_start Critter__10
-Critter__10
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -152,9 +151,9 @@ Critter__10
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__10
 
 	non_word_aligned_thumb_func_start Critter__20
-Critter__20
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -193,6 +192,7 @@ Critter__20
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Critter__20
 	ALIGN
 _0803156C DCDU gUnknown_03003EA0
 _08031570 DCDU 0x0010BE20

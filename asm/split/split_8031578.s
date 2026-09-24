@@ -13,7 +13,6 @@
 	IMPORT sub_803DA9C
 
 	thumb_func_start sub_8031578
-sub_8031578
 	push {r3, lr}
 	cmp r0, #0
 	bne %1
@@ -36,9 +35,9 @@ sub_8031578
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8031578
 
 	non_word_aligned_thumb_func_start sub_80315A2
-sub_80315A2
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08031668
@@ -60,9 +59,9 @@ sub_80315A2
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80315A2
 
 	non_word_aligned_thumb_func_start sub_80315CE
-sub_80315CE
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	str r1, [r0, #8]
@@ -84,14 +83,14 @@ sub_80315CE
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80315CE
 
 	thumb_func_start sub_80315FC
-sub_80315FC
 	str r1, [r0, #4]
 	bx lr
+	thumb_func_end sub_80315FC
 
 	thumb_func_start sub_8031600
-sub_8031600
 	push {r4, r5, r6}
 	add r5, sp, #0xc
 	ldr r6, [r0, #0xc]
@@ -109,9 +108,9 @@ sub_8031600
 	str r5, [r0, #0xc]
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end sub_8031600
 
 	non_word_aligned_thumb_func_start sub_8031622
-sub_8031622
 	push {r3, r4, r5, lr}
 	adds r3, r1, #0
 	adds r4, r0, #0
@@ -142,6 +141,7 @@ sub_8031622
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8031622
 	ALIGN
 _08031660 DCDU __VTABLE__14Singleton_3E9C
 _08031664 DCDU gUnknown_03003E9C

@@ -10,7 +10,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start sub_800FA40
-sub_800FA40
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -56,9 +55,9 @@ sub_800FA40
 	str r5, [r0, #0x1c]
 	movs r0, #1
 	b %1
+	thumb_func_end sub_800FA40
 
 	non_word_aligned_thumb_func_start sub_800FA9A
-sub_800FA9A
 	ldr r0, [r0, #0x18]
 	lsls r1, r0, #6
 	lsrs r1, r1, #0x10
@@ -71,9 +70,9 @@ sub_800FA9A
 3
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FA9A
 
 	thumb_func_start sub_800FAB0
-sub_800FAB0
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %5
@@ -93,9 +92,9 @@ sub_800FAB0
 	str r0, [r4]
 	adds r0, r4, #0
 	b %4
+	thumb_func_end sub_800FAB0
 
 	non_word_aligned_thumb_func_start sub_800FAD6
-sub_800FAD6
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0800FB14
@@ -112,46 +111,47 @@ sub_800FAD6
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FAD6
 
 	thumb_func_start sub_800FAF8
-sub_800FAF8
 	bx lr
+	thumb_func_end sub_800FAF8
 
 	non_word_aligned_thumb_func_start sub_800FAFA
-sub_800FAFA
 	bx lr
+	thumb_func_end sub_800FAFA
 
 	thumb_func_start sub_800FAFC
-sub_800FAFC
 	bx lr
+	thumb_func_end sub_800FAFC
 
 	non_word_aligned_thumb_func_start sub_800FAFE
-sub_800FAFE
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_800FAFE
 
 	non_word_aligned_thumb_func_start sub_800FB02
-sub_800FB02
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FB02
 
 	non_word_aligned_thumb_func_start sub_800FB06
-sub_800FB06
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FB06
 
 	non_word_aligned_thumb_func_start sub_800FB0A
-sub_800FB0A
 	bx lr
+	thumb_func_end sub_800FB0A
 
 	thumb_func_start sub_800FB0C
-sub_800FB0C
 	bx lr
+	thumb_func_end sub_800FB0C
 
 	non_word_aligned_thumb_func_start sub_800FB0E
-sub_800FB0E
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FB0E
 	ALIGN
 _0800FB14 DCDU __VTABLE__337dword_803EAE0
 	END

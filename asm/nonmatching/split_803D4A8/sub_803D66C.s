@@ -1,5 +1,4 @@
 	thumb_func_start sub_803D66C
-sub_803D66C
 	ldrh r2, [r0]
 	ldr r1, _0803D67C
 	strh r2, [r1, #0x10]
@@ -10,4 +9,5 @@ sub_803D66C
 	bx lr
 	ALIGN
 _0803D67C DCDU REG_WIN0H
+	thumb_func_end sub_803D66C
 

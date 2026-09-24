@@ -1,5 +1,4 @@
 	arm_func_start sub_800AB00
-sub_800AB00
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x28]
@@ -36,4 +35,5 @@ sub_800AB00
 	STMIA r0, {r1, r2, r3}
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_800AB00
 

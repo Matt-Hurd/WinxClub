@@ -1,5 +1,4 @@
 	thumb_func_start sub_803F38C
-sub_803F38C
 	movs r2, #0xff
 	adds r2, #1
 	push {r4}
@@ -20,4 +19,5 @@ sub_803F38C
 	str r4, [r0]
 	b %1
 	ALIGN
+	thumb_func_end sub_803F38C
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8004716
-sub_8004716
 	push {r3, lr}
 	cmp r0, #0
 	bne %5
@@ -23,4 +22,5 @@ sub_8004716
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004716
 

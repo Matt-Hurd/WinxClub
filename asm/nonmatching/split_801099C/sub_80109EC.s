@@ -1,5 +1,4 @@
 	thumb_func_start sub_80109EC
-sub_80109EC
 	movs r1, #0x54
 	ldrb r1, [r1, r0]
 	movs r2, #0x19
@@ -15,4 +14,5 @@ sub_80109EC
 	subs r0, r1, r0
 	subs r0, #1
 	bx lr
+	thumb_func_end sub_80109EC
 

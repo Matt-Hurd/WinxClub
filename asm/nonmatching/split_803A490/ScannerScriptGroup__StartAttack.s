@@ -1,4 +1,4 @@
 	non_word_aligned_thumb_func_start ScannerScriptGroup__StartAttack
-ScannerScriptGroup__StartAttack
 	bx lr
+	thumb_func_end ScannerScriptGroup__StartAttack
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_801FF68
-sub_801FF68
 	push {r4, lr}
 	ldr r2, [r1]
 	ldrb r3, [r2]
@@ -191,4 +190,5 @@ loc_802006c
 30
 	bl m04__7DefaultFv
 	b %9
+	thumb_func_end sub_801FF68
 

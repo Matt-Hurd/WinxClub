@@ -1,5 +1,4 @@
 	thumb_func_start sub_80139AC
-sub_80139AC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -181,4 +180,5 @@ sub_80139AC
 	orrs r0, r1
 	strh r0, [r4, #0xe]
 	b %13
+	thumb_func_end sub_80139AC
 

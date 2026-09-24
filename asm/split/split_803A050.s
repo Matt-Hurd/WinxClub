@@ -12,7 +12,6 @@
 	IMPORT sub_8041020
 
 	thumb_func_start Scanner__Create
-Scanner__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -77,9 +76,9 @@ Scanner__Create
 	str r1, [r0, #0x30]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Scanner__Create
 
 	non_word_aligned_thumb_func_start Scanner__ctor
-Scanner__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0803A420
@@ -96,9 +95,9 @@ Scanner__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Scanner__ctor
 
 	thumb_func_start ScannerScriptGroup__Dying
-ScannerScriptGroup__Dying
 	push {r4, lr}
 	ldr r3, [r1]
 	adds r2, r0, #0
@@ -146,9 +145,9 @@ ScannerScriptGroup__Dying
 7
 	bl HostileCreature__Dying
 	b %4
+	thumb_func_end ScannerScriptGroup__Dying
 
 	thumb_func_start ScannerScriptGroup__40
-ScannerScriptGroup__40
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r4, r0, #0
@@ -542,9 +541,9 @@ _0803A454 DCDU 0x00012668
 	strh r6, [r4, #0x26]
 	strh r5, [r4, #0x22]
 	b %13
+	thumb_func_end ScannerScriptGroup__40
 
 	non_word_aligned_thumb_func_start sub_803A476
-sub_803A476
 	movs r1, #0
 19
 	lsls r2, r1, #2
@@ -560,4 +559,5 @@ sub_803A476
 	blo %19
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_803A476
 	END

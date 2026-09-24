@@ -1,5 +1,4 @@
 	thumb_func_start Anonymous4__ctor
-Anonymous4__ctor
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -38,4 +37,5 @@ Anonymous4__ctor
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end Anonymous4__ctor
 

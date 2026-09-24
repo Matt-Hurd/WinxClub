@@ -8,24 +8,23 @@
 	IMPORT CpuSet
 
 	arm_func_start sub_8008AF4
-sub_8008AF4
 	LDR r0, [r1]
 	bx lr
+	arm_func_end sub_8008AF4
 
 	arm_func_start sub_8008AFC
-sub_8008AFC
 	mov r0, #4
 	bx lr
+	arm_func_end sub_8008AFC
 
 	arm_func_start sub_8008B04
-sub_8008B04
 	STR r1, [r0, #0x44]
 	MOV r1, r2, LSR #1
 	STR r1, [r0, #0x48]
 	bx lr
+	arm_func_end sub_8008B04
 
 	arm_func_start sub_8008B14
-sub_8008B14
 	STMFD SP!, {r4, lr}
 	movs r4, r0
 	bne %1
@@ -45,9 +44,9 @@ sub_8008B14
 	mov r0, r4
 	LDMFD SP!, {r4, lr}
 	bx lr
+	arm_func_end sub_8008B14
 
 	arm_func_start sub_8008B5C
-sub_8008B5C
 	STR lr, [sp, #-4]!
 	LDR r2, [r1]
 	LDR r3, [r2]
@@ -92,9 +91,9 @@ sub_8008B5C
 	DCB 0x04, 0xE0, 0x9D, 0xE4 ; LDMFD SP!, {lr}
 	mov r0, #1
 	bx lr
+	arm_func_end sub_8008B5C
 
 	arm_func_start sub_8008BFC
-sub_8008BFC
 	STMFD SP!, {r4, r5, r6, lr}
 	mov r4, r0
 	ldrh r0, [r0, #4]
@@ -264,9 +263,9 @@ sub_8008BFC
 	sub r0, r0, r5
 	LDMFD SP!, {r4, r5, r6, lr}
 	bx lr
+	arm_func_end sub_8008BFC
 
 	arm_func_start sub_8008E64
-sub_8008E64
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	bne %21
@@ -281,17 +280,18 @@ sub_8008E64
 	rsbs r0, r0, #1
 	movlo r0, #0
 	bx lr
+	arm_func_end sub_8008E64
 
 	arm_func_start sub_8008E98
-sub_8008E98
 	LDR r0, [r1]
 	MOV r0, r0, LSR #8
 	bx lr
+	arm_func_end sub_8008E98
 
 	arm_func_start sub_8008EA4
-sub_8008EA4
 	mov r0, #4
 	bx lr
+	arm_func_end sub_8008EA4
 	ALIGN
 _08008EAC DCDU __VTABLE__381off_803EE6C
 _08008EB0 DCDU gUnknown_03003EB4

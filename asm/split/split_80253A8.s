@@ -13,7 +13,6 @@
 	IMPORT sub_803FF24
 
 	thumb_func_start Npc__Create
-Npc__Create
 	push {r4, lr}
 	adds r4, r0, #0
 	bne %2
@@ -73,9 +72,9 @@ Npc__Create
 	str r1, [r0, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Npc__Create
 
 	non_word_aligned_thumb_func_start Npc__ctor
-Npc__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802576C
@@ -92,25 +91,25 @@ Npc__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__ctor
 
 	thumb_func_start Npc__04
-Npc__04
 	push {r3, lr}
 	bl m04__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__04
 
 	thumb_func_start Npc__08
-Npc__08
 	push {r3, lr}
 	bl m08__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__08
 
 	thumb_func_start Npc__38
-Npc__38
 	push {lr}
 	ldr r1, [r0, #0x58]
 	ldr r3, [r0, #0x5c]
@@ -126,9 +125,9 @@ Npc__38
 	add sp, #0xc
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__38
 
 	thumb_func_start Npc__3C
-Npc__3C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x58]
@@ -153,9 +152,9 @@ Npc__3C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__3C
 
 	non_word_aligned_thumb_func_start Npc__Intersect
-Npc__Intersect
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x97
@@ -221,17 +220,17 @@ loc_80254e4
 	pop {r3}
 	movs r0, #1
 	bx r3
+	thumb_func_end Npc__Intersect
 
 	non_word_aligned_thumb_func_start Npc__10
-Npc__10
 	push {r3, lr}
 	bl m10__7DefaultFv
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__10
 
 	non_word_aligned_thumb_func_start Npc__40
-Npc__40
 	push {r4, r5, r6, r7, lr}
 	movs r2, #5
 	lsls r2, r2, #0xe
@@ -765,9 +764,9 @@ sub_80258D8
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end Npc__40
 
 	non_word_aligned_thumb_func_start sub_802591A
-sub_802591A
 	movs r3, #0x83
 	lsls r3, r3, #2
 	strh r3, [r0, #0xe]
@@ -803,9 +802,9 @@ sub_802591A
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_802591A
 
 	thumb_func_start sub_8025960
-sub_8025960
 	movs r3, #6
 	strh r3, [r0, #0xe]
 	movs r3, #7
@@ -840,9 +839,9 @@ sub_8025960
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_8025960
 
 	thumb_func_start sub_80259A4
-sub_80259A4
 	movs r3, #0xb1
 	lsls r3, r3, #2
 	strh r3, [r0, #0xe]
@@ -879,9 +878,9 @@ sub_80259A4
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_80259A4
 
 	thumb_func_start sub_80259EC
-sub_80259EC
 	ldr r3, _08025C00
 	strh r3, [r0, #0xe]
 	adds r3, #1
@@ -917,9 +916,9 @@ sub_80259EC
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %15
+	thumb_func_end sub_80259EC
 
 	non_word_aligned_thumb_func_start sub_8025A32
-sub_8025A32
 	movs r7, #0x88
 	strh r7, [r0, #0xe]
 	movs r3, #0x89
@@ -1382,9 +1381,9 @@ sub_8025D02
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %44
+	thumb_func_end sub_8025A32
 
 	non_word_aligned_thumb_func_start sub_8025DEE
-sub_8025DEE
 	movs r7, #0xff
 	adds r7, #0xd6
 	strh r7, [r0, #0xe]
@@ -1418,9 +1417,9 @@ sub_8025DEE
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %46
+	thumb_func_end sub_8025DEE
 
 	thumb_func_start sub_8025E30
-sub_8025E30
 	movs r7, #0x82
 	strh r7, [r0, #0xe]
 	movs r3, #0x83
@@ -1524,9 +1523,9 @@ sub_8025E30
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %54
+	thumb_func_end sub_8025E30
 
 	non_word_aligned_thumb_func_start sub_8025EF6
-sub_8025EF6
 	movs r7, #0x85
 	strh r7, [r0, #0xe]
 	movs r3, #0x86
@@ -1559,9 +1558,9 @@ sub_8025EF6
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %55
+	thumb_func_end sub_8025EF6
 
 	non_word_aligned_thumb_func_start sub_8025F36
-sub_8025F36
 	movs r3, #0xff
 	adds r3, #0x12
 	strh r3, [r0, #0xe]
@@ -1597,9 +1596,9 @@ sub_8025F36
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %56
+	thumb_func_end sub_8025F36
 
 	thumb_func_start sub_8025F7C
-sub_8025F7C
 	ldr r2, _0802600C
 	adds r3, r2, #1
 	strh r2, [r0, #0xe]
@@ -1612,9 +1611,9 @@ sub_8025F7C
 	strh r1, [r0, #0x1c]
 	strh r1, [r0, #0x18]
 	b %56
+	thumb_func_end sub_8025F7C
 
 	thumb_func_start sub_8025F94
-sub_8025F94
 	ldr r2, _08026010
 	adds r3, r2, #1
 	strh r2, [r0, #0xe]
@@ -1627,6 +1626,7 @@ sub_8025F94
 	strh r1, [r0, #0x1c]
 	strh r1, [r0, #0x18]
 	b %56
+	thumb_func_end sub_8025F94
 	ALIGN
 _08025FAC DCDU 0x0000051A
 _08025FB0 DCDU 0x0044B800

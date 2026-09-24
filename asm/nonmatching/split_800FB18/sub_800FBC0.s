@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FBC0
-sub_800FBC0
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	beq %4
@@ -96,4 +95,5 @@ loc_800fc3a
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	b %5
+	thumb_func_end sub_800FBC0
 

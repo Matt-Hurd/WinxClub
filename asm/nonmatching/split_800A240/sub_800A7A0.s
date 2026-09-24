@@ -1,5 +1,4 @@
 	arm_func_start sub_800A7A0
-sub_800A7A0
 	ldrh r1, [r0, #4]
 	cmp r1, #0
 	bne %37
@@ -14,4 +13,5 @@ sub_800A7A0
 	rsbs r0, r0, #1
 	movlo r0, #0
 	bx lr
+	arm_func_end sub_800A7A0
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start m10__7DefaultFv
-m10__7DefaultFv
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -637,4 +636,5 @@ loc_801eff2
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end m10__7DefaultFv
 

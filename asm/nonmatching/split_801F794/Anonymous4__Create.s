@@ -1,5 +1,4 @@
 	thumb_func_start Anonymous4__Create
-Anonymous4__Create
 	push {r4, r5, r6, lr}
 	movs r5, #0x4b
 	lsls r5, r5, #3
@@ -143,4 +142,5 @@ Anonymous4__Create
 	blo %3
 	adds r0, r4, #0
 	b %1
+	thumb_func_end Anonymous4__Create
 

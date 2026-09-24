@@ -1,5 +1,4 @@
 	thumb_func_start sub_80200A4
-sub_80200A4
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -35,4 +34,5 @@ sub_80200A4
 36
 	bl m08__7DefaultFv
 	b %32
+	thumb_func_end sub_80200A4
 

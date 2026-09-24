@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8000236
-sub_8000236
 	push {r4, r5}
 	b %10
 5
@@ -55,4 +54,5 @@ sub_8000236
 	ldrsb r0, [r0, r3]
 	subs r0, r1, r0
 	b %8
+	thumb_func_end sub_8000236
 

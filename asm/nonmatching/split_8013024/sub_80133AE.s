@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80133AE
-sub_80133AE
 	lsls r3, r0, #3
 	subs r0, r3, r0
 	ldr r3, _08013430
@@ -33,4 +32,5 @@ sub_80133AE
 	pop {r4}
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_80133AE
 

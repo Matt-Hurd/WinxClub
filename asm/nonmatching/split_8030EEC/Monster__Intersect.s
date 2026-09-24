@@ -1,5 +1,4 @@
 	thumb_func_start Monster__Intersect
-Monster__Intersect
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x80
@@ -166,4 +165,5 @@ loc_8030fd0
 	str r7, [r4, #0x34]
 	movs r0, #1
 	b %2
+	thumb_func_end Monster__Intersect
 

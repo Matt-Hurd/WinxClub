@@ -1,5 +1,4 @@
 	thumb_func_start m14__7DefaultFv
-m14__7DefaultFv
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r4, #0x80
@@ -206,4 +205,5 @@ loc_801f1be
 	orrs r0, r5
 	str r0, [r4, #0x10]
 	b %198
+	thumb_func_end m14__7DefaultFv
 

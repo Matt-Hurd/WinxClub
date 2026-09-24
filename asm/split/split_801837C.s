@@ -5,30 +5,29 @@
 	IMPORT __call_via_r0
 
 	thumb_func_start SetGlobalFunction
-SetGlobalFunction
 	ldr r2, _080183B8
 	lsls r1, r1, #2
 	str r0, [r2, r1]
 	movs r0, #1
 	bx lr
+	thumb_func_end SetGlobalFunction
 
 	non_word_aligned_thumb_func_start SetNextGlobalFunction
-SetNextGlobalFunction
 	ldr r1, _080183B8
 	subs r1, #4
 	strb r0, [r1]
 	movs r0, #1
 	bx lr
+	thumb_func_end SetNextGlobalFunction
 
 	thumb_func_start GetNextGlobalFunction
-GetNextGlobalFunction
 	ldr r0, _080183B8
 	subs r0, #4
 	ldrb r0, [r0]
 	bx lr
+	thumb_func_end GetNextGlobalFunction
 
 	thumb_func_start MainLoop
-MainLoop
 	push {r3, r4, r5, lr}
 	ldr r5, _080183B8
 	subs r4, r5, #4
@@ -44,6 +43,7 @@ MainLoop
 	pop {r3}
 	movs r0, #0
 	bx r3
+	thumb_func_end MainLoop
 	ALIGN
 _080183B8 DCDU gGlobalFunctionTable
 	END

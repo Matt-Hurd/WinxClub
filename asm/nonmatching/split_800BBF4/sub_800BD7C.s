@@ -1,5 +1,4 @@
 	thumb_func_start sub_800BD7C
-sub_800BD7C
 	push {r3, r4, r5, r6, r7, lr}
 	movs r4, #0x1f
 	lsls r4, r4, #6
@@ -80,4 +79,5 @@ sub_800BD7C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800BD7C
 

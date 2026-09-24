@@ -1,5 +1,4 @@
 	thumb_func_start sub_801F65C
-sub_801F65C
 	push {r3, r4, r5, r6, r7, lr}
 	movs r5, #0
 	adds r4, r0, #0
@@ -65,4 +64,5 @@ sub_801F65C
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801F65C
 

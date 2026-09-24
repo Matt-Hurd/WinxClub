@@ -1,5 +1,4 @@
 	thumb_func_start sub_80333DC
-sub_80333DC
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -162,4 +161,5 @@ sub_80333DC
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80333DC
 

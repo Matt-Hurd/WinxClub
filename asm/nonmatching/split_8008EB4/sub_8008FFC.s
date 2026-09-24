@@ -1,5 +1,4 @@
 	arm_func_start sub_8008FFC
-sub_8008FFC
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	mov r4, r0
@@ -20,4 +19,5 @@ sub_8008FFC
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8008FFC
 

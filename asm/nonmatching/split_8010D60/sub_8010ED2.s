@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8010ED2
-sub_8010ED2
 	cmp r1, #0xb
 	blo %11
 	movs r0, #0
@@ -34,4 +33,5 @@ sub_8010ED2
 13
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8010ED2
 

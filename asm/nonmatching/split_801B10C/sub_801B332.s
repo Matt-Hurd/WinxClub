@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801B332
-sub_801B332
 	push {r4, r5, r6, r7, lr}
 	ldr r1, _0801B480
 	movs r2, #4
@@ -154,3 +153,4 @@ sub_801B332
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801B332

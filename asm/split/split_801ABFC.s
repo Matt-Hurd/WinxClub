@@ -28,7 +28,6 @@
 	IMPORT sub_803F9C4
 
 	thumb_func_start sub_801ABFC
-sub_801ABFC
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	bl FadeToBlack
@@ -73,9 +72,9 @@ sub_801ABFC
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801ABFC
 
 	thumb_func_start sub_801AC60
-sub_801AC60
 	push {r3, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x27
@@ -176,9 +175,9 @@ sub_801AC60
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801AC60
 
 	non_word_aligned_thumb_func_start sub_801AD22
-sub_801AD22
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0xff
@@ -356,6 +355,7 @@ sub_801AD22
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801AD22
 	ALIGN
 _0801AEA0 DCDU gUnknown_03003448
 _0801AEA4 DCDU gUnknown_03003478

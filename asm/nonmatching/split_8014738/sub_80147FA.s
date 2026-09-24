@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80147FA
-sub_80147FA
 	adds r2, r1, #0
 	adds r1, r0, #0
 	adds r1, #0x60
@@ -58,4 +57,5 @@ sub_80147FA
 11
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_80147FA
 

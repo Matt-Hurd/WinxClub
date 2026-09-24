@@ -6,7 +6,6 @@
 	IMPORT sub_8007F18
 
 	arm_func_start sub_80062F4
-sub_80062F4
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r1
 	LDR r1, [sp, #0x18]
@@ -30,9 +29,9 @@ sub_80062F4
 	STMIA r1, {r6, r7}
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
+	arm_func_end sub_80062F4
 
 	arm_func_start sub_8006350
-sub_8006350
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	mov r0, r2
@@ -618,15 +617,16 @@ jmptb_080063C8
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mvn r2, #1
 	b sub_8007F18
+	arm_func_end sub_8006350
 
 	arm_func_start sub_8006BA4
-sub_8006BA4
 	mov ip, r0
 	LDR r3, [r1, #0x20]!
 	LDR r0, [r1, #4]
 	mov r1, ip
 	mov r2, #5
 	bx r3
+	arm_func_end sub_8006BA4
 	ALIGN
 _08006BBC DCDU gUnknown_0804A8F0
 	END

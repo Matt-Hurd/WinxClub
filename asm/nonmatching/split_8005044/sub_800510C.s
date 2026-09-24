@@ -1,5 +1,4 @@
 	thumb_func_start sub_800510C
-sub_800510C
 	ldr r2, [r0]
 	cmp r2, r1
 	bhi %3
@@ -11,4 +10,5 @@ sub_800510C
 3
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800510C
 

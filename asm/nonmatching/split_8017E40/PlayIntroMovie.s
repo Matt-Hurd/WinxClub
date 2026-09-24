@@ -1,5 +1,4 @@
 	thumb_func_start PlayIntroMovie
-PlayIntroMovie
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r0, sp, #8
@@ -91,4 +90,5 @@ PlayIntroMovie
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %4
+	thumb_func_end PlayIntroMovie
 

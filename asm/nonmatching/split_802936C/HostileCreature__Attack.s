@@ -1,5 +1,4 @@
 	thumb_func_start HostileCreature__Attack
-HostileCreature__Attack
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080296D4
@@ -125,3 +124,4 @@ HostileCreature__Attack
 33
 	movs r0, #0
 	b %32
+	thumb_func_end HostileCreature__Attack

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800C1CA
-sub_800C1CA
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x78]
@@ -359,4 +358,5 @@ _0800C464 DCDU 0xFFE00000
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800C1CA
 

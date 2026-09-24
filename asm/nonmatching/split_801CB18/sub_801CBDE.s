@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801CBDE
-sub_801CBDE
 	push {r4, r5, r6, r7}
 	movs r3, #5
 	lsls r3, r3, #8
@@ -51,4 +50,5 @@ sub_801CBDE
 10
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_801CBDE
 

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8016CB6
-sub_8016CB6
 	push {r4, lr}
 	ldr r0, _08016D84
 	ldr r4, [r1]
@@ -20,4 +19,5 @@ sub_8016CB6
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8016CB6
 

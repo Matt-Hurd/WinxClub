@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start WinxClub__20
-WinxClub__20
 	push {r4, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -13,3 +12,4 @@ WinxClub__20
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__20

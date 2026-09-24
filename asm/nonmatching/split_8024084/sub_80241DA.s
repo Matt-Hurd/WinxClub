@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_80241DA
-sub_80241DA
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -379,4 +378,5 @@ _08024488 DCDU gUnknown_03003448
 	movs r0, #2
 	strb r0, [r4, #0xc]
 	b %47
+	thumb_func_end sub_80241DA
 

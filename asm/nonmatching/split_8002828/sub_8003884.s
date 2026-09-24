@@ -1,5 +1,4 @@
 	thumb_func_start sub_8003884
-sub_8003884
 	push {r0, r1, r2, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #1
@@ -546,4 +545,5 @@ _08003A70 DCDU gUnknown_03003EA4
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8003884
 

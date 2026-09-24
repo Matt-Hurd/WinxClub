@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8004B02
-sub_8004B02
 	movs r3, #0
 	strh r3, [r0, #6]
 	strh r3, [r0, #8]
@@ -27,4 +26,5 @@ sub_8004B02
 	bics r1, r2
 	str r1, [r0, #0x14]
 	bx lr
+	thumb_func_end sub_8004B02
 

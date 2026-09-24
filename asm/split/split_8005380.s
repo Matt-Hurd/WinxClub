@@ -13,7 +13,6 @@
 	IMPORT __rt_memcpy
 
 	arm_func_start sub_8005380
-sub_8005380
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	cmp r2, #0
@@ -45,9 +44,9 @@ sub_8005380
 	STR r0, [r4, #0x30]
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_8005380
 
 	arm_func_start sub_80053F8
-sub_80053F8
 	STMFD SP!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x24]
@@ -117,9 +116,9 @@ sub_80053F8
 	mov r0, r5
 	LDMFD SP!, {r3, r4, r5, r6, r7, lr}
 	bx lr
+	arm_func_end sub_80053F8
 
 	arm_func_start sub_8005504
-sub_8005504
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	add r7, r0, #0x1c
 	LDMIA r7, {r5, r7}
@@ -1038,9 +1037,9 @@ jmptb_08005578
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mvn r2, #1
 	b sub_8007F18
+	arm_func_end sub_8005504
 
 	arm_func_start sub_8006244
-sub_8006244
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -1067,9 +1066,9 @@ sub_8006244
 	LDMFD SP!, {r3, r4, r5, lr}
 	mov r0, #0
 	bx lr
+	arm_func_end sub_8006244
 
 	arm_func_start sub_80062AC
-sub_80062AC
 	STMFD SP!, {r3, r4, r5, lr}
 	mov r4, r0
 	LDR r0, [r0, #0x28]
@@ -1081,14 +1080,15 @@ sub_80062AC
 	STR r0, [r4, #0x30]
 	LDMFD SP!, {r3, r4, r5, lr}
 	bx lr
+	arm_func_end sub_80062AC
 
 	arm_func_start sub_80062D8
-sub_80062D8
 	LDRB r0, [r0]
 	cmp r0, #1
 	movne r0, #0
 	moveq r0, #1
 	bx lr
+	arm_func_end sub_80062D8
 	ALIGN
 _080062EC DCDU gUnknown_080495B8
 _080062F0 DCDU gUnknown_0804A8F0

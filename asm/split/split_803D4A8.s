@@ -30,7 +30,6 @@
 	IMPORT __16__rt_memclr
 
 	thumb_func_start sub_803D4A8
-sub_803D4A8
 	push {r4, lr}
 	cmp r0, #8
 	bhs %16
@@ -166,9 +165,9 @@ loc_803d57e
 	b %9
 	ALIGN
 _0803D5A0 DCDU 0x00005524
+	thumb_func_end sub_803D4A8
 
 	thumb_func_start sub_803D5A4
-sub_803D5A4
 	push {r4, r5, r6, r7, lr}
 	adds r6, r1, #0
 	ldr r1, _0803D664
@@ -261,9 +260,9 @@ sub_803D5A4
 	ALIGN
 _0803D664 DCDU REG_TM0CNT
 _0803D668 DCDU gUnknown_030033F4
+	thumb_func_end sub_803D5A4
 
 	thumb_func_start sub_803D66C
-sub_803D66C
 	ldrh r2, [r0]
 	ldr r1, _0803D67C
 	strh r2, [r1, #0x10]
@@ -274,9 +273,9 @@ sub_803D66C
 	bx lr
 	ALIGN
 _0803D67C DCDU REG_WIN0H
+	thumb_func_end sub_803D66C
 
 	thumb_func_start sub_803D680
-sub_803D680
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	sub sp, #4
@@ -512,9 +511,9 @@ loc_803d7de
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803D680
 
 	thumb_func_start sub_803D834
-sub_803D834
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r0]
@@ -687,16 +686,16 @@ loc_803d936
 54
 	movs r0, #1
 	b %40
+	thumb_func_end sub_803D834
 
 	thumb_func_start sub_803D97C
-sub_803D97C
 	ldr r0, [r0]
 	lsls r0, r0, #6
 	lsrs r0, r0, #0x1f
 	bx lr
+	thumb_func_end sub_803D97C
 
 	thumb_func_start sub_803D984
-sub_803D984
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0803D9A4
@@ -713,9 +712,9 @@ sub_803D984
 	bx r3
 	ALIGN
 _0803D9A4 DCDU gUnknown_030033E8
+	thumb_func_end sub_803D984
 
 	thumb_func_start sub_803D9A8
-sub_803D9A8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0803D9C0
@@ -729,9 +728,9 @@ sub_803D9A8
 	bx r3
 	ALIGN
 _0803D9C0 DCDU gUnknown_030033E8
+	thumb_func_end sub_803D9A8
 
 	thumb_func_start sub_803D9C4
-sub_803D9C4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, _0803D9F4
@@ -757,9 +756,9 @@ sub_803D9C4
 	bx r3
 	ALIGN
 _0803D9F4 DCDU gUnknown_030033E8
+	thumb_func_end sub_803D9C4
 
 	thumb_func_start __nw__FUi
-__nw__FUi
 	adds r1, r0, #0
 	ldr r0, _0803DA14
 	push {r3, lr}
@@ -774,9 +773,9 @@ __nw__FUi
 	bx r3
 	ALIGN
 _0803DA14 DCDU gUnknown_030033E8
+	thumb_func_end __nw__FUi
 
 	thumb_func_start sub_803DA18
-sub_803DA18
 	GLOBAL __dl__FPv
 __dl__FPv
 	push {lr}
@@ -807,9 +806,9 @@ __dl__FPv
 	bx r3
 	ALIGN
 _0803DA48 DCDU gUnknown_030033E8
+	thumb_func_end sub_803DA18
 
 	thumb_func_start __da__FPv
-__da__FPv
 	push {lr}
 	adds r1, r0, #0
 	beq %63
@@ -838,9 +837,9 @@ __da__FPv
 	bx r3
 	ALIGN
 _0803DA7C DCDU gUnknown_030033E8
+	thumb_func_end __da__FPv
 
 	thumb_func_start sub_803DA80
-sub_803DA80
 	push {r4, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -854,9 +853,9 @@ sub_803DA80
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803DA80
 
 	thumb_func_start sub_803DA9C
-sub_803DA9C
 	push {r4, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -870,24 +869,24 @@ sub_803DA9C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803DA9C
 
 	thumb_func_start nullsub_5
-nullsub_5
 	bx lr
 	ALIGN
+	thumb_func_end nullsub_5
 
 	thumb_func_start sub_803DABC
-sub_803DABC
 	adds r0, r2, #0
 	bx lr
+	thumb_func_end sub_803DABC
 
 	thumb_func_start sub_803DAC0
-sub_803DAC0
 	adds r0, r1, #0
 	bx lr
+	thumb_func_end sub_803DAC0
 
 	arm_func_start __rt_stackheap_init
-__rt_stackheap_init
 	LDR sp, _0803DB28
 	LDR sl, _0803DB2C
 	mov r0, #0x2000000
@@ -902,30 +901,31 @@ __rt_stackheap_init
 	LDR r1, _0803DB34
 	STR r0, [r1]
 	mov pc, lr
+	arm_func_end __rt_stackheap_init
 
 	arm_func_start sub_803DAFC
-sub_803DAFC
 	LDR r0, _0803DB38
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x64
 	b _sys_exit
+	arm_func_end sub_803DAFC
 
 	arm_func_start sub_803DB10
-sub_803DB10
 	mov r0, #0
 	mov pc, lr
+	arm_func_end sub_803DB10
 
 	arm_func_start sub_803DB18
-sub_803DB18
 	STMFD SP!, {r0, r1}
 	LDMIA sp, {sl, sp}
 	mov pc, lr
+	arm_func_end sub_803DB18
 
 
 	arm_func_start _sys_exit
-_sys_exit
 	b _sys_exit
+	arm_func_end _sys_exit
 	ALIGN
 _0803DB28 DCDU gInterruptStack
 _0803DB2C DCDU gUnknown_03003EC4

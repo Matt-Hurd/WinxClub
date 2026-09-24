@@ -1,5 +1,4 @@
 	arm_func_start sub_8008B5C
-sub_8008B5C
 	STR lr, [sp, #-4]!
 	LDR r2, [r1]
 	LDR r3, [r2]
@@ -44,4 +43,5 @@ sub_8008B5C
 	DCB 0x04, 0xE0, 0x9D, 0xE4 ; LDMFD SP!, {lr}
 	mov r0, #1
 	bx lr
+	arm_func_end sub_8008B5C
 

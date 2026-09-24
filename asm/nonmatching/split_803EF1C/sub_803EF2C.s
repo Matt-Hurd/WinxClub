@@ -1,5 +1,4 @@
 	thumb_func_start sub_803EF2C
-sub_803EF2C
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	movs r6, #0
@@ -153,3 +152,4 @@ sub_803EF2C
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803EF2C

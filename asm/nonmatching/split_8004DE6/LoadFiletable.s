@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start LoadFiletable
-LoadFiletable
 	push {r4, r5, r6, r7, lr}
 	adds r7, r1, #0
 	adds r5, r2, #0
@@ -150,4 +149,5 @@ LoadFiletable
 	bne %10
 	adds r0, r4, #0
 	b %1
+	thumb_func_end LoadFiletable
 

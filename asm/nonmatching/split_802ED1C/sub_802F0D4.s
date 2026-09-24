@@ -1,5 +1,4 @@
 	thumb_func_start sub_802F0D4
-sub_802F0D4
 	adds r1, r0, #0
 	movs r0, #0
 	push {r4}
@@ -38,3 +37,4 @@ sub_802F0D4
 79
 	pop {r4}
 	bx lr
+	thumb_func_end sub_802F0D4

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HostileCreature__3C
-HostileCreature__3C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -42,4 +41,5 @@ HostileCreature__3C
 	pop {r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__3C
 

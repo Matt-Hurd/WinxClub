@@ -1,5 +1,4 @@
 	arm_func_start sub_8012674
-sub_8012674
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRSH r2, [r0]
 	LDRSH ip, [r0, #2]
@@ -84,4 +83,5 @@ sub_8012674
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, r3
 	bx lr
+	arm_func_end sub_8012674
 

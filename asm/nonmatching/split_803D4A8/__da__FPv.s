@@ -1,5 +1,4 @@
 	thumb_func_start __da__FPv
-__da__FPv
 	push {lr}
 	adds r1, r0, #0
 	beq %63
@@ -28,4 +27,5 @@ __da__FPv
 	bx r3
 	ALIGN
 _0803DA7C DCDU gUnknown_030033E8
+	thumb_func_end __da__FPv
 

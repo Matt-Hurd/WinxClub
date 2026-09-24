@@ -1,5 +1,4 @@
 	thumb_func_start sub_80016D8
-sub_80016D8
 	push {r4}
 	ldr r3, [r1]
 	ldrh r2, [r0, #0xe]
@@ -28,4 +27,5 @@ sub_80016D8
 	str r0, [r1]
 	pop {r4}
 	bx lr
+	thumb_func_end sub_80016D8
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_8001A10
-sub_8001A10
 	movs r2, #0x67
 	lsls r2, r2, #6
 	adds r0, r0, r2
@@ -11,4 +10,5 @@ sub_8001A10
 	orrs r1, r2
 	str r1, [r0, #0x28]
 	bx lr
+	thumb_func_end sub_8001A10
 

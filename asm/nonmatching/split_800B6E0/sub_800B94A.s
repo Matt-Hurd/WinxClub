@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800B94A
-sub_800B94A
 	ldr r0, _0800BBC4
 	push {r3, lr}
 	ldr r0, [r0]
@@ -55,4 +54,5 @@ sub_800B94A
 	str r1, [r0, #8]
 	ldr r0, [r0, #8]
 	b %16
+	thumb_func_end sub_800B94A
 

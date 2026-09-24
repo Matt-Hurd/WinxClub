@@ -58,7 +58,6 @@
 
 
 	thumb_func_start sub_80391C8
-sub_80391C8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080395AC
@@ -89,9 +88,9 @@ sub_80391C8
 	adds r0, r4, #0
 	bl sub_8038EE2
 	b %1
+	thumb_func_end sub_80391C8
 
 	non_word_aligned_thumb_func_start sub_8039206
-sub_8039206
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x4d
@@ -242,9 +241,9 @@ sub_8039206
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8039206
 
 	non_word_aligned_thumb_func_start sub_8039336
-sub_8039336
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r0, #0x4d
@@ -760,9 +759,9 @@ _080395FC DCDU 0x00006925
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8039336
 
 	thumb_func_start HandleNewGameScreen
-HandleNewGameScreen
 	push {r4, r5, r6, r7, lr}
 	ldr r3, _08039980
 	ldr r4, _08039984
@@ -931,6 +930,7 @@ HandleNewGameScreen
 	movs r0, #2
 	bl SetNextGlobalFunction
 	b %32
+	thumb_func_end HandleNewGameScreen
 	ALIGN
 _08039944 DCDU 0x0000FFFF
 _08039948 DCDU 0x000005EC

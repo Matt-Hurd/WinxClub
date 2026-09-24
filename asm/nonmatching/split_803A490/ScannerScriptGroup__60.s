@@ -1,5 +1,4 @@
 	thumb_func_start ScannerScriptGroup__60
-ScannerScriptGroup__60
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r4, r0, #0
@@ -136,4 +135,5 @@ ScannerScriptGroup__60
 	ldr r0, [r0]
 	bl sub_80179BE
 	b %3
+	thumb_func_end ScannerScriptGroup__60
 

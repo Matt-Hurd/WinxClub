@@ -1,5 +1,4 @@
 	thumb_func_start sub_801E4D0
-sub_801E4D0
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0801E764
@@ -339,5 +338,6 @@ sub_801E4D0
 	ldr r6, [r6, #4]
 	cmp r6, r5
 	beq %74
+	thumb_func_end sub_801E4D0
 
 

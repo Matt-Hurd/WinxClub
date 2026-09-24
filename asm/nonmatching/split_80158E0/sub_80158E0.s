@@ -1,5 +1,4 @@
 	thumb_func_start sub_80158E0
-sub_80158E0
 	adds r1, r0, #0
 	adds r1, #0xf0
 	ldrb r1, [r1, #8]
@@ -9,4 +8,5 @@ sub_80158E0
 	movs r0, #0
 1
 	bx lr
+	thumb_func_end sub_80158E0
 

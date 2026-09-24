@@ -1,5 +1,4 @@
 	thumb_func_start sub_80123E4
-sub_80123E4
 	push {r4, r5, r6, r7}
 	ldr r1, _08012460
 	movs r3, #0x4c
@@ -71,3 +70,4 @@ sub_80123E4
 	str r0, [r1]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_80123E4

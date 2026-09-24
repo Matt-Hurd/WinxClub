@@ -1,5 +1,4 @@
 	arm_func_start sub_803DEF8
-sub_803DEF8
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	stmdb sp!, {r0}
 	LDR r5, [r0, #8]
@@ -142,3 +141,4 @@ sub_803DEF8
 	STR r1, [r0, #0x4c]
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr}
 	bx lr
+	arm_func_end sub_803DEF8

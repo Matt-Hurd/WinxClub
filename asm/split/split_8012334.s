@@ -5,7 +5,6 @@
 	IMPORT gUnknown_030037A0
 
 	thumb_func_start sub_8012334
-sub_8012334
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80123B4
@@ -18,9 +17,9 @@ sub_8012334
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8012334
 
 	thumb_func_start sub_801234C
-sub_801234C
 	ldr r1, _08012460
 	push {r4, r5, r6}
 	ldrb r2, [r1, #0xe]
@@ -82,9 +81,9 @@ sub_801234C
 10
 	movs r0, #0
 	b %8
+	thumb_func_end sub_801234C
 
 	thumb_func_start sub_80123B4
-sub_80123B4
 	cmp r0, #0
 	beq %14
 	ldr r2, _08012460
@@ -113,9 +112,9 @@ sub_80123B4
 14
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_80123B4
 
 	thumb_func_start sub_80123E4
-sub_80123E4
 	push {r4, r5, r6, r7}
 	ldr r1, _08012460
 	movs r3, #0x4c
@@ -187,6 +186,7 @@ sub_80123E4
 	str r0, [r1]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_80123E4
 	ALIGN
 _08012460 DCDU gUnknown_03003530
 _08012464 DCDU gUnknown_030037A0

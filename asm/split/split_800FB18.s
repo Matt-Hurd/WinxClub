@@ -23,7 +23,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_800FB18
-sub_800FB18
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #4]
@@ -47,9 +46,9 @@ sub_800FB18
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FB18
 
 	thumb_func_start sub_800FB48
-sub_800FB48
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800FD30
@@ -70,9 +69,9 @@ sub_800FB48
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FB48
 
 	non_word_aligned_thumb_func_start sub_800FB72
-sub_800FB72
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800FD38
@@ -89,20 +88,20 @@ sub_800FB72
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FB72
 
 	non_word_aligned_thumb_func_start sub_800FB96
-sub_800FB96
 	ldr r0, [r0, #0x18]
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	bx lr
+	thumb_func_end sub_800FB96
 
 	non_word_aligned_thumb_func_start sub_800FB9E
-sub_800FB9E
 	bx lr
+	thumb_func_end sub_800FB9E
 
 	thumb_func_start sub_800FBA0
-sub_800FBA0
 	push {r3, lr}
 	adds r1, r0, #0
 	bne %3
@@ -120,9 +119,9 @@ sub_800FBA0
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	b %2
+	thumb_func_end sub_800FBA0
 
 	thumb_func_start sub_800FBC0
-sub_800FBC0
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	beq %4
@@ -219,20 +218,20 @@ loc_800fc3a
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	b %5
+	thumb_func_end sub_800FBC0
 
 	thumb_func_start sub_800FC6C
-sub_800FC6C
 	adds r0, #4
 	stm r0!, {r1, r2}
 	bx lr
+	thumb_func_end sub_800FC6C
 
 	non_word_aligned_thumb_func_start sub_800FC72
-sub_800FC72
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FC72
 
 	non_word_aligned_thumb_func_start sub_800FC76
-sub_800FC76
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0x14
@@ -289,9 +288,9 @@ sub_800FC76
 	str r0, [r4, #0x60]
 	adds r0, r5, #0
 	b %18
+	thumb_func_end sub_800FC76
 
 	thumb_func_start sub_800FCF0
-sub_800FCF0
 	push {r3, r4, r5, r6, r7, lr}
 	adds r7, r2, #0
 	adds r5, r1, #0
@@ -319,15 +318,16 @@ sub_800FCF0
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FCF0
 
 	non_word_aligned_thumb_func_start sub_800FD2A
-sub_800FD2A
 	bx lr
+	thumb_func_end sub_800FD2A
 
 	thumb_func_start sub_800FD2C
-sub_800FD2C
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_800FD2C
 	ALIGN
 _0800FD30 DCDU __VTABLE__354dword_803ECB8
 _0800FD34 DCDU gUnknown_03003E7C

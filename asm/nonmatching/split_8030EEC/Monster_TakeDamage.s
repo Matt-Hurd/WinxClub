@@ -1,5 +1,4 @@
 	thumb_func_start Monster_TakeDamage
-Monster_TakeDamage
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -25,4 +24,5 @@ Monster_TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end Monster_TakeDamage
 

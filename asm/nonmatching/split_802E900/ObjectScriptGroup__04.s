@@ -1,5 +1,4 @@
 	thumb_func_start ObjectScriptGroup__04
-ObjectScriptGroup__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r2, [r2]
@@ -18,4 +17,5 @@ ObjectScriptGroup__04
 12
 	bl m04__7DefaultFv
 	b %10
+	thumb_func_end ObjectScriptGroup__04
 

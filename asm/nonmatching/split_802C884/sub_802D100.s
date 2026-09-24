@@ -1,5 +1,4 @@
 	thumb_func_start sub_802D100
-sub_802D100
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, [r0, #0x34]
@@ -156,4 +155,5 @@ sub_802D100
 	bl sub_8000DE6
 	str r7, [r4, #4]
 	b %61
+	thumb_func_end sub_802D100
 

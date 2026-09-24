@@ -5,17 +5,16 @@
 	IMPORT __nw__FUi
 
 	thumb_func_start sub_8004670
-sub_8004670
 	str r1, [r0, #4]
 	bx lr
+	thumb_func_end sub_8004670
 
 	thumb_func_start sub_8004674
-sub_8004674
 	ldr r0, [r0, #4]
 	bx lr
+	thumb_func_end sub_8004674
 
 	thumb_func_start sub_8004678
-sub_8004678
 	push {r4, lr}
 	adds r4, r1, #0
 	cmp r0, #0
@@ -43,18 +42,18 @@ sub_8004678
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004678
 
 	thumb_func_start sub_80046AC
-sub_80046AC
 	str r1, [r0, #4]
 	ldrh r1, [r0]
 	movs r2, #4
 	orrs r1, r2
 	strh r1, [r0]
 	bx lr
+	thumb_func_end sub_80046AC
 
 	thumb_func_start sub_80046B8
-sub_80046B8
 	ldrh r1, [r1]
 	sub sp, #4
 	add r3, sp, #0
@@ -71,37 +70,37 @@ sub_80046B8
 	strh r1, [r0]
 	add sp, #4
 	bx lr
+	thumb_func_end sub_80046B8
 
 	thumb_func_start sub_80046D8
-sub_80046D8
 	ldr r0, [r0, #4]
 	bx lr
+	thumb_func_end sub_80046D8
 
 	thumb_func_start sub_80046DC
-sub_80046DC
 	ldrh r1, [r1, #8]
 	strh r1, [r0]
 	bx lr
+	thumb_func_end sub_80046DC
 
 	non_word_aligned_thumb_func_start sub_80046E2
-sub_80046E2
 	adds r1, #0xa
 	ldrh r2, [r1]
 	strh r2, [r0]
 	ldrh r1, [r1, #2]
 	strh r1, [r0, #2]
 	bx lr
+	thumb_func_end sub_80046E2
 
 	non_word_aligned_thumb_func_start sub_80046EE
-sub_80046EE
 	movs r1, #0
 	strh r1, [r0]
 	strh r1, [r0, #2]
 	strh r1, [r0, #4]
 	bx lr
+	thumb_func_end sub_80046EE
 
 	thumb_func_start sub_80046F8
-sub_80046F8
 	push {r3, lr}
 	cmp r0, #0
 	bne %3
@@ -118,9 +117,9 @@ sub_80046F8
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80046F8
 
 	non_word_aligned_thumb_func_start sub_8004716
-sub_8004716
 	push {r3, lr}
 	cmp r0, #0
 	bne %5
@@ -144,30 +143,30 @@ sub_8004716
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8004716
 
 	non_word_aligned_thumb_func_start sub_8004742
-sub_8004742
 	adds r0, #4
 	bx lr
+	thumb_func_end sub_8004742
 
 	non_word_aligned_thumb_func_start sub_8004746
-sub_8004746
 	ldr r0, [r0]
 	lsls r0, r0, #0x1d
 	lsrs r0, r0, #0x1d
 	bx lr
+	thumb_func_end sub_8004746
 
 	non_word_aligned_thumb_func_start sub_800474E
-sub_800474E
 	push {r3, lr}
 	adds r0, #4
 	bl sub_803D66C
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800474E
 
 	thumb_func_start sub_800475C
-sub_800475C
 	movs r3, #1
 	lsls r3, r3, #0x1a
 	ldr r2, [r0]
@@ -176,9 +175,9 @@ sub_800475C
 	orrs r1, r2
 	str r1, [r0]
 	bx lr
+	thumb_func_end sub_800475C
 
 	thumb_func_start sub_800476C
-sub_800476C
 	ldrh r2, [r0]
 	movs r3, #0xc0
 	lsls r1, r1, #0x1e
@@ -187,6 +186,7 @@ sub_800476C
 	orrs r1, r2
 	strh r1, [r0]
 	bx lr
+	thumb_func_end sub_800476C
 	ALIGN
 _0800477C DCDU 0x06008800
 	END

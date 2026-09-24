@@ -8,7 +8,6 @@
 	IMPORT sub_8004C44
 
 	thumb_func_start sub_800F010
-sub_800F010
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, [r1, #0x10]
 	adds r4, r1, #0
@@ -82,9 +81,9 @@ sub_800F010
 9
 	movs r0, #1
 	b %5
+	thumb_func_end sub_800F010
 
 	thumb_func_start sub_800F090
-sub_800F090
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r3, sp, #0x20
@@ -250,11 +249,12 @@ sub_800F090
 18
 	movs r0, #0
 	b %10
+	thumb_func_end sub_800F090
 
 	non_word_aligned_thumb_func_start sub_800F1DA
-sub_800F1DA
 	adds r0, #0xe8
 	bx lr
+	thumb_func_end sub_800F1DA
 	ALIGN
 _0800F1E0 DCDU gUnknown_030033D0
 _0800F1E4 DCDU gUnknown_03003EA0

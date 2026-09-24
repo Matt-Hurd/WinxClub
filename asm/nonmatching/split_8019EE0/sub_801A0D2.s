@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801A0D2
-sub_801A0D2
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x4c
 	adds r4, r0, #0
@@ -459,4 +458,5 @@ _0801A318 DCDU 0x0000FFFF
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801A0D2
 

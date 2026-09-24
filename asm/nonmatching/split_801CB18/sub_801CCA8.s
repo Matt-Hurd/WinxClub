@@ -1,5 +1,4 @@
 	thumb_func_start sub_801CCA8
-sub_801CCA8
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	movs r0, #5
@@ -28,3 +27,4 @@ sub_801CCA8
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801CCA8

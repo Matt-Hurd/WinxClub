@@ -1,5 +1,4 @@
 	thumb_func_start sub_801642C
-sub_801642C
 	push {r3, r4, r5, lr}
 	ldr r1, [r1]
 	adds r4, r0, #0
@@ -65,3 +64,4 @@ sub_801642C
 13
 	movs r0, #0
 	b %6
+	thumb_func_end sub_801642C

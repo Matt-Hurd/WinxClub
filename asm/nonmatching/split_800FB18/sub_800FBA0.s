@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FBA0
-sub_800FBA0
 	push {r3, lr}
 	adds r1, r0, #0
 	bne %3
@@ -17,4 +16,5 @@ sub_800FBA0
 	lsls r0, r0, #0x16
 	lsrs r0, r0, #0x1c
 	b %2
+	thumb_func_end sub_800FBA0
 

@@ -1,5 +1,4 @@
 	thumb_func_start Boss__04
-Boss__04
 	push {r3, lr}
 	ldr r2, [r1]
 	ldrb r3, [r2]
@@ -27,4 +26,5 @@ Boss__04
 6
 	bl sub_8029290
 	b %4
+	thumb_func_end Boss__04
 

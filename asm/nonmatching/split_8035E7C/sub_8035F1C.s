@@ -1,5 +1,4 @@
 	thumb_func_start sub_8035F1C
-sub_8035F1C
 	push {r4}
 	ldr r1, [r1]
 	adds r0, #0xa0
@@ -30,4 +29,5 @@ sub_8035F1C
 	movs r1, #0
 	strh r1, [r0, #0x16]
 	b %4
+	thumb_func_end sub_8035F1C
 

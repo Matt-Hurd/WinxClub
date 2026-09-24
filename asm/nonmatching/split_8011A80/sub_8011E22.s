@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8011E22
-sub_8011E22
 	ldr r0, _0801209C
 	ldrh r1, [r0]
 	lsls r1, r1, #0x1e
@@ -14,4 +13,5 @@ sub_8011E22
 48
 	movs r0, #0
 	bx lr
+	thumb_func_end sub_8011E22
 

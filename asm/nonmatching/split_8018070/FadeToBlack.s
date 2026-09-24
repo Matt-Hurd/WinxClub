@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start FadeToBlack
-FadeToBlack
 	push {r4, lr}
 	sub sp, #0x18
 	add r4, sp, #0xc
@@ -35,4 +34,5 @@ FadeToBlack
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end FadeToBlack
 

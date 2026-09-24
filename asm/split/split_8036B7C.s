@@ -12,7 +12,6 @@
 	IMPORT sub_803DA80
 
 	thumb_func_start sub_8036B7C
-sub_8036B7C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, _08036CDC
@@ -88,9 +87,9 @@ loc_8036bd8
 	str r0, [r4, #0x34]
 	movs r0, #1
 	b %1
+	thumb_func_end sub_8036B7C
 
 	thumb_func_start sub_8036BFC
-sub_8036BFC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08036CDC
@@ -109,9 +108,9 @@ sub_8036BFC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8036BFC
 
 	thumb_func_start sub_8036C24
-sub_8036C24
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl m20__7DefaultFv
@@ -182,9 +181,9 @@ sub_8036C24
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8036C24
 
 	thumb_func_start sub_8036CB4
-sub_8036CB4
 	ldr r1, _08036CE0
 	push {r3, lr}
 	ldr r1, [r1]
@@ -204,6 +203,7 @@ sub_8036CB4
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8036CB4
 	ALIGN
 _08036CDC DCDU gUnknown_0300345C
 _08036CE0 DCDU gUnknown_03003E98

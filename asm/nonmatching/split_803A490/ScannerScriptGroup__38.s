@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start ScannerScriptGroup__38
-ScannerScriptGroup__38
 	adds r2, r0, #0
 	adds r2, #0x80
 	push {r4, r5, r6}
@@ -50,4 +49,5 @@ ScannerScriptGroup__38
 11
 	pop {r4, r5, r6}
 	bx lr
+	thumb_func_end ScannerScriptGroup__38
 

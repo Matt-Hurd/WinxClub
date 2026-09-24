@@ -1,5 +1,4 @@
 	thumb_func_start WallObjectScriptGroup__10
-WallObjectScriptGroup__10
 	push {r3, r4, r5, lr}
 	ldr r5, [r0, #0x2c]
 	adds r4, r0, #0
@@ -32,3 +31,4 @@ WallObjectScriptGroup__10
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WallObjectScriptGroup__10

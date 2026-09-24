@@ -1,5 +1,4 @@
 	thumb_func_start ToggleObjectGroup__40
-ToggleObjectGroup__40
 	push {r4, r5, r6, r7, lr}
 	ldr r4, _08035BA8
 	adds r3, r1, #0
@@ -616,3 +615,4 @@ loc_8035dd0
 	str r0, [r1, #0x28]
 	str r2, [r1, #0x24]
 	b %19
+	thumb_func_end ToggleObjectGroup__40

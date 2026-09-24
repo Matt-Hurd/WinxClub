@@ -1,5 +1,4 @@
 	thumb_func_start sub_8004C2C
-sub_8004C2C
 	cmp r1, #0
 	beq %7
 	cmp r1, #1
@@ -14,4 +13,5 @@ sub_8004C2C
 	movs r0, #0
 	bx lr
 	ALIGN
+	thumb_func_end sub_8004C2C
 

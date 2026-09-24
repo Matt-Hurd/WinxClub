@@ -1,5 +1,4 @@
 	thumb_func_start sub_801DB80
-sub_801DB80
 	ldr r1, _0801DCE8
 	movs r2, #0x27
 	ldr r1, [r1]
@@ -8,4 +7,5 @@ sub_801DB80
 	adds r1, r1, r2
 	str r0, [r1, #0xc]
 	bx lr
+	thumb_func_end sub_801DB80
 

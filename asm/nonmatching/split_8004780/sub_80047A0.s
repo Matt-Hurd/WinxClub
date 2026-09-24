@@ -1,5 +1,4 @@
 	thumb_func_start sub_80047A0
-sub_80047A0
 	ldrh r0, [r0]
 	cmp r1, #0
 	beq %1
@@ -13,4 +12,5 @@ sub_80047A0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bx lr
+	thumb_func_end sub_80047A0
 

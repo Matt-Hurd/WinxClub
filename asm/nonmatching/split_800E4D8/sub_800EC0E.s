@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_800EC0E
-sub_800EC0E
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	cmp r0, #2
@@ -86,3 +85,4 @@ sub_800EC0E
 	strh r0, [r4, #4]
 	strb r5, [r4]
 	b %46
+	thumb_func_end sub_800EC0E

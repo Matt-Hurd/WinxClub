@@ -1,5 +1,4 @@
 	thumb_func_start sub_800FEBC
-sub_800FEBC
 	ldr r0, _080101E4
 	push {r4, lr}
 	ldr r0, [r0]
@@ -33,4 +32,5 @@ sub_800FEBC
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_800FEBC
 

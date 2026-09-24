@@ -1,5 +1,4 @@
 	thumb_func_start HostileCreature__ctor
-HostileCreature__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08029354
@@ -16,4 +15,5 @@ HostileCreature__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end HostileCreature__ctor
 

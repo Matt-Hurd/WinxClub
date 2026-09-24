@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start Npc__ctor
-Npc__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802576C
@@ -16,4 +15,5 @@ Npc__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end Npc__ctor
 

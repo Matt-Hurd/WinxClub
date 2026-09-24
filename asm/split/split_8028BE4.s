@@ -9,7 +9,6 @@
 	IMPORT sub_8012334
 
 	thumb_func_start sub_8028BE4
-sub_8028BE4
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	bl sub_80121C4
@@ -23,9 +22,9 @@ sub_8028BE4
 2
 	movs r0, #0
 	b %1
+	thumb_func_end sub_8028BE4
 
 	thumb_func_start sub_8028BFC
-sub_8028BFC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r0, _08028C78
@@ -52,9 +51,9 @@ sub_8028BFC
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8028BFC
 
 	non_word_aligned_thumb_func_start sub_8028C2E
-sub_8028C2E
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #4
@@ -64,9 +63,9 @@ sub_8028C2E
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8028C2E
 
 	non_word_aligned_thumb_func_start sub_8028C42
-sub_8028C42
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0]
@@ -80,9 +79,9 @@ sub_8028C42
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8028C42
 
 	thumb_func_start sub_8028C5C
-sub_8028C5C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrb r0, [r0]
@@ -96,6 +95,7 @@ sub_8028C5C
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8028C5C
 	ALIGN
 _08028C78 DCDU gUnknown_03003460
 	END

@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8025DEE
-sub_8025DEE
 	movs r7, #0xff
 	adds r7, #0xd6
 	strh r7, [r0, #0xe]
@@ -33,4 +32,5 @@ sub_8025DEE
 	movs r0, #0x14
 	strb r0, [r2, #0xc]
 	b %46
+	thumb_func_end sub_8025DEE
 

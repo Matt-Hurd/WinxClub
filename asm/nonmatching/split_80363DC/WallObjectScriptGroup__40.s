@@ -1,5 +1,4 @@
 	thumb_func_start WallObjectScriptGroup__40
-WallObjectScriptGroup__40
 	push {r4, r5, r6, r7}
 	adds r3, r1, #0
 	adds r1, r0, #0
@@ -255,4 +254,5 @@ loc_8036598
 	strb r0, [r2, #0xd]
 	strb r0, [r1, #8]
 	b %1
+	thumb_func_end WallObjectScriptGroup__40
 

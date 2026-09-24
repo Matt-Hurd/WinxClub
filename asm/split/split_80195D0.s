@@ -51,7 +51,6 @@
 	IMPORT sub_80401E4
 
 	thumb_func_start sub_80195D0
-sub_80195D0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bl FadeToBlack
@@ -132,9 +131,9 @@ sub_80195D0
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80195D0
 
 	non_word_aligned_thumb_func_start sub_801966A
-sub_801966A
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r6, #0xff
@@ -306,9 +305,9 @@ sub_801966A
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_801966A
 
 	thumb_func_start sub_80197AC
-sub_80197AC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	adds r4, r0, #0
@@ -834,9 +833,9 @@ _080199F0 DCDU 0x00000C87
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80197AC
 
 	non_word_aligned_thumb_func_start HandleInventoryScreen
-HandleInventoryScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x1fc
@@ -1197,6 +1196,7 @@ _08019E08 DCDU 0x00000C87
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end HandleInventoryScreen
 	ALIGN
 _08019ED4 DCDU gUnknown_080506E8
 _08019ED8 DCDU gUnknown_0300345C

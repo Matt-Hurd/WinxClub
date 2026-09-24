@@ -1,5 +1,4 @@
 	thumb_func_start sub_8011D3C
-sub_8011D3C
 	adds r1, r0, #0
 	ldr r0, _0801209C
 	lsls r2, r1, #0x18
@@ -13,4 +12,5 @@ sub_8011D3C
 	lsls r1, r1, #8
 	orrs r1, r2
 	b %30
+	thumb_func_end sub_8011D3C
 

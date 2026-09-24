@@ -1,5 +1,4 @@
 	thumb_func_start sub_802E384
-sub_802E384
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_802E5D2
@@ -32,4 +31,5 @@ sub_802E384
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802E384
 

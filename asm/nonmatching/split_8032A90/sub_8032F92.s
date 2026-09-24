@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_8032F92
-sub_8032F92
 	push {r3, r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	bl sub_802E4EE
@@ -187,4 +186,5 @@ sub_8032F92
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_8032F92
 

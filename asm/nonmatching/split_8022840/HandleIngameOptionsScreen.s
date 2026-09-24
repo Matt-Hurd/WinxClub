@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start HandleIngameOptionsScreen
-HandleIngameOptionsScreen
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x140
@@ -256,4 +255,5 @@ _08022F7C DCDU gUnknown_03003D30
 _08022F80 DCDU gUnknown_080506E8
 _08022F84 DCDU gUnknown_0300345C
 _08022F88 DCDU sub_8014436
+	thumb_func_end HandleIngameOptionsScreen
 

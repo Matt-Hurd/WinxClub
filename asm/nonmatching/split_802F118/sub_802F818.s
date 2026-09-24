@@ -1,5 +1,4 @@
 	thumb_func_start sub_802F818
-sub_802F818
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -37,3 +36,4 @@ sub_802F818
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_802F818

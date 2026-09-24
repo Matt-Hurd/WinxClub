@@ -15,7 +15,6 @@
 	IMPORT sub_803DA18
 
 	thumb_func_start WinxClub__Create
-WinxClub__Create
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	bne %2
@@ -91,9 +90,9 @@ WinxClub__Create
 	str r0, [r5, #0xc]
 	adds r0, r4, #0
 	b %1
+	thumb_func_end WinxClub__Create
 
 	thumb_func_start WinxClub__ctor
-WinxClub__ctor
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _08033618
@@ -114,9 +113,9 @@ WinxClub__ctor
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end WinxClub__ctor
 
 	thumb_func_start sub_80333DC
-sub_80333DC
 	push {r0, r1, r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r5, #0x80
@@ -279,9 +278,9 @@ sub_80333DC
 	pop {r4, r5, r6, r7}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_80333DC
 
 	non_word_aligned_thumb_func_start sub_8033512
-sub_8033512
 	push {r4, r5, r6, r7}
 	ldr r2, [r1]
 	ldr r3, [r0, #0x58]
@@ -343,9 +342,9 @@ sub_8033512
 	adds r1, r1, r6
 	str r1, [r0, #0x7c]
 	b %14
+	thumb_func_end sub_8033512
 
 	thumb_func_start sub_803357C
-sub_803357C
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, #0xa8
@@ -422,6 +421,7 @@ sub_803357C
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end sub_803357C
 	ALIGN
 _08033618 DCDU __VTABLE__336WinxClub
 _0803361C DCDU 0x786E6957

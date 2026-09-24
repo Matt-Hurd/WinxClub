@@ -1,5 +1,4 @@
 	thumb_func_start sub_800B314
-sub_800B314
 	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	adds r4, r1, #0
@@ -84,4 +83,5 @@ sub_800B314
 10
 	movs r0, #1
 	b %7
+	thumb_func_end sub_800B314
 

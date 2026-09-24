@@ -1,5 +1,4 @@
 	thumb_func_start gameExit
-gameExit
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_801BBE0
@@ -8,4 +7,5 @@ gameExit
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end gameExit
 

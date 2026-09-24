@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start maybeInitGame
-maybeInitGame
 	push {r4, r5, r6, lr}
 	sub sp, #0x28
 	add r5, sp, #0x18
@@ -197,4 +196,5 @@ maybeInitGame
 	pop {r4, r5, r6}
 	pop {r3}
 	bx r3
+	thumb_func_end maybeInitGame
 

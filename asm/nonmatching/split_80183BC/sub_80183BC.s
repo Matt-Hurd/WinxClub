@@ -1,5 +1,4 @@
 	thumb_func_start sub_80183BC
-sub_80183BC
 	push {r4}
 	movs r4, #1
 	lsls r4, r4, #0xf
@@ -144,4 +143,5 @@ sub_80183BC
 	lsrs r0, r1, #1
 	pop {r4}
 	bx lr
+	thumb_func_end sub_80183BC
 

@@ -12,7 +12,6 @@
 	IMPORT gUnknown_03001C24
 
 	thumb_func_start sub_8010D60
-sub_8010D60
 	push {r4, r5, r6, r7, lr}
 	movs r1, #0x6d
 	lsls r1, r1, #4
@@ -200,9 +199,9 @@ sub_8010D60
 10
 	strb r4, [r6, #0xc]
 	b %6
+	thumb_func_end sub_8010D60
 
 	non_word_aligned_thumb_func_start sub_8010ED2
-sub_8010ED2
 	cmp r1, #0xb
 	blo %11
 	movs r0, #0
@@ -237,9 +236,9 @@ sub_8010ED2
 13
 	movs r0, #1
 	bx lr
+	thumb_func_end sub_8010ED2
 
 	thumb_func_start sub_8010F10
-sub_8010F10
 	push {r3, r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	movs r0, #0x1b
@@ -309,9 +308,9 @@ sub_8010F10
 20
 	movs r0, #0
 	b %19
+	thumb_func_end sub_8010F10
 
 	thumb_func_start sub_8010F90
-sub_8010F90
 	push {r3, r4, r5, r6, r7, lr}
 	movs r1, #0x1b
 	lsls r1, r1, #6
@@ -393,6 +392,7 @@ sub_8010F90
 25
 	movs r0, #0
 	b %24
+	thumb_func_end sub_8010F90
 	ALIGN
 _0801102C DCDU 0x0000064C
 _08011030 DCDU gUnknown_03003EB4

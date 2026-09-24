@@ -1,5 +1,4 @@
 	non_word_aligned_thumb_func_start sub_801505A
-sub_801505A
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
@@ -251,4 +250,5 @@ sub_801505A
 23
 	movs r0, #0
 	b %22
+	thumb_func_end sub_801505A
 

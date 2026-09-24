@@ -1,5 +1,4 @@
 	thumb_func_start ToggleObjectGroup__38
-ToggleObjectGroup__38
 	push {r3, r4, r5, lr}
 	adds r4, r0, #0
 	bl GetEWRAMStart
@@ -39,3 +38,4 @@ ToggleObjectGroup__38
 	pop {r3, r4, r5}
 	pop {r3}
 	bx r3
+	thumb_func_end ToggleObjectGroup__38

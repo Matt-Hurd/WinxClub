@@ -1,5 +1,4 @@
 	thumb_func_start MainLoop
-MainLoop
 	push {r3, r4, r5, lr}
 	ldr r5, _080183B8
 	subs r4, r5, #4
@@ -15,3 +14,4 @@ MainLoop
 	pop {r3}
 	movs r0, #0
 	bx r3
+	thumb_func_end MainLoop

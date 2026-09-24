@@ -1,5 +1,4 @@
 	thumb_func_start sub_80134B8
-sub_80134B8
 	ldr r1, _080137E0
 	adds r2, r0, #0
 	str r1, [r0]
@@ -32,4 +31,5 @@ sub_80134B8
 	strh r2, [r0, #0x3a]
 	strh r1, [r0, #0x3c]
 	bx lr
+	thumb_func_end sub_80134B8
 

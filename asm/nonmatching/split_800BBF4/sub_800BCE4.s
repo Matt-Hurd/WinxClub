@@ -1,5 +1,4 @@
 	thumb_func_start sub_800BCE4
-sub_800BCE4
 	push {r4, r5, r6, r7}
 	ldr r5, [sp, #0x10]
 	movs r0, #0
@@ -86,4 +85,5 @@ sub_800BCE4
 	strb r0, [r1]
 	pop {r4, r5, r6, r7}
 	bx lr
+	thumb_func_end sub_800BCE4
 

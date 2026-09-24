@@ -1,5 +1,4 @@
 	arm_func_start sub_800AE20
-sub_800AE20
 	STMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x9c
 	add r5, sp, #0x1c
@@ -103,4 +102,5 @@ sub_800AE20
 	add sp, sp, #0x9c
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, lr}
 	bx lr
+	arm_func_end sub_800AE20
 

@@ -1,5 +1,4 @@
 	thumb_func_start sub_803366C
-sub_803366C
 	push {r4}
 	ldr r2, [r0, #0x58]
 	cmp r2, #0
@@ -27,4 +26,5 @@ sub_803366C
 3
 	movs r0, #1
 	b %2
+	thumb_func_end sub_803366C
 

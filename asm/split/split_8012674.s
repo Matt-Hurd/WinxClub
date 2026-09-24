@@ -7,7 +7,6 @@
 	IMPORT sub_80132F4
 
 	arm_func_start sub_8012674
-sub_8012674
 	STMFD SP!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	LDRSH r2, [r0]
 	LDRSH ip, [r0, #2]
@@ -92,9 +91,9 @@ sub_8012674
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, r3
 	bx lr
+	arm_func_end sub_8012674
 
 	arm_func_start sub_80127C0
-sub_80127C0
 	STMFD SP!, {r0, r1, r2, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r5, r1
 	LDRB r1, [r0, #0x172]
@@ -359,9 +358,9 @@ sub_80127C0
 	add sp, sp, #0x64
 	LDMFD SP!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	bx lr
+	arm_func_end sub_80127C0
 
 	arm_func_start sub_8012BA0
-sub_8012BA0
 	STMFD SP!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	add r4, r0, #0x218
@@ -653,6 +652,7 @@ sub_8012BA0
 	add sp, sp, #0x88
 	LDMFD SP!, {r4, r5, r6, r7, r8, lr}
 	bx lr
+	arm_func_end sub_8012BA0
 	ALIGN
 _0801301C DCDU gUnknown_080503FE
 _08013020 DCDU gUnknown_080503F6

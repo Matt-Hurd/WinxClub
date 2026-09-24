@@ -7,7 +7,6 @@
 	IMPORT sub_8028C2E
 
 	thumb_func_start Boss__TakeDamage
-Boss__TakeDamage
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x80
@@ -31,9 +30,9 @@ Boss__TakeDamage
 	pop {r4}
 	pop {r3}
 	bx r3
+	thumb_func_end Boss__TakeDamage
 
 	non_word_aligned_thumb_func_start Boss__50
-Boss__50
 	ldr r1, _08034D94
 	push {r3, lr}
 	ldr r1, [r1]
@@ -57,6 +56,7 @@ Boss__50
 	add sp, #4
 	pop {r3}
 	bx r3
+	thumb_func_end Boss__50
 	ALIGN
 _08034D8C DCDU 0x8007FFFF
 _08034D90 DCDU gUnknown_0300345C

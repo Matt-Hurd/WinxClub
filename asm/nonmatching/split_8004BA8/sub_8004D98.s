@@ -1,5 +1,4 @@
 	arm_func_start sub_8004D98
-sub_8004D98
 	mov r1, #1
 	mov r2, #0
 17
@@ -10,3 +9,4 @@ sub_8004D98
 	bgt %17
 	sub r0, r2, #1
 	bx lr
+	arm_func_end sub_8004D98
