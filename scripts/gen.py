@@ -138,19 +138,39 @@ RE_FUNC = re.compile(r"^\s*(%s)\s+(\S+)" % "|".join(MACRO_ISA))
 
 
 def asm_units():
-    """Every hand-written asm file that defines functions, in a stable order."""
+    """Every hand-written asm file that defines functions, in a stable order.
+
+    A unit built by the splicer has no asm/split/<unit>.s left -- its functions
+    live one per file under asm/nonmatching/<unit>/ -- so the directory stands in
+    for the file. Without it --extract would drop every function of a spliced
+    unit from config/symbols.yml, and the splicer takes its function order from
+    there.
+    """
     units = sorted(glob.glob(os.path.join(REPO, "asm", "split", "*.s")))
+    split = {os.path.basename(p)[: -len(".s")] for p in units}
+    units += sorted(
+        d for d in glob.glob(os.path.join(REPO, "asm", "nonmatching", "*"))
+        if os.path.isdir(d) and os.path.basename(d) not in split
+    )
     units += sorted(glob.glob(os.path.join(REPO, "asm", "*.s")))
     return units
 
 
 def parse_asm(path):
+    """The functions a unit declares, as (name, isa).
+
+    `path` is one asm file, or the directory of per-function pieces a spliced
+    unit was cut into. Order within a unit does not matter: extract_functions
+    sorts everything by the address the link gave it.
+    """
+    paths = sorted(glob.glob(os.path.join(path, "*.s"))) if os.path.isdir(path) else [path]
     out = []
-    with open(path) as fh:
-        for line in fh:
-            m = RE_FUNC.match(line)
-            if m:
-                out.append((m.group(2), MACRO_ISA[m.group(1)]))
+    for one in paths:
+        with open(one) as fh:
+            for line in fh:
+                m = RE_FUNC.match(line)
+                if m:
+                    out.append((m.group(2), MACRO_ISA[m.group(1)]))
     return out
 
 

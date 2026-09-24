@@ -51,6 +51,8 @@ import sys
 
 import yaml
 
+import splice_unit
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPLITDIR = os.path.join(REPO, "asm", "split")
 OUTDIR = os.path.join(REPO, "asm", "nonmatching")
@@ -171,14 +173,21 @@ def main():
         header, funcs, pool = parse_unit(text, unit)
 
         # The round trip, in the order symbols.yml gives rather than the order
-        # the file happens to be in.
+        # the file happens to be in. It goes through the splicer rather than a
+        # concatenation of its own, so that `make check` proves the thing that
+        # actually builds these units can rebuild them.
         if order.get(unit) != [name for name, _ in funcs]:
             print(f"{unit}: symbols.yml lists "
                   f"{order.get(unit)}, the asm has {[n for n, _ in funcs]}")
             mismatched += 1
             continue
-        by_name = dict(funcs)
-        rebuilt = header + "".join(by_name[n] for n in order[unit]) + pool + END
+        files = split_files(header, funcs, pool)
+        try:
+            rebuilt = splice_unit.splice(unit, order[unit], files)
+        except splice_unit.SpliceError as exc:
+            print(exc)
+            mismatched += 1
+            continue
         if rebuilt != text:
             print(f"{unit}: round trip differs from asm/split/{unit}.s")
             sys.stdout.writelines(difflib.unified_diff(
@@ -189,8 +198,7 @@ def main():
             continue
 
         pools += bool(pool)
-        written += write_dir(os.path.join(OUTDIR, unit),
-                             split_files(header, funcs, pool), args.check)
+        written += write_dir(os.path.join(OUTDIR, unit), files, args.check)
 
     functions = sum(len(fs) for fs in order.values())
     verb = "stale" if args.check else "rewritten"

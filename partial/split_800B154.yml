@@ -1,0 +1,3 @@
+unit: split_800B154
+source: partial/split_800B154.c
+functions: [CallSoftReset]

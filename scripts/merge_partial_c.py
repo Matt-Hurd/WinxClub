@@ -1,6 +1,39 @@
+"""Build one partly-decompiled translation unit, for the Makefile's partial/ hook.
+
+    python scripts/merge_partial_c.py <yml> <partial dir> <partial builddir> \
+        <merged builddir> <tcc> <cc1flags> <include dir> <this script>
+
+One `partial/**/<unit>.yml` becomes one `<merged builddir>/**/<unit>.s`, which
+the Makefile then runs preprocess_compiler_labels.py over and assembles. The
+object keeps the yml's name, so the scatter script places it exactly where
+asm/split/<unit>.s used to go.
+
+There are two shapes, told apart by whether the yml has anything in it.
+
+A yml with content is a unit spliced from asm/nonmatching/<unit>/ by
+scripts/splice_unit.py -- the piece per function that scripts/split_units.py
+cut, with the named functions coming from the compiler instead:
+
+    unit: split_800B154
+    source: partial/split_800B154.c
+    functions: [CallSoftReset]
+
+An empty yml is the older shape, kept for split_80239EC: a hand-maintained
+`<unit>.s` sitting next to the yml holding whatever was not decompiled, and a
+`<unit>.c` holding the first function. That unit has no asm/split/ file left to
+cut up, so it cannot be spliced; merge_asm_files below is its build, unchanged.
+"""
+
 import os
 import subprocess
 import sys
+
+import yaml
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import splice_unit
+
 
 def merge_asm_files(source_path, built_path, output_path):
     with open(source_path, 'r') as file:
@@ -40,13 +73,43 @@ def merge_asm_files(source_path, built_path, output_path):
     new_data_label = data_lines[0].split(' ')[0]
 
     built_function_lines = list(map(lambda st: str.replace(st, data_label, new_data_label), built_function_lines))
-    
+
     # Combine all pieces
     output_lines = include_lines + ['\n'] + import_lines + ['\n'] + export_lines + ['\n'] + built_function_lines + ['   ENDP\n'] + function_lines_source
 
     # Write to output file
     with open(output_path, 'w') as file:
         file.writelines(output_lines)
+
+
+def compile_c(tcc, cc1flags, include_dir, c_file, s_file):
+    """tcc the C file to asm, the same way the Makefile compiles src/."""
+    cmd = f"{tcc} {cc1flags} -I {include_dir} -o {s_file} {c_file}"
+    print(cmd)
+    subprocess.run(cmd, check=True, shell=True)
+
+
+def splice(yml_file, spec, built_s, output_file):
+    """Write the merged unit from asm/nonmatching/<unit>/ and the compiled asm."""
+    unit = spec["unit"]
+    wanted = spec.get("functions") or []
+    pieces = splice_unit.read_unit(unit)
+    bodies, imports = splice_unit.compiler_output(open(built_s).read())
+    absent = [name for name in wanted if name not in bodies]
+    if absent:
+        raise splice_unit.SpliceError(
+            f"{yml_file}: {spec['source']} does not define {', '.join(absent)}")
+    extra = [name for name in bodies if name not in wanted]
+    if extra:
+        raise splice_unit.SpliceError(
+            f"{yml_file}: {spec['source']} also defines {', '.join(sorted(extra))}, "
+            f"which the yml does not list")
+    order = splice_unit.unit_order(unit, pieces)
+    text = splice_unit.splice(unit, order, pieces,
+                              {name: bodies[name] for name in wanted}, imports)
+    with open(output_file, "w") as fh:
+        fh.write(text)
+
 
 def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_builddir, tcc, cc1flags, include_dir, merge_script):
     base_name = os.path.splitext(os.path.basename(yml_file))[0]
@@ -62,12 +125,21 @@ def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_buildd
     output_file = os.path.join(output_dir, base_name + '.s')
     c_file = os.path.join(os.path.dirname(yml_file), base_name + '.c')
 
-    if os.path.exists(c_file):
-        compile_cmd = f"{tcc} {cc1flags} -I {include_dir} -o {s_file_in_build} {c_file}"
-        print(compile_cmd)
+    with open(yml_file) as fh:
+        spec = yaml.safe_load(fh)
 
-        subprocess.run(compile_cmd, check=True, shell=True)
+    if spec:
+        compile_c(tcc, cc1flags, include_dir,
+                  os.path.join(splice_unit.REPO, spec["source"]), s_file_in_build)
+        splice(yml_file, spec, s_file_in_build, output_file)
+        return
+
+    if os.path.exists(c_file):
+        compile_c(tcc, cc1flags, include_dir, c_file, s_file_in_build)
         merge_asm_files(s_file_in_partial, s_file_in_build, output_file)
 
 if __name__ == "__main__":
-    main(*sys.argv[1:])
+    try:
+        main(*sys.argv[1:])
+    except splice_unit.SpliceError as exc:
+        sys.exit(f"merge_partial_c: {exc}")
