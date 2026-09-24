@@ -6180,10 +6180,6 @@ functions:
   isa: thumb
   unit: asm/split/split_803FBBC.s
   name: sub_803FBBC
-- addr: '0x0803FC14'
-  isa: thumb
-  unit: asm/split/split_803FC14.s
-  name: sub_803FC14
 - addr: '0x0803FC68'
   isa: thumb
   unit: asm/split/split_803FC68.s

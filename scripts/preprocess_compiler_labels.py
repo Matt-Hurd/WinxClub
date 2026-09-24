@@ -124,11 +124,14 @@ def convert_compiler_labels_in_file(file_path):
                 while i < len(new_lines):
                     dcd_line = new_lines[i]
                     dcd_stripped = dcd_line.strip()
-                    if dcd_stripped.startswith('DCD') or dcd_stripped.startswith('DCW'):
+                    if dcd_stripped.startswith('DCD') or dcd_stripped.startswith('DCW') or dcd_stripped.startswith('DCQ'):
                         if offset > 0:
                             expanded_lines.append(f"{pool_base}_{offset}\n")
                         expanded_lines.append(dcd_line)
-                        offset += 4 if dcd_stripped.startswith('DCD') else 2
+                        if dcd_stripped.startswith('DCQ'):
+                            offset += 8
+                        else:
+                            offset += 4 if dcd_stripped.startswith('DCD') else 2
                         i += 1
                     elif dcd_stripped.startswith('DCB'):
                         # Count bytes in DCB: string like DCB "Kiko" = 4 bytes,
