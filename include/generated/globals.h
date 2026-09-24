@@ -17,6 +17,9 @@ extern void *gUnknown_030033E8; /* 0x030033E8 */
 extern void *gUnknown_03003458; /* 0x03003458 */
 extern unsigned int gUnknown_03003478[32]; /* 0x03003478 */
 
+/* data/iwram2.s */
+extern void *gUnknown_03003E88; /* 0x03003E88 */
+
 /* data/data1.s */
 extern unsigned short gUnknown_08051096[]; /* 0x08051096 */
 

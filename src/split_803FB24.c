@@ -1,7 +1,7 @@
-#include "Singleton_3E88.hpp"
+#include "generated/globals.h"
 
-extern "C" void sub_803FB24(void *a0, unsigned int a1, unsigned char a2,
-                             unsigned char a3) {
+void sub_803FB24(void *a0, unsigned int a1, unsigned char a2,
+                 unsigned char a3) {
   unsigned short half;
   *(unsigned int *)a0 = a1;
   if (a3 == 0xff) {

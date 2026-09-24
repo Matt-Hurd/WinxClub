@@ -7090,6 +7090,7 @@ globals:
   kind: object
   unit: data/iwram2.s
   name: gUnknown_03003E88
+  decl: void *gUnknown_03003E88
 - addr: '0x03003E8C'
   kind: object
   unit: data/iwram2.s
