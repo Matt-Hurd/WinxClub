@@ -16,6 +16,7 @@ extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_030033E8; /* 0x030033E8 */
 extern void *gUnknown_03003458; /* 0x03003458 */
 extern unsigned int gUnknown_03003478[32]; /* 0x03003478 */
+extern unsigned char gUnknown_03003BC8[0x30]; /* 0x03003BC8 */
 
 /* data/iwram2.s */
 extern void *gUnknown_03003E88; /* 0x03003E88 */

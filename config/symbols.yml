@@ -6421,10 +6421,6 @@ functions:
   isa: thumb
   unit: asm/split/split_80409E4.s
   name: sub_80409E4
-- addr: '0x08040C38'
-  isa: thumb
-  unit: asm/split/split_8040C38.s
-  name: sub_8040C38
 - addr: '0x08040C78'
   isa: thumb
   unit: asm/split/split_8040C78.s
@@ -7018,6 +7014,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003BC8
+  decl: unsigned char gUnknown_03003BC8[0x30]
 - addr: '0x03003BF8'
   kind: object
   unit: data/iwram1.s
