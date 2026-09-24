@@ -12,6 +12,7 @@ extern "C" {
 #endif
 
 /* data/iwram1.s */
+extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_03003458; /* 0x03003458 */
 
 /* data/data1.s */

@@ -5274,10 +5274,6 @@ functions:
   isa: thumb
   unit: asm/split/split_8032A90.s
   name: sub_803315E
-- addr: '0x08033308'
-  isa: thumb
-  unit: asm/split/split_8033308.s
-  name: sub_8033308
 - addr: '0x08033318'
   isa: thumb
   unit: asm/split/split_8033318.s
@@ -6902,6 +6898,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003346
+  decl: unsigned char gUnknown_03003346[4]
 - addr: '0x0300334A'
   kind: object
   unit: data/iwram1.s
