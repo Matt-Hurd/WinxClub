@@ -180,9 +180,12 @@ def convert_compiler_labels_in_file(file_path):
             if in_ct and l.strip():
                 ct_line_count += 1
         ctor_is_stub = ct_line_count < 20
+    constructor_stripped = False
     if has_vtable and has_ctor and ctor_is_stub:
         filtered_lines = []
         in_ctor_proc = False
+        in_dt_area = False
+        stripped_dt_names = set()
         ctor_name = None
         # Find constructor name first
         for l in new_lines:
@@ -195,6 +198,7 @@ def convert_compiler_labels_in_file(file_path):
             if ctor_name and line.strip().startswith(f'{ctor_name} PROC'):
                 in_ctor_proc = True
                 modifications_made = True
+                constructor_stripped = True
                 continue
             # Detect end of constructor PROC
             if in_ctor_proc and line.strip() == 'ENDP':
@@ -228,6 +232,28 @@ def convert_compiler_labels_in_file(file_path):
             if 'IMPORT __ct__' in line:
                 modifications_made = True
                 continue
+            # Strip auto-generated destructor AREA sections (i.__dt__*Fv)
+            # These are COMDEF sections the C++ compiler generates when inheriting
+            # from a class with a virtual destructor. The vtable_method_maps already
+            # redirects the vtable entry to the original assembly destructor.
+            if 'AREA' in line and 'i.__dt__' in line:
+                in_dt_area = True
+                # Extract the destructor name from the AREA name
+                m = re.search(r'(__dt__\S+?)\|', line)
+                if m:
+                    stripped_dt_names.add(m.group(1))
+                modifications_made = True
+                continue
+            if in_dt_area:
+                if line.strip() == 'ENDP':
+                    in_dt_area = False
+                continue
+            # Strip EXPORT of auto-generated destructors that were stripped above
+            if 'EXPORT __dt__' in line:
+                dt_name = line.strip().replace('EXPORT ', '')
+                if dt_name in stripped_dt_names:
+                    modifications_made = True
+                    continue
             filtered_lines.append(line)
         # Second pass: strip constructor data pool entries that tcpp placed
         # inside adjacent method PROCs. Pattern: [DCW 0000] + numeric label + DCD __VTABLE__
@@ -405,7 +431,6 @@ def convert_compiler_labels_in_file(file_path):
         'dword_803EC7C': ['sub_803B184', 'sub_80106BA', 'sub_3002724', 'sub_803B1A6', 'sub_803B1A8', 'sub_803B1AC', 'sub_8010AB4'],
         'dword_803EC98': ['sub_8010278', 'sub_801029A', 'sub_3002724', 'sub_80102D8', 'sub_8010344', 'sub_80103A8', 'sub_8010AB4'],
         'dword_803ECB4': ['sub_8013480'],
-        'dword_803ECB8': ['sub_8041034'],
         'dword_803ECF8': ['sub_8024EBC', 'sub_8024F08', 'sub_80250E4', 'sub_80251CA', 'sub_8024E8A', 'sub_8025214', 'sub_802E800', 'sub_802E8F8', 'sub_802E8B0'],
         'dword_803ED1C': ['sub_8017450', None, 'sub_803F3B0'],
         'dword_803ED28': ['sub_802D32E', 'sub_802D384', 'sub_802D920', 'sub_802DD08', 'sub_802DDDC', 'sub_802DE2A', 'sub_802E800', 'sub_802DFE4', 'sub_802DFD8'],
@@ -433,15 +458,42 @@ def convert_compiler_labels_in_file(file_path):
             method_name = f'm{offset:02X}'
             mangled = f'{method_name}__{cls_len}{cls_name}Fv'
             _vtable_method_renames[mangled] = sym
+            # For method 0 (destructor slot), also map __dt__ mangled name
+            if i == 0:
+                dt_mangled = f'__dt__{cls_len}{cls_name}Fv'
+                _vtable_method_renames[dt_mangled] = sym
     # Apply method symbol renaming (IMPORT and DCD entries)
     if _vtable_method_renames:
         method_renamed_lines = []
+        needed_imports = set()
         for line in new_lines:
             for mangled, original in _vtable_method_renames.items():
                 if mangled in line:
                     line = line.replace(mangled, original)
                     modifications_made = True
+                    # Track symbols that need IMPORT statements
+                    if 'DCD' in line:
+                        needed_imports.add(original)
             method_renamed_lines.append(line)
+        # Add IMPORT statements for renamed symbols that aren't already imported
+        if needed_imports:
+            existing_imports = set()
+            for line in method_renamed_lines:
+                if line.strip().startswith('IMPORT '):
+                    sym = line.strip().split()[1].rstrip(',')
+                    existing_imports.add(sym)
+            imports_to_add = needed_imports - existing_imports
+            if imports_to_add:
+                # Insert new IMPORTs before the first existing IMPORT
+                insert_idx = None
+                for i, line in enumerate(method_renamed_lines):
+                    if line.strip().startswith('IMPORT '):
+                        insert_idx = i
+                        break
+                if insert_idx is not None:
+                    for sym in sorted(imports_to_add):
+                        method_renamed_lines.insert(insert_idx, f'        IMPORT {sym}\n')
+                        insert_idx += 1
         new_lines = method_renamed_lines
 
     # ── Kiko m10 register fixup ───────────────────────────────────
@@ -461,6 +513,48 @@ def convert_compiler_labels_in_file(file_path):
                 if i+4 < len(stripped) and stripped[i+4] == 'LSL      r1,r0,#1':
                     new_lines[i+4] = new_lines[i+4].replace('LSL      r1,r0,#1', 'LSL      r1,r1,#1')
                 break
+
+    # ── split_80402F8 vtable dispatch register fixup ──────────────
+    # tcc generates:  LDR r0,[r4,#0] / LDR r1,[r0,#NN] / ADD r2,r0,r1 / MOV r1,r5 / MOV r0,r4
+    # Original has:   LDR r1,[r4,#0] / MOV r0,r4 / LDR r2,[r1,#NN] / ADD r2,r2,r1 / MOV r1,r5
+    # Fix all four vtable-dispatch sites.
+    if 'split_80402F8' in file_path:
+        stripped = [l.strip() for l in new_lines]
+        for i in range(len(stripped) - 4):
+            if (stripped[i]   == 'LDR      r0,[r4,#0]' and
+                stripped[i+1].startswith('LDR      r1,[r0,#0x') and
+                stripped[i+2] == 'ADD      r2,r0,r1' and
+                stripped[i+3] == 'MOV      r1,r5' and
+                stripped[i+4] == 'MOV      r0,r4'):
+                offset = stripped[i+1].split('#')[1].rstrip(']')
+                indent = new_lines[i][:len(new_lines[i]) - len(new_lines[i].lstrip())]
+                new_lines[i]   = indent + 'LDR      r1,[r4,#0]\n'
+                new_lines[i+1] = indent + 'MOV      r0,r4\n'
+                new_lines[i+2] = indent + 'LDR      r2,[r1,#' + offset + ']\n'
+                new_lines[i+3] = indent + 'ADD      r2,r2,r1\n'
+                new_lines[i+4] = indent + 'MOV      r1,r5\n'
+                modifications_made = True
+
+    # ── C++ pool alignment fixup ──────────────────────────────────
+    # When a constructor PROC is stripped from a C++ file, the destructor
+    # code may end on a non-word-aligned boundary, making the data pool's
+    # DCD entries inaccessible via LDR (which requires word-aligned offsets).
+    # Only apply to files where we actually stripped a constructor (detected
+    # by checking if we removed a PROC block earlier in this run).
+    if file_path.endswith('.s') and constructor_stripped:
+        stripped = [l.strip() for l in new_lines]
+        insertions = []
+        for i in range(1, len(stripped)):
+            if stripped[i].startswith('_pool_'):
+                # Check if previous line is already a DCW/ALIGN pad
+                prev = stripped[i-1]
+                if not prev.startswith('DCW') and prev != 'ALIGN':
+                    indent = new_lines[i][:len(new_lines[i]) - len(new_lines[i].lstrip())]
+                    insertions.append((i, '\tALIGN\n'))
+        for pos, line in reversed(insertions):
+            new_lines.insert(pos, line)
+        if insertions:
+            modifications_made = True
 
     # Write the corrected content back to the file only if changes were made
     if modifications_made:

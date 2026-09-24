@@ -620,7 +620,7 @@ LOAD_ROM_1 0x08000000
         dword_803EC7C.o
         dword_803EC98.o
         dword_803ECB4.o
-        dword_803ECB8.o
+        dword_803ECB8.o(__VTABLE__*)
     }
     .text_vtable_55 +0
     {
@@ -736,6 +736,8 @@ LOAD_ROM_1 0x08000000
         split_80401C0.o
         split_804025C.o
         split_80402F8.o
+        split_804036C.o
+        split_8040380.o
         split_80403A4.o
         split_8040468.o
         split_8040490.o
@@ -762,6 +764,10 @@ LOAD_ROM_1 0x08000000
         split_8040C38.o
         split_8040C78.o
         split_8041020.o
+    }
+    .text4_dtor_ECB8 +0
+    {
+        dword_803ECB8.o (+RO-CODE)
     }
     .text4_destructors +0
     {
