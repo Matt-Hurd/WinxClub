@@ -147,6 +147,7 @@ check: tidy
 	python scripts/gen.py --check
 	python scripts/split_units.py --check
 	$(MAKE) all
+	python scripts/report.py
 
 clean: mostlyclean
 

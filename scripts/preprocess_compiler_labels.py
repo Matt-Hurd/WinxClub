@@ -556,6 +556,34 @@ def convert_compiler_labels_in_file(file_path):
         if insertions:
             modifications_made = True
 
+    # ── ENDP before the literal pool ──────────────────────────────
+    # tcc closes the last function's PROC *after* the translation unit's
+    # literal pool, so armasm gives that function a size covering the pool
+    # and every unit with an end pool scores below 100% against a reference
+    # whose pool sits outside the function (asm/macros/function.inc puts the
+    # *_func_end before the pool). Moving the ENDP in front of the trailing
+    # data run gives the function the size the original had. ENDP is
+    # bookkeeping: nothing is emitted, so no byte moves.
+    pool_data = re.compile(r'^(DC[BDWQ]U?|SPACE|FILL|ALIGN)\b', re.IGNORECASE)
+    pool_label = re.compile(r'^(\d+|_pool_\w+|\|L[\w.]*\||_0[0-9A-Fa-f]{7})$')
+    moves = []
+    for i, line in enumerate(new_lines):
+        if line.strip() != 'ENDP':
+            continue
+        j = i - 1
+        while j >= 0:
+            s = new_lines[j].strip()
+            if s == '' or pool_data.match(s) or pool_label.match(s):
+                j -= 1
+            else:
+                break
+        if j + 1 < i:
+            moves.append((i, j + 1))
+    for endp_at, pool_at in reversed(moves):
+        new_lines.insert(pool_at, new_lines.pop(endp_at))
+    if moves:
+        modifications_made = True
+
     # Write the corrected content back to the file only if changes were made
     if modifications_made:
         try:
