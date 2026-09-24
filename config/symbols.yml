@@ -1,0 +1,6705 @@
+# Written by scripts/gen.py --extract. The source of record for the
+# scatter script's layout and for each function's address and
+# instruction set. Regenerate the scatter with: python scripts/gen.py
+#
+# layout    - regions in link order; 'sel' is armlink's section
+#             selector, kept verbatim so the generator only formats.
+# functions - one per asm function, sorted by address. 'addr' is from
+#             the link, 'isa' from the declaring macro.
+layout:
+- load: LOAD_ROM_2
+  base: '0x02000000'
+  regions:
+  - name: EWRAM
+    base: '0x02000000'
+    size: '0x40000'
+    objects:
+    - obj: ewram.o
+      sel: ' (+RW)'
+- load: LOAD_ROM_3
+  base: '0x03000000'
+  regions:
+  - name: IWRAM1
+    base: '0x03000000'
+    size: '0x3D38'
+    objects:
+    - obj: iwram1.o
+  - name: user_libspace
+    base: '0x03003D38'
+    size: '0x60'
+    objects:
+    - obj: libspace.o
+      sel: (.bss)
+  - name: random
+    base: '0x03003D98'
+    size: '0xE4'
+    objects:
+    - obj: rand.o
+      sel: (.bss)
+  - name: IWRAM2
+    base: '0x03003E7C'
+    size: '0x4184'
+    objects:
+    - obj: iwram2.o
+      sel: ' (+RW)'
+- load: LOAD_ROM_1
+  base: '0x08000000'
+  regions:
+  - name: .text
+    base: '0x08000000'
+    objects:
+    - obj: crt0.o
+      sel: ' (+RO, +FIRST)'
+  - name: .text2
+    base: '0x08000210'
+    objects:
+    - obj: split_8000210.o
+    - obj: split_8000324.o
+    - obj: split_800065C.o
+    - obj: split_8000914.o
+    - obj: split_8000BAC.o
+    - obj: split_8000C7C.o
+    - obj: split_8000D64.o
+    - obj: split_800105C.o
+    - obj: split_80012F0.o
+    - obj: split_80017E4.o
+    - obj: split_8001A60.o
+    - obj: split_8002004.o
+    - obj: split_800212C.o
+    - obj: split_800242C.o
+    - obj: split_8002580.o
+    - obj: split_8002828.o
+    - obj: split_800423C.o
+    - obj: split_8004670.o
+    - obj: split_8004780.o
+    - obj: split_8004BA8.o
+    - obj: split_8004DE6.o
+    - obj: split_8005044.o
+    - obj: split_800525C.o
+    - obj: split_80052C0.o
+    - obj: split_8005380.o
+    - obj: split_80062F4.o
+    - obj: split_8006BC0.o
+    - obj: split_8006F90.o
+    - obj: split_80077E8.o
+    - obj: split_8008008.o
+    - obj: split_80081D4.o
+    - obj: split_8008AF4.o
+    - obj: split_8008EB4.o
+    - obj: split_800A240.o
+    - obj: split_800A9BC.o
+    - obj: split_800AA1C.o
+    - obj: split_800AFD4.o
+    - obj: split_800B0D8.o
+    - obj: split_800B12C.o
+    - obj: split_800B154.o
+    - obj: split_800B314.o
+    - obj: split_800B464.o
+    - obj: split_800B6E0.o
+    - obj: split_800BBF4.o
+    - obj: split_800CD04.o
+    - obj: split_800CD98.o
+    - obj: split_800E178.o
+    - obj: split_800E22C.o
+    - obj: split_800E4D8.o
+    - obj: split_800ED7C.o
+    - obj: split_800F010.o
+    - obj: split_800F1E8.o
+    - obj: split_800F4F0.o
+    - obj: split_800F72C.o
+    - obj: split_800FA40.o
+    - obj: split_800FB18.o
+    - obj: split_800FD48.o
+    - obj: split_800FE90.o
+    - obj: split_8010234.o
+    - obj: split_80103C8.o
+    - obj: split_80106B0.o
+    - obj: split_801099C.o
+    - obj: split_8010D60.o
+    - obj: split_8011040.o
+    - obj: split_8011394.o
+    - obj: split_80114B0.o
+    - obj: split_8011A80.o
+    - obj: split_80120BC.o
+    - obj: split_8012334.o
+    - obj: split_8012468.o
+    - obj: split_8012674.o
+    - obj: split_8013024.o
+    - obj: split_801343C.o
+    - obj: split_80134B8.o
+    - obj: split_80137F8.o
+    - obj: split_8013B64.o
+    - obj: split_8013FF4.o
+    - obj: split_80142D0.o
+    - obj: split_8014738.o
+    - obj: split_8014DD4.o
+    - obj: split_8014EB8.o
+    - obj: split_801537C.o
+    - obj: split_80154DC.o
+    - obj: split_80158E0.o
+    - obj: split_8016108.o
+    - obj: split_80163D4.o
+    - obj: split_80164A8.o
+    - obj: split_801669C.o
+    - obj: split_8016D90.o
+    - obj: split_8017130.o
+    - obj: split_801742C.o
+    - obj: split_8017444.o
+    - obj: split_8017474.o
+    - obj: split_80177D8.o
+    - obj: split_8017AB0.o
+    - obj: split_8017DC8.o
+    - obj: split_8017E40.o
+    - obj: split_8018070.o
+    - obj: split_801837C.o
+    - obj: split_80183BC.o
+    - obj: split_801897C.o
+    - obj: split_8018C48.o
+    - obj: split_8018E34.o
+    - obj: split_80195D0.o
+    - obj: split_8019EE0.o
+    - obj: split_801A760.o
+    - obj: split_801AB34.o
+    - obj: split_801ABFC.o
+    - obj: split_801AED0.o
+    - obj: split_801B10C.o
+    - obj: split_801B48C.o
+    - obj: split_801BBE0.o
+    - obj: split_801BEA0.o
+    - obj: split_801C210.o
+    - obj: split_801C4A4.o
+    - obj: split_801CB18.o
+    - obj: split_801CCEC.o
+    - obj: split_801D564.o
+    - obj: split_801D9B0.o
+    - obj: split_801DCFC.o
+    - obj: split_801DFD4.o
+    - obj: split_801E2D0.o
+    - obj: split_801F2F8.o
+    - obj: split_801F640.o
+    - obj: split_801F794.o
+    - obj: split_801FE90.o
+    - obj: split_8021248.o
+    - obj: split_8021A38.o
+    - obj: split_80221AC.o
+    - obj: split_80222D0.o
+    - obj: split_80225E4.o
+    - obj: split_8022840.o
+    - obj: split_80235E4.o
+  - name: .src1
+    base: '0x080239EC'
+    objects:
+    - obj: split_80239EC.o
+  - name: .text3
+    base: '0x08023D0C'
+    objects:
+    - obj: split_8023D0C.o
+    - obj: split_8024084.o
+    - obj: split_80247A4.o
+    - obj: split_8024E54.o
+    - obj: split_80250E4.o
+    - obj: split_80253A8.o
+    - obj: split_8026014.o
+    - obj: split_80262CC.o
+    - obj: split_80268AC.o
+    - obj: split_8028BE4.o
+    - obj: split_8028C7C.o
+    - obj: split_8028CE8.o
+    - obj: split_8028D60.o
+    - obj: split_8028F64.o
+    - obj: split_8029070.o
+    - obj: split_802936C.o
+    - obj: split_80296E0.o
+    - obj: split_802B288.o
+    - obj: split_802B670.o
+    - obj: split_802BA20.o
+    - obj: split_802BCF0.o
+    - obj: split_802BFB4.o
+    - obj: split_802C6D0.o
+    - obj: split_802C884.o
+    - obj: split_802D2E8.o
+    - obj: split_802DDDC.o
+    - obj: split_802DFF4.o
+    - obj: split_802E384.o
+    - obj: split_802E418.o
+    - obj: split_802E800.o
+    - obj: split_802E900.o
+    - obj: split_802EC90.o
+    - obj: split_802ED1C.o
+    - obj: split_802F118.o
+    - obj: split_802F8A0.o
+    - obj: split_802FBE8.o
+    - obj: split_803000C.o
+    - obj: split_80301E8.o
+    - obj: split_80305CC.o
+    - obj: split_8030668.o
+    - obj: split_8030EEC.o
+    - obj: split_803108C.o
+    - obj: split_8031404.o
+    - obj: split_8031578.o
+  - name: .text3_kiko_code
+    base: '+0'
+    objects:
+    - obj: Kiko.o
+      sel: ' (+RO-CODE)'
+  - name: .text3b
+    base: '+0'
+    objects:
+    - obj: split_8031830.o
+    - obj: split_8031B98.o
+    - obj: split_8031D00.o
+    - obj: split_803248C.o
+    - obj: split_80327F4.o
+    - obj: split_8032A90.o
+    - obj: split_8033308.o
+    - obj: split_8033318.o
+    - obj: split_803364C.o
+    - obj: split_8033C58.o
+    - obj: split_8034358.o
+    - obj: split_80344E4.o
+    - obj: split_803490C.o
+    - obj: split_8034D2C.o
+    - obj: split_8034D98.o
+    - obj: split_8035480.o
+    - obj: split_8035750.o
+    - obj: split_8035E7C.o
+    - obj: split_8036150.o
+    - obj: split_80363DC.o
+    - obj: split_8036620.o
+    - obj: split_80368F4.o
+    - obj: split_8036B7C.o
+    - obj: split_8036CE4.o
+    - obj: split_8037530.o
+    - obj: split_803772C.o
+    - obj: split_8037A10.o
+    - obj: split_8037CC0.o
+    - obj: split_8037E48.o
+    - obj: split_80381C0.o
+    - obj: split_803846C.o
+    - obj: split_8038528.o
+    - obj: split_8038888.o
+    - obj: split_8038D2C.o
+    - obj: split_8038E44.o
+    - obj: split_80391C8.o
+    - obj: split_80399A4.o
+    - obj: split_8039DAC.o
+    - obj: split_803A050.o
+    - obj: split_803A490.o
+    - obj: split_803AB80.o
+    - obj: split_803AE60.o
+    - obj: split_803B150.o
+    - obj: split_803B318.o
+  - name: agbeeprom
+    base: '0x803B4D8'
+    objects:
+    - obj: split_803B4D8.o
+    - obj: split_803B520.o
+    - obj: split_803B5A0.o
+    - obj: split_803B650.o
+    - obj: split_803B7C4.o
+    - obj: split_803B81C.o
+  - name: sprintf
+    base: '0x803B860'
+    objects:
+    - obj: sprintf.o
+  - name: atoi
+    base: '0x803B8A4'
+    objects:
+    - obj: atoi.o
+  - name: callvia
+    base: '0x803B8C8'
+    objects:
+    - obj: callvia.o
+  - name: __cpp_initialise
+    base: '0x803B8D8'
+    objects:
+    - obj: cpp_init.o
+  - name: libspace
+    base: '0x803B904'
+    objects:
+    - obj: libspace.o
+  - name: __16_ll_mulls
+    base: '0x803B914'
+    objects:
+    - obj: llmulls.o
+  - name: __16_ll_mullu
+    base: '0x803B920'
+    objects:
+    - obj: llmullu.o
+  - name: __16_ll_mulss
+    base: '0x803B92C'
+    objects:
+    - obj: llmulss.o
+  - name: __16_ll_sdiv
+    base: '0x803B940'
+    objects:
+    - obj: llsdiv.o
+  - name: _ll_sshift_l
+    base: '0x803B998'
+    objects:
+    - obj: llshl.o
+  - name: __16_ll_srdv
+    base: '0x803B9C4'
+    objects:
+    - obj: llsrdv.o
+  - name: nullsub
+    base: '0x803BA1C'
+    objects:
+    - obj: split_803BA1C.o
+  - name: __16_ll_udiv
+    base: '0x803BA24'
+    objects:
+    - obj: lludiv.o
+  - name: _ll_ushift_r
+    base: '0x803BD84'
+    objects:
+    - obj: llushr.o
+  - name: __pvfn__Fv
+    base: '0x803BDB0'
+    objects:
+    - obj: pvfn.o
+  - name: rand
+    base: '0x803BDC0'
+    objects:
+    - obj: rand.o
+  - name: __16__rt_memclr
+    base: '0x803BE68'
+    objects:
+    - obj: rt_memclr.o
+  - name: __16__rt_memclr_w
+    base: '0x803BEB0'
+    objects:
+    - obj: rt_memclr_w.o
+  - name: __16__rt_memcpy
+    base: '0x803BF0C'
+    objects:
+    - obj: rt_memcpy.o
+  - name: __16__rt_memcpy_w
+    base: '0x803BFC4'
+    objects:
+    - obj: rt_memcpy_w.o
+  - name: __16__rt_memset
+    base: '0x803C034'
+    objects:
+    - obj: rt_memset.o
+  - name: __16__rt_sdiv
+    base: '0x803C04C'
+    objects:
+    - obj: rt_sdiv.o
+  - name: __16__rt_udiv
+    base: '0x803C124'
+    objects:
+    - obj: rt_udiv.o
+  - name: __16strcmp
+    base: '0x803C1E8'
+    objects:
+    - obj: strcmp.o
+  - name: strcpy
+    base: '0x803C28C'
+    objects:
+    - obj: strcpy.o
+  - name: strlen
+    base: '0x803C2DC'
+    objects:
+    - obj: strlen.o
+  - name: strncpy
+    base: '0x803C328'
+    objects:
+    - obj: strncpy.o
+  - name: strstr
+    base: '0x803C37C'
+    objects:
+    - obj: strstr.o
+  - name: __vecmap1c__FPvT1iPFPv_v
+    base: '0x803C3A4'
+    objects:
+    - obj: vc1c.o
+  - name: __vecmap1ci__FPvT1iPFPvi_v
+    base: '0x803C3C8'
+    objects:
+    - obj: vc1ci.o
+  - name: __vec_ctor_p__FPvUiT2bPFPv_v
+    base: '0x803C3EC'
+    objects:
+    - obj: vecctorp.o
+  - name: __vec_dtor__FPvUiPFPvi_vPFPv_v
+    base: '0x803C428'
+    objects:
+    - obj: vecdtor.o
+  - name: vsprintf
+    base: '0x803C47C'
+    objects:
+    - obj: vsprintf.o
+      sel: (.text)
+  - name: __vfprintf
+    base: '0x803C4B4'
+    objects:
+    - obj: __vfpntf.o
+      sel: (.text)
+  - name: _sputc
+    base: '0x803CDE0'
+    objects:
+    - obj: _sputc.o
+      sel: (.text)
+  - name: __rt_entry
+    base: '0x803CDF4'
+    objects:
+    - obj: kernel.o
+      sel: (.text)
+  - name: _ll_mul
+    base: '0x803CE44'
+    objects:
+    - obj: llmul3m.o
+  - name: __16_ll_urdv
+    base: '0x803CE64'
+    objects:
+    - obj: llurdv.o
+  - name: raise
+    base: '0x803CF28'
+    objects:
+    - obj: raise.o
+  - name: __16__rt_div0
+    base: '0x803CF38'
+    objects:
+    - obj: rt_div0.o
+  - name: __rt_errno_addr
+    base: '0x803CF48'
+    objects:
+    - obj: rt_errno_addr.o
+  - name: strtol
+    base: '0x803CF5C'
+    objects:
+    - obj: strtol.o
+  - name: _strtoul
+    base: '0x803CFD8'
+    objects:
+    - obj: _strtoul.o
+  - name: exit
+    base: '0x803D090'
+    objects:
+    - obj: exit.o
+  - name: __rt_lib_init
+    base: '0x803D0A4'
+    objects:
+    - obj: lib_init.o
+  - name: __16_ll_cmpge
+    base: '0x803D15C'
+    objects:
+    - obj: llcmpge.o
+  - name: __16_ll_cmpu
+    base: '0x803D16C'
+    objects:
+    - obj: llcmpu.o
+  - name: __16_ll_neg
+    base: '0x803D17C'
+    objects:
+    - obj: llneg.o
+  - name: __16_ll_udiv10
+    base: '0x803D18C'
+    objects:
+    - obj: lludiv10.o
+  - name: _no_fp_display
+    base: '0x803D230'
+    objects:
+    - obj: nofpdisp.o
+  - name: __16__rt_ctype_table
+    base: '0x803D234'
+    objects:
+    - obj: rt_ctype_table.o
+  - name: __rt_raise
+    base: '0x803D250'
+    objects:
+    - obj: rt_raise.o
+      sel: (.text)
+  - name: __rt_udiv10
+    base: '0x803D270'
+    objects:
+    - obj: rtudiv10.o
+  - name: __raise
+    base: '0x803D2A0'
+    objects:
+    - obj: __raise.o
+  - name: _chval
+    base: '0x803D2E4'
+    objects:
+    - obj: _chval.o
+  - name: _get_lc_ctype
+    base: '0x803D308'
+    objects:
+    - obj: lc_ctype_c.o
+  - name: __default_signal_handler
+    base: '0x803D334'
+    objects:
+    - obj: defsig.o
+  - name: _ttywrch
+    base: '0x803D44C'
+    objects:
+    - obj: sys_wrch.o
+  - name: use_semi
+    base: '0x803D460'
+    objects:
+    - obj: use_semi.o
+  - name: AgbSyscall1
+    base: '0x803D468'
+    objects:
+    - obj: AgbSysArmCpuSet.o
+  - name: AgbSyscall2
+    base: '0x803D46C'
+    objects:
+    - obj: AgbSysArmDiv.o
+  - name: AgbSyscall3
+    base: '0x803D470'
+    objects:
+    - obj: AgbSysArmDivRem.o
+  - name: AgbSyscall4
+    base: '0x803D478'
+    objects:
+    - obj: AgbSysArmLZ77UnCompVram.o
+  - name: AgbSyscall5
+    base: '0x803D47C'
+    objects:
+    - obj: AgbSysArmDiff8bitUnFilterVram.o
+  - name: AgbSyscall6
+    base: '0x803D480'
+    objects:
+    - obj: AgbSysArmSoftReset.o
+  - name: AgbSyscall7
+    base: '0x803D498'
+    objects:
+    - obj: AgbSysArmVBlankIntrWait.o
+  - name: split_803D4A0
+    base: '0x803D4A0'
+    objects:
+    - obj: split_803D4A0.o
+  - name: C$$pi_ctorvec
+    base: '0x803D4A4'
+    objects:
+    - obj: '*'
+      sel: ' (CppInitializationVector)'
+  - name: .text17
+    base: '0x0803D4A8'
+    objects:
+    - obj: split_803D4A8.o
+    - obj: split_803DB3C.o
+  - name: .veneers
+    base: '0x0803E104'
+    objects:
+    - obj: '*'
+      sel: (Veneer$$Code)
+  - name: .text_vtables
+    base: '0x0803E2A0'
+    objects:
+    - obj: dword_803E2A0.o
+    - obj: Npc.o
+    - obj: Anonymous3.o
+    - obj: dword_803E320.o
+    - obj: dword_803E32C.o
+    - obj: dword_803E350.o
+    - obj: dword_803E374.o
+    - obj: Bird.o
+    - obj: Boss.o
+    - obj: Boss.o
+    - obj: Kiko.o
+      sel: (__VTABLE__*)
+    - obj: Object.o
+    - obj: WallObject.o
+    - obj: dword_803E578.o
+    - obj: dword_803E59C.o
+    - obj: dword_803E5C8.o
+    - obj: HostileBaseObject.o
+    - obj: dword_803E658.o
+    - obj: dword_803E67C.o
+    - obj: dword_803E680.o
+    - obj: dword_803E684.o
+    - obj: dword_803E6A0.o
+    - obj: dword_803E700.o
+    - obj: Anonymous4.o
+    - obj: Static1.o
+    - obj: ToggleObjectGroup.o
+    - obj: dword_803E864.o
+    - obj: dword_803E868.o
+    - obj: dword_803E86C.o
+    - obj: dword_803E870.o
+    - obj: Critter.o
+    - obj: Static2.o
+    - obj: Monster.o
+    - obj: Scanner.o
+    - obj: __vftable_GenericObject.o
+    - obj: dword_803EA68.o
+    - obj: dword_803EA8C.o
+    - obj: WinxClub.o
+    - obj: dword_803EAE0.o
+    - obj: dword_803EB10.o
+    - obj: dword_803EB34.o
+    - obj: dword_803EB38.o
+    - obj: dword_803EB3C.o
+    - obj: Default.o
+    - obj: Anonymous14.o
+    - obj: Anonymous18.o
+    - obj: dword_803EC44.o
+    - obj: dword_803EC68.o
+    - obj: dword_803EC6C.o
+    - obj: dword_803EC70.o
+    - obj: dword_803EC74.o
+    - obj: dword_803EC78.o
+    - obj: dword_803EC7C.o
+    - obj: dword_803EC98.o
+    - obj: dword_803ECB4.o
+    - obj: dword_803ECB8.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_55
+    base: '+0'
+    objects:
+    - obj: Singleton_3E80.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_56
+    base: '+0'
+    objects:
+    - obj: Singleton_3E84.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_57
+    base: '+0'
+    objects:
+    - obj: Singleton_3E88.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_58
+    base: '+0'
+    objects:
+    - obj: Singleton_3E8C.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_59
+    base: '+0'
+    objects:
+    - obj: Singleton_3E90.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_60
+    base: '+0'
+    objects:
+    - obj: Singleton_3E94.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_61
+    base: '+0'
+    objects:
+    - obj: Singleton_3E98.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_62
+    base: '+0'
+    objects:
+    - obj: Singleton_3E9C.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_63
+    base: '+0'
+    objects:
+    - obj: Singleton_3EA0.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_64
+    base: '+0'
+    objects:
+    - obj: Singleton_3EA4.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_65
+    base: '+0'
+    objects:
+    - obj: Singleton_3EA8.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_66
+    base: '+0'
+    objects:
+    - obj: Singleton_3EAC.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_67
+    base: '+0'
+    objects:
+    - obj: Singleton_3EB0.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_68
+    base: '+0'
+    objects:
+    - obj: Singleton_3EB8.o
+      sel: (__VTABLE__*)
+  - name: .text_vtable_69
+    base: '+0'
+    objects:
+    - obj: Singleton_3EBC.o
+      sel: (__VTABLE__*)
+  - name: .text_vtables_tail
+    base: '+0'
+    objects:
+    - obj: dword_803ECF8.o
+    - obj: dword_803ED1C.o
+    - obj: dword_803ED28.o
+    - obj: dword_803ED4C.o
+    - obj: dword_803ED70.o
+    - obj: dword_803ED94.o
+    - obj: dword_803EDA0.o
+    - obj: dword_803EDC4.o
+    - obj: dword_803EDE8.o
+    - obj: off_803EE14.o
+    - obj: off_803EE40.o
+    - obj: off_803EE6C.o
+    - obj: dword_803EE98.o
+    - obj: dword_803EEC4.o
+    - obj: dword_803EEF0.o
+  - name: .text4
+    base: '0x0803EF1C'
+    objects:
+    - obj: split_803EF1C.o
+    - obj: split_803F07C.o
+    - obj: split_803F110.o
+    - obj: split_803F170.o
+    - obj: split_803F1AC.o
+    - obj: split_803F23C.o
+    - obj: split_803F2CC.o
+    - obj: split_803F38C.o
+    - obj: split_803F3E8.o
+    - obj: split_803F464.o
+    - obj: split_803F4CC.o
+    - obj: split_803F5FC.o
+    - obj: split_803F654.o
+    - obj: split_803F6E0.o
+    - obj: split_803F708.o
+    - obj: split_803F72C.o
+    - obj: split_803F8BC.o
+    - obj: split_803F904.o
+    - obj: split_803FA3C.o
+    - obj: split_803FAB8.o
+    - obj: split_803FB24.o
+    - obj: split_803FB58.o
+    - obj: split_803FBBC.o
+    - obj: split_803FC14.o
+    - obj: split_803FC68.o
+    - obj: split_803FD5C.o
+    - obj: split_803FE80.o
+    - obj: split_803FEF8.o
+    - obj: split_803FF24.o
+    - obj: split_8040034.o
+    - obj: split_8040104.o
+    - obj: split_80401C0.o
+    - obj: split_804025C.o
+    - obj: split_80402F8.o
+    - obj: split_804036C.o
+    - obj: split_8040380.o
+    - obj: split_80403A4.o
+    - obj: split_8040468.o
+    - obj: split_8040490.o
+    - obj: split_80404B4.o
+    - obj: split_80404D8.o
+    - obj: split_8040504.o
+    - obj: split_8040528.o
+    - obj: split_8040550.o
+    - obj: split_8040574.o
+    - obj: split_8040594.o
+    - obj: split_80405B4.o
+    - obj: split_80405D8.o
+    - obj: split_80405F8.o
+    - obj: split_804061C.o
+    - obj: split_8040640.o
+    - obj: split_8040660.o
+    - obj: split_8040684.o
+    - obj: split_80406A4.o
+    - obj: split_80406C4.o
+    - obj: split_80406E4.o
+    - obj: split_8040708.o
+    - obj: split_8040978.o
+    - obj: split_80409E4.o
+    - obj: split_8040C38.o
+    - obj: split_8040C78.o
+    - obj: split_8041020.o
+  - name: .text4_dtor_ECB8
+    base: '+0'
+    objects:
+    - obj: dword_803ECB8.o
+      sel: ' (+RO-CODE)'
+  - name: .text4_destructors
+    base: '+0'
+    objects:
+    - obj: Singleton_3E80.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E84.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E88.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E8C.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E90.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E94.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E98.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3E9C.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EA0.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EA4.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EA8.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EAC.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EB0.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EB8.o
+      sel: ' (+RO-CODE)'
+    - obj: Singleton_3EBC.o
+      sel: ' (+RO-CODE)'
+  - name: .text4_tail
+    base: '+0'
+    objects:
+    - obj: split_8041274.o
+    - obj: split_80412A8.o
+  - name: fp_printf
+    base: '0x08041440'
+    objects:
+    - obj: printf1.o
+      sel: (x$fpl$printf1)
+  - name: .data1
+    base: '0x08041448'
+    objects:
+    - obj: data1.o
+      sel: ' (+RW)'
+  - name: lc_ctype_data
+    base: '0x80514FC'
+    objects:
+    - obj: lc_ctype_c.o
+      sel: (.constdata)
+  - name: defsig_data
+    base: '0x805160C'
+    objects:
+    - obj: defsig.o
+      sel: (.constdata)
+  - name: .data2
+    base: '0x08051738'
+    objects:
+    - obj: data2.o
+      sel: ' (+RW)'
+  - name: .text5
+    base: '0x080517C8'
+    objects:
+    - obj: last_code.o
+  - name: .data3
+    base: '0x08055AC0'
+    objects:
+    - obj: last_data.o
+      sel: ' (+RW)'
+functions:
+- addr: '0x08000000'
+  isa: arm
+  unit: asm/crt0.s
+  name: start
+- addr: '0x08000134'
+  isa: arm
+  unit: asm/crt0.s
+  name: gbaMain
+- addr: '0x08000210'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: strStartsWith
+- addr: '0x08000236'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: sub_8000236
+- addr: '0x08000292'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: gameStrlen
+- addr: '0x080002A8'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: strToLower
+- addr: '0x080002C8'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: strchr
+- addr: '0x080002E2'
+  isa: thumb
+  unit: asm/split/split_8000210.s
+  name: sub_80002E2
+- addr: '0x08000324'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_8000324
+- addr: '0x080003F4'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_80003F4
+- addr: '0x080004CA'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_80004CA
+- addr: '0x080004E6'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_80004E6
+- addr: '0x080004F8'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_80004F8
+- addr: '0x08000532'
+  isa: thumb
+  unit: asm/split/split_8000324.s
+  name: sub_8000532
+- addr: '0x0800065C'
+  isa: thumb
+  unit: asm/split/split_800065C.s
+  name: sub_800065C
+- addr: '0x0800069A'
+  isa: thumb
+  unit: asm/split/split_800065C.s
+  name: sub_800069A
+- addr: '0x0800075E'
+  isa: thumb
+  unit: asm/split/split_800065C.s
+  name: sub_800075E
+- addr: '0x080007A0'
+  isa: thumb
+  unit: asm/split/split_800065C.s
+  name: sub_80007A0
+- addr: '0x0800088C'
+  isa: thumb
+  unit: asm/split/split_800065C.s
+  name: sub_800088C
+- addr: '0x08000914'
+  isa: thumb
+  unit: asm/split/split_8000914.s
+  name: sub_8000914
+- addr: '0x08000948'
+  isa: thumb
+  unit: asm/split/split_8000914.s
+  name: sub_8000948
+- addr: '0x08000AC4'
+  isa: thumb
+  unit: asm/split/split_8000914.s
+  name: sub_8000AC4
+- addr: '0x08000BAC'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000BAC
+- addr: '0x08000BD8'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000BD8
+- addr: '0x08000C02'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000C02
+- addr: '0x08000C2E'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000C2E
+- addr: '0x08000C58'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000C58
+- addr: '0x08000C6E'
+  isa: thumb
+  unit: asm/split/split_8000BAC.s
+  name: sub_8000C6E
+- addr: '0x08000D64'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: g3003448__Init
+- addr: '0x08000DE6'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: sub_8000DE6
+- addr: '0x08000E6C'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: sub_8000E6C
+- addr: '0x08000EF6'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: sub_8000EF6
+- addr: '0x08000F4C'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: sub_8000F4C
+- addr: '0x08000FCE'
+  isa: thumb
+  unit: asm/split/split_8000D64.s
+  name: sub_8000FCE
+- addr: '0x0800105C'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_800105C
+- addr: '0x0800106A'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_800106A
+- addr: '0x0800116A'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_800116A
+- addr: '0x080011CA'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_80011CA
+- addr: '0x080011D8'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_80011D8
+- addr: '0x08001232'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_8001232
+- addr: '0x0800129A'
+  isa: thumb
+  unit: asm/split/split_800105C.s
+  name: sub_800129A
+- addr: '0x080012F0'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80012F0
+- addr: '0x08001338'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_8001338
+- addr: '0x0800138E'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_800138E
+- addr: '0x080013D8'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80013D8
+- addr: '0x08001432'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_8001432
+- addr: '0x0800149A'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_800149A
+- addr: '0x080014E4'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80014E4
+- addr: '0x080015E6'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80015E6
+- addr: '0x080015F2'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80015F2
+- addr: '0x080016D8'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_80016D8
+- addr: '0x08001710'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_8001710
+- addr: '0x08001740'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_8001740
+- addr: '0x08001776'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: nullsub_20
+- addr: '0x08001778'
+  isa: thumb
+  unit: asm/split/split_80012F0.s
+  name: sub_8001778
+- addr: '0x080017E4'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80017E4
+- addr: '0x08001818'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_8001818
+- addr: '0x0800185E'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_800185E
+- addr: '0x08001866'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: nullsub_21
+- addr: '0x08001868'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_8001868
+- addr: '0x0800194C'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: nullsub_22
+- addr: '0x0800194E'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_800194E
+- addr: '0x080019A6'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019A6
+- addr: '0x080019B4'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019B4
+- addr: '0x080019C4'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019C4
+- addr: '0x080019D4'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019D4
+- addr: '0x080019E8'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019E8
+- addr: '0x080019FC'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_80019FC
+- addr: '0x08001A10'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_8001A10
+- addr: '0x08001A26'
+  isa: thumb
+  unit: asm/split/split_80017E4.s
+  name: sub_8001A26
+- addr: '0x08001A60'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001A60
+- addr: '0x08001A90'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001A90
+- addr: '0x08001B4A'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001B4A
+- addr: '0x08001B80'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001B80
+- addr: '0x08001BB4'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001BB4
+- addr: '0x08001C22'
+  isa: thumb
+  unit: asm/split/split_8001A60.s
+  name: sub_8001C22
+- addr: '0x08002004'
+  isa: thumb
+  unit: asm/split/split_8002004.s
+  name: sub_8002004
+- addr: '0x08002010'
+  isa: thumb
+  unit: asm/split/split_8002004.s
+  name: sub_8002010
+- addr: '0x08002020'
+  isa: thumb
+  unit: asm/split/split_8002004.s
+  name: sub_8002020
+- addr: '0x0800202A'
+  isa: thumb
+  unit: asm/split/split_8002004.s
+  name: sub_800202A
+- addr: '0x080020F8'
+  isa: thumb
+  unit: asm/split/split_8002004.s
+  name: sub_80020F8
+- addr: '0x0800212C'
+  isa: thumb
+  unit: asm/split/split_800212C.s
+  name: sub_800212C
+- addr: '0x08002230'
+  isa: thumb
+  unit: asm/split/split_800212C.s
+  name: sub_8002230
+- addr: '0x080022E2'
+  isa: thumb
+  unit: asm/split/split_800212C.s
+  name: sub_80022E2
+- addr: '0x080023BA'
+  isa: thumb
+  unit: asm/split/split_800212C.s
+  name: sub_80023BA
+- addr: '0x0800242C'
+  isa: thumb
+  unit: asm/split/split_800242C.s
+  name: sub_800242C
+- addr: '0x080024C6'
+  isa: thumb
+  unit: asm/split/split_800242C.s
+  name: sub_80024C6
+- addr: '0x080024D8'
+  isa: thumb
+  unit: asm/split/split_800242C.s
+  name: sub_80024D8
+- addr: '0x08002548'
+  isa: thumb
+  unit: asm/split/split_800242C.s
+  name: sub_8002548
+- addr: '0x08002580'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_8002580
+- addr: '0x080025D6'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_80025D6
+- addr: '0x08002614'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_8002614
+- addr: '0x0800263E'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_800263E
+- addr: '0x08002698'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_8002698
+- addr: '0x08002762'
+  isa: thumb
+  unit: asm/split/split_8002580.s
+  name: sub_8002762
+- addr: '0x08002828'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_8002828
+- addr: '0x0800288A'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_800288A
+- addr: '0x08002CAE'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_8002CAE
+- addr: '0x0800345C'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_800345C
+- addr: '0x08003884'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_8003884
+- addr: '0x08003CA6'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_8003CA6
+- addr: '0x08004038'
+  isa: thumb
+  unit: asm/split/split_8002828.s
+  name: sub_8004038
+- addr: '0x0800423C'
+  isa: thumb
+  unit: asm/split/split_800423C.s
+  name: sub_800423C
+- addr: '0x0800442E'
+  isa: thumb
+  unit: asm/split/split_800423C.s
+  name: sub_800442E
+- addr: '0x08004670'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004670
+- addr: '0x08004674'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004674
+- addr: '0x08004678'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004678
+- addr: '0x080046AC'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046AC
+- addr: '0x080046B8'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046B8
+- addr: '0x080046D8'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046D8
+- addr: '0x080046DC'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046DC
+- addr: '0x080046E2'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046E2
+- addr: '0x080046EE'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046EE
+- addr: '0x080046F8'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_80046F8
+- addr: '0x08004716'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004716
+- addr: '0x08004742'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004742
+- addr: '0x08004746'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_8004746
+- addr: '0x0800474E'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_800474E
+- addr: '0x0800475C'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_800475C
+- addr: '0x0800476C'
+  isa: thumb
+  unit: asm/split/split_8004670.s
+  name: sub_800476C
+- addr: '0x08004780'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004780
+- addr: '0x08004784'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004784
+- addr: '0x080047A0'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047A0
+- addr: '0x080047B6'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047B6
+- addr: '0x080047BA'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047BA
+- addr: '0x080047BE'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047BE
+- addr: '0x080047DA'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047DA
+- addr: '0x080047EC'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80047EC
+- addr: '0x08004812'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004812
+- addr: '0x08004836'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004836
+- addr: '0x08004866'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004866
+- addr: '0x080048B0'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80048B0
+- addr: '0x080048BE'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80048BE
+- addr: '0x080048F0'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80048F0
+- addr: '0x08004924'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004924
+- addr: '0x0800496A'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_800496A
+- addr: '0x08004984'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004984
+- addr: '0x080049B4'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_80049B4
+- addr: '0x08004ADC'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004ADC
+- addr: '0x08004AE6'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004AE6
+- addr: '0x08004AF4'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004AF4
+- addr: '0x08004AFC'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004AFC
+- addr: '0x08004B02'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B02
+- addr: '0x08004B38'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B38
+- addr: '0x08004B40'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B40
+- addr: '0x08004B76'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B76
+- addr: '0x08004B7E'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B7E
+- addr: '0x08004B8C'
+  isa: thumb
+  unit: asm/split/split_8004780.s
+  name: sub_8004B8C
+- addr: '0x08004BA8'
+  isa: thumb
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004BA8
+- addr: '0x08004C22'
+  isa: thumb
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004C22
+- addr: '0x08004C26'
+  isa: thumb
+  unit: asm/split/split_8004BA8.s
+  name: nullsub_23
+- addr: '0x08004C28'
+  isa: thumb
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004C28
+- addr: '0x08004C2C'
+  isa: thumb
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004C2C
+- addr: '0x08004C44'
+  isa: arm
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004C44
+- addr: '0x08004D98'
+  isa: arm
+  unit: asm/split/split_8004BA8.s
+  name: sub_8004D98
+- addr: '0x08004DE4'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: nullsub_24
+- addr: '0x08004DE6'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: LoadFiletable
+- addr: '0x08004F12'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: sub_8004F12
+- addr: '0x08004F42'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: sub_8004F42
+- addr: '0x08004FFC'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: sub_8004FFC
+- addr: '0x0800501C'
+  isa: thumb
+  unit: asm/split/split_8004DE6.s
+  name: sub_800501C
+- addr: '0x08005044'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005044
+- addr: '0x080050AC'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_80050AC
+- addr: '0x080050C0'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: SomehowInitEWRAMLinkedList
+- addr: '0x080050F4'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_80050F4
+- addr: '0x080050FA'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_80050FA
+- addr: '0x08005106'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: GetEWRAMStart
+- addr: '0x0800510C'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_800510C
+- addr: '0x08005120'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005120
+- addr: '0x08005134'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005134
+- addr: '0x08005158'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005158
+- addr: '0x08005160'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005160
+- addr: '0x08005164'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005164
+- addr: '0x08005170'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005170
+- addr: '0x080051D6'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_80051D6
+- addr: '0x08005220'
+  isa: thumb
+  unit: asm/split/split_8005044.s
+  name: sub_8005220
+- addr: '0x0800525C'
+  isa: thumb
+  unit: asm/split/split_800525C.s
+  name: sub_800525C
+- addr: '0x0800527E'
+  isa: thumb
+  unit: asm/split/split_800525C.s
+  name: sub_800527E
+- addr: '0x08005298'
+  isa: thumb
+  unit: asm/split/split_800525C.s
+  name: nullsub_1
+- addr: '0x0800529A'
+  isa: thumb
+  unit: asm/split/split_800525C.s
+  name: sub_800529A
+- addr: '0x080052C0'
+  isa: thumb
+  unit: asm/split/split_80052C0.s
+  name: sub_80052C0
+- addr: '0x08005380'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_8005380
+- addr: '0x080053F8'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_80053F8
+- addr: '0x08005504'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_8005504
+- addr: '0x08006244'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_8006244
+- addr: '0x080062AC'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_80062AC
+- addr: '0x080062D8'
+  isa: arm
+  unit: asm/split/split_8005380.s
+  name: sub_80062D8
+- addr: '0x080062F4'
+  isa: arm
+  unit: asm/split/split_80062F4.s
+  name: sub_80062F4
+- addr: '0x08006350'
+  isa: arm
+  unit: asm/split/split_80062F4.s
+  name: sub_8006350
+- addr: '0x08006BA4'
+  isa: arm
+  unit: asm/split/split_80062F4.s
+  name: sub_8006BA4
+- addr: '0x08006BC0'
+  isa: arm
+  unit: asm/split/split_8006BC0.s
+  name: sub_8006BC0
+- addr: '0x08006F90'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_8006F90
+- addr: '0x08006FE4'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_8006FE4
+- addr: '0x08007040'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_8007040
+- addr: '0x08007104'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_8007104
+- addr: '0x08007664'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_8007664
+- addr: '0x080076D0'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_80076D0
+- addr: '0x080077C0'
+  isa: arm
+  unit: asm/split/split_8006F90.s
+  name: sub_80077C0
+- addr: '0x080077E8'
+  isa: arm
+  unit: asm/split/split_80077E8.s
+  name: sub_80077E8
+- addr: '0x08007C78'
+  isa: arm
+  unit: asm/split/split_80077E8.s
+  name: sub_8007C78
+- addr: '0x08007D44'
+  isa: arm
+  unit: asm/split/split_80077E8.s
+  name: sub_8007D44
+- addr: '0x08007ED8'
+  isa: arm
+  unit: asm/split/split_80077E8.s
+  name: sub_8007ED8
+- addr: '0x08007F18'
+  isa: arm
+  unit: asm/split/split_80077E8.s
+  name: sub_8007F18
+- addr: '0x08008008'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008008
+- addr: '0x0800802E'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800802E
+- addr: '0x0800805E'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800805E
+- addr: '0x08008072'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008072
+- addr: '0x0800807A'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800807A
+- addr: '0x0800807C'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800807C
+- addr: '0x0800808E'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800808E
+- addr: '0x080080FC'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_80080FC
+- addr: '0x08008100'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008100
+- addr: '0x0800810E'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800810E
+- addr: '0x08008112'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008112
+- addr: '0x08008116'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008116
+- addr: '0x08008118'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008118
+- addr: '0x0800811C'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800811C
+- addr: '0x08008120'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008120
+- addr: '0x08008122'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008122
+- addr: '0x0800812A'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_800812A
+- addr: '0x08008160'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008160
+- addr: '0x08008182'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_8008182
+- addr: '0x080081A8'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_80081A8
+- addr: '0x080081B6'
+  isa: thumb
+  unit: asm/split/split_8008008.s
+  name: sub_80081B6
+- addr: '0x080081D4'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_80081D4
+- addr: '0x08008228'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_8008228
+- addr: '0x0800822C'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_800822C
+- addr: '0x08008264'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_8008264
+- addr: '0x08008298'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_8008298
+- addr: '0x0800844C'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_800844C
+- addr: '0x080085A4'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_80085A4
+- addr: '0x080087B8'
+  isa: arm
+  unit: asm/split/split_80081D4.s
+  name: sub_80087B8
+- addr: '0x08008AF4'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008AF4
+- addr: '0x08008AFC'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008AFC
+- addr: '0x08008B04'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008B04
+- addr: '0x08008B14'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008B14
+- addr: '0x08008B5C'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008B5C
+- addr: '0x08008BFC'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008BFC
+- addr: '0x08008E64'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008E64
+- addr: '0x08008E98'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008E98
+- addr: '0x08008EA4'
+  isa: arm
+  unit: asm/split/split_8008AF4.s
+  name: sub_8008EA4
+- addr: '0x08008EB4'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8008EB4
+- addr: '0x08008F14'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8008F14
+- addr: '0x08008F18'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8008F18
+- addr: '0x08008F50'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8008F50
+- addr: '0x08008FFC'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8008FFC
+- addr: '0x0800904C'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_800904C
+- addr: '0x0800905C'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_800905C
+- addr: '0x08009064'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8009064
+- addr: '0x08009270'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_8009270
+- addr: '0x080095B8'
+  isa: arm
+  unit: asm/split/split_8008EB4.s
+  name: sub_80095B8
+- addr: '0x0800A240'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A240
+- addr: '0x0800A25C'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A25C
+- addr: '0x0800A268'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A268
+- addr: '0x0800A270'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A270
+- addr: '0x0800A2B8'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A2B8
+- addr: '0x0800A334'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A334
+- addr: '0x0800A7A0'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A7A0
+- addr: '0x0800A7D4'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A7D4
+- addr: '0x0800A9A4'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A9A4
+- addr: '0x0800A9AC'
+  isa: arm
+  unit: asm/split/split_800A240.s
+  name: sub_800A9AC
+- addr: '0x0800A9BC'
+  isa: arm
+  unit: asm/split/split_800A9BC.s
+  name: sub_800A9BC
+- addr: '0x0800AA04'
+  isa: arm
+  unit: asm/split/split_800A9BC.s
+  name: sub_800AA04
+- addr: '0x0800AA10'
+  isa: arm
+  unit: asm/split/split_800A9BC.s
+  name: sub_800AA10
+- addr: '0x0800AA1C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AA1C
+- addr: '0x0800AA2C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AA2C
+- addr: '0x0800AA3C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AA3C
+- addr: '0x0800AAF0'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AAF0
+- addr: '0x0800AB00'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AB00
+- addr: '0x0800AB8C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AB8C
+- addr: '0x0800AC3C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AC3C
+- addr: '0x0800ACD0'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800ACD0
+- addr: '0x0800AD8C'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AD8C
+- addr: '0x0800AE20'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AE20
+- addr: '0x0800AFA8'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AFA8
+- addr: '0x0800AFB8'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AFB8
+- addr: '0x0800AFC0'
+  isa: arm
+  unit: asm/split/split_800AA1C.s
+  name: sub_800AFC0
+- addr: '0x0800AFD4'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800AFD4
+- addr: '0x0800B01A'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B01A
+- addr: '0x0800B034'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B034
+- addr: '0x0800B04C'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B04C
+- addr: '0x0800B058'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B058
+- addr: '0x0800B082'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B082
+- addr: '0x0800B08E'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B08E
+- addr: '0x0800B09A'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B09A
+- addr: '0x0800B0A0'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B0A0
+- addr: '0x0800B0C0'
+  isa: thumb
+  unit: asm/split/split_800AFD4.s
+  name: sub_800B0C0
+- addr: '0x0800B0D8'
+  isa: thumb
+  unit: asm/split/split_800B0D8.s
+  name: main
+- addr: '0x0800B12C'
+  isa: thumb
+  unit: asm/split/split_800B12C.s
+  name: sub_800B12C
+- addr: '0x0800B148'
+  isa: thumb
+  unit: asm/split/split_800B12C.s
+  name: sub_800B148
+- addr: '0x0800B154'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B154
+- addr: '0x0800B190'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: InitKeyinputIE
+- addr: '0x0800B1BC'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B1BC
+- addr: '0x0800B1CA'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B1CA
+- addr: '0x0800B1D0'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: CallSoftReset
+- addr: '0x0800B1DE'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_9
+- addr: '0x0800B1E0'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_10
+- addr: '0x0800B1E2'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_11
+- addr: '0x0800B1E4'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_12
+- addr: '0x0800B1E6'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_13
+- addr: '0x0800B1E8'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_14
+- addr: '0x0800B1EA'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_15
+- addr: '0x0800B1EC'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_16
+- addr: '0x0800B1EE'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_17
+- addr: '0x0800B1F0'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_18
+- addr: '0x0800B1F2'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_19
+- addr: '0x0800B1F4'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_4
+- addr: '0x0800B1F6'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B1F6
+- addr: '0x0800B286'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B286
+- addr: '0x0800B2A0'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_30
+- addr: '0x0800B2A2'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: nullsub_31
+- addr: '0x0800B2A4'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B2A4
+- addr: '0x0800B2AE'
+  isa: thumb
+  unit: asm/split/split_800B154.s
+  name: sub_800B2AE
+- addr: '0x0800B314'
+  isa: thumb
+  unit: asm/split/split_800B314.s
+  name: sub_800B314
+- addr: '0x0800B3BA'
+  isa: thumb
+  unit: asm/split/split_800B314.s
+  name: sub_800B3BA
+- addr: '0x0800B464'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B464
+- addr: '0x0800B496'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B496
+- addr: '0x0800B4E0'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B4E0
+- addr: '0x0800B4F0'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B4F0
+- addr: '0x0800B548'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B548
+- addr: '0x0800B554'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B554
+- addr: '0x0800B590'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B590
+- addr: '0x0800B5EE'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B5EE
+- addr: '0x0800B600'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B600
+- addr: '0x0800B60E'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B60E
+- addr: '0x0800B61C'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B61C
+- addr: '0x0800B62A'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B62A
+- addr: '0x0800B638'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B638
+- addr: '0x0800B646'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B646
+- addr: '0x0800B652'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B652
+- addr: '0x0800B65E'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B65E
+- addr: '0x0800B66A'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B66A
+- addr: '0x0800B676'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B676
+- addr: '0x0800B68A'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B68A
+- addr: '0x0800B698'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B698
+- addr: '0x0800B6A8'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B6A8
+- addr: '0x0800B6AC'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B6AC
+- addr: '0x0800B6BE'
+  isa: thumb
+  unit: asm/split/split_800B464.s
+  name: sub_800B6BE
+- addr: '0x0800B6E0'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B6E0
+- addr: '0x0800B6EC'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B6EC
+- addr: '0x0800B6FA'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B6FA
+- addr: '0x0800B708'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B708
+- addr: '0x0800B714'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B714
+- addr: '0x0800B72A'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B72A
+- addr: '0x0800B740'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B740
+- addr: '0x0800B756'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B756
+- addr: '0x0800B764'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B764
+- addr: '0x0800B772'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B772
+- addr: '0x0800B782'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B782
+- addr: '0x0800B790'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B790
+- addr: '0x0800B7AA'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B7AA
+- addr: '0x0800B7C2'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B7C2
+- addr: '0x0800B7D2'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B7D2
+- addr: '0x0800B7DC'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B7DC
+- addr: '0x0800B8A4'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B8A4
+- addr: '0x0800B8CE'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B8CE
+- addr: '0x0800B916'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B916
+- addr: '0x0800B94A'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B94A
+- addr: '0x0800B9B6'
+  isa: thumb
+  unit: asm/split/split_800B6E0.s
+  name: sub_800B9B6
+- addr: '0x0800BBF4'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800BBF4
+- addr: '0x0800BC30'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800BC30
+- addr: '0x0800BCE4'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800BCE4
+- addr: '0x0800BD7C'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800BD7C
+- addr: '0x0800BE0E'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800BE0E
+- addr: '0x0800C014'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C014
+- addr: '0x0800C0EC'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C0EC
+- addr: '0x0800C134'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C134
+- addr: '0x0800C164'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C164
+- addr: '0x0800C198'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C198
+- addr: '0x0800C1CA'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C1CA
+- addr: '0x0800C482'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C482
+- addr: '0x0800C4F0'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C4F0
+- addr: '0x0800C55E'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C55E
+- addr: '0x0800C93A'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800C93A
+- addr: '0x0800CADA'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800CADA
+- addr: '0x0800CAE2'
+  isa: thumb
+  unit: asm/split/split_800BBF4.s
+  name: sub_800CAE2
+- addr: '0x0800CD04'
+  isa: thumb
+  unit: asm/split/split_800CD04.s
+  name: sub_800CD04
+- addr: '0x0800CD28'
+  isa: thumb
+  unit: asm/split/split_800CD04.s
+  name: sub_800CD28
+- addr: '0x0800CD58'
+  isa: thumb
+  unit: asm/split/split_800CD04.s
+  name: sub_800CD58
+- addr: '0x0800CD98'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800CD98
+- addr: '0x0800CE6C'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800CE6C
+- addr: '0x0800D5A8'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800D5A8
+- addr: '0x0800D912'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800D912
+- addr: '0x0800D9E0'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800D9E0
+- addr: '0x0800DEF8'
+  isa: thumb
+  unit: asm/split/split_800CD98.s
+  name: sub_800DEF8
+- addr: '0x0800E178'
+  isa: thumb
+  unit: asm/split/split_800E178.s
+  name: sub_800E178
+- addr: '0x0800E22C'
+  isa: thumb
+  unit: asm/split/split_800E22C.s
+  name: sub_800E22C
+- addr: '0x0800E254'
+  isa: thumb
+  unit: asm/split/split_800E22C.s
+  name: sub_800E254
+- addr: '0x0800E2F6'
+  isa: thumb
+  unit: asm/split/split_800E22C.s
+  name: sub_800E2F6
+- addr: '0x0800E4D8'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800E4D8
+- addr: '0x0800E500'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800E500
+- addr: '0x0800E53C'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800E53C
+- addr: '0x0800E5EA'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800E5EA
+- addr: '0x0800E678'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800E678
+- addr: '0x0800E71C'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: maybeInitTransitionLevelScreen
+- addr: '0x0800EA22'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: maybeInitGame
+- addr: '0x0800EC0E'
+  isa: thumb
+  unit: asm/split/split_800E4D8.s
+  name: sub_800EC0E
+- addr: '0x0800ED7C'
+  isa: thumb
+  unit: asm/split/split_800ED7C.s
+  name: PlayMovie
+- addr: '0x0800EF1C'
+  isa: thumb
+  unit: asm/split/split_800ED7C.s
+  name: sub_800EF1C
+- addr: '0x0800EF2A'
+  isa: thumb
+  unit: asm/split/split_800ED7C.s
+  name: sub_800EF2A
+- addr: '0x0800EF60'
+  isa: thumb
+  unit: asm/split/split_800ED7C.s
+  name: maybeLoadOrRenderBgImage
+- addr: '0x0800F010'
+  isa: thumb
+  unit: asm/split/split_800F010.s
+  name: sub_800F010
+- addr: '0x0800F090'
+  isa: thumb
+  unit: asm/split/split_800F010.s
+  name: sub_800F090
+- addr: '0x0800F1DA'
+  isa: thumb
+  unit: asm/split/split_800F010.s
+  name: sub_800F1DA
+- addr: '0x0800F1E8'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F1E8
+- addr: '0x0800F220'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F220
+- addr: '0x0800F264'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F264
+- addr: '0x0800F292'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F292
+- addr: '0x0800F2B4'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F2B4
+- addr: '0x0800F2B8'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F2B8
+- addr: '0x0800F2BC'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F2BC
+- addr: '0x0800F2E2'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F2E2
+- addr: '0x0800F312'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F312
+- addr: '0x0800F408'
+  isa: thumb
+  unit: asm/split/split_800F1E8.s
+  name: sub_800F408
+- addr: '0x0800F4F0'
+  isa: thumb
+  unit: asm/split/split_800F4F0.s
+  name: sub_800F4F0
+- addr: '0x0800F528'
+  isa: thumb
+  unit: asm/split/split_800F4F0.s
+  name: sub_800F528
+- addr: '0x0800F67A'
+  isa: thumb
+  unit: asm/split/split_800F4F0.s
+  name: sub_800F67A
+- addr: '0x0800F700'
+  isa: thumb
+  unit: asm/split/split_800F4F0.s
+  name: sub_800F700
+- addr: '0x0800F72C'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F72C
+- addr: '0x0800F75A'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F75A
+- addr: '0x0800F77C'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F77C
+- addr: '0x0800F782'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F782
+- addr: '0x0800F786'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F786
+- addr: '0x0800F7A8'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F7A8
+- addr: '0x0800F7D6'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F7D6
+- addr: '0x0800F87A'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F87A
+- addr: '0x0800F944'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F944
+- addr: '0x0800F974'
+  isa: thumb
+  unit: asm/split/split_800F72C.s
+  name: sub_800F974
+- addr: '0x0800FA40'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FA40
+- addr: '0x0800FA9A'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FA9A
+- addr: '0x0800FAB0'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAB0
+- addr: '0x0800FAD6'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAD6
+- addr: '0x0800FAF8'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAF8
+- addr: '0x0800FAFA'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAFA
+- addr: '0x0800FAFC'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAFC
+- addr: '0x0800FAFE'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FAFE
+- addr: '0x0800FB02'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FB02
+- addr: '0x0800FB06'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FB06
+- addr: '0x0800FB0A'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FB0A
+- addr: '0x0800FB0C'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FB0C
+- addr: '0x0800FB0E'
+  isa: thumb
+  unit: asm/split/split_800FA40.s
+  name: sub_800FB0E
+- addr: '0x0800FB18'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FB18
+- addr: '0x0800FB48'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FB48
+- addr: '0x0800FB72'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FB72
+- addr: '0x0800FB96'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FB96
+- addr: '0x0800FB9E'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FB9E
+- addr: '0x0800FBA0'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FBA0
+- addr: '0x0800FBC0'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FBC0
+- addr: '0x0800FC6C'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FC6C
+- addr: '0x0800FC72'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FC72
+- addr: '0x0800FC76'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FC76
+- addr: '0x0800FCF0'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FCF0
+- addr: '0x0800FD2A'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FD2A
+- addr: '0x0800FD2C'
+  isa: thumb
+  unit: asm/split/split_800FB18.s
+  name: sub_800FD2C
+- addr: '0x0800FD48'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: sub_800FD48
+- addr: '0x0800FDA4'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: sub_800FDA4
+- addr: '0x0800FDCE'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: sub_800FDCE
+- addr: '0x0800FE3A'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: sub_800FE3A
+- addr: '0x0800FE56'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: sub_800FE56
+- addr: '0x0800FE6A'
+  isa: thumb
+  unit: asm/split/split_800FD48.s
+  name: nullsub_6
+- addr: '0x0800FE90'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_800FE90
+- addr: '0x0800FEBC'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_800FEBC
+- addr: '0x0800FF00'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_800FF00
+- addr: '0x0800FF5E'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_800FF5E
+- addr: '0x0800FFBA'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_800FFBA
+- addr: '0x0801006A'
+  isa: thumb
+  unit: asm/split/split_800FE90.s
+  name: sub_801006A
+- addr: '0x08010234'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_8010234
+- addr: '0x08010278'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_8010278
+- addr: '0x0801029A'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_801029A
+- addr: '0x080102D8'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_80102D8
+- addr: '0x08010344'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_8010344
+- addr: '0x080103A8'
+  isa: thumb
+  unit: asm/split/split_8010234.s
+  name: sub_80103A8
+- addr: '0x080103C8'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_80103C8
+- addr: '0x080103EC'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_80103EC
+- addr: '0x08010456'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_8010456
+- addr: '0x0801047C'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_801047C
+- addr: '0x080104BC'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_80104BC
+- addr: '0x0801053C'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_801053C
+- addr: '0x08010574'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_8010574
+- addr: '0x080105AE'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_80105AE
+- addr: '0x08010604'
+  isa: thumb
+  unit: asm/split/split_80103C8.s
+  name: sub_8010604
+- addr: '0x080106B0'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_80106B0
+- addr: '0x080106BA'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_80106BA
+- addr: '0x080106BC'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_80106BC
+- addr: '0x08010746'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_8010746
+- addr: '0x080108DA'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_80108DA
+- addr: '0x08010920'
+  isa: thumb
+  unit: asm/split/split_80106B0.s
+  name: sub_8010920
+- addr: '0x0801099C'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_801099C
+- addr: '0x080109DE'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_80109DE
+- addr: '0x080109EC'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_80109EC
+- addr: '0x08010A0A'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_8010A0A
+- addr: '0x08010AB4'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_8010AB4
+- addr: '0x08010B3E'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_8010B3E
+- addr: '0x08010B6C'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_8010B6C
+- addr: '0x08010B8A'
+  isa: thumb
+  unit: asm/split/split_801099C.s
+  name: sub_8010B8A
+- addr: '0x08010D60'
+  isa: thumb
+  unit: asm/split/split_8010D60.s
+  name: sub_8010D60
+- addr: '0x08010ED2'
+  isa: thumb
+  unit: asm/split/split_8010D60.s
+  name: sub_8010ED2
+- addr: '0x08010F10'
+  isa: thumb
+  unit: asm/split/split_8010D60.s
+  name: sub_8010F10
+- addr: '0x08010F90'
+  isa: thumb
+  unit: asm/split/split_8010D60.s
+  name: sub_8010F90
+- addr: '0x08011040'
+  isa: thumb
+  unit: asm/split/split_8011040.s
+  name: sub_8011040
+- addr: '0x08011106'
+  isa: thumb
+  unit: asm/split/split_8011040.s
+  name: sub_8011106
+- addr: '0x0801114E'
+  isa: thumb
+  unit: asm/split/split_8011040.s
+  name: sub_801114E
+- addr: '0x0801115C'
+  isa: thumb
+  unit: asm/split/split_8011040.s
+  name: sub_801115C
+- addr: '0x08011394'
+  isa: thumb
+  unit: asm/split/split_8011394.s
+  name: sub_8011394
+- addr: '0x0801145E'
+  isa: thumb
+  unit: asm/split/split_8011394.s
+  name: sub_801145E
+- addr: '0x080114B0'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80114B0
+- addr: '0x080114FA'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80114FA
+- addr: '0x08011562'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_8011562
+- addr: '0x08011596'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_8011596
+- addr: '0x080115EC'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80115EC
+- addr: '0x080116D4'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80116D4
+- addr: '0x0801175C'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_801175C
+- addr: '0x080117A4'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80117A4
+- addr: '0x080117B0'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_80117B0
+- addr: '0x08011898'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_8011898
+- addr: '0x08011912'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_8011912
+- addr: '0x0801196A'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_801196A
+- addr: '0x0801197C'
+  isa: thumb
+  unit: asm/split/split_80114B0.s
+  name: sub_801197C
+- addr: '0x08011A80'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011A80
+- addr: '0x08011AC2'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011AC2
+- addr: '0x08011B22'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011B22
+- addr: '0x08011B28'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011B28
+- addr: '0x08011B62'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011B62
+- addr: '0x08011D3C'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011D3C
+- addr: '0x08011D56'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011D56
+- addr: '0x08011DB2'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011DB2
+- addr: '0x08011DE4'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011DE4
+- addr: '0x08011E10'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E10
+- addr: '0x08011E22'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E22
+- addr: '0x08011E3C'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E3C
+- addr: '0x08011E46'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E46
+- addr: '0x08011E52'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E52
+- addr: '0x08011E64'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011E64
+- addr: '0x08011F0E'
+  isa: thumb
+  unit: asm/split/split_8011A80.s
+  name: sub_8011F0E
+- addr: '0x080120BC'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80120BC
+- addr: '0x080120CA'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80120CA
+- addr: '0x080120E2'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80120E2
+- addr: '0x080120FA'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80120FA
+- addr: '0x08012126'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_8012126
+- addr: '0x08012180'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_8012180
+- addr: '0x080121C4'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80121C4
+- addr: '0x0801220C'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_801220C
+- addr: '0x0801228C'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_801228C
+- addr: '0x080122F0'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_80122F0
+- addr: '0x0801230C'
+  isa: thumb
+  unit: asm/split/split_80120BC.s
+  name: sub_801230C
+- addr: '0x08012334'
+  isa: thumb
+  unit: asm/split/split_8012334.s
+  name: sub_8012334
+- addr: '0x0801234C'
+  isa: thumb
+  unit: asm/split/split_8012334.s
+  name: sub_801234C
+- addr: '0x080123B4'
+  isa: thumb
+  unit: asm/split/split_8012334.s
+  name: sub_80123B4
+- addr: '0x080123E4'
+  isa: thumb
+  unit: asm/split/split_8012334.s
+  name: sub_80123E4
+- addr: '0x08012468'
+  isa: thumb
+  unit: asm/split/split_8012468.s
+  name: sub_8012468
+- addr: '0x080124C8'
+  isa: thumb
+  unit: asm/split/split_8012468.s
+  name: sub_80124C8
+- addr: '0x08012674'
+  isa: arm
+  unit: asm/split/split_8012674.s
+  name: sub_8012674
+- addr: '0x080127C0'
+  isa: arm
+  unit: asm/split/split_8012674.s
+  name: sub_80127C0
+- addr: '0x08012BA0'
+  isa: arm
+  unit: asm/split/split_8012674.s
+  name: sub_8012BA0
+- addr: '0x08013024'
+  isa: arm
+  unit: asm/split/split_8013024.s
+  name: sub_8013024
+- addr: '0x080130DC'
+  isa: arm
+  unit: asm/split/split_8013024.s
+  name: sub_80130DC
+- addr: '0x080132F4'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_80132F4
+- addr: '0x08013318'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_8013318
+- addr: '0x0801333E'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_801333E
+- addr: '0x08013386'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_8013386
+- addr: '0x080133A0'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_80133A0
+- addr: '0x080133AE'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_80133AE
+- addr: '0x080133F0'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_80133F0
+- addr: '0x0801340A'
+  isa: thumb
+  unit: asm/split/split_8013024.s
+  name: sub_801340A
+- addr: '0x0801343C'
+  isa: thumb
+  unit: asm/split/split_801343C.s
+  name: sub_801343C
+- addr: '0x08013480'
+  isa: thumb
+  unit: asm/split/split_801343C.s
+  name: sub_8013480
+- addr: '0x080134B8'
+  isa: thumb
+  unit: asm/split/split_80134B8.s
+  name: sub_80134B8
+- addr: '0x080134F8'
+  isa: thumb
+  unit: asm/split/split_80134B8.s
+  name: sub_80134F8
+- addr: '0x0801352C'
+  isa: thumb
+  unit: asm/split/split_80134B8.s
+  name: sub_801352C
+- addr: '0x0801357A'
+  isa: thumb
+  unit: asm/split/split_80134B8.s
+  name: sub_801357A
+- addr: '0x080137F8'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_80137F8
+- addr: '0x080138E2'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_80138E2
+- addr: '0x0801390A'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_801390A
+- addr: '0x08013946'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_8013946
+- addr: '0x080139A4'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_80139A4
+- addr: '0x080139A8'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_80139A8
+- addr: '0x080139AC'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_80139AC
+- addr: '0x08013B0A'
+  isa: thumb
+  unit: asm/split/split_80137F8.s
+  name: sub_8013B0A
+- addr: '0x08013B64'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013B64
+- addr: '0x08013B76'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013B76
+- addr: '0x08013B9C'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013B9C
+- addr: '0x08013C40'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013C40
+- addr: '0x08013D52'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013D52
+- addr: '0x08013DEA'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013DEA
+- addr: '0x08013E2C'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013E2C
+- addr: '0x08013E56'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013E56
+- addr: '0x08013E64'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013E64
+- addr: '0x08013E72'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013E72
+- addr: '0x08013F1E'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013F1E
+- addr: '0x08013F2A'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013F2A
+- addr: '0x08013F5A'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013F5A
+- addr: '0x08013F66'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013F66
+- addr: '0x08013F6C'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013F6C
+- addr: '0x08013FAE'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FAE
+- addr: '0x08013FBC'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FBC
+- addr: '0x08013FBE'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FBE
+- addr: '0x08013FC0'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FC0
+- addr: '0x08013FC2'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FC2
+- addr: '0x08013FC4'
+  isa: thumb
+  unit: asm/split/split_8013B64.s
+  name: sub_8013FC4
+- addr: '0x08013FF4'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_8013FF4
+- addr: '0x08013FF8'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_8013FF8
+- addr: '0x0801402C'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_801402C
+- addr: '0x0801404E'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_801404E
+- addr: '0x08014060'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_8014060
+- addr: '0x0801406E'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_801406E
+- addr: '0x080141B4'
+  isa: thumb
+  unit: asm/split/split_8013FF4.s
+  name: sub_80141B4
+- addr: '0x080142D0'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: sub_80142D0
+- addr: '0x080143E0'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: sub_80143E0
+- addr: '0x08014436'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: sub_8014436
+- addr: '0x08014492'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: sub_8014492
+- addr: '0x08014494'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: maybePauseUnpauseTransition
+- addr: '0x08014582'
+  isa: thumb
+  unit: asm/split/split_80142D0.s
+  name: sub_8014582
+- addr: '0x08014738'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014738
+- addr: '0x080147FA'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_80147FA
+- addr: '0x08014864'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014864
+- addr: '0x080148BE'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_80148BE
+- addr: '0x08014B02'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B02
+- addr: '0x08014B34'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B34
+- addr: '0x08014B58'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B58
+- addr: '0x08014B66'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B66
+- addr: '0x08014B7E'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B7E
+- addr: '0x08014B96'
+  isa: thumb
+  unit: asm/split/split_8014738.s
+  name: sub_8014B96
+- addr: '0x08014DD4'
+  isa: thumb
+  unit: asm/split/split_8014DD4.s
+  name: sub_8014DD4
+- addr: '0x08014E04'
+  isa: thumb
+  unit: asm/split/split_8014DD4.s
+  name: sub_8014E04
+- addr: '0x08014E46'
+  isa: thumb
+  unit: asm/split/split_8014DD4.s
+  name: sub_8014E46
+- addr: '0x08014E76'
+  isa: thumb
+  unit: asm/split/split_8014DD4.s
+  name: sub_8014E76
+- addr: '0x08014EB8'
+  isa: thumb
+  unit: asm/split/split_8014EB8.s
+  name: sub_8014EB8
+- addr: '0x08015014'
+  isa: thumb
+  unit: asm/split/split_8014EB8.s
+  name: sub_8015014
+- addr: '0x0801505A'
+  isa: thumb
+  unit: asm/split/split_8014EB8.s
+  name: sub_801505A
+- addr: '0x08015240'
+  isa: thumb
+  unit: asm/split/split_8014EB8.s
+  name: sub_8015240
+- addr: '0x0801537C'
+  isa: thumb
+  unit: asm/split/split_801537C.s
+  name: sub_801537C
+- addr: '0x0801549A'
+  isa: thumb
+  unit: asm/split/split_801537C.s
+  name: sub_801549A
+- addr: '0x080154AA'
+  isa: thumb
+  unit: asm/split/split_801537C.s
+  name: sub_80154AA
+- addr: '0x080154BA'
+  isa: thumb
+  unit: asm/split/split_801537C.s
+  name: sub_80154BA
+- addr: '0x080154CE'
+  isa: thumb
+  unit: asm/split/split_801537C.s
+  name: sub_80154CE
+- addr: '0x080154DC'
+  isa: thumb
+  unit: asm/split/split_80154DC.s
+  name: sub_80154DC
+- addr: '0x08015588'
+  isa: thumb
+  unit: asm/split/split_80154DC.s
+  name: sub_8015588
+- addr: '0x080155D6'
+  isa: thumb
+  unit: asm/split/split_80154DC.s
+  name: sub_80155D6
+- addr: '0x080156B4'
+  isa: thumb
+  unit: asm/split/split_80154DC.s
+  name: sub_80156B4
+- addr: '0x080158E0'
+  isa: thumb
+  unit: asm/split/split_80158E0.s
+  name: sub_80158E0
+- addr: '0x080158F0'
+  isa: thumb
+  unit: asm/split/split_80158E0.s
+  name: sub_80158F0
+- addr: '0x08015A16'
+  isa: thumb
+  unit: asm/split/split_80158E0.s
+  name: sub_8015A16
+- addr: '0x08015B1E'
+  isa: thumb
+  unit: asm/split/split_80158E0.s
+  name: sub_8015B1E
+- addr: '0x08015EC2'
+  isa: thumb
+  unit: asm/split/split_80158E0.s
+  name: sub_8015EC2
+- addr: '0x08016108'
+  isa: thumb
+  unit: asm/split/split_8016108.s
+  name: sub_8016108
+- addr: '0x0801613E'
+  isa: thumb
+  unit: asm/split/split_8016108.s
+  name: sub_801613E
+- addr: '0x08016176'
+  isa: thumb
+  unit: asm/split/split_8016108.s
+  name: sub_8016176
+- addr: '0x080162D6'
+  isa: thumb
+  unit: asm/split/split_8016108.s
+  name: sub_80162D6
+- addr: '0x080163D4'
+  isa: thumb
+  unit: asm/split/split_80163D4.s
+  name: sub_80163D4
+- addr: '0x0801642C'
+  isa: thumb
+  unit: asm/split/split_80163D4.s
+  name: sub_801642C
+- addr: '0x080164A8'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_80164A8
+- addr: '0x080164E6'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_80164E6
+- addr: '0x08016526'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_8016526
+- addr: '0x08016556'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_8016556
+- addr: '0x0801659C'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_801659C
+- addr: '0x080165F2'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_80165F2
+- addr: '0x08016612'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_8016612
+- addr: '0x08016690'
+  isa: thumb
+  unit: asm/split/split_80164A8.s
+  name: sub_8016690
+- addr: '0x0801669C'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_801669C
+- addr: '0x080166DC'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_80166DC
+- addr: '0x080166FE'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_80166FE
+- addr: '0x0801678C'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_801678C
+- addr: '0x0801679E'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_801679E
+- addr: '0x080167AC'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_80167AC
+- addr: '0x08016828'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016828
+- addr: '0x08016850'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016850
+- addr: '0x080168E8'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_80168E8
+- addr: '0x08016BAC'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016BAC
+- addr: '0x08016BE0'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016BE0
+- addr: '0x08016CB6'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016CB6
+- addr: '0x08016CE0'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016CE0
+- addr: '0x08016D0E'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016D0E
+- addr: '0x08016D24'
+  isa: thumb
+  unit: asm/split/split_801669C.s
+  name: sub_8016D24
+- addr: '0x08016D90'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016D90
+- addr: '0x08016E20'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016E20
+- addr: '0x08016E8C'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016E8C
+- addr: '0x08016F50'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016F50
+- addr: '0x08016F78'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016F78
+- addr: '0x08016FA2'
+  isa: thumb
+  unit: asm/split/split_8016D90.s
+  name: sub_8016FA2
+- addr: '0x08017130'
+  isa: thumb
+  unit: asm/split/split_8017130.s
+  name: sub_8017130
+- addr: '0x080171BE'
+  isa: thumb
+  unit: asm/split/split_8017130.s
+  name: maybeGameObjFactory
+- addr: '0x08017444'
+  isa: thumb
+  unit: asm/split/split_8017444.s
+  name: sub_8017444
+- addr: '0x08017450'
+  isa: thumb
+  unit: asm/split/split_8017444.s
+  name: sub_8017450
+- addr: '0x08017474'
+  isa: thumb
+  unit: asm/split/split_8017474.s
+  name: InitScriptData
+- addr: '0x080175D4'
+  isa: thumb
+  unit: asm/split/split_8017474.s
+  name: sub_80175D4
+- addr: '0x08017620'
+  isa: thumb
+  unit: asm/split/split_8017474.s
+  name: sub_8017620
+- addr: '0x080177D8'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_80177D8
+- addr: '0x080177E8'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_80177E8
+- addr: '0x08017862'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_8017862
+- addr: '0x08017884'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_8017884
+- addr: '0x080179BE'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_80179BE
+- addr: '0x08017A0A'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_8017A0A
+- addr: '0x08017A56'
+  isa: thumb
+  unit: asm/split/split_80177D8.s
+  name: sub_8017A56
+- addr: '0x08017AB0'
+  isa: thumb
+  unit: asm/split/split_8017AB0.s
+  name: sub_8017AB0
+- addr: '0x08017AFE'
+  isa: thumb
+  unit: asm/split/split_8017AB0.s
+  name: sub_8017AFE
+- addr: '0x08017B4C'
+  isa: thumb
+  unit: asm/split/split_8017AB0.s
+  name: sub_8017B4C
+- addr: '0x08017B9A'
+  isa: thumb
+  unit: asm/split/split_8017AB0.s
+  name: sub_8017B9A
+- addr: '0x08017CA0'
+  isa: thumb
+  unit: asm/split/split_8017AB0.s
+  name: sub_8017CA0
+- addr: '0x08017DC8'
+  isa: thumb
+  unit: asm/split/split_8017DC8.s
+  name: sub_8017DC8
+- addr: '0x08017DD4'
+  isa: thumb
+  unit: asm/split/split_8017DC8.s
+  name: sub_8017DD4
+- addr: '0x08017DE6'
+  isa: thumb
+  unit: asm/split/split_8017DC8.s
+  name: sub_8017DE6
+- addr: '0x08017E40'
+  isa: thumb
+  unit: asm/split/split_8017E40.s
+  name: PlayIntroMovie
+- addr: '0x08017F0E'
+  isa: thumb
+  unit: asm/split/split_8017E40.s
+  name: PlayIntroLogo
+- addr: '0x08017FF4'
+  isa: thumb
+  unit: asm/split/split_8017E40.s
+  name: sub_8017FF4
+- addr: '0x08017FFE'
+  isa: thumb
+  unit: asm/split/split_8017E40.s
+  name: HandleIntro
+- addr: '0x08018070'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: FadeToImage
+- addr: '0x080180BE'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: FadeToBlack
+- addr: '0x0801810E'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: sub_801810E
+- addr: '0x08018110'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: sub_8018110
+- addr: '0x08018160'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: sub_8018160
+- addr: '0x0801819E'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: sub_801819E
+- addr: '0x0801828A'
+  isa: thumb
+  unit: asm/split/split_8018070.s
+  name: sub_801828A
+- addr: '0x0801837C'
+  isa: thumb
+  unit: asm/split/split_801837C.s
+  name: SetGlobalFunction
+- addr: '0x08018386'
+  isa: thumb
+  unit: asm/split/split_801837C.s
+  name: SetNextGlobalFunction
+- addr: '0x08018390'
+  isa: thumb
+  unit: asm/split/split_801837C.s
+  name: GetNextGlobalFunction
+- addr: '0x08018398'
+  isa: thumb
+  unit: asm/split/split_801837C.s
+  name: MainLoop
+- addr: '0x080183BC'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_80183BC
+- addr: '0x080184BC'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_80184BC
+- addr: '0x08018540'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018540
+- addr: '0x08018620'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018620
+- addr: '0x08018688'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018688
+- addr: '0x080186D8'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_80186D8
+- addr: '0x08018712'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018712
+- addr: '0x08018734'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018734
+- addr: '0x0801876E'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_801876E
+- addr: '0x080187A0'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_80187A0
+- addr: '0x080187D2'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_80187D2
+- addr: '0x08018884'
+  isa: thumb
+  unit: asm/split/split_80183BC.s
+  name: sub_8018884
+- addr: '0x0801897C'
+  isa: thumb
+  unit: asm/split/split_801897C.s
+  name: sub_801897C
+- addr: '0x080189BC'
+  isa: thumb
+  unit: asm/split/split_801897C.s
+  name: sub_80189BC
+- addr: '0x08018C48'
+  isa: thumb
+  unit: asm/split/split_8018C48.s
+  name: sub_8018C48
+- addr: '0x08018D76'
+  isa: thumb
+  unit: asm/split/split_8018C48.s
+  name: sub_8018D76
+- addr: '0x08018E34'
+  isa: thumb
+  unit: asm/split/split_8018E34.s
+  name: sub_8018E34
+- addr: '0x08018E7E'
+  isa: thumb
+  unit: asm/split/split_8018E34.s
+  name: sub_8018E7E
+- addr: '0x08018F5E'
+  isa: thumb
+  unit: asm/split/split_8018E34.s
+  name: sub_8018F5E
+- addr: '0x080192CE'
+  isa: thumb
+  unit: asm/split/split_8018E34.s
+  name: HandleFavorsScreen
+- addr: '0x080195D0'
+  isa: thumb
+  unit: asm/split/split_80195D0.s
+  name: sub_80195D0
+- addr: '0x0801966A'
+  isa: thumb
+  unit: asm/split/split_80195D0.s
+  name: sub_801966A
+- addr: '0x080197AC'
+  isa: thumb
+  unit: asm/split/split_80195D0.s
+  name: sub_80197AC
+- addr: '0x08019BE2'
+  isa: thumb
+  unit: asm/split/split_80195D0.s
+  name: HandleInventoryScreen
+- addr: '0x08019EE0'
+  isa: thumb
+  unit: asm/split/split_8019EE0.s
+  name: sub_8019EE0
+- addr: '0x08019F60'
+  isa: thumb
+  unit: asm/split/split_8019EE0.s
+  name: sub_8019F60
+- addr: '0x0801A0D2'
+  isa: thumb
+  unit: asm/split/split_8019EE0.s
+  name: sub_801A0D2
+- addr: '0x0801A4DA'
+  isa: thumb
+  unit: asm/split/split_8019EE0.s
+  name: HandleMagicScreen
+- addr: '0x0801A760'
+  isa: thumb
+  unit: asm/split/split_801A760.s
+  name: sub_801A760
+- addr: '0x0801A82E'
+  isa: thumb
+  unit: asm/split/split_801A760.s
+  name: sub_801A82E
+- addr: '0x0801A8B8'
+  isa: thumb
+  unit: asm/split/split_801A760.s
+  name: sub_801A8B8
+- addr: '0x0801AB34'
+  isa: thumb
+  unit: asm/split/split_801AB34.s
+  name: HandleMainMenu
+- addr: '0x0801ABFC'
+  isa: thumb
+  unit: asm/split/split_801ABFC.s
+  name: sub_801ABFC
+- addr: '0x0801AC60'
+  isa: thumb
+  unit: asm/split/split_801ABFC.s
+  name: sub_801AC60
+- addr: '0x0801AD22'
+  isa: thumb
+  unit: asm/split/split_801ABFC.s
+  name: sub_801AD22
+- addr: '0x0801AED0'
+  isa: thumb
+  unit: asm/split/split_801AED0.s
+  name: HandleObjectivesScreen
+- addr: '0x0801B10C'
+  isa: thumb
+  unit: asm/split/split_801B10C.s
+  name: sub_801B10C
+- addr: '0x0801B170'
+  isa: thumb
+  unit: asm/split/split_801B10C.s
+  name: sub_801B170
+- addr: '0x0801B1EC'
+  isa: thumb
+  unit: asm/split/split_801B10C.s
+  name: sub_801B1EC
+- addr: '0x0801B212'
+  isa: thumb
+  unit: asm/split/split_801B10C.s
+  name: sub_801B212
+- addr: '0x0801B332'
+  isa: thumb
+  unit: asm/split/split_801B10C.s
+  name: sub_801B332
+- addr: '0x0801B48C'
+  isa: thumb
+  unit: asm/split/split_801B48C.s
+  name: sub_801B48C
+- addr: '0x0801B56C'
+  isa: thumb
+  unit: asm/split/split_801B48C.s
+  name: sub_801B56C
+- addr: '0x0801BBE0'
+  isa: thumb
+  unit: asm/split/split_801BBE0.s
+  name: sub_801BBE0
+- addr: '0x0801BEA0'
+  isa: thumb
+  unit: asm/split/split_801BEA0.s
+  name: gameExit
+- addr: '0x0801BEB4'
+  isa: thumb
+  unit: asm/split/split_801BEA0.s
+  name: nullsub_47
+- addr: '0x0801BEB6'
+  isa: thumb
+  unit: asm/split/split_801BEA0.s
+  name: sub_801BEB6
+- addr: '0x0801C210'
+  isa: thumb
+  unit: asm/split/split_801C210.s
+  name: sub_801C210
+- addr: '0x0801C352'
+  isa: thumb
+  unit: asm/split/split_801C210.s
+  name: sub_801C352
+- addr: '0x0801C4A4'
+  isa: thumb
+  unit: asm/split/split_801C4A4.s
+  name: sub_801C4A4
+- addr: '0x0801C7D2'
+  isa: thumb
+  unit: asm/split/split_801C4A4.s
+  name: MaybeTickAllGameObjs
+- addr: '0x0801CA1E'
+  isa: thumb
+  unit: asm/split/split_801C4A4.s
+  name: sub_801CA1E
+- addr: '0x0801CAC0'
+  isa: thumb
+  unit: asm/split/split_801C4A4.s
+  name: sub_801CAC0
+- addr: '0x0801CB18'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CB18
+- addr: '0x0801CB4E'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CB4E
+- addr: '0x0801CBAA'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CBAA
+- addr: '0x0801CBDE'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CBDE
+- addr: '0x0801CC3C'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CC3C
+- addr: '0x0801CC72'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CC72
+- addr: '0x0801CCA8'
+  isa: thumb
+  unit: asm/split/split_801CB18.s
+  name: sub_801CCA8
+- addr: '0x0801CCEC'
+  isa: thumb
+  unit: asm/split/split_801CCEC.s
+  name: sub_801CCEC
+- addr: '0x0801CD96'
+  isa: thumb
+  unit: asm/split/split_801CCEC.s
+  name: sub_801CD96
+- addr: '0x0801CEC6'
+  isa: thumb
+  unit: asm/split/split_801CCEC.s
+  name: sub_801CEC6
+- addr: '0x0801D360'
+  isa: thumb
+  unit: asm/split/split_801CCEC.s
+  name: HandleLoadGameScreen
+- addr: '0x0801D564'
+  isa: thumb
+  unit: asm/split/split_801D564.s
+  name: Init_and_add_some_object
+- addr: '0x0801D6C4'
+  isa: thumb
+  unit: asm/split/split_801D564.s
+  name: m1C__7DefaultFv
+- addr: '0x0801D714'
+  isa: thumb
+  unit: asm/split/split_801D564.s
+  name: m00__7DefaultFv
+- addr: '0x0801D788'
+  isa: thumb
+  unit: asm/split/split_801D564.s
+  name: sub_801D788
+- addr: '0x0801D9B0'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801D9B0
+- addr: '0x0801DA2A'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DA2A
+- addr: '0x0801DA46'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DA46
+- addr: '0x0801DAA0'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DAA0
+- addr: '0x0801DAEC'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DAEC
+- addr: '0x0801DB3E'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DB3E
+- addr: '0x0801DB80'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DB80
+- addr: '0x0801DB90'
+  isa: thumb
+  unit: asm/split/split_801D9B0.s
+  name: sub_801DB90
+- addr: '0x0801DCFC'
+  isa: thumb
+  unit: asm/split/split_801DCFC.s
+  name: sub_801DCFC
+- addr: '0x0801DD40'
+  isa: thumb
+  unit: asm/split/split_801DCFC.s
+  name: m04__7DefaultFv
+- addr: '0x0801DF50'
+  isa: thumb
+  unit: asm/split/split_801DCFC.s
+  name: m08__7DefaultFv
+- addr: '0x0801DFD4'
+  isa: thumb
+  unit: asm/split/split_801DFD4.s
+  name: m18__7DefaultFv
+- addr: '0x0801E124'
+  isa: thumb
+  unit: asm/split/split_801DFD4.s
+  name: m20__7DefaultFv
+- addr: '0x0801E2D0'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: Attack__7DefaultFv
+- addr: '0x0801E2D4'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: DamagePlayer__7DefaultFv
+- addr: '0x0801E2D6'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: PlayerIframe__7DefaultFv
+- addr: '0x0801E2DA'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: Dying__7DefaultFv
+- addr: '0x0801E4BC'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m40__7DefaultFv
+- addr: '0x0801E4BE'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: Dead__7DefaultFv
+- addr: '0x0801E4CE'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m44__7DefaultFv
+- addr: '0x0801E4D0'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: sub_801E4D0
+- addr: '0x0801E756'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: sub_801E756
+- addr: '0x0801E7A6'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m0C__7DefaultFv
+- addr: '0x0801EBCA'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m10__7DefaultFv
+- addr: '0x0801F0F0'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m14__7DefaultFv
+- addr: '0x0801F252'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m3C__7DefaultFv
+- addr: '0x0801F274'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: m38__7DefaultFv
+- addr: '0x0801F276'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: Intersect__7DefaultFv
+- addr: '0x0801F286'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: TakeDamage__7DefaultFv
+- addr: '0x0801F28C'
+  isa: thumb
+  unit: asm/split/split_801E2D0.s
+  name: sub_801F28C
+- addr: '0x0801F2F8'
+  isa: thumb
+  unit: asm/split/split_801F2F8.s
+  name: sub_801F2F8
+- addr: '0x0801F450'
+  isa: thumb
+  unit: asm/split/split_801F2F8.s
+  name: sub_801F450
+- addr: '0x0801F4F0'
+  isa: thumb
+  unit: asm/split/split_801F2F8.s
+  name: sub_801F4F0
+- addr: '0x0801F640'
+  isa: thumb
+  unit: asm/split/split_801F640.s
+  name: sub_801F640
+- addr: '0x0801F65C'
+  isa: thumb
+  unit: asm/split/split_801F640.s
+  name: sub_801F65C
+- addr: '0x0801F6DE'
+  isa: thumb
+  unit: asm/split/split_801F640.s
+  name: sub_801F6DE
+- addr: '0x0801F794'
+  isa: thumb
+  unit: asm/split/split_801F794.s
+  name: Anonymous4__Create
+- addr: '0x0801F8B4'
+  isa: thumb
+  unit: asm/split/split_801F794.s
+  name: Anonymous4__ctor
+- addr: '0x0801F906'
+  isa: thumb
+  unit: asm/split/split_801F794.s
+  name: sub_801F906
+- addr: '0x0801FE90'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_801FE90
+- addr: '0x0801FEFE'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_801FEFE
+- addr: '0x0801FF68'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_801FF68
+- addr: '0x080200A4'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_80200A4
+- addr: '0x080200E0'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_80200E0
+- addr: '0x08020A74'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_8020A74
+- addr: '0x08020AB6'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_8020AB6
+- addr: '0x08020B50'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_8020B50
+- addr: '0x08020B60'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_8020B60
+- addr: '0x08020B6E'
+  isa: thumb
+  unit: asm/split/split_801FE90.s
+  name: sub_8020B6E
+- addr: '0x08021248'
+  isa: thumb
+  unit: asm/split/split_8021248.s
+  name: sub_8021248
+- addr: '0x08021A38'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021A38
+- addr: '0x08021A98'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021A98
+- addr: '0x08021ADE'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021ADE
+- addr: '0x08021B84'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021B84
+- addr: '0x08021CFC'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021CFC
+- addr: '0x08021EEC'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021EEC
+- addr: '0x08021F42'
+  isa: thumb
+  unit: asm/split/split_8021A38.s
+  name: sub_8021F42
+- addr: '0x080221AC'
+  isa: thumb
+  unit: asm/split/split_80221AC.s
+  name: sub_80221AC
+- addr: '0x0802222C'
+  isa: thumb
+  unit: asm/split/split_80221AC.s
+  name: sub_802222C
+- addr: '0x080222D0'
+  isa: thumb
+  unit: asm/split/split_80222D0.s
+  name: sub_80222D0
+- addr: '0x08022306'
+  isa: thumb
+  unit: asm/split/split_80222D0.s
+  name: sub_8022306
+- addr: '0x080225E4'
+  isa: thumb
+  unit: asm/split/split_80225E4.s
+  name: sub_80225E4
+- addr: '0x08022726'
+  isa: thumb
+  unit: asm/split/split_80225E4.s
+  name: HandlePlayCreditsFromOptions
+- addr: '0x08022840'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_8022840
+- addr: '0x080228D2'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_80228D2
+- addr: '0x080229B2'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_80229B2
+- addr: '0x08022A24'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_8022A24
+- addr: '0x08022D6E'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: HandleIngameOptionsScreen
+- addr: '0x08022F8C'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_8022F8C
+- addr: '0x08022FFC'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_8022FFC
+- addr: '0x080230DC'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_80230DC
+- addr: '0x080231B0'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: sub_80231B0
+- addr: '0x08023486'
+  isa: thumb
+  unit: asm/split/split_8022840.s
+  name: HandleMainMenuOptionsScreen
+- addr: '0x080235E4'
+  isa: thumb
+  unit: asm/split/split_80235E4.s
+  name: sub_80235E4
+- addr: '0x0802363C'
+  isa: thumb
+  unit: asm/split/split_80235E4.s
+  name: sub_802363C
+- addr: '0x080236D4'
+  isa: thumb
+  unit: asm/split/split_80235E4.s
+  name: sub_80236D4
+- addr: '0x080237DA'
+  isa: thumb
+  unit: asm/split/split_80235E4.s
+  name: sub_80237DA
+- addr: '0x0802383A'
+  isa: thumb
+  unit: asm/split/split_80235E4.s
+  name: sub_802383A
+- addr: '0x08023D0C'
+  isa: thumb
+  unit: asm/split/split_8023D0C.s
+  name: sub_8023D0C
+- addr: '0x08023DD0'
+  isa: thumb
+  unit: asm/split/split_8023D0C.s
+  name: sub_8023DD0
+- addr: '0x08023F88'
+  isa: thumb
+  unit: asm/split/split_8023D0C.s
+  name: sub_8023F88
+- addr: '0x08023FE4'
+  isa: thumb
+  unit: asm/split/split_8023D0C.s
+  name: sub_8023FE4
+- addr: '0x08024084'
+  isa: thumb
+  unit: asm/split/split_8024084.s
+  name: sub_8024084
+- addr: '0x0802416A'
+  isa: thumb
+  unit: asm/split/split_8024084.s
+  name: sub_802416A
+- addr: '0x080241DA'
+  isa: thumb
+  unit: asm/split/split_8024084.s
+  name: sub_80241DA
+- addr: '0x080244C6'
+  isa: thumb
+  unit: asm/split/split_8024084.s
+  name: sub_80244C6
+- addr: '0x0802459E'
+  isa: thumb
+  unit: asm/split/split_8024084.s
+  name: sub_802459E
+- addr: '0x080247A4'
+  isa: thumb
+  unit: asm/split/split_80247A4.s
+  name: sub_80247A4
+- addr: '0x08024D30'
+  isa: thumb
+  unit: asm/split/split_80247A4.s
+  name: sub_8024D30
+- addr: '0x08024E54'
+  isa: thumb
+  unit: asm/split/split_8024E54.s
+  name: sub_8024E54
+- addr: '0x08024E8A'
+  isa: thumb
+  unit: asm/split/split_8024E54.s
+  name: sub_8024E8A
+- addr: '0x08024EBC'
+  isa: thumb
+  unit: asm/split/split_8024E54.s
+  name: sub_8024EBC
+- addr: '0x08024F08'
+  isa: thumb
+  unit: asm/split/split_8024E54.s
+  name: sub_8024F08
+- addr: '0x080250E4'
+  isa: thumb
+  unit: asm/split/split_80250E4.s
+  name: sub_80250E4
+- addr: '0x080251CA'
+  isa: thumb
+  unit: asm/split/split_80250E4.s
+  name: sub_80251CA
+- addr: '0x08025214'
+  isa: thumb
+  unit: asm/split/split_80250E4.s
+  name: sub_8025214
+- addr: '0x080253A8'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__Create
+- addr: '0x0802541E'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__ctor
+- addr: '0x08025440'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__04
+- addr: '0x0802544C'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__08
+- addr: '0x08025458'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__38
+- addr: '0x08025478'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__3C
+- addr: '0x080254AA'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__Intersect
+- addr: '0x08025512'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__10
+- addr: '0x0802551E'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: Npc__40
+- addr: '0x0802591A'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_802591A
+- addr: '0x08025960'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025960
+- addr: '0x080259A4'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_80259A4
+- addr: '0x080259EC'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_80259EC
+- addr: '0x08025A32'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025A32
+- addr: '0x08025DEE'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025DEE
+- addr: '0x08025E30'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025E30
+- addr: '0x08025EF6'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025EF6
+- addr: '0x08025F36'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025F36
+- addr: '0x08025F7C'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025F7C
+- addr: '0x08025F94'
+  isa: thumb
+  unit: asm/split/split_80253A8.s
+  name: sub_8025F94
+- addr: '0x08026014'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: MaybeHandleTransitionToArea
+- addr: '0x08026024'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: GenericObject__Create
+- addr: '0x0802608C'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: GenericObject__ctor
+- addr: '0x080260AE'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: sub_80260AE
+- addr: '0x080260C8'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: sub_80260C8
+- addr: '0x080261C8'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: sub_80261C8
+- addr: '0x080261F6'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: GenericObject__04
+- addr: '0x08026258'
+  isa: thumb
+  unit: asm/split/split_8026014.s
+  name: GenericObject__08
+- addr: '0x080262CC'
+  isa: thumb
+  unit: asm/split/split_80262CC.s
+  name: GenericObject__10
+- addr: '0x0802636C'
+  isa: thumb
+  unit: asm/split/split_80262CC.s
+  name: GenericObject__40
+- addr: '0x080268AC'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_80268AC
+- addr: '0x080268BA'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_80268BA
+- addr: '0x080268C8'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_80268C8
+- addr: '0x08026908'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_8026908
+- addr: '0x0802693A'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_802693A
+- addr: '0x08026962'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_8026962
+- addr: '0x08028A7C'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_8028A7C
+- addr: '0x08028B2C'
+  isa: thumb
+  unit: asm/split/split_80268AC.s
+  name: sub_8028B2C
+- addr: '0x08028BE4'
+  isa: thumb
+  unit: asm/split/split_8028BE4.s
+  name: sub_8028BE4
+- addr: '0x08028BFC'
+  isa: thumb
+  unit: asm/split/split_8028BE4.s
+  name: sub_8028BFC
+- addr: '0x08028C2E'
+  isa: thumb
+  unit: asm/split/split_8028BE4.s
+  name: sub_8028C2E
+- addr: '0x08028C42'
+  isa: thumb
+  unit: asm/split/split_8028BE4.s
+  name: sub_8028C42
+- addr: '0x08028C5C'
+  isa: thumb
+  unit: asm/split/split_8028BE4.s
+  name: sub_8028C5C
+- addr: '0x08028C7C'
+  isa: thumb
+  unit: asm/split/split_8028C7C.s
+  name: MaybeHandleIngameCutscene
+- addr: '0x08028CE8'
+  isa: thumb
+  unit: asm/split/split_8028CE8.s
+  name: MaybeHandleBootIntoGame
+- addr: '0x08028D60'
+  isa: thumb
+  unit: asm/split/split_8028D60.s
+  name: HandleMainIngameLoop
+- addr: '0x08028F64'
+  isa: thumb
+  unit: asm/split/split_8028F64.s
+  name: sub_8028F64
+- addr: '0x08029070'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: HostileCreature__Create
+- addr: '0x0802911C'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: HostileCreature__ctor
+- addr: '0x0802913E'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: sub_802913E
+- addr: '0x0802925C'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: sub_802925C
+- addr: '0x08029290'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: sub_8029290
+- addr: '0x080292E4'
+  isa: thumb
+  unit: asm/split/split_8029070.s
+  name: HostileCreature__08
+- addr: '0x0802936C'
+  isa: thumb
+  unit: asm/split/split_802936C.s
+  name: sub_802936C
+- addr: '0x080293D0'
+  isa: thumb
+  unit: asm/split/split_802936C.s
+  name: sub_80293D0
+- addr: '0x08029420'
+  isa: thumb
+  unit: asm/split/split_802936C.s
+  name: HostileCreature__Dying
+- addr: '0x080294EE'
+  isa: thumb
+  unit: asm/split/split_802936C.s
+  name: sub_80294EE
+- addr: '0x080295CC'
+  isa: thumb
+  unit: asm/split/split_802936C.s
+  name: HostileCreature__Attack
+- addr: '0x080296E0'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: sub_80296E0
+- addr: '0x0802972E'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: Monster__10
+- addr: '0x08029B18'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: sub_8029B18
+- addr: '0x0802AC4E'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: maybeCall60IfActive
+- addr: '0x0802AC74'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: sub_802AC74
+- addr: '0x0802ACDE'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__60
+- addr: '0x0802AFEA'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__3C
+- addr: '0x0802B03E'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__DamagePlayer
+- addr: '0x0802B04A'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__PlayerIframe
+- addr: '0x0802B054'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__20
+- addr: '0x0802B0A0'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: sub_802B0A0
+- addr: '0x0802B0A2'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileCreature__54
+- addr: '0x0802B0CA'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: sub_802B0CA
+- addr: '0x0802B114'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileScriptGroups__58
+- addr: '0x0802B1CC'
+  isa: thumb
+  unit: asm/split/split_80296E0.s
+  name: HostileBaseObject__5C
+- addr: '0x0802B288'
+  isa: thumb
+  unit: asm/split/split_802B288.s
+  name: sub_802B288
+- addr: '0x0802B2F8'
+  isa: thumb
+  unit: asm/split/split_802B288.s
+  name: sub_802B2F8
+- addr: '0x0802B382'
+  isa: thumb
+  unit: asm/split/split_802B288.s
+  name: sub_802B382
+- addr: '0x0802B390'
+  isa: thumb
+  unit: asm/split/split_802B288.s
+  name: sub_802B390
+- addr: '0x0802B3D6'
+  isa: thumb
+  unit: asm/split/split_802B288.s
+  name: sub_802B3D6
+- addr: '0x0802B670'
+  isa: thumb
+  unit: asm/split/split_802B670.s
+  name: sub_802B670
+- addr: '0x0802B6F4'
+  isa: thumb
+  unit: asm/split/split_802B670.s
+  name: sub_802B6F4
+- addr: '0x0802B8B0'
+  isa: thumb
+  unit: asm/split/split_802B670.s
+  name: sub_802B8B0
+- addr: '0x0802BA20'
+  isa: thumb
+  unit: asm/split/split_802BA20.s
+  name: sub_802BA20
+- addr: '0x0802BA4C'
+  isa: thumb
+  unit: asm/split/split_802BA20.s
+  name: sub_802BA4C
+- addr: '0x0802BA72'
+  isa: thumb
+  unit: asm/split/split_802BA20.s
+  name: sub_802BA72
+- addr: '0x0802BA94'
+  isa: thumb
+  unit: asm/split/split_802BA20.s
+  name: sub_802BA94
+- addr: '0x0802BCF0'
+  isa: thumb
+  unit: asm/split/split_802BCF0.s
+  name: sub_802BCF0
+- addr: '0x0802BEFC'
+  isa: thumb
+  unit: asm/split/split_802BCF0.s
+  name: sub_802BEFC
+- addr: '0x0802BF34'
+  isa: thumb
+  unit: asm/split/split_802BCF0.s
+  name: sub_802BF34
+- addr: '0x0802BFB4'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802BFB4
+- addr: '0x0802BFBC'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802BFBC
+- addr: '0x0802BFEA'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802BFEA
+- addr: '0x0802C022'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802C022
+- addr: '0x0802C41E'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802C41E
+- addr: '0x0802C5FA'
+  isa: thumb
+  unit: asm/split/split_802BFB4.s
+  name: sub_802C5FA
+- addr: '0x0802C6D0'
+  isa: thumb
+  unit: asm/split/split_802C6D0.s
+  name: sub_802C6D0
+- addr: '0x0802C71E'
+  isa: thumb
+  unit: asm/split/split_802C6D0.s
+  name: sub_802C71E
+- addr: '0x0802C86E'
+  isa: thumb
+  unit: asm/split/split_802C6D0.s
+  name: sub_802C86E
+- addr: '0x0802C884'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802C884
+- addr: '0x0802C8B0'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802C8B0
+- addr: '0x0802C8D2'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802C8D2
+- addr: '0x0802D100'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802D100
+- addr: '0x0802D23C'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802D23C
+- addr: '0x0802D274'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802D274
+- addr: '0x0802D2D0'
+  isa: thumb
+  unit: asm/split/split_802C884.s
+  name: sub_802D2D0
+- addr: '0x0802D2E8'
+  isa: thumb
+  unit: asm/split/split_802D2E8.s
+  name: sub_802D2E8
+- addr: '0x0802D32E'
+  isa: thumb
+  unit: asm/split/split_802D2E8.s
+  name: sub_802D32E
+- addr: '0x0802D384'
+  isa: thumb
+  unit: asm/split/split_802D2E8.s
+  name: sub_802D384
+- addr: '0x0802D920'
+  isa: thumb
+  unit: asm/split/split_802D2E8.s
+  name: sub_802D920
+- addr: '0x0802DD08'
+  isa: thumb
+  unit: asm/split/split_802D2E8.s
+  name: sub_802DD08
+- addr: '0x0802DDDC'
+  isa: thumb
+  unit: asm/split/split_802DDDC.s
+  name: sub_802DDDC
+- addr: '0x0802DE2A'
+  isa: thumb
+  unit: asm/split/split_802DDDC.s
+  name: sub_802DE2A
+- addr: '0x0802DFD8'
+  isa: thumb
+  unit: asm/split/split_802DDDC.s
+  name: sub_802DFD8
+- addr: '0x0802DFE4'
+  isa: thumb
+  unit: asm/split/split_802DDDC.s
+  name: sub_802DFE4
+- addr: '0x0802DFF4'
+  isa: thumb
+  unit: asm/split/split_802DFF4.s
+  name: sub_802DFF4
+- addr: '0x0802E02A'
+  isa: thumb
+  unit: asm/split/split_802DFF4.s
+  name: sub_802E02A
+- addr: '0x0802E04C'
+  isa: thumb
+  unit: asm/split/split_802DFF4.s
+  name: sub_802E04C
+- addr: '0x0802E1D6'
+  isa: thumb
+  unit: asm/split/split_802DFF4.s
+  name: sub_802E1D6
+- addr: '0x0802E384'
+  isa: thumb
+  unit: asm/split/split_802E384.s
+  name: sub_802E384
+- addr: '0x0802E3C6'
+  isa: thumb
+  unit: asm/split/split_802E384.s
+  name: sub_802E3C6
+- addr: '0x0802E40E'
+  isa: thumb
+  unit: asm/split/split_802E384.s
+  name: sub_802E40E
+- addr: '0x0802E418'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E418
+- addr: '0x0802E47A'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E47A
+- addr: '0x0802E4AA'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E4AA
+- addr: '0x0802E4EA'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E4EA
+- addr: '0x0802E4EC'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E4EC
+- addr: '0x0802E4EE'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E4EE
+- addr: '0x0802E5D2'
+  isa: thumb
+  unit: asm/split/split_802E418.s
+  name: sub_802E5D2
+- addr: '0x0802E800'
+  isa: thumb
+  unit: asm/split/split_802E800.s
+  name: sub_802E800
+- addr: '0x0802E8B0'
+  isa: thumb
+  unit: asm/split/split_802E800.s
+  name: sub_802E8B0
+- addr: '0x0802E8F8'
+  isa: thumb
+  unit: asm/split/split_802E800.s
+  name: sub_802E8F8
+- addr: '0x0802E900'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: Object__Create
+- addr: '0x0802E962'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: Object__ctor
+- addr: '0x0802E984'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: ObjectScriptGroup__38
+- addr: '0x0802EA80'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: sub_802EA80
+- addr: '0x0802EAB8'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: ObjectScriptGroup__04
+- addr: '0x0802EADC'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: ObjectScriptGroup__08
+- addr: '0x0802EAFC'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: ObjectScriptGroup__44
+- addr: '0x0802EC40'
+  isa: thumb
+  unit: asm/split/split_802E900.s
+  name: ObjectScriptGroup__20
+- addr: '0x0802EC90'
+  isa: thumb
+  unit: asm/split/split_802EC90.s
+  name: ObjectScriptGroup__40
+- addr: '0x0802ED0C'
+  isa: thumb
+  unit: asm/split/split_802EC90.s
+  name: ObjectScriptGroup__10
+- addr: '0x0802ED1C'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802ED1C
+- addr: '0x0802EF0A'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802EF0A
+- addr: '0x0802F00C'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802F00C
+- addr: '0x0802F04E'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802F04E
+- addr: '0x0802F0B8'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802F0B8
+- addr: '0x0802F0D4'
+  isa: thumb
+  unit: asm/split/split_802ED1C.s
+  name: sub_802F0D4
+- addr: '0x0802F118'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: Anonymous18__Create
+- addr: '0x0802F1CE'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: Anonymous18__ctor
+- addr: '0x0802F1F0'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F1F0
+- addr: '0x0802F210'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F210
+- addr: '0x0802F228'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F228
+- addr: '0x0802F2C6'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: CollectPickup
+- addr: '0x0802F6BA'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F6BA
+- addr: '0x0802F6F4'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F6F4
+- addr: '0x0802F818'
+  isa: thumb
+  unit: asm/split/split_802F118.s
+  name: sub_802F818
+- addr: '0x0802F8A0'
+  isa: thumb
+  unit: asm/split/split_802F8A0.s
+  name: sub_802F8A0
+- addr: '0x0802F926'
+  isa: thumb
+  unit: asm/split/split_802F8A0.s
+  name: sub_802F926
+- addr: '0x0802F9E8'
+  isa: thumb
+  unit: asm/split/split_802F8A0.s
+  name: sub_802F9E8
+- addr: '0x0802FA92'
+  isa: thumb
+  unit: asm/split/split_802F8A0.s
+  name: sub_802FA92
+- addr: '0x0802FBE8'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: sub_802FBE8
+- addr: '0x0802FC38'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__Create
+- addr: '0x0802FC86'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__ctor
+- addr: '0x0802FCA8'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__04
+- addr: '0x0802FCB4'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__08
+- addr: '0x0802FCC0'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__38
+- addr: '0x0802FD0C'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__40
+- addr: '0x0802FD72'
+  isa: thumb
+  unit: asm/split/split_802FBE8.s
+  name: Bird__44
+- addr: '0x0803000C'
+  isa: thumb
+  unit: asm/split/split_803000C.s
+  name: Bird__10
+- addr: '0x0803017E'
+  isa: thumb
+  unit: asm/split/split_803000C.s
+  name: Bird__20
+- addr: '0x080301E8'
+  isa: thumb
+  unit: asm/split/split_80301E8.s
+  name: sub_80301E8
+- addr: '0x08030244'
+  isa: thumb
+  unit: asm/split/split_80301E8.s
+  name: sub_8030244
+- addr: '0x080302CC'
+  isa: thumb
+  unit: asm/split/split_80301E8.s
+  name: sub_80302CC
+- addr: '0x08030346'
+  isa: thumb
+  unit: asm/split/split_80301E8.s
+  name: sub_8030346
+- addr: '0x080305CC'
+  isa: thumb
+  unit: asm/split/split_80305CC.s
+  name: HandleGameOverScreen
+- addr: '0x08030668'
+  isa: thumb
+  unit: asm/split/split_8030668.s
+  name: Monster__Create
+- addr: '0x080306B4'
+  isa: thumb
+  unit: asm/split/split_8030668.s
+  name: Monster__ctor
+- addr: '0x080306D6'
+  isa: thumb
+  unit: asm/split/split_8030668.s
+  name: NonBossHostileScriptGroup__04
+- addr: '0x080306F0'
+  isa: thumb
+  unit: asm/split/split_8030668.s
+  name: Monster__40
+- addr: '0x08030EEC'
+  isa: thumb
+  unit: asm/split/split_8030EEC.s
+  name: Monster__Intersect
+- addr: '0x08031020'
+  isa: thumb
+  unit: asm/split/split_8030EEC.s
+  name: Monster_TakeDamage
+- addr: '0x08031056'
+  isa: thumb
+  unit: asm/split/split_8030EEC.s
+  name: Monster__50
+- addr: '0x0803108C'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__Create
+- addr: '0x080310E6'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__ctor
+- addr: '0x08031108'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__04
+- addr: '0x08031114'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__08
+- addr: '0x08031120'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__38
+- addr: '0x0803116C'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__40
+- addr: '0x0803118C'
+  isa: thumb
+  unit: asm/split/split_803108C.s
+  name: Critter__44
+- addr: '0x08031404'
+  isa: thumb
+  unit: asm/split/split_8031404.s
+  name: Critter__10
+- addr: '0x0803151A'
+  isa: thumb
+  unit: asm/split/split_8031404.s
+  name: Critter__20
+- addr: '0x08031578'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_8031578
+- addr: '0x080315A2'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_80315A2
+- addr: '0x080315CE'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_80315CE
+- addr: '0x080315FC'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_80315FC
+- addr: '0x08031600'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_8031600
+- addr: '0x08031622'
+  isa: thumb
+  unit: asm/split/split_8031578.s
+  name: sub_8031622
+- addr: '0x08031830'
+  isa: thumb
+  unit: asm/split/split_8031830.s
+  name: sub_8031830
+- addr: '0x080318BC'
+  isa: thumb
+  unit: asm/split/split_8031830.s
+  name: sub_80318BC
+- addr: '0x08031B98'
+  isa: thumb
+  unit: asm/split/split_8031B98.s
+  name: HandleShowPictureScreen
+- addr: '0x08031D00'
+  isa: thumb
+  unit: asm/split/split_8031D00.s
+  name: sub_8031D00
+- addr: '0x08031D3E'
+  isa: thumb
+  unit: asm/split/split_8031D00.s
+  name: sub_8031D3E
+- addr: '0x08031D60'
+  isa: thumb
+  unit: asm/split/split_8031D00.s
+  name: sub_8031D60
+- addr: '0x0803248C'
+  isa: thumb
+  unit: asm/split/split_803248C.s
+  name: sub_803248C
+- addr: '0x080327F4'
+  isa: thumb
+  unit: asm/split/split_80327F4.s
+  name: sub_80327F4
+- addr: '0x080328B0'
+  isa: thumb
+  unit: asm/split/split_80327F4.s
+  name: sub_80328B0
+- addr: '0x080328D6'
+  isa: thumb
+  unit: asm/split/split_80327F4.s
+  name: sub_80328D6
+- addr: '0x08032A58'
+  isa: thumb
+  unit: asm/split/split_80327F4.s
+  name: sub_8032A58
+- addr: '0x08032A7E'
+  isa: thumb
+  unit: asm/split/split_80327F4.s
+  name: sub_8032A7E
+- addr: '0x08032A90'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_8032A90
+- addr: '0x08032AC2'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_8032AC2
+- addr: '0x08032B12'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_8032B12
+- addr: '0x08032CCC'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_8032CCC
+- addr: '0x08032F92'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_8032F92
+- addr: '0x0803310E'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_803310E
+- addr: '0x0803315E'
+  isa: thumb
+  unit: asm/split/split_8032A90.s
+  name: sub_803315E
+- addr: '0x08033308'
+  isa: thumb
+  unit: asm/split/split_8033308.s
+  name: sub_8033308
+- addr: '0x08033318'
+  isa: thumb
+  unit: asm/split/split_8033318.s
+  name: WinxClub__Create
+- addr: '0x080333B0'
+  isa: thumb
+  unit: asm/split/split_8033318.s
+  name: WinxClub__ctor
+- addr: '0x080333DC'
+  isa: thumb
+  unit: asm/split/split_8033318.s
+  name: sub_80333DC
+- addr: '0x08033512'
+  isa: thumb
+  unit: asm/split/split_8033318.s
+  name: sub_8033512
+- addr: '0x0803357C'
+  isa: thumb
+  unit: asm/split/split_8033318.s
+  name: sub_803357C
+- addr: '0x0803364C'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__38
+- addr: '0x0803366C'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: sub_803366C
+- addr: '0x0803369C'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__10
+- addr: '0x08033B0E'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__3C
+- addr: '0x08033BEE'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__18
+- addr: '0x08033C0A'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__1C
+- addr: '0x08033C26'
+  isa: thumb
+  unit: asm/split/split_803364C.s
+  name: WinxClub__20
+- addr: '0x08033C58'
+  isa: thumb
+  unit: asm/split/split_8033C58.s
+  name: sub_8033C58
+- addr: '0x08033CA4'
+  isa: thumb
+  unit: asm/split/split_8033C58.s
+  name: sub_8033CA4
+- addr: '0x08033D24'
+  isa: thumb
+  unit: asm/split/split_8033C58.s
+  name: sub_8033D24
+- addr: '0x08033EBA'
+  isa: thumb
+  unit: asm/split/split_8033C58.s
+  name: sub_8033EBA
+- addr: '0x08034358'
+  isa: thumb
+  unit: asm/split/split_8034358.s
+  name: sub_8034358
+- addr: '0x08034408'
+  isa: thumb
+  unit: asm/split/split_8034358.s
+  name: sub_8034408
+- addr: '0x0803442C'
+  isa: thumb
+  unit: asm/split/split_8034358.s
+  name: sub_803442C
+- addr: '0x080344E4'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: Boss__Create
+- addr: '0x08034536'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: Boss__ctor
+- addr: '0x08034558'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: sub_8034558
+- addr: '0x08034570'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: Boss__04
+- addr: '0x080345A4'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: Boss__08
+- addr: '0x080345BC'
+  isa: thumb
+  unit: asm/split/split_80344E4.s
+  name: Boss__40
+- addr: '0x0803490C'
+  isa: thumb
+  unit: asm/split/split_803490C.s
+  name: sub_803490C
+- addr: '0x08034A86'
+  isa: thumb
+  unit: asm/split/split_803490C.s
+  name: sub_8034A86
+- addr: '0x08034B14'
+  isa: thumb
+  unit: asm/split/split_803490C.s
+  name: Boss__10
+- addr: '0x08034B20'
+  isa: thumb
+  unit: asm/split/split_803490C.s
+  name: Boss__Intersect
+- addr: '0x08034D2C'
+  isa: thumb
+  unit: asm/split/split_8034D2C.s
+  name: Boss__TakeDamage
+- addr: '0x08034D5E'
+  isa: thumb
+  unit: asm/split/split_8034D2C.s
+  name: Boss__50
+- addr: '0x08034D98'
+  isa: thumb
+  unit: asm/split/split_8034D98.s
+  name: sub_8034D98
+- addr: '0x08034E4A'
+  isa: thumb
+  unit: asm/split/split_8034D98.s
+  name: sub_8034E4A
+- addr: '0x08034EE0'
+  isa: thumb
+  unit: asm/split/split_8034D98.s
+  name: sub_8034EE0
+- addr: '0x08035324'
+  isa: thumb
+  unit: asm/split/split_8034D98.s
+  name: HandleAlbum
+- addr: '0x08035480'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: ToggleObject__Create
+- addr: '0x0803550E'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: Toggle__ctor
+- addr: '0x08035530'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: sub_8035530
+- addr: '0x0803554A'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: sub_803554A
+- addr: '0x0803564C'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: ToggleObjectGroup__04
+- addr: '0x08035696'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: ToggleObjectGroup__08
+- addr: '0x080356E0'
+  isa: thumb
+  unit: asm/split/split_8035480.s
+  name: ToggleObjectGroup__38
+- addr: '0x08035750'
+  isa: thumb
+  unit: asm/split/split_8035750.s
+  name: ToggleObjectGroup__20
+- addr: '0x080357A4'
+  isa: thumb
+  unit: asm/split/split_8035750.s
+  name: ToggleObjectGroup__10
+- addr: '0x08035852'
+  isa: thumb
+  unit: asm/split/split_8035750.s
+  name: ToggleObjectGroup__48
+- addr: '0x08035890'
+  isa: thumb
+  unit: asm/split/split_8035750.s
+  name: ToggleObjectGroup__44
+- addr: '0x080359C0'
+  isa: thumb
+  unit: asm/split/split_8035750.s
+  name: ToggleObjectGroup__40
+- addr: '0x08035E7C'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObject__Create
+- addr: '0x08035EFA'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObject__ctor
+- addr: '0x08035F1C'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: sub_8035F1C
+- addr: '0x08035F54'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: sub_8035F54
+- addr: '0x08035FB2'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__04
+- addr: '0x08035FE6'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__08
+- addr: '0x08035FFE'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__38
+- addr: '0x0803604E'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__4C
+- addr: '0x08036096'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__20
+- addr: '0x080360EA'
+  isa: thumb
+  unit: asm/split/split_8035E7C.s
+  name: WallObjectScriptGroup__48
+- addr: '0x08036150'
+  isa: thumb
+  unit: asm/split/split_8036150.s
+  name: WallObjectScriptGroup__44
+- addr: '0x080361E8'
+  isa: thumb
+  unit: asm/split/split_8036150.s
+  name: WallObjectScriptGroup__Intersect
+- addr: '0x08036222'
+  isa: thumb
+  unit: asm/split/split_8036150.s
+  name: WallObjectScriptGroup__TakeDamage
+- addr: '0x080363DC'
+  isa: thumb
+  unit: asm/split/split_80363DC.s
+  name: WallObjectScriptGroup__40
+- addr: '0x080365B0'
+  isa: thumb
+  unit: asm/split/split_80363DC.s
+  name: WallObjectScriptGroup__10
+- addr: '0x08036620'
+  isa: thumb
+  unit: asm/split/split_8036620.s
+  name: Static1__Create
+- addr: '0x0803666C'
+  isa: thumb
+  unit: asm/split/split_8036620.s
+  name: sub_803666C
+- addr: '0x0803668E'
+  isa: thumb
+  unit: asm/split/split_8036620.s
+  name: sub_803668E
+- addr: '0x080367C0'
+  isa: thumb
+  unit: asm/split/split_8036620.s
+  name: sub_80367C0
+- addr: '0x080367C2'
+  isa: thumb
+  unit: asm/split/split_8036620.s
+  name: sub_80367C2
+- addr: '0x080368F4'
+  isa: thumb
+  unit: asm/split/split_80368F4.s
+  name: sub_80368F4
+- addr: '0x0803693C'
+  isa: thumb
+  unit: asm/split/split_80368F4.s
+  name: sub_803693C
+- addr: '0x08036A64'
+  isa: thumb
+  unit: asm/split/split_80368F4.s
+  name: sub_8036A64
+- addr: '0x08036A68'
+  isa: thumb
+  unit: asm/split/split_80368F4.s
+  name: sub_8036A68
+- addr: '0x08036B7C'
+  isa: thumb
+  unit: asm/split/split_8036B7C.s
+  name: sub_8036B7C
+- addr: '0x08036BFC'
+  isa: thumb
+  unit: asm/split/split_8036B7C.s
+  name: sub_8036BFC
+- addr: '0x08036C24'
+  isa: thumb
+  unit: asm/split/split_8036B7C.s
+  name: sub_8036C24
+- addr: '0x08036CB4'
+  isa: thumb
+  unit: asm/split/split_8036B7C.s
+  name: sub_8036CB4
+- addr: '0x08036CE4'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: Static2__Create
+- addr: '0x08036D30'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036D30
+- addr: '0x08036D52'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036D52
+- addr: '0x08036E02'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036E02
+- addr: '0x08036E04'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036E04
+- addr: '0x08036E5E'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036E5E
+- addr: '0x08036E66'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036E66
+- addr: '0x08036EEC'
+  isa: thumb
+  unit: asm/split/split_8036CE4.s
+  name: sub_8036EEC
+- addr: '0x08037530'
+  isa: thumb
+  unit: asm/split/split_8037530.s
+  name: sub_8037530
+- addr: '0x08037534'
+  isa: thumb
+  unit: asm/split/split_8037530.s
+  name: sub_8037534
+- addr: '0x08037642'
+  isa: thumb
+  unit: asm/split/split_8037530.s
+  name: sub_8037642
+- addr: '0x0803766A'
+  isa: thumb
+  unit: asm/split/split_8037530.s
+  name: sub_803766A
+- addr: '0x080376F8'
+  isa: thumb
+  unit: asm/split/split_8037530.s
+  name: sub_80376F8
+- addr: '0x0803772C'
+  isa: thumb
+  unit: asm/split/split_803772C.s
+  name: sub_803772C
+- addr: '0x08037756'
+  isa: thumb
+  unit: asm/split/split_803772C.s
+  name: sub_8037756
+- addr: '0x0803778E'
+  isa: thumb
+  unit: asm/split/split_803772C.s
+  name: sub_803778E
+- addr: '0x08037A10'
+  isa: thumb
+  unit: asm/split/split_8037A10.s
+  name: sub_8037A10
+- addr: '0x08037BEE'
+  isa: thumb
+  unit: asm/split/split_8037A10.s
+  name: sub_8037BEE
+- addr: '0x08037CC0'
+  isa: thumb
+  unit: asm/split/split_8037CC0.s
+  name: sub_8037CC0
+- addr: '0x08037CE4'
+  isa: thumb
+  unit: asm/split/split_8037CC0.s
+  name: sub_8037CE4
+- addr: '0x08037E34'
+  isa: thumb
+  unit: asm/split/split_8037CC0.s
+  name: sub_8037E34
+- addr: '0x08037E48'
+  isa: thumb
+  unit: asm/split/split_8037E48.s
+  name: sub_8037E48
+- addr: '0x08037E74'
+  isa: thumb
+  unit: asm/split/split_8037E48.s
+  name: sub_8037E74
+- addr: '0x08037EB2'
+  isa: thumb
+  unit: asm/split/split_8037E48.s
+  name: sub_8037EB2
+- addr: '0x080381C0'
+  isa: thumb
+  unit: asm/split/split_80381C0.s
+  name: sub_80381C0
+- addr: '0x0803842C'
+  isa: thumb
+  unit: asm/split/split_80381C0.s
+  name: sub_803842C
+- addr: '0x0803846C'
+  isa: thumb
+  unit: asm/split/split_803846C.s
+  name: sub_803846C
+- addr: '0x080384D8'
+  isa: thumb
+  unit: asm/split/split_803846C.s
+  name: sub_80384D8
+- addr: '0x080384FA'
+  isa: thumb
+  unit: asm/split/split_803846C.s
+  name: sub_80384FA
+- addr: '0x0803851E'
+  isa: thumb
+  unit: asm/split/split_803846C.s
+  name: sub_803851E
+- addr: '0x08038528'
+  isa: thumb
+  unit: asm/split/split_8038528.s
+  name: sub_8038528
+- addr: '0x08038544'
+  isa: thumb
+  unit: asm/split/split_8038528.s
+  name: sub_8038544
+- addr: '0x080385AC'
+  isa: thumb
+  unit: asm/split/split_8038528.s
+  name: sub_80385AC
+- addr: '0x08038754'
+  isa: thumb
+  unit: asm/split/split_8038528.s
+  name: sub_8038754
+- addr: '0x08038888'
+  isa: thumb
+  unit: asm/split/split_8038888.s
+  name: sub_8038888
+- addr: '0x0803894A'
+  isa: thumb
+  unit: asm/split/split_8038888.s
+  name: sub_803894A
+- addr: '0x080389CC'
+  isa: thumb
+  unit: asm/split/split_8038888.s
+  name: sub_80389CC
+- addr: '0x08038D2C'
+  isa: thumb
+  unit: asm/split/split_8038D2C.s
+  name: HandleTeleportMenu
+- addr: '0x08038E44'
+  isa: thumb
+  unit: asm/split/split_8038E44.s
+  name: sub_8038E44
+- addr: '0x08038EE2'
+  isa: thumb
+  unit: asm/split/split_8038E44.s
+  name: sub_8038EE2
+- addr: '0x080391C8'
+  isa: thumb
+  unit: asm/split/split_80391C8.s
+  name: sub_80391C8
+- addr: '0x08039206'
+  isa: thumb
+  unit: asm/split/split_80391C8.s
+  name: sub_8039206
+- addr: '0x08039336'
+  isa: thumb
+  unit: asm/split/split_80391C8.s
+  name: sub_8039336
+- addr: '0x080397DC'
+  isa: thumb
+  unit: asm/split/split_80391C8.s
+  name: HandleNewGameScreen
+- addr: '0x080399A4'
+  isa: thumb
+  unit: asm/split/split_80399A4.s
+  name: sub_80399A4
+- addr: '0x080399D6'
+  isa: thumb
+  unit: asm/split/split_80399A4.s
+  name: sub_80399D6
+- addr: '0x080399F8'
+  isa: thumb
+  unit: asm/split/split_80399A4.s
+  name: sub_80399F8
+- addr: '0x08039DAC'
+  isa: thumb
+  unit: asm/split/split_8039DAC.s
+  name: sub_8039DAC
+- addr: '0x08039EB6'
+  isa: thumb
+  unit: asm/split/split_8039DAC.s
+  name: sub_8039EB6
+- addr: '0x0803A050'
+  isa: thumb
+  unit: asm/split/split_803A050.s
+  name: Scanner__Create
+- addr: '0x0803A0D2'
+  isa: thumb
+  unit: asm/split/split_803A050.s
+  name: Scanner__ctor
+- addr: '0x0803A0F4'
+  isa: thumb
+  unit: asm/split/split_803A050.s
+  name: ScannerScriptGroup__Dying
+- addr: '0x0803A14C'
+  isa: thumb
+  unit: asm/split/split_803A050.s
+  name: ScannerScriptGroup__40
+- addr: '0x0803A476'
+  isa: thumb
+  unit: asm/split/split_803A050.s
+  name: sub_803A476
+- addr: '0x0803A490'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__60
+- addr: '0x0803A59E'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__38
+- addr: '0x0803A5FC'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__10
+- addr: '0x0803AAC6'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__Intersect
+- addr: '0x0803AAE2'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__20
+- addr: '0x0803AB72'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__StartAttack
+- addr: '0x0803AB74'
+  isa: thumb
+  unit: asm/split/split_803A490.s
+  name: ScannerScriptGroup__StartAttack2
+- addr: '0x0803AB80'
+  isa: thumb
+  unit: asm/split/split_803AB80.s
+  name: sub_803AB80
+- addr: '0x0803ABA6'
+  isa: thumb
+  unit: asm/split/split_803AB80.s
+  name: sub_803ABA6
+- addr: '0x0803ABC8'
+  isa: thumb
+  unit: asm/split/split_803AB80.s
+  name: sub_803ABC8
+- addr: '0x0803AD40'
+  isa: thumb
+  unit: asm/split/split_803AB80.s
+  name: sub_803AD40
+- addr: '0x0803AE60'
+  isa: thumb
+  unit: asm/split/split_803AE60.s
+  name: sub_803AE60
+- addr: '0x0803AE68'
+  isa: thumb
+  unit: asm/split/split_803AE60.s
+  name: sub_803AE68
+- addr: '0x0803AE92'
+  isa: thumb
+  unit: asm/split/split_803AE60.s
+  name: sub_803AE92
+- addr: '0x0803AEB4'
+  isa: thumb
+  unit: asm/split/split_803AE60.s
+  name: sub_803AEB4
+- addr: '0x0803AFCC'
+  isa: thumb
+  unit: asm/split/split_803AE60.s
+  name: sub_803AFCC
+- addr: '0x0803B150'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B150
+- addr: '0x0803B15C'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B15C
+- addr: '0x0803B184'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B184
+- addr: '0x0803B1A6'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B1A6
+- addr: '0x0803B1A8'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B1A8
+- addr: '0x0803B1AC'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B1AC
+- addr: '0x0803B1AE'
+  isa: thumb
+  unit: asm/split/split_803B150.s
+  name: sub_803B1AE
+- addr: '0x0803B318'
+  isa: thumb
+  unit: asm/split/split_803B318.s
+  name: sub_803B318
+- addr: '0x0803B342'
+  isa: thumb
+  unit: asm/split/split_803B318.s
+  name: sub_803B342
+- addr: '0x0803B406'
+  isa: thumb
+  unit: asm/split/split_803B318.s
+  name: HandlePostGameCredits
+- addr: '0x0803B4D8'
+  isa: thumb
+  unit: asm/split/split_803B4D8.s
+  name: IdentifyEeprom
+- addr: '0x0803B520'
+  isa: thumb
+  unit: asm/split/split_803B520.s
+  name: EepromTimerIntr
+- addr: '0x0803B548'
+  isa: thumb
+  unit: asm/split/split_803B520.s
+  name: SetEepromTimerIntr
+- addr: '0x0803B5A0'
+  isa: thumb
+  unit: asm/split/split_803B5A0.s
+  name: sub_803B5A0
+- addr: '0x0803B650'
+  isa: thumb
+  unit: asm/split/split_803B650.s
+  name: Dma3Transmit
+- addr: '0x0803B664'
+  isa: thumb
+  unit: asm/split/split_803B650.s
+  name: sub_803B664
+- addr: '0x0803B7C4'
+  isa: thumb
+  unit: asm/split/split_803B7C4.s
+  name: sub_803B7C4
+- addr: '0x0803B81C'
+  isa: thumb
+  unit: asm/split/split_803B81C.s
+  name: sub_803B81C
+- addr: '0x0803B85C'
+  isa: thumb
+  unit: asm/split/split_803B81C.s
+  name: nullsub_62
+- addr: '0x0803B85E'
+  isa: thumb
+  unit: asm/split/split_803B81C.s
+  name: nullsub_63
+- addr: '0x0803B8D8'
+  isa: thumb
+  unit: asm/cpp_init.s
+  name: __cpp_initialise
+- addr: '0x0803BA1C'
+  isa: thumb
+  unit: asm/split/split_803BA1C.s
+  name: j_nullsub_7
+- addr: '0x0803BA20'
+  isa: arm
+  unit: asm/split/split_803BA1C.s
+  name: nullsub_7
+- addr: '0x0803D4A8'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D4A8
+- addr: '0x0803D5A4'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D5A4
+- addr: '0x0803D66C'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D66C
+- addr: '0x0803D680'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D680
+- addr: '0x0803D834'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D834
+- addr: '0x0803D97C'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D97C
+- addr: '0x0803D984'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D984
+- addr: '0x0803D9A8'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D9A8
+- addr: '0x0803D9C4'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803D9C4
+- addr: '0x0803D9F8'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: __nw__FUi
+- addr: '0x0803DA18'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DA18
+- addr: '0x0803DA4C'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: __da__FPv
+- addr: '0x0803DA80'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DA80
+- addr: '0x0803DA9C'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DA9C
+- addr: '0x0803DAB8'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: nullsub_5
+- addr: '0x0803DABC'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DABC
+- addr: '0x0803DAC0'
+  isa: thumb
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DAC0
+- addr: '0x0803DAC4'
+  isa: arm
+  unit: asm/split/split_803D4A8.s
+  name: __rt_stackheap_init
+- addr: '0x0803DAFC'
+  isa: arm
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DAFC
+- addr: '0x0803DB10'
+  isa: arm
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DB10
+- addr: '0x0803DB18'
+  isa: arm
+  unit: asm/split/split_803D4A8.s
+  name: sub_803DB18
+- addr: '0x0803DB24'
+  isa: arm
+  unit: asm/split/split_803D4A8.s
+  name: _sys_exit
+- addr: '0x0803DB3C'
+  isa: arm
+  unit: asm/split/split_803DB3C.s
+  name: sub_803DB3C
+- addr: '0x0803DCE4'
+  isa: arm
+  unit: asm/split/split_803DB3C.s
+  name: sub_803DCE4
+- addr: '0x0803DEF8'
+  isa: arm
+  unit: asm/split/split_803DB3C.s
+  name: sub_803DEF8
+- addr: '0x0803EF1C'
+  isa: thumb
+  unit: asm/split/split_803EF1C.s
+  name: sub_803EF1C
+- addr: '0x0803EF2C'
+  isa: thumb
+  unit: asm/split/split_803EF1C.s
+  name: sub_803EF2C
+- addr: '0x0803F07C'
+  isa: thumb
+  unit: asm/split/split_803F07C.s
+  name: sub_803F07C
+- addr: '0x0803F0A8'
+  isa: thumb
+  unit: asm/split/split_803F07C.s
+  name: sub_803F0A8
+- addr: '0x0803F110'
+  isa: thumb
+  unit: asm/split/split_803F110.s
+  name: sub_803F110
+- addr: '0x0803F170'
+  isa: thumb
+  unit: asm/split/split_803F170.s
+  name: sub_803F170
+- addr: '0x0803F1AC'
+  isa: thumb
+  unit: asm/split/split_803F1AC.s
+  name: sub_803F1AC
+- addr: '0x0803F23C'
+  isa: thumb
+  unit: asm/split/split_803F23C.s
+  name: sub_803F23C
+- addr: '0x0803F2CC'
+  isa: thumb
+  unit: asm/split/split_803F2CC.s
+  name: sub_803F2CC
+- addr: '0x0803F38C'
+  isa: thumb
+  unit: asm/split/split_803F38C.s
+  name: sub_803F38C
+- addr: '0x0803F3B0'
+  isa: thumb
+  unit: asm/split/split_803F38C.s
+  name: sub_803F3B0
+- addr: '0x0803F3B4'
+  isa: thumb
+  unit: asm/split/split_803F38C.s
+  name: sub_803F3B4
+- addr: '0x0803F3E8'
+  isa: thumb
+  unit: asm/split/split_803F3E8.s
+  name: sub_803F3E8
+- addr: '0x0803F464'
+  isa: thumb
+  unit: asm/split/split_803F464.s
+  name: sub_803F464
+- addr: '0x0803F4CC'
+  isa: arm
+  unit: asm/split/split_803F4CC.s
+  name: sub_803F4CC
+- addr: '0x0803F528'
+  isa: thumb
+  unit: asm/split/split_803F4CC.s
+  name: sub_803F528
+- addr: '0x0803F55C'
+  isa: thumb
+  unit: asm/split/split_803F4CC.s
+  name: sub_803F55C
+- addr: '0x0803F5FC'
+  isa: thumb
+  unit: asm/split/split_803F5FC.s
+  name: sub_803F5FC
+- addr: '0x0803F654'
+  isa: thumb
+  unit: asm/split/split_803F654.s
+  name: sub_803F654
+- addr: '0x0803F6B4'
+  isa: thumb
+  unit: asm/split/split_803F654.s
+  name: sub_803F6B4
+- addr: '0x0803F6E0'
+  isa: thumb
+  unit: asm/split/split_803F6E0.s
+  name: sub_803F6E0
+- addr: '0x0803F708'
+  isa: thumb
+  unit: asm/split/split_803F708.s
+  name: sub_803F708
+- addr: '0x0803F72C'
+  isa: thumb
+  unit: asm/split/split_803F72C.s
+  name: sub_803F72C
+- addr: '0x0803F774'
+  isa: thumb
+  unit: asm/split/split_803F72C.s
+  name: sub_803F774
+- addr: '0x0803F814'
+  isa: thumb
+  unit: asm/split/split_803F72C.s
+  name: sub_803F814
+- addr: '0x0803F898'
+  isa: thumb
+  unit: asm/split/split_803F72C.s
+  name: sub_803F898
+- addr: '0x0803F8BC'
+  isa: thumb
+  unit: asm/split/split_803F8BC.s
+  name: sub_803F8BC
+- addr: '0x0803F904'
+  isa: thumb
+  unit: asm/split/split_803F904.s
+  name: sub_803F904
+- addr: '0x0803F928'
+  isa: thumb
+  unit: asm/split/split_803F904.s
+  name: sub_803F928
+- addr: '0x0803F9C4'
+  isa: thumb
+  unit: asm/split/split_803F904.s
+  name: sub_803F9C4
+- addr: '0x0803FA3C'
+  isa: thumb
+  unit: asm/split/split_803FA3C.s
+  name: sub_803FA3C
+- addr: '0x0803FAB8'
+  isa: thumb
+  unit: asm/split/split_803FAB8.s
+  name: sub_803FAB8
+- addr: '0x0803FAD4'
+  isa: thumb
+  unit: asm/split/split_803FAB8.s
+  name: sub_803FAD4
+- addr: '0x0803FB24'
+  isa: thumb
+  unit: asm/split/split_803FB24.s
+  name: sub_803FB24
+- addr: '0x0803FB58'
+  isa: thumb
+  unit: asm/split/split_803FB58.s
+  name: sub_803FB58
+- addr: '0x0803FBBC'
+  isa: thumb
+  unit: asm/split/split_803FBBC.s
+  name: sub_803FBBC
+- addr: '0x0803FC14'
+  isa: thumb
+  unit: asm/split/split_803FC14.s
+  name: sub_803FC14
+- addr: '0x0803FC68'
+  isa: thumb
+  unit: asm/split/split_803FC68.s
+  name: sub_803FC68
+- addr: '0x0803FD5C'
+  isa: thumb
+  unit: asm/split/split_803FD5C.s
+  name: sub_803FD5C
+- addr: '0x0803FDB8'
+  isa: thumb
+  unit: asm/split/split_803FD5C.s
+  name: sub_803FDB8
+- addr: '0x0803FE80'
+  isa: thumb
+  unit: asm/split/split_803FE80.s
+  name: sub_803FE80
+- addr: '0x0803FEF8'
+  isa: thumb
+  unit: asm/split/split_803FEF8.s
+  name: sub_803FEF8
+- addr: '0x0803FF24'
+  isa: thumb
+  unit: asm/split/split_803FF24.s
+  name: sub_803FF24
+- addr: '0x0803FF64'
+  isa: thumb
+  unit: asm/split/split_803FF24.s
+  name: sub_803FF64
+- addr: '0x08040034'
+  isa: thumb
+  unit: asm/split/split_8040034.s
+  name: sub_8040034
+- addr: '0x08040104'
+  isa: thumb
+  unit: asm/split/split_8040104.s
+  name: sub_8040104
+- addr: '0x08040148'
+  isa: thumb
+  unit: asm/split/split_8040104.s
+  name: sub_8040148
+- addr: '0x080401C0'
+  isa: thumb
+  unit: asm/split/split_80401C0.s
+  name: sub_80401C0
+- addr: '0x080401E4'
+  isa: thumb
+  unit: asm/split/split_80401C0.s
+  name: sub_80401E4
+- addr: '0x0804025C'
+  isa: thumb
+  unit: asm/split/split_804025C.s
+  name: sub_804025C
+- addr: '0x080403A4'
+  isa: thumb
+  unit: asm/split/split_80403A4.s
+  name: sub_80403A4
+- addr: '0x080403C0'
+  isa: arm
+  unit: asm/split/split_80403A4.s
+  name: sub_80403C0
+- addr: '0x080403EC'
+  isa: arm
+  unit: asm/split/split_80403A4.s
+  name: sub_80403EC
+- addr: '0x08040418'
+  isa: arm
+  unit: asm/split/split_80403A4.s
+  name: sub_8040418
+- addr: '0x08040444'
+  isa: thumb
+  unit: asm/split/split_80403A4.s
+  name: sub_8040444
+- addr: '0x08040448'
+  isa: arm
+  unit: asm/split/split_80403A4.s
+  name: sub_8040448
+- addr: '0x08040468'
+  isa: thumb
+  unit: asm/split/split_8040468.s
+  name: sub_8040468
+- addr: '0x0804046C'
+  isa: arm
+  unit: asm/split/split_8040468.s
+  name: sub_804046C
+- addr: '0x08040490'
+  isa: thumb
+  unit: asm/split/split_8040490.s
+  name: sub_8040490
+- addr: '0x08040494'
+  isa: arm
+  unit: asm/split/split_8040490.s
+  name: sub_8040494
+- addr: '0x080404B4'
+  isa: thumb
+  unit: asm/split/split_80404B4.s
+  name: sub_80404B4
+- addr: '0x080404B8'
+  isa: arm
+  unit: asm/split/split_80404B4.s
+  name: sub_80404B8
+- addr: '0x080404D8'
+  isa: thumb
+  unit: asm/split/split_80404D8.s
+  name: sub_80404D8
+- addr: '0x080404DC'
+  isa: arm
+  unit: asm/split/split_80404D8.s
+  name: sub_80404DC
+- addr: '0x08040504'
+  isa: thumb
+  unit: asm/split/split_8040504.s
+  name: sub_8040504
+- addr: '0x08040508'
+  isa: arm
+  unit: asm/split/split_8040504.s
+  name: sub_8040508
+- addr: '0x08040528'
+  isa: thumb
+  unit: asm/split/split_8040528.s
+  name: sub_8040528
+- addr: '0x0804052C'
+  isa: arm
+  unit: asm/split/split_8040528.s
+  name: sub_804052C
+- addr: '0x08040550'
+  isa: thumb
+  unit: asm/split/split_8040550.s
+  name: sub_8040550
+- addr: '0x08040554'
+  isa: arm
+  unit: asm/split/split_8040550.s
+  name: sub_8040554
+- addr: '0x08040574'
+  isa: thumb
+  unit: asm/split/split_8040574.s
+  name: sub_8040574
+- addr: '0x08040578'
+  isa: arm
+  unit: asm/split/split_8040574.s
+  name: sub_8040578
+- addr: '0x08040594'
+  isa: thumb
+  unit: asm/split/split_8040594.s
+  name: sub_8040594
+- addr: '0x08040598'
+  isa: arm
+  unit: asm/split/split_8040594.s
+  name: sub_8040598
+- addr: '0x080405B4'
+  isa: thumb
+  unit: asm/split/split_80405B4.s
+  name: sub_80405B4
+- addr: '0x080405B8'
+  isa: arm
+  unit: asm/split/split_80405B4.s
+  name: sub_80405B8
+- addr: '0x080405D8'
+  isa: thumb
+  unit: asm/split/split_80405D8.s
+  name: sub_80405D8
+- addr: '0x080405DC'
+  isa: arm
+  unit: asm/split/split_80405D8.s
+  name: sub_80405DC
+- addr: '0x080405F8'
+  isa: thumb
+  unit: asm/split/split_80405F8.s
+  name: sub_80405F8
+- addr: '0x080405FC'
+  isa: arm
+  unit: asm/split/split_80405F8.s
+  name: sub_80405FC
+- addr: '0x0804061C'
+  isa: thumb
+  unit: asm/split/split_804061C.s
+  name: sub_804061C
+- addr: '0x08040620'
+  isa: arm
+  unit: asm/split/split_804061C.s
+  name: sub_8040620
+- addr: '0x08040640'
+  isa: thumb
+  unit: asm/split/split_8040640.s
+  name: sub_8040640
+- addr: '0x08040644'
+  isa: arm
+  unit: asm/split/split_8040640.s
+  name: sub_8040644
+- addr: '0x08040660'
+  isa: thumb
+  unit: asm/split/split_8040660.s
+  name: sub_8040660
+- addr: '0x08040664'
+  isa: arm
+  unit: asm/split/split_8040660.s
+  name: sub_8040664
+- addr: '0x08040684'
+  isa: thumb
+  unit: asm/split/split_8040684.s
+  name: sub_8040684
+- addr: '0x08040688'
+  isa: arm
+  unit: asm/split/split_8040684.s
+  name: sub_8040688
+- addr: '0x080406A4'
+  isa: thumb
+  unit: asm/split/split_80406A4.s
+  name: sub_80406A4
+- addr: '0x080406A8'
+  isa: arm
+  unit: asm/split/split_80406A4.s
+  name: sub_80406A8
+- addr: '0x080406C4'
+  isa: thumb
+  unit: asm/split/split_80406C4.s
+  name: sub_80406C4
+- addr: '0x080406C8'
+  isa: arm
+  unit: asm/split/split_80406C4.s
+  name: sub_80406C8
+- addr: '0x080406E4'
+  isa: thumb
+  unit: asm/split/split_80406E4.s
+  name: sub_80406E4
+- addr: '0x080406E8'
+  isa: arm
+  unit: asm/split/split_80406E4.s
+  name: sub_80406E8
+- addr: '0x08040708'
+  isa: thumb
+  unit: asm/split/split_8040708.s
+  name: sub_8040708
+- addr: '0x08040978'
+  isa: thumb
+  unit: asm/split/split_8040978.s
+  name: sub_8040978
+- addr: '0x080409E4'
+  isa: thumb
+  unit: asm/split/split_80409E4.s
+  name: sub_80409E4
+- addr: '0x08040C38'
+  isa: thumb
+  unit: asm/split/split_8040C38.s
+  name: sub_8040C38
+- addr: '0x08040C78'
+  isa: thumb
+  unit: asm/split/split_8040C78.s
+  name: sub_8040C78
+- addr: '0x08041274'
+  isa: thumb
+  unit: asm/split/split_8041274.s
+  name: sub_8041274
+- addr: '0x080412A8'
+  isa: thumb
+  unit: asm/split/split_80412A8.s
+  name: sub_80412A8
+- addr: '0x08041438'
+  isa: thumb
+  unit: asm/split/split_80412A8.s
+  name: _fp_init
+- addr: '0x0804143C'
+  isa: arm
+  unit: asm/split/split_80412A8.s
+  name: __32_fp_init
+- addr: '0x080517C8'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80517C8
+- addr: '0x080518D4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80518D4
+- addr: '0x08051AD0'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8051AD0
+- addr: '0x08052570'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052570
+- addr: '0x08052A10'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A10
+- addr: '0x08052A18'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A18
+- addr: '0x08052A20'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A20
+- addr: '0x08052A2C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A2C
+- addr: '0x08052A38'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A38
+- addr: '0x08052A40'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A40
+- addr: '0x08052A4C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A4C
+- addr: '0x08052A58'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A58
+- addr: '0x08052A64'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A64
+- addr: '0x08052A70'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052A70
+- addr: '0x08052B08'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052B08
+- addr: '0x08052BF4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052BF4
+- addr: '0x08052C4C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052C4C
+- addr: '0x08052C84'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052C84
+- addr: '0x08052D84'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052D84
+- addr: '0x08052D94'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052D94
+- addr: '0x08052DC0'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052DC0
+- addr: '0x08052DC8'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052DC8
+- addr: '0x08052DD4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052DD4
+- addr: '0x08052E78'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052E78
+- addr: '0x08052E80'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052E80
+- addr: '0x08052E90'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8052E90
+- addr: '0x08053CCC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8053CCC
+- addr: '0x08053CD8'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8053CD8
+- addr: '0x08053CE4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8053CE4
+- addr: '0x08053CFC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8053CFC
+- addr: '0x08053D34'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8053D34
+- addr: '0x08054344'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8054344
+- addr: '0x080544AC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80544AC
+- addr: '0x08054514'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8054514
+- addr: '0x080545E4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80545E4
+- addr: '0x0805477C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_805477C
+- addr: '0x08054A4C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8054A4C
+- addr: '0x08054CEC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8054CEC
+- addr: '0x08055014'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055014
+- addr: '0x080554DC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80554DC
+- addr: '0x08055618'
+  isa: arm
+  unit: asm/last_code.s
+  name: nullsub_23
+- addr: '0x0805561C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_805561C
+- addr: '0x0805565C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_805565C
+- addr: '0x08055694'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055694
+- addr: '0x080556CC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80556CC
+- addr: '0x080556DC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80556DC
+- addr: '0x080556F4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80556F4
+- addr: '0x08055724'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055724
+- addr: '0x08055760'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055760
+- addr: '0x080557A0'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557A0
+- addr: '0x080557B4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557B4
+- addr: '0x080557BC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557BC
+- addr: '0x080557C4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557C4
+- addr: '0x080557D0'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557D0
+- addr: '0x080557DC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557DC
+- addr: '0x080557E8'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557E8
+- addr: '0x080557F4'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557F4
+- addr: '0x080557FC'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_80557FC
+- addr: '0x08055808'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055808
+- addr: '0x08055814'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055814
+- addr: '0x08055820'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055820
+- addr: '0x0805582C'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_805582C
+- addr: '0x08055838'
+  isa: arm
+  unit: asm/last_code.s
+  name: sub_8055838

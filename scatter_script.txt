@@ -5,6 +5,7 @@ LOAD_ROM_2 0x02000000
         ewram.o (+RW)
     }
 }
+
 LOAD_ROM_3 0x03000000
 {
     IWRAM1 0x03000000 0x3D38
@@ -21,7 +22,7 @@ LOAD_ROM_3 0x03000000
     {
         rand.o(.bss)
     }
-    
+
     IWRAM2 0x03003E7C 0x4184
     {
         iwram2.o (+RW)
@@ -171,10 +172,12 @@ LOAD_ROM_1 0x08000000
         split_8022840.o
         split_80235E4.o
     }
+
     .src1 0x080239EC
     {
         split_80239EC.o
     }
+
     .text3 0x08023D0C
     {
         split_8023D0C.o
@@ -222,10 +225,12 @@ LOAD_ROM_1 0x08000000
         split_8031404.o
         split_8031578.o
     }
+
     .text3_kiko_code +0
     {
         Kiko.o (+RO-CODE)
     }
+
     .text3b +0
     {
         split_8031830.o
@@ -273,6 +278,7 @@ LOAD_ROM_1 0x08000000
         split_803B150.o
         split_803B318.o
     }
+
     agbeeprom 0x803B4D8
     {
         split_803B4D8.o
@@ -282,287 +288,358 @@ LOAD_ROM_1 0x08000000
         split_803B7C4.o
         split_803B81C.o
     }
+
     sprintf 0x803B860
     {
         sprintf.o
     }
+
     atoi 0x803B8A4
     {
         atoi.o
     }
+
     callvia 0x803B8C8
     {
         callvia.o
     }
+
     __cpp_initialise 0x803B8D8
     {
         cpp_init.o
     }
+
     libspace 0x803B904
     {
         libspace.o
     }
+
     __16_ll_mulls 0x803B914
     {
         llmulls.o
     }
+
     __16_ll_mullu 0x803B920
     {
         llmullu.o
     }
+
     __16_ll_mulss 0x803B92C
     {
         llmulss.o
     }
+
     __16_ll_sdiv 0x803B940
     {
         llsdiv.o
     }
+
     _ll_sshift_l 0x803B998
     {
         llshl.o
     }
+
     __16_ll_srdv 0x803B9C4
     {
         llsrdv.o
     }
+
     nullsub 0x803BA1C
     {
         split_803BA1C.o
     }
+
     __16_ll_udiv 0x803BA24
     {
         lludiv.o
     }
+
     _ll_ushift_r 0x803BD84
     {
         llushr.o
     }
+
     __pvfn__Fv 0x803BDB0
     {
         pvfn.o
     }
+
     rand 0x803BDC0
     {
         rand.o
     }
+
     __16__rt_memclr 0x803BE68
     {
         rt_memclr.o
     }
+
     __16__rt_memclr_w 0x803BEB0
     {
         rt_memclr_w.o
     }
+
     __16__rt_memcpy 0x803BF0C
     {
         rt_memcpy.o
     }
+
     __16__rt_memcpy_w 0x803BFC4
     {
         rt_memcpy_w.o
     }
+
     __16__rt_memset 0x803C034
     {
         rt_memset.o
     }
+
     __16__rt_sdiv 0x803C04C
     {
         rt_sdiv.o
     }
+
     __16__rt_udiv 0x803C124
     {
         rt_udiv.o
     }
+
     __16strcmp 0x803C1E8
     {
         strcmp.o
     }
+
     strcpy 0x803C28C
     {
         strcpy.o
     }
+
     strlen 0x803C2DC
     {
         strlen.o
     }
+
     strncpy 0x803C328
     {
         strncpy.o
     }
+
     strstr 0x803C37C
     {
         strstr.o
     }
+
     __vecmap1c__FPvT1iPFPv_v 0x803C3A4
     {
         vc1c.o
     }
+
     __vecmap1ci__FPvT1iPFPvi_v 0x803C3C8
     {
         vc1ci.o
     }
+
     __vec_ctor_p__FPvUiT2bPFPv_v 0x803C3EC
     {
         vecctorp.o
     }
+
     __vec_dtor__FPvUiPFPvi_vPFPv_v 0x803C428
     {
         vecdtor.o
     }
+
     vsprintf 0x803C47C
     {
         vsprintf.o(.text)
     }
+
     __vfprintf 0x803C4B4
     {
         __vfpntf.o(.text)
     }
+
     _sputc 0x803CDE0
     {
         _sputc.o(.text)
     }
+
     __rt_entry 0x803CDF4
     {
         kernel.o(.text)
     }
+
     _ll_mul 0x803CE44
     {
         llmul3m.o
     }
+
     __16_ll_urdv 0x803CE64
     {
         llurdv.o
     }
+
     raise 0x803CF28
     {
         raise.o
     }
+
     __16__rt_div0 0x803CF38
     {
         rt_div0.o
     }
+
     __rt_errno_addr 0x803CF48
     {
         rt_errno_addr.o
     }
+
     strtol 0x803CF5C
     {
         strtol.o
     }
+
     _strtoul 0x803CFD8
     {
         _strtoul.o
     }
+
     exit 0x803D090
     {
         exit.o
     }
+
     __rt_lib_init 0x803D0A4
     {
         lib_init.o
     }
+
     __16_ll_cmpge 0x803D15C
     {
         llcmpge.o
     }
+
     __16_ll_cmpu 0x803D16C
     {
         llcmpu.o
     }
+
     __16_ll_neg 0x803D17C
     {
         llneg.o
     }
+
     __16_ll_udiv10 0x803D18C
     {
         lludiv10.o
     }
+
     _no_fp_display 0x803D230
     {
         nofpdisp.o
     }
+
     __16__rt_ctype_table 0x803D234
     {
         rt_ctype_table.o
     }
+
     __rt_raise 0x803D250
     {
         rt_raise.o(.text)
     }
+
     __rt_udiv10 0x803D270
     {
         rtudiv10.o
     }
+
     __raise 0x803D2A0
     {
         __raise.o
     }
+
     _chval 0x803D2E4
     {
         _chval.o
     }
+
     _get_lc_ctype 0x803D308
     {
         lc_ctype_c.o
     }
+
     __default_signal_handler 0x803D334
     {
         defsig.o
     }
+
     _ttywrch 0x803D44C
     {
         sys_wrch.o
     }
+
     use_semi 0x803D460
     {
         use_semi.o
     }
+
     AgbSyscall1 0x803D468
     {
         AgbSysArmCpuSet.o
     }
+
     AgbSyscall2 0x803D46C
     {
         AgbSysArmDiv.o
     }
+
     AgbSyscall3 0x803D470
     {
         AgbSysArmDivRem.o
     }
+
     AgbSyscall4 0x803D478
     {
         AgbSysArmLZ77UnCompVram.o
     }
+
     AgbSyscall5 0x803D47C
     {
         AgbSysArmDiff8bitUnFilterVram.o
     }
+
     AgbSyscall6 0x803D480
     {
         AgbSysArmSoftReset.o
     }
+
     AgbSyscall7 0x803D498
     {
         AgbSysArmVBlankIntrWait.o
     }
+
     split_803D4A0 0x803D4A0
     {
         split_803D4A0.o
     }
+
     C$$pi_ctorvec 0x803D4A4
     {
         * (CppInitializationVector)
     }
+
     .text17 0x0803D4A8
     {
         split_803D4A8.o
         split_803DB3C.o
     }
+
     .veneers 0x0803E104
     {
         *(Veneer$$Code)
     }
+
     .text_vtables 0x0803E2A0
     {
         dword_803E2A0.o
@@ -622,66 +699,82 @@ LOAD_ROM_1 0x08000000
         dword_803ECB4.o
         dword_803ECB8.o(__VTABLE__*)
     }
+
     .text_vtable_55 +0
     {
         Singleton_3E80.o(__VTABLE__*)
     }
+
     .text_vtable_56 +0
     {
         Singleton_3E84.o(__VTABLE__*)
     }
+
     .text_vtable_57 +0
     {
         Singleton_3E88.o(__VTABLE__*)
     }
+
     .text_vtable_58 +0
     {
         Singleton_3E8C.o(__VTABLE__*)
     }
+
     .text_vtable_59 +0
     {
         Singleton_3E90.o(__VTABLE__*)
     }
+
     .text_vtable_60 +0
     {
         Singleton_3E94.o(__VTABLE__*)
     }
+
     .text_vtable_61 +0
     {
         Singleton_3E98.o(__VTABLE__*)
     }
+
     .text_vtable_62 +0
     {
         Singleton_3E9C.o(__VTABLE__*)
     }
+
     .text_vtable_63 +0
     {
         Singleton_3EA0.o(__VTABLE__*)
     }
+
     .text_vtable_64 +0
     {
         Singleton_3EA4.o(__VTABLE__*)
     }
+
     .text_vtable_65 +0
     {
         Singleton_3EA8.o(__VTABLE__*)
     }
+
     .text_vtable_66 +0
     {
         Singleton_3EAC.o(__VTABLE__*)
     }
+
     .text_vtable_67 +0
     {
         Singleton_3EB0.o(__VTABLE__*)
     }
+
     .text_vtable_68 +0
     {
         Singleton_3EB8.o(__VTABLE__*)
     }
+
     .text_vtable_69 +0
     {
         Singleton_3EBC.o(__VTABLE__*)
     }
+
     .text_vtables_tail +0
     {
         dword_803ECF8.o
@@ -700,6 +793,7 @@ LOAD_ROM_1 0x08000000
         dword_803EEC4.o
         dword_803EEF0.o
     }
+
     .text4 0x0803EF1C
     {
         split_803EF1C.o
@@ -765,10 +859,12 @@ LOAD_ROM_1 0x08000000
         split_8040C78.o
         split_8041020.o
     }
+
     .text4_dtor_ECB8 +0
     {
         dword_803ECB8.o (+RO-CODE)
     }
+
     .text4_destructors +0
     {
         Singleton_3E80.o (+RO-CODE)
@@ -787,35 +883,43 @@ LOAD_ROM_1 0x08000000
         Singleton_3EB8.o (+RO-CODE)
         Singleton_3EBC.o (+RO-CODE)
     }
+
     .text4_tail +0
     {
         split_8041274.o
         split_80412A8.o
     }
+
     fp_printf 0x08041440
     {
         printf1.o(x$fpl$printf1)
     }
+
     .data1 0x08041448
     {
         data1.o (+RW)
     }
+
     lc_ctype_data 0x80514FC
     {
         lc_ctype_c.o(.constdata)
     }
+
     defsig_data 0x805160C
     {
         defsig.o(.constdata)
     }
+
     .data2 0x08051738
     {
         data2.o (+RW)
     }
+
     .text5 0x080517C8
     {
         last_code.o
     }
+
     .data3 0x08055AC0
     {
         last_data.o (+RW)
