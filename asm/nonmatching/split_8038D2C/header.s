@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gPlayerEntity
+	IMPORT gUnknown_03003444
+	IMPORT gUnknown_080514B0
+	IMPORT sub_800EF2A
+	IMPORT sub_80143E0
+	IMPORT sub_8014436
+	IMPORT SetNextGlobalFunction
+	IMPORT sub_8038888
+	IMPORT sub_803894A
+	IMPORT sub_80389CC
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
+

@@ -1,0 +1,36 @@
+	thumb_func_start sub_801343C
+sub_801343C
+	push {r4, r5, r6, lr}
+	adds r5, r1, #0
+	adds r4, r0, #0
+	cmp r0, #0
+	bne %2
+	movs r0, #0xc
+	bl __nw__FUi
+	adds r4, r0, #0
+	bne %2
+	adds r0, r4, #0
+1
+	pop {r4, r5, r6}
+	pop {r3}
+	bx r3
+2
+	ldr r0, _080134AC
+	movs r6, #0
+	str r0, [r4]
+	ldr r0, _080134B0
+	str r4, [r0]
+	ldr r0, _080134B4
+	str r0, [r4]
+	strb r6, [r4, #9]
+	strb r5, [r4, #8]
+	bl GetEWRAMStart
+	adds r1, r0, #0
+	lsls r0, r5, #4
+	adds r3, r6, #0
+	movs r2, #0
+	bl sub_803DA9C
+	str r0, [r4, #4]
+	adds r0, r4, #0
+	b %1
+

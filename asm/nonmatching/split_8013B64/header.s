@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003C40
+	IMPORT GetEWRAMStart
+	IMPORT sub_80133A0
+	IMPORT sub_80139AC
+	IMPORT __call_via_r1
+	IMPORT __call_via_r2
+	IMPORT __call_via_r5
+	IMPORT sub_803DA18
+	IMPORT __da__FPv
+	IMPORT sub_803DA80
+	IMPORT sub_80402F8
+	IMPORT sub_8041274
+

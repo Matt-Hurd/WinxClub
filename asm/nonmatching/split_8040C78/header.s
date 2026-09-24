@@ -1,0 +1,11 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003530
+	IMPORT gUnknown_030037A0
+	IMPORT gUnknown_03003BC8
+	IMPORT CpuSet
+	IMPORT sub_8040708
+	IMPORT sub_8040978
+	IMPORT sub_8040C38
+

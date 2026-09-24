@@ -1,0 +1,10 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_0300345C
+	IMPORT sub_8016176
+	IMPORT sub_80162D6
+	IMPORT sub_8028C2E
+	IMPORT __da__FPv
+	IMPORT sub_80401E4
+

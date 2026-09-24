@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030033D0
+	IMPORT gUnknown_03003EA0
+	IMPORT gUnknown_03003EB8
+	IMPORT sub_8001232
+	IMPORT sub_80013D8
+	IMPORT sub_8001432
+	IMPORT sub_800CD28
+	IMPORT sub_800F090
+	IMPORT sub_801537C
+	IMPORT __call_via_r2
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+

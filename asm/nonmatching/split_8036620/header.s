@@ -1,0 +1,17 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EA0
+	IMPORT __VTABLE__323Static1
+	IMPORT sub_80003F4
+	IMPORT sub_80007A0
+	IMPORT GetEWRAMStart
+	IMPORT sub_800BE0E
+	IMPORT sub_800C1CA
+	IMPORT HostileCreature__Create
+	IMPORT HostileCreature__ctor
+	IMPORT sub_802913E
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+	IMPORT sub_803DA80
+

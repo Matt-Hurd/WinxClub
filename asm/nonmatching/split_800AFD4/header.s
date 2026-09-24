@@ -1,0 +1,10 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003E98
+	IMPORT __VTABLE__339dword_803EB34
+	IMPORT __VTABLE__14Singleton_3E98
+	IMPORT VBlankIntrWait
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+

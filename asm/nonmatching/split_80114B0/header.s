@@ -1,0 +1,17 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03002D28
+	IMPORT gUnknown_03002D2C
+	IMPORT gUnknown_03002D48
+	IMPORT gUnknown_03002D74
+	IMPORT gUnknown_03002DAC
+	IMPORT gUnknown_03002DE4
+	IMPORT gUnknown_030034FC
+	IMPORT gUnknown_03003670
+	IMPORT gUnknown_030037A0
+	IMPORT gUnknown_03003BC8
+	IMPORT __call_via_r2
+	IMPORT CpuSet
+	IMPORT Div
+

@@ -1,0 +1,13 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030031EE
+	IMPORT gUnknown_030031FE
+	IMPORT sub_80139AC
+	IMPORT sub_8013F6C
+	IMPORT __call_via_r2
+	IMPORT __call_via_r3
+	IMPORT sub_803F55C
+	IMPORT sub_803F5FC
+	IMPORT sub_80401E4
+

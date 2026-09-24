@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EA0
+	IMPORT gUnknown_03003EB4
+	IMPORT gUnknown_080414B8
+	IMPORT gUnknown_0804AB68
+	IMPORT gUnknown_0804AC68
+	IMPORT sub_800B8CE
+	IMPORT __16__rt_sdiv
+	IMPORT CpuSet
+	IMPORT LZ77UnCompVram
+	IMPORT RLUnCompVram
+	IMPORT sub_8040444
+
+

@@ -1,0 +1,12 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EBC
+	IMPORT __VTABLE__353dword_803ECB4
+	IMPORT __VTABLE__14Singleton_3EBC
+	IMPORT GetEWRAMStart
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+	IMPORT __da__FPv
+	IMPORT sub_803DA9C
+

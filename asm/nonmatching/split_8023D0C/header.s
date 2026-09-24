@@ -1,0 +1,18 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gPlayerEntity
+	IMPORT gUnknown_03003448
+	IMPORT gUnknown_0300345C
+	IMPORT gUnknown_03003EA0
+	IMPORT sub_800065C
+	IMPORT sub_8000D5A
+	IMPORT sub_8000DE6
+	IMPORT sub_80143E0
+	IMPORT sub_8014436
+	IMPORT sub_80268AC
+	IMPORT __call_via_r1
+	IMPORT __16__rt_sdiv
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+

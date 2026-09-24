@@ -1,0 +1,7 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003454
+	IMPORT __VTABLE__371dword_803ED1C
+	IMPORT sub_80177E8
+

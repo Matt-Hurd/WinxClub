@@ -1,0 +1,10 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030031EE
+	IMPORT gUnknown_030031FE
+	IMPORT gUnknown_03003C40
+	IMPORT gUnknown_03003EA0
+	IMPORT sub_800C0EC
+	IMPORT vsprintf
+

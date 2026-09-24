@@ -1,0 +1,92 @@
+	thumb_func_start sub_802E800
+sub_802E800
+	push {r4, r5, lr}
+	adds r4, r0, #0
+	ldr r0, [r0, #0x34]
+	sub sp, #0x14
+	lsls r0, r0, #0x15
+	lsrs r0, r0, #0x1d
+	cmp r0, #2
+	beq %1
+	ldr r0, [r4, #4]
+	cmp r0, #0
+	beq %1
+	adds r1, r4, #0
+	adds r1, #0x24
+	bl sub_8000AC4
+	cmp r0, #0
+	beq %1
+	ldr r0, _0802E8FC
+	ldr r0, [r0]
+	bl sub_80019B4
+	mov r5, sp
+	ldm r0!, {r1, r2, r3}
+	stm r5!, {r1, r2, r3}
+	ldm r0!, {r2, r3}
+	stm r5!, {r2, r3}
+	ldr r1, [r4, #4]
+	movs r0, #0x50
+	ldrb r0, [r0, r1]
+	cmp r0, #0
+	beq %1
+	lsls r2, r0, #0x1e
+	bpl %2
+	movs r1, #1
+	ldr r0, [r4, #0x34]
+	lsls r1, r1, #0x15
+	orrs r0, r1
+	movs r1, #7
+	lsls r1, r1, #8
+	bics r0, r1
+	movs r1, #1
+	lsls r1, r1, #9
+	adds r0, r0, r1
+	str r0, [r4, #0x34]
+	movs r0, #0
+	str r0, [r4, #0x24]
+	str r0, [r4, #0x28]
+1
+	add sp, #0x14
+	pop {r4, r5}
+	pop {r3}
+	bx r3
+2
+	lsls r0, r0, #0x1f
+	bpl %1
+	ldr r0, [r4, #0x14]
+	ldr r2, [sp, #0xc]
+	cmp r0, r2
+	beq %1
+	ldr r2, [sp, #0x10]
+	cmp r0, r2
+	beq %1
+	ldr r0, [r4, #0x18]
+	ldr r2, [sp, #0xc]
+	cmp r0, r2
+	beq %1
+	ldr r2, [sp, #0x10]
+	cmp r0, r2
+	beq %1
+	ldr r0, [r4, #8]
+	ldr r2, [sp, #0xc]
+	cmp r0, r2
+	beq %1
+	ldr r2, [sp, #0x10]
+	cmp r0, r2
+	beq %1
+	movs r2, #1
+	ldr r0, [r4, #0x34]
+	lsls r2, r2, #0x14
+	orrs r0, r2
+	str r0, [r4, #0x34]
+	ldr r0, [sp, #0xc]
+	cmp r1, r0
+	bne %3
+	ldr r0, [sp, #0x10]
+	str r0, [r4, #0xc]
+	b %1
+3
+	ldr r0, [sp, #0xc]
+	str r0, [r4, #0xc]
+	b %1
+

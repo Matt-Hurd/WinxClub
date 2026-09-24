@@ -1,0 +1,11 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030033F4
+	IMPORT gUnknown_03003EAC
+	IMPORT __VTABLE__384dword_803EEF0
+	IMPORT sub_800B12C
+	IMPORT __call_via_r2
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+

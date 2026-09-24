@@ -1,0 +1,90 @@
+	thumb_func_start sub_800E178
+sub_800E178
+	push {r3, r4, r5, r6, r7, lr}
+	adds r4, r0, #0
+	movs r0, #0x27
+	lsls r0, r0, #6
+	adds r0, r4, r0
+	mov ip, r0
+	ldr r0, [r0, #0x3c]
+	movs r1, #1
+	lsls r1, r1, #0x17
+	bics r0, r1
+	mov r1, ip
+	str r0, [r1, #0x3c]
+	lsls r0, r0, #7
+	bmi %2
+	ldr r5, _0800E220
+	ldr r0, [r5]
+	cmp r0, #0
+	bne %2
+	movs r0, #1
+	str r0, [r5]
+	ldr r3, [r4, #8]
+	movs r6, #0
+	cmp r3, #0
+	beq %1
+	ldr r0, [r4, #4]
+	cmp r0, #0
+	bne %3
+1
+	str r6, [r5]
+2
+	pop {r3, r4, r5, r6, r7}
+	pop {r3}
+	bx r3
+3
+	movs r1, #0x21
+	ldrb r3, [r3]
+	lsls r1, r1, #6
+	adds r1, r4, r1
+	movs r2, #0
+	cmp r3, #0
+	ldr r0, _0800E224
+	bls %6
+4
+	ldr r3, [r1, #0x38]
+	adds r2, #1
+	asrs r7, r3, #0x1f
+	lsrs r7, r7, #0x10
+	adds r3, r7, r3
+	asrs r3, r3, #0x10
+	strh r3, [r0]
+	ldr r3, [r1, #0x3c]
+	adds r1, #0x58
+	asrs r7, r3, #0x1f
+	lsrs r7, r7, #0x10
+	adds r3, r7, r3
+	asrs r3, r3, #0x10
+	strh r3, [r0, #2]
+	ldr r7, [r4, #8]
+	adds r3, r6, #0
+	adds r0, #4
+	cmp r7, #0
+	beq %5
+	ldrb r3, [r7]
+5
+	cmp r3, r2
+	bhi %4
+6
+	ldr r0, _0800E228
+	mov r1, ip
+	ldr r0, [r0]
+	ldr r1, [r1, #0x3c]
+	lsls r1, r1, #5
+	lsrs r1, r1, #0x1f
+	bl sub_8002762
+	movs r0, #0x13
+	lsls r0, r0, #7
+	adds r0, r4, r0
+	ldr r0, [r0, #0x20]
+	movs r2, #1
+	adds r0, #0x48
+	ldr r1, [r0]
+	lsls r2, r2, #0xb
+	bics r1, r2
+	str r1, [r0]
+	adds r0, r4, #0
+	bl sub_80022E2
+	str r6, [r5]
+	b %2

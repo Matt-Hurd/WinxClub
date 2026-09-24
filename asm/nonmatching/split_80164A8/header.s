@@ -1,0 +1,17 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003E88
+	IMPORT __VTABLE__375dword_803ED94
+	IMPORT GetEWRAMStart
+	IMPORT maybeGameObjFactory
+	IMPORT sub_8017444
+	IMPORT sub_8017450
+	IMPORT sub_80177D8
+	IMPORT __call_via_r2
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+	IMPORT __da__FPv
+	IMPORT sub_803DA80
+	IMPORT sub_803DA9C
+

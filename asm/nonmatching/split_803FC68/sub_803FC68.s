@@ -1,0 +1,128 @@
+	thumb_func_start sub_803FC68
+sub_803FC68
+	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
+	adds r5, r0, #0
+	adds r6, r3, #0
+	sub sp, #4
+	bne %3
+	movs r1, #5
+	lsls r1, r1, #7
+	movs r4, #1
+	movs r2, #0xb
+	lsls r2, r2, #7
+	b %2
+1
+	adds r4, #1
+	lsls r4, r4, #0x18
+	lsrs r4, r4, #0x18
+	cmp r4, #4
+	bhs %9
+2
+	lsls r0, r4, #2
+	adds r0, r0, r5
+	adds r0, r0, r1
+	ldr r0, [r0, #0x18]
+	cmp r0, #0
+	bne %1
+	lsls r0, r4, #1
+	adds r0, r0, r5
+	adds r0, r0, r2
+	ldrh r0, [r0, #0x18]
+	lsls r0, r0, #0x1f
+	bmi %1
+	b %9
+3
+	movs r4, #4
+	b %5
+4
+	adds r4, #1
+	lsls r4, r4, #0x18
+	lsrs r4, r4, #0x18
+	cmp r4, #0x40
+	bhs %6
+5
+	lsls r0, r4, #2
+	adds r0, r0, r5
+	ldr r0, [r0, #0x18]
+	cmp r0, #0
+	bne %4
+6
+	ldr r0, _0803FD58
+	ldr r0, [r0]
+	bl sub_80050FA
+	lsrs r7, r6, #2
+	bl GetEWRAMStart
+	cmp r7, #0
+	beq %7
+	lsls r7, r7, #2
+	movs r3, #0
+	movs r2, #0
+	adds r1, r0, #0
+	adds r0, r7, #0
+	bl sub_803DA9C
+	b %8
+7
+	movs r3, #0
+	movs r2, #0
+	adds r1, r0, #0
+	movs r0, #4
+	bl sub_803DA80
+8
+	lsls r1, r4, #2
+	adds r1, r1, r5
+	str r0, [r1, #0x18]
+	movs r0, #0
+	bl sub_80050FA
+	lsls r0, r4, #1
+	movs r1, #0xff
+	adds r1, #0x99
+	adds r0, r0, r5
+	strh r6, [r1, r0]
+	movs r2, #0xff
+	adds r2, #0x19
+	movs r1, #0
+	strh r1, [r2, r0]
+	movs r2, #1
+	lsls r2, r2, #9
+	adds r0, r0, r2
+	strh r1, [r0, #0x18]
+9
+	ldr r0, [sp, #0xc]
+	cmp r0, #0
+	beq %10
+	lsls r1, r4, #1
+	movs r2, #0xb
+	lsls r2, r2, #7
+	adds r1, r1, r5
+	movs r0, #1
+	adds r1, r1, r2
+	strh r0, [r1, #0x18]
+	b %11
+10
+	lsls r0, r4, #1
+	movs r2, #0xb
+	lsls r2, r2, #7
+	adds r0, r0, r5
+	movs r1, #0
+	adds r0, r0, r2
+	strh r1, [r0, #0x18]
+11
+	lsls r1, r4, #2
+	movs r2, #9
+	lsls r2, r2, #7
+	adds r1, r1, r5
+	ldr r0, [sp, #8]
+	adds r1, r1, r2
+	str r0, [r1, #0x18]
+	adds r0, r2, #0
+	adds r0, #0xff
+	adds r0, #0x91
+	adds r0, r5, r0
+	ldrb r1, [r0, #8]
+	adds r1, #1
+	strb r1, [r0, #8]
+	add sp, #0x14
+	adds r0, r4, #0
+	pop {r4, r5, r6, r7}
+	pop {r3}
+	bx r3

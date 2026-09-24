@@ -1,0 +1,169 @@
+	thumb_func_start Monster__Intersect
+Monster__Intersect
+	push {r0, r1, r2, r3, r4, r5, r6, r7, lr}
+	adds r6, r0, #0
+	adds r6, #0x80
+	adds r4, r0, #0
+	ldr r0, [r6, #0x1c]
+	adds r5, r1, #0
+	cmp r0, #0xf
+	sub sp, #4
+	beq %1
+	cmp r0, #0x10
+	bne %3
+1
+	movs r0, #0
+2
+	add sp, #0x14
+	pop {r4, r5, r6, r7}
+	pop {r3}
+	bx r3
+3
+	ldr r0, [r6, #0xc]
+	movs r7, #0
+	lsls r0, r0, #1
+	lsrs r0, r0, #0x14
+	cmp r0, #0
+	beq %4
+	adds r0, r4, #0
+	bl TakeDamage__7DefaultFv
+	ldr r0, [r4, #0x7c]
+	lsls r0, r0, #1
+	lsrs r0, r0, #1
+	str r0, [r4, #0x7c]
+	str r7, [r4, #0x34]
+	movs r0, #0
+	b %2
+4
+	ldrh r0, [r5, #4]
+	cmp r0, #0xb
+	bne %5
+	movs r0, #0
+	b %2
+5
+	ldr r0, [r4, #0x68]
+	cmp r0, #0
+	bne %6
+	ldr r0, [r4, #0x6c]
+	cmp r0, #0
+	bne %6
+	movs r2, #3
+	lsls r2, r2, #0xf
+	adds r1, r5, #0
+	adds r0, r4, #0
+	bl sub_801F450
+6
+	movs r3, #0x97
+	ldrsb r0, [r5, r3]
+	ldr r1, [sp, #0xc]
+	adds r0, r0, r1
+	subs r0, #2
+	cmp r0, #6
+	bhs %14
+	add r3, pc, #0x4
+	ldrb r3, [r3, r0]
+	lsls r3, r3, #1
+	add pc, r3
+7
+	DCB 0x02
+8
+	DCB 0x02
+9
+	DCB 0x35
+10
+	DCB 0x06
+11
+	DCB 0x13
+12
+	DCB 0x06
+loc_8030f6a
+	adds r0, r4, #0
+	bl TakeDamage__7DefaultFv
+	b %15
+loc_8030f72
+	adds r0, r4, #0
+	adds r0, #0xb0
+	ldrb r1, [r0, #6]
+	ldr r2, [sp, #0x10]
+	subs r1, r1, r2
+	strb r1, [r0, #6]
+	ldr r1, [r4]
+	adds r0, r4, #0
+	ldr r2, [r1, #0x30]
+	adds r1, r2, r1
+	bl __call_via_r1
+	b %15
+loc_8030f8c
+	ldr r0, _0803107C
+	ldr r0, [r0]
+	ldr r0, [r0, #0x20]
+	adds r0, #0xa0
+	ldr r1, [r0, #4]
+	cmp r1, #0
+	beq %13
+	ldr r1, [r0, #0x34]
+	lsls r1, r1, #0x15
+	lsrs r1, r1, #0x1d
+	cmp r1, #1
+	bne %13
+	ldr r1, [r0]
+	ldr r2, [r1, #0x1c]
+	adds r1, r2, r1
+	bl __call_via_r1
+	adds r1, r0, #0
+	adds r0, r4, #0
+	adds r0, #0xb0
+	ldrb r2, [r0, #6]
+	subs r1, r2, r1
+	strb r1, [r0, #6]
+	ldr r1, [r4]
+	adds r0, r4, #0
+	ldr r2, [r1, #0x30]
+	adds r1, r2, r1
+	bl __call_via_r1
+	b %15
+13
+	adds r0, r4, #0
+	bl TakeDamage__7DefaultFv
+	b %15
+loc_8030fd0
+	adds r0, r4, #0
+	bl TakeDamage__7DefaultFv
+	b %15
+14
+	adds r0, r4, #0
+	bl TakeDamage__7DefaultFv
+15
+	movs r0, #0xb6
+	ldrsb r0, [r0, r4]
+	cmp r0, #0
+	bgt %16
+	movs r0, #0xa8
+	ldrh r0, [r0, r4]
+	strh r0, [r4, #0x1e]
+	adds r1, r0, #1
+	strh r1, [r4, #0x1a]
+	adds r0, #2
+	strh r0, [r4, #0x1c]
+	strh r0, [r4, #0x18]
+	ldr r0, _08031080
+	ldr r0, [r0]
+	ldr r1, [r6, #0x30]
+	lsls r1, r1, #5
+	lsrs r1, r1, #0x18
+	adds r1, #1
+	lsls r1, r1, #0x18
+	lsrs r1, r1, #0x13
+	adds r0, r1, r0
+	bl sub_8028C2E
+	adds r0, r4, #0
+	bl sub_802B0CA
+16
+	ldr r0, [r4, #0x7c]
+	lsls r0, r0, #1
+	lsrs r0, r0, #1
+	str r0, [r4, #0x7c]
+	str r7, [r4, #0x34]
+	movs r0, #1
+	b %2
+

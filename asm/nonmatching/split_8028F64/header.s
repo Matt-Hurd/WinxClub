@@ -1,0 +1,28 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gPlayerEntity
+	IMPORT gUnknown_03003454
+	IMPORT gUnknown_03003458
+	IMPORT gUnknown_03003468
+	IMPORT gUnknown_03003C58
+	IMPORT gUnknown_03003E98
+	IMPORT gUnknown_03003EB4
+	IMPORT SomehowInitEWRAMLinkedList
+	IMPORT GetEWRAMStart
+	IMPORT sub_800B058
+	IMPORT sub_800E53C
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT PlayMovie
+	IMPORT sub_800EF2A
+	IMPORT maybeLoadOrRenderBgImage
+	IMPORT sub_8017B9A
+	IMPORT sub_8017CA0
+	IMPORT FadeToImage
+	IMPORT SetNextGlobalFunction
+	IMPORT sub_801B170
+	IMPORT CpuSet
+	IMPORT __da__FPv
+	IMPORT sub_803DA9C
+	IMPORT sub_80406C4
+

@@ -1,0 +1,40 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gPlayerEntity
+	IMPORT gUnknown_0300344C
+	IMPORT gUnknown_03003454
+	IMPORT gUnknown_0300345C
+	IMPORT gUnknown_03003478
+	IMPORT gUnknown_03003E88
+	IMPORT gUnknown_03003EA0
+	IMPORT __VTABLE__344Anonymous18
+	IMPORT gUnknown_080414B8
+	IMPORT ModifyPlayerHealth
+	IMPORT sub_800065C
+	IMPORT sub_80007A0
+	IMPORT sub_8000D5A
+	IMPORT GetEWRAMStart
+	IMPORT sub_8017A0A
+	IMPORT Init_and_add_some_object
+	IMPORT m00__7DefaultFv
+	IMPORT m04__7DefaultFv
+	IMPORT m08__7DefaultFv
+	IMPORT Dying__7DefaultFv
+	IMPORT sub_8023A70
+	IMPORT CollectFirefly
+	IMPORT sub_8028C2E
+	IMPORT __call_via_r2
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+	IMPORT sub_803DA80
+	IMPORT sub_803DA9C
+	IMPORT sub_803F528
+	IMPORT sub_803F72C
+	IMPORT sub_803FF24
+	IMPORT sub_80401E4
+	IMPORT sub_8040594
+
+

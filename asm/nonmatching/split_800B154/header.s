@@ -1,0 +1,15 @@
+	INCLUDE asm/macros.inc
+	INCLUDE asm/gba_constants.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03002BEC
+	IMPORT gUnknown_030033FC
+	IMPORT gUnknown_03003EAC
+	IMPORT gUnknown_03007FC0
+	IMPORT __VTABLE__348dword_803EC70
+	IMPORT __VTABLE__14Singleton_3EAC
+	IMPORT sub_80002E2
+	IMPORT SoftReset
+	IMPORT __nw__FUi
+	IMPORT sub_803DA18
+

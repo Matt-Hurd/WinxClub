@@ -1,0 +1,18 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003444
+	IMPORT gUnknown_0300345C
+	IMPORT gUnknown_030034F8
+	IMPORT gUnknown_080414B8
+	IMPORT gUnknown_08051090
+	IMPORT SetNextGlobalFunction
+	IMPORT sub_802459E
+	IMPORT sub_8028C2E
+	IMPORT sub_802B2F8
+	IMPORT __call_via_r3
+	IMPORT __16_ll_mulss
+	IMPORT __16_ll_sdiv
+	IMPORT sub_8040034
+	IMPORT sub_8040594
+

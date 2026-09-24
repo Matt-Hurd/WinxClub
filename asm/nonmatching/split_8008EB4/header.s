@@ -1,0 +1,14 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT __VTABLE__378dword_803EDE8
+	IMPORT gUnknown_0804AA68
+	IMPORT gUnknown_0804AB34
+	IMPORT __rt_memclr_w
+	IMPORT __rt_memcpy
+	IMPORT __nw__FUi
+	IMPORT sub_800802E
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
+	IMPORT sub_800808E
+

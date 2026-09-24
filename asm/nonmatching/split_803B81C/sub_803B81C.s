@@ -1,0 +1,36 @@
+	thumb_func_start sub_803B81C
+sub_803B81C
+	push {r4, r5, r6, lr}
+	adds r5, r1, #0
+	lsls r0, r0, #0x10
+	lsrs r4, r0, #0x10
+	movs r6, #0
+	b %2
+1
+	adds r0, r6, #1
+	lsls r0, r0, #0x18
+	lsrs r6, r0, #0x18
+2
+	cmp r6, #2
+	bhi %3
+	adds r0, r4, #0
+	adds r1, r5, #0
+	bl Dma3Transmit
+	lsls r0, r0, #0x10
+	lsrs r2, r0, #0x10
+	cmp r2, #0
+	bne %1
+	adds r0, r4, #0
+	adds r1, r5, #0
+	bl sub_803B7C4
+	lsls r0, r0, #0x10
+	lsrs r2, r0, #0x10
+	cmp r2, #0
+	bne %1
+3
+	adds r0, r2, #0
+	pop {r4, r5, r6}
+	pop {r1}
+	bx r1
+	ALIGN
+

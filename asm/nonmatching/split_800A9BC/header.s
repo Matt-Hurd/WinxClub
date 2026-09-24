@@ -1,0 +1,7 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT __VTABLE__380off_803EE40
+	IMPORT __nw__FUi
+	IMPORT sub_800802E
+

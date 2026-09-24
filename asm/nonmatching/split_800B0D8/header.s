@@ -1,0 +1,11 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT sub_800525C
+	IMPORT sub_800527E
+	IMPORT sub_800AFD4
+	IMPORT sub_800B01A
+	IMPORT sub_800B1F6
+	IMPORT sub_800B286
+	IMPORT maybeInitGame
+

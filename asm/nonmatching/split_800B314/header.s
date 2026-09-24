@@ -1,0 +1,13 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003E94
+	IMPORT sub_8004C2C
+	IMPORT sub_800B646
+	IMPORT sub_800B652
+	IMPORT sub_800B66A
+	IMPORT IdentifyEeprom
+	IMPORT sub_803B5A0
+	IMPORT sub_803B81C
+	IMPORT __16__rt_memcpy
+

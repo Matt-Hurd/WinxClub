@@ -1,0 +1,14 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EA0
+	IMPORT sub_80004CA
+	IMPORT sub_80004F8
+	IMPORT sub_8000CCE
+	IMPORT GetEWRAMStart
+	IMPORT sub_800B8CE
+	IMPORT __16__rt_memclr_w
+	IMPORT __vec_ctor_p__FPvUiT2bPFPv_v
+	IMPORT sub_803DA9C
+	IMPORT sub_8040550
+

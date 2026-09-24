@@ -1,0 +1,18 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003458
+	IMPORT gUnknown_03003478
+	IMPORT gUnknown_030034F8
+	IMPORT gUnknown_03003D20
+	IMPORT GetEWRAMStart
+	IMPORT sub_800E53C
+	IMPORT maybeInitTransitionLevelScreen
+	IMPORT sub_800EF2A
+	IMPORT FadeToImage
+	IMPORT SetNextGlobalFunction
+	IMPORT gameExit
+	IMPORT sub_8023D0C
+	IMPORT sub_80247A4
+	IMPORT sub_803DA80
+

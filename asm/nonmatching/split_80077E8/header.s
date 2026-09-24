@@ -1,0 +1,11 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_08049608
+	IMPORT gUnknown_08049684
+	IMPORT gUnknown_08049700
+	IMPORT gUnknown_08049778
+	IMPORT gUnknown_080497F0
+	IMPORT gUnknown_0804A7F0
+	IMPORT __rt_memcpy
+

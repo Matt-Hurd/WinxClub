@@ -1,0 +1,8 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT sub_8012334
+	IMPORT sub_803DA18
+	IMPORT sub_800805E
+	IMPORT sub_803DA18
+

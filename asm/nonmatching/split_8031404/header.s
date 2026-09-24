@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EA0
+	IMPORT sub_8000914
+	IMPORT sub_8000D5A
+	IMPORT GetEWRAMStart
+	IMPORT m20__7DefaultFv
+	IMPORT m10__7DefaultFv
+	IMPORT __16_ll_sdiv
+	IMPORT __16_ll_shift_l
+	IMPORT rand
+	IMPORT sub_803DA80
+	IMPORT sub_8040528
+	IMPORT sub_8040594
+

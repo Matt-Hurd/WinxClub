@@ -1,0 +1,9 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EB4
+	IMPORT __VTABLE__381off_803EE6C
+	IMPORT __nw__FUi
+	IMPORT sub_800802E
+	IMPORT CpuSet
+

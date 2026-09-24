@@ -1,0 +1,16 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003444
+	IMPORT gUnknown_0300345C
+	IMPORT sub_800EF2A
+	IMPORT sub_80143E0
+	IMPORT sub_8014436
+	IMPORT SetNextGlobalFunction
+	IMPORT sub_801A760
+	IMPORT sub_801A82E
+	IMPORT sub_801A8B8
+	IMPORT sub_8028C2E
+	IMPORT __vecmap1c__FPvT1iPFPv_v
+	IMPORT __vecmap1ci__FPvT1iPFPvi_v
+

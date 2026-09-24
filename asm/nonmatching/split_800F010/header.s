@@ -1,0 +1,9 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_030033D0
+	IMPORT gUnknown_03003EA0
+	IMPORT sub_8000D5A
+	IMPORT sub_8014EB8
+	IMPORT sub_8004C44
+

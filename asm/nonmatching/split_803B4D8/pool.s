@@ -1,0 +1,3 @@
+	ALIGN
+_0803B518 DCDU eeprom
+_0803B51C DCDU eeprom_list

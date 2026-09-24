@@ -1,0 +1,8 @@
+	INCLUDE asm/macros.inc
+	AREA text, CODE
+
+	IMPORT gUnknown_03003EB4
+	IMPORT GetEWRAMStart
+	IMPORT CpuSet
+	IMPORT sub_803DA9C
+
