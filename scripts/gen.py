@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Generate scatter_script.txt (and, later, headers) from config/symbols.yml.
 
-Two directions:
+Three directions:
 
     python scripts/gen.py --extract    asm/, data/, scatter_script.txt, ELF -> config/symbols.yml
     python scripts/gen.py              config/symbols.yml -> scatter_script.txt, include/generated/
     python scripts/gen.py --check      generate and diff, touching nothing
+    python scripts/gen.py --link-order OBJ...   sort an object list into link order
 
 symbols.yml is the source of record for three things the repo currently keeps by
 hand: the scatter script's layout (regions and link order), every function's
@@ -406,13 +407,54 @@ def do_generate(check_only):
     return stale
 
 
+def link_order(layout):
+    """Object name -> position, from the layout's first mention of each.
+
+    An object may be named by several region lines -- the 21 hand-added `+0`
+    sub-regions pin a class's code apart from its vtable -- so only the first
+    counts. `*` lines are not objects and are skipped.
+    """
+    order = {}
+    for load in layout:
+        for region in load["regions"]:
+            for obj in region["objects"]:
+                name = obj["obj"]
+                if name.endswith(".o") and name not in order:
+                    order[name] = len(order)
+    return order
+
+
+def do_link_order(paths):
+    """Sort the Makefile's object list into link order.
+
+    armlink takes link order from its command line, not from the scatter, and
+    the Makefile builds that list with wildcards, so it arrives in directory
+    order and has to be re-sorted. An object the layout does not name goes
+    last, in path order: today that is asm/custom_constructor_table.o and
+    src/UnknownObj.cpp's object, both placed by the `* (CppInitializationVector)`
+    wildcard rather than by name, and both already last under the old sort.
+    """
+    order = link_order(load_symbols()["layout"])
+
+    def key(path):
+        i = order.get(os.path.basename(path))
+        return (0, i, "") if i is not None else (1, 0, path)
+
+    print(" ".join(sorted(paths, key=key)))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--extract", action="store_true",
                     help="rebuild config/symbols.yml from asm/, data/, the scatter and the ELF")
     ap.add_argument("--check", action="store_true",
                     help="diff the generated files against the committed ones")
+    ap.add_argument("--link-order", nargs="*", metavar="OBJ", default=None,
+                    help="print these object paths in link order, space-separated")
     args = ap.parse_args()
+    if args.link_order is not None:
+        return do_link_order(args.link_order)
     if args.extract:
         do_extract()
         return 0

@@ -106,7 +106,7 @@ PYTHON := python # or just python, depending on your setup
 MERGE_SCRIPT := scripts/merge_partial_c.py
 
 OBJS := $(C_OBJS) $(CPP_OBJS) $(C_DATA_OBJS) $(SRC_ASM_OBJS) $(ASM_OBJS) $(SOUND_ASM_OBJS) $(BANK_ASM_OBJS) $(SEQ_ASM_OBJS) $(WAVE_ASM_OBJS) $(DATA_ASM_OBJS) $(RODATA_ASM_OBJS) $(MERGED_ASM_OBJS)
-OBJS := $(shell python scripts/sort_objs.py $(OBJS))
+OBJS := $(shell python scripts/gen.py --link-order $(OBJS))
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 SUBDIRS  := $(sort $(dir $(OBJS)))
