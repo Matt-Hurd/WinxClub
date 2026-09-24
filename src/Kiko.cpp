@@ -2,15 +2,13 @@
 // Full C++ port of split_803166C.s
 
 #include "Default.hpp"
+#include "generated/functions.h"
+#include "generated/globals.h"
 
-extern "C" void sub_800065C(void *obj, unsigned short val);
 struct Singleton_3EA0_Data;
 extern "C" Singleton_3EA0_Data *sub_8000D5A(void *ptr);
-extern "C" int sub_80404B4(int val);
 extern "C" int rand(void);
-extern "C" void *sub_803DA18(void *obj);
 
-extern "C" unsigned short gUnknown_08051096[];
 #include "Singleton_3EA0.hpp"
 
 class Kiko : public Default {

@@ -1,6 +1,5 @@
+#include "generated/functions.h"
 extern void *gUnknown_03003E84;
-extern void sub_800529A(void *a0, int a1, int a2, void *a3);
-extern void sub_803D9A8(void *a0, int a1, int a2);
 
 void sub_8000C7C(int *a0, int a1) {
   void *g = gUnknown_03003E84;

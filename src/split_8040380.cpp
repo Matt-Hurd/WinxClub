@@ -1,4 +1,4 @@
-extern "C" void sub_803DA18(void *obj);
+#include "generated/functions.h"
 extern "C" int __VTABLE__14Singleton_3E90;
 extern "C" int gUnknown_03003E90;
 

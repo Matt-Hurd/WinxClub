@@ -3,13 +3,27 @@
 
 Two directions:
 
-    python scripts/gen.py --extract    asm/, scatter_script.txt, ELF -> config/symbols.yml
-    python scripts/gen.py              config/symbols.yml -> scatter_script.txt
+    python scripts/gen.py --extract    asm/, data/, scatter_script.txt, ELF -> config/symbols.yml
+    python scripts/gen.py              config/symbols.yml -> scatter_script.txt, include/generated/
     python scripts/gen.py --check      generate and diff, touching nothing
 
-symbols.yml is the source of record for two things the repo currently keeps by
-hand: the scatter script's layout (regions and link order) and every function's
-address and instruction set.
+symbols.yml is the source of record for three things the repo currently keeps by
+hand: the scatter script's layout (regions and link order), every function's
+address and instruction set, and every data symbol's address and size.
+
+A function or global may also carry a `decl:` -- the C declaration of it, minus
+the `extern` and the semicolon. That field is hand-written, not extracted, and
+`--extract` carries it across by (addr, name). Every symbol that has one is
+emitted into include/generated/functions.h or globals.h, so a src/ file can
+include those instead of retyping the `extern` itself. A symbol with no `decl:`
+is simply absent from the headers: ADS warns on an unprototyped call and there
+is no honest signature to invent.
+
+ARM-vs-Thumb is deliberately not expressed in the headers. ADS 1.2 has no
+declaration qualifier for it -- `__arm` is a predefined macro equal to 1, not a
+keyword -- and under `-apcs /interwork` a call to either mode compiles to the
+same `BL`, with armlink inserting a veneer if one is needed. `isa` therefore
+stays a fact about the asm, not something a caller declares.
 
 The layout half stores each object line's selector verbatim ("(+RO-CODE)",
 "(__VTABLE__*)", ...). The generator is a pure formatter: it never rewrites a
@@ -33,6 +47,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCATTER = os.path.join(REPO, "scatter_script.txt")
 SYMBOLS = os.path.join(REPO, "config", "symbols.yml")
 ELF = os.path.join(REPO, "winxclub.elf")
+GENDIR = os.path.join(REPO, "include", "generated")
 
 # ---------------------------------------------------------------- scatter i/o
 
@@ -138,8 +153,27 @@ def parse_asm(path):
     return out
 
 
-def elf_addresses(path):
-    """name -> address, for every function the linker placed.
+RE_GLOBAL = re.compile(r"^\s*GLOBAL\s+(\S+)")
+
+
+def data_units():
+    """The hand-written asm that defines data symbols, in a stable order."""
+    return sorted(glob.glob(os.path.join(REPO, "data", "*.s")))
+
+
+def parse_asm_globals(path):
+    """The GLOBAL directives in a data file, in the order they are written."""
+    out = []
+    with open(path) as fh:
+        for line in fh:
+            m = RE_GLOBAL.match(line)
+            if m:
+                out.append(m.group(1))
+    return out
+
+
+def elf_symbols(path, kind):
+    """name -> [(address, size)], for symbols of one ELF type.
 
     ADS armlink does not set the Thumb bit in st_value (all 116 ARM functions
     agree with the low bit, all 1273 Thumb ones do not), so the instruction set
@@ -147,14 +181,20 @@ def elf_addresses(path):
     """
     from elftools.elf.elffile import ELFFile
 
-    addrs = {}
+    syms = {}
     with open(path, "rb") as fh:
         symtab = ELFFile(fh).get_section_by_name(".symtab")
         for sym in symtab.iter_symbols():
-            if sym.entry.st_info.type != "STT_FUNC":
+            if sym.entry.st_info.type != kind:
                 continue
-            addrs.setdefault(sym.name, []).append(sym.entry.st_value)
-    return addrs
+            syms.setdefault(sym.name, []).append(
+                (sym.entry.st_value, sym.entry.st_size)
+            )
+    return syms
+
+
+def elf_addresses(path):
+    return {n: [a for a, _ in v] for n, v in elf_symbols(path, "STT_FUNC").items()}
 
 
 def extract_functions():
@@ -185,28 +225,140 @@ def extract_functions():
     return functions, problems
 
 
+def extract_globals():
+    """One entry per GLOBAL in data/, with the address from the link.
+
+    Seventeen of the 198 are STT_FUNC, not STT_OBJECT: data files declare a few
+    code symbols GLOBAL. They are recorded with kind: func so that globals.h
+    never invents an object declaration for a function.
+
+    Size is not recorded. armasm writes st_size 0 for every one of the 181
+    objects -- it emits no size for a data label -- so a size field here would
+    be 181 zeros pretending to be measurements. Extent has to come from the
+    next symbol's address, or from a hand-written decl.
+    """
+    objects = elf_symbols(ELF, "STT_OBJECT")
+    funcs = elf_symbols(ELF, "STT_FUNC")
+    globals_, problems = [], []
+    for path in data_units():
+        unit = os.path.relpath(path, REPO)
+        for name in parse_asm_globals(path):
+            kind = "object" if name in objects else "func"
+            found = (objects if kind == "object" else funcs).get(name)
+            if not found:
+                problems.append(f"{unit}: {name} is not in the ELF")
+                continue
+            if len(found) > 1:
+                problems.append(
+                    "%s: %s is defined %d times (%s)"
+                    % (unit, name, len(found), ", ".join(hex(a) for a, _ in found))
+                )
+            addr, _ = found.pop(0)
+            globals_.append(
+                {"addr": "0x%08X" % addr, "kind": kind, "unit": unit, "name": name}
+            )
+    globals_.sort(key=lambda g: int(g["addr"], 16))
+    return globals_, problems
+
+
+def carry_decls(entries, previous):
+    """Re-apply the hand-written `decl:` fields that --extract would otherwise drop."""
+    keep = {(e["addr"], e["name"]): e["decl"] for e in previous if e.get("decl")}
+    kept = 0
+    for e in entries:
+        decl = keep.pop((e["addr"], e["name"]), None)
+        if decl:
+            e["decl"] = decl
+            kept += 1
+    return kept, sorted(keep)
+
+
+# ------------------------------------------------------------------- headers
+
+def emit_header(stem, blurb, entries):
+    """The declared symbols of one kind, in address order, one `extern` each."""
+    guard = "GUARD_GENERATED_%s_H" % stem.upper()
+    out = ["/* Generated by scripts/gen.py from config/symbols.yml. Do not edit.", " *"]
+    out += [(" * " + l).rstrip() for l in blurb.splitlines()]
+    out += [" */", "#ifndef " + guard, "#define " + guard, "",
+            "#ifdef __cplusplus", 'extern "C" {', "#endif"]
+    unit = None
+    for e in entries:
+        if e["unit"] != unit:
+            unit = e["unit"]
+            out += ["", "/* %s */" % unit]
+        out.append("extern %s; /* %s */" % (e["decl"], e["addr"]))
+    out += ["", "#ifdef __cplusplus", "}", "#endif", "",
+            "#endif /* %s */" % guard, ""]
+    return "\n".join(out)
+
+
+def declared(entries):
+    return [e for e in entries if e.get("decl")]
+
+
+def generated_headers(symbols):
+    """path -> contents, for every header gen.py owns."""
+    return {
+        os.path.join(GENDIR, "functions.h"): emit_header(
+            "functions",
+            "ROM functions whose signature is known. A function is listed here\n"
+            "once someone has typed its declaration into config/symbols.yml;\n"
+            "the rest are deliberately absent, not forgotten: ADS warns on an\n"
+            "unprototyped call and there is no honest signature to invent.",
+            declared(symbols.get("functions") or []),
+        ),
+        os.path.join(GENDIR, "globals.h"): emit_header(
+            "globals",
+            "Data symbols whose type is known. Symbols that a hand-written\n"
+            "include/*.hpp already declares with a class type are left to it,\n"
+            "so that the two declarations can never disagree.",
+            declared(symbols.get("globals") or []),
+        ),
+    }
+
+
 # -------------------------------------------------------------------- drivers
 
 
 def do_extract():
     loads = parse_scatter(SCATTER)
     functions, problems = extract_functions()
-    for p in problems:
+    globals_, gproblems = extract_globals()
+    for p in problems + gproblems:
         print("note:", p, file=sys.stderr)
+
+    previous = load_symbols() if os.path.exists(SYMBOLS) else {}
+    kept = 0
+    for entries, key in ((functions, "functions"), (globals_, "globals")):
+        n, lost = carry_decls(entries, previous.get(key) or [])
+        kept += n
+        for addr, name in lost:
+            print(f"note: dropped decl for {name} at {addr}, no longer in {key}",
+                  file=sys.stderr)
+
     os.makedirs(os.path.dirname(SYMBOLS), exist_ok=True)
     with open(SYMBOLS, "w") as fh:
         fh.write(
             "# Written by scripts/gen.py --extract. The source of record for the\n"
-            "# scatter script's layout and for each function's address and\n"
-            "# instruction set. Regenerate the scatter with: python scripts/gen.py\n"
+            "# scatter script's layout, for each function's address and instruction\n"
+            "# set, and for each data symbol's address and size. Regenerate the\n"
+            "# scatter and include/generated/ with: python scripts/gen.py\n"
             "#\n"
             "# layout    - regions in link order; 'sel' is armlink's section\n"
             "#             selector, kept verbatim so the generator only formats.\n"
             "# functions - one per asm function, sorted by address. 'addr' is from\n"
             "#             the link, 'isa' from the declaring macro.\n"
+            "# globals   - one per GLOBAL in data/, sorted by address. No size:\n"
+            "#             armasm emits none for a data label.\n"
+            "#\n"
+            "# 'decl' is the one hand-written field: the C declaration of that\n"
+            "# symbol, minus 'extern' and the semicolon. --extract carries it\n"
+            "# across by (addr, name); everything else it overwrites. Symbols with\n"
+            "# a decl are what include/generated/*.h declares.\n"
         )
         yaml.safe_dump(
-            {"layout": loads, "functions": functions},
+            {"layout": loads, "functions": functions, "globals": globals_},
             fh,
             sort_keys=False,
             default_flow_style=False,
@@ -216,7 +368,7 @@ def do_extract():
     nreg = sum(len(l["regions"]) for l in loads)
     print(
         f"config/symbols.yml: {nreg} regions, {nobj} object lines, "
-        f"{len(functions)} functions"
+        f"{len(functions)} functions, {len(globals_)} globals, {kept} decls"
     )
 
 
@@ -225,32 +377,41 @@ def load_symbols():
         return yaml.safe_load(fh)
 
 
-def do_generate(check_only):
-    text = emit_scatter(load_symbols()["layout"])
-    with open(SCATTER) as fh:
-        current = fh.read()
+def write_or_diff(path, text, check_only):
+    """Write one generated file, or diff it and report whether it is stale."""
+    rel = os.path.relpath(path, REPO)
+    current = open(path).read() if os.path.exists(path) else ""
     if text == current:
-        print("scatter_script.txt: unchanged")
+        print(f"{rel}: unchanged")
         return 0
     if check_only:
-        diff = difflib.unified_diff(
-            current.splitlines(True), text.splitlines(True),
-            "scatter_script.txt", "generated",
-        )
-        sys.stdout.writelines(diff)
+        sys.stdout.writelines(difflib.unified_diff(
+            current.splitlines(True), text.splitlines(True), rel, "generated",
+        ))
         return 1
-    with open(SCATTER, "w") as fh:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as fh:
         fh.write(text)
-    print("scatter_script.txt: rewritten")
+    print(f"{rel}: rewritten")
     return 0
+
+
+def do_generate(check_only):
+    symbols = load_symbols()
+    outputs = {SCATTER: emit_scatter(symbols["layout"])}
+    outputs.update(generated_headers(symbols))
+    stale = 0
+    for path, text in outputs.items():
+        stale |= write_or_diff(path, text, check_only)
+    return stale
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--extract", action="store_true",
-                    help="rebuild config/symbols.yml from asm/, the scatter and the ELF")
+                    help="rebuild config/symbols.yml from asm/, data/, the scatter and the ELF")
     ap.add_argument("--check", action="store_true",
-                    help="diff the generated scatter against the committed one")
+                    help="diff the generated files against the committed ones")
     args = ap.parse_args()
     if args.extract:
         do_extract()
