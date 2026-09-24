@@ -115,7 +115,7 @@ $(shell mkdir -p $(SUBDIRS))
 #### Main Rules ####
 
 # Available targets
-.PHONY: all clean tidy tools compile-partial-c
+.PHONY: all check compare clean mostlyclean tidy tools compile-partial-c
 
 MAKEFLAGS += --no-print-directory
 # Secondary expansion is required for dependency variables in object rules.
@@ -141,6 +141,10 @@ compile-partial-c:
 compare: $(ROM)
 	sha1sum -c $(BUILD_NAME).sha1
 
+# The only verdict. Always from scratch, so a stale object can never pass.
+check: tidy
+	$(MAKE) all
+
 clean: mostlyclean
 
 mostlyclean: tidy
@@ -148,7 +152,7 @@ mostlyclean: tidy
 
 tidy:
 	$(RM) $(ROM) $(ELF) $(MAP) $(OBJS)
-	rm -r build
+	rm -rf build
 
 
 include graphics_file_rules.mk
