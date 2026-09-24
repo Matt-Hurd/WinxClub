@@ -721,7 +721,7 @@ sub_801E4D0
 	beq %74
 
 
-	thumb_func_start sub_801E756
+	non_word_aligned_thumb_func_start sub_801E756
 sub_801E756
 	adds r3, #1
 	cmp r3, #5
