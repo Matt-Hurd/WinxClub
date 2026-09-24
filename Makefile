@@ -144,6 +144,8 @@ compare: $(ROM)
 
 # The only verdict. Always from scratch, so a stale object can never pass.
 check: tidy
+	python scripts/gen.py --check
+	python scripts/split_units.py --check
 	$(MAKE) all
 
 clean: mostlyclean
