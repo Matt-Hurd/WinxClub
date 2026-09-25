@@ -1615,10 +1615,6 @@ functions:
   unit: asm/split/split_800525C.s
   name: sub_800529A
   decl: void sub_800529A(void *a0, int a1, int a2, void *a3)
-- addr: '0x080052C0'
-  isa: thumb
-  unit: asm/split/split_80052C0.s
-  name: sub_80052C0
 - addr: '0x08005380'
   isa: arm
   unit: asm/split/split_8005380.s
@@ -6176,10 +6172,6 @@ functions:
   isa: thumb
   unit: asm/split/split_803FBBC.s
   name: sub_803FBBC
-- addr: '0x0803FC68'
-  isa: thumb
-  unit: asm/split/split_803FC68.s
-  name: sub_803FC68
 - addr: '0x0803FD5C'
   isa: thumb
   unit: asm/split/split_803FD5C.s
@@ -6397,6 +6389,7 @@ functions:
   isa: thumb
   unit: asm/split/split_80406E4.s
   name: sub_80406E4
+  decl: unsigned int sub_80406E4(unsigned int a0)
 - addr: '0x080406E8'
   isa: arm
   unit: asm/split/split_80406E4.s

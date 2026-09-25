@@ -36,6 +36,9 @@ extern void *sub_803DA18(void *obj); /* 0x0803DA18 */
 /* asm/split/split_80404B4.s */
 extern int sub_80404B4(int val); /* 0x080404B4 */
 
+/* asm/split/split_80406E4.s */
+extern unsigned int sub_80406E4(unsigned int a0); /* 0x080406E4 */
+
 #ifdef __cplusplus
 }
 #endif
