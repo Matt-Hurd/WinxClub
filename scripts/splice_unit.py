@@ -195,11 +195,17 @@ def renumber_locals(name, body, taken):
     return "".join(out), set(fresh.values())
 
 
-def add_imports(header, imports):
-    """Put the compiler's IMPORTs in the unit's header, skipping the ones it has."""
+def add_imports(header, imports, local=frozenset()):
+    """Put the compiler's IMPORTs in the unit's header, skipping the ones it has
+    and the ones `local` names -- a callee this same unit already defines,
+    whether as asm or as another compiled function, needs no IMPORT: it
+    resolves inside this merged file, and armasm rejects a symbol that is both
+    IMPORTed and GLOBAL.
+    """
     lines = header.splitlines(True)
     have = {RE_IMPORT.match(l).group(1) for l in lines if RE_IMPORT.match(l)}
-    new = [f"\tIMPORT {name}\n" for name in imports if name not in have]
+    new = [f"\tIMPORT {name}\n" for name in imports
+           if name not in have and name not in local]
     if not new:
         return header
     at = max([i for i, l in enumerate(lines) if RE_IMPORT.match(l)], default=-1) + 1

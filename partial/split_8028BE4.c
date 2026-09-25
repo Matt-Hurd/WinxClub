@@ -1,0 +1,25 @@
+/* Two functions of split_8028BE4; the rest of the unit is still assembly in
+ * asm/nonmatching/split_8028BE4/. config/symbols.yml is out of scope for this
+ * batch, so sub_80121C4 and sub_801230C are declared locally rather than via
+ * generated/functions.h.
+ *
+ * sub_8028BE4 is written as one boolean expression, not an if/else: the ROM
+ * has a single shared `movs r0, #0` exit both the true and false paths reach,
+ * which is what a `!= 0` conversion of the callee's result produces. See
+ * notes/quirks/a-boolean-and-shares-one-exit-for-both-tests.md.
+ */
+extern int sub_80121C4(void *a0);
+extern void sub_801230C(void *a0);
+
+int sub_8028BE4(void *a0)
+{
+    return sub_80121C4(*(void **)((char *)a0 + 8)) != 0;
+}
+
+void sub_8028C5C(void *a0)
+{
+    if (*(unsigned char *)a0 != 0) {
+        sub_801230C((char *)a0 + 4);
+        *(unsigned char *)a0 = 0;
+    }
+}
