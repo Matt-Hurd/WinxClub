@@ -153,8 +153,9 @@ def compile_c(cc, cc1flags, include_dir, c_file, s_file, labels=False):
     is a no-op.
 
     The passes run with an empty pool record: a partial compile's pool is never
-    the unit's, so its entries must not take the unit's addresses, and a body
-    that loads from it is refused by the splice whatever the entries are called.
+    the unit's, so its entries must not take the unit's addresses. They keep
+    the pass's own _pool_1_N_<off> names, and the splice moves each load onto
+    the unit's word with the same value.
 
     merge_asm_files wants the raw output instead: it finds the pool by the `DATA`
     marker on the pool label's line, which the pass rewrites away.
@@ -171,7 +172,7 @@ def splice(yml_file, spec, built_s, output_file):
     """Write the merged unit from asm/nonmatching/<unit>/ and the compiled asm."""
     unit = spec["unit"]
     pieces = splice_unit.read_unit(unit)
-    bodies, imports = splice_unit.compiler_output(open(built_s).read())
+    bodies, imports, pool = splice_unit.compiler_output(open(built_s).read())
     wanted = spec.get("functions")
     if wanted is None:
         # Not spelled out: every function the C defines is one the unit gives up
@@ -193,7 +194,7 @@ def splice(yml_file, spec, built_s, output_file):
             f"{yml_file}: {spec['source']} defines no function to splice in")
     order = splice_unit.unit_order(unit, pieces)
     text = splice_unit.splice(unit, order, pieces,
-                              {name: bodies[name] for name in wanted}, imports)
+                              {name: bodies[name] for name in wanted}, imports, pool)
     with open(output_file, "w") as fh:
         fh.write(text)
     write_manifest(output_file, wanted)
@@ -225,7 +226,7 @@ def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_buildd
             merge_asm_files(s_file_in_partial, s_file_in_build, output_file)
             # merge_asm_files takes everything the compiler emitted up to the
             # pool, so the compiled side is exactly what the .c defines.
-            bodies, _ = splice_unit.compiler_output(open(s_file_in_build).read())
+            bodies, _, _ = splice_unit.compiler_output(open(s_file_in_build).read())
             write_manifest(output_file, bodies)
         return
 

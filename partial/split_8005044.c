@@ -8,6 +8,8 @@
  * a small state code whose bit 0 doubles as an in-use flag, high 24 bits a
  * size), and a min-size @0xc. */
 
+#include "generated/globals.h"
+
 int sub_800510C(unsigned char *a0, unsigned char *a1)
 {
     return (unsigned int)*(unsigned char **)a0 <= (unsigned int)a1
@@ -103,4 +105,9 @@ void sub_8005220(unsigned char *a0, unsigned char *a1)
     r2 = r2 - 2;
     r2 = ((r2 >> 1) << 1) | r3;
     *(unsigned int *)(a0 + 8) = r2;
+}
+
+void *sub_80050F4(void)
+{
+    return *(void **)((unsigned char *)&gUnknown_030033E8 + 4);
 }

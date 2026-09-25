@@ -8,3 +8,8 @@ void CallSoftReset(void)
 {
     SoftReset(0xFB);
 }
+
+int sub_800B2A4(void)
+{
+    return (*(volatile unsigned short *)0x4000200 >> 12) & 1;
+}

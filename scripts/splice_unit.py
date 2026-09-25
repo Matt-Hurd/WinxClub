@@ -35,13 +35,25 @@ halfword -- so the asm's padding is the one to believe.
 EXPORT is dropped too: `thumb_func_start` has already made the symbol GLOBAL,
 and armasm rejects the second one. IMPORTs are merged into the header's list.
 
-What this does not do yet: a compiled function that loads a literal. tcc puts
-its own pool at the end of its section and refers to it as |L1.N| + offset; the
-unit's pool is somewhere else entirely and holds the values the original
-function used. Rewriting the one onto the other by value is the next piece of
-work, and until it exists a compiled function that needs a literal is reported,
-not forced. The 452 functions that are pool-free and word-aligned need none of
-it.
+A compiled function that loads a literal is moved onto the unit's pool by
+value. tcc puts its own pool at the end of its section and refers to it as
+|L1.N| + offset; the label pass (asmfix, run by merge_partial_c.compile_c with
+an empty pool record) spells that _pool_1_N_<off> and puts `_pool_1_N_<off>`
+over each `DCD <value>` after the ENDP, and compiler_output hands those
+entries over with the bodies. The unit's pool.s holds the words the original
+function used, labelled by address (`_0800B2B4 DCDU REG_IE`), and is emitted
+as it is: for each load, the compiled entry's value is looked up among the
+unit's words and the load is respelled with that word's label. A number is
+compared as a number whatever its spelling; a GBA register name in the unit's
+pool is read through asm/gba_constants.inc, since the compiler only ever
+writes the address; a symbol is compared as text. The splice refuses, naming
+the value, when the unit's pool has no such word or more than one (the
+original's choice cannot be told from the value alone), when the entry is a
+string, and when the slice being replaced carried a literal pool of its own in
+the middle of the function -- a compiled body has nowhere to put those words,
+so the ones after them would move. Measured 2026-09-25 over the 273 aligned
+pool-loading Thumb functions still in whole-asm units: one loads a value its
+unit's pool holds twice, none uses label+offset, so the rewrite is a lookup.
 
 Numeric local labels are a shared namespace in an armasm source file: the asm
 slices already repeat `1`, `2`, `3` across functions and armasm resolves `%N`
@@ -56,6 +68,7 @@ they already resolve the way the ROM reads.
 """
 
 import argparse
+import collections
 import difflib
 import glob
 import itertools
@@ -66,6 +79,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPLITDIR = os.path.join(REPO, "asm", "split")
 PIECEDIR = os.path.join(REPO, "asm", "nonmatching")
+CONSTANTS = os.path.join(REPO, "asm", "gba_constants.inc")
 
 RE_START = re.compile(r"^\t(?:arm|thumb|non_word_aligned_thumb)_func_start (\S+)$")
 RE_END = re.compile(r"^\t(?:arm|thumb|non_word_aligned_thumb)_func_end (\S+)$")
@@ -73,13 +87,22 @@ RE_PROC = re.compile(r"^(\S+) PROC\s*$")
 RE_ENDP = re.compile(r"^\s+ENDP\s*$")
 RE_IMPORT = re.compile(r"^\s*IMPORT\s+(.*?)\s*$")
 RE_SECTION_PAD = re.compile(r"^\s+DCW\s+0+\s*$")
-# A load from the compiler's own literal pool, in any spelling: |L1.28| as tcc
-# writes it, _pool_1_28_4 as preprocess_compiler_labels.py rewrites it, or
-# _0800B2B8 as asmfix's pools pass names it when the compiled file is called
-# after a unit with a pool record. The compiler never spells a unit's pool entry
-# itself, so all three mean the same thing: the pool sits outside the PROC..ENDP
-# body, and a body naming one of these has constants with no home in the unit.
-RE_LITERAL = re.compile(r"\|L\d+\.\d+\||\b_pool_\d+_\d+_\d+\b|\b_0[0-9A-Fa-f]{7}\b")
+# A load from the compiler's own literal pool as the label pass spells it,
+# _pool_1_28_4, one label per word: the only spelling the rewrite reads. The
+# same load as tcc writes it, |L1.28| + 4, or as asmfix's pools pass names it
+# after a unit with a pool record, _0800B2B8, means the compiled file did not
+# come through compile_c(labels=True): the first is a pool no label names word
+# by word, the second a unit address the compiled pool must not take.
+RE_POOL_REF = re.compile(r"\b_pool_\d+_\d+_\d+\b")
+RE_POOL_DEF = re.compile(r"^(_pool_\d+_\d+_\d+)\s*$")
+RE_UNPLACED = re.compile(r"\|L\d+\.\d+\||\b_0[0-9A-Fa-f]{7}\b")
+# `        DCD      0x04000200` under a compiled pool label; `_0800B2B4 DCDU REG_IE`
+# in the unit's pool.s; `_08001C48 DCDU 0x1234` inside a slice, a pool the
+# original function kept in its own body.
+RE_COMPILED_WORD = re.compile(r"^\s+(DC[BWDQ]U?)\s+(.*?)\s*$")
+RE_UNIT_WORD = re.compile(r"^(\S+)\s+(DC[BWDQ]U?)\s+(.*?)\s*$")
+RE_OWN_POOL = re.compile(r"^_0[0-9A-Fa-f]{7}\s+DC[BWDQ]", re.M)
+RE_SETA = re.compile(r"^(\S+)\s+SETA\s+([^;]*)")
 RE_LOCAL_DEF = re.compile(r"^(\d+)\s*$")
 RE_LOCAL_REF = re.compile(r"%([FB]?[AT]?)(\d+)\b")
 END = "\tEND\n"
@@ -124,20 +147,31 @@ def cut_slice(name, text):
 
 
 def compiler_output(text):
-    """A compiler-generated .s, as ({function: body}, [import lines]).
+    """A compiler-generated .s, as ({function: body}, [import lines], pool).
 
     The body is what sits between `NAME PROC` and its ENDP, less the DCW the
-    compiler adds to word-align the end of its section.
+    compiler adds to word-align the end of its section. `pool` is
+    {label: (directive, value)} for the entries after the ENDPs, as the label
+    pass leaves them: `_pool_1_24_4` on a line of its own over its
+    `DCD 0x04000200`.
     """
     lines = text.splitlines(True)
-    bodies, imports = {}, []
+    bodies, imports, pool = {}, [], {}
     i = 0
     while i < len(lines):
         proc = RE_PROC.match(lines[i])
         imp = RE_IMPORT.match(lines[i])
+        entry = RE_POOL_DEF.match(lines[i])
         if imp:
             imports.append(imp.group(1))
             i += 1
+            continue
+        if entry:
+            word = RE_COMPILED_WORD.match(lines[i + 1]) if i + 1 < len(lines) else None
+            if not word:
+                raise SpliceError(f"{entry.group(1)}: pool label with no DC directive under it")
+            pool[entry.group(1)] = (word.group(1), word.group(2))
+            i += 2
             continue
         if not proc:
             i += 1
@@ -153,7 +187,102 @@ def compiler_output(text):
             body.pop()
         bodies[name] = "".join(body)
         i = j + 1
-    return bodies, imports
+    return bodies, imports, pool
+
+
+def gba_constants(path=CONSTANTS):
+    """{name: value} for the numeric variables asm/gba_constants.inc sets.
+
+    The disassembler wrote a unit's pool word as `REG_IE` where the address was
+    a known register; the compiler writes the same word as `0x04000200`. The
+    file sets each name with SETA to a literal, a name, or a sum of the two,
+    so that is what is read; a line in any other form sets nothing here.
+    """
+    values = {}
+    if not os.path.exists(path):
+        return values
+    with open(path) as fh:
+        for line in fh:
+            m = RE_SETA.match(line)
+            if not m:
+                continue
+            total = 0
+            for term in m.group(2).split("+"):
+                term = term.strip()
+                if term in values:
+                    total += values[term]
+                else:
+                    try:
+                        total += int(term, 0)
+                    except ValueError:
+                        total = None
+                        break
+            if total is not None:
+                values[m.group(1)] = total
+    return values
+
+
+def literal_value(text, constants):
+    """A pool word's value, in a form its two spellings can be compared in.
+
+    A number in any radix or case is an int, as is a name in `constants` and
+    armasm's `0x$NAME` substitution of one; both spellings of a word are
+    reduced to 32 bits. Anything else is a symbol, compared as written.
+    """
+    s = " ".join(text.split())
+    try:
+        return int(s, 0) & 0xFFFFFFFF
+    except ValueError:
+        pass
+    name = s[len("0x$"):] if s.startswith("0x$") else s
+    if name in constants:
+        return constants[name] & 0xFFFFFFFF
+    return s
+
+
+def unit_pool(text, constants):
+    """{value: [label]} for the words of a unit's pool.s, by literal_value."""
+    by_value = collections.defaultdict(list)
+    for line in text.splitlines():
+        m = RE_UNIT_WORD.match(line)
+        if m:
+            by_value[literal_value(m.group(3), constants)].append(m.group(1))
+    return by_value
+
+
+def rewrite_literals(unit, name, body, compiled_pool, by_value, constants):
+    """`body` with each load of the compiler's pool moved onto the unit's word
+    with the same value, or a SpliceError naming what could not be moved.
+    """
+    unplaced = RE_UNPLACED.search(body)
+    if unplaced:
+        raise SpliceError(
+            f"{unit}: {name} loads {unplaced.group(0)}, a pool spelling the splicer "
+            f"cannot place; the compiled file has to come through the label pass "
+            f"with an empty pool record first")
+
+    def label_for(m):
+        token = m.group(0)
+        if token not in compiled_pool:
+            raise SpliceError(f"{unit}: {name} loads {token}, which the compiled "
+                              f"file does not define")
+        directive, value = compiled_pool[token]
+        if directive.startswith("DCB"):
+            raise SpliceError(f"{unit}: {name} loads {token}, a string ({value}); "
+                              f"only a word can be found in the unit's pool by value")
+        if not directive.startswith("DCD"):
+            raise SpliceError(f"{unit}: {name} loads {token}, a {directive}, not a word")
+        labels = by_value.get(literal_value(value, constants), [])
+        if not labels:
+            raise SpliceError(f"{unit}: {name} loads {value}, and the unit's pool "
+                              f"has no word with that value")
+        if len(labels) > 1:
+            raise SpliceError(f"{unit}: {name} loads {value}, which the unit's pool "
+                              f"holds at {', '.join(labels)}; the value alone cannot "
+                              f"tell which one the original used")
+        return labels[0]
+
+    return RE_POOL_REF.sub(label_for, body)
 
 
 def local_labels(text):
@@ -216,14 +345,20 @@ def add_imports(header, imports, local=frozenset()):
     return "".join(lines[:at] + new + lines[at:])
 
 
-def splice(unit, order, pieces, compiled=None, compiled_imports=()):
+def splice(unit, order, pieces, compiled=None, compiled_imports=(),
+           compiled_pool=None, constants=None):
     """The text of one translation unit.
 
     `order` is the unit's function names in address order, `pieces` the contents
     of its directory, `compiled` the bodies that come from the compiler instead
-    of from the asm. With `compiled` empty this returns asm/split/<unit>.s.
+    of from the asm, `compiled_pool` the compiler's pool entries those bodies
+    load from, `constants` the names a unit pool word may be spelled with
+    (asm/gba_constants.inc unless given). With `compiled` empty this returns
+    asm/split/<unit>.s.
     """
     compiled = compiled or {}
+    compiled_pool = compiled_pool or {}
+    by_value = None
     missing = [n for n in order if f"{n}.s" not in pieces]
     if missing:
         raise SpliceError(f"{unit}: no piece for {', '.join(missing)}")
@@ -252,10 +387,17 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=()):
             continue
         lead, tail = cut_slice(name, text)
         body = compiled[name]
-        if RE_LITERAL.search(body):
+        if RE_OWN_POOL.search(text):
             raise SpliceError(
-                f"{unit}: {name} loads a literal from the compiler's own pool; "
-                f"rewriting it onto the unit's pool is not implemented")
+                f"{unit}: {name} keeps a literal pool inside its own body; a "
+                f"compiled body has nowhere to put those words, so the code "
+                f"after them would move")
+        if RE_POOL_REF.search(body) or RE_UNPLACED.search(body):
+            if by_value is None:
+                if constants is None:
+                    constants = gba_constants()
+                by_value = unit_pool(pieces["pool.s"], constants)
+            body = rewrite_literals(unit, name, body, compiled_pool, by_value, constants)
         body, used = renumber_locals(name, body, taken)
         taken |= used
         out.append(lead + body + tail)
@@ -322,9 +464,9 @@ def main():
         ap.error("a unit and -o are required without --check")
 
     pieces = read_unit(args.unit)
-    bodies, imports = ({}, [])
+    bodies, imports, pool = ({}, [], {})
     if args.compiled:
-        bodies, imports = compiler_output(open(args.compiled).read())
+        bodies, imports, pool = compiler_output(open(args.compiled).read())
         wanted = args.function or sorted(bodies)
         absent = [n for n in wanted if n not in bodies]
         if absent:
@@ -332,7 +474,7 @@ def main():
                               f"{', '.join(absent)}")
         bodies = {n: bodies[n] for n in wanted}
 
-    text = splice(args.unit, unit_order(args.unit, pieces), pieces, bodies, imports)
+    text = splice(args.unit, unit_order(args.unit, pieces), pieces, bodies, imports, pool)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w") as fh:
         fh.write(text)
