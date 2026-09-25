@@ -12,11 +12,19 @@
 extern "C" {
 #endif
 
+/* asm/split/split_8000324.s */
+extern void sub_8000324(void *a0); /* 0x08000324 */
+extern void sub_80003F4(void *a0); /* 0x080003F4 */
+
 /* asm/split/split_800065C.s */
 extern void sub_800065C(void *obj, unsigned short val); /* 0x0800065C */
 
 /* asm/split/split_800525C.s */
 extern void sub_800529A(void *a0, int a1, int a2, void *a3); /* 0x0800529A */
+
+/* asm/split/split_800BBF4.s */
+extern void sub_800BE0E(void *a0, void *a1); /* 0x0800BE0E */
+extern void sub_800C1CA(void *a0, void *a1); /* 0x0800C1CA */
 
 /* asm/split/split_801CB18.s */
 extern void sub_801CBAA(void *a0, int a1); /* 0x0801CBAA */
