@@ -450,7 +450,13 @@ def convert_compiler_labels_in_file(file_path):
         'dword_803EEC4': ['sub_800822C', 'sub_8008228', 'sub_8008264', 'sub_80087B8', 'sub_8008100', 'sub_8008AF4', 'sub_8008AFC', 'sub_8008B04', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
         'dword_803EEF0': ['sub_800805E', 'sub_800807A', 'sub_800808E', 'sub_80080FC', 'sub_8008100', 'sub_800810E', 'sub_8008112', 'sub_8008116', 'sub_8008118', 'sub_800811C', 'sub_8008120'],
     }
-    # Build a flat mangled-name → original-symbol dict from vtable_method_maps
+    # Build a flat mangled-name → original-symbol dict from vtable_method_maps.
+    # Slot bodies are usually written with no explicit parameters ("Fv"), but
+    # a member spliced with a real parameter mangles its argument list too
+    # (tcpp: void Boss::m04(void *a1) -> m04__4BossFPv, proven on winx-78k.19).
+    # Return type never appears in this scheme, so only the argument encoding
+    # varies; list the ones seen so far and extend as new shapes show up.
+    _ARG_ENCODINGS = ('v', 'Pv')
     _vtable_method_renames = {}
     for cls_name, symbols in vtable_method_maps.items():
         cls_len = len(cls_name)
@@ -459,12 +465,13 @@ def convert_compiler_labels_in_file(file_path):
                 continue
             offset = i * 4
             method_name = f'm{offset:02X}'
-            mangled = f'{method_name}__{cls_len}{cls_name}Fv'
-            _vtable_method_renames[mangled] = sym
-            # For method 0 (destructor slot), also map __dt__ mangled name
-            if i == 0:
-                dt_mangled = f'__dt__{cls_len}{cls_name}Fv'
-                _vtable_method_renames[dt_mangled] = sym
+            for arg_enc in _ARG_ENCODINGS:
+                mangled = f'{method_name}__{cls_len}{cls_name}F{arg_enc}'
+                _vtable_method_renames[mangled] = sym
+                # For method 0 (destructor slot), also map __dt__ mangled name
+                if i == 0:
+                    dt_mangled = f'__dt__{cls_len}{cls_name}F{arg_enc}'
+                    _vtable_method_renames[dt_mangled] = sym
     # Apply method symbol renaming (IMPORT and DCD entries)
     if _vtable_method_renames:
         method_renamed_lines = []
