@@ -148,6 +148,7 @@ check: tidy
 	python scripts/split_units.py --check
 	$(MAKE) all
 	python scripts/report.py
+	python -m pytest -q tests
 
 clean: mostlyclean
 
