@@ -2,7 +2,9 @@
 
 """Per-function objdiff scores for every unit that has both a reference and a build.
 
-    python scripts/report.py        build/report.json, plus a summary on stdout
+    python scripts/report.py                    build/report.json, plus a summary on stdout
+    python scripts/report.py --self-pair [UNIT ...]
+                                                screen: does objdiff abort on a unit's own asm?
 
 `make check` is still the only verdict. This is for navigation: when a unit does
 not match, which of its functions is wrong, and by how much.
@@ -54,6 +56,13 @@ side symbol" -- even when the two objects are the same file. 16 of the 105
 units splice_queue.py offers do that. Both objects are therefore copied into
 build/report/ with every `$b` moved to SHN_ABS first, which takes it out of
 every section and so out of objdiff's pairing; no relocation refers to one.
+
+`--self-pair` is the screen that found those 16, kept so the abort cannot park
+a matched function again: each named unit's reference is assembled, prepared
+as above, and handed to objdiff-cli as both target and base, one unit per run
+so the aborting ones can be named. With no unit it screens every unit
+scripts/splice_queue.py offers, which is what a swarm run is about to touch.
+It needs armasm and objdiff-cli, not a build, and exits 1 if any unit aborts.
 
 The same copies have every R_ARM_REL32 relocation retyped to R_ARM_ABS32.
 tcpp fills a vtable with REL32 entries, one per slot, and objdiff 3.8.1
@@ -225,19 +234,19 @@ def prepare_for_objdiff(src, dst):
     return moved
 
 
-def objdiff(scored):
+def objdiff(scored, project=OUTDIR, raw=RAW):
     """Run objdiff over the assembled references; returns its raw report."""
     config = {"min_version": "3.0.0", "units": [
         {"name": unit, "target_path": ref, "base_path": built}
         for unit, ref, built in scored]}
-    with open(os.path.join(OUTDIR, "objdiff.json"), "w") as fh:
+    with open(os.path.join(project, "objdiff.json"), "w") as fh:
         json.dump(config, fh, indent=1)
     r = subprocess.run(["objdiff-cli", "report", "generate",
-                        "-p", OUTDIR, "-o", RAW, "-f", "json"],
+                        "-p", project, "-o", raw, "-f", "json"],
                        cwd=REPO, capture_output=True, text=True)
     if r.returncode:
         raise ReportError(f"objdiff-cli failed\n{r.stdout}{r.stderr}")
-    with open(RAW) as fh:
+    with open(raw) as fh:
         return json.load(fh)
 
 
@@ -314,9 +323,65 @@ def check_golden():
     return not (drifted or unfrozen or stale)
 
 
+def self_pair(units, order, asm, asflags):
+    """Each unit's reference as both sides of objdiff; the units it aborts on.
+
+    Returns {unit: objdiff's error text} for the aborting units. One objdiff
+    run per unit, in its own project directory under build/report/self-pair/,
+    because one abort takes a whole project report down without naming it.
+    """
+    aborted = {}
+    for unit in units:
+        text, where = reference_text(unit, order)
+        if text is None:
+            raise ReportError(f"{unit}: no reference asm to self-pair")
+        project = os.path.join(OUTDIR, "self-pair", unit)
+        os.makedirs(project, exist_ok=True)
+        src = os.path.join(project, f"{unit}.s")
+        obj = os.path.join(project, f"{unit}.o")
+        with open(src, "w") as fh:
+            fh.write(text)
+        r = subprocess.run([asm] + asflags + ["-o", obj, src],
+                           cwd=REPO, capture_output=True, text=True)
+        if r.returncode:
+            raise ReportError(f"{unit}: the reference does not assemble\n"
+                              f"{r.stdout}{r.stderr}")
+        prepare_for_objdiff(obj, obj)
+        try:
+            objdiff([(unit, obj, obj)], project, os.path.join(project, "report.json"))
+        except ReportError as exc:
+            aborted[unit] = str(exc)
+    return aborted
+
+
+def queued_units():
+    """Every unit scripts/splice_queue.py offers, in its rank order."""
+    import splice_queue
+    return [stem for stem, _ in splice_queue.by_unit(splice_queue.survey())]
+
+
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.parse_args()
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--self-pair", nargs="*", metavar="UNIT",
+                    help="screen these units (default: every unit splice_queue.py "
+                         "offers) for the objdiff self-pair abort instead of scoring")
+    args = ap.parse_args()
+
+    if args.self_pair is not None:
+        if not shutil.which("objdiff-cli"):
+            raise ReportError("objdiff-cli is not installed")
+        asm, asflags = assembler()
+        with open(SYMBOLS) as fh:
+            order = unit_order(yaml.safe_load(fh))
+        units = args.self_pair or queued_units()
+        aborted = self_pair(units, order, asm, asflags)
+        print(f"self-pair: {len(aborted)} of {len(units)} units abort objdiff-cli")
+        for unit in units:
+            if unit in aborted:
+                why = aborted[unit].strip().splitlines()
+                print(f"  {unit:<24} {why[-1] if why else ''}")
+        return 1 if aborted else 0
 
     if not check_golden():
         return 1
