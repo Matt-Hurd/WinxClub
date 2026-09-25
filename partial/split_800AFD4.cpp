@@ -1,4 +1,4 @@
-/* Five functions of split_800AFD4; the rest of the unit is still assembly in
+/* Seven functions of split_800AFD4; the rest of the unit is still assembly in
  * asm/nonmatching/split_800AFD4/. cpp_evidence.py proves this unit C++ (an
  * __nw__FUi operator-new call elsewhere in it), so it is spliced as .cpp
  * even though none of these five need a C++ construct themselves.
@@ -9,6 +9,18 @@
  * mmio-constants-get-rebased-to-a-32-byte-boundary.md for the case where
  * that is *not* true.
  */
+
+extern "C" void VBlankIntrWait(void);
+
+extern "C" void sub_800B08E(void)
+{
+    VBlankIntrWait();
+}
+
+extern "C" int sub_800B082(void)
+{
+    return *(volatile unsigned short *)0x4000000 & 7;
+}
 
 extern "C" void sub_800B034(void *a0, int a1)
 {
