@@ -85,6 +85,7 @@ extern void sub_803894A(void *a0, int a1); /* 0x0803894A */
 extern void sub_80389CC(void *a0); /* 0x080389CC */
 
 /* asm/nonmatching/split_803D4A8 */
+extern int sub_803D66C(void *a0); /* 0x0803D66C */
 extern void sub_803D9A8(void *a0, int a1, int a2); /* 0x0803D9A8 */
 extern void *sub_803DA18(void *obj); /* 0x0803DA18 */
 extern void *sub_803DA9C(unsigned int a0, void *a1, int a2, int a3); /* 0x0803DA9C */

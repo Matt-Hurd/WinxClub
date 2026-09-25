@@ -1,5 +1,9 @@
-/* Three functions of split_80296E0; the rest of the unit is still assembly in
- * asm/nonmatching/split_80296E0/.
+/* Five functions of split_80296E0; the rest of the unit is still assembly in
+ * asm/nonmatching/split_80296E0/. HostileCreature__PlayerIframe and
+ * HostileCreature__DamagePlayer are its own slot bodies, single-field
+ * bit tests/sets on a0+0x80+0x2c. HostileCreature__3C, the same shape as
+ * Npc::m3C() in partial/split_80253A8.cpp plus a conditional bitfield write,
+ * is parked -- see notes/parked.md.
  */
 
 int sub_80296E0(void *a0)
@@ -75,3 +79,14 @@ void sub_802AC74(struct Obj7C *a0, int *a1)
 void sub_802B0A0(void)
 {
 }
+
+int HostileCreature__PlayerIframe(void *a0)
+{
+    return (*(unsigned int *)((char *)a0 + 0x80 + 0x2c) >> 3) & 1;
+}
+
+void HostileCreature__DamagePlayer(void *a0)
+{
+    *(unsigned int *)((char *)a0 + 0x80 + 0x2c) |= 8;
+}
+

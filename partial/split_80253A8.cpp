@@ -10,6 +10,7 @@
 
 extern "C" void m04__7DefaultFv(void *a0);
 extern "C" void m08__7DefaultFv(void *a0);
+extern "C" void m10__7DefaultFv(void *a0);
 extern "C" void sub_803FF24(void *a0, void *a1);
 
 void Npc::m04()
@@ -20,6 +21,11 @@ void Npc::m04()
 void Npc::m08()
 {
     m08__7DefaultFv(this);
+}
+
+void Npc::m10()
+{
+    m10__7DefaultFv(this);
 }
 
 /* Npc__38 and Npc__3C are Npc's own slot bodies (not Default thunks): both

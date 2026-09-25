@@ -5983,6 +5983,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_803D4A8
   name: sub_803D66C
+  decl: int sub_803D66C(void *a0)
 - addr: '0x0803D680'
   isa: thumb
   unit: asm/nonmatching/split_803D4A8

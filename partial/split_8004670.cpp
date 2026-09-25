@@ -1,9 +1,11 @@
-/* Nine of the ten assigned functions of split_8004670; the rest of the unit,
- * including the parked sub_80046B8 (see notes/parked.md), is still assembly
- * in asm/nonmatching/split_8004670/. cpp_evidence.py proves the unit C++ via
- * __nw__FUi (operator new); none of these is a vtable slot, so they are
- * written as plain free functions, extern "C" to keep their working names.
+/* Twelve of the fourteen assigned functions of split_8004670; the rest of
+ * the unit, including the parked sub_80046B8 and sub_8004716 (see
+ * notes/parked.md), is still assembly in asm/nonmatching/split_8004670/.
+ * cpp_evidence.py proves the unit C++ via __nw__FUi (operator new); none of
+ * these is a vtable slot, so they are written as plain free functions,
+ * extern "C" to keep their working names.
  */
+#include "generated/functions.h"
 
 extern "C" void sub_8004670(void *a0, int a1) {
     *(int *)((char *)a0 + 4) = a1;
@@ -63,3 +65,20 @@ extern "C" void sub_800476C(void *a0, unsigned int a1) {
     unsigned short masked = *(unsigned short *)a0 & ~0xc0;
     *(unsigned short *)a0 = masked | ((a1 & 3) << 6);
 }
+
+extern "C" void sub_80046EE(void *a0) {
+    *(unsigned short *)a0 = 0;
+    *(unsigned short *)((char *)a0 + 2) = 0;
+    *(unsigned short *)((char *)a0 + 4) = 0;
+}
+
+extern "C" void sub_80046E2(void *a0, void *a1) {
+    unsigned short *src = (unsigned short *)((char *)a1 + 0xa);
+    *(unsigned short *)a0 = src[0];
+    *(unsigned short *)((char *)a0 + 2) = src[1];
+}
+
+extern "C" int sub_800474E(void *a0) {
+    return sub_803D66C((char *)a0 + 4);
+}
+
