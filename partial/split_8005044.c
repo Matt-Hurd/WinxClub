@@ -1,6 +1,7 @@
 /* Seven of split_8005044's eleven candidates. sub_8005044,
- * SomehowInitEWRAMLinkedList, sub_8005164 and sub_8005170 are parked --
- * see notes/parked.md -- and stay asm in asm/nonmatching/split_8005044/.
+ * SomehowInitEWRAMLinkedList, sub_8005164, sub_8005170 and sub_80051D6 are
+ * parked -- see notes/parked.md -- and stay asm in
+ * asm/nonmatching/split_8005044/.
  *
  * The header/node struct these operate on is 0x10 bytes: a next-free-node
  * pointer @0x0, another link @0x4, a packed state|size word @0x8 (low byte
