@@ -15,7 +15,7 @@ public:
     virtual void m20();
     virtual void m24();
     virtual void m28();
-    virtual void m2C();
+    virtual int m2C();
     virtual void m30();
     virtual void m34();
     virtual void m38();

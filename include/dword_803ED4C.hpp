@@ -11,7 +11,7 @@ public:
     virtual void m10();
     virtual void m14();
     virtual void m18();
-    virtual void m1C();
+    virtual unsigned char m1C();
     virtual void m20();
 };
 

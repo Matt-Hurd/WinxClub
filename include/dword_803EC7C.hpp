@@ -8,7 +8,7 @@ public:
     virtual void m04();
     virtual void m08();
     virtual void m0C();
-    virtual void m10();
+    virtual int m10();
     virtual void m14();
     virtual void m18();
 };
