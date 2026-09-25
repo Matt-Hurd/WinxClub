@@ -21,7 +21,7 @@ public:
   virtual void m20();          // slot 8
   virtual void DamagePlayer(); // slot 9
   virtual void PlayerIframe(); // slot 10
-  virtual void Attack();       // slot 11
+  virtual int Attack();        // slot 11
   virtual void TakeDamage();   // slot 12
   virtual void Intersect();    // slot 13
   virtual void m38();          // slot 14
