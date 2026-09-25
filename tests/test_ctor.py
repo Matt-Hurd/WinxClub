@@ -140,3 +140,34 @@ def test_align_pools_skips_a_pool_already_padded_or_aligned(ctx):
     c = ctx()
     c.constructor_stripped = True
     assert ctor.align_pools(src, c) == src
+
+
+def test_a_one_entry_pool_holding_the_vtable_is_the_constructors():
+    src = lines("""
+            BX       r3
+            DCW      0000
+    _pool_1_28_0
+            DCD      __VTABLE__13dword_803E320
+            ENDP
+    """)
+    assert [l.strip() for l in ctor.strip_constructor_pool(src)] == ["BX       r3", "ENDP"]
+
+
+def test_a_vtable_entry_something_else_still_loads_stays():
+    src = lines("""
+            LDR      r1,_pool_1_28_0
+            BX       lr
+    _pool_1_28_0
+            DCD      __VTABLE__13dword_803E320
+    """)
+    assert ctor.strip_constructor_pool(src) == src
+
+
+def test_a_vtable_entry_in_a_pool_with_more_entries_stays():
+    src = lines("""
+    _pool_1_52_0
+            DCD      __VTABLE__13dword_803ECB8
+    _pool_1_52_4
+            DCD      gUnknown_03003E7C
+    """)
+    assert ctor.strip_constructor_pool(src) == src

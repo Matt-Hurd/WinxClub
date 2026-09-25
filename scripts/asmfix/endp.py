@@ -11,7 +11,9 @@ moves. (notes/automation-plan.md, phase 3.)
 
 import re
 
-RE_POOL_DATA = re.compile(r"^(DC[BDWQ]U?|SPACE|FILL|ALIGN)\b", re.IGNORECASE)
+# A data directive, alone on its line or after a label as pools.py writes a
+# named entry (`_0803FB54 DCD 0x0000fffe`) and the original asm writes its pool.
+RE_POOL_DATA = re.compile(r"^(\S+\s+)?(DC[BDWQ]U?|SPACE|FILL|ALIGN)\b", re.IGNORECASE)
 RE_POOL_LABEL = re.compile(r"^(\d+|_pool_\w+|\|L[\w.]*\||_0[0-9A-Fa-f]{7})$")
 
 

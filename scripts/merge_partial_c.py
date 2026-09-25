@@ -55,7 +55,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import preprocess_compiler_labels
+import asmfix
 import splice_unit
 
 
@@ -152,6 +152,10 @@ def compile_c(cc, cc1flags, include_dir, c_file, s_file, labels=False):
     The pass is idempotent, so the Makefile running it again over the merged unit
     is a no-op.
 
+    The passes run with an empty pool record: a partial compile's pool is never
+    the unit's, so its entries must not take the unit's addresses, and a body
+    that loads from it is refused by the splice whatever the entries are called.
+
     merge_asm_files wants the raw output instead: it finds the pool by the `DATA`
     marker on the pool label's line, which the pass rewrites away.
     """
@@ -159,7 +163,8 @@ def compile_c(cc, cc1flags, include_dir, c_file, s_file, labels=False):
     print(cmd)
     subprocess.run(cmd, check=True, shell=True)
     if labels:
-        preprocess_compiler_labels.convert_compiler_labels_in_file(s_file)
+        config = dict(asmfix.load_config(), pools={})
+        asmfix.fix_file(s_file, config)
 
 
 def splice(yml_file, spec, built_s, output_file):

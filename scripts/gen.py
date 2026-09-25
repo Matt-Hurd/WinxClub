@@ -10,7 +10,11 @@ Three directions:
 
 symbols.yml is the source of record for three things the repo currently keeps by
 hand: the scatter script's layout (regions and link order), every function's
-address and instruction set, and every data symbol's address and size.
+address and instruction set, and every data symbol's address and size. It also
+records, per asm unit, the addresses of its literal pool entries (`pools:`): the
+original asm labels each entry with its address, the compiler labels its pool
+however it likes, and scripts/asmfix/pools.py renames the compiled entries from
+this list so objdiff can pair them. Nothing is generated from it.
 
 A function or global may also carry a `decl:` -- the C declaration of it, minus
 the `extern` and the semicolon. That field is hand-written, not extracted, and
@@ -233,6 +237,81 @@ def elf_addresses(path):
     return {n: [a for a, _ in v] for n, v in elf_symbols(path, "STT_FUNC").items()}
 
 
+# A literal pool entry as the disassembly labels it: `_08000D60 DCDU gUnknown_03003E84`.
+RE_POOL_ENTRY = re.compile(r"^(_0[0-9A-Fa-f]{7})\s+DC[BDWQ]U?\b")
+
+
+def parse_asm_pools(path):
+    """The pool entries a unit's asm labels, as addresses in ascending order.
+
+    `path` is one asm file or a directory of per-function pieces, as parse_asm
+    takes it. The label is the address (every one of the 1,958 that reach the
+    ELF agrees), which is what lets the pieces of a spliced unit be read in any
+    order.
+    """
+    paths = sorted(glob.glob(os.path.join(path, "*.s"))) if os.path.isdir(path) else [path]
+    out = []
+    for one in paths:
+        with open(one) as fh:
+            for line in fh:
+                m = RE_POOL_ENTRY.match(line)
+                if m:
+                    out.append(int(m.group(1)[1:], 16))
+    return sorted(out)
+
+
+def elf_pool_labels(path):
+    """name -> address for every _0XXXXXXX label in the ELF, whatever its type."""
+    from elftools.elf.elffile import ELFFile
+
+    out = {}
+    with open(path, "rb") as fh:
+        symtab = ELFFile(fh).get_section_by_name(".symtab")
+        for sym in symtab.iter_symbols():
+            if RE_POOL_ENTRY.match(sym.name + " DCD"):
+                out[sym.name] = sym.entry.st_value
+    return out
+
+
+def pool_units():
+    """asm_units() plus asm/nonmatching/<unit>.s: the asm a whole-unit conversion
+    replaced. It declares no function the build still assembles, so it is not a
+    function unit, but its pool is the one the compiled unit's entries are
+    named after -- those are the units the record exists for.
+    """
+    return asm_units() + sorted(glob.glob(os.path.join(REPO, "asm", "nonmatching", "*.s")))
+
+
+def extract_pools():
+    """One record per asm unit with a pool: its entries' addresses, in order.
+
+    Each label is checked against the ELF where the ELF has it. Many are not:
+    armasm writes no symbol for a label nothing references (the words inside a
+    string, say), and a unit built from source carries the compiled pool under
+    whatever names asmfix gave it until pools.py has named them. Those are
+    counted, not reported one by one.
+    """
+    labels = elf_pool_labels(ELF)
+    records, problems, absent = [], [], 0
+    for path in pool_units():
+        unit = os.path.relpath(path, REPO)
+        entries = parse_asm_pools(path)
+        if not entries:
+            continue
+        for addr in entries:
+            name = "_%08X" % addr
+            if name not in labels:
+                absent += 1
+            elif labels[name] != addr:
+                problems.append(f"{unit}: {name} is at 0x{labels[name]:08X} in the ELF")
+        records.append({"unit": unit, "entries": ["0x%08X" % a for a in entries]})
+    records.sort(key=lambda r: int(r["entries"][0], 16))
+    if absent:
+        problems.append(f"{absent} pool words have no symbol in the ELF (unreferenced, "
+                        f"or in a unit built from source); the label stands as the address")
+    return records, problems
+
+
 def extract_functions():
     if not os.path.exists(ELF):
         sys.exit(f"{ELF} not found: run make first, addresses come from the link")
@@ -361,7 +440,8 @@ def do_extract():
     loads = parse_scatter(SCATTER)
     functions, problems = extract_functions()
     globals_, gproblems = extract_globals()
-    for p in problems + gproblems:
+    pools, pproblems = extract_pools()
+    for p in problems + gproblems + pproblems:
         print("note:", p, file=sys.stderr)
 
     previous = load_symbols() if os.path.exists(SYMBOLS) else {}
@@ -387,6 +467,10 @@ def do_extract():
             "#             the link, 'isa' from the declaring macro.\n"
             "# globals   - one per GLOBAL in data/, sorted by address. No size:\n"
             "#             armasm emits none for a data label.\n"
+            "# pools     - one per asm unit with a literal pool: its entries'\n"
+            "#             addresses in order, from the _0XXXXXXX labels the asm\n"
+            "#             gives them. scripts/asmfix/pools.py names a compiled\n"
+            "#             unit's entries from this list so objdiff pairs them.\n"
             "#\n"
             "# 'decl' is the one hand-written field: the C declaration of that\n"
             "# symbol, minus 'extern' and the semicolon. --extract carries it\n"
@@ -394,7 +478,7 @@ def do_extract():
             "# a decl are what include/generated/*.h declares.\n"
         )
         yaml.safe_dump(
-            {"layout": loads, "functions": functions, "globals": globals_},
+            {"layout": loads, "functions": functions, "globals": globals_, "pools": pools},
             fh,
             sort_keys=False,
             default_flow_style=False,
@@ -402,9 +486,11 @@ def do_extract():
         )
     nobj = sum(len(r["objects"]) for l in loads for r in l["regions"])
     nreg = sum(len(l["regions"]) for l in loads)
+    nent = sum(len(r["entries"]) for r in pools)
     print(
         f"config/symbols.yml: {nreg} regions, {nobj} object lines, "
-        f"{len(functions)} functions, {len(globals_)} globals, {kept} decls"
+        f"{len(functions)} functions, {len(globals_)} globals, {kept} decls, "
+        f"{nent} pool entries in {len(pools)} units"
     )
 
 

@@ -81,3 +81,16 @@ def test_a_pool_in_the_middle_of_a_function_is_not_the_trailing_one(ctx):
             ENDP
     """)
     assert endp.before_pool(src, ctx()) is src
+
+
+def test_a_labelled_directive_is_pool_data_too(ctx):
+    src = lines("""
+            BX       lr
+    _0803FB50 DCD      gUnknown_03003E88
+    _0803FB54 DCD      0x0000fffe
+            ENDP
+    """)
+    out = endp.before_pool(src, ctx())
+    assert [l.strip() for l in out] == ["BX       lr", "ENDP",
+                                        "_0803FB50 DCD      gUnknown_03003E88",
+                                        "_0803FB54 DCD      0x0000fffe"]

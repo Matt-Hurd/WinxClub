@@ -14,17 +14,25 @@ single-function script applied them in and is part of the contract: the pool
 ALIGN pass must run before the ENDP move treats ALIGN as pool data, and the
 per-file fixups match text that the label pass has already rewritten.
 
+pools.name_entries runs after every pass that adds or drops a pool entry
+(ctor.strip_stub, fixups) so that it counts the entries the object will have.
+
 The passes are byte-neutral or they are not: nothing here may change what a
 unit assembles to except fixups.py, whose every rule is owner-approved data in
 config/fixups.yml.
 """
 
 import os
+import sys
 
-from . import labels, areas, ctor, vtables, fixups, endp
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from gen import unit_stem  # noqa: E402
+
+from . import labels, areas, ctor, vtables, fixups, pools, endp  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CONFIG = os.path.join(REPO, "config")
+SYMBOLS = os.path.join(CONFIG, "symbols.yml")
 
 
 class Context:
@@ -33,6 +41,10 @@ class Context:
         self.unit = os.path.splitext(os.path.basename(path))[0]
         self.config = config if config is not None else load_config()
         self.constructor_stripped = False
+
+    def pool_addresses(self):
+        """This unit's pool entries' addresses, in order, or [] if none are recorded."""
+        return pool_addresses(self.config).get(self.unit, [])
 
 
 _config = None
@@ -57,6 +69,30 @@ def load_config(config_dir=CONFIG):
     return _config
 
 
+def load_pools(symbols_path=SYMBOLS):
+    """unit stem -> [address, ...] from the `pools:` records of config/symbols.yml."""
+    if not os.path.exists(symbols_path):
+        return {}
+    import yaml
+    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    with open(symbols_path) as fh:
+        symbols = yaml.load(fh, Loader=loader) or {}
+    return {unit_stem(rec["unit"]): [int(a, 16) for a in rec["entries"]]
+            for rec in symbols.get("pools") or []}
+
+
+def pool_addresses(config, symbols_path=SYMBOLS):
+    """The pool records, loaded into `config` on first use.
+
+    Not part of load_config: symbols.yml is 7,000 lines, read once per compiled
+    file, and most units have no pool to name. A config that already carries
+    "pools" -- a test's, or the empty one the splicer passes -- is used as it is.
+    """
+    if "pools" not in config:
+        config["pools"] = load_pools(symbols_path)
+    return config["pools"]
+
+
 PASSES = (
     labels.rewrite,       # |L1.N| -> %N; pool labels -> _pool_1_N_<offset>
     areas.rename,         # ||.text|| -> text; vtable AREA CODE -> DATA; - {PC} -> - <vtable>
@@ -66,6 +102,7 @@ PASSES = (
     vtables.rename_methods,  # m<off>__<len><class>F<args> -> the slot's original symbol
     fixups.apply,         # owner-approved per-file rewrites, config/fixups.yml
     ctor.align_pools,     # ALIGN before a pool that lost its constructor's padding
+    pools.name_entries,   # _pool_1_N_<offset> -> _0XXXXXXX, the address the entry had
     endp.before_pool,     # ENDP in front of the trailing literal pool
 )
 

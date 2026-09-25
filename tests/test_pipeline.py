@@ -5,7 +5,7 @@ import sys
 from conftest import REPO, lines, text
 
 import asmfix
-from asmfix import areas, ctor, endp, fixups, labels, vtables
+from asmfix import areas, ctor, endp, fixups, labels, pools, vtables
 
 UNIT = """
         AREA ||.text||, CODE, READONLY
@@ -43,7 +43,7 @@ def test_pass_order_is_the_documented_one():
     assert asmfix.PASSES == (
         labels.rewrite, areas.rename, labels.expand_pools, ctor.strip_stub,
         vtables.rename_areas, vtables.rename_methods, fixups.apply,
-        ctor.align_pools, endp.before_pool)
+        ctor.align_pools, pools.name_entries, endp.before_pool)
 
 
 def test_fix_text_runs_the_passes_and_is_idempotent():

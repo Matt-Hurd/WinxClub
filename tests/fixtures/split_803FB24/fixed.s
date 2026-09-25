@@ -9,7 +9,7 @@ sub_803FB24 PROC
         STR      r1,[r0,#0]
         CMP      r3,#0xff
         BNE      %12
-        LDR      r1,_pool_1_44_0
+        LDR      r1,_0803FB50
         LDR      r1,[r1,#0]  ; gUnknown_03003E88
         LDRB     r3,[r1,#0x14]
 12
@@ -21,7 +21,7 @@ sub_803FB24 PROC
         ORR      r1,r3
         STRH     r1,[r0,#0x10]
         STRB     r2,[r0,#4]
-        LDR      r2,_pool_1_44_4
+        LDR      r2,_0803FB54
         MOV      r1,#0
         STR      r1,[r0,#8]
         STRH     r2,[r0,#0xc]
@@ -30,10 +30,8 @@ sub_803FB24 PROC
         STR      r1,[r0,#0x18]
         BX       lr
         ENDP
-_pool_1_44_0
-        DCD      gUnknown_03003E88
-_pool_1_44_4
-        DCD      0x0000fffe
+_0803FB50 DCD      gUnknown_03003E88
+_0803FB54 DCD      0x0000fffe
 
 
 

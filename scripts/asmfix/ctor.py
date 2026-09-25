@@ -9,8 +9,10 @@ When the emitted `__ct__` body is a stub (under 20 lines), strip_stub removes:
   every `IMPORT __ct__*` (a base constructor only the stub called);
 - the `i.__dt__*` COMDEF AREAs tcpp generates for an inherited virtual
   destructor, and their EXPORTs -- the vtable slot already names the asm one;
-- the constructor's own literal pool entry (`DCW 0000`, a numeric label, then
-  `DCD __VTABLE__...`) when tcpp placed it inside a neighbouring PROC.
+- the constructor's own literal pool entry (`DCW 0000`, a label, then
+  `DCD __VTABLE__...`, and nothing else in that pool) when tcpp placed it
+  inside a neighbouring PROC. A vtable entry in a pool with more entries is
+  shared with a real method and stays; so does one anything still loads.
 
 A real constructor (20 lines or more) is left alone.
 
@@ -102,29 +104,60 @@ def strip_stub(lines, ctx):
     return strip_constructor_pool(out)
 
 
+RE_POOL_LABEL = re.compile(r"^(_pool_\d+_\d+)_0$")
+RE_DATA = re.compile(r"^DC[BDWQ]U?\b")
+
+
+def is_pool_label(s):
+    return s.isdigit() or bool(RE_POOL_LABEL.match(s))
+
+
 def strip_constructor_pool(lines):
-    """Drop `[DCW 0000] <number> DCD __VTABLE__...`: the stub's pool entry."""
+    """Drop `[DCW 0000] <label> DCD __VTABLE__...`: the stub's one-entry pool."""
     out = []
     i = 0
     while i < len(lines):
         s = lines[i].strip()
-        if s == "DCW      0000" or s.isdigit():
+        if s == "DCW      0000" or is_pool_label(s):
             j = i + 1
+            label = s if is_pool_label(s) else None
             if s == "DCW      0000":
                 while j < len(lines) and not lines[j].strip():
                     j += 1
-                if j < len(lines) and lines[j].strip().isdigit():
+                if j < len(lines) and is_pool_label(lines[j].strip()):
+                    label = lines[j].strip()
                     j += 1
             while j < len(lines) and not lines[j].strip():
                 j += 1
             if j < len(lines):
                 nxt = lines[j].strip()
-                if "DCD" in nxt and "__VTABLE__" in nxt:
+                if "DCD" in nxt and "__VTABLE__" in nxt and not shared(lines, label, j):
                     i = j + 1
                     continue
         out.append(lines[i])
         i += 1
     return out
+
+
+def shared(lines, label, entry):
+    """Is the pool entry at `entry`, labelled `label`, still in use?
+
+    True when the pool holds a second entry (the next non-blank line after the
+    entry is another label of the same pool, or another data word), or when a
+    surviving line still loads this one.
+    """
+    m = RE_POOL_LABEL.match(label or "")
+    if m:
+        base = m.group(1) + "_"
+        k = entry + 1
+        while k < len(lines) and not lines[k].strip():
+            k += 1
+        if k < len(lines) and (lines[k].strip().startswith(base)
+                               or RE_DATA.match(lines[k].strip())):
+            return True
+        ref = re.compile(r"\b" + re.escape(label) + r"\b")
+        return any(ref.search(l) for l in lines if l.strip() != label)
+    return False
 
 
 def align_pools(lines, ctx):

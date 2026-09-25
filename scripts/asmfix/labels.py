@@ -3,8 +3,12 @@
 tcc and tcpp write local labels as |L<n>.<m>| and refer to a literal pool
 entry as |L<n>.<m>| + <offset>. armasm has numeric local labels (a definition
 is a bare number, a reference is %<number>) but no "label + offset" syntax, so
-a label that is ever used with an offset is a pool label and gets one named
-label per entry instead: _pool_<n>_<m>_<offset>.
+a pool label gets one named label per entry instead: _pool_<n>_<m>_<offset>.
+A pool label is one the compiler defines with the DATA marker (a data word in
+a code section is a literal pool entry), or one ever referenced with an
+offset. The marker alone catches a one-entry pool, which no offset names;
+without it that label became a numeric local, which armasm keeps out of the
+symbol table, so pools.py had nothing to give the address to.
 
 rewrite      turns every definition and reference into one of those two forms.
 expand_pools inserts the per-entry labels after each _pool_..._0 definition,
@@ -16,6 +20,7 @@ import re
 RE_DEF = re.compile(r"^\s*\|L(\d+)\.(\d+)\|", re.IGNORECASE)
 RE_REF = re.compile(r"\|L(\d+)\.(\d+)\|", re.IGNORECASE)
 RE_REF_OFFSET = re.compile(r"\|L(\d+)\.(\d+)\|(\s*\+\s*(\d+))?")
+RE_DATA_DEF = re.compile(r"^\s*\|L(\d+)\.(\d+)\|\s+DATA\b")
 RE_POOL_DEF = re.compile(r"^(_pool_\d+_\d+)_0$")
 
 
@@ -24,13 +29,17 @@ def pool_name(n, m):
 
 
 def find_pool_labels(lines):
-    """The (n, m) labels referenced with an offset anywhere in the unit."""
+    """The (n, m) labels defined with DATA or referenced with an offset anywhere in the unit."""
     offsets = {}
+    pools = set()
     for line in lines:
+        d = RE_DATA_DEF.match(line)
+        if d:
+            pools.add((d.group(1), d.group(2)))
         for m in RE_REF_OFFSET.finditer(line):
             key = (m.group(1), m.group(2))
             offsets.setdefault(key, set()).add(int(m.group(4)) if m.group(4) else 0)
-    return {k for k, seen in offsets.items() if max(seen) > 0}
+    return pools | {k for k, seen in offsets.items() if max(seen) > 0}
 
 
 def rewrite(lines, ctx):

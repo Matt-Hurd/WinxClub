@@ -9,6 +9,10 @@
 #             the link, 'isa' from the declaring macro.
 # globals   - one per GLOBAL in data/, sorted by address. No size:
 #             armasm emits none for a data label.
+# pools     - one per asm unit with a literal pool: its entries'
+#             addresses in order, from the _0XXXXXXX labels the asm
+#             gives them. scripts/asmfix/pools.py names a compiled
+#             unit's entries from this list so objdiff pairs them.
 #
 # 'decl' is the one hand-written field: the C declaration of that
 # symbol, minus 'extern' and the semicolon. --extract carries it
@@ -7507,3 +7511,2865 @@ globals:
   kind: object
   unit: data/last_data.s
   name: gArchive
+pools:
+- unit: asm/crt0.s
+  entries:
+  - '0x08000128'
+  - '0x0800012C'
+  - '0x08000130'
+  - '0x08000200'
+  - '0x08000204'
+  - '0x08000208'
+  - '0x0800020C'
+- unit: asm/nonmatching/split_8000210
+  entries:
+  - '0x08000314'
+  - '0x08000318'
+  - '0x0800031C'
+  - '0x08000320'
+- unit: asm/split/split_8000324.s
+  entries:
+  - '0x08000654'
+  - '0x08000658'
+- unit: asm/split/split_800065C.s
+  entries:
+  - '0x08000900'
+  - '0x08000904'
+  - '0x08000908'
+  - '0x0800090C'
+  - '0x08000910'
+- unit: asm/split/split_8000914.s
+  entries:
+  - '0x08000B8C'
+  - '0x08000B90'
+  - '0x08000B94'
+  - '0x08000B98'
+  - '0x08000B9C'
+  - '0x08000BA0'
+  - '0x08000BA4'
+  - '0x08000BA8'
+- unit: asm/nonmatching/split_8000BAC
+  entries:
+  - '0x08000C74'
+  - '0x08000C78'
+- unit: asm/nonmatching/split_8000C7C.s
+  entries:
+  - '0x08000D60'
+- unit: asm/nonmatching/split_8000D64
+  entries:
+  - '0x08001044'
+  - '0x08001048'
+  - '0x0800104C'
+  - '0x08001050'
+  - '0x08001054'
+  - '0x08001058'
+- unit: asm/nonmatching/split_800105C
+  entries:
+  - '0x080012E4'
+  - '0x080012E8'
+  - '0x080012EC'
+- unit: asm/split/split_80012F0.s
+  entries:
+  - '0x080017C8'
+  - '0x080017CC'
+  - '0x080017D0'
+  - '0x080017D4'
+  - '0x080017D8'
+  - '0x080017DC'
+  - '0x080017E0'
+- unit: asm/nonmatching/split_80017E4
+  entries:
+  - '0x08001A34'
+  - '0x08001A38'
+  - '0x08001A3C'
+  - '0x08001A40'
+  - '0x08001A44'
+  - '0x08001A48'
+  - '0x08001A4C'
+  - '0x08001A50'
+  - '0x08001A54'
+  - '0x08001A58'
+  - '0x08001A5C'
+- unit: asm/nonmatching/split_8001A60
+  entries:
+  - '0x08001E7C'
+  - '0x08001E80'
+  - '0x08001E84'
+  - '0x08001E88'
+  - '0x08001E8C'
+  - '0x08001E90'
+  - '0x08001E94'
+  - '0x08001E98'
+  - '0x08001E9C'
+- unit: asm/nonmatching/split_8002004
+  entries:
+  - '0x08002124'
+  - '0x08002128'
+- unit: asm/split/split_800212C.s
+  entries:
+  - '0x080023E8'
+  - '0x080023EC'
+  - '0x080023F0'
+  - '0x080023F4'
+  - '0x080023F8'
+  - '0x080023FC'
+  - '0x08002400'
+  - '0x08002404'
+  - '0x08002408'
+  - '0x0800240C'
+  - '0x08002410'
+  - '0x08002414'
+  - '0x08002418'
+  - '0x0800241C'
+  - '0x08002420'
+  - '0x08002424'
+  - '0x08002428'
+- unit: asm/split/split_800242C.s
+  entries:
+  - '0x08002574'
+  - '0x08002578'
+  - '0x0800257C'
+- unit: asm/split/split_8002580.s
+  entries:
+  - '0x0800280C'
+  - '0x08002810'
+  - '0x08002814'
+  - '0x08002818'
+  - '0x0800281C'
+  - '0x08002820'
+  - '0x08002824'
+- unit: asm/split/split_8002828.s
+  entries:
+  - '0x08002C10'
+  - '0x08002C14'
+  - '0x08002C18'
+  - '0x08002C1C'
+  - '0x08002C20'
+  - '0x08002C24'
+  - '0x08002C28'
+  - '0x08002C2C'
+  - '0x080030A0'
+  - '0x080030A4'
+  - '0x080030A8'
+  - '0x08003644'
+  - '0x08003648'
+  - '0x0800364C'
+  - '0x08003A68'
+  - '0x08003A6C'
+  - '0x08003A70'
+  - '0x08003E8C'
+  - '0x08003E90'
+  - '0x08003E94'
+  - '0x08004230'
+  - '0x08004234'
+  - '0x08004238'
+- unit: asm/split/split_800423C.s
+  entries:
+  - '0x0800463C'
+  - '0x08004640'
+  - '0x08004644'
+  - '0x08004648'
+- unit: asm/nonmatching/split_8004670
+  entries:
+  - '0x0800477C'
+- unit: asm/nonmatching/split_8004780
+  entries:
+  - '0x08004B94'
+  - '0x08004B98'
+  - '0x08004B9C'
+  - '0x08004BA0'
+  - '0x08004BA4'
+- unit: asm/nonmatching/split_8004BA8
+  entries:
+  - '0x08004DBC'
+  - '0x08004DC0'
+  - '0x08004DC4'
+  - '0x08004DC8'
+  - '0x08004DCC'
+  - '0x08004DD0'
+  - '0x08004DD4'
+  - '0x08004DD8'
+  - '0x08004DDC'
+  - '0x08004DE0'
+- unit: asm/nonmatching/split_8004DE6
+  entries:
+  - '0x08005034'
+  - '0x08005038'
+  - '0x0800503C'
+  - '0x08005040'
+- unit: asm/nonmatching/split_8005044
+  entries:
+  - '0x08005258'
+- unit: asm/nonmatching/split_800525C
+  entries:
+  - '0x080052B4'
+  - '0x080052B8'
+  - '0x080052BC'
+- unit: asm/split/split_8005380.s
+  entries:
+  - '0x080062EC'
+  - '0x080062F0'
+- unit: asm/split/split_80062F4.s
+  entries:
+  - '0x08006BBC'
+- unit: asm/split/split_8006BC0.s
+  entries:
+  - '0x08006F8C'
+- unit: asm/split/split_8006F90.s
+  entries:
+  - '0x080077E0'
+  - '0x080077E4'
+- unit: asm/split/split_80077E8.s
+  entries:
+  - '0x08007F00'
+  - '0x08007F04'
+  - '0x08007F08'
+  - '0x08007F0C'
+  - '0x08007F10'
+  - '0x08007F14'
+- unit: asm/nonmatching/split_8008008
+  entries:
+  - '0x080081C0'
+  - '0x080081C4'
+  - '0x080081C8'
+  - '0x080081CC'
+  - '0x080081D0'
+- unit: asm/split/split_80081D4.s
+  entries:
+  - '0x08008AD8'
+  - '0x08008ADC'
+  - '0x08008AE0'
+  - '0x08008AE4'
+  - '0x08008AE8'
+  - '0x08008AEC'
+  - '0x08008AF0'
+- unit: asm/split/split_8008AF4.s
+  entries:
+  - '0x08008EAC'
+  - '0x08008EB0'
+- unit: asm/split/split_8008EB4.s
+  entries:
+  - '0x08009E20'
+  - '0x08009E24'
+  - '0x08009E28'
+- unit: asm/split/split_800A240.s
+  entries:
+  - '0x0800A9B4'
+  - '0x0800A9B8'
+- unit: asm/split/split_800A9BC.s
+  entries:
+  - '0x0800AA18'
+- unit: asm/split/split_800AA1C.s
+  entries:
+  - '0x0800AFC8'
+  - '0x0800AFCC'
+  - '0x0800AFD0'
+- unit: asm/nonmatching/split_800AFD4
+  entries:
+  - '0x0800B0C8'
+  - '0x0800B0CC'
+  - '0x0800B0D0'
+  - '0x0800B0D4'
+- unit: asm/split/split_800B0D8.s
+  entries:
+  - '0x0800B124'
+  - '0x0800B128'
+- unit: asm/split/split_800B12C.s
+  entries:
+  - '0x0800B150'
+- unit: asm/nonmatching/split_800B154
+  entries:
+  - '0x0800B2B4'
+  - '0x0800B2B8'
+  - '0x0800B2BC'
+  - '0x0800B2C0'
+  - '0x0800B2C4'
+  - '0x0800B2C8'
+  - '0x0800B2CC'
+  - '0x0800B2D0'
+  - '0x0800B2D4'
+  - '0x0800B2D8'
+  - '0x0800B2DC'
+  - '0x0800B2E0'
+  - '0x0800B2E4'
+  - '0x0800B2E8'
+  - '0x0800B2EC'
+  - '0x0800B2F0'
+  - '0x0800B2F4'
+  - '0x0800B2F8'
+  - '0x0800B2FC'
+  - '0x0800B300'
+  - '0x0800B304'
+  - '0x0800B308'
+  - '0x0800B30C'
+  - '0x0800B310'
+- unit: asm/split/split_800B314.s
+  entries:
+  - '0x0800B460'
+- unit: asm/nonmatching/split_800B464
+  entries:
+  - '0x0800B6CC'
+  - '0x0800B6D0'
+  - '0x0800B6D4'
+  - '0x0800B6D8'
+  - '0x0800B6DC'
+- unit: asm/nonmatching/split_800B6E0
+  entries:
+  - '0x0800BB94'
+  - '0x0800BB98'
+  - '0x0800BB9C'
+  - '0x0800BBA0'
+  - '0x0800BBA4'
+  - '0x0800BBA8'
+  - '0x0800BBAC'
+  - '0x0800BBB0'
+  - '0x0800BBB4'
+  - '0x0800BBB8'
+  - '0x0800BBBC'
+  - '0x0800BBC0'
+  - '0x0800BBC4'
+  - '0x0800BBC8'
+  - '0x0800BBCC'
+  - '0x0800BBD0'
+  - '0x0800BBD4'
+  - '0x0800BBD8'
+  - '0x0800BBDC'
+  - '0x0800BBE0'
+  - '0x0800BBE4'
+  - '0x0800BBE8'
+  - '0x0800BBEC'
+  - '0x0800BBF0'
+- unit: asm/nonmatching/split_800BBF4
+  entries:
+  - '0x0800BFF4'
+  - '0x0800BFF8'
+  - '0x0800BFFC'
+  - '0x0800C000'
+  - '0x0800C004'
+  - '0x0800C008'
+  - '0x0800C00C'
+  - '0x0800C010'
+  - '0x0800C44C'
+  - '0x0800C450'
+  - '0x0800C454'
+  - '0x0800C458'
+  - '0x0800C45C'
+  - '0x0800C460'
+  - '0x0800C464'
+  - '0x0800C8A4'
+  - '0x0800C8A8'
+  - '0x0800C8AC'
+  - '0x0800C8B0'
+  - '0x0800C8B4'
+  - '0x0800C8B8'
+  - '0x0800C8BC'
+  - '0x0800CCE0'
+  - '0x0800CCE4'
+  - '0x0800CCE8'
+  - '0x0800CCEC'
+  - '0x0800CCF0'
+  - '0x0800CCF4'
+  - '0x0800CCF8'
+  - '0x0800CCFC'
+  - '0x0800CD00'
+- unit: asm/split/split_800CD04.s
+  entries:
+  - '0x0800CD90'
+  - '0x0800CD94'
+- unit: asm/split/split_800CD98.s
+  entries:
+  - '0x0800D878'
+  - '0x0800D87C'
+  - '0x0800D880'
+  - '0x0800D884'
+  - '0x0800DD64'
+  - '0x0800DD68'
+  - '0x0800DD6C'
+  - '0x0800E15C'
+  - '0x0800E160'
+  - '0x0800E164'
+  - '0x0800E168'
+  - '0x0800E16C'
+  - '0x0800E170'
+  - '0x0800E174'
+- unit: asm/split/split_800E178.s
+  entries:
+  - '0x0800E220'
+  - '0x0800E224'
+  - '0x0800E228'
+- unit: asm/split/split_800E22C.s
+  entries:
+  - '0x0800E4A8'
+  - '0x0800E4AC'
+  - '0x0800E4B0'
+  - '0x0800E4B4'
+  - '0x0800E4B8'
+  - '0x0800E4BC'
+  - '0x0800E4C0'
+  - '0x0800E4C4'
+  - '0x0800E4C8'
+  - '0x0800E4CC'
+  - '0x0800E4D0'
+  - '0x0800E4D4'
+- unit: asm/nonmatching/split_800E4D8
+  entries:
+  - '0x0800E920'
+  - '0x0800E924'
+  - '0x0800E928'
+  - '0x0800E92C'
+  - '0x0800E930'
+  - '0x0800E934'
+  - '0x0800E938'
+  - '0x0800E93C'
+  - '0x0800E940'
+  - '0x0800E944'
+  - '0x0800E948'
+  - '0x0800E94C'
+  - '0x0800E950'
+  - '0x0800E954'
+  - '0x0800E958'
+  - '0x0800E95C'
+  - '0x0800E960'
+  - '0x0800E964'
+  - '0x0800E968'
+  - '0x0800E96C'
+  - '0x0800E970'
+  - '0x0800E974'
+  - '0x0800E978'
+  - '0x0800E97C'
+  - '0x0800E980'
+  - '0x0800E984'
+  - '0x0800E988'
+  - '0x0800E98C'
+  - '0x0800E990'
+  - '0x0800E994'
+  - '0x0800E998'
+  - '0x0800E99C'
+  - '0x0800E9A0'
+  - '0x0800E9A4'
+  - '0x0800E9A8'
+  - '0x0800E9AC'
+  - '0x0800E9B0'
+  - '0x0800E9B4'
+  - '0x0800E9B8'
+  - '0x0800E9BC'
+  - '0x0800E9C0'
+  - '0x0800E9C4'
+  - '0x0800E9C8'
+  - '0x0800E9CC'
+  - '0x0800ECBC'
+  - '0x0800ECC0'
+  - '0x0800ECC4'
+  - '0x0800ECC8'
+  - '0x0800ECCC'
+  - '0x0800ECD0'
+  - '0x0800ECD4'
+  - '0x0800ECD8'
+  - '0x0800ECDC'
+  - '0x0800ECE0'
+  - '0x0800ECE4'
+  - '0x0800ECE8'
+  - '0x0800ECEC'
+  - '0x0800ECF0'
+  - '0x0800ECF4'
+  - '0x0800ECF8'
+  - '0x0800ECFC'
+  - '0x0800ED00'
+  - '0x0800ED04'
+  - '0x0800ED08'
+  - '0x0800ED0C'
+  - '0x0800ED10'
+  - '0x0800ED14'
+  - '0x0800ED18'
+  - '0x0800ED1C'
+  - '0x0800ED20'
+  - '0x0800ED24'
+  - '0x0800ED28'
+  - '0x0800ED2C'
+  - '0x0800ED30'
+  - '0x0800ED34'
+  - '0x0800ED38'
+  - '0x0800ED3C'
+  - '0x0800ED40'
+  - '0x0800ED44'
+  - '0x0800ED48'
+  - '0x0800ED4C'
+  - '0x0800ED50'
+  - '0x0800ED54'
+  - '0x0800ED58'
+  - '0x0800ED5C'
+  - '0x0800ED60'
+  - '0x0800ED64'
+  - '0x0800ED68'
+  - '0x0800ED6C'
+  - '0x0800ED70'
+  - '0x0800ED74'
+  - '0x0800ED78'
+- unit: asm/nonmatching/split_800ED7C
+  entries:
+  - '0x0800EFC4'
+  - '0x0800EFC8'
+  - '0x0800EFCC'
+  - '0x0800EFD0'
+  - '0x0800EFD4'
+  - '0x0800EFD8'
+  - '0x0800EFDC'
+  - '0x0800EFE0'
+  - '0x0800EFE4'
+  - '0x0800EFE8'
+  - '0x0800EFEC'
+  - '0x0800EFF0'
+  - '0x0800EFF4'
+  - '0x0800EFF8'
+  - '0x0800EFFC'
+  - '0x0800F000'
+  - '0x0800F004'
+  - '0x0800F008'
+  - '0x0800F00C'
+- unit: asm/split/split_800F010.s
+  entries:
+  - '0x0800F1E0'
+  - '0x0800F1E4'
+- unit: asm/nonmatching/split_800F1E8
+  entries:
+  - '0x0800F4E8'
+  - '0x0800F4EC'
+- unit: asm/nonmatching/split_800F4F0
+  entries:
+  - '0x0800F718'
+  - '0x0800F71C'
+  - '0x0800F720'
+  - '0x0800F724'
+  - '0x0800F728'
+- unit: asm/nonmatching/split_800F72C
+  entries:
+  - '0x0800FA38'
+  - '0x0800FA3C'
+- unit: asm/nonmatching/split_800FA40
+  entries:
+  - '0x0800FB14'
+- unit: asm/nonmatching/split_800FB18
+  entries:
+  - '0x0800FD30'
+  - '0x0800FD34'
+  - '0x0800FD38'
+  - '0x0800FD3C'
+  - '0x0800FD40'
+  - '0x0800FD44'
+- unit: asm/split/split_800FD48.s
+  entries:
+  - '0x0800FE6C'
+  - '0x0800FE70'
+  - '0x0800FE74'
+  - '0x0800FE78'
+  - '0x0800FE7C'
+  - '0x0800FE80'
+  - '0x0800FE84'
+  - '0x0800FE88'
+  - '0x0800FE8C'
+- unit: asm/nonmatching/split_800FE90
+  entries:
+  - '0x080101E4'
+  - '0x080101E8'
+  - '0x080101EC'
+  - '0x080101F0'
+  - '0x080101F4'
+  - '0x080101F8'
+  - '0x080101FC'
+  - '0x08010200'
+  - '0x08010204'
+  - '0x08010208'
+  - '0x0801020C'
+  - '0x08010210'
+  - '0x08010214'
+  - '0x08010218'
+  - '0x0801021C'
+  - '0x08010220'
+  - '0x08010224'
+  - '0x08010228'
+  - '0x0801022C'
+  - '0x08010230'
+- unit: asm/nonmatching/split_8010234
+  entries:
+  - '0x080103AC'
+  - '0x080103B0'
+  - '0x080103B4'
+  - '0x080103B8'
+  - '0x080103BC'
+  - '0x080103C0'
+  - '0x080103C4'
+- unit: asm/nonmatching/split_80103C8
+  entries:
+  - '0x0801068C'
+  - '0x08010690'
+  - '0x08010694'
+  - '0x08010698'
+  - '0x0801069C'
+  - '0x080106A0'
+  - '0x080106A4'
+  - '0x080106A8'
+  - '0x080106AC'
+- unit: asm/nonmatching/split_80106B0
+  entries:
+  - '0x08010994'
+  - '0x08010998'
+- unit: asm/nonmatching/split_801099C
+  entries:
+  - '0x08010D58'
+  - '0x08010D5C'
+- unit: asm/nonmatching/split_8010D60
+  entries:
+  - '0x0801102C'
+  - '0x08011030'
+  - '0x08011034'
+  - '0x08011038'
+  - '0x0801103C'
+- unit: asm/split/split_8011040.s
+  entries:
+  - '0x08011380'
+  - '0x08011384'
+  - '0x08011388'
+  - '0x0801138C'
+  - '0x08011390'
+- unit: asm/split/split_8011394.s
+  entries:
+  - '0x08011494'
+  - '0x08011498'
+  - '0x0801149C'
+  - '0x080114A0'
+  - '0x080114A4'
+  - '0x080114A8'
+  - '0x080114AC'
+- unit: asm/split/split_80114B0.s
+  entries:
+  - '0x0801172C'
+  - '0x08011730'
+  - '0x08011734'
+  - '0x08011738'
+  - '0x0801173C'
+  - '0x08011740'
+  - '0x08011744'
+  - '0x08011748'
+  - '0x0801174C'
+  - '0x08011750'
+  - '0x08011754'
+  - '0x08011758'
+  - '0x08011A10'
+  - '0x08011A14'
+  - '0x08011A18'
+  - '0x08011A1C'
+  - '0x08011A20'
+  - '0x08011A24'
+  - '0x08011A28'
+  - '0x08011A2C'
+  - '0x08011A30'
+  - '0x08011A34'
+  - '0x08011A38'
+  - '0x08011A3C'
+  - '0x08011A40'
+  - '0x08011A44'
+  - '0x08011A48'
+  - '0x08011A4C'
+  - '0x08011A50'
+  - '0x08011A54'
+  - '0x08011A58'
+  - '0x08011A5C'
+  - '0x08011A60'
+  - '0x08011A64'
+  - '0x08011A68'
+  - '0x08011A6C'
+  - '0x08011A70'
+  - '0x08011A74'
+  - '0x08011A78'
+  - '0x08011A7C'
+- unit: asm/split/split_8011A80.s
+  entries:
+  - '0x08011D18'
+  - '0x08011D1C'
+  - '0x08011D20'
+  - '0x08011D24'
+  - '0x08011D28'
+  - '0x08011D2C'
+  - '0x08011D30'
+  - '0x08011D34'
+  - '0x08011D38'
+  - '0x0801209C'
+  - '0x080120A0'
+  - '0x080120A4'
+  - '0x080120A8'
+  - '0x080120AC'
+  - '0x080120B0'
+  - '0x080120B4'
+  - '0x080120B8'
+- unit: asm/nonmatching/split_80120BC
+  entries:
+  - '0x08012328'
+  - '0x0801232C'
+  - '0x08012330'
+- unit: asm/nonmatching/split_8012334
+  entries:
+  - '0x08012460'
+  - '0x08012464'
+- unit: asm/split/split_8012468.s
+  entries:
+  - '0x0801266C'
+  - '0x08012670'
+- unit: asm/split/split_8012674.s
+  entries:
+  - '0x0801301C'
+  - '0x08013020'
+- unit: asm/nonmatching/split_8013024
+  entries:
+  - '0x08013430'
+  - '0x08013434'
+  - '0x08013438'
+- unit: asm/split/split_801343C.s
+  entries:
+  - '0x080134AC'
+  - '0x080134B0'
+  - '0x080134B4'
+- unit: asm/split/split_80134B8.s
+  entries:
+  - '0x080137E0'
+  - '0x080137E4'
+  - '0x080137E8'
+  - '0x080137EC'
+  - '0x080137F0'
+  - '0x080137F4'
+- unit: asm/nonmatching/split_80137F8
+  entries:
+  - '0x08013B5C'
+  - '0x08013B60'
+- unit: asm/nonmatching/split_8013B64
+  entries:
+  - '0x08013FF0'
+- unit: asm/nonmatching/split_8013FF4
+  entries:
+  - '0x080142CC'
+- unit: asm/split/split_80142D0.s
+  entries:
+  - '0x0801472C'
+  - '0x08014730'
+  - '0x08014734'
+- unit: asm/nonmatching/split_8014738
+  entries:
+  - '0x08014DBC'
+  - '0x08014DC0'
+  - '0x08014DC4'
+  - '0x08014DC8'
+  - '0x08014DCC'
+  - '0x08014DD0'
+- unit: asm/nonmatching/split_8014DD4
+  entries:
+  - '0x08014EAC'
+  - '0x08014EB0'
+  - '0x08014EB4'
+- unit: asm/split/split_8014EB8.s
+  entries:
+  - '0x08015374'
+  - '0x08015378'
+- unit: asm/split/split_801537C.s
+  entries:
+  - '0x080154D4'
+  - '0x080154D8'
+- unit: asm/split/split_80154DC.s
+  entries:
+  - '0x080158AC'
+  - '0x080158B0'
+  - '0x080158B4'
+  - '0x080158B8'
+  - '0x080158BC'
+  - '0x080158C0'
+  - '0x080158C4'
+  - '0x080158C8'
+  - '0x080158CC'
+  - '0x080158D0'
+  - '0x080158D4'
+  - '0x080158D8'
+  - '0x080158DC'
+- unit: asm/nonmatching/split_80158E0
+  entries:
+  - '0x08015CE0'
+  - '0x08015CE4'
+  - '0x08015CE8'
+  - '0x08015CEC'
+  - '0x08015CF0'
+  - '0x08015CF4'
+  - '0x08015CF8'
+  - '0x08015CFC'
+  - '0x080160F0'
+  - '0x080160F4'
+  - '0x080160F8'
+  - '0x080160FC'
+  - '0x08016100'
+  - '0x08016104'
+- unit: asm/split/split_8016108.s
+  entries:
+  - '0x080163C8'
+  - '0x080163CC'
+  - '0x080163D0'
+- unit: asm/split/split_80163D4.s
+  entries:
+  - '0x080164A0'
+  - '0x080164A4'
+- unit: asm/nonmatching/split_80164A8
+  entries:
+  - '0x08016694'
+  - '0x08016698'
+- unit: asm/split/split_801669C.s
+  entries:
+  - '0x08016A9C'
+  - '0x08016AA0'
+  - '0x08016AA4'
+  - '0x08016AA8'
+  - '0x08016AAC'
+  - '0x08016AB0'
+  - '0x08016AB4'
+  - '0x08016AB8'
+  - '0x08016ABC'
+  - '0x08016AC0'
+  - '0x08016AC4'
+  - '0x08016AC8'
+  - '0x08016D5C'
+  - '0x08016D60'
+  - '0x08016D64'
+  - '0x08016D68'
+  - '0x08016D6C'
+  - '0x08016D70'
+  - '0x08016D74'
+  - '0x08016D78'
+  - '0x08016D7C'
+  - '0x08016D80'
+  - '0x08016D84'
+  - '0x08016D88'
+  - '0x08016D8C'
+- unit: asm/split/split_8016D90.s
+  entries:
+  - '0x08017104'
+  - '0x08017108'
+  - '0x0801710C'
+  - '0x08017110'
+  - '0x08017114'
+  - '0x08017118'
+  - '0x0801711C'
+  - '0x08017120'
+  - '0x08017124'
+  - '0x08017128'
+  - '0x0801712C'
+- unit: asm/split/split_8017130.s
+  entries:
+  - '0x08017424'
+  - '0x08017428'
+- unit: asm/nonmatching/split_801742C.s
+  entries:
+  - '0x08017440'
+- unit: asm/split/split_8017444.s
+  entries:
+  - '0x08017468'
+  - '0x0801746C'
+  - '0x08017470'
+- unit: asm/split/split_8017474.s
+  entries:
+  - '0x080177A0'
+  - '0x080177A4'
+  - '0x080177A8'
+  - '0x080177AC'
+  - '0x080177B0'
+  - '0x080177B4'
+  - '0x080177B8'
+  - '0x080177BC'
+  - '0x080177C0'
+  - '0x080177C4'
+  - '0x080177C8'
+  - '0x080177CC'
+  - '0x080177D0'
+  - '0x080177D4'
+- unit: asm/nonmatching/split_80177D8
+  entries:
+  - '0x08017AA4'
+  - '0x08017AA8'
+  - '0x08017AAC'
+- unit: asm/split/split_8017AB0.s
+  entries:
+  - '0x08017DC4'
+- unit: asm/nonmatching/split_8017DC8
+  entries:
+  - '0x08017E2C'
+  - '0x08017E30'
+  - '0x08017E34'
+  - '0x08017E38'
+  - '0x08017E3C'
+- unit: asm/nonmatching/split_8017E40
+  entries:
+  - '0x0801803C'
+  - '0x08018040'
+  - '0x08018044'
+  - '0x08018048'
+  - '0x0801804C'
+  - '0x08018050'
+  - '0x08018054'
+  - '0x08018058'
+  - '0x0801805C'
+  - '0x08018060'
+  - '0x08018064'
+  - '0x08018068'
+  - '0x0801806C'
+- unit: asm/nonmatching/split_8018070
+  entries:
+  - '0x08018374'
+  - '0x08018378'
+- unit: asm/split/split_801837C.s
+  entries:
+  - '0x080183B8'
+- unit: asm/nonmatching/split_80183BC
+  entries:
+  - '0x08018974'
+  - '0x08018978'
+- unit: asm/nonmatching/split_801897C
+  entries:
+  - '0x08018C34'
+  - '0x08018C38'
+  - '0x08018C3C'
+  - '0x08018C40'
+  - '0x08018C44'
+- unit: asm/split/split_8018C48.s
+  entries:
+  - '0x08018E24'
+  - '0x08018E28'
+  - '0x08018E2C'
+- unit: asm/split/split_8018E34.s
+  entries:
+  - '0x0801921C'
+  - '0x08019220'
+  - '0x08019224'
+  - '0x08019228'
+  - '0x0801922C'
+  - '0x08019230'
+  - '0x08019234'
+  - '0x08019238'
+  - '0x0801923C'
+  - '0x08019240'
+  - '0x08019244'
+  - '0x08019248'
+  - '0x0801924C'
+  - '0x08019250'
+  - '0x080195AC'
+  - '0x080195B0'
+  - '0x080195B4'
+  - '0x080195B8'
+  - '0x080195BC'
+  - '0x080195C0'
+  - '0x080195C4'
+  - '0x080195C8'
+  - '0x080195CC'
+- unit: asm/split/split_80195D0.s
+  entries:
+  - '0x080199B8'
+  - '0x080199C0'
+  - '0x080199C4'
+  - '0x080199C8'
+  - '0x080199DC'
+  - '0x080199E0'
+  - '0x080199E4'
+  - '0x080199E8'
+  - '0x080199EC'
+  - '0x080199F0'
+  - '0x08019DE4'
+  - '0x08019DE8'
+  - '0x08019DEC'
+  - '0x08019DF0'
+  - '0x08019DF4'
+  - '0x08019DF8'
+  - '0x08019DFC'
+  - '0x08019E00'
+  - '0x08019E04'
+  - '0x08019E08'
+  - '0x08019ED4'
+  - '0x08019ED8'
+  - '0x08019EDC'
+- unit: asm/split/split_8019EE0.s
+  entries:
+  - '0x0801A2C8'
+  - '0x0801A2CC'
+  - '0x0801A2D0'
+  - '0x0801A2D4'
+  - '0x0801A2D8'
+  - '0x0801A2DC'
+  - '0x0801A2E0'
+  - '0x0801A2E8'
+  - '0x0801A2EC'
+  - '0x0801A2F0'
+  - '0x0801A2F4'
+  - '0x0801A2F8'
+  - '0x0801A2FC'
+  - '0x0801A30C'
+  - '0x0801A310'
+  - '0x0801A314'
+  - '0x0801A318'
+  - '0x0801A724'
+  - '0x0801A728'
+  - '0x0801A72C'
+  - '0x0801A730'
+  - '0x0801A734'
+  - '0x0801A738'
+  - '0x0801A73C'
+  - '0x0801A740'
+  - '0x0801A744'
+  - '0x0801A748'
+  - '0x0801A74C'
+  - '0x0801A750'
+  - '0x0801A754'
+  - '0x0801A758'
+  - '0x0801A75C'
+- unit: asm/split/split_801A760.s
+  entries:
+  - '0x0801AB08'
+  - '0x0801AB0C'
+  - '0x0801AB10'
+  - '0x0801AB14'
+  - '0x0801AB18'
+  - '0x0801AB1C'
+  - '0x0801AB20'
+  - '0x0801AB24'
+  - '0x0801AB28'
+  - '0x0801AB2C'
+  - '0x0801AB30'
+- unit: asm/split/split_801AB34.s
+  entries:
+  - '0x0801ABEC'
+  - '0x0801ABF0'
+  - '0x0801ABF4'
+  - '0x0801ABF8'
+- unit: asm/split/split_801ABFC.s
+  entries:
+  - '0x0801AEA0'
+  - '0x0801AEA4'
+  - '0x0801AEA8'
+  - '0x0801AEAC'
+  - '0x0801AEB0'
+  - '0x0801AEB4'
+  - '0x0801AEB8'
+  - '0x0801AEBC'
+  - '0x0801AEC0'
+  - '0x0801AEC4'
+  - '0x0801AEC8'
+  - '0x0801AECC'
+- unit: asm/split/split_801AED0.s
+  entries:
+  - '0x0801B0EC'
+  - '0x0801B0F0'
+  - '0x0801B0F4'
+  - '0x0801B0F8'
+  - '0x0801B0FC'
+  - '0x0801B100'
+  - '0x0801B104'
+  - '0x0801B108'
+- unit: asm/nonmatching/split_801B10C
+  entries:
+  - '0x0801B464'
+  - '0x0801B468'
+  - '0x0801B46C'
+  - '0x0801B470'
+  - '0x0801B474'
+  - '0x0801B478'
+  - '0x0801B47C'
+  - '0x0801B480'
+  - '0x0801B484'
+  - '0x0801B488'
+- unit: asm/split/split_801B48C.s
+  entries:
+  - '0x0801B870'
+  - '0x0801B874'
+  - '0x0801B878'
+  - '0x0801B87C'
+  - '0x0801B880'
+  - '0x0801B884'
+  - '0x0801B888'
+  - '0x0801B88C'
+  - '0x0801B890'
+  - '0x0801B894'
+  - '0x0801B898'
+  - '0x0801B89C'
+  - '0x0801B8A0'
+  - '0x0801B8A4'
+  - '0x0801B8A8'
+  - '0x0801B8AC'
+  - '0x0801B8B0'
+  - '0x0801B8B4'
+  - '0x0801B8B8'
+  - '0x0801BBC8'
+  - '0x0801BBCC'
+  - '0x0801BBD0'
+  - '0x0801BBD4'
+  - '0x0801BBD8'
+  - '0x0801BBDC'
+- unit: asm/split/split_801BBE0.s
+  entries:
+  - '0x0801BE64'
+  - '0x0801BE68'
+  - '0x0801BE6C'
+  - '0x0801BE70'
+  - '0x0801BE74'
+  - '0x0801BE78'
+  - '0x0801BE7C'
+  - '0x0801BE80'
+  - '0x0801BE84'
+  - '0x0801BE88'
+  - '0x0801BE8C'
+  - '0x0801BE90'
+  - '0x0801BE94'
+  - '0x0801BE98'
+  - '0x0801BE9C'
+- unit: asm/nonmatching/split_801BEA0
+  entries:
+  - '0x0801C1F0'
+  - '0x0801C1F4'
+  - '0x0801C1F8'
+  - '0x0801C1FC'
+  - '0x0801C200'
+  - '0x0801C204'
+  - '0x0801C208'
+  - '0x0801C20C'
+- unit: asm/split/split_801C210.s
+  entries:
+  - '0x0801C494'
+  - '0x0801C498'
+  - '0x0801C49C'
+  - '0x0801C4A0'
+- unit: asm/split/split_801C4A4.s
+  entries:
+  - '0x0801CB08'
+  - '0x0801CB0C'
+  - '0x0801CB10'
+  - '0x0801CB14'
+- unit: asm/nonmatching/split_801CB18
+  entries:
+  - '0x0801CCE0'
+  - '0x0801CCE4'
+  - '0x0801CCE8'
+- unit: asm/split/split_801CCEC.s
+  entries:
+  - '0x0801D0D4'
+  - '0x0801D0D8'
+  - '0x0801D0DC'
+  - '0x0801D0E0'
+  - '0x0801D0E4'
+  - '0x0801D0E8'
+  - '0x0801D0EC'
+  - '0x0801D0F0'
+  - '0x0801D0F4'
+  - '0x0801D0F8'
+  - '0x0801D0FC'
+  - '0x0801D100'
+  - '0x0801D104'
+  - '0x0801D108'
+  - '0x0801D10C'
+  - '0x0801D110'
+  - '0x0801D114'
+  - '0x0801D4F4'
+  - '0x0801D4F8'
+  - '0x0801D4FC'
+  - '0x0801D500'
+  - '0x0801D504'
+  - '0x0801D508'
+  - '0x0801D50C'
+  - '0x0801D510'
+  - '0x0801D514'
+  - '0x0801D518'
+  - '0x0801D51C'
+  - '0x0801D520'
+  - '0x0801D524'
+  - '0x0801D528'
+  - '0x0801D52C'
+  - '0x0801D530'
+  - '0x0801D534'
+  - '0x0801D538'
+  - '0x0801D53C'
+  - '0x0801D540'
+  - '0x0801D544'
+  - '0x0801D548'
+  - '0x0801D54C'
+  - '0x0801D550'
+  - '0x0801D554'
+  - '0x0801D558'
+- unit: asm/split/split_801D564.s
+  entries:
+  - '0x0801D92C'
+  - '0x0801D930'
+  - '0x0801D934'
+  - '0x0801D938'
+  - '0x0801D93C'
+  - '0x0801D940'
+  - '0x0801D944'
+  - '0x0801D948'
+  - '0x0801D94C'
+  - '0x0801D950'
+  - '0x0801D954'
+  - '0x0801D958'
+  - '0x0801D95C'
+  - '0x0801D960'
+  - '0x0801D964'
+  - '0x0801D968'
+  - '0x0801D96C'
+  - '0x0801D970'
+  - '0x0801D974'
+  - '0x0801D978'
+- unit: asm/nonmatching/split_801D9B0
+  entries:
+  - '0x0801DCE0'
+  - '0x0801DCE4'
+  - '0x0801DCE8'
+  - '0x0801DCEC'
+  - '0x0801DCF0'
+  - '0x0801DCF4'
+  - '0x0801DCF8'
+- unit: asm/split/split_801DCFC.s
+  entries:
+  - '0x0801DFC8'
+  - '0x0801DFCC'
+  - '0x0801DFD0'
+- unit: asm/split/split_801DFD4.s
+  entries:
+  - '0x0801E2C4'
+  - '0x0801E2C8'
+  - '0x0801E2CC'
+- unit: asm/nonmatching/split_801E2D0
+  entries:
+  - '0x0801E75C'
+  - '0x0801E760'
+  - '0x0801E764'
+  - '0x0801E768'
+  - '0x0801E76C'
+  - '0x0801E770'
+  - '0x0801EB84'
+  - '0x0801EB88'
+  - '0x0801EB8C'
+  - '0x0801EB90'
+  - '0x0801EB94'
+  - '0x0801EB98'
+  - '0x0801EB9C'
+  - '0x0801EBA0'
+  - '0x0801EF74'
+  - '0x0801EF78'
+  - '0x0801EF7C'
+  - '0x0801F2EC'
+  - '0x0801F2F0'
+  - '0x0801F2F4'
+- unit: asm/split/split_801F2F8.s
+  entries:
+  - '0x0801F620'
+  - '0x0801F624'
+  - '0x0801F628'
+  - '0x0801F62C'
+  - '0x0801F630'
+  - '0x0801F634'
+  - '0x0801F638'
+  - '0x0801F63C'
+- unit: asm/nonmatching/split_801F640
+  entries:
+  - '0x0801F788'
+  - '0x0801F78C'
+  - '0x0801F790'
+- unit: asm/split/split_801F794.s
+  entries:
+  - '0x0801FB98'
+  - '0x0801FB9C'
+  - '0x0801FBA0'
+  - '0x0801FBA4'
+  - '0x0801FBA8'
+  - '0x0801FBAC'
+  - '0x0801FBB0'
+  - '0x0801FBB4'
+  - '0x0801FE7C'
+  - '0x0801FE80'
+  - '0x0801FE84'
+  - '0x0801FE88'
+  - '0x0801FE8C'
+- unit: asm/nonmatching/split_801FE90
+  entries:
+  - '0x0802026C'
+  - '0x08020270'
+  - '0x08020274'
+  - '0x08020278'
+  - '0x0802027C'
+  - '0x08020990'
+  - '0x08020994'
+  - '0x08020998'
+  - '0x0802099C'
+  - '0x080209A0'
+  - '0x080209A4'
+  - '0x080209A8'
+  - '0x080209AC'
+  - '0x080209B0'
+  - '0x080209B4'
+  - '0x080209B8'
+  - '0x08020DAC'
+  - '0x08020DB0'
+  - '0x08020DB4'
+  - '0x08020DB8'
+  - '0x0802123C'
+  - '0x08021240'
+  - '0x08021244'
+- unit: asm/split/split_8021248.s
+  entries:
+  - '0x080216F8'
+  - '0x080216FC'
+  - '0x08021700'
+  - '0x08021704'
+  - '0x08021708'
+  - '0x0802170C'
+  - '0x08021710'
+  - '0x08021714'
+  - '0x08021718'
+  - '0x08021A1C'
+  - '0x08021A20'
+  - '0x08021A24'
+  - '0x08021A28'
+  - '0x08021A2C'
+  - '0x08021A30'
+  - '0x08021A34'
+- unit: asm/split/split_8021A38.s
+  entries:
+  - '0x08021E74'
+  - '0x08021E78'
+  - '0x08021E7C'
+  - '0x08021E80'
+  - '0x08021E84'
+  - '0x08021E88'
+  - '0x08021E8C'
+  - '0x08021E90'
+  - '0x08021E94'
+  - '0x08021E98'
+  - '0x08021E9C'
+  - '0x08021EA0'
+  - '0x08022198'
+  - '0x0802219C'
+  - '0x080221A0'
+  - '0x080221A4'
+  - '0x080221A8'
+- unit: asm/split/split_80221AC.s
+  entries:
+  - '0x080222C0'
+  - '0x080222C4'
+  - '0x080222C8'
+  - '0x080222CC'
+- unit: asm/split/split_80222D0.s
+  entries:
+  - '0x080225C8'
+  - '0x080225CC'
+  - '0x080225D0'
+  - '0x080225D4'
+  - '0x080225D8'
+  - '0x080225DC'
+  - '0x080225E0'
+- unit: asm/split/split_80225E4.s
+  entries:
+  - '0x08022814'
+  - '0x08022818'
+  - '0x0802281C'
+  - '0x08022820'
+  - '0x08022824'
+  - '0x08022828'
+  - '0x0802282C'
+  - '0x08022830'
+  - '0x08022834'
+  - '0x08022838'
+  - '0x0802283C'
+- unit: asm/split/split_8022840.s
+  entries:
+  - '0x08022C28'
+  - '0x08022C2C'
+  - '0x08022C30'
+  - '0x08022C34'
+  - '0x08022C38'
+  - '0x08022C3C'
+  - '0x08022C40'
+  - '0x08022C44'
+  - '0x08022C48'
+  - '0x08022C4C'
+  - '0x08022C50'
+  - '0x08022C54'
+  - '0x08022C58'
+  - '0x08022C5C'
+  - '0x08022F68'
+  - '0x08022F6C'
+  - '0x08022F70'
+  - '0x08022F74'
+  - '0x08022F78'
+  - '0x08022F7C'
+  - '0x08022F80'
+  - '0x08022F84'
+  - '0x08022F88'
+  - '0x08023374'
+  - '0x08023378'
+  - '0x0802337C'
+  - '0x08023380'
+  - '0x08023384'
+  - '0x08023388'
+  - '0x0802338C'
+  - '0x08023390'
+  - '0x08023394'
+  - '0x08023398'
+  - '0x080235CC'
+  - '0x080235D0'
+  - '0x080235D4'
+  - '0x080235D8'
+  - '0x080235DC'
+  - '0x080235E0'
+- unit: asm/split/split_80235E4.s
+  entries:
+  - '0x080239C8'
+  - '0x080239CC'
+  - '0x080239D0'
+  - '0x080239D4'
+  - '0x080239D8'
+  - '0x080239DC'
+  - '0x080239E0'
+  - '0x080239E4'
+  - '0x080239E8'
+- unit: asm/nonmatching/split_8023D0C
+  entries:
+  - '0x0802406C'
+  - '0x08024070'
+  - '0x08024074'
+  - '0x08024078'
+  - '0x0802407C'
+  - '0x08024080'
+- unit: asm/split/split_8024084.s
+  entries:
+  - '0x0802446C'
+  - '0x08024470'
+  - '0x08024474'
+  - '0x08024478'
+  - '0x0802447C'
+  - '0x08024480'
+  - '0x08024484'
+  - '0x08024488'
+  - '0x08024788'
+  - '0x0802478C'
+  - '0x08024790'
+  - '0x08024794'
+  - '0x08024798'
+  - '0x0802479C'
+  - '0x080247A0'
+- unit: asm/split/split_80247A4.s
+  entries:
+  - '0x08024BA0'
+  - '0x08024BA4'
+  - '0x08024BA8'
+  - '0x08024BAC'
+  - '0x08024BB0'
+  - '0x08024BB4'
+  - '0x08024BB8'
+  - '0x08024BBC'
+  - '0x08024BC0'
+  - '0x08024E24'
+  - '0x08024E28'
+  - '0x08024E2C'
+  - '0x08024E30'
+  - '0x08024E34'
+  - '0x08024E38'
+  - '0x08024E3C'
+  - '0x08024E40'
+  - '0x08024E44'
+  - '0x08024E48'
+  - '0x08024E4C'
+  - '0x08024E50'
+- unit: asm/split/split_8024E54.s
+  entries:
+  - '0x080250D0'
+  - '0x080250D4'
+  - '0x080250D8'
+  - '0x080250DC'
+  - '0x080250E0'
+- unit: asm/split/split_80250E4.s
+  entries:
+  - '0x0802538C'
+  - '0x08025390'
+  - '0x08025394'
+  - '0x08025398'
+  - '0x0802539C'
+  - '0x080253A0'
+  - '0x080253A4'
+- unit: asm/nonmatching/split_80253A8
+  entries:
+  - '0x0802558C'
+  - '0x08025590'
+  - '0x08025594'
+  - '0x08025598'
+  - '0x0802576C'
+  - '0x08025770'
+  - '0x08025774'
+  - '0x08025778'
+  - '0x0802577C'
+  - '0x08025780'
+  - '0x08025784'
+  - '0x08025788'
+  - '0x0802578C'
+  - '0x08025790'
+  - '0x08025794'
+  - '0x08025798'
+  - '0x0802579C'
+  - '0x080257A0'
+  - '0x080257A4'
+  - '0x080257A8'
+  - '0x080257AC'
+  - '0x080257B0'
+  - '0x080257B4'
+  - '0x080257B8'
+  - '0x080257BC'
+  - '0x080257C0'
+  - '0x080257C4'
+  - '0x08025BC8'
+  - '0x08025BCC'
+  - '0x08025BD0'
+  - '0x08025BD4'
+  - '0x08025BD8'
+  - '0x08025BDC'
+  - '0x08025BE0'
+  - '0x08025BE4'
+  - '0x08025BE8'
+  - '0x08025BEC'
+  - '0x08025BF0'
+  - '0x08025BF4'
+  - '0x08025BF8'
+  - '0x08025BFC'
+  - '0x08025C00'
+  - '0x08025C04'
+  - '0x08025C08'
+  - '0x08025C0C'
+  - '0x08025C10'
+  - '0x08025C14'
+  - '0x08025C18'
+  - '0x08025C1C'
+  - '0x08025C20'
+  - '0x08025C24'
+  - '0x08025C28'
+  - '0x08025C2C'
+  - '0x08025C30'
+  - '0x08025C34'
+  - '0x08025C38'
+  - '0x08025C3C'
+  - '0x08025FAC'
+  - '0x08025FB0'
+  - '0x08025FB4'
+  - '0x08025FB8'
+  - '0x08025FBC'
+  - '0x08025FC0'
+  - '0x08025FC4'
+  - '0x08025FC8'
+  - '0x08025FCC'
+  - '0x08025FD0'
+  - '0x08025FD4'
+  - '0x08025FD8'
+  - '0x08025FDC'
+  - '0x08025FE0'
+  - '0x08025FE4'
+  - '0x08025FE8'
+  - '0x08025FEC'
+  - '0x08025FF0'
+  - '0x08025FF4'
+  - '0x08025FF8'
+  - '0x08025FFC'
+  - '0x08026000'
+  - '0x08026004'
+  - '0x08026008'
+  - '0x0802600C'
+  - '0x08026010'
+- unit: asm/nonmatching/split_8026014
+  entries:
+  - '0x080262AC'
+  - '0x080262B0'
+  - '0x080262B4'
+  - '0x080262B8'
+  - '0x080262BC'
+  - '0x080262C0'
+  - '0x080262C4'
+  - '0x080262C8'
+- unit: asm/split/split_80262CC.s
+  entries:
+  - '0x08026684'
+  - '0x08026688'
+  - '0x0802668C'
+  - '0x08026690'
+  - '0x08026694'
+  - '0x08026698'
+  - '0x0802669C'
+  - '0x080266A0'
+  - '0x080266A4'
+  - '0x080266A8'
+  - '0x080266AC'
+  - '0x080266B0'
+  - '0x080266B4'
+  - '0x080266B8'
+  - '0x080266BC'
+  - '0x080266C0'
+  - '0x080266C4'
+  - '0x080266C8'
+  - '0x080266CC'
+  - '0x080266D0'
+  - '0x080266D4'
+  - '0x080266D8'
+  - '0x080266DC'
+  - '0x08026874'
+  - '0x08026878'
+  - '0x0802687C'
+  - '0x08026880'
+  - '0x08026884'
+  - '0x08026888'
+  - '0x0802688C'
+  - '0x08026890'
+  - '0x08026894'
+  - '0x08026898'
+  - '0x0802689C'
+  - '0x080268A0'
+  - '0x080268A4'
+  - '0x080268A8'
+- unit: asm/nonmatching/split_80268AC
+  entries:
+  - '0x08026CDC'
+  - '0x08026CE0'
+  - '0x08026CE4'
+  - '0x08026CE8'
+  - '0x08026CEC'
+  - '0x080270F8'
+  - '0x08027538'
+  - '0x0802793C'
+  - '0x08027940'
+  - '0x08027D4C'
+  - '0x08028138'
+  - '0x08028520'
+  - '0x08028938'
+  - '0x08028BD8'
+  - '0x08028BDC'
+  - '0x08028BE0'
+- unit: asm/nonmatching/split_8028BE4
+  entries:
+  - '0x08028C78'
+- unit: asm/split/split_8028C7C.s
+  entries:
+  - '0x08028CDC'
+  - '0x08028CE0'
+  - '0x08028CE4'
+- unit: asm/split/split_8028CE8.s
+  entries:
+  - '0x08028D50'
+  - '0x08028D54'
+  - '0x08028D58'
+  - '0x08028D5C'
+- unit: asm/split/split_8028D60.s
+  entries:
+  - '0x08028F44'
+  - '0x08028F48'
+  - '0x08028F4C'
+  - '0x08028F50'
+  - '0x08028F54'
+  - '0x08028F58'
+  - '0x08028F5C'
+  - '0x08028F60'
+- unit: asm/split/split_8028F64.s
+  entries:
+  - '0x08029040'
+  - '0x08029044'
+  - '0x08029048'
+  - '0x0802904C'
+  - '0x08029050'
+  - '0x08029054'
+  - '0x08029058'
+  - '0x0802905C'
+  - '0x08029060'
+  - '0x08029064'
+  - '0x08029068'
+  - '0x0802906C'
+- unit: asm/nonmatching/split_8029070
+  entries:
+  - '0x08029354'
+  - '0x08029358'
+  - '0x0802935C'
+  - '0x08029360'
+  - '0x08029364'
+  - '0x08029368'
+- unit: asm/split/split_802936C.s
+  entries:
+  - '0x080296BC'
+  - '0x080296C0'
+  - '0x080296C4'
+  - '0x080296C8'
+  - '0x080296CC'
+  - '0x080296D0'
+  - '0x080296D4'
+  - '0x080296D8'
+  - '0x080296DC'
+- unit: asm/nonmatching/split_80296E0
+  entries:
+  - '0x08029B28'
+  - '0x08029B2C'
+  - '0x08029B30'
+  - '0x08029B34'
+  - '0x08029B38'
+  - '0x08029B3C'
+  - '0x08029B40'
+  - '0x08029B44'
+  - '0x08029B48'
+  - '0x08029B4C'
+  - '0x08029B50'
+  - '0x08029B54'
+  - '0x08029B58'
+  - '0x08029B5C'
+  - '0x08029B60'
+  - '0x08029B64'
+  - '0x08029F5C'
+  - '0x08029F60'
+  - '0x0802A370'
+  - '0x0802A374'
+  - '0x0802A758'
+  - '0x0802A75C'
+  - '0x0802AB58'
+  - '0x0802AB5C'
+  - '0x0802AF70'
+  - '0x0802AF74'
+  - '0x0802AF78'
+  - '0x0802AF7C'
+  - '0x0802AF80'
+  - '0x0802AF84'
+  - '0x0802B268'
+  - '0x0802B26C'
+  - '0x0802B270'
+  - '0x0802B274'
+  - '0x0802B278'
+  - '0x0802B27C'
+  - '0x0802B280'
+  - '0x0802B284'
+- unit: asm/split/split_802B288.s
+  entries:
+  - '0x0802B640'
+  - '0x0802B644'
+  - '0x0802B648'
+  - '0x0802B64C'
+  - '0x0802B650'
+  - '0x0802B654'
+  - '0x0802B658'
+  - '0x0802B65C'
+  - '0x0802B660'
+  - '0x0802B664'
+  - '0x0802B668'
+  - '0x0802B66C'
+- unit: asm/split/split_802B670.s
+  entries:
+  - '0x0802BA04'
+  - '0x0802BA08'
+  - '0x0802BA0C'
+  - '0x0802BA10'
+  - '0x0802BA14'
+  - '0x0802BA18'
+  - '0x0802BA1C'
+- unit: asm/nonmatching/split_802BA20
+  entries:
+  - '0x0802BCD4'
+  - '0x0802BCD8'
+  - '0x0802BCDC'
+  - '0x0802BCE0'
+  - '0x0802BCE4'
+  - '0x0802BCE8'
+  - '0x0802BCEC'
+- unit: asm/split/split_802BCF0.s
+  entries:
+  - '0x0802BF98'
+  - '0x0802BF9C'
+  - '0x0802BFA0'
+  - '0x0802BFA4'
+  - '0x0802BFA8'
+  - '0x0802BFAC'
+  - '0x0802BFB0'
+- unit: asm/nonmatching/split_802BFB4
+  entries:
+  - '0x0802C3BC'
+  - '0x0802C3C0'
+  - '0x0802C3C4'
+  - '0x0802C3C8'
+  - '0x0802C3CC'
+  - '0x0802C3D0'
+  - '0x0802C6C4'
+  - '0x0802C6C8'
+  - '0x0802C6CC'
+- unit: asm/split/split_802C6D0.s
+  entries:
+  - '0x0802C874'
+  - '0x0802C878'
+  - '0x0802C87C'
+  - '0x0802C880'
+- unit: asm/nonmatching/split_802C884
+  entries:
+  - '0x0802CC68'
+  - '0x0802CC6C'
+  - '0x0802CC70'
+  - '0x0802CC74'
+  - '0x0802CC78'
+  - '0x0802D0B8'
+  - '0x0802D0BC'
+  - '0x0802D0C0'
+  - '0x0802D2D8'
+  - '0x0802D2DC'
+  - '0x0802D2E0'
+  - '0x0802D2E4'
+- unit: asm/split/split_802D2E8.s
+  entries:
+  - '0x0802D6C0'
+  - '0x0802D6C4'
+  - '0x0802D6C8'
+  - '0x0802D6CC'
+  - '0x0802D6D0'
+  - '0x0802D6D4'
+  - '0x0802D6D8'
+  - '0x0802D6DC'
+  - '0x0802D6E0'
+  - '0x0802DAB4'
+  - '0x0802DAB8'
+  - '0x0802DABC'
+  - '0x0802DDCC'
+  - '0x0802DDD0'
+  - '0x0802DDD4'
+  - '0x0802DDD8'
+- unit: asm/nonmatching/split_802DDDC
+  entries:
+  - '0x0802DFEC'
+  - '0x0802DFF0'
+- unit: asm/split/split_802DFF4.s
+  entries:
+  - '0x0802E370'
+  - '0x0802E374'
+  - '0x0802E378'
+  - '0x0802E37C'
+  - '0x0802E380'
+- unit: asm/split/split_802E384.s
+  entries:
+  - '0x0802E414'
+- unit: asm/nonmatching/split_802E418
+  entries:
+  - '0x0802E7F0'
+  - '0x0802E7F4'
+  - '0x0802E7F8'
+  - '0x0802E7FC'
+- unit: asm/nonmatching/split_802E800
+  entries:
+  - '0x0802E8FC'
+- unit: asm/nonmatching/split_802E900
+  entries:
+  - '0x0802EC08'
+  - '0x0802EC0C'
+  - '0x0802EC10'
+  - '0x0802EC14'
+  - '0x0802EC18'
+  - '0x0802EC1C'
+  - '0x0802EC20'
+  - '0x0802EC24'
+  - '0x0802EC28'
+  - '0x0802EC2C'
+  - '0x0802EC30'
+  - '0x0802EC34'
+  - '0x0802EC38'
+  - '0x0802EC3C'
+- unit: asm/nonmatching/split_802EC90
+  entries:
+  - '0x0802ED10'
+  - '0x0802ED14'
+  - '0x0802ED18'
+- unit: asm/nonmatching/split_802ED1C
+  entries:
+  - '0x0802F114'
+- unit: asm/nonmatching/split_802F118
+  entries:
+  - '0x0802F518'
+  - '0x0802F51C'
+  - '0x0802F520'
+  - '0x0802F524'
+  - '0x0802F528'
+  - '0x0802F52C'
+  - '0x0802F530'
+  - '0x0802F534'
+  - '0x0802F538'
+  - '0x0802F53C'
+  - '0x0802F540'
+  - '0x0802F544'
+  - '0x0802F548'
+  - '0x0802F54C'
+  - '0x0802F550'
+  - '0x0802F554'
+  - '0x0802F558'
+  - '0x0802F55C'
+  - '0x0802F864'
+  - '0x0802F868'
+  - '0x0802F86C'
+  - '0x0802F870'
+  - '0x0802F874'
+  - '0x0802F878'
+  - '0x0802F87C'
+  - '0x0802F880'
+  - '0x0802F884'
+  - '0x0802F888'
+  - '0x0802F88C'
+  - '0x0802F890'
+  - '0x0802F894'
+  - '0x0802F898'
+  - '0x0802F89C'
+- unit: asm/split/split_802F8A0.s
+  entries:
+  - '0x0802FBD4'
+  - '0x0802FBD8'
+  - '0x0802FBDC'
+  - '0x0802FBE0'
+  - '0x0802FBE4'
+- unit: asm/nonmatching/split_802FBE8
+  entries:
+  - '0x0802FFD8'
+  - '0x0802FFDC'
+  - '0x0802FFE0'
+  - '0x0802FFE4'
+  - '0x0802FFE8'
+  - '0x0802FFEC'
+  - '0x0802FFF0'
+  - '0x0802FFF4'
+  - '0x0802FFF8'
+  - '0x0802FFFC'
+  - '0x08030000'
+  - '0x08030004'
+  - '0x08030008'
+- unit: asm/split/split_803000C.s
+  entries:
+  - '0x080301D0'
+  - '0x080301D4'
+  - '0x080301D8'
+  - '0x080301DC'
+  - '0x080301E0'
+  - '0x080301E4'
+- unit: asm/split/split_80301E8.s
+  entries:
+  - '0x08030594'
+  - '0x08030598'
+  - '0x0803059C'
+  - '0x080305A0'
+  - '0x080305A4'
+  - '0x080305A8'
+  - '0x080305AC'
+  - '0x080305B0'
+  - '0x080305B4'
+  - '0x080305B8'
+  - '0x080305BC'
+  - '0x080305C0'
+  - '0x080305C4'
+  - '0x080305C8'
+- unit: asm/split/split_80305CC.s
+  entries:
+  - '0x08030658'
+  - '0x0803065C'
+  - '0x08030660'
+  - '0x08030664'
+- unit: asm/split/split_8030668.s
+  entries:
+  - '0x08030A64'
+  - '0x08030A68'
+  - '0x08030A6C'
+  - '0x08030A70'
+  - '0x08030A74'
+  - '0x08030A78'
+  - '0x08030A7C'
+  - '0x08030A80'
+  - '0x08030A84'
+  - '0x08030A88'
+  - '0x08030A8C'
+  - '0x08030A90'
+  - '0x08030A94'
+  - '0x08030A98'
+  - '0x08030ED8'
+  - '0x08030EDC'
+  - '0x08030EE0'
+  - '0x08030EE4'
+  - '0x08030EE8'
+- unit: asm/split/split_8030EEC.s
+  entries:
+  - '0x0803107C'
+  - '0x08031080'
+  - '0x08031084'
+  - '0x08031088'
+- unit: asm/nonmatching/split_803108C
+  entries:
+  - '0x080313D4'
+  - '0x080313D8'
+  - '0x080313DC'
+  - '0x080313E0'
+  - '0x080313E4'
+  - '0x080313E8'
+  - '0x080313EC'
+  - '0x080313F0'
+  - '0x080313F4'
+  - '0x080313F8'
+  - '0x080313FC'
+  - '0x08031400'
+- unit: asm/split/split_8031404.s
+  entries:
+  - '0x0803156C'
+  - '0x08031570'
+  - '0x08031574'
+- unit: asm/nonmatching/split_8031578
+  entries:
+  - '0x08031660'
+  - '0x08031664'
+  - '0x08031668'
+- unit: asm/split/split_8031830.s
+  entries:
+  - '0x08031B28'
+  - '0x08031B2C'
+  - '0x08031B30'
+  - '0x08031B34'
+  - '0x08031B38'
+  - '0x08031B3C'
+  - '0x08031B40'
+  - '0x08031B44'
+  - '0x08031B48'
+  - '0x08031B4C'
+  - '0x08031B50'
+  - '0x08031B54'
+  - '0x08031B58'
+  - '0x08031B5C'
+  - '0x08031B60'
+  - '0x08031B64'
+  - '0x08031B68'
+  - '0x08031B6C'
+  - '0x08031B70'
+  - '0x08031B74'
+  - '0x08031B78'
+  - '0x08031B7C'
+  - '0x08031B80'
+  - '0x08031B84'
+  - '0x08031B88'
+  - '0x08031B8C'
+  - '0x08031B90'
+  - '0x08031B94'
+- unit: asm/split/split_8031B98.s
+  entries:
+  - '0x08031CE8'
+  - '0x08031CEC'
+  - '0x08031CF0'
+  - '0x08031CF4'
+  - '0x08031CF8'
+  - '0x08031CFC'
+- unit: asm/split/split_8031D00.s
+  entries:
+  - '0x080320FC'
+  - '0x08032100'
+  - '0x08032104'
+  - '0x08032108'
+  - '0x0803210C'
+  - '0x08032110'
+  - '0x08032114'
+  - '0x08032118'
+  - '0x0803211C'
+  - '0x08032120'
+  - '0x08032124'
+  - '0x08032128'
+  - '0x0803212C'
+  - '0x0803245C'
+  - '0x08032460'
+  - '0x08032464'
+  - '0x08032468'
+  - '0x0803246C'
+  - '0x08032470'
+  - '0x08032474'
+  - '0x08032478'
+  - '0x0803247C'
+  - '0x08032480'
+  - '0x08032484'
+  - '0x08032488'
+- unit: asm/split/split_803248C.s
+  entries:
+  - '0x080327CC'
+  - '0x080327D0'
+  - '0x080327D4'
+  - '0x080327D8'
+  - '0x080327DC'
+  - '0x080327E0'
+  - '0x080327E4'
+  - '0x080327E8'
+  - '0x080327EC'
+  - '0x080327F0'
+- unit: asm/nonmatching/split_80327F4
+  entries:
+  - '0x08032A88'
+  - '0x08032A8C'
+- unit: asm/split/split_8032A90.s
+  entries:
+  - '0x08032E8C'
+  - '0x08032E90'
+  - '0x08032E94'
+  - '0x08032E98'
+  - '0x08032E9C'
+  - '0x08032EA0'
+  - '0x08032EA4'
+  - '0x08032EA8'
+  - '0x08032EAC'
+  - '0x080332F8'
+  - '0x080332FC'
+  - '0x08033300'
+  - '0x08033304'
+- unit: asm/nonmatching/split_8033308.s
+  entries:
+  - '0x08033314'
+- unit: asm/split/split_8033318.s
+  entries:
+  - '0x08033618'
+  - '0x0803361C'
+  - '0x08033620'
+  - '0x08033624'
+  - '0x08033628'
+  - '0x0803362C'
+  - '0x08033630'
+  - '0x08033634'
+  - '0x08033638'
+  - '0x0803363C'
+  - '0x08033640'
+  - '0x08033644'
+  - '0x08033648'
+- unit: asm/split/split_803364C.s
+  entries:
+  - '0x08033A5C'
+  - '0x08033A60'
+  - '0x08033A64'
+  - '0x08033A68'
+  - '0x08033A6C'
+  - '0x08033A70'
+  - '0x08033A74'
+  - '0x08033A78'
+  - '0x08033A7C'
+  - '0x08033C44'
+  - '0x08033C48'
+  - '0x08033C4C'
+  - '0x08033C50'
+  - '0x08033C54'
+- unit: asm/split/split_8033C58.s
+  entries:
+  - '0x08034050'
+  - '0x08034054'
+  - '0x08034058'
+  - '0x0803405C'
+  - '0x08034060'
+  - '0x08034064'
+  - '0x08034338'
+  - '0x0803433C'
+  - '0x08034340'
+  - '0x08034344'
+  - '0x08034348'
+  - '0x0803434C'
+  - '0x08034350'
+  - '0x08034354'
+- unit: asm/split/split_8034358.s
+  entries:
+  - '0x080344D8'
+  - '0x080344DC'
+  - '0x080344E0'
+- unit: asm/nonmatching/split_80344E4
+  entries:
+  - '0x080348C4'
+  - '0x080348C8'
+  - '0x080348CC'
+  - '0x080348D0'
+  - '0x080348D4'
+  - '0x080348D8'
+  - '0x080348DC'
+  - '0x080348E0'
+  - '0x080348E4'
+  - '0x080348E8'
+  - '0x080348EC'
+  - '0x080348F0'
+  - '0x080348F4'
+  - '0x080348F8'
+  - '0x080348FC'
+  - '0x08034900'
+  - '0x08034904'
+  - '0x08034908'
+- unit: asm/nonmatching/split_803490C
+  entries:
+  - '0x08034CF4'
+  - '0x08034CF8'
+  - '0x08034CFC'
+  - '0x08034D00'
+  - '0x08034D04'
+  - '0x08034D08'
+  - '0x08034D0C'
+  - '0x08034D10'
+  - '0x08034D14'
+  - '0x08034D18'
+- unit: asm/split/split_8034D2C.s
+  entries:
+  - '0x08034D8C'
+  - '0x08034D90'
+  - '0x08034D94'
+- unit: asm/split/split_8034D98.s
+  entries:
+  - '0x08035180'
+  - '0x08035184'
+  - '0x08035188'
+  - '0x0803518C'
+  - '0x08035190'
+  - '0x08035194'
+  - '0x08035198'
+  - '0x0803519C'
+  - '0x080351A0'
+  - '0x080351A4'
+  - '0x080351A8'
+  - '0x080351AC'
+  - '0x080351B0'
+  - '0x080351B4'
+  - '0x080351B8'
+  - '0x080351BC'
+  - '0x080351C0'
+  - '0x080351C4'
+  - '0x0803545C'
+  - '0x08035460'
+  - '0x08035464'
+  - '0x08035468'
+  - '0x0803546C'
+  - '0x08035470'
+  - '0x08035474'
+  - '0x08035478'
+  - '0x0803547C'
+- unit: asm/nonmatching/split_8035480
+  entries:
+  - '0x08035730'
+  - '0x08035734'
+  - '0x08035738'
+  - '0x0803573C'
+  - '0x08035740'
+  - '0x08035744'
+  - '0x08035748'
+  - '0x0803574C'
+- unit: asm/split/split_8035750.s
+  entries:
+  - '0x08035B94'
+  - '0x08035B98'
+  - '0x08035B9C'
+  - '0x08035BA0'
+  - '0x08035BA4'
+  - '0x08035BA8'
+  - '0x08035BAC'
+  - '0x08035BB0'
+  - '0x08035E68'
+  - '0x08035E6C'
+  - '0x08035E70'
+  - '0x08035E74'
+  - '0x08035E78'
+- unit: asm/split/split_8035E7C.s
+  entries:
+  - '0x08036128'
+  - '0x0803612C'
+  - '0x08036130'
+  - '0x08036134'
+  - '0x08036138'
+  - '0x0803613C'
+  - '0x08036140'
+  - '0x08036144'
+  - '0x08036148'
+  - '0x0803614C'
+- unit: asm/split/split_8036150.s
+  entries:
+  - '0x080363C4'
+  - '0x080363C8'
+  - '0x080363CC'
+  - '0x080363D0'
+  - '0x080363D4'
+  - '0x080363D8'
+- unit: asm/split/split_80363DC.s
+  entries:
+  - '0x080365F0'
+  - '0x080365F4'
+  - '0x080365F8'
+  - '0x080365FC'
+  - '0x08036600'
+  - '0x08036604'
+  - '0x08036608'
+  - '0x0803660C'
+  - '0x08036610'
+  - '0x08036614'
+  - '0x08036618'
+  - '0x0803661C'
+- unit: asm/nonmatching/split_8036620
+  entries:
+  - '0x080368CC'
+  - '0x080368D0'
+  - '0x080368D4'
+  - '0x080368D8'
+  - '0x080368DC'
+  - '0x080368E0'
+  - '0x080368E4'
+  - '0x080368E8'
+  - '0x080368EC'
+  - '0x080368F0'
+- unit: asm/nonmatching/split_80368F4
+  entries:
+  - '0x08036B68'
+  - '0x08036B6C'
+  - '0x08036B70'
+  - '0x08036B74'
+  - '0x08036B78'
+- unit: asm/split/split_8036B7C.s
+  entries:
+  - '0x08036CDC'
+  - '0x08036CE0'
+- unit: asm/nonmatching/split_8036CE4
+  entries:
+  - '0x080370E0'
+  - '0x080370E4'
+  - '0x080370E8'
+  - '0x080370EC'
+  - '0x080370F0'
+  - '0x080370F4'
+  - '0x080370F8'
+  - '0x080370FC'
+  - '0x08037100'
+  - '0x08037104'
+  - '0x080374F4'
+  - '0x080374F8'
+  - '0x080374FC'
+  - '0x08037500'
+  - '0x08037504'
+  - '0x08037508'
+  - '0x0803750C'
+  - '0x08037510'
+  - '0x08037514'
+  - '0x08037518'
+  - '0x0803751C'
+  - '0x08037520'
+  - '0x08037524'
+  - '0x08037528'
+  - '0x0803752C'
+- unit: asm/nonmatching/split_8037530
+  entries:
+  - '0x08037720'
+  - '0x08037724'
+  - '0x08037728'
+- unit: asm/split/split_803772C.s
+  entries:
+  - '0x08037A00'
+  - '0x08037A04'
+  - '0x08037A08'
+  - '0x08037A0C'
+- unit: asm/split/split_8037A10.s
+  entries:
+  - '0x08037CB8'
+  - '0x08037CBC'
+- unit: asm/nonmatching/split_8037CC0
+  entries:
+  - '0x08037E3C'
+  - '0x08037E40'
+  - '0x08037E44'
+- unit: asm/split/split_8037E48.s
+  entries:
+  - '0x0803818C'
+  - '0x08038190'
+  - '0x08038194'
+  - '0x08038198'
+  - '0x0803819C'
+  - '0x080381A0'
+  - '0x080381A4'
+  - '0x080381A8'
+  - '0x080381AC'
+  - '0x080381B0'
+  - '0x080381B4'
+  - '0x080381B8'
+  - '0x080381BC'
+- unit: asm/split/split_80381C0.s
+  entries:
+  - '0x08038454'
+  - '0x08038458'
+  - '0x0803845C'
+  - '0x08038460'
+  - '0x08038464'
+  - '0x08038468'
+- unit: asm/split/split_803846C.s
+  entries:
+  - '0x08038524'
+- unit: asm/split/split_8038528.s
+  entries:
+  - '0x08038850'
+  - '0x08038854'
+  - '0x08038858'
+  - '0x0803885C'
+  - '0x08038860'
+  - '0x08038864'
+  - '0x08038868'
+  - '0x0803886C'
+  - '0x08038870'
+  - '0x08038874'
+  - '0x08038878'
+  - '0x0803887C'
+  - '0x08038880'
+  - '0x08038884'
+- unit: asm/split/split_8038888.s
+  entries:
+  - '0x08038C70'
+  - '0x08038C74'
+  - '0x08038C78'
+  - '0x08038C7C'
+  - '0x08038C80'
+  - '0x08038C84'
+  - '0x08038C88'
+  - '0x08038C8C'
+  - '0x08038C90'
+  - '0x08038C94'
+  - '0x08038C98'
+  - '0x08038C9C'
+  - '0x08038CA0'
+  - '0x08038CA4'
+- unit: asm/split/split_8038D2C.s
+  entries:
+  - '0x08038E2C'
+  - '0x08038E30'
+  - '0x08038E34'
+  - '0x08038E38'
+  - '0x08038E3C'
+  - '0x08038E40'
+- unit: asm/split/split_8038E44.s
+  entries:
+  - '0x080391A4'
+  - '0x080391A8'
+  - '0x080391AC'
+  - '0x080391B0'
+  - '0x080391B4'
+  - '0x080391B8'
+  - '0x080391BC'
+  - '0x080391C0'
+  - '0x080391C4'
+- unit: asm/split/split_80391C8.s
+  entries:
+  - '0x080395AC'
+  - '0x080395B0'
+  - '0x080395B4'
+  - '0x080395B8'
+  - '0x080395BC'
+  - '0x080395C0'
+  - '0x080395C4'
+  - '0x080395C8'
+  - '0x080395CC'
+  - '0x080395D0'
+  - '0x080395D4'
+  - '0x080395D8'
+  - '0x080395DC'
+  - '0x080395E0'
+  - '0x080395E4'
+  - '0x080395E8'
+  - '0x080395EC'
+  - '0x080395F0'
+  - '0x080395F4'
+  - '0x080395F8'
+  - '0x080395FC'
+  - '0x08039944'
+  - '0x08039948'
+  - '0x0803994C'
+  - '0x08039950'
+  - '0x08039954'
+  - '0x08039958'
+  - '0x0803995C'
+  - '0x08039960'
+  - '0x08039964'
+  - '0x08039968'
+  - '0x0803996C'
+  - '0x08039970'
+  - '0x08039974'
+  - '0x08039978'
+  - '0x0803997C'
+  - '0x08039980'
+  - '0x08039984'
+  - '0x08039988'
+  - '0x0803998C'
+  - '0x08039990'
+  - '0x08039994'
+  - '0x08039998'
+  - '0x0803999C'
+  - '0x080399A0'
+- unit: asm/split/split_80399A4.s
+  entries:
+  - '0x08039D6C'
+  - '0x08039D70'
+  - '0x08039D74'
+  - '0x08039D78'
+  - '0x08039D7C'
+  - '0x08039D80'
+  - '0x08039D84'
+  - '0x08039D88'
+- unit: asm/split/split_8039DAC.s
+  entries:
+  - '0x0803A030'
+  - '0x0803A034'
+  - '0x0803A038'
+  - '0x0803A03C'
+  - '0x0803A040'
+  - '0x0803A044'
+  - '0x0803A048'
+  - '0x0803A04C'
+- unit: asm/nonmatching/split_803A050
+  entries:
+  - '0x0803A420'
+  - '0x0803A424'
+  - '0x0803A428'
+  - '0x0803A42C'
+  - '0x0803A430'
+  - '0x0803A434'
+  - '0x0803A438'
+  - '0x0803A43C'
+  - '0x0803A440'
+  - '0x0803A444'
+  - '0x0803A448'
+  - '0x0803A44C'
+  - '0x0803A450'
+  - '0x0803A454'
+- unit: asm/nonmatching/split_803A490
+  entries:
+  - '0x0803A8FC'
+  - '0x0803A900'
+  - '0x0803A904'
+  - '0x0803A908'
+  - '0x0803A90C'
+  - '0x0803A910'
+  - '0x0803AB78'
+  - '0x0803AB7C'
+- unit: asm/split/split_803AB80.s
+  entries:
+  - '0x0803AE48'
+  - '0x0803AE4C'
+  - '0x0803AE50'
+  - '0x0803AE54'
+  - '0x0803AE58'
+  - '0x0803AE5C'
+- unit: asm/nonmatching/split_803AE60
+  entries:
+  - '0x0803B138'
+  - '0x0803B13C'
+  - '0x0803B140'
+  - '0x0803B144'
+  - '0x0803B148'
+  - '0x0803B14C'
+- unit: asm/nonmatching/split_803B150
+  entries:
+  - '0x0803B300'
+  - '0x0803B304'
+  - '0x0803B308'
+  - '0x0803B30C'
+  - '0x0803B310'
+  - '0x0803B314'
+- unit: asm/nonmatching/split_803B318
+  entries:
+  - '0x0803B4B8'
+  - '0x0803B4BC'
+  - '0x0803B4C0'
+  - '0x0803B4C4'
+  - '0x0803B4C8'
+  - '0x0803B4CC'
+  - '0x0803B4D0'
+  - '0x0803B4D4'
+- unit: asm/split/split_803B4D8.s
+  entries:
+  - '0x0803B4EC'
+  - '0x0803B4F0'
+  - '0x0803B500'
+  - '0x0803B504'
+  - '0x0803B518'
+  - '0x0803B51C'
+- unit: asm/split/split_803B520.s
+  entries:
+  - '0x0803B580'
+  - '0x0803B584'
+  - '0x0803B588'
+  - '0x0803B58C'
+  - '0x0803B590'
+  - '0x0803B594'
+  - '0x0803B598'
+  - '0x0803B59C'
+- unit: asm/split/split_803B5A0.s
+  entries:
+  - '0x0803B5B8'
+  - '0x0803B5BC'
+  - '0x0803B64C'
+- unit: asm/split/split_803B650.s
+  entries:
+  - '0x0803B680'
+  - '0x0803B684'
+  - '0x0803B6C8'
+  - '0x0803B74C'
+  - '0x0803B750'
+  - '0x0803B78C'
+- unit: asm/split/split_803B7C4.s
+  entries:
+  - '0x0803B7E0'
+  - '0x0803B7E4'
+- unit: asm/cpp_init.s
+  entries:
+  - '0x0803B8FC'
+  - '0x0803B900'
+- unit: asm/nonmatching/split_803D4A8
+  entries:
+  - '0x0803D5A0'
+  - '0x0803D664'
+  - '0x0803D668'
+  - '0x0803D67C'
+  - '0x0803D9A4'
+  - '0x0803D9C0'
+  - '0x0803D9F4'
+  - '0x0803DA14'
+  - '0x0803DA48'
+  - '0x0803DA7C'
+  - '0x0803DB28'
+  - '0x0803DB2C'
+  - '0x0803DB30'
+  - '0x0803DB34'
+  - '0x0803DB38'
+- unit: asm/split/split_803DB3C.s
+  entries:
+  - '0x0803E0FC'
+  - '0x0803E100'
+- unit: asm/nonmatching/split_803EF1C
+  entries:
+  - '0x0803F074'
+  - '0x0803F078'
+- unit: asm/nonmatching/split_803F07C
+  entries:
+  - '0x0803F108'
+  - '0x0803F10C'
+- unit: asm/split/split_803F110.s
+  entries:
+  - '0x0803F168'
+  - '0x0803F16C'
+- unit: asm/split/split_803F170.s
+  entries:
+  - '0x0803F1A8'
+- unit: asm/split/split_803F1AC.s
+  entries:
+  - '0x0803F238'
+- unit: asm/split/split_803F23C.s
+  entries:
+  - '0x0803F2C8'
+- unit: asm/split/split_803F2CC.s
+  entries:
+  - '0x0803F388'
+- unit: asm/nonmatching/split_803F38C
+  entries:
+  - '0x0803F3E0'
+  - '0x0803F3E4'
+- unit: asm/split/split_803F3E8.s
+  entries:
+  - '0x0803F45C'
+  - '0x0803F460'
+- unit: asm/split/split_803F464.s
+  entries:
+  - '0x0803F4C4'
+  - '0x0803F4C8'
+- unit: asm/split/split_803F4CC.s
+  entries:
+  - '0x0803F5E8'
+  - '0x0803F5EC'
+  - '0x0803F5F0'
+  - '0x0803F5F4'
+  - '0x0803F5F8'
+- unit: asm/split/split_803F5FC.s
+  entries:
+  - '0x0803F650'
+- unit: asm/split/split_803F654.s
+  entries:
+  - '0x0803F6DC'
+- unit: asm/nonmatching/split_803F6E0.s
+  entries:
+  - '0x0803F704'
+- unit: asm/nonmatching/split_803F708.s
+  entries:
+  - '0x0803F728'
+- unit: asm/nonmatching/split_803F72C
+  entries:
+  - '0x0803F8B8'
+- unit: asm/split/split_803F8BC.s
+  entries:
+  - '0x0803F900'
+- unit: asm/split/split_803F904.s
+  entries:
+  - '0x0803FA38'
+- unit: asm/nonmatching/split_803FAB8
+  entries:
+  - '0x0803FB20'
+- unit: asm/nonmatching/split_803FB24.s
+  entries:
+  - '0x0803FB50'
+  - '0x0803FB54'
+- unit: asm/split/split_803FBBC.s
+  entries:
+  - '0x0803FC10'
+- unit: asm/split/split_803FD5C.s
+  entries:
+  - '0x0803FE74'
+  - '0x0803FE78'
+  - '0x0803FE7C'
+- unit: asm/split/split_803FE80.s
+  entries:
+  - '0x0803FEF4'
+- unit: asm/nonmatching/split_803FEF8.s
+  entries:
+  - '0x0803FF20'
+- unit: asm/split/split_803FF24.s
+  entries:
+  - '0x0804002C'
+  - '0x08040030'
+- unit: asm/split/split_8040034.s
+  entries:
+  - '0x08040100'
+- unit: asm/nonmatching/split_8040104
+  entries:
+  - '0x080401BC'
+- unit: asm/nonmatching/split_80401C0
+  entries:
+  - '0x08040254'
+  - '0x08040258'
+- unit: asm/split/split_804025C.s
+  entries:
+  - '0x080402F4'
+- unit: asm/nonmatching/split_80403A4
+  entries:
+  - '0x08040464'
+- unit: asm/split/split_8040468.s
+  entries:
+  - '0x0804048C'
+- unit: asm/split/split_8040490.s
+  entries:
+  - '0x080404B0'
+- unit: asm/split/split_80404B4.s
+  entries:
+  - '0x080404D4'
+- unit: asm/split/split_80404D8.s
+  entries:
+  - '0x080404FC'
+  - '0x08040500'
+- unit: asm/split/split_8040504.s
+  entries:
+  - '0x08040524'
+- unit: asm/split/split_8040528.s
+  entries:
+  - '0x0804054C'
+- unit: asm/split/split_8040550.s
+  entries:
+  - '0x08040570'
+- unit: asm/split/split_8040574.s
+  entries:
+  - '0x08040590'
+- unit: asm/split/split_8040594.s
+  entries:
+  - '0x080405B0'
+- unit: asm/split/split_80405B4.s
+  entries:
+  - '0x080405D0'
+  - '0x080405D4'
+- unit: asm/split/split_80405D8.s
+  entries:
+  - '0x080405F4'
+- unit: asm/split/split_80405F8.s
+  entries:
+  - '0x08040614'
+  - '0x08040618'
+- unit: asm/split/split_804061C.s
+  entries:
+  - '0x08040638'
+  - '0x0804063C'
+- unit: asm/split/split_8040640.s
+  entries:
+  - '0x0804065C'
+- unit: asm/split/split_8040660.s
+  entries:
+  - '0x0804067C'
+  - '0x08040680'
+- unit: asm/split/split_8040684.s
+  entries:
+  - '0x080406A0'
+- unit: asm/split/split_80406A4.s
+  entries:
+  - '0x080406C0'
+- unit: asm/split/split_80406C4.s
+  entries:
+  - '0x080406E0'
+- unit: asm/split/split_80406E4.s
+  entries:
+  - '0x08040700'
+  - '0x08040704'
+- unit: asm/split/split_8040708.s
+  entries:
+  - '0x08040968'
+  - '0x0804096C'
+  - '0x08040970'
+  - '0x08040974'
+- unit: asm/split/split_80409E4.s
+  entries:
+  - '0x08040C28'
+  - '0x08040C2C'
+  - '0x08040C30'
+  - '0x08040C34'
+- unit: asm/split/split_8040C78.s
+  entries:
+  - '0x08041010'
+  - '0x08041014'
+  - '0x08041018'
+  - '0x0804101C'
+- unit: asm/nonmatching/split_8041274.s
+  entries:
+  - '0x080412A4'
+- unit: asm/split/split_80412A8.s
+  entries:
+  - '0x08041418'
+  - '0x0804141C'
+  - '0x08041420'
+  - '0x08041424'
+  - '0x08041428'
+  - '0x0804142C'
+  - '0x08041430'
+  - '0x08041434'
+- unit: asm/last_code.s
+  entries:
+  - '0x08052324'
+  - '0x08052328'
+  - '0x08052A08'
+  - '0x08052A0C'
+  - '0x08052A14'
+  - '0x08052A1C'
+  - '0x08052A28'
+  - '0x08052A34'
+  - '0x08052A3C'
+  - '0x08052A48'
+  - '0x08052A54'
+  - '0x08052A60'
+  - '0x08052A6C'
+  - '0x08052BB0'
+  - '0x08052E88'
+  - '0x08052E8C'
+  - '0x08053CC8'
+  - '0x08053CD4'
+  - '0x08053CE0'
+  - '0x08053CEC'
+  - '0x08053CF8'
+  - '0x08053D04'
+  - '0x080545D8'
+  - '0x080545DC'
+  - '0x080545E0'
+  - '0x08054CE8'
+  - '0x0805500C'
+  - '0x08055010'
+  - '0x080554D0'
+  - '0x080554D4'
+  - '0x080554D8'
+  - '0x08055610'
+  - '0x08055614'
+  - '0x080557B0'
+  - '0x080557B8'
+  - '0x080557C0'
+  - '0x080557CC'
+  - '0x080557D8'
+  - '0x080557E4'
+  - '0x080557F0'
+  - '0x080557F8'
+  - '0x08055804'
+  - '0x08055810'
+  - '0x0805581C'
+  - '0x08055828'
+  - '0x08055834'
+  - '0x08055ABC'

@@ -43,17 +43,6 @@ def test_rewrite_pool_labels_get_one_name_per_offset(ctx):
     """))
 
 
-def test_rewrite_definition_drops_data_marker_for_locals_too(ctx):
-    src = lines("""
-            LDR      r1,|L1.28|
-    |L1.28| DATA
-            DCD      __VTABLE__4Kiko
-    """)
-    out = labels.rewrite(src, ctx())
-    assert out[0] == "        LDR      r1,%28\n"
-    assert out[1] == "28\n"
-
-
 def test_rewrite_keeps_second_pool_apart_from_first(ctx):
     src = lines("""
             LDR      r1,|L1.996| + 8
@@ -120,3 +109,16 @@ def test_expand_pools_without_a_pool_returns_the_input(ctx):
             DCD      1
     """)
     assert labels.expand_pools(src, ctx()) is src
+
+
+def test_a_data_label_is_a_pool_even_when_nothing_uses_an_offset(ctx):
+    src = lines("""
+            LDR      r1,|L1.28|
+            BX       lr
+    |L1.28| DATA
+            DCD      __VTABLE__4Kiko
+    """)
+    assert labels.find_pool_labels(src) == {("1", "28")}
+    out = labels.rewrite(src, ctx())
+    assert out[0] == "        LDR      r1,_pool_1_28_0\n"
+    assert out[2] == "_pool_1_28_0\n"

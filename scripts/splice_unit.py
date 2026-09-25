@@ -73,11 +73,13 @@ RE_PROC = re.compile(r"^(\S+) PROC\s*$")
 RE_ENDP = re.compile(r"^\s+ENDP\s*$")
 RE_IMPORT = re.compile(r"^\s*IMPORT\s+(.*?)\s*$")
 RE_SECTION_PAD = re.compile(r"^\s+DCW\s+0+\s*$")
-# A load from the compiler's own literal pool, in either spelling: |L1.28| as tcc
-# writes it, or _pool_1_28_4 as preprocess_compiler_labels.py rewrites it. The
-# pool itself sits outside the PROC..ENDP body, so a body naming one of these is
-# a body whose constants have no home in the unit.
-RE_LITERAL = re.compile(r"\|L\d+\.\d+\||\b_pool_\d+_\d+_\d+\b")
+# A load from the compiler's own literal pool, in any spelling: |L1.28| as tcc
+# writes it, _pool_1_28_4 as preprocess_compiler_labels.py rewrites it, or
+# _0800B2B8 as asmfix's pools pass names it when the compiled file is called
+# after a unit with a pool record. The compiler never spells a unit's pool entry
+# itself, so all three mean the same thing: the pool sits outside the PROC..ENDP
+# body, and a body naming one of these has constants with no home in the unit.
+RE_LITERAL = re.compile(r"\|L\d+\.\d+\||\b_pool_\d+_\d+_\d+\b|\b_0[0-9A-Fa-f]{7}\b")
 RE_LOCAL_DEF = re.compile(r"^(\d+)\s*$")
 RE_LOCAL_REF = re.compile(r"%([FB]?[AT]?)(\d+)\b")
 END = "\tEND\n"

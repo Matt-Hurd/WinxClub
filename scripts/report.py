@@ -39,12 +39,16 @@ it. Without either, a unit whose code bytes are identical scores about 20%.
 The reference is objdiff's *target* and the built object its *base*, which is
 the way round objdiff means them: the asm is what we have to reproduce.
 
-One thing the raw objdiff report gets wrong for this ROM: a literal pool entry
-(`_08017440 DCDU ...`) is a labelled word in a code section, so objdiff counts
-it as a function and scores it 0% -- the compiled side's pool entries carry no
-label to pair with. They are listed separately here and left out of the
-function totals. Fixing that properly means naming the compiled pool entries
-after the addresses they had, which needs a map this repo does not keep yet.
+A literal pool entry (`_08017440 DCDU ...`) is a labelled word in a code
+section, so objdiff counts it as a function. It pairs with the compiled side
+because scripts/asmfix/pools.py names each compiled entry after the address
+the original had, from the `pools:` records in config/symbols.yml; before
+that, every entry of a converted unit was an unpaired symbol at 0%, and a unit
+whose functions all matched still scored below 100% at section level. Entries
+are listed apart from the functions here, with their own score and totals,
+because they are constants, not code: one below 100% is a wrong or missing
+constant, and it drags the unit's section-level figure in objdiff's own
+report (build/objdiff-report.json) but not the function totals below.
 
 armasm also emits `$b`, the ARM ELF spec's deprecated mapping symbol for a Thumb
 BL pair, at every `bl` in Thumb code. objdiff 3.8.1 hides `$a`, `$t` and `$d`
@@ -256,12 +260,9 @@ def collate(raw, where, built):
     for unit in raw.get("units", []):
         functions, pool = [], []
         for func in unit.get("functions", []):
-            entry = {"name": func["name"], "size": int(func.get("size", 0))}
-            if RE_POOL_LABEL.match(func["name"]):
-                pool.append(entry)
-                continue
-            entry["match"] = round(func.get("fuzzy_match_percent", 0.0), 4)
-            functions.append(entry)
+            entry = {"name": func["name"], "size": int(func.get("size", 0)),
+                     "match": round(func.get("fuzzy_match_percent") or 0.0, 4)}
+            (pool if RE_POOL_LABEL.match(func["name"]) else functions).append(entry)
         code = sum(f["size"] for f in functions)
         matched = sum(f["size"] for f in functions if f["match"] == 100.0)
         units.append({
@@ -277,6 +278,8 @@ def collate(raw, where, built):
     matched_funcs = sum(1 for u in units for f in u["functions"] if f["match"] == 100.0)
     code = sum(u["code_bytes"] for u in units)
     matched = sum(u["matched_bytes"] for u in units)
+    pool_entries = sum(len(u["pool"]) for u in units)
+    matched_pool = sum(1 for u in units for e in u["pool"] if e["match"] == 100.0)
     return {
         "units": units,
         "totals": {
@@ -285,6 +288,8 @@ def collate(raw, where, built):
             "matched_functions": matched_funcs,
             "code_bytes": code,
             "matched_bytes": matched,
+            "pool_entries": pool_entries,
+            "matched_pool_entries": matched_pool,
         },
     }
 
@@ -295,13 +300,17 @@ def summarise(report):
     print(f"{t['units']} units scored, {t['functions']} functions, "
           f"{t['matched_functions']} at 100% "
           f"({t['matched_bytes']}/{t['code_bytes']} bytes, {pct:.2f}%)")
-    unmatched = [(u["unit"], f) for u in report["units"] for f in u["functions"]
+    if t["pool_entries"]:
+        print(f"pool: {t['pool_entries']} entries, {t['matched_pool_entries']} at 100%")
+    unmatched = [(u["unit"], f, "") for u in report["units"] for f in u["functions"]
                  if f["match"] < 100.0]
-    for unit, func in sorted(unmatched, key=lambda p: p[1]["match"]):
+    unmatched += [(u["unit"], e, "pool entry") for u in report["units"] for e in u["pool"]
+                  if e["match"] < 100.0]
+    for unit, func, kind in sorted(unmatched, key=lambda p: p[1]["match"]):
         print(f"  {unit:<24} {func['name']:<28} {func['match']:6.2f}%  "
-              f"{func['size']} bytes")
+              f"{func['size']} bytes  {kind}".rstrip())
     if not unmatched and t["units"]:
-        print("  every scored function is byte-for-byte the original")
+        print("  every scored function and pool entry is byte-for-byte the original")
 
 
 def check_golden():
