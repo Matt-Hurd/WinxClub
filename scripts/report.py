@@ -13,9 +13,16 @@ The reference is the original assembly for a unit, as a whole translation unit:
     asm/nonmatching/<unit>.s  it has, and this is the asm it replaced
     asm/nonmatching/<unit>/   the splicer's per-function pieces, reassembled in
                               the order config/symbols.yml gives
+    tests/golden/<unit>.o     no asm survives for it (the class-named .cpp
+                              ports); the object it built when the ROM last
+                              matched, frozen by scripts/golden.py
 
 A unit is scored only when a reference and a built object both exist, so a unit
 still wholly in asm contributes nothing -- there is nothing to compare it to.
+Before scoring, every built unit is compared to its golden (see golden.py):
+a drifted or stale golden fails this script, and a unit with no golden yet is
+frozen here when the ROM matches, so a conversion that passes make check is
+covered without a separate step.
 References are assembled here, into build/report/, not by the Makefile: the
 build places either the asm or the C for a unit, never both, so the reference
 object is not something a build produces.
@@ -47,10 +54,17 @@ side symbol" -- even when the two objects are the same file. 16 of the 105
 units splice_queue.py offers do that. Both objects are therefore copied into
 build/report/ with every `$b` moved to SHN_ABS first, which takes it out of
 every section and so out of objdiff's pairing; no relocation refers to one.
+
+The same copies have every R_ARM_REL32 relocation retyped to R_ARM_ABS32.
+tcpp fills a vtable with REL32 entries, one per slot, and objdiff 3.8.1
+refuses to open an object holding one ("Unsupported ARM implicit relocation
+3") -- which is every one of the 85 class-named .cpp ports. The retype is
+applied to both sides alike, so a slot that points at a different method
+still differs and one that points at the same method still pairs; only the
+copies objdiff reads are touched, never the objects the build links.
 """
 
 import argparse
-import glob
 import json
 import os
 import re
@@ -61,12 +75,14 @@ import sys
 
 import yaml
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import golden  # noqa: E402
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAKEFILE = os.path.join(REPO, "Makefile")
 SYMBOLS = os.path.join(REPO, "config", "symbols.yml")
 SPLITDIR = os.path.join(REPO, "asm", "split")
 REFDIR = os.path.join(REPO, "asm", "nonmatching")
-BUILD = os.path.join(REPO, "build", "winxclub")
 OUTDIR = os.path.join(REPO, "build", "report")
 REPORT = os.path.join(REPO, "build", "report.json")
 RAW = os.path.join(REPO, "build", "objdiff-report.json")
@@ -130,30 +146,19 @@ def reference_text(unit, order):
     return None, None
 
 
-def built_object(unit):
-    """The object the build produced for this unit from C or C++, or None."""
-    for path in [os.path.join(BUILD, "src", f"{unit}.o")] + sorted(
-            glob.glob(os.path.join(BUILD, "merged", "**", f"{unit}.o"), recursive=True)):
-        if os.path.exists(path):
-            return path
-    return None
-
-
 def units_to_score(order):
-    """(unit, reference text, reference path, built object) for every scorable unit."""
-    names = sorted(
-        {os.path.basename(p)[:-len(".s")] for p in glob.glob(os.path.join(SPLITDIR, "*.s"))}
-        | {os.path.basename(p)[:-len(".s")] for p in glob.glob(os.path.join(REFDIR, "*.s"))}
-        | {os.path.basename(p) for p in glob.glob(os.path.join(REFDIR, "*"))
-           if os.path.isdir(p)})
+    """(unit, reference text or None, reference path, built object) per built unit.
+
+    The reference text is the original asm when any survives; otherwise the
+    unit's golden object stands in and the text is None.
+    """
     out = []
-    for unit in names:
-        built = built_object(unit)
-        if not built:
-            continue
+    for unit, built in golden.built_objects().items():
         text, where = reference_text(unit, order)
         if text is None:
-            continue
+            if not os.path.exists(golden.golden_path(unit)):
+                continue
+            where = f"tests/golden/{unit}.o"
         out.append((unit, text, where, built))
     return out
 
@@ -175,11 +180,16 @@ def assemble(unit, text, asm, asflags):
 SHN_ABS = 0xFFF1
 
 
-def hide_bl_pair_symbols(src, dst):
-    """Copy an ELF32 object, moving every `$b` mapping symbol to SHN_ABS.
+R_ARM_REL32, R_ARM_ABS32 = 3, 2
 
+
+def prepare_for_objdiff(src, dst):
+    """Copy an ELF32 object into the form objdiff 3.8.1 can read.
+
+    Every `$b` mapping symbol moves to SHN_ABS and every R_ARM_REL32
+    relocation is retyped R_ARM_ABS32; the module docstring says why.
     Pure struct parsing so this runs under the build's python without
-    pyelftools. Only st_shndx changes; sizes, names and relocations do not.
+    pyelftools. Section contents, sizes and symbol names do not change.
     """
     import struct
     data = bytearray(open(src, "rb").read())
@@ -200,6 +210,15 @@ def hide_bl_pair_symbols(src, dst):
             end = strtab.index(b"\0", st_name)
             if strtab[st_name:end] == b"$b":
                 struct.pack_into("<H", data, off + 14, SHN_ABS)
+                moved += 1
+    for sec in sections:
+        sh_type, sh_offset, sh_size, sh_entsize = sec[1], sec[4], sec[5], sec[9]
+        if sh_type != 9:  # SHT_REL
+            continue
+        for off in range(sh_offset, sh_offset + sh_size, sh_entsize):
+            r_info = struct.unpack_from("<I", data, off + 4)[0]
+            if r_info & 0xFF == R_ARM_REL32:
+                struct.pack_into("<I", data, off + 4, (r_info & ~0xFF) | R_ARM_ABS32)
                 moved += 1
     with open(dst, "wb") as fh:
         fh.write(data)
@@ -276,9 +295,31 @@ def summarise(report):
         print("  every scored function is byte-for-byte the original")
 
 
+def check_golden():
+    """Every built unit against tests/golden/; freezes the unfrozen when the ROM matches."""
+    drifted, unfrozen, stale, same = golden.check()
+    if unfrozen and golden.rom_matches():
+        for path in golden.freeze(unfrozen):
+            print(f"golden: frozen {path} -- commit it with the conversion")
+        drifted, unfrozen, stale, same = golden.check()
+    golden.print_check(drifted, unfrozen, stale, same)
+    if drifted:
+        print("golden: a unit's object changed. If the ROM still matches, understand "
+              "why before `python scripts/golden.py freeze <unit>` accepts it.")
+    if unfrozen:
+        print("golden: the ROM does not match, so nothing was frozen; "
+              "unfrozen units are frozen by a passing make check.")
+    if stale:
+        print("golden: delete the stale goldens, or restore their source.")
+    return not (drifted or unfrozen or stale)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.parse_args()
+
+    if not check_golden():
+        return 1
 
     if not shutil.which("objdiff-cli"):
         print("report.py: objdiff-cli is not installed; no report written")
@@ -291,10 +332,14 @@ def main():
     os.makedirs(OUTDIR, exist_ok=True)
     scored, where, built = [], {}, {}
     for unit, text, ref, obj in units_to_score(order):
-        target = assemble(unit, text, asm, asflags)
-        hide_bl_pair_symbols(target, target)
+        if text is None:
+            target = os.path.join(OUTDIR, f"{unit}.o")
+            shutil.copyfile(golden.golden_path(unit), target)
+        else:
+            target = assemble(unit, text, asm, asflags)
+        prepare_for_objdiff(target, target)
         base = os.path.join(OUTDIR, f"{unit}.built.o")
-        hide_bl_pair_symbols(obj, base)
+        prepare_for_objdiff(obj, base)
         scored.append((unit, target, base))
         where[unit], built[unit] = ref, obj
 
@@ -313,6 +358,6 @@ def main():
 if __name__ == "__main__":
     try:
         sys.exit(main())
-    except ReportError as exc:
+    except (ReportError, golden.GoldenError) as exc:
         print(f"report.py: {exc}", file=sys.stderr)
         sys.exit(1)

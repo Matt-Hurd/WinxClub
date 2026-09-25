@@ -61,6 +61,7 @@ __pycache__/
 *.elf
 *.map
 *.o
+!/tests/golden/*.o
 *.dump
 build/
 sound_/
