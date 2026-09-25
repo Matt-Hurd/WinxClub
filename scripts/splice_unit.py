@@ -47,14 +47,18 @@ Numeric local labels are a shared namespace in an armasm source file: the asm
 slices already repeat `1`, `2`, `3` across functions and armasm resolves `%N`
 to the nearest, which is why the split files assemble. preprocess_compiler_labels.py
 turns the compiler's |L1.N| into numbers from the same pool, so a compiled
-function whose labels collide with a neighbour's could resolve the wrong way.
-Nothing in the ROM has hit it yet; it is a real limit of this approach, not a
-handled case.
+function's labels can collide with a neighbour's -- sub_8004C2C in split_8004BA8
+is the first one that did, and its `b %10` was captured by label 10 inside the
+ARM function two slices later (`Branch to unaligned destination`). renumber_locals
+moves a compiled body onto numbers the unit does not use. Local labels emit no
+bytes, so that cannot move the function; the asm slices are left alone, since
+they already resolve the way the ROM reads.
 """
 
 import argparse
 import difflib
 import glob
+import itertools
 import os
 import re
 import sys
@@ -69,7 +73,13 @@ RE_PROC = re.compile(r"^(\S+) PROC\s*$")
 RE_ENDP = re.compile(r"^\s+ENDP\s*$")
 RE_IMPORT = re.compile(r"^\s*IMPORT\s+(.*?)\s*$")
 RE_SECTION_PAD = re.compile(r"^\s+DCW\s+0+\s*$")
-RE_LITERAL = re.compile(r"\|L\d+\.\d+\|")
+# A load from the compiler's own literal pool, in either spelling: |L1.28| as tcc
+# writes it, or _pool_1_28_4 as preprocess_compiler_labels.py rewrites it. The
+# pool itself sits outside the PROC..ENDP body, so a body naming one of these is
+# a body whose constants have no home in the unit.
+RE_LITERAL = re.compile(r"\|L\d+\.\d+\||\b_pool_\d+_\d+_\d+\b")
+RE_LOCAL_DEF = re.compile(r"^(\d+)\s*$")
+RE_LOCAL_REF = re.compile(r"%([FB]?[AT]?)(\d+)\b")
 END = "\tEND\n"
 
 
@@ -144,6 +154,47 @@ def compiler_output(text):
     return bodies, imports
 
 
+def local_labels(text):
+    """The numeric local labels *defined* in a piece of armasm source."""
+    return {int(m.group(1)) for m in
+            (RE_LOCAL_DEF.match(line) for line in text.splitlines()) if m}
+
+
+def renumber_locals(name, body, taken):
+    """`body` with its local labels moved off the numbers in `taken`.
+
+    Numeric local labels are one namespace per source file, and armasm resolves
+    `%N` to the *nearest* label N in either direction. The compiler numbers its
+    own labels from |L1.N| with no idea what the unit's other functions use, so
+    a compiled body dropped into a unit can have its branch captured by a
+    neighbour's label -- silently pointing at the wrong code, or, when the
+    neighbour is an ARM function, as `Branch to unaligned destination`.
+
+    Local labels emit no bytes, so renumbering them cannot move the function.
+    Returns (body, numbers used).
+    """
+    mine = local_labels(body)
+    if not mine:
+        return body, set()
+    dangling = {int(m.group(2)) for m in RE_LOCAL_REF.finditer(body)} - mine
+    if dangling:
+        raise SpliceError(
+            f"{name}: branches to local label(s) "
+            f"{', '.join(str(n) for n in sorted(dangling))} that it does not "
+            f"define; the splicer cannot tell what they were meant to reach")
+    free = (n for n in itertools.count(1) if n not in taken and n not in mine)
+    fresh = {old: next(free) for old in sorted(mine)}
+    out = []
+    for line in body.splitlines(True):
+        m = RE_LOCAL_DEF.match(line)
+        if m:
+            out.append(f"{fresh[int(m.group(1))]}\n")
+            continue
+        out.append(RE_LOCAL_REF.sub(
+            lambda m: f"%{m.group(1)}{fresh[int(m.group(2))]}", line))
+    return "".join(out), set(fresh.values())
+
+
 def add_imports(header, imports):
     """Put the compiler's IMPORTs in the unit's header, skipping the ones it has."""
     lines = header.splitlines(True)
@@ -175,6 +226,12 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=()):
 
     out = [add_imports(pieces["header.s"], compiled_imports) if compiled
            else pieces["header.s"]]
+    # Every local label the unit's own asm uses, so a compiled body can be moved
+    # off them. The asm slices repeat 1, 2, 3 freely between functions; only a
+    # spliced body has to dodge them, because only it did not come from a
+    # disassembly that armasm already resolved the way the ROM reads.
+    taken = set().union(*(local_labels(text) for name, text in pieces.items()
+                          if name not in compiled)) if pieces else set()
     for name in order:
         text = pieces[f"{name}.s"]
         if name not in compiled:
@@ -186,6 +243,8 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=()):
             raise SpliceError(
                 f"{unit}: {name} loads a literal from the compiler's own pool; "
                 f"rewriting it onto the unit's pool is not implemented")
+        body, used = renumber_locals(name, body, taken)
+        taken |= used
         out.append(lead + body + tail)
     return "".join(out) + pieces["pool.s"] + END
 
