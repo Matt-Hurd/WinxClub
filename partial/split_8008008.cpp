@@ -52,16 +52,12 @@ extern "C" void sub_8008120(void)
 {
 }
 
-/* tcc otherwise hoists the register-ready `str r1,[r0,#8]` ahead of both
- * zero stores regardless of source order (every non-volatile ordering
- * tried, see notes/tcc_register_tricks.md's testing method); `volatile`
- * on the first store is the only lever found that keeps zero, a1, zero in
- * that order. Unexplained match -- the field is not known to be volatile.
+/* Written in field order 0, 4, 8; tcpp itself schedules the register-ready
+ * a1 store between the two zero stores, which is the ROM's zero, a1, zero.
  */
 extern "C" void sub_80081B6(void *a0, int a1)
 {
-    *(volatile int *)((char *)a0 + 0x0) = 0;
-    *(int *)((char *)a0 + 0x8) = a1;
+    *(int *)((char *)a0 + 0x0) = 0;
     *(int *)((char *)a0 + 0x4) = 0;
+    *(int *)((char *)a0 + 0x8) = a1;
 }
-
