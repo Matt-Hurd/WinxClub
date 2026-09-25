@@ -14,17 +14,29 @@ extern "C" {
 /* data/iwram1.s */
 extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_030033E8; /* 0x030033E8 */
+extern void *gUnknown_03003444; /* 0x03003444 */
+extern void *gUnknown_03003450; /* 0x03003450 */
+extern void *gUnknown_03003454; /* 0x03003454 */
 extern void *gUnknown_03003458; /* 0x03003458 */
+extern void *gUnknown_0300345C; /* 0x0300345C */
+extern void *gUnknown_03003468; /* 0x03003468 */
 extern unsigned int gUnknown_03003478[32]; /* 0x03003478 */
+extern void *gUnknown_030034F8; /* 0x030034F8 */
 extern unsigned char gUnknown_03003520[]; /* 0x03003520 */
 extern unsigned char gUnknown_03003BC8[0x30]; /* 0x03003BC8 */
+extern void *gUnknown_03003D20; /* 0x03003D20 */
+extern void *gPlayerEntity; /* 0x03003D2C */
 
 /* data/iwram2.s */
 extern void *gUnknown_03003E88; /* 0x03003E88 */
 
 /* data/data1.s */
 extern unsigned short gUnknown_0804AF2C[]; /* 0x0804AF2C */
+extern unsigned char gUnknown_080506E8[]; /* 0x080506E8 */
+extern unsigned char gUnknown_080507F4[]; /* 0x080507F4 */
+extern unsigned char gUnknown_08050A24[]; /* 0x08050A24 */
 extern unsigned short gUnknown_08051096[]; /* 0x08051096 */
+extern unsigned char gUnknown_080514B0[]; /* 0x080514B0 */
 
 #ifdef __cplusplus
 }

@@ -1558,10 +1558,12 @@ functions:
   isa: thumb
   unit: asm/split/split_8005044.s
   name: sub_80050FA
+  decl: void sub_80050FA(void *a0)
 - addr: '0x08005106'
   isa: thumb
   unit: asm/split/split_8005044.s
   name: GetEWRAMStart
+  decl: void *GetEWRAMStart(void)
 - addr: '0x0800510C'
   isa: thumb
   unit: asm/split/split_8005044.s
@@ -2493,6 +2495,7 @@ functions:
   isa: thumb
   unit: asm/split/split_800ED7C.s
   name: sub_800EF2A
+  decl: void sub_800EF2A(void)
 - addr: '0x0800EF60'
   isa: thumb
   unit: asm/split/split_800ED7C.s
@@ -3325,10 +3328,12 @@ functions:
   isa: thumb
   unit: asm/split/split_80142D0.s
   name: sub_80143E0
+  decl: void sub_80143E0(void *a0)
 - addr: '0x08014436'
   isa: thumb
   unit: asm/split/split_80142D0.s
   name: sub_8014436
+  decl: void sub_8014436(void *a0, int a1)
 - addr: '0x08014492'
   isa: thumb
   unit: asm/split/split_80142D0.s
@@ -3453,6 +3458,7 @@ functions:
   isa: thumb
   unit: asm/split/split_80158E0.s
   name: sub_80158E0
+  decl: int sub_80158E0(void *a0)
 - addr: '0x080158F0'
   isa: thumb
   unit: asm/split/split_80158E0.s
@@ -3473,6 +3479,7 @@ functions:
   isa: thumb
   unit: asm/split/split_8016108.s
   name: sub_8016108
+  decl: void sub_8016108(void *a0)
 - addr: '0x0801613E'
   isa: thumb
   unit: asm/split/split_8016108.s
@@ -3637,6 +3644,7 @@ functions:
   isa: thumb
   unit: asm/split/split_8017474.s
   name: sub_8017620
+  decl: void sub_8017620(void *a0, unsigned int a1)
 - addr: '0x080177D8'
   isa: thumb
   unit: asm/split/split_80177D8.s
@@ -3649,10 +3657,12 @@ functions:
   isa: thumb
   unit: asm/split/split_80177D8.s
   name: sub_8017862
+  decl: void sub_8017862(void *a0, unsigned int a1)
 - addr: '0x08017884'
   isa: thumb
   unit: asm/split/split_80177D8.s
   name: sub_8017884
+  decl: void sub_8017884(void *a0, unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 - addr: '0x080179BE'
   isa: thumb
   unit: asm/split/split_80177D8.s
@@ -3661,10 +3671,12 @@ functions:
   isa: thumb
   unit: asm/split/split_80177D8.s
   name: sub_8017A0A
+  decl: void sub_8017A0A(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017A56'
   isa: thumb
   unit: asm/split/split_80177D8.s
   name: sub_8017A56
+  decl: void sub_8017A56(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017AB0'
   isa: thumb
   unit: asm/split/split_8017AB0.s
@@ -3749,6 +3761,7 @@ functions:
   isa: thumb
   unit: asm/split/split_801837C.s
   name: SetNextGlobalFunction
+  decl: void SetNextGlobalFunction(int a0)
 - addr: '0x08018390'
   isa: thumb
   unit: asm/split/split_801837C.s
@@ -3817,6 +3830,7 @@ functions:
   isa: thumb
   unit: asm/split/split_8018C48.s
   name: sub_8018C48
+  decl: void sub_8018C48(void *a0, void *a1, int a2, unsigned int a3)
 - addr: '0x08018D76'
   isa: thumb
   unit: asm/split/split_8018C48.s
@@ -3889,14 +3903,17 @@ functions:
   isa: thumb
   unit: asm/split/split_801ABFC.s
   name: sub_801ABFC
+  decl: void sub_801ABFC(void *a0)
 - addr: '0x0801AC60'
   isa: thumb
   unit: asm/split/split_801ABFC.s
   name: sub_801AC60
+  decl: void sub_801AC60(void *a0, int a1)
 - addr: '0x0801AD22'
   isa: thumb
   unit: asm/split/split_801ABFC.s
   name: sub_801AD22
+  decl: void sub_801AD22(void *a0)
 - addr: '0x0801AED0'
   isa: thumb
   unit: asm/split/split_801AED0.s
@@ -4154,6 +4171,7 @@ functions:
   isa: thumb
   unit: asm/split/split_801F2F8.s
   name: sub_801F2F8
+  decl: void sub_801F2F8(void *a0)
 - addr: '0x0801F450'
   isa: thumb
   unit: asm/split/split_801F2F8.s
@@ -4562,6 +4580,7 @@ functions:
   isa: thumb
   unit: asm/split/split_80268AC.s
   name: sub_8028A7C
+  decl: void sub_8028A7C(void *a0, unsigned int a1, unsigned int a2)
 - addr: '0x08028B2C'
   isa: thumb
   unit: asm/split/split_80268AC.s
@@ -4578,6 +4597,7 @@ functions:
   isa: thumb
   unit: asm/split/split_8028BE4.s
   name: sub_8028C2E
+  decl: void sub_8028C2E(void *a0)
 - addr: '0x08028C42'
   isa: thumb
   unit: asm/split/split_8028BE4.s
@@ -5202,10 +5222,12 @@ functions:
   isa: thumb
   unit: asm/split/split_8031830.s
   name: sub_8031830
+  decl: void sub_8031830(void *a0)
 - addr: '0x080318BC'
   isa: thumb
   unit: asm/split/split_8031830.s
   name: sub_80318BC
+  decl: void sub_80318BC(void *a0)
 - addr: '0x08031B98'
   isa: thumb
   unit: asm/split/split_8031B98.s
@@ -5714,14 +5736,17 @@ functions:
   isa: thumb
   unit: asm/split/split_8038888.s
   name: sub_8038888
+  decl: void sub_8038888(void *a0)
 - addr: '0x0803894A'
   isa: thumb
   unit: asm/split/split_8038888.s
   name: sub_803894A
+  decl: void sub_803894A(void *a0, int a1)
 - addr: '0x080389CC'
   isa: thumb
   unit: asm/split/split_8038888.s
   name: sub_80389CC
+  decl: void sub_80389CC(void *a0)
 - addr: '0x08038D2C'
   isa: thumb
   unit: asm/split/split_8038D2C.s
@@ -6004,6 +6029,7 @@ functions:
   isa: thumb
   unit: asm/split/split_803D4A8.s
   name: sub_803DA9C
+  decl: void *sub_803DA9C(unsigned int a0, void *a1, int a2, int a3)
 - addr: '0x0803DAB8'
   isa: thumb
   unit: asm/split/split_803D4A8.s
@@ -6132,6 +6158,7 @@ functions:
   isa: thumb
   unit: asm/split/split_803F72C.s
   name: sub_803F72C
+  decl: void *sub_803F72C(void *a0, unsigned int a1, unsigned int a2)
 - addr: '0x0803F774'
   isa: thumb
   unit: asm/split/split_803F72C.s
@@ -6921,6 +6948,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003444
+  decl: void *gUnknown_03003444
 - addr: '0x03003448'
   kind: object
   unit: data/iwram1.s
@@ -6933,10 +6961,12 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003450
+  decl: void *gUnknown_03003450
 - addr: '0x03003454'
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003454
+  decl: void *gUnknown_03003454
 - addr: '0x03003458'
   kind: object
   unit: data/iwram1.s
@@ -6946,6 +6976,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_0300345C
+  decl: void *gUnknown_0300345C
 - addr: '0x03003460'
   kind: object
   unit: data/iwram1.s
@@ -6958,6 +6989,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003468
+  decl: void *gUnknown_03003468
 - addr: '0x0300346C'
   kind: object
   unit: data/iwram1.s
@@ -6971,6 +7003,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_030034F8
+  decl: void *gUnknown_030034F8
 - addr: '0x030034FC'
   kind: object
   unit: data/iwram1.s
@@ -7029,6 +7062,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003D20
+  decl: void *gUnknown_03003D20
 - addr: '0x03003D24'
   kind: object
   unit: data/iwram1.s
@@ -7041,6 +7075,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gPlayerEntity
+  decl: void *gPlayerEntity
 - addr: '0x03003D30'
   kind: object
   unit: data/iwram1.s
@@ -7315,6 +7350,7 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_080506E8
+  decl: unsigned char gUnknown_080506E8[]
 - addr: '0x08050716'
   kind: object
   unit: data/data1.s
@@ -7343,10 +7379,12 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_080507F4
+  decl: unsigned char gUnknown_080507F4[]
 - addr: '0x08050A24'
   kind: object
   unit: data/data1.s
   name: gUnknown_08050A24
+  decl: unsigned char gUnknown_08050A24[]
 - addr: '0x08050C54'
   kind: object
   unit: data/data1.s
@@ -7444,6 +7482,7 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_080514B0
+  decl: unsigned char gUnknown_080514B0[]
 - addr: '0x080514B8'
   kind: object
   unit: data/data1.s
