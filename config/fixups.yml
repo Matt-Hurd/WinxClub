@@ -1,0 +1,53 @@
+# Per-file rewrites of compiler output. Owner-only: the hook in
+# .claude/hooks/deny-protected-paths.sh refuses agent edits. Applied by
+# scripts/asmfix/fixups.py after the label pass, so patterns see rewritten
+# labels (_pool_1_404_40, not |L1.404| + 40). Format is documented there.
+#
+# Every entry here is a fake match in disguise: the C did not become right, its
+# asm was patched on the way past. The two below predate the rule that says
+# park instead (notes/automation-plan.md, "Rules that make it agent-safe") and
+# were moved here from scripts/preprocess_compiler_labels.py unchanged, so that
+# they are visible and the decision to keep or re-park them is a real one
+# (winx-aa1.7). Adding one is never an agent's call.
+fixups:
+- unit: Kiko
+  why: |
+    Kiko::m10 (src/Kiko.cpp). tcpp computes idx*3 into r0 through r3 and then
+    shifts r0 into r1; the ROM computes it in r1 from the start and shifts r1.
+    Same instructions, different register choice for the intermediate, and no
+    C++ restructuring moved it (notes/tcpp_cpp_matching_tricks.md).
+      tcpp:  LSR r0,r0,#24 / LSL r3,r0,#1 / ADD r0,r3,r0 / LDR r3,... / LSL r1,r0,#1
+      ROM:   LSR r0,r0,#24 / LSL r1,r0,#1 / ADD r1,r1,r0 / LDR r3,... / LSL r1,r1,#1
+  match:
+  - 'LSR      r0,r0,#24'
+  - 'LSL      r3,r0,#1'
+  - 'ADD      r0,r3,r0'
+  - '(LDR      r3,.*)'
+  - 'LSL      r1,r0,#1'
+  replace:
+  - 'LSR      r0,r0,#24'
+  - 'LSL      r1,r0,#1'
+  - 'ADD      r1,r1,r0'
+  - '$1'
+  - 'LSL      r1,r1,#1'
+  once: true
+- unit: split_80402F8
+  why: |
+    Four vtable-dispatch sites in src/split_80402F8.c, each `(*vt[N])(this, a)`
+    via __call_via_r2. tcc loads the vtable into r0 and moves `this` into r0
+    last; the ROM loads the vtable into r1 and sets r0 = this before computing
+    the target. Same five instructions, reordered with the registers swapped.
+      tcc:  LDR r0,[r4,#0] / LDR r1,[r0,#N] / ADD r2,r0,r1 / MOV r1,r5 / MOV r0,r4
+      ROM:  LDR r1,[r4,#0] / MOV r0,r4 / LDR r2,[r1,#N] / ADD r2,r2,r1 / MOV r1,r5
+  match:
+  - 'LDR      r0,\[r4,#0\]'
+  - 'LDR      r1,\[r0,#(0x[0-9A-Fa-f]+)\]'
+  - 'ADD      r2,r0,r1'
+  - 'MOV      r1,r5'
+  - 'MOV      r0,r4'
+  replace:
+  - 'LDR      r1,[r4,#0]'
+  - 'MOV      r0,r4'
+  - 'LDR      r2,[r1,#$1]'
+  - 'ADD      r2,r2,r1'
+  - 'MOV      r1,r5'

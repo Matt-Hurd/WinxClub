@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate C++ header/source files from vtable assembly files.
-Also outputs the data needed to update preprocess_compiler_labels.py and scatter_script.txt.
+Also outputs the config/vtables.yml entries and the scatter_script.txt changes the class needs.
 """
 import os
 import re
@@ -134,19 +134,15 @@ def main():
 
         print(f"Generated: {hpp_path}, {cpp_path} ({len(dcd_entries)} methods)")
 
-    # Output vtable rename entries for preprocess_compiler_labels.py
-    print("\n\n# === Add to vtable_renames dict in preprocess_compiler_labels.py ===")
+    # Output the config/vtables.yml entries scripts/asmfix/vtables.py reads
+    print("\n\n# === Add under classes: in config/vtables.yml ===")
     for r in results:
-        print(f"        '{r['cpp_vtable_name']}': '{r['original_vtable_name']}',")
-
-    # Output method rename map for preprocess_compiler_labels.py
-    print("\n\n# === vtable_method_maps for preprocess_compiler_labels.py ===")
-    print("    vtable_method_maps = {")
-    for r in results:
+        print(f"  {r['class_name']}:")
+        print(f"    area: {r['original_vtable_name']}")
         if r['method_renames']:
-            symbols = [sym for _, sym in r['method_renames']]
-            print(f"        '{r['class_name']}': {symbols},")
-    print("    }")
+            print("    slots:")
+            for _, sym in r['method_renames']:
+                print(f"    - {sym}")
 
     # Output scatter_script replacements
     print("\n\n# === Scatter script: replace vtableNN_*.o with ClassName.o ===")

@@ -1,0 +1,968 @@
+# Vtable classes: what tcpp emits for a ported class versus what the original
+# object had. Read by scripts/asmfix/vtables.py.
+#
+# area   - the AREA name the original asm gave the class vtable. tcpp names it
+#          __VTABLE__<len><class>; the original used a three-digit id, and armlink
+#          sorts AREAs by name, so the id decides where the vtable lands.
+# slots  - the symbol each vtable slot resolves to, in slot order, offset 4*i.
+#          tcpp emits m<offset>__<len><class>F<args> for a slot body written as a
+#          member, and __dt__... for slot 0; these are renamed to the original
+#          symbol so the linker finds the asm (or the C) that already holds it.
+#          null is a pure virtual slot (tcpp emits __pvfn__Fv itself).
+#          A class with no slots listed only gets its AREA renamed.
+#
+# arg_encodings - the tcpp argument encodings seen so far on a slot body: v (none),
+#          Pv (void *), i (int). Return type never appears. Extend when a new shape
+#          shows up (winx-78k.19, winx-78k.26).
+arg_encodings: [v, Pv, i]
+classes:
+  Default:
+    area: __VTABLE__342Default
+  Kiko:
+    area: __VTABLE__309Kiko
+  dword_803E2A0:
+    area: __VTABLE__300dword_803E2A0
+    slots:
+    - sub_802E4AA
+    - sub_802E4EA
+    - sub_802E4EC
+    - sub_802E4EE
+    - sub_802E47A
+    - sub_802E5D2
+    - sub_802E800
+    - sub_802E8F8
+    - sub_802E8B0
+  Npc:
+    area: __VTABLE__301Npc
+    slots:
+    - Npc__ctor
+    - Npc__04
+    - Npc__08
+    - m0C__7DefaultFv
+    - Npc__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - m20__7DefaultFv
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Npc__Intersect
+    - Npc__38
+    - Npc__3C
+    - Npc__40
+    - m44__7DefaultFv
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  Anonymous3:
+    area: __VTABLE__302Anonymous3
+    slots:
+    - sub_8015588
+    - sub_80163D4
+    - sub_801642C
+  dword_803E320:
+    area: __VTABLE__303dword_803E320
+    slots:
+    - sub_80166DC
+    - sub_8016FA2
+    - sub_8017130
+  dword_803E32C:
+    area: __VTABLE__304dword_803E32C
+    slots:
+    - sub_802BA72
+    - sub_802BA94
+    - sub_802BCF0
+    - sub_802E4EE
+    - sub_802BEFC
+    - sub_802BF34
+    - sub_802E800
+    - sub_802BFB4
+    - sub_802E8B0
+  dword_803E350:
+    area: __VTABLE__305dword_803E350
+    slots:
+    - sub_8037E74
+    - sub_8037EB2
+    - sub_80381C0
+    - sub_802E4EE
+    - sub_803842C
+    - sub_803846C
+    - sub_802E800
+    - sub_803851E
+    - sub_80384D8
+  dword_803E374:
+    area: __VTABLE__306dword_803E374
+    slots:
+    - sub_801352C
+    - sub_8013F6C
+    - sub_8013FAE
+    - sub_80139A8
+    - sub_8040104
+    - sub_8013E56
+    - sub_8013E64
+    - sub_8013F5A
+    - sub_8013E72
+    - sub_8013F1E
+    - sub_8013F66
+    - sub_8013F2A
+    - sub_80139A4
+    - sub_8013FF4
+    - sub_8013FBC
+    - sub_8013FBE
+    - sub_8013FC0
+    - sub_8013FC2
+    - sub_8013FC4
+    - sub_3001E8C
+    - sub_8013B0A
+    - sub_8013B64
+    - sub_300215C
+    - null
+  Bird:
+    area: __VTABLE__307Bird
+    slots:
+    - Bird__ctor
+    - Bird__04
+    - Bird__08
+    - m0C__7DefaultFv
+    - Bird__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - Bird__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - Bird__38
+    - m3C__7DefaultFv
+    - Bird__40
+    - Bird__44
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  Boss:
+    area: __VTABLE__308Boss
+    slots:
+    - Boss__ctor
+    - Boss__04
+    - Boss__08
+    - m0C__7DefaultFv
+    - Boss__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - HostileCreature__20
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - HostileCreature__Attack
+    - Boss__TakeDamage
+    - Boss__Intersect
+    - m38__7DefaultFv
+    - HostileCreature__3C
+    - Boss__40
+    - m44__7DefaultFv
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - Boss__50
+    - HostileCreature__54
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - HostileCreature__60
+  Object:
+    area: __VTABLE__310Object
+    slots:
+    - Object__ctor
+    - ObjectScriptGroup__04
+    - ObjectScriptGroup__08
+    - m0C__7DefaultFv
+    - ObjectScriptGroup__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - ObjectScriptGroup__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - ObjectScriptGroup__38
+    - m3C__7DefaultFv
+    - ObjectScriptGroup__40
+    - ObjectScriptGroup__44
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  WallObject:
+    area: __VTABLE__311WallObject
+    slots:
+    - WallObject__ctor
+    - WallObjectScriptGroup__04
+    - WallObjectScriptGroup__08
+    - m0C__7DefaultFv
+    - WallObjectScriptGroup__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - WallObjectScriptGroup__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - WallObjectScriptGroup__TakeDamage
+    - WallObjectScriptGroup__Intersect
+    - WallObjectScriptGroup__38
+    - m3C__7DefaultFv
+    - WallObjectScriptGroup__40
+    - WallObjectScriptGroup__44
+    - WallObjectScriptGroup__48
+    - WallObjectScriptGroup__4C
+  dword_803E578:
+    area: __VTABLE__312dword_803E578
+    slots:
+    - sub_802C8B0
+    - sub_802C8D2
+    - sub_802D100
+    - sub_802E4EE
+    - sub_802D23C
+    - sub_802D274
+    - sub_802E800
+    - sub_802D2D0
+    - sub_802E8B0
+  dword_803E59C:
+    area: __VTABLE__313dword_803E59C
+    slots:
+    - sub_800FB72
+    - sub_800FCF0
+    - sub_800FD48
+    - sub_800FD2A
+    - sub_800FC72
+    - sub_800FD2C
+    - sub_800FE56
+    - null
+    - sub_800FB9E
+    - null
+    - null
+  dword_803E5C8:
+    area: __VTABLE__314dword_803E5C8
+    slots:
+    - sub_800F75A
+    - sub_800FCF0
+    - sub_800FD48
+    - sub_800F974
+    - sub_800FA40
+    - sub_800FA9A
+    - sub_800FE56
+    - sub_800F77C
+    - sub_800F782
+    - sub_800F786
+    - sub_800F87A
+  HostileBaseObject:
+    area: __VTABLE__315HostileBaseObject
+    slots:
+    - HostileCreature__ctor
+    - sub_8029290
+    - HostileCreature__08
+    - m0C__7DefaultFv
+    - Monster__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - HostileCreature__20
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - HostileCreature__Attack
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - m38__7DefaultFv
+    - HostileCreature__3C
+    - m40__7DefaultFv
+    - m44__7DefaultFv
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - sub_802B0A0
+    - HostileCreature__54
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - HostileCreature__60
+  dword_803E658:
+    area: __VTABLE__316dword_803E658
+    slots:
+    - sub_802BFEA
+    - sub_802C022
+    - sub_802C41E
+    - sub_802C5FA
+    - sub_802C6D0
+    - sub_802C71E
+    - sub_802E800
+    - sub_802C86E
+    - sub_802E8B0
+  dword_803E67C:
+    area: __VTABLE__317dword_803E67C
+    slots:
+    - sub_800496A
+  dword_803E680:
+    area: __VTABLE__318dword_803E680
+    slots:
+    - sub_800527E
+  dword_803E684:
+    area: __VTABLE__319dword_803E684
+    slots:
+    - sub_80105AE
+    - sub_80106BA
+    - sub_3002724
+    - null
+    - null
+    - null
+    - sub_8010AB4
+  dword_803E6A0:
+    area: __VTABLE__320dword_803E6A0
+    slots:
+    - sub_801402C
+    - sub_8013F6C
+    - sub_8013FAE
+    - sub_80139A8
+    - sub_8040104
+    - sub_8014060
+    - sub_8013E64
+    - sub_8013F5A
+    - sub_8013E72
+    - sub_8013F1E
+    - sub_8013F66
+    - sub_8013F2A
+    - sub_80139A4
+    - sub_8013FF4
+    - sub_8013FBC
+    - sub_80141B4
+    - sub_80142D0
+    - sub_8013FC2
+    - sub_8013FC4
+    - sub_3001E8C
+    - sub_8013B0A
+    - sub_8013B64
+    - sub_300215C
+    - sub_801404E
+  dword_803E700:
+    area: __VTABLE__321dword_803E700
+    slots:
+    - sub_8014436
+    - sub_8014E04
+    - sub_8014E46
+    - sub_8014B58
+    - sub_80148BE
+    - sub_8014738
+    - sub_8014B7E
+    - sub_8013F5A
+    - sub_8013E72
+    - sub_8013F1E
+    - sub_8014B96
+    - sub_8013F2A
+    - sub_8014B66
+    - sub_8014E76
+    - sub_30023FC
+    - sub_8013FBE
+    - sub_8013FC0
+    - maybePauseUnpauseTransition
+    - sub_8014582
+    - sub_3001E8C
+    - sub_8014492
+    - sub_8013B64
+    - sub_300215C
+    - sub_8014B34
+  Anonymous4:
+    area: __VTABLE__322Anonymous4
+    slots:
+    - Anonymous4__ctor
+    - sub_801FF68
+    - sub_80200A4
+    - sub_80200E0
+    - sub_8020B6E
+    - sub_8021248
+    - sub_8021A38
+    - sub_8021A98
+    - sub_8021ADE
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - sub_80221AC
+    - sub_8021F42
+    - sub_8021B84
+    - sub_8021CFC
+    - m40__7DefaultFv
+    - m44__7DefaultFv
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  Static1:
+    area: __VTABLE__323Static1
+    slots:
+    - sub_803666C
+    - sub_8029290
+    - HostileCreature__08
+    - m0C__7DefaultFv
+    - sub_803693C
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - sub_8036C24
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - sub_8036A64
+    - sub_8036BFC
+    - sub_8036B7C
+    - sub_80367C2
+    - HostileCreature__3C
+    - sub_803668E
+    - sub_80368F4
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - sub_8036CB4
+    - HostileCreature__54
+    - sub_8036A68
+    - HostileBaseObject__5C
+    - sub_80367C0
+  ToggleObjectGroup:
+    area: __VTABLE__324ToggleObjectGroup
+    slots:
+    - Toggle__ctor
+    - ToggleObjectGroup__04
+    - ToggleObjectGroup__08
+    - m0C__7DefaultFv
+    - ToggleObjectGroup__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - ToggleObjectGroup__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - ToggleObjectGroup__38
+    - m3C__7DefaultFv
+    - ToggleObjectGroup__40
+    - ToggleObjectGroup__44
+    - ToggleObjectGroup__48
+    - Dead__7DefaultFv
+  dword_803E864:
+    area: __VTABLE__325dword_803E864
+    slots:
+    - sub_80175D4
+  dword_803E868:
+    area: __VTABLE__326dword_803E868
+    slots:
+    - sub_800FF5E
+  dword_803E86C:
+    area: __VTABLE__327dword_803E86C
+    slots:
+    - sub_8040380
+  dword_803E870:
+    area: __VTABLE__328dword_803E870
+    slots:
+    - sub_800F292
+    - sub_800FCF0
+    - sub_800FD48
+    - sub_800F528
+    - sub_800F67A
+    - sub_800F700
+    - sub_800FE56
+    - sub_800F2B4
+    - sub_800F2B8
+    - sub_800F2BC
+    - sub_800F408
+  Critter:
+    area: __VTABLE__329Critter
+    slots:
+    - Critter__ctor
+    - Critter__04
+    - Critter__08
+    - m0C__7DefaultFv
+    - Critter__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - Critter__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - Critter__38
+    - m3C__7DefaultFv
+    - Critter__40
+    - Critter__44
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  Static2:
+    area: __VTABLE__330Static2
+    slots:
+    - sub_8036D30
+    - sub_8029290
+    - HostileCreature__08
+    - m0C__7DefaultFv
+    - sub_8036EEC
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - sub_803766A
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - sub_8037530
+    - sub_8037642
+    - sub_8037534
+    - sub_8036E04
+    - HostileCreature__3C
+    - sub_8036D52
+    - sub_8036E5E
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - sub_80376F8
+    - HostileCreature__54
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - sub_8036E02
+  Monster:
+    area: __VTABLE__331Monster
+    slots:
+    - Monster__ctor
+    - NonBossHostileScriptGroup__04
+    - HostileCreature__08
+    - m0C__7DefaultFv
+    - Monster__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - HostileCreature__20
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - HostileCreature__Attack
+    - Monster_TakeDamage
+    - Monster__Intersect
+    - m38__7DefaultFv
+    - HostileCreature__3C
+    - Monster__40
+    - m44__7DefaultFv
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - Monster__50
+    - HostileCreature__54
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - HostileCreature__60
+  Scanner:
+    area: __VTABLE__332Scanner
+    slots:
+    - Scanner__ctor
+    - NonBossHostileScriptGroup__04
+    - HostileCreature__08
+    - m0C__7DefaultFv
+    - ScannerScriptGroup__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - ScannerScriptGroup__20
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - HostileCreature__Attack
+    - Monster_TakeDamage
+    - ScannerScriptGroup__Intersect
+    - ScannerScriptGroup__38
+    - HostileCreature__3C
+    - ScannerScriptGroup__40
+    - m44__7DefaultFv
+    - ScannerScriptGroup__Dying
+    - Dead__7DefaultFv
+    - ScannerScriptGroup__StartAttack
+    - ScannerScriptGroup__StartAttack2
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - ScannerScriptGroup__60
+  __vftable_GenericObject:
+    area: __VTABLE__333__vftable_GenericObject
+    slots:
+    - GenericObject__ctor
+    - GenericObject__04
+    - GenericObject__08
+    - m0C__7DefaultFv
+    - GenericObject__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - m20__7DefaultFv
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - m38__7DefaultFv
+    - m3C__7DefaultFv
+    - GenericObject__40
+    - m44__7DefaultFv
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  dword_803EA68:
+    area: __VTABLE__334dword_803EA68
+    slots:
+    - sub_8033CA4
+    - sub_8033D24
+    - sub_8033EBA
+    - sub_8034358
+    - sub_8034408
+    - sub_803442C
+    - sub_802E800
+    - sub_802E8F8
+    - sub_802E8B0
+  dword_803EA8C:
+    area: __VTABLE__335dword_803EA8C
+    slots:
+    - sub_800B554
+  WinxClub:
+    area: __VTABLE__336WinxClub
+    slots:
+    - WinxClub__ctor
+    - m04__7DefaultFv
+    - m08__7DefaultFv
+    - m0C__7DefaultFv
+    - WinxClub__10
+    - m14__7DefaultFv
+    - WinxClub__18
+    - WinxClub__1C
+    - WinxClub__20
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - WinxClub__38
+    - WinxClub__3C
+    - m40__7DefaultFv
+    - m44__7DefaultFv
+    - Dying__7DefaultFv
+    - Dead__7DefaultFv
+  dword_803EAE0:
+    area: __VTABLE__337dword_803EAE0
+    slots:
+    - sub_800FAD6
+    - sub_800FAF8
+    - sub_800FAFA
+    - sub_800FAFC
+    - sub_800FAFE
+    - sub_800FB02
+    - sub_800FE56
+    - sub_800FB06
+    - sub_800FB9E
+    - sub_800FB0C
+    - sub_800FB0E
+    - sub_800FB0A
+  dword_803EB10:
+    area: __VTABLE__338dword_803EB10
+    slots:
+    - sub_8037756
+    - sub_803778E
+    - sub_8037A10
+    - sub_8037BEE
+    - sub_8037CC0
+    - sub_8037CE4
+    - sub_802E800
+    - sub_8037E34
+    - sub_802E8B0
+  dword_803EB34:
+    area: __VTABLE__339dword_803EB34
+    slots:
+    - sub_800B01A
+  dword_803EB38:
+    area: __VTABLE__340dword_803EB38
+    slots:
+    - sub_80315A2
+  dword_803EB3C:
+    area: __VTABLE__341dword_803EB3C
+    slots:
+    - sub_800B8A4
+  Anonymous14:
+    area: __VTABLE__343Anonymous14
+    slots:
+    - sub_80399D6
+    - Boss__04
+    - Boss__08
+    - m0C__7DefaultFv
+    - Boss__10
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - HostileCreature__20
+    - HostileCreature__DamagePlayer
+    - HostileCreature__PlayerIframe
+    - HostileCreature__Attack
+    - Boss__TakeDamage
+    - sub_8039EB6
+    - m38__7DefaultFv
+    - sub_8039DAC
+    - sub_80399F8
+    - m44__7DefaultFv
+    - HostileCreature__Dying
+    - Dead__7DefaultFv
+    - Boss__50
+    - HostileCreature__54
+    - HostileScriptGroups__58
+    - HostileBaseObject__5C
+    - HostileCreature__60
+  Anonymous18:
+    area: __VTABLE__344Anonymous18
+    slots:
+    - Anonymous18__ctor
+    - sub_802F1F0
+    - sub_802F210
+    - m0C__7DefaultFv
+    - sub_802F6F4
+    - m14__7DefaultFv
+    - m18__7DefaultFv
+    - m1C__7DefaultFv
+    - sub_802FBE8
+    - DamagePlayer__7DefaultFv
+    - PlayerIframe__7DefaultFv
+    - Attack__7DefaultFv
+    - TakeDamage__7DefaultFv
+    - Intersect__7DefaultFv
+    - sub_802F818
+    - sub_802F8A0
+    - m40__7DefaultFv
+    - sub_802F6BA
+    - sub_802F228
+    - Dead__7DefaultFv
+  dword_803EC44:
+    area: __VTABLE__345dword_803EC44
+    slots:
+    - sub_8032AC2
+    - sub_8032B12
+    - sub_8032CCC
+    - sub_8032F92
+    - sub_803310E
+    - sub_803315E
+    - sub_802E800
+    - sub_8033308
+    - sub_802E8B0
+  dword_803EC68:
+    area: __VTABLE__346dword_803EC68
+    slots:
+    - sub_8001B4A
+  dword_803EC6C:
+    area: __VTABLE__347dword_803EC6C
+    slots:
+    - sub_8004F12
+  dword_803EC70:
+    area: __VTABLE__348dword_803EC70
+    slots:
+    - sub_800B286
+  dword_803EC74:
+    area: __VTABLE__349dword_803EC74
+    slots:
+    - sub_8002614
+  dword_803EC78:
+    area: __VTABLE__350dword_803EC78
+    slots:
+    - sub_8000EF6
+  dword_803EC7C:
+    area: __VTABLE__351dword_803EC7C
+    slots:
+    - sub_803B184
+    - sub_80106BA
+    - sub_3002724
+    - sub_803B1A6
+    - sub_803B1A8
+    - sub_803B1AC
+    - sub_8010AB4
+  dword_803EC98:
+    area: __VTABLE__352dword_803EC98
+    slots:
+    - sub_8010278
+    - sub_801029A
+    - sub_3002724
+    - sub_80102D8
+    - sub_8010344
+    - sub_80103A8
+    - sub_8010AB4
+  dword_803ECB4:
+    area: __VTABLE__353dword_803ECB4
+    slots:
+    - sub_8013480
+  dword_803ECB8:
+    area: __VTABLE__354dword_803ECB8
+  dword_803ECF8:
+    area: __VTABLE__370dword_803ECF8
+    slots:
+    - sub_8024EBC
+    - sub_8024F08
+    - sub_80250E4
+    - sub_80251CA
+    - sub_8024E8A
+    - sub_8025214
+    - sub_802E800
+    - sub_802E8F8
+    - sub_802E8B0
+  dword_803ED1C:
+    area: __VTABLE__371dword_803ED1C
+    slots:
+    - sub_8017450
+    - null
+    - sub_803F3B0
+  dword_803ED28:
+    area: __VTABLE__372dword_803ED28
+    slots:
+    - sub_802D32E
+    - sub_802D384
+    - sub_802D920
+    - sub_802DD08
+    - sub_802DDDC
+    - sub_802DE2A
+    - sub_802E800
+    - sub_802DFE4
+    - sub_802DFD8
+  dword_803ED4C:
+    area: __VTABLE__373dword_803ED4C
+    slots:
+    - sub_803ABA6
+    - sub_803ABC8
+    - sub_803AD40
+    - sub_802E4EE
+    - sub_802E47A
+    - sub_802E5D2
+    - sub_802E800
+    - sub_803AE60
+    - sub_802E8B0
+  dword_803ED70:
+    area: __VTABLE__374dword_803ED70
+    slots:
+    - sub_8031D3E
+    - sub_8031D60
+    - sub_803248C
+    - sub_80327F4
+    - sub_80328B0
+    - sub_80328D6
+    - sub_802E800
+    - sub_8032A7E
+    - sub_8032A58
+  dword_803ED94:
+    area: __VTABLE__375dword_803ED94
+    slots:
+    - sub_8016526
+    - sub_8016612
+    - sub_8016690
+  dword_803EDA0:
+    area: __VTABLE__376dword_803EDA0
+    slots:
+    - sub_802E02A
+    - sub_802E04C
+    - sub_802E1D6
+    - sub_802E4EE
+    - sub_802E47A
+    - sub_802E384
+    - sub_802E800
+    - sub_802E40E
+    - sub_802E8B0
+  dword_803EDC4:
+    area: __VTABLE__377dword_803EDC4
+    slots:
+    - sub_803AE92
+    - sub_803AEB4
+    - sub_803AFCC
+    - sub_802E4EE
+    - sub_803B150
+    - sub_802E5D2
+    - sub_802E800
+    - sub_802E8F8
+    - sub_802E8B0
+  dword_803EDE8:
+    area: __VTABLE__378dword_803EDE8
+    slots:
+    - sub_8008F18
+    - sub_8008F14
+    - sub_8008FFC
+    - sub_800A240
+    - sub_8008100
+    - sub_800A25C
+    - sub_800A268
+    - sub_800904C
+    - sub_800905C
+    - sub_800811C
+    - sub_8008120
+  off_803EE14:
+    area: __VTABLE__379off_803EE14
+    slots:
+    - sub_80403C0
+    - sub_800807A
+    - sub_800A2B8
+    - sub_800A334
+    - sub_800A7A0
+    - sub_800A9A4
+    - sub_800A9AC
+    - sub_8008116
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
+  off_803EE40:
+    area: __VTABLE__380off_803EE40
+    slots:
+    - sub_80403EC
+    - sub_800807A
+    - sub_800808E
+    - sub_80080FC
+    - sub_8008100
+    - sub_800AA04
+    - sub_800AA10
+    - sub_8008116
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
+  off_803EE6C:
+    area: __VTABLE__381off_803EE6C
+    slots:
+    - sub_8040418
+    - sub_800807A
+    - sub_8008B5C
+    - sub_8008BFC
+    - sub_8008E64
+    - sub_8008E98
+    - sub_8008EA4
+    - sub_8008116
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
+  dword_803EE98:
+    area: __VTABLE__382dword_803EE98
+    slots:
+    - sub_800AB8C
+    - sub_800AB00
+    - sub_800ACD0
+    - sub_800AC3C
+    - sub_800AFA8
+    - sub_800AFB8
+    - sub_800AFC0
+    - sub_8008116
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
+  dword_803EEC4:
+    area: __VTABLE__383dword_803EEC4
+    slots:
+    - sub_800822C
+    - sub_8008228
+    - sub_8008264
+    - sub_80087B8
+    - sub_8008100
+    - sub_8008AF4
+    - sub_8008AFC
+    - sub_8008B04
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
+  dword_803EEF0:
+    area: __VTABLE__384dword_803EEF0
+    slots:
+    - sub_800805E
+    - sub_800807A
+    - sub_800808E
+    - sub_80080FC
+    - sub_8008100
+    - sub_800810E
+    - sub_8008112
+    - sub_8008116
+    - sub_8008118
+    - sub_800811C
+    - sub_8008120
