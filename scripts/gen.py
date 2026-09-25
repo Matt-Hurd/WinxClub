@@ -137,6 +137,21 @@ MACRO_ISA = {
 RE_FUNC = re.compile(r"^\s*(%s)\s+(\S+)" % "|".join(MACRO_ISA))
 
 
+def unit_stem(unit):
+    """The name a `unit:` field names, in either spelling.
+
+    A unit is `asm/split/<unit>.s` while it is one asm file and
+    `asm/nonmatching/<unit>` once the splicer has cut it up and that file is
+    gone; --extract writes whichever exists. Every reader keys on the stem.
+    """
+    stem = os.path.basename(unit)
+    return stem[:-len(".s")] if stem.endswith(".s") else stem
+
+
+def is_code_unit(unit):
+    return unit.startswith(("asm/split/", "asm/nonmatching/"))
+
+
 def asm_units():
     """Every hand-written asm file that defines functions, in a stable order.
 

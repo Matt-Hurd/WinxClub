@@ -891,37 +891,33 @@ layout:
     - obj: last_data.o
       sel: ' (+RW)'
 functions:
-- addr: '0x08000000'
-  isa: arm
-  unit: asm/crt0.s
-  name: start
 - addr: '0x08000134'
   isa: arm
   unit: asm/crt0.s
   name: gbaMain
 - addr: '0x08000210'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: strStartsWith
 - addr: '0x08000236'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: sub_8000236
 - addr: '0x08000292'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: gameStrlen
 - addr: '0x080002A8'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: strToLower
 - addr: '0x080002C8'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: strchr
 - addr: '0x080002E2'
   isa: thumb
-  unit: asm/split/split_8000210.s
+  unit: asm/nonmatching/split_8000210
   name: sub_80002E2
 - addr: '0x08000324'
   isa: thumb
@@ -984,79 +980,79 @@ functions:
   name: sub_8000AC4
 - addr: '0x08000BAC'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000BAC
 - addr: '0x08000BD8'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000BD8
 - addr: '0x08000C02'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000C02
 - addr: '0x08000C2E'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000C2E
 - addr: '0x08000C58'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000C58
 - addr: '0x08000C6E'
   isa: thumb
-  unit: asm/split/split_8000BAC.s
+  unit: asm/nonmatching/split_8000BAC
   name: sub_8000C6E
 - addr: '0x08000D64'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: g3003448__Init
 - addr: '0x08000DE6'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: sub_8000DE6
 - addr: '0x08000E6C'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: sub_8000E6C
 - addr: '0x08000EF6'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: sub_8000EF6
 - addr: '0x08000F4C'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: sub_8000F4C
 - addr: '0x08000FCE'
   isa: thumb
-  unit: asm/split/split_8000D64.s
+  unit: asm/nonmatching/split_8000D64
   name: sub_8000FCE
 - addr: '0x0800105C'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_800105C
 - addr: '0x0800106A'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_800106A
 - addr: '0x0800116A'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_800116A
 - addr: '0x080011CA'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_80011CA
 - addr: '0x080011D8'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_80011D8
 - addr: '0x08001232'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_8001232
 - addr: '0x0800129A'
   isa: thumb
-  unit: asm/split/split_800105C.s
+  unit: asm/nonmatching/split_800105C
   name: sub_800129A
 - addr: '0x080012F0'
   isa: thumb
@@ -1116,107 +1112,107 @@ functions:
   name: sub_8001778
 - addr: '0x080017E4'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80017E4
 - addr: '0x08001818'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_8001818
 - addr: '0x0800185E'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_800185E
 - addr: '0x08001866'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: nullsub_21
 - addr: '0x08001868'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_8001868
 - addr: '0x0800194C'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: nullsub_22
 - addr: '0x0800194E'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_800194E
 - addr: '0x080019A6'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019A6
 - addr: '0x080019B4'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019B4
 - addr: '0x080019C4'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019C4
 - addr: '0x080019D4'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019D4
 - addr: '0x080019E8'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019E8
 - addr: '0x080019FC'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_80019FC
 - addr: '0x08001A10'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_8001A10
 - addr: '0x08001A26'
   isa: thumb
-  unit: asm/split/split_80017E4.s
+  unit: asm/nonmatching/split_80017E4
   name: sub_8001A26
 - addr: '0x08001A60'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001A60
 - addr: '0x08001A90'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001A90
 - addr: '0x08001B4A'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001B4A
 - addr: '0x08001B80'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001B80
 - addr: '0x08001BB4'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001BB4
 - addr: '0x08001C22'
   isa: thumb
-  unit: asm/split/split_8001A60.s
+  unit: asm/nonmatching/split_8001A60
   name: sub_8001C22
 - addr: '0x08002004'
   isa: thumb
-  unit: asm/split/split_8002004.s
+  unit: asm/nonmatching/split_8002004
   name: sub_8002004
 - addr: '0x08002010'
   isa: thumb
-  unit: asm/split/split_8002004.s
+  unit: asm/nonmatching/split_8002004
   name: sub_8002010
 - addr: '0x08002020'
   isa: thumb
-  unit: asm/split/split_8002004.s
+  unit: asm/nonmatching/split_8002004
   name: sub_8002020
 - addr: '0x0800202A'
   isa: thumb
-  unit: asm/split/split_8002004.s
+  unit: asm/nonmatching/split_8002004
   name: sub_800202A
 - addr: '0x080020F8'
   isa: thumb
-  unit: asm/split/split_8002004.s
+  unit: asm/nonmatching/split_8002004
   name: sub_80020F8
 - addr: '0x0800212C'
   isa: thumb
@@ -1312,309 +1308,309 @@ functions:
   name: sub_800442E
 - addr: '0x08004670'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004670
 - addr: '0x08004674'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004674
 - addr: '0x08004678'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004678
 - addr: '0x080046AC'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046AC
 - addr: '0x080046B8'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046B8
 - addr: '0x080046D8'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046D8
 - addr: '0x080046DC'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046DC
 - addr: '0x080046E2'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046E2
 - addr: '0x080046EE'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046EE
 - addr: '0x080046F8'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_80046F8
 - addr: '0x08004716'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004716
 - addr: '0x08004742'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004742
 - addr: '0x08004746'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_8004746
 - addr: '0x0800474E'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_800474E
 - addr: '0x0800475C'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_800475C
 - addr: '0x0800476C'
   isa: thumb
-  unit: asm/split/split_8004670.s
+  unit: asm/nonmatching/split_8004670
   name: sub_800476C
 - addr: '0x08004780'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004780
 - addr: '0x08004784'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004784
 - addr: '0x080047A0'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047A0
 - addr: '0x080047B6'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047B6
 - addr: '0x080047BA'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047BA
 - addr: '0x080047BE'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047BE
 - addr: '0x080047DA'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047DA
 - addr: '0x080047EC'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80047EC
 - addr: '0x08004812'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004812
 - addr: '0x08004836'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004836
 - addr: '0x08004866'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004866
 - addr: '0x080048B0'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80048B0
 - addr: '0x080048BE'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80048BE
 - addr: '0x080048F0'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80048F0
 - addr: '0x08004924'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004924
 - addr: '0x0800496A'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_800496A
 - addr: '0x08004984'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004984
 - addr: '0x080049B4'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_80049B4
 - addr: '0x08004ADC'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004ADC
 - addr: '0x08004AE6'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004AE6
 - addr: '0x08004AF4'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004AF4
 - addr: '0x08004AFC'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004AFC
 - addr: '0x08004B02'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B02
 - addr: '0x08004B38'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B38
 - addr: '0x08004B40'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B40
 - addr: '0x08004B76'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B76
 - addr: '0x08004B7E'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B7E
 - addr: '0x08004B8C'
   isa: thumb
-  unit: asm/split/split_8004780.s
+  unit: asm/nonmatching/split_8004780
   name: sub_8004B8C
 - addr: '0x08004BA8'
   isa: thumb
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004BA8
 - addr: '0x08004C22'
   isa: thumb
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004C22
 - addr: '0x08004C26'
   isa: thumb
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: nullsub_23
 - addr: '0x08004C28'
   isa: thumb
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004C28
 - addr: '0x08004C2C'
   isa: thumb
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004C2C
 - addr: '0x08004C44'
   isa: arm
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004C44
 - addr: '0x08004D98'
   isa: arm
-  unit: asm/split/split_8004BA8.s
+  unit: asm/nonmatching/split_8004BA8
   name: sub_8004D98
 - addr: '0x08004DE4'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: nullsub_24
 - addr: '0x08004DE6'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: LoadFiletable
 - addr: '0x08004F12'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: sub_8004F12
 - addr: '0x08004F42'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: sub_8004F42
 - addr: '0x08004FFC'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: sub_8004FFC
 - addr: '0x0800501C'
   isa: thumb
-  unit: asm/split/split_8004DE6.s
+  unit: asm/nonmatching/split_8004DE6
   name: sub_800501C
 - addr: '0x08005044'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005044
 - addr: '0x080050AC'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_80050AC
 - addr: '0x080050C0'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: SomehowInitEWRAMLinkedList
 - addr: '0x080050F4'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_80050F4
 - addr: '0x080050FA'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_80050FA
   decl: void sub_80050FA(void *a0)
 - addr: '0x08005106'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: GetEWRAMStart
   decl: void *GetEWRAMStart(void)
 - addr: '0x0800510C'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_800510C
 - addr: '0x08005120'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005120
 - addr: '0x08005134'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005134
 - addr: '0x08005158'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005158
 - addr: '0x08005160'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005160
 - addr: '0x08005164'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005164
 - addr: '0x08005170'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005170
 - addr: '0x080051D6'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_80051D6
 - addr: '0x08005220'
   isa: thumb
-  unit: asm/split/split_8005044.s
+  unit: asm/nonmatching/split_8005044
   name: sub_8005220
 - addr: '0x0800525C'
   isa: thumb
-  unit: asm/split/split_800525C.s
+  unit: asm/nonmatching/split_800525C
   name: sub_800525C
 - addr: '0x0800527E'
   isa: thumb
-  unit: asm/split/split_800525C.s
+  unit: asm/nonmatching/split_800525C
   name: sub_800527E
 - addr: '0x08005298'
   isa: thumb
-  unit: asm/split/split_800525C.s
+  unit: asm/nonmatching/split_800525C
   name: nullsub_1
 - addr: '0x0800529A'
   isa: thumb
-  unit: asm/split/split_800525C.s
+  unit: asm/nonmatching/split_800525C
   name: sub_800529A
   decl: void sub_800529A(void *a0, int a1, int a2, void *a3)
 - addr: '0x08005380'
@@ -1707,87 +1703,87 @@ functions:
   name: sub_8007F18
 - addr: '0x08008008'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008008
 - addr: '0x0800802E'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800802E
 - addr: '0x0800805E'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800805E
 - addr: '0x08008072'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008072
 - addr: '0x0800807A'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800807A
 - addr: '0x0800807C'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800807C
 - addr: '0x0800808E'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800808E
 - addr: '0x080080FC'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_80080FC
 - addr: '0x08008100'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008100
 - addr: '0x0800810E'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800810E
 - addr: '0x08008112'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008112
 - addr: '0x08008116'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008116
 - addr: '0x08008118'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008118
 - addr: '0x0800811C'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800811C
 - addr: '0x08008120'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008120
 - addr: '0x08008122'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008122
 - addr: '0x0800812A'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_800812A
 - addr: '0x08008160'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008160
 - addr: '0x08008182'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_8008182
 - addr: '0x080081A8'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_80081A8
 - addr: '0x080081B6'
   isa: thumb
-  unit: asm/split/split_8008008.s
+  unit: asm/nonmatching/split_8008008
   name: sub_80081B6
 - addr: '0x080081D4'
   isa: arm
@@ -2003,43 +1999,43 @@ functions:
   name: sub_800AFC0
 - addr: '0x0800AFD4'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800AFD4
 - addr: '0x0800B01A'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B01A
 - addr: '0x0800B034'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B034
 - addr: '0x0800B04C'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B04C
 - addr: '0x0800B058'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B058
 - addr: '0x0800B082'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B082
 - addr: '0x0800B08E'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B08E
 - addr: '0x0800B09A'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B09A
 - addr: '0x0800B0A0'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B0A0
 - addr: '0x0800B0C0'
   isa: thumb
-  unit: asm/split/split_800AFD4.s
+  unit: asm/nonmatching/split_800AFD4
   name: sub_800B0C0
 - addr: '0x0800B0D8'
   isa: thumb
@@ -2055,95 +2051,95 @@ functions:
   name: sub_800B148
 - addr: '0x0800B154'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B154
 - addr: '0x0800B190'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: InitKeyinputIE
 - addr: '0x0800B1BC'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B1BC
 - addr: '0x0800B1CA'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B1CA
 - addr: '0x0800B1D0'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: CallSoftReset
 - addr: '0x0800B1DE'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_9
 - addr: '0x0800B1E0'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_10
 - addr: '0x0800B1E2'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_11
 - addr: '0x0800B1E4'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_12
 - addr: '0x0800B1E6'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_13
 - addr: '0x0800B1E8'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_14
 - addr: '0x0800B1EA'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_15
 - addr: '0x0800B1EC'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_16
 - addr: '0x0800B1EE'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_17
 - addr: '0x0800B1F0'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_18
 - addr: '0x0800B1F2'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_19
 - addr: '0x0800B1F4'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_4
 - addr: '0x0800B1F6'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B1F6
 - addr: '0x0800B286'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B286
 - addr: '0x0800B2A0'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_30
 - addr: '0x0800B2A2'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: nullsub_31
 - addr: '0x0800B2A4'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B2A4
 - addr: '0x0800B2AE'
   isa: thumb
-  unit: asm/split/split_800B154.s
+  unit: asm/nonmatching/split_800B154
   name: sub_800B2AE
 - addr: '0x0800B314'
   isa: thumb
@@ -2155,249 +2151,249 @@ functions:
   name: sub_800B3BA
 - addr: '0x0800B464'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B464
 - addr: '0x0800B496'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B496
 - addr: '0x0800B4E0'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B4E0
 - addr: '0x0800B4F0'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B4F0
 - addr: '0x0800B548'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B548
 - addr: '0x0800B554'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B554
 - addr: '0x0800B590'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B590
 - addr: '0x0800B5EE'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B5EE
 - addr: '0x0800B600'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B600
 - addr: '0x0800B60E'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B60E
 - addr: '0x0800B61C'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B61C
 - addr: '0x0800B62A'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B62A
 - addr: '0x0800B638'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B638
 - addr: '0x0800B646'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B646
 - addr: '0x0800B652'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B652
 - addr: '0x0800B65E'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B65E
 - addr: '0x0800B66A'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B66A
 - addr: '0x0800B676'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B676
 - addr: '0x0800B68A'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B68A
 - addr: '0x0800B698'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B698
 - addr: '0x0800B6A8'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B6A8
 - addr: '0x0800B6AC'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B6AC
 - addr: '0x0800B6BE'
   isa: thumb
-  unit: asm/split/split_800B464.s
+  unit: asm/nonmatching/split_800B464
   name: sub_800B6BE
 - addr: '0x0800B6E0'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B6E0
 - addr: '0x0800B6EC'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B6EC
 - addr: '0x0800B6FA'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B6FA
 - addr: '0x0800B708'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B708
 - addr: '0x0800B714'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B714
 - addr: '0x0800B72A'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B72A
 - addr: '0x0800B740'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B740
 - addr: '0x0800B756'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B756
 - addr: '0x0800B764'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B764
 - addr: '0x0800B772'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B772
 - addr: '0x0800B782'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B782
 - addr: '0x0800B790'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B790
 - addr: '0x0800B7AA'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B7AA
 - addr: '0x0800B7C2'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B7C2
 - addr: '0x0800B7D2'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B7D2
 - addr: '0x0800B7DC'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B7DC
 - addr: '0x0800B8A4'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B8A4
 - addr: '0x0800B8CE'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B8CE
 - addr: '0x0800B916'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B916
 - addr: '0x0800B94A'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B94A
 - addr: '0x0800B9B6'
   isa: thumb
-  unit: asm/split/split_800B6E0.s
+  unit: asm/nonmatching/split_800B6E0
   name: sub_800B9B6
 - addr: '0x0800BBF4'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800BBF4
 - addr: '0x0800BC30'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800BC30
 - addr: '0x0800BCE4'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800BCE4
 - addr: '0x0800BD7C'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800BD7C
 - addr: '0x0800BE0E'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800BE0E
   decl: void sub_800BE0E(void *a0, void *a1)
 - addr: '0x0800C014'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C014
 - addr: '0x0800C0EC'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C0EC
 - addr: '0x0800C134'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C134
 - addr: '0x0800C164'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C164
 - addr: '0x0800C198'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C198
 - addr: '0x0800C1CA'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C1CA
   decl: void sub_800C1CA(void *a0, void *a1)
 - addr: '0x0800C482'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C482
 - addr: '0x0800C4F0'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C4F0
 - addr: '0x0800C55E'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C55E
 - addr: '0x0800C93A'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800C93A
 - addr: '0x0800CADA'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800CADA
 - addr: '0x0800CAE2'
   isa: thumb
-  unit: asm/split/split_800BBF4.s
+  unit: asm/nonmatching/split_800BBF4
   name: sub_800CAE2
 - addr: '0x0800CD04'
   isa: thumb
@@ -2453,52 +2449,52 @@ functions:
   name: sub_800E2F6
 - addr: '0x0800E4D8'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800E4D8
 - addr: '0x0800E500'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800E500
 - addr: '0x0800E53C'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800E53C
 - addr: '0x0800E5EA'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800E5EA
 - addr: '0x0800E678'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800E678
 - addr: '0x0800E71C'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: maybeInitTransitionLevelScreen
 - addr: '0x0800EA22'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: maybeInitGame
 - addr: '0x0800EC0E'
   isa: thumb
-  unit: asm/split/split_800E4D8.s
+  unit: asm/nonmatching/split_800E4D8
   name: sub_800EC0E
 - addr: '0x0800ED7C'
   isa: thumb
-  unit: asm/split/split_800ED7C.s
+  unit: asm/nonmatching/split_800ED7C
   name: PlayMovie
 - addr: '0x0800EF1C'
   isa: thumb
-  unit: asm/split/split_800ED7C.s
+  unit: asm/nonmatching/split_800ED7C
   name: sub_800EF1C
 - addr: '0x0800EF2A'
   isa: thumb
-  unit: asm/split/split_800ED7C.s
+  unit: asm/nonmatching/split_800ED7C
   name: sub_800EF2A
   decl: void sub_800EF2A(void)
 - addr: '0x0800EF60'
   isa: thumb
-  unit: asm/split/split_800ED7C.s
+  unit: asm/nonmatching/split_800ED7C
   name: maybeLoadOrRenderBgImage
 - addr: '0x0800F010'
   isa: thumb
@@ -2514,203 +2510,203 @@ functions:
   name: sub_800F1DA
 - addr: '0x0800F1E8'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F1E8
 - addr: '0x0800F220'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F220
 - addr: '0x0800F264'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F264
 - addr: '0x0800F292'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F292
 - addr: '0x0800F2B4'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F2B4
 - addr: '0x0800F2B8'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F2B8
 - addr: '0x0800F2BC'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F2BC
 - addr: '0x0800F2E2'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F2E2
 - addr: '0x0800F312'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F312
 - addr: '0x0800F408'
   isa: thumb
-  unit: asm/split/split_800F1E8.s
+  unit: asm/nonmatching/split_800F1E8
   name: sub_800F408
 - addr: '0x0800F4F0'
   isa: thumb
-  unit: asm/split/split_800F4F0.s
+  unit: asm/nonmatching/split_800F4F0
   name: sub_800F4F0
 - addr: '0x0800F528'
   isa: thumb
-  unit: asm/split/split_800F4F0.s
+  unit: asm/nonmatching/split_800F4F0
   name: sub_800F528
 - addr: '0x0800F67A'
   isa: thumb
-  unit: asm/split/split_800F4F0.s
+  unit: asm/nonmatching/split_800F4F0
   name: sub_800F67A
 - addr: '0x0800F700'
   isa: thumb
-  unit: asm/split/split_800F4F0.s
+  unit: asm/nonmatching/split_800F4F0
   name: sub_800F700
 - addr: '0x0800F72C'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F72C
 - addr: '0x0800F75A'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F75A
 - addr: '0x0800F77C'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F77C
 - addr: '0x0800F782'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F782
 - addr: '0x0800F786'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F786
 - addr: '0x0800F7A8'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F7A8
 - addr: '0x0800F7D6'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F7D6
 - addr: '0x0800F87A'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F87A
 - addr: '0x0800F944'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F944
 - addr: '0x0800F974'
   isa: thumb
-  unit: asm/split/split_800F72C.s
+  unit: asm/nonmatching/split_800F72C
   name: sub_800F974
 - addr: '0x0800FA40'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FA40
 - addr: '0x0800FA9A'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FA9A
 - addr: '0x0800FAB0'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAB0
 - addr: '0x0800FAD6'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAD6
 - addr: '0x0800FAF8'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAF8
 - addr: '0x0800FAFA'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAFA
 - addr: '0x0800FAFC'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAFC
 - addr: '0x0800FAFE'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FAFE
 - addr: '0x0800FB02'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FB02
 - addr: '0x0800FB06'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FB06
 - addr: '0x0800FB0A'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FB0A
 - addr: '0x0800FB0C'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FB0C
 - addr: '0x0800FB0E'
   isa: thumb
-  unit: asm/split/split_800FA40.s
+  unit: asm/nonmatching/split_800FA40
   name: sub_800FB0E
 - addr: '0x0800FB18'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FB18
 - addr: '0x0800FB48'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FB48
 - addr: '0x0800FB72'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FB72
 - addr: '0x0800FB96'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FB96
 - addr: '0x0800FB9E'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FB9E
 - addr: '0x0800FBA0'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FBA0
 - addr: '0x0800FBC0'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FBC0
 - addr: '0x0800FC6C'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FC6C
 - addr: '0x0800FC72'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FC72
 - addr: '0x0800FC76'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FC76
 - addr: '0x0800FCF0'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FCF0
 - addr: '0x0800FD2A'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FD2A
 - addr: '0x0800FD2C'
   isa: thumb
-  unit: asm/split/split_800FB18.s
+  unit: asm/nonmatching/split_800FB18
   name: sub_800FD2C
 - addr: '0x0800FD48'
   isa: thumb
@@ -2738,159 +2734,159 @@ functions:
   name: nullsub_6
 - addr: '0x0800FE90'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_800FE90
 - addr: '0x0800FEBC'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_800FEBC
 - addr: '0x0800FF00'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_800FF00
 - addr: '0x0800FF5E'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_800FF5E
 - addr: '0x0800FFBA'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_800FFBA
 - addr: '0x0801006A'
   isa: thumb
-  unit: asm/split/split_800FE90.s
+  unit: asm/nonmatching/split_800FE90
   name: sub_801006A
 - addr: '0x08010234'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_8010234
 - addr: '0x08010278'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_8010278
 - addr: '0x0801029A'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_801029A
 - addr: '0x080102D8'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_80102D8
 - addr: '0x08010344'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_8010344
 - addr: '0x080103A8'
   isa: thumb
-  unit: asm/split/split_8010234.s
+  unit: asm/nonmatching/split_8010234
   name: sub_80103A8
 - addr: '0x080103C8'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_80103C8
 - addr: '0x080103EC'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_80103EC
 - addr: '0x08010456'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_8010456
 - addr: '0x0801047C'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_801047C
 - addr: '0x080104BC'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_80104BC
 - addr: '0x0801053C'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_801053C
 - addr: '0x08010574'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_8010574
 - addr: '0x080105AE'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_80105AE
 - addr: '0x08010604'
   isa: thumb
-  unit: asm/split/split_80103C8.s
+  unit: asm/nonmatching/split_80103C8
   name: sub_8010604
 - addr: '0x080106B0'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_80106B0
 - addr: '0x080106BA'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_80106BA
 - addr: '0x080106BC'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_80106BC
 - addr: '0x08010746'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_8010746
 - addr: '0x080108DA'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_80108DA
 - addr: '0x08010920'
   isa: thumb
-  unit: asm/split/split_80106B0.s
+  unit: asm/nonmatching/split_80106B0
   name: sub_8010920
 - addr: '0x0801099C'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_801099C
 - addr: '0x080109DE'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_80109DE
 - addr: '0x080109EC'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_80109EC
 - addr: '0x08010A0A'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_8010A0A
 - addr: '0x08010AB4'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_8010AB4
 - addr: '0x08010B3E'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_8010B3E
 - addr: '0x08010B6C'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_8010B6C
 - addr: '0x08010B8A'
   isa: thumb
-  unit: asm/split/split_801099C.s
+  unit: asm/nonmatching/split_801099C
   name: sub_8010B8A
 - addr: '0x08010D60'
   isa: thumb
-  unit: asm/split/split_8010D60.s
+  unit: asm/nonmatching/split_8010D60
   name: sub_8010D60
 - addr: '0x08010ED2'
   isa: thumb
-  unit: asm/split/split_8010D60.s
+  unit: asm/nonmatching/split_8010D60
   name: sub_8010ED2
 - addr: '0x08010F10'
   isa: thumb
-  unit: asm/split/split_8010D60.s
+  unit: asm/nonmatching/split_8010D60
   name: sub_8010F10
 - addr: '0x08010F90'
   isa: thumb
-  unit: asm/split/split_8010D60.s
+  unit: asm/nonmatching/split_8010D60
   name: sub_8010F90
 - addr: '0x08011040'
   isa: thumb
@@ -3034,63 +3030,63 @@ functions:
   name: sub_8011F0E
 - addr: '0x080120BC'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80120BC
 - addr: '0x080120CA'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80120CA
 - addr: '0x080120E2'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80120E2
 - addr: '0x080120FA'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80120FA
 - addr: '0x08012126'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_8012126
 - addr: '0x08012180'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_8012180
 - addr: '0x080121C4'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80121C4
 - addr: '0x0801220C'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_801220C
 - addr: '0x0801228C'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_801228C
 - addr: '0x080122F0'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_80122F0
 - addr: '0x0801230C'
   isa: thumb
-  unit: asm/split/split_80120BC.s
+  unit: asm/nonmatching/split_80120BC
   name: sub_801230C
 - addr: '0x08012334'
   isa: thumb
-  unit: asm/split/split_8012334.s
+  unit: asm/nonmatching/split_8012334
   name: sub_8012334
 - addr: '0x0801234C'
   isa: thumb
-  unit: asm/split/split_8012334.s
+  unit: asm/nonmatching/split_8012334
   name: sub_801234C
 - addr: '0x080123B4'
   isa: thumb
-  unit: asm/split/split_8012334.s
+  unit: asm/nonmatching/split_8012334
   name: sub_80123B4
 - addr: '0x080123E4'
   isa: thumb
-  unit: asm/split/split_8012334.s
+  unit: asm/nonmatching/split_8012334
   name: sub_80123E4
 - addr: '0x08012468'
   isa: thumb
@@ -3114,43 +3110,43 @@ functions:
   name: sub_8012BA0
 - addr: '0x08013024'
   isa: arm
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_8013024
 - addr: '0x080130DC'
   isa: arm
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_80130DC
 - addr: '0x080132F4'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_80132F4
 - addr: '0x08013318'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_8013318
 - addr: '0x0801333E'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_801333E
 - addr: '0x08013386'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_8013386
 - addr: '0x080133A0'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_80133A0
 - addr: '0x080133AE'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_80133AE
 - addr: '0x080133F0'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_80133F0
 - addr: '0x0801340A'
   isa: thumb
-  unit: asm/split/split_8013024.s
+  unit: asm/nonmatching/split_8013024
   name: sub_801340A
 - addr: '0x0801343C'
   isa: thumb
@@ -3178,147 +3174,147 @@ functions:
   name: sub_801357A
 - addr: '0x080137F8'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_80137F8
 - addr: '0x080138E2'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_80138E2
 - addr: '0x0801390A'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_801390A
 - addr: '0x08013946'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_8013946
 - addr: '0x080139A4'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_80139A4
 - addr: '0x080139A8'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_80139A8
 - addr: '0x080139AC'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_80139AC
 - addr: '0x08013B0A'
   isa: thumb
-  unit: asm/split/split_80137F8.s
+  unit: asm/nonmatching/split_80137F8
   name: sub_8013B0A
 - addr: '0x08013B64'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013B64
 - addr: '0x08013B76'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013B76
 - addr: '0x08013B9C'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013B9C
 - addr: '0x08013C40'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013C40
 - addr: '0x08013D52'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013D52
 - addr: '0x08013DEA'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013DEA
 - addr: '0x08013E2C'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013E2C
 - addr: '0x08013E56'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013E56
 - addr: '0x08013E64'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013E64
 - addr: '0x08013E72'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013E72
 - addr: '0x08013F1E'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013F1E
 - addr: '0x08013F2A'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013F2A
 - addr: '0x08013F5A'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013F5A
 - addr: '0x08013F66'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013F66
 - addr: '0x08013F6C'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013F6C
 - addr: '0x08013FAE'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FAE
 - addr: '0x08013FBC'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FBC
 - addr: '0x08013FBE'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FBE
 - addr: '0x08013FC0'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FC0
 - addr: '0x08013FC2'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FC2
 - addr: '0x08013FC4'
   isa: thumb
-  unit: asm/split/split_8013B64.s
+  unit: asm/nonmatching/split_8013B64
   name: sub_8013FC4
 - addr: '0x08013FF4'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_8013FF4
 - addr: '0x08013FF8'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_8013FF8
 - addr: '0x0801402C'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_801402C
 - addr: '0x0801404E'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_801404E
 - addr: '0x08014060'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_8014060
 - addr: '0x0801406E'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_801406E
 - addr: '0x080141B4'
   isa: thumb
-  unit: asm/split/split_8013FF4.s
+  unit: asm/nonmatching/split_8013FF4
   name: sub_80141B4
 - addr: '0x080142D0'
   isa: thumb
@@ -3348,59 +3344,59 @@ functions:
   name: sub_8014582
 - addr: '0x08014738'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014738
 - addr: '0x080147FA'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_80147FA
 - addr: '0x08014864'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014864
 - addr: '0x080148BE'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_80148BE
 - addr: '0x08014B02'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B02
 - addr: '0x08014B34'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B34
 - addr: '0x08014B58'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B58
 - addr: '0x08014B66'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B66
 - addr: '0x08014B7E'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B7E
 - addr: '0x08014B96'
   isa: thumb
-  unit: asm/split/split_8014738.s
+  unit: asm/nonmatching/split_8014738
   name: sub_8014B96
 - addr: '0x08014DD4'
   isa: thumb
-  unit: asm/split/split_8014DD4.s
+  unit: asm/nonmatching/split_8014DD4
   name: sub_8014DD4
 - addr: '0x08014E04'
   isa: thumb
-  unit: asm/split/split_8014DD4.s
+  unit: asm/nonmatching/split_8014DD4
   name: sub_8014E04
 - addr: '0x08014E46'
   isa: thumb
-  unit: asm/split/split_8014DD4.s
+  unit: asm/nonmatching/split_8014DD4
   name: sub_8014E46
 - addr: '0x08014E76'
   isa: thumb
-  unit: asm/split/split_8014DD4.s
+  unit: asm/nonmatching/split_8014DD4
   name: sub_8014E76
 - addr: '0x08014EB8'
   isa: thumb
@@ -3456,24 +3452,24 @@ functions:
   name: sub_80156B4
 - addr: '0x080158E0'
   isa: thumb
-  unit: asm/split/split_80158E0.s
+  unit: asm/nonmatching/split_80158E0
   name: sub_80158E0
   decl: int sub_80158E0(void *a0)
 - addr: '0x080158F0'
   isa: thumb
-  unit: asm/split/split_80158E0.s
+  unit: asm/nonmatching/split_80158E0
   name: sub_80158F0
 - addr: '0x08015A16'
   isa: thumb
-  unit: asm/split/split_80158E0.s
+  unit: asm/nonmatching/split_80158E0
   name: sub_8015A16
 - addr: '0x08015B1E'
   isa: thumb
-  unit: asm/split/split_80158E0.s
+  unit: asm/nonmatching/split_80158E0
   name: sub_8015B1E
 - addr: '0x08015EC2'
   isa: thumb
-  unit: asm/split/split_80158E0.s
+  unit: asm/nonmatching/split_80158E0
   name: sub_8015EC2
 - addr: '0x08016108'
   isa: thumb
@@ -3502,35 +3498,35 @@ functions:
   name: sub_801642C
 - addr: '0x080164A8'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_80164A8
 - addr: '0x080164E6'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_80164E6
 - addr: '0x08016526'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_8016526
 - addr: '0x08016556'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_8016556
 - addr: '0x0801659C'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_801659C
 - addr: '0x080165F2'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_80165F2
 - addr: '0x08016612'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_8016612
 - addr: '0x08016690'
   isa: thumb
-  unit: asm/split/split_80164A8.s
+  unit: asm/nonmatching/split_80164A8
   name: sub_8016690
 - addr: '0x0801669C'
   isa: thumb
@@ -3647,34 +3643,34 @@ functions:
   decl: void sub_8017620(void *a0, unsigned int a1)
 - addr: '0x080177D8'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_80177D8
 - addr: '0x080177E8'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_80177E8
 - addr: '0x08017862'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_8017862
   decl: void sub_8017862(void *a0, unsigned int a1)
 - addr: '0x08017884'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_8017884
   decl: void sub_8017884(void *a0, unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4)
 - addr: '0x080179BE'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_80179BE
 - addr: '0x08017A0A'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_8017A0A
   decl: void sub_8017A0A(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017A56'
   isa: thumb
-  unit: asm/split/split_80177D8.s
+  unit: asm/nonmatching/split_80177D8
   name: sub_8017A56
   decl: void sub_8017A56(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017AB0'
@@ -3699,59 +3695,59 @@ functions:
   name: sub_8017CA0
 - addr: '0x08017DC8'
   isa: thumb
-  unit: asm/split/split_8017DC8.s
+  unit: asm/nonmatching/split_8017DC8
   name: sub_8017DC8
 - addr: '0x08017DD4'
   isa: thumb
-  unit: asm/split/split_8017DC8.s
+  unit: asm/nonmatching/split_8017DC8
   name: sub_8017DD4
 - addr: '0x08017DE6'
   isa: thumb
-  unit: asm/split/split_8017DC8.s
+  unit: asm/nonmatching/split_8017DC8
   name: sub_8017DE6
 - addr: '0x08017E40'
   isa: thumb
-  unit: asm/split/split_8017E40.s
+  unit: asm/nonmatching/split_8017E40
   name: PlayIntroMovie
 - addr: '0x08017F0E'
   isa: thumb
-  unit: asm/split/split_8017E40.s
+  unit: asm/nonmatching/split_8017E40
   name: PlayIntroLogo
 - addr: '0x08017FF4'
   isa: thumb
-  unit: asm/split/split_8017E40.s
+  unit: asm/nonmatching/split_8017E40
   name: sub_8017FF4
 - addr: '0x08017FFE'
   isa: thumb
-  unit: asm/split/split_8017E40.s
+  unit: asm/nonmatching/split_8017E40
   name: HandleIntro
 - addr: '0x08018070'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: FadeToImage
 - addr: '0x080180BE'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: FadeToBlack
 - addr: '0x0801810E'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: sub_801810E
 - addr: '0x08018110'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: sub_8018110
 - addr: '0x08018160'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: sub_8018160
 - addr: '0x0801819E'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: sub_801819E
 - addr: '0x0801828A'
   isa: thumb
-  unit: asm/split/split_8018070.s
+  unit: asm/nonmatching/split_8018070
   name: sub_801828A
 - addr: '0x0801837C'
   isa: thumb
@@ -3772,59 +3768,59 @@ functions:
   name: MainLoop
 - addr: '0x080183BC'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_80183BC
 - addr: '0x080184BC'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_80184BC
 - addr: '0x08018540'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018540
 - addr: '0x08018620'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018620
 - addr: '0x08018688'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018688
 - addr: '0x080186D8'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_80186D8
 - addr: '0x08018712'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018712
 - addr: '0x08018734'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018734
 - addr: '0x0801876E'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_801876E
 - addr: '0x080187A0'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_80187A0
 - addr: '0x080187D2'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_80187D2
 - addr: '0x08018884'
   isa: thumb
-  unit: asm/split/split_80183BC.s
+  unit: asm/nonmatching/split_80183BC
   name: sub_8018884
 - addr: '0x0801897C'
   isa: thumb
-  unit: asm/split/split_801897C.s
+  unit: asm/nonmatching/split_801897C
   name: sub_801897C
 - addr: '0x080189BC'
   isa: thumb
-  unit: asm/split/split_801897C.s
+  unit: asm/nonmatching/split_801897C
   name: sub_80189BC
 - addr: '0x08018C48'
   isa: thumb
@@ -3920,23 +3916,23 @@ functions:
   name: HandleObjectivesScreen
 - addr: '0x0801B10C'
   isa: thumb
-  unit: asm/split/split_801B10C.s
+  unit: asm/nonmatching/split_801B10C
   name: sub_801B10C
 - addr: '0x0801B170'
   isa: thumb
-  unit: asm/split/split_801B10C.s
+  unit: asm/nonmatching/split_801B10C
   name: sub_801B170
 - addr: '0x0801B1EC'
   isa: thumb
-  unit: asm/split/split_801B10C.s
+  unit: asm/nonmatching/split_801B10C
   name: sub_801B1EC
 - addr: '0x0801B212'
   isa: thumb
-  unit: asm/split/split_801B10C.s
+  unit: asm/nonmatching/split_801B10C
   name: sub_801B212
 - addr: '0x0801B332'
   isa: thumb
-  unit: asm/split/split_801B10C.s
+  unit: asm/nonmatching/split_801B10C
   name: sub_801B332
 - addr: '0x0801B48C'
   isa: thumb
@@ -3952,15 +3948,15 @@ functions:
   name: sub_801BBE0
 - addr: '0x0801BEA0'
   isa: thumb
-  unit: asm/split/split_801BEA0.s
+  unit: asm/nonmatching/split_801BEA0
   name: gameExit
 - addr: '0x0801BEB4'
   isa: thumb
-  unit: asm/split/split_801BEA0.s
+  unit: asm/nonmatching/split_801BEA0
   name: nullsub_47
 - addr: '0x0801BEB6'
   isa: thumb
-  unit: asm/split/split_801BEA0.s
+  unit: asm/nonmatching/split_801BEA0
   name: sub_801BEB6
 - addr: '0x0801C210'
   isa: thumb
@@ -3988,32 +3984,32 @@ functions:
   name: sub_801CAC0
 - addr: '0x0801CB18'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CB18
 - addr: '0x0801CB4E'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CB4E
 - addr: '0x0801CBAA'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CBAA
   decl: void sub_801CBAA(void *a0, int a1)
 - addr: '0x0801CBDE'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CBDE
 - addr: '0x0801CC3C'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CC3C
 - addr: '0x0801CC72'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CC72
 - addr: '0x0801CCA8'
   isa: thumb
-  unit: asm/split/split_801CB18.s
+  unit: asm/nonmatching/split_801CB18
   name: sub_801CCA8
 - addr: '0x0801CCEC'
   isa: thumb
@@ -4049,35 +4045,35 @@ functions:
   name: sub_801D788
 - addr: '0x0801D9B0'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801D9B0
 - addr: '0x0801DA2A'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DA2A
 - addr: '0x0801DA46'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DA46
 - addr: '0x0801DAA0'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DAA0
 - addr: '0x0801DAEC'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DAEC
 - addr: '0x0801DB3E'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DB3E
 - addr: '0x0801DB80'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DB80
 - addr: '0x0801DB90'
   isa: thumb
-  unit: asm/split/split_801D9B0.s
+  unit: asm/nonmatching/split_801D9B0
   name: sub_801DB90
 - addr: '0x0801DCFC'
   isa: thumb
@@ -4101,71 +4097,71 @@ functions:
   name: m20__7DefaultFv
 - addr: '0x0801E2D0'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: Attack__7DefaultFv
 - addr: '0x0801E2D4'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: DamagePlayer__7DefaultFv
 - addr: '0x0801E2D6'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: PlayerIframe__7DefaultFv
 - addr: '0x0801E2DA'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: Dying__7DefaultFv
 - addr: '0x0801E4BC'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m40__7DefaultFv
 - addr: '0x0801E4BE'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: Dead__7DefaultFv
 - addr: '0x0801E4CE'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m44__7DefaultFv
 - addr: '0x0801E4D0'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: sub_801E4D0
 - addr: '0x0801E756'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: sub_801E756
 - addr: '0x0801E7A6'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m0C__7DefaultFv
 - addr: '0x0801EBCA'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m10__7DefaultFv
 - addr: '0x0801F0F0'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m14__7DefaultFv
 - addr: '0x0801F252'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m3C__7DefaultFv
 - addr: '0x0801F274'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: m38__7DefaultFv
 - addr: '0x0801F276'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: Intersect__7DefaultFv
 - addr: '0x0801F286'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: TakeDamage__7DefaultFv
 - addr: '0x0801F28C'
   isa: thumb
-  unit: asm/split/split_801E2D0.s
+  unit: asm/nonmatching/split_801E2D0
   name: sub_801F28C
 - addr: '0x0801F2F8'
   isa: thumb
@@ -4182,15 +4178,15 @@ functions:
   name: sub_801F4F0
 - addr: '0x0801F640'
   isa: thumb
-  unit: asm/split/split_801F640.s
+  unit: asm/nonmatching/split_801F640
   name: sub_801F640
 - addr: '0x0801F65C'
   isa: thumb
-  unit: asm/split/split_801F640.s
+  unit: asm/nonmatching/split_801F640
   name: sub_801F65C
 - addr: '0x0801F6DE'
   isa: thumb
-  unit: asm/split/split_801F640.s
+  unit: asm/nonmatching/split_801F640
   name: sub_801F6DE
 - addr: '0x0801F794'
   isa: thumb
@@ -4206,43 +4202,43 @@ functions:
   name: sub_801F906
 - addr: '0x0801FE90'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_801FE90
 - addr: '0x0801FEFE'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_801FEFE
 - addr: '0x0801FF68'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_801FF68
 - addr: '0x080200A4'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_80200A4
 - addr: '0x080200E0'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_80200E0
 - addr: '0x08020A74'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_8020A74
 - addr: '0x08020AB6'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_8020AB6
 - addr: '0x08020B50'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_8020B50
 - addr: '0x08020B60'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_8020B60
 - addr: '0x08020B6E'
   isa: thumb
-  unit: asm/split/split_801FE90.s
+  unit: asm/nonmatching/split_801FE90
   name: sub_8020B6E
 - addr: '0x08021248'
   isa: thumb
@@ -4362,19 +4358,19 @@ functions:
   name: sub_802383A
 - addr: '0x08023D0C'
   isa: thumb
-  unit: asm/split/split_8023D0C.s
+  unit: asm/nonmatching/split_8023D0C
   name: sub_8023D0C
 - addr: '0x08023DD0'
   isa: thumb
-  unit: asm/split/split_8023D0C.s
+  unit: asm/nonmatching/split_8023D0C
   name: sub_8023DD0
 - addr: '0x08023F88'
   isa: thumb
-  unit: asm/split/split_8023D0C.s
+  unit: asm/nonmatching/split_8023D0C
   name: sub_8023F88
 - addr: '0x08023FE4'
   isa: thumb
-  unit: asm/split/split_8023D0C.s
+  unit: asm/nonmatching/split_8023D0C
   name: sub_8023FE4
 - addr: '0x08024084'
   isa: thumb
@@ -4434,115 +4430,115 @@ functions:
   name: sub_8025214
 - addr: '0x080253A8'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__Create
 - addr: '0x0802541E'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__ctor
 - addr: '0x08025440'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__04
 - addr: '0x0802544C'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__08
 - addr: '0x08025458'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__38
 - addr: '0x08025478'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__3C
 - addr: '0x080254AA'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__Intersect
 - addr: '0x08025512'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__10
 - addr: '0x0802551E'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: Npc__40
 - addr: '0x0802591A'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_802591A
 - addr: '0x08025960'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025960
 - addr: '0x080259A4'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_80259A4
 - addr: '0x080259EC'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_80259EC
 - addr: '0x08025A32'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025A32
 - addr: '0x08025DEE'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025DEE
 - addr: '0x08025E30'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025E30
 - addr: '0x08025EF6'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025EF6
 - addr: '0x08025F36'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025F36
 - addr: '0x08025F7C'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025F7C
 - addr: '0x08025F94'
   isa: thumb
-  unit: asm/split/split_80253A8.s
+  unit: asm/nonmatching/split_80253A8
   name: sub_8025F94
 - addr: '0x08026014'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: MaybeHandleTransitionToArea
 - addr: '0x08026024'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: GenericObject__Create
 - addr: '0x0802608C'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: GenericObject__ctor
 - addr: '0x080260AE'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: sub_80260AE
 - addr: '0x080260C8'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: sub_80260C8
 - addr: '0x080261C8'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: sub_80261C8
 - addr: '0x080261F6'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: GenericObject__04
 - addr: '0x08026258'
   isa: thumb
-  unit: asm/split/split_8026014.s
+  unit: asm/nonmatching/split_8026014
   name: GenericObject__08
 - addr: '0x080262CC'
   isa: thumb
@@ -4554,57 +4550,57 @@ functions:
   name: GenericObject__40
 - addr: '0x080268AC'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_80268AC
 - addr: '0x080268BA'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_80268BA
 - addr: '0x080268C8'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_80268C8
 - addr: '0x08026908'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_8026908
 - addr: '0x0802693A'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_802693A
 - addr: '0x08026962'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_8026962
 - addr: '0x08028A7C'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_8028A7C
   decl: void sub_8028A7C(void *a0, unsigned int a1, unsigned int a2)
 - addr: '0x08028B2C'
   isa: thumb
-  unit: asm/split/split_80268AC.s
+  unit: asm/nonmatching/split_80268AC
   name: sub_8028B2C
 - addr: '0x08028BE4'
   isa: thumb
-  unit: asm/split/split_8028BE4.s
+  unit: asm/nonmatching/split_8028BE4
   name: sub_8028BE4
 - addr: '0x08028BFC'
   isa: thumb
-  unit: asm/split/split_8028BE4.s
+  unit: asm/nonmatching/split_8028BE4
   name: sub_8028BFC
 - addr: '0x08028C2E'
   isa: thumb
-  unit: asm/split/split_8028BE4.s
+  unit: asm/nonmatching/split_8028BE4
   name: sub_8028C2E
   decl: void sub_8028C2E(void *a0)
 - addr: '0x08028C42'
   isa: thumb
-  unit: asm/split/split_8028BE4.s
+  unit: asm/nonmatching/split_8028BE4
   name: sub_8028C42
 - addr: '0x08028C5C'
   isa: thumb
-  unit: asm/split/split_8028BE4.s
+  unit: asm/nonmatching/split_8028BE4
   name: sub_8028C5C
 - addr: '0x08028C7C'
   isa: thumb
@@ -4624,27 +4620,27 @@ functions:
   name: sub_8028F64
 - addr: '0x08029070'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: HostileCreature__Create
 - addr: '0x0802911C'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: HostileCreature__ctor
 - addr: '0x0802913E'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: sub_802913E
 - addr: '0x0802925C'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: sub_802925C
 - addr: '0x08029290'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: sub_8029290
 - addr: '0x080292E4'
   isa: thumb
-  unit: asm/split/split_8029070.s
+  unit: asm/nonmatching/split_8029070
   name: HostileCreature__08
 - addr: '0x0802936C'
   isa: thumb
@@ -4668,63 +4664,63 @@ functions:
   name: HostileCreature__Attack
 - addr: '0x080296E0'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: sub_80296E0
 - addr: '0x0802972E'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: Monster__10
 - addr: '0x08029B18'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: sub_8029B18
 - addr: '0x0802AC4E'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: maybeCall60IfActive
 - addr: '0x0802AC74'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: sub_802AC74
 - addr: '0x0802ACDE'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__60
 - addr: '0x0802AFEA'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__3C
 - addr: '0x0802B03E'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__DamagePlayer
 - addr: '0x0802B04A'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__PlayerIframe
 - addr: '0x0802B054'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__20
 - addr: '0x0802B0A0'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: sub_802B0A0
 - addr: '0x0802B0A2'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileCreature__54
 - addr: '0x0802B0CA'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: sub_802B0CA
 - addr: '0x0802B114'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileScriptGroups__58
 - addr: '0x0802B1CC'
   isa: thumb
-  unit: asm/split/split_80296E0.s
+  unit: asm/nonmatching/split_80296E0
   name: HostileBaseObject__5C
 - addr: '0x0802B288'
   isa: thumb
@@ -4760,19 +4756,19 @@ functions:
   name: sub_802B8B0
 - addr: '0x0802BA20'
   isa: thumb
-  unit: asm/split/split_802BA20.s
+  unit: asm/nonmatching/split_802BA20
   name: sub_802BA20
 - addr: '0x0802BA4C'
   isa: thumb
-  unit: asm/split/split_802BA20.s
+  unit: asm/nonmatching/split_802BA20
   name: sub_802BA4C
 - addr: '0x0802BA72'
   isa: thumb
-  unit: asm/split/split_802BA20.s
+  unit: asm/nonmatching/split_802BA20
   name: sub_802BA72
 - addr: '0x0802BA94'
   isa: thumb
-  unit: asm/split/split_802BA20.s
+  unit: asm/nonmatching/split_802BA20
   name: sub_802BA94
 - addr: '0x0802BCF0'
   isa: thumb
@@ -4788,27 +4784,27 @@ functions:
   name: sub_802BF34
 - addr: '0x0802BFB4'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802BFB4
 - addr: '0x0802BFBC'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802BFBC
 - addr: '0x0802BFEA'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802BFEA
 - addr: '0x0802C022'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802C022
 - addr: '0x0802C41E'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802C41E
 - addr: '0x0802C5FA'
   isa: thumb
-  unit: asm/split/split_802BFB4.s
+  unit: asm/nonmatching/split_802BFB4
   name: sub_802C5FA
 - addr: '0x0802C6D0'
   isa: thumb
@@ -4824,31 +4820,31 @@ functions:
   name: sub_802C86E
 - addr: '0x0802C884'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802C884
 - addr: '0x0802C8B0'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802C8B0
 - addr: '0x0802C8D2'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802C8D2
 - addr: '0x0802D100'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802D100
 - addr: '0x0802D23C'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802D23C
 - addr: '0x0802D274'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802D274
 - addr: '0x0802D2D0'
   isa: thumb
-  unit: asm/split/split_802C884.s
+  unit: asm/nonmatching/split_802C884
   name: sub_802D2D0
 - addr: '0x0802D2E8'
   isa: thumb
@@ -4872,19 +4868,19 @@ functions:
   name: sub_802DD08
 - addr: '0x0802DDDC'
   isa: thumb
-  unit: asm/split/split_802DDDC.s
+  unit: asm/nonmatching/split_802DDDC
   name: sub_802DDDC
 - addr: '0x0802DE2A'
   isa: thumb
-  unit: asm/split/split_802DDDC.s
+  unit: asm/nonmatching/split_802DDDC
   name: sub_802DE2A
 - addr: '0x0802DFD8'
   isa: thumb
-  unit: asm/split/split_802DDDC.s
+  unit: asm/nonmatching/split_802DDDC
   name: sub_802DFD8
 - addr: '0x0802DFE4'
   isa: thumb
-  unit: asm/split/split_802DDDC.s
+  unit: asm/nonmatching/split_802DDDC
   name: sub_802DFE4
 - addr: '0x0802DFF4'
   isa: thumb
@@ -4916,143 +4912,143 @@ functions:
   name: sub_802E40E
 - addr: '0x0802E418'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E418
 - addr: '0x0802E47A'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E47A
 - addr: '0x0802E4AA'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E4AA
 - addr: '0x0802E4EA'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E4EA
 - addr: '0x0802E4EC'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E4EC
 - addr: '0x0802E4EE'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E4EE
 - addr: '0x0802E5D2'
   isa: thumb
-  unit: asm/split/split_802E418.s
+  unit: asm/nonmatching/split_802E418
   name: sub_802E5D2
 - addr: '0x0802E800'
   isa: thumb
-  unit: asm/split/split_802E800.s
+  unit: asm/nonmatching/split_802E800
   name: sub_802E800
 - addr: '0x0802E8B0'
   isa: thumb
-  unit: asm/split/split_802E800.s
+  unit: asm/nonmatching/split_802E800
   name: sub_802E8B0
 - addr: '0x0802E8F8'
   isa: thumb
-  unit: asm/split/split_802E800.s
+  unit: asm/nonmatching/split_802E800
   name: sub_802E8F8
 - addr: '0x0802E900'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: Object__Create
 - addr: '0x0802E962'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: Object__ctor
 - addr: '0x0802E984'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: ObjectScriptGroup__38
 - addr: '0x0802EA80'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: sub_802EA80
 - addr: '0x0802EAB8'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: ObjectScriptGroup__04
 - addr: '0x0802EADC'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: ObjectScriptGroup__08
 - addr: '0x0802EAFC'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: ObjectScriptGroup__44
 - addr: '0x0802EC40'
   isa: thumb
-  unit: asm/split/split_802E900.s
+  unit: asm/nonmatching/split_802E900
   name: ObjectScriptGroup__20
 - addr: '0x0802EC90'
   isa: thumb
-  unit: asm/split/split_802EC90.s
+  unit: asm/nonmatching/split_802EC90
   name: ObjectScriptGroup__40
 - addr: '0x0802ED0C'
   isa: thumb
-  unit: asm/split/split_802EC90.s
+  unit: asm/nonmatching/split_802EC90
   name: ObjectScriptGroup__10
 - addr: '0x0802ED1C'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802ED1C
 - addr: '0x0802EF0A'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802EF0A
 - addr: '0x0802F00C'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802F00C
 - addr: '0x0802F04E'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802F04E
 - addr: '0x0802F0B8'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802F0B8
 - addr: '0x0802F0D4'
   isa: thumb
-  unit: asm/split/split_802ED1C.s
+  unit: asm/nonmatching/split_802ED1C
   name: sub_802F0D4
 - addr: '0x0802F118'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: Anonymous18__Create
 - addr: '0x0802F1CE'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: Anonymous18__ctor
 - addr: '0x0802F1F0'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F1F0
 - addr: '0x0802F210'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F210
 - addr: '0x0802F228'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F228
 - addr: '0x0802F2C6'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: CollectPickup
 - addr: '0x0802F6BA'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F6BA
 - addr: '0x0802F6F4'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F6F4
 - addr: '0x0802F818'
   isa: thumb
-  unit: asm/split/split_802F118.s
+  unit: asm/nonmatching/split_802F118
   name: sub_802F818
 - addr: '0x0802F8A0'
   isa: thumb
@@ -5072,35 +5068,35 @@ functions:
   name: sub_802FA92
 - addr: '0x0802FBE8'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: sub_802FBE8
 - addr: '0x0802FC38'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__Create
 - addr: '0x0802FC86'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__ctor
 - addr: '0x0802FCA8'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__04
 - addr: '0x0802FCB4'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__08
 - addr: '0x0802FCC0'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__38
 - addr: '0x0802FD0C'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__40
 - addr: '0x0802FD72'
   isa: thumb
-  unit: asm/split/split_802FBE8.s
+  unit: asm/nonmatching/split_802FBE8
   name: Bird__44
 - addr: '0x0803000C'
   isa: thumb
@@ -5160,31 +5156,31 @@ functions:
   name: Monster__50
 - addr: '0x0803108C'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__Create
 - addr: '0x080310E6'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__ctor
 - addr: '0x08031108'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__04
 - addr: '0x08031114'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__08
 - addr: '0x08031120'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__38
 - addr: '0x0803116C'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__40
 - addr: '0x0803118C'
   isa: thumb
-  unit: asm/split/split_803108C.s
+  unit: asm/nonmatching/split_803108C
   name: Critter__44
 - addr: '0x08031404'
   isa: thumb
@@ -5196,27 +5192,27 @@ functions:
   name: Critter__20
 - addr: '0x08031578'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_8031578
 - addr: '0x080315A2'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_80315A2
 - addr: '0x080315CE'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_80315CE
 - addr: '0x080315FC'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_80315FC
 - addr: '0x08031600'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_8031600
 - addr: '0x08031622'
   isa: thumb
-  unit: asm/split/split_8031578.s
+  unit: asm/nonmatching/split_8031578
   name: sub_8031622
 - addr: '0x08031830'
   isa: thumb
@@ -5250,23 +5246,23 @@ functions:
   name: sub_803248C
 - addr: '0x080327F4'
   isa: thumb
-  unit: asm/split/split_80327F4.s
+  unit: asm/nonmatching/split_80327F4
   name: sub_80327F4
 - addr: '0x080328B0'
   isa: thumb
-  unit: asm/split/split_80327F4.s
+  unit: asm/nonmatching/split_80327F4
   name: sub_80328B0
 - addr: '0x080328D6'
   isa: thumb
-  unit: asm/split/split_80327F4.s
+  unit: asm/nonmatching/split_80327F4
   name: sub_80328D6
 - addr: '0x08032A58'
   isa: thumb
-  unit: asm/split/split_80327F4.s
+  unit: asm/nonmatching/split_80327F4
   name: sub_8032A58
 - addr: '0x08032A7E'
   isa: thumb
-  unit: asm/split/split_80327F4.s
+  unit: asm/nonmatching/split_80327F4
   name: sub_8032A7E
 - addr: '0x08032A90'
   isa: thumb
@@ -5374,43 +5370,43 @@ functions:
   name: sub_803442C
 - addr: '0x080344E4'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: Boss__Create
 - addr: '0x08034536'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: Boss__ctor
 - addr: '0x08034558'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: sub_8034558
 - addr: '0x08034570'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: Boss__04
 - addr: '0x080345A4'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: Boss__08
 - addr: '0x080345BC'
   isa: thumb
-  unit: asm/split/split_80344E4.s
+  unit: asm/nonmatching/split_80344E4
   name: Boss__40
 - addr: '0x0803490C'
   isa: thumb
-  unit: asm/split/split_803490C.s
+  unit: asm/nonmatching/split_803490C
   name: sub_803490C
 - addr: '0x08034A86'
   isa: thumb
-  unit: asm/split/split_803490C.s
+  unit: asm/nonmatching/split_803490C
   name: sub_8034A86
 - addr: '0x08034B14'
   isa: thumb
-  unit: asm/split/split_803490C.s
+  unit: asm/nonmatching/split_803490C
   name: Boss__10
 - addr: '0x08034B20'
   isa: thumb
-  unit: asm/split/split_803490C.s
+  unit: asm/nonmatching/split_803490C
   name: Boss__Intersect
 - addr: '0x08034D2C'
   isa: thumb
@@ -5438,31 +5434,31 @@ functions:
   name: HandleAlbum
 - addr: '0x08035480'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: ToggleObject__Create
 - addr: '0x0803550E'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: Toggle__ctor
 - addr: '0x08035530'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: sub_8035530
 - addr: '0x0803554A'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: sub_803554A
 - addr: '0x0803564C'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: ToggleObjectGroup__04
 - addr: '0x08035696'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: ToggleObjectGroup__08
 - addr: '0x080356E0'
   isa: thumb
-  unit: asm/split/split_8035480.s
+  unit: asm/nonmatching/split_8035480
   name: ToggleObjectGroup__38
 - addr: '0x08035750'
   isa: thumb
@@ -5546,39 +5542,39 @@ functions:
   name: WallObjectScriptGroup__10
 - addr: '0x08036620'
   isa: thumb
-  unit: asm/split/split_8036620.s
+  unit: asm/nonmatching/split_8036620
   name: Static1__Create
 - addr: '0x0803666C'
   isa: thumb
-  unit: asm/split/split_8036620.s
+  unit: asm/nonmatching/split_8036620
   name: sub_803666C
 - addr: '0x0803668E'
   isa: thumb
-  unit: asm/split/split_8036620.s
+  unit: asm/nonmatching/split_8036620
   name: sub_803668E
 - addr: '0x080367C0'
   isa: thumb
-  unit: asm/split/split_8036620.s
+  unit: asm/nonmatching/split_8036620
   name: sub_80367C0
 - addr: '0x080367C2'
   isa: thumb
-  unit: asm/split/split_8036620.s
+  unit: asm/nonmatching/split_8036620
   name: sub_80367C2
 - addr: '0x080368F4'
   isa: thumb
-  unit: asm/split/split_80368F4.s
+  unit: asm/nonmatching/split_80368F4
   name: sub_80368F4
 - addr: '0x0803693C'
   isa: thumb
-  unit: asm/split/split_80368F4.s
+  unit: asm/nonmatching/split_80368F4
   name: sub_803693C
 - addr: '0x08036A64'
   isa: thumb
-  unit: asm/split/split_80368F4.s
+  unit: asm/nonmatching/split_80368F4
   name: sub_8036A64
 - addr: '0x08036A68'
   isa: thumb
-  unit: asm/split/split_80368F4.s
+  unit: asm/nonmatching/split_80368F4
   name: sub_8036A68
 - addr: '0x08036B7C'
   isa: thumb
@@ -5598,55 +5594,55 @@ functions:
   name: sub_8036CB4
 - addr: '0x08036CE4'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: Static2__Create
 - addr: '0x08036D30'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036D30
 - addr: '0x08036D52'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036D52
 - addr: '0x08036E02'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036E02
 - addr: '0x08036E04'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036E04
 - addr: '0x08036E5E'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036E5E
 - addr: '0x08036E66'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036E66
 - addr: '0x08036EEC'
   isa: thumb
-  unit: asm/split/split_8036CE4.s
+  unit: asm/nonmatching/split_8036CE4
   name: sub_8036EEC
 - addr: '0x08037530'
   isa: thumb
-  unit: asm/split/split_8037530.s
+  unit: asm/nonmatching/split_8037530
   name: sub_8037530
 - addr: '0x08037534'
   isa: thumb
-  unit: asm/split/split_8037530.s
+  unit: asm/nonmatching/split_8037530
   name: sub_8037534
 - addr: '0x08037642'
   isa: thumb
-  unit: asm/split/split_8037530.s
+  unit: asm/nonmatching/split_8037530
   name: sub_8037642
 - addr: '0x0803766A'
   isa: thumb
-  unit: asm/split/split_8037530.s
+  unit: asm/nonmatching/split_8037530
   name: sub_803766A
 - addr: '0x080376F8'
   isa: thumb
-  unit: asm/split/split_8037530.s
+  unit: asm/nonmatching/split_8037530
   name: sub_80376F8
 - addr: '0x0803772C'
   isa: thumb
@@ -5670,15 +5666,15 @@ functions:
   name: sub_8037BEE
 - addr: '0x08037CC0'
   isa: thumb
-  unit: asm/split/split_8037CC0.s
+  unit: asm/nonmatching/split_8037CC0
   name: sub_8037CC0
 - addr: '0x08037CE4'
   isa: thumb
-  unit: asm/split/split_8037CC0.s
+  unit: asm/nonmatching/split_8037CC0
   name: sub_8037CE4
 - addr: '0x08037E34'
   isa: thumb
-  unit: asm/split/split_8037CC0.s
+  unit: asm/nonmatching/split_8037CC0
   name: sub_8037E34
 - addr: '0x08037E48'
   isa: thumb
@@ -5797,51 +5793,51 @@ functions:
   name: sub_8039EB6
 - addr: '0x0803A050'
   isa: thumb
-  unit: asm/split/split_803A050.s
+  unit: asm/nonmatching/split_803A050
   name: Scanner__Create
 - addr: '0x0803A0D2'
   isa: thumb
-  unit: asm/split/split_803A050.s
+  unit: asm/nonmatching/split_803A050
   name: Scanner__ctor
 - addr: '0x0803A0F4'
   isa: thumb
-  unit: asm/split/split_803A050.s
+  unit: asm/nonmatching/split_803A050
   name: ScannerScriptGroup__Dying
 - addr: '0x0803A14C'
   isa: thumb
-  unit: asm/split/split_803A050.s
+  unit: asm/nonmatching/split_803A050
   name: ScannerScriptGroup__40
 - addr: '0x0803A476'
   isa: thumb
-  unit: asm/split/split_803A050.s
+  unit: asm/nonmatching/split_803A050
   name: sub_803A476
 - addr: '0x0803A490'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__60
 - addr: '0x0803A59E'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__38
 - addr: '0x0803A5FC'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__10
 - addr: '0x0803AAC6'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__Intersect
 - addr: '0x0803AAE2'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__20
 - addr: '0x0803AB72'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__StartAttack
 - addr: '0x0803AB74'
   isa: thumb
-  unit: asm/split/split_803A490.s
+  unit: asm/nonmatching/split_803A490
   name: ScannerScriptGroup__StartAttack2
 - addr: '0x0803AB80'
   isa: thumb
@@ -5861,63 +5857,63 @@ functions:
   name: sub_803AD40
 - addr: '0x0803AE60'
   isa: thumb
-  unit: asm/split/split_803AE60.s
+  unit: asm/nonmatching/split_803AE60
   name: sub_803AE60
 - addr: '0x0803AE68'
   isa: thumb
-  unit: asm/split/split_803AE60.s
+  unit: asm/nonmatching/split_803AE60
   name: sub_803AE68
 - addr: '0x0803AE92'
   isa: thumb
-  unit: asm/split/split_803AE60.s
+  unit: asm/nonmatching/split_803AE60
   name: sub_803AE92
 - addr: '0x0803AEB4'
   isa: thumb
-  unit: asm/split/split_803AE60.s
+  unit: asm/nonmatching/split_803AE60
   name: sub_803AEB4
 - addr: '0x0803AFCC'
   isa: thumb
-  unit: asm/split/split_803AE60.s
+  unit: asm/nonmatching/split_803AE60
   name: sub_803AFCC
 - addr: '0x0803B150'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B150
 - addr: '0x0803B15C'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B15C
 - addr: '0x0803B184'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B184
 - addr: '0x0803B1A6'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B1A6
 - addr: '0x0803B1A8'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B1A8
 - addr: '0x0803B1AC'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B1AC
 - addr: '0x0803B1AE'
   isa: thumb
-  unit: asm/split/split_803B150.s
+  unit: asm/nonmatching/split_803B150
   name: sub_803B1AE
 - addr: '0x0803B318'
   isa: thumb
-  unit: asm/split/split_803B318.s
+  unit: asm/nonmatching/split_803B318
   name: sub_803B318
 - addr: '0x0803B342'
   isa: thumb
-  unit: asm/split/split_803B318.s
+  unit: asm/nonmatching/split_803B318
   name: sub_803B342
 - addr: '0x0803B406'
   isa: thumb
-  unit: asm/split/split_803B318.s
+  unit: asm/nonmatching/split_803B318
   name: HandlePostGameCredits
 - addr: '0x0803B4D8'
   isa: thumb
@@ -5949,15 +5945,15 @@ functions:
   name: sub_803B7C4
 - addr: '0x0803B81C'
   isa: thumb
-  unit: asm/split/split_803B81C.s
+  unit: asm/nonmatching/split_803B81C
   name: sub_803B81C
 - addr: '0x0803B85C'
   isa: thumb
-  unit: asm/split/split_803B81C.s
+  unit: asm/nonmatching/split_803B81C
   name: nullsub_62
 - addr: '0x0803B85E'
   isa: thumb
-  unit: asm/split/split_803B81C.s
+  unit: asm/nonmatching/split_803B81C
   name: nullsub_63
 - addr: '0x0803B8D8'
   isa: thumb
@@ -5973,94 +5969,94 @@ functions:
   name: nullsub_7
 - addr: '0x0803D4A8'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D4A8
 - addr: '0x0803D5A4'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D5A4
 - addr: '0x0803D66C'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D66C
 - addr: '0x0803D680'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D680
 - addr: '0x0803D834'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D834
 - addr: '0x0803D97C'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D97C
 - addr: '0x0803D984'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D984
 - addr: '0x0803D9A8'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D9A8
   decl: void sub_803D9A8(void *a0, int a1, int a2)
 - addr: '0x0803D9C4'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803D9C4
 - addr: '0x0803D9F8'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: __nw__FUi
 - addr: '0x0803DA18'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DA18
   decl: void *sub_803DA18(void *obj)
 - addr: '0x0803DA4C'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: __da__FPv
 - addr: '0x0803DA80'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DA80
 - addr: '0x0803DA9C'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DA9C
   decl: void *sub_803DA9C(unsigned int a0, void *a1, int a2, int a3)
 - addr: '0x0803DAB8'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: nullsub_5
 - addr: '0x0803DABC'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DABC
 - addr: '0x0803DAC0'
   isa: thumb
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DAC0
 - addr: '0x0803DAC4'
   isa: arm
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: __rt_stackheap_init
 - addr: '0x0803DAFC'
   isa: arm
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DAFC
 - addr: '0x0803DB10'
   isa: arm
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DB10
 - addr: '0x0803DB18'
   isa: arm
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: sub_803DB18
 - addr: '0x0803DB24'
   isa: arm
-  unit: asm/split/split_803D4A8.s
+  unit: asm/nonmatching/split_803D4A8
   name: _sys_exit
 - addr: '0x0803DB3C'
   isa: arm
@@ -6076,19 +6072,19 @@ functions:
   name: sub_803DEF8
 - addr: '0x0803EF1C'
   isa: thumb
-  unit: asm/split/split_803EF1C.s
+  unit: asm/nonmatching/split_803EF1C
   name: sub_803EF1C
 - addr: '0x0803EF2C'
   isa: thumb
-  unit: asm/split/split_803EF1C.s
+  unit: asm/nonmatching/split_803EF1C
   name: sub_803EF2C
 - addr: '0x0803F07C'
   isa: thumb
-  unit: asm/split/split_803F07C.s
+  unit: asm/nonmatching/split_803F07C
   name: sub_803F07C
 - addr: '0x0803F0A8'
   isa: thumb
-  unit: asm/split/split_803F07C.s
+  unit: asm/nonmatching/split_803F07C
   name: sub_803F0A8
 - addr: '0x0803F110'
   isa: thumb
@@ -6112,15 +6108,15 @@ functions:
   name: sub_803F2CC
 - addr: '0x0803F38C'
   isa: thumb
-  unit: asm/split/split_803F38C.s
+  unit: asm/nonmatching/split_803F38C
   name: sub_803F38C
 - addr: '0x0803F3B0'
   isa: thumb
-  unit: asm/split/split_803F38C.s
+  unit: asm/nonmatching/split_803F38C
   name: sub_803F3B0
 - addr: '0x0803F3B4'
   isa: thumb
-  unit: asm/split/split_803F38C.s
+  unit: asm/nonmatching/split_803F38C
   name: sub_803F3B4
 - addr: '0x0803F3E8'
   isa: thumb
@@ -6156,20 +6152,20 @@ functions:
   name: sub_803F6B4
 - addr: '0x0803F72C'
   isa: thumb
-  unit: asm/split/split_803F72C.s
+  unit: asm/nonmatching/split_803F72C
   name: sub_803F72C
   decl: void *sub_803F72C(void *a0, unsigned int a1, unsigned int a2)
 - addr: '0x0803F774'
   isa: thumb
-  unit: asm/split/split_803F72C.s
+  unit: asm/nonmatching/split_803F72C
   name: sub_803F774
 - addr: '0x0803F814'
   isa: thumb
-  unit: asm/split/split_803F72C.s
+  unit: asm/nonmatching/split_803F72C
   name: sub_803F814
 - addr: '0x0803F898'
   isa: thumb
-  unit: asm/split/split_803F72C.s
+  unit: asm/nonmatching/split_803F72C
   name: sub_803F898
 - addr: '0x0803F8BC'
   isa: thumb
@@ -6189,11 +6185,11 @@ functions:
   name: sub_803F9C4
 - addr: '0x0803FAB8'
   isa: thumb
-  unit: asm/split/split_803FAB8.s
+  unit: asm/nonmatching/split_803FAB8
   name: sub_803FAB8
 - addr: '0x0803FAD4'
   isa: thumb
-  unit: asm/split/split_803FAB8.s
+  unit: asm/nonmatching/split_803FAB8
   name: sub_803FAD4
 - addr: '0x0803FBBC'
   isa: thumb
@@ -6225,19 +6221,19 @@ functions:
   name: sub_8040034
 - addr: '0x08040104'
   isa: thumb
-  unit: asm/split/split_8040104.s
+  unit: asm/nonmatching/split_8040104
   name: sub_8040104
 - addr: '0x08040148'
   isa: thumb
-  unit: asm/split/split_8040104.s
+  unit: asm/nonmatching/split_8040104
   name: sub_8040148
 - addr: '0x080401C0'
   isa: thumb
-  unit: asm/split/split_80401C0.s
+  unit: asm/nonmatching/split_80401C0
   name: sub_80401C0
 - addr: '0x080401E4'
   isa: thumb
-  unit: asm/split/split_80401C0.s
+  unit: asm/nonmatching/split_80401C0
   name: sub_80401E4
 - addr: '0x0804025C'
   isa: thumb
@@ -6245,27 +6241,27 @@ functions:
   name: sub_804025C
 - addr: '0x080403A4'
   isa: thumb
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_80403A4
 - addr: '0x080403C0'
   isa: arm
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_80403C0
 - addr: '0x080403EC'
   isa: arm
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_80403EC
 - addr: '0x08040418'
   isa: arm
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_8040418
 - addr: '0x08040444'
   isa: thumb
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_8040444
 - addr: '0x08040448'
   isa: arm
-  unit: asm/split/split_80403A4.s
+  unit: asm/nonmatching/split_80403A4
   name: sub_8040448
 - addr: '0x08040468'
   isa: thumb

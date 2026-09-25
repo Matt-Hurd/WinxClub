@@ -86,6 +86,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import golden  # noqa: E402
+from gen import is_code_unit, unit_stem  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAKEFILE = os.path.join(REPO, "Makefile")
@@ -125,10 +126,9 @@ def unit_order(symbols):
     """unit name -> its function names in address order, from config/symbols.yml."""
     order = {}
     for func in symbols["functions"]:
-        unit = func["unit"]
-        if not unit.startswith("asm/split/"):
+        if not is_code_unit(func["unit"]):
             continue
-        name = os.path.basename(unit)[:-len(".s")]
+        name = unit_stem(func["unit"])
         order.setdefault(name, []).append((int(func["addr"], 16), func["name"]))
     return {u: [n for _, n in sorted(fs)] for u, fs in order.items()}
 

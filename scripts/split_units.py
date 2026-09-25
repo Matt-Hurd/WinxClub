@@ -52,6 +52,7 @@ import sys
 import yaml
 
 import splice_unit
+from gen import is_code_unit, unit_stem
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPLITDIR = os.path.join(REPO, "asm", "split")
@@ -111,10 +112,9 @@ def unit_order(symbols):
     """unit name -> function names in address order, from config/symbols.yml."""
     order = {}
     for func in symbols["functions"]:
-        unit = func["unit"]
-        if not unit.startswith("asm/split/"):
+        if not is_code_unit(func["unit"]):
             continue
-        name = os.path.basename(unit)[:-len(".s")]
+        name = unit_stem(func["unit"])
         order.setdefault(name, []).append((int(func["addr"], 16), func["name"]))
     return {u: [n for _, n in sorted(fs)] for u, fs in order.items()}
 

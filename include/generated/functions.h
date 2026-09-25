@@ -19,25 +19,25 @@ extern void sub_80003F4(void *a0); /* 0x080003F4 */
 /* asm/split/split_800065C.s */
 extern void sub_800065C(void *obj, unsigned short val); /* 0x0800065C */
 
-/* asm/split/split_8005044.s */
+/* asm/nonmatching/split_8005044 */
 extern void sub_80050FA(void *a0); /* 0x080050FA */
 extern void *GetEWRAMStart(void); /* 0x08005106 */
 
-/* asm/split/split_800525C.s */
+/* asm/nonmatching/split_800525C */
 extern void sub_800529A(void *a0, int a1, int a2, void *a3); /* 0x0800529A */
 
-/* asm/split/split_800BBF4.s */
+/* asm/nonmatching/split_800BBF4 */
 extern void sub_800BE0E(void *a0, void *a1); /* 0x0800BE0E */
 extern void sub_800C1CA(void *a0, void *a1); /* 0x0800C1CA */
 
-/* asm/split/split_800ED7C.s */
+/* asm/nonmatching/split_800ED7C */
 extern void sub_800EF2A(void); /* 0x0800EF2A */
 
 /* asm/split/split_80142D0.s */
 extern void sub_80143E0(void *a0); /* 0x080143E0 */
 extern void sub_8014436(void *a0, int a1); /* 0x08014436 */
 
-/* asm/split/split_80158E0.s */
+/* asm/nonmatching/split_80158E0 */
 extern int sub_80158E0(void *a0); /* 0x080158E0 */
 
 /* asm/split/split_8016108.s */
@@ -46,7 +46,7 @@ extern void sub_8016108(void *a0); /* 0x08016108 */
 /* asm/split/split_8017474.s */
 extern void sub_8017620(void *a0, unsigned int a1); /* 0x08017620 */
 
-/* asm/split/split_80177D8.s */
+/* asm/nonmatching/split_80177D8 */
 extern void sub_8017862(void *a0, unsigned int a1); /* 0x08017862 */
 extern void sub_8017884(void *a0, unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4); /* 0x08017884 */
 extern void sub_8017A0A(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4); /* 0x08017A0A */
@@ -63,16 +63,16 @@ extern void sub_801ABFC(void *a0); /* 0x0801ABFC */
 extern void sub_801AC60(void *a0, int a1); /* 0x0801AC60 */
 extern void sub_801AD22(void *a0); /* 0x0801AD22 */
 
-/* asm/split/split_801CB18.s */
+/* asm/nonmatching/split_801CB18 */
 extern void sub_801CBAA(void *a0, int a1); /* 0x0801CBAA */
 
 /* asm/split/split_801F2F8.s */
 extern void sub_801F2F8(void *a0); /* 0x0801F2F8 */
 
-/* asm/split/split_80268AC.s */
+/* asm/nonmatching/split_80268AC */
 extern void sub_8028A7C(void *a0, unsigned int a1, unsigned int a2); /* 0x08028A7C */
 
-/* asm/split/split_8028BE4.s */
+/* asm/nonmatching/split_8028BE4 */
 extern void sub_8028C2E(void *a0); /* 0x08028C2E */
 
 /* asm/split/split_8031830.s */
@@ -84,12 +84,12 @@ extern void sub_8038888(void *a0); /* 0x08038888 */
 extern void sub_803894A(void *a0, int a1); /* 0x0803894A */
 extern void sub_80389CC(void *a0); /* 0x080389CC */
 
-/* asm/split/split_803D4A8.s */
+/* asm/nonmatching/split_803D4A8 */
 extern void sub_803D9A8(void *a0, int a1, int a2); /* 0x0803D9A8 */
 extern void *sub_803DA18(void *obj); /* 0x0803DA18 */
 extern void *sub_803DA9C(unsigned int a0, void *a1, int a2, int a3); /* 0x0803DA9C */
 
-/* asm/split/split_803F72C.s */
+/* asm/nonmatching/split_803F72C */
 extern void *sub_803F72C(void *a0, unsigned int a1, unsigned int a2); /* 0x0803F72C */
 
 /* asm/split/split_80404B4.s */
