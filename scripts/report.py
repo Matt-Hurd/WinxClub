@@ -36,6 +36,17 @@ it as a function and scores it 0% -- the compiled side's pool entries carry no
 label to pair with. They are listed separately here and left out of the
 function totals. Fixing that properly means naming the compiled pool entries
 after the addresses they had, which needs a map this repo does not keep yet.
+
+armasm also emits `$b`, the ARM ELF spec's deprecated mapping symbol for a Thumb
+BL pair, at every `bl` in Thumb code. objdiff 3.8.1 hides `$a`, `$t` and `$d`
+but does not know `$b`, so it treats each as an ordinary local symbol, gives
+one of them an inferred size wherever a literal pool sits inside a function
+with code after it, pairs that sized `$b` by name with the first `$b` on the
+other side, and aborts with "Failed to find right side symbol for paired left
+side symbol" -- even when the two objects are the same file. 16 of the 105
+units splice_queue.py offers do that. Both objects are therefore copied into
+build/report/ with every `$b` moved to SHN_ABS first, which takes it out of
+every section and so out of objdiff's pairing; no relocation refers to one.
 """
 
 import argparse
@@ -161,6 +172,40 @@ def assemble(unit, text, asm, asflags):
     return obj
 
 
+SHN_ABS = 0xFFF1
+
+
+def hide_bl_pair_symbols(src, dst):
+    """Copy an ELF32 object, moving every `$b` mapping symbol to SHN_ABS.
+
+    Pure struct parsing so this runs under the build's python without
+    pyelftools. Only st_shndx changes; sizes, names and relocations do not.
+    """
+    import struct
+    data = bytearray(open(src, "rb").read())
+    if data[:4] != b"\x7fELF" or data[4] != 1 or data[5] != 1:
+        raise ReportError(f"{src}: not a little-endian ELF32 object")
+    shoff, shentsize, shnum = struct.unpack_from("<I", data, 0x20)[0], \
+        struct.unpack_from("<H", data, 0x2E)[0], struct.unpack_from("<H", data, 0x30)[0]
+    sections = [struct.unpack_from("<10I", data, shoff + i * shentsize) for i in range(shnum)]
+    moved = 0
+    for sec in sections:
+        sh_type, sh_offset, sh_size, sh_link, sh_entsize = sec[1], sec[4], sec[5], sec[6], sec[9]
+        if sh_type != 2:  # SHT_SYMTAB
+            continue
+        str_off, str_size = sections[sh_link][4], sections[sh_link][5]
+        strtab = bytes(data[str_off:str_off + str_size])
+        for off in range(sh_offset, sh_offset + sh_size, sh_entsize):
+            st_name = struct.unpack_from("<I", data, off)[0]
+            end = strtab.index(b"\0", st_name)
+            if strtab[st_name:end] == b"$b":
+                struct.pack_into("<H", data, off + 14, SHN_ABS)
+                moved += 1
+    with open(dst, "wb") as fh:
+        fh.write(data)
+    return moved
+
+
 def objdiff(scored):
     """Run objdiff over the assembled references; returns its raw report."""
     config = {"min_version": "3.0.0", "units": [
@@ -246,7 +291,11 @@ def main():
     os.makedirs(OUTDIR, exist_ok=True)
     scored, where, built = [], {}, {}
     for unit, text, ref, obj in units_to_score(order):
-        scored.append((unit, assemble(unit, text, asm, asflags), obj))
+        target = assemble(unit, text, asm, asflags)
+        hide_bl_pair_symbols(target, target)
+        base = os.path.join(OUTDIR, f"{unit}.built.o")
+        hide_bl_pair_symbols(obj, base)
+        scored.append((unit, target, base))
         where[unit], built[unit] = ref, obj
 
     if not scored:
