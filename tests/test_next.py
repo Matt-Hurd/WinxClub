@@ -129,3 +129,17 @@ def test_ready_queue_puts_parked_last_and_batches_skip_them():
     cmds = nxt.ticket_commands(groups, "winx-test")
     assert cmds.count("bd create ") == 2
     assert "--parent winx-test" in cmds and "u3  .c  grown (9 lines, halfword start)" in cmds
+
+
+def test_parked_names_reads_every_heading_style(tmp_path):
+    parked = tmp_path / "parked.md"
+    parked.write_text(textwrap.dedent("""\
+        ## sub_803B81C (asm/nonmatching/split_803B81C/) -- winx-5nt.3
+        ## sub_8005044, SomehowInitEWRAMLinkedList, sub_8005164 / sub_8005170 (split_8005044)
+        **`sub_8004784`** and **`sub_8004984`** (`asm/split/split_8004780.s`, 17 lines)
+        ## 2026-09-25: sub_80132F4 unparked -- a date entry names no function
+        """))
+    assert nxt.parked_names(str(parked)) == {
+        "sub_803B81C", "sub_8005044", "SomehowInitEWRAMLinkedList",
+        "sub_8005164", "sub_8005170", "sub_8004784", "sub_8004984"}
+    assert nxt.parked_names(str(tmp_path / "missing.md")) == set()

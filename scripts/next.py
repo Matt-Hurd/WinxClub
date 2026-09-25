@@ -4,7 +4,7 @@
     python scripts/next.py                  summary: every remaining function by what blocks it
     python scripts/next.py --count          the counts, nothing else
     python scripts/next.py --queue splice   the ready queue, ranked, one line per function
-    python scripts/next.py --queue pool     what the by-value pool rewrite would unlock
+    python scripts/next.py --queue pool     the pool-loading functions, ranked the same way
     python scripts/next.py --unit STEM      one unit: each function and its state
     python scripts/next.py --batches N      N batch tickets off the ready queue, as bd create commands
     python scripts/next.py --json           the whole survey as JSON
@@ -29,11 +29,14 @@ asm/nonmatching/<unit>/ says:
            alignment. sub_800F1DA (non_word_aligned_thumb_func_start) went through
            on 2026-09-25 and make check printed OK.
   pool     Thumb, loads a literal -- its own mid-function pool or the unit's shared
-           end pool. The compiled function would load from tcc's |L1.N| and
-           splice_unit.py refuses that. Rewriting the load onto the unit's label
-           with the same value is the missing piece; measured 2026-09-25, 273 of
+           end pool. Takeable since 2026-09-25: splice_unit.py moves each compiled
+           load onto the unit's pool word with the same value, and refuses, naming
+           the value, when the unit's pool has no such word or two, or when the
+           function kept a pool inside its own body. Measured that day, 273 of
            these in whole-asm units load no value that appears twice in their pool
            and none uses label+offset, so the rewrite is a lookup, not a search.
+           The class is kept apart from `splice` because a refusal is still
+           possible; --queue pool ranks it the same way.
   adr      Thumb, `ADR rN, label` or `add rN, pc, #imm`: a pc-relative address into
            unit data that no pool token names. armasm rejects the splice (A1150E).
   veneer   a body of exactly `bx pc`: armlink's interworking thunk, no C source.
@@ -77,7 +80,12 @@ POOL_TOKEN = re.compile(r"\b_0[0-9A-Fa-f]{7}\b")
 ADR = re.compile(r"^\s*(adr\b|add\s+r\d+\s*,\s*pc\b)", re.I | re.M)
 FUNC_MACRO = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_(start|end)\b")
 FUNC_START = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_start\s+(\S+)", re.M)
-PARKED_HEADING = re.compile(r"^## (\S+)", re.M)
+# The name(s) an entry in notes/parked.md is about, in either of its shapes:
+# a `## ` heading -- `## name (where) -- ticket`, or several at once as
+# `## a, b, c (where)` and `## a / b (where)` -- or, in the older entries, a
+# paragraph opening with the name in bold: **`name`** (where, N lines) ...
+PARKED_BOLD = re.compile(r"\*\*`?([A-Za-z_]\w*)`?")
+IDENT = re.compile(r"^[A-Za-z_]\w*")
 # A working label that is a vtable slot (Boss__10, ScannerScriptGroup__Intersect)
 # or a mangled member (m38__7DefaultFv, __ct__7DefaultFv): written as a class
 # member, in a .cpp. sub_XXXXXXX and gameExit have no double underscore.
@@ -124,10 +132,27 @@ def classify(name, text):
 
 
 def parked_names(path=PARKED):
+    """Every name notes/parked.md has an entry for.
+
+    A heading gives up what is parenthesised and what follows ` -- ` (the
+    slice's path, the ticket), then names one function per comma- or
+    slash-separated part; a date heading names none. A bold opener may name
+    two on one line (**`a`** and **`b`**), so every bold span on it counts.
+    """
     if not os.path.exists(path):
         return set()
+    names = set()
     with open(path) as fh:
-        return set(PARKED_HEADING.findall(fh.read()))
+        for line in fh.read().splitlines():
+            if line.startswith("## "):
+                head = re.sub(r"\([^)]*\)", "", line[3:]).split(" -- ")[0]
+                for part in re.split(r"[,/]", head):
+                    m = IDENT.match(part.strip())
+                    if m:
+                        names.add(m.group(0))
+            elif line.startswith("**"):
+                names.update(PARKED_BOLD.findall(line))
+    return names
 
 
 def partial_source(stem, partial=PARTIAL):
