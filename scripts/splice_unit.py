@@ -224,7 +224,12 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=()):
         raise SpliceError(f"{unit}: compiled {', '.join(sorted(unknown))}, "
                           f"which the unit does not hold")
 
-    out = [add_imports(pieces["header.s"], compiled_imports) if compiled
+    # A compiled body imports every symbol it calls, including a sibling that
+    # stays in this same unit's asm -- thumb_func_start already makes that one
+    # GLOBAL, and armasm rejects a name that is both IMPORTed and locally
+    # defined. Only a genuinely outside symbol needs the IMPORT.
+    local_imports = tuple(n for n in compiled_imports if n not in set(order))
+    out = [add_imports(pieces["header.s"], local_imports) if compiled
            else pieces["header.s"]]
     # Every local label the unit's own asm uses, so a compiled body can be moved
     # off them. The asm slices repeat 1, 2, 3 freely between functions; only a
