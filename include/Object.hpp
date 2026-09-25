@@ -5,7 +5,7 @@ class Object {
 public:
     Object();
     virtual void m00();
-    virtual void m04();
+    virtual void m04(void *a1);
     virtual void m08();
     virtual void m0C();
     virtual void m10();

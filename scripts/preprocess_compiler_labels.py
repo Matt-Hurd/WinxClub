@@ -454,9 +454,11 @@ def convert_compiler_labels_in_file(file_path):
     # Slot bodies are usually written with no explicit parameters ("Fv"), but
     # a member spliced with a real parameter mangles its argument list too
     # (tcpp: void Boss::m04(void *a1) -> m04__4BossFPv, proven on winx-78k.19).
-    # Return type never appears in this scheme, so only the argument encoding
-    # varies; list the ones seen so far and extend as new shapes show up.
-    _ARG_ENCODINGS = ('v', 'Pv')
+    # 'i' is the same idea for an int parameter (tcpp: void Critter::m40(int a1)
+    # -> m40__7CritterFi, winx-78k.26). Return type never appears in this
+    # scheme, so only the argument encoding varies; list the ones seen so far
+    # and extend as new shapes show up.
+    _ARG_ENCODINGS = ('v', 'Pv', 'i')
     _vtable_method_renames = {}
     for cls_name, symbols in vtable_method_maps.items():
         cls_len = len(cls_name)
