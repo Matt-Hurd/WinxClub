@@ -6172,10 +6172,6 @@ functions:
   isa: thumb
   unit: asm/split/split_803FAB8.s
   name: sub_803FAD4
-- addr: '0x0803FB58'
-  isa: thumb
-  unit: asm/split/split_803FB58.s
-  name: sub_803FB58
 - addr: '0x0803FBBC'
   isa: thumb
   unit: asm/split/split_803FBBC.s
@@ -6409,10 +6405,6 @@ functions:
   isa: thumb
   unit: asm/split/split_8040708.s
   name: sub_8040708
-- addr: '0x08040978'
-  isa: thumb
-  unit: asm/split/split_8040978.s
-  name: sub_8040978
 - addr: '0x080409E4'
   isa: thumb
   unit: asm/split/split_80409E4.s
@@ -6994,6 +6986,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003520
+  decl: unsigned char gUnknown_03003520[]
 - addr: '0x03003530'
   kind: object
   unit: data/iwram1.s
@@ -7292,6 +7285,7 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_0804AF2C
+  decl: unsigned short gUnknown_0804AF2C[]
 - addr: '0x080503D6'
   kind: object
   unit: data/data1.s
