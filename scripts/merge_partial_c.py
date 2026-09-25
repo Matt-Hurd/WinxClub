@@ -94,6 +94,18 @@ def merge_asm_files(source_path, built_path, output_path):
         file.writelines(output_lines)
 
 
+def write_manifest(output_file, names):
+    """Record which of a merged unit's functions came from the compiler.
+
+    A merged unit is part compiled and part assembly, and nothing in the object
+    says which is which -- so scripts/calcrom.py would credit the whole object as
+    matched on the strength of the yml alone. This is the list it needs, written
+    beside the merged `.s` it describes so a stale one cannot outlive its build.
+    """
+    with open(output_file + ".functions", "w") as fh:
+        fh.write("".join(f"{name}\n" for name in sorted(names)))
+
+
 def compile_c(tcc, cc1flags, include_dir, c_file, s_file, labels=False):
     """tcc the C file to asm, the same way the Makefile compiles src/.
 
@@ -144,6 +156,7 @@ def splice(yml_file, spec, built_s, output_file):
                               {name: bodies[name] for name in wanted}, imports)
     with open(output_file, "w") as fh:
         fh.write(text)
+    write_manifest(output_file, wanted)
 
 
 def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_builddir, tcc, cc1flags, include_dir, merge_script):
@@ -170,6 +183,10 @@ def main(yml_file, partial_decomp_subdir, partial_decomp_builddir, merged_buildd
         if os.path.exists(c_file):
             compile_c(tcc, cc1flags, include_dir, c_file, s_file_in_build)
             merge_asm_files(s_file_in_partial, s_file_in_build, output_file)
+            # merge_asm_files takes everything the compiler emitted up to the
+            # pool, so the compiled side is exactly what the .c defines.
+            bodies, _ = splice_unit.compiler_output(open(s_file_in_build).read())
+            write_manifest(output_file, bodies)
         return
 
     spec.setdefault("unit", base_name)

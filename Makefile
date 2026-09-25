@@ -220,6 +220,12 @@ $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.cpp $$(cpp_dep)
 $(SRC_ASM_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
+# Nothing builds $(MERGED_BUILDDIR)/%.s -- compile-partial-c writes all of them in
+# one recipe, and $(ELF) lists it beside $(OBJS) rather than before them. Without
+# this the assembler can reach a merged object before that recipe has got to its
+# yml, and the build dies on a missing .s.
+$(MERGED_ASM_OBJS): compile-partial-c
+
 $(MERGED_BUILDDIR)/%.o: $(MERGED_BUILDDIR)/%.s
 	$(AS) $(ASFLAGS) -o $@ $<
 

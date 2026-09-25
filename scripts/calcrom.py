@@ -28,12 +28,24 @@ the old number went wrong.
 
 Veneers are called out separately. They are armlink's, not ours: 37 of them in one
 anonymous object, and no amount of decompilation removes them.
+
+By object is still the wrong unit for a *merged* unit. Since the phase 2 splicer,
+a `partial/` object can be part compiled and part assembly -- split_8004BA8.o is
+572 bytes of which 26 are C -- and crediting the object for its yml would put the
+other 546 on the wrong side of the line. So those objects are credited by function
+instead: merge_partial_c.py writes the names it took from the compiler beside each
+merged `.s`, and their sizes come from the linked ELF's symbol table, which has
+them because FUNCTION/ENDFUNC gives every function a size. An object with a yml
+but no manifest is an error rather than a guess -- silently crediting it in full
+is the bug this avoids.
 """
 
 import glob
 import os
 import re
 import sys
+
+from elftools.elf.elffile import ELFFile
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -67,12 +79,41 @@ def object_code_sizes(map_path):
 
 
 def built_from_source():
-    """Objects with a hand-written source file: the matched ones."""
+    """Objects built wholly from a hand-written source file."""
     sources = glob.glob(os.path.join(REPO, "src", "*.c")) \
-        + glob.glob(os.path.join(REPO, "src", "*.cpp")) \
-        + glob.glob(os.path.join(REPO, "partial", "*", "*.yml")) \
-        + glob.glob(os.path.join(REPO, "partial", "*.yml"))
+        + glob.glob(os.path.join(REPO, "src", "*.cpp"))
     return {os.path.basename(p).rsplit(".", 1)[0] + ".o" for p in sources}
+
+
+def merged_units():
+    """{object name: yml path} for the part-converted units under partial/."""
+    ymls = glob.glob(os.path.join(REPO, "partial", "*.yml")) \
+        + glob.glob(os.path.join(REPO, "partial", "*", "*.yml"))
+    return {os.path.basename(p).rsplit(".", 1)[0] + ".o": p for p in ymls}
+
+
+def compiled_functions(build_name):
+    """{object name: [function names]} from the manifests merge_partial_c.py wrote."""
+    merged = os.path.join(REPO, "build", build_name, "merged")
+    out = {}
+    for path in glob.glob(os.path.join(merged, "**", "*.s.functions"),
+                          recursive=True):
+        unit = os.path.basename(path)[:-len(".s.functions")]
+        out[unit + ".o"] = [n for n in open(path).read().split("\n") if n]
+    return out
+
+
+def function_sizes(elf_path):
+    """{symbol name: size} for every sized function in the linked image."""
+    sizes = {}
+    with open(elf_path, "rb") as fh:
+        for section in ELFFile(fh).iter_sections():
+            if section["sh_type"] != "SHT_SYMTAB":
+                continue
+            for sym in section.iter_symbols():
+                if sym["st_size"] and sym["st_info"]["type"] == "STT_FUNC":
+                    sizes[sym.name] = sym["st_size"]
+    return sizes
 
 
 def main():
@@ -83,20 +124,47 @@ def main():
     if map_path == elf_path or not os.path.exists(map_path):
         die(f"need the link map beside the ELF; expected {map_path}")
 
+    build_name = re.sub(r"\.elf$", "", os.path.basename(elf_path))
     sizes, total = object_code_sizes(map_path)
-    matched_objs = built_from_source()
 
-    matched = {o: s for o, s in sizes.items() if o in matched_objs}
+    whole = {o: s for o, s in sizes.items() if o in built_from_source()}
+
+    merged = merged_units()
+    manifests = compiled_functions(build_name)
+    missing = sorted(o for o in merged if o in sizes and o not in manifests)
+    if missing:
+        die("no compiled-function manifest for "
+            + ", ".join(missing)
+            + f"\nexpected build/{build_name}/merged/<unit>.s.functions, written by "
+              "scripts/merge_partial_c.py.\nWithout it these objects cannot be "
+              "credited by function, and crediting them\nby object would count "
+              "their remaining assembly as matched.")
+
+    part = {}
+    funcs = function_sizes(elf_path)
+    for obj, names in manifests.items():
+        if obj not in sizes:
+            continue
+        absent = [n for n in names if n not in funcs]
+        if absent:
+            die(f"{obj}: no sized symbol for {', '.join(absent)} in {elf_path}")
+        part[obj] = sum(funcs[n] for n in names)
+
+    matched = sum(whole.values()) + sum(part.values())
     veneers = sizes.get(VENEERS, 0)
-    rest = total - sum(matched.values()) - veneers
+    rest = total - matched - veneers
 
     def pct(n):
         return 100 * n / total if total else 0
 
     print(f"Total Code: {total} bytes in {len(sizes)} objects")
     print("---")
-    print(f"Matched (src/, partial/): {sum(matched.values()):>8} bytes "
-          f"({pct(sum(matched.values())):7.4f}%) in {len(matched)} objects")
+    print(f"Matched:                  {matched:>8} bytes ({pct(matched):7.4f}%)")
+    print(f"  whole objects (src/):   {sum(whole.values()):>8} bytes "
+          f"in {len(whole)} objects")
+    print(f"  functions (partial/):   {sum(part.values()):>8} bytes "
+          f"in {len(part)} part-converted objects "
+          f"({sum(sizes[o] for o in part)} bytes of code)")
     print(f"Not yet matched (asm/):   {rest:>8} bytes ({pct(rest):7.4f}%)")
     print(f"Veneers (armlink):        {veneers:>8} bytes ({pct(veneers):7.4f}%)")
 
