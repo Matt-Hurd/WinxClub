@@ -4,7 +4,7 @@
 
 struct Struct800FE90 {
     int f0, f4, f8, fc, f10, f14;
-    unsigned short f18, f1a;
+    short f18, f1a;
     int f1c;
 };
 
@@ -17,16 +17,14 @@ extern "C" void *sub_800FE90(void *a0)
     }
 
     Struct800FE90 *p = (Struct800FE90 *)a0;
-    volatile int zero = 0;
-    p->f0 = zero;
-    p->f4 = zero;
-    p->f8 = zero;
-    p->fc = zero;
-    p->f10 = zero;
-    p->f14 = zero;
-    p->f1c = zero;
-    zero = ~zero;
-    p->f18 = zero;
-    p->f1a = zero;
+    p->f0 = 0;
+    p->f4 = 0;
+    p->f8 = 0;
+    p->fc = 0;
+    p->f10 = 0;
+    p->f14 = 0;
+    p->f1c = 0;
+    p->f18 = -1;
+    p->f1a = -1;
     return a0;
 }
