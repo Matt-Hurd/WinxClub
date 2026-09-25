@@ -7,6 +7,11 @@
     python scripts/splice_queue.py --count          the counts, nothing else
     python scripts/splice_queue.py --rejected       the slices that pass 1-4 but are excluded
 
+Superseded 2026-09-25 by scripts/next.py, which surveys spliced units' leftovers too
+and drops rule 3: the splicer never makes an AREA, so a halfword start is not a
+blocker (notes/quirks/a-halfword-aligned-function-splices-like-any-other.md). Kept
+because its --rejected and --unit views are still referenced by winx-78k tickets.
+
 A candidate is a function slice under asm/nonmatching/<unit>/ that is
 
   1. in a unit whose asm/split/<unit>.s still exists (not already converted),
