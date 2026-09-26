@@ -5,7 +5,7 @@
     python scripts/next.py --count          the counts, nothing else
     python scripts/next.py --queue splice   the ready queue, ranked, one line per function
     python scripts/next.py --queue pool     the pool-loading functions, ranked the same way;
-                                            `own pool: trailing|interior` marks a refusal
+                                            `own pool: trailing|interior` marks a pool of its own
     python scripts/next.py --unit STEM      one unit: each function and its state
     python scripts/next.py --batches N      N batch tickets off the ready queue, as bd create commands
     python scripts/next.py --json           the whole survey as JSON
@@ -32,19 +32,20 @@ asm/nonmatching/<unit>/ says:
   pool     Thumb, loads a literal -- its own mid-function pool or the unit's shared
            end pool. Takeable since 2026-09-25: splice_unit.py moves each compiled
            load onto the unit's pool word with the same value, and refuses, naming
-           the value, when the unit's pool has no such word or two, or when the
-           function kept a pool inside its own body. Measured that day, 273 of
+           the value, when the unit's pool has no such word or two. Measured that day, 273 of
            these in whole-asm units load no value that appears twice in their pool
            and none uses label+offset, so the rewrite is a lookup, not a search.
            The class is kept apart from `splice` because a refusal is still
            possible; --queue pool ranks it the same way. A slice that defines a
-           pool word of its own (splice_unit.RE_OWN_POOL) is the refusal the
-           splicer can tell in advance, so it is reported as a sub-state,
-           `own_pool`: `trailing` when every own word sits after the last
-           instruction -- the splicer takes these since winx-w0p.1, renaming
-           the compiled loads onto the slice's words by position -- and
-           `interior` when an instruction follows one, which it still refuses
-           (winx-w0p.2), so --batches skips only `interior`.
+           pool word of its own (splice_unit.RE_OWN_POOL) is reported as a
+           sub-state, `own_pool`: `trailing` when every own word sits after the
+           last instruction -- taken since winx-w0p.1, the compiled loads renamed
+           onto the slice's words by position -- and `interior` when an
+           instruction follows one -- taken since winx-w0p.2, the slice's pool
+           put back after the same number of compiled instructions and the loads
+           renamed onto the words the original loads from it. Both are in the
+           ready queue; the refusals the splicer can still make are named in
+           scripts/splice_unit.py.
   adr      Thumb, `ADR rN, label` or `add rN, pc, #imm`: a pc-relative address into
            unit data that no pool token names. armasm rejects the splice (A1150E).
   veneer   a body of exactly `bx pc`: armlink's interworking thunk, no C source.
@@ -56,7 +57,7 @@ the ready queue puts parked functions last, and --batches skips them: each has a
 deferred retry ticket and releasing that is the owner's call.
 
 The ready queue, which --batches draws from, is class `splice` and then class
-`pool` less the interior own pools, parked functions left out. Ranking inside a class: a
+`pool`, parked functions left out. Ranking inside a class: a
 unit that already has a partial/ source first (its build plumbing exists and one
 function of it has matched), then fewest asm lines. A batch is whole units,
 filled to --per functions, so a unit's candidates ride together as they did in
@@ -263,10 +264,9 @@ def rank_key(rec):
 
 
 def takeable(rec):
-    """Whether the splicer takes this function today: splice, or pool unless its
-    own pool sits in the interior of the body."""
-    return rec["cls"] == "splice" or (rec["cls"] == "pool"
-                                      and rec.get("own_pool") != "interior")
+    """Whether the splicer takes this function today: splice or pool, an own pool
+    trailing or interior included."""
+    return rec["cls"] in ("splice", "pool")
 
 
 def queue(rows, cls, include_parked=True):
@@ -386,8 +386,7 @@ def summary(rows, notes):
     own = collections.Counter(r["own_pool"] for r in rows if r["own_pool"])
     if own:
         print(f"\n{sum(own.values())} pool functions keep a pool of their own: "
-              f"{own['trailing']} trailing (the splicer takes them), "
-              f"{own['interior']} interior (refused; --batches skips them)")
+              f"{own['trailing']} trailing, {own['interior']} interior; the splicer takes both")
     rs = ready(rows)
     if rs:
         sizes = sorted(r["lines"] for r in rs)

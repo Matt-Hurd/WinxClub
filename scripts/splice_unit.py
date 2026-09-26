@@ -62,8 +62,32 @@ the slice's word at the same position: the compiled entries the body loads, in
 the compiled order, against the slice's words in theirs, refused naming both
 when the counts differ or a value does. None of the 17 such functions loads a
 word outside its own block (2026-09-25), so no by-value lookup is mixed in.
-Interior -- an instruction after an own word -- is still refused: a compiled
-body has nowhere to put those words, so the code after them would move.
+Interior -- an instruction after an own word -- is the pool tcc dumps in the
+middle of a function when the oldest literal still waiting for a pool is about
+to fall out of `ldr` range, with a branch over it (`b %41`, ALIGN, the words,
+`41`) unless the last instruction already left. That oldest literal is the
+*unit's*, usually loaded by an earlier function, so a function compiled on its
+own dumps the pool somewhere else or not at all, while its instructions come out
+the same (measured 2026-09-26 on tests/fixtures/midpool: 539 identical
+instructions with the pool at three different offsets; the quirk file under
+notes/quirks/ has the listings). So the pool's place is the unit's to say and
+the instructions are the compiler's: compiler_output strips any pool the
+compiler dumped inside a body, with its own branch over it, and splice_interior
+puts the slice's blocks back after the same number of instructions the slice
+has in front of each, verbatim -- a neighbour's words included, since those
+words are addressed by the neighbour's asm. A compiled load before a block is
+renamed onto the word of that block the original function loads with the same
+value (the words the slice's own instructions name, so a neighbour's word with
+the same value is not a candidate); a load after the last block goes onto the
+unit's end pool by value as any other. Refused, naming both sides, when the
+compiled function has fewer instructions than the slice has before a block,
+loads a value the original does not load from that block, or does not load a
+word the original does. Refused too when the branch over the pool carries a
+label (`33`, `b %34`, the words, `34`): a conditional branch from before the
+pool could not reach past it, so tcc routed it through that `b` -- and the
+function compiled on its own, with no pool in the way, branches straight
+there and the words put back push it out of range (A1176E). 4 of the 64
+interior slices are that shape (2026-09-26); sub_8021CFC was the first tried.
 
 Numeric local labels are a shared namespace in an armasm source file: the asm
 slices already repeat `1`, `2`, `3` across functions and armasm resolves `%N`
@@ -116,6 +140,10 @@ RE_OWN_POOL = re.compile(r"^_0[0-9A-Fa-f]{7}\s+DC[BWDQ]", re.M)
 # padding around it, a numeric local label or a pool label on a line of its own.
 RE_NOT_INSTRUCTION = re.compile(
     r"^\s*(?:_0[0-9A-Fa-f]{7}(?:\s+DC\w+.*)?|ALIGN\b.*|DC[BWDQ]U?\b.*|\d+)\s*$", re.I)
+RE_ADDR_REF = re.compile(r"\b_0[0-9A-Fa-f]{7}\b")
+# `\tb %41` in a slice, `        B        %1008` in a compiled body: the branch
+# tcc puts over a pool it dumps mid-function.
+RE_B_LOCAL = re.compile(r"^\s+[bB]\s+%(\d+)\s*$")
 RE_SETA = re.compile(r"^(\S+)\s+SETA\s+([^;]*)")
 RE_LOCAL_DEF = re.compile(r"^(\d+)\s*$")
 RE_LOCAL_REF = re.compile(r"%([FB]?[AT]?)(\d+)\b")
@@ -184,14 +212,100 @@ def own_pool_block(lead, middle):
     return "".join(lines[last + 1:])
 
 
+def is_instruction(line):
+    """Whether a line of a slice or of a compiled body is an instruction: indented,
+    and not a directive, a pool word, padding or a label."""
+    return bool(line.strip()) and line[0] in " \t" and not RE_NOT_INSTRUCTION.match(line)
+
+
+Block = collections.namedtuple("Block", "k text around words loaded trampoline")
+
+
+def own_pool_blocks(middle):
+    """The pools a slice keeps inside its body, in order.
+
+    For each: `k`, how many instructions the slice has in front of it; `text`,
+    its lines verbatim -- the ALIGN before the words, the words, any padding
+    and any local label the disassembler put among them; `around`, the local
+    label of the branch over it when that branch is the compiler's own (a
+    `b %N` right before, `N` right after) and so not one of the k, else None;
+    `words`, [(label, directive, value)]; `loaded`, the labels of the words
+    the slice's own instructions load, in the pool's order; and `trampoline`,
+    the local label on the branch over the pool when it has one -- a
+    conditional branch's way past a pool it could not reach over.
+    """
+    lines = middle.splitlines(True)
+    found, k, i = [], 0, 0
+    while i < len(lines):
+        if not RE_OWN_POOL.match(lines[i]):
+            k += is_instruction(lines[i])
+            i += 1
+            continue
+        start = i - 1 if i and lines[i - 1].rstrip("\n") == "\tALIGN" else i
+        j = i
+        while j < len(lines) and lines[j].strip() and RE_NOT_INSTRUCTION.match(lines[j]):
+            j += 1
+        while j > i and RE_LOCAL_DEF.match(lines[j - 1]):
+            j -= 1  # the label after the pool is the code's, not the pool's
+        around = RE_B_LOCAL.match(lines[start - 1]) if start else None
+        after = RE_LOCAL_DEF.match(lines[j]) if j < len(lines) else None
+        trampoline = None
+        if around and after and around.group(1) == after.group(1):
+            around = around.group(1)
+            k -= 1  # the branch over the pool is the compiler's, not the function's
+            on_it = RE_LOCAL_DEF.match(lines[start - 2]) if start > 1 else None
+            trampoline = on_it.group(1) if on_it else None
+        else:
+            around = None
+        words = [m.groups() for m in map(RE_UNIT_WORD.match, lines[i:j]) if m]
+        found.append([k, "".join(lines[start:j]), around, words, trampoline])
+        i = j
+    refs = {m.group(0) for ln in lines if is_instruction(ln) for m in RE_ADDR_REF.finditer(ln)}
+    return [Block(k, text, around, words, [lab for lab, _, _ in words if lab in refs], tramp)
+            for k, text, around, words, tramp in found]
+
+
+def strip_body_pools(name, body, pool):
+    """`body` (lines) less any literal pool the compiler dumped inside it, whose
+    entries go into `pool`. The `DCW 0000` that word-aligns it goes with it, and
+    so do the `B %N` over it and the `N` after it when they are the compiler's
+    own: when N is defined right after the words. A pool after the function's
+    own unconditional branch has no branch of its own, and that branch stays.
+    """
+    out, i = [], 0
+    while i < len(body):
+        if not RE_POOL_DEF.match(body[i]):
+            out.append(body[i])
+            i += 1
+            continue
+        j = i
+        while j < len(body) and RE_POOL_DEF.match(body[j]):
+            word = RE_COMPILED_WORD.match(body[j + 1]) if j + 1 < len(body) else None
+            if not word:
+                raise SpliceError(f"{name}: pool label {body[j].strip()} with no DC "
+                                  f"directive under it")
+            pool[RE_POOL_DEF.match(body[j]).group(1)] = (word.group(1), word.group(2))
+            j += 2
+        if out and RE_SECTION_PAD.match(out[-1]):
+            out.pop()
+        around = RE_B_LOCAL.match(out[-1]) if out else None
+        after = RE_LOCAL_DEF.match(body[j]) if j < len(body) else None
+        if around and after and around.group(1) == after.group(1):
+            out.pop()
+            j += 1
+        i = j
+    return out
+
+
 def compiler_output(text):
     """A compiler-generated .s, as ({function: body}, [import lines], pool).
 
     The body is what sits between `NAME PROC` and its ENDP, less the DCW the
-    compiler adds to word-align the end of its section. `pool` is
-    {label: (directive, value)} for the entries after the ENDPs, as the label
-    pass leaves them: `_pool_1_24_4` on a line of its own over its
-    `DCD 0x04000200`.
+    compiler adds to word-align the end of its section and less any pool the
+    compiler dumped inside it (strip_body_pools). `pool` is
+    {label: (directive, value)} for the entries after the ENDPs and the ones
+    stripped from the bodies, as the label pass leaves them: `_pool_1_24_4` on
+    a line of its own over its `DCD 0x04000200`.
     """
     lines = text.splitlines(True)
     bodies, imports, pool = {}, [], {}
@@ -220,7 +334,7 @@ def compiler_output(text):
             j += 1
         if j == len(lines):
             raise SpliceError(f"{name}: PROC with no ENDP")
-        body = lines[i + 1:j]
+        body = strip_body_pools(name, lines[i + 1:j], pool)
         while body and (body[-1].strip() == "" or RE_SECTION_PAD.match(body[-1])):
             body.pop()
         bodies[name] = "".join(body)
@@ -335,34 +449,119 @@ def rewrite_own_pool(unit, name, body, compiled_pool, block, constants):
     return RE_POOL_REF.sub(lambda m: rename[m.group(0)], body)
 
 
+def compiled_word(unit, name, token, compiled_pool):
+    """The (directive, value) `token` loads, which must be a word."""
+    if token not in compiled_pool:
+        raise SpliceError(f"{unit}: {name} loads {token}, which the compiled "
+                          f"file does not define")
+    directive, value = compiled_pool[token]
+    if directive.startswith("DCB"):
+        raise SpliceError(f"{unit}: {name} loads {token}, a string ({value}); "
+                          f"only a word can be found in the unit's pool by value")
+    if not directive.startswith("DCD"):
+        raise SpliceError(f"{unit}: {name} loads {token}, a {directive}, not a word")
+    return directive, value
+
+
+def unit_label_for(unit, name, token, compiled_pool, by_value, constants):
+    """The unit's end-pool word with the value `token` loads, by label."""
+    _, value = compiled_word(unit, name, token, compiled_pool)
+    labels = by_value.get(literal_value(value, constants), [])
+    if not labels:
+        raise SpliceError(f"{unit}: {name} loads {value}, and the unit's pool "
+                          f"has no word with that value")
+    if len(labels) > 1:
+        raise SpliceError(f"{unit}: {name} loads {value}, which the unit's pool "
+                          f"holds at {', '.join(labels)}; the value alone cannot "
+                          f"tell which one the original used")
+    return labels[0]
+
+
 def rewrite_literals(unit, name, body, compiled_pool, by_value, constants):
     """`body` with each load of the compiler's pool moved onto the unit's word
     with the same value, or a SpliceError naming what could not be moved.
     """
     require_label_pass(unit, name, body)
+    return RE_POOL_REF.sub(
+        lambda m: unit_label_for(unit, name, m.group(0), compiled_pool, by_value, constants),
+        body)
 
-    def label_for(m):
-        token = m.group(0)
-        if token not in compiled_pool:
-            raise SpliceError(f"{unit}: {name} loads {token}, which the compiled "
-                              f"file does not define")
-        directive, value = compiled_pool[token]
-        if directive.startswith("DCB"):
-            raise SpliceError(f"{unit}: {name} loads {token}, a string ({value}); "
-                              f"only a word can be found in the unit's pool by value")
-        if not directive.startswith("DCD"):
-            raise SpliceError(f"{unit}: {name} loads {token}, a {directive}, not a word")
-        labels = by_value.get(literal_value(value, constants), [])
-        if not labels:
-            raise SpliceError(f"{unit}: {name} loads {value}, and the unit's pool "
-                              f"has no word with that value")
-        if len(labels) > 1:
-            raise SpliceError(f"{unit}: {name} loads {value}, which the unit's pool "
-                              f"holds at {', '.join(labels)}; the value alone cannot "
-                              f"tell which one the original used")
+
+def splice_interior(unit, name, body, compiled_pool, middle, by_value, constants, taken):
+    """`body` with the pools the slice keeps inside its body put back where the
+    slice has them, and each compiled load renamed onto the word the original
+    function loads at that point.
+
+    `middle` is the slice between its *_func_start and its tail. A block goes
+    in after as many compiled instructions as the slice has in front of it,
+    verbatim, under a fresh local label for the branch over it when the branch
+    is the compiler's. A load before a block is renamed onto the word of that
+    block the original loads with the same value; a load after the last block
+    onto the unit's end pool by value. `taken` is the local labels the fresh
+    ones must avoid. Refused, naming both sides, when the compiled function is
+    too short to reach a block, loads a value the original does not load from
+    that block, or leaves a word the original loads unloaded.
+    """
+    require_label_pass(unit, name, body)
+    blocks = own_pool_blocks(middle)
+    lines = body.splitlines(True)
+    positions = [i for i, ln in enumerate(lines) if is_instruction(ln)]
+    for b in blocks:
+        if b.trampoline is not None:
+            raise SpliceError(
+                f"{unit}: {name} reaches the branch over the pool at {b.words[0][0]} "
+                f"through label {b.trampoline}: a conditional branch tcc routed past the "
+                f"pool, which the function compiled on its own does not need and the "
+                f"words put back would push out of range")
+        if b.k > len(positions):
+            raise SpliceError(
+                f"{unit}: {name} keeps a pool ({b.words[0][0]} ...) after {b.k} "
+                f"instruction(s) and the compiled function has only {len(positions)}")
+    used = [set() for _ in blocks]
+
+    def label_for(token, which):
+        if which is None:
+            return unit_label_for(unit, name, token, compiled_pool, by_value, constants)
+        block = blocks[which]
+        _, value = compiled_word(unit, name, token, compiled_pool)
+        want = literal_value(value, constants)
+        labels = [lab for lab, _, v in block.words
+                  if lab in block.loaded and literal_value(v, constants) == want]
+        if len(labels) != 1:
+            raise SpliceError(
+                f"{unit}: {name} loads {value} before the pool it keeps at "
+                f"{block.words[0][0]}, which the original "
+                + (f"loads from that pool at {', '.join(labels)}; the value alone "
+                   f"cannot tell which" if labels else
+                   f"does not load from that pool (it loads "
+                   f"{', '.join(f'{lab} {v}' for lab, _, v in block.words if lab in block.loaded)})"))
+        used[which].add(labels[0])
         return labels[0]
 
-    return RE_POOL_REF.sub(label_for, body)
+    out, n = [], 0
+    for ln in lines:
+        if is_instruction(ln):
+            which = next((i for i, b in enumerate(blocks) if n < b.k), None)
+            n += 1
+            if RE_POOL_REF.search(ln):
+                ln = RE_POOL_REF.sub(lambda m: label_for(m.group(0), which), ln)
+        out.append(ln)
+    for b, got in zip(blocks, used):
+        if got != set(b.loaded):
+            raise SpliceError(
+                f"{unit}: {name} loads {', '.join(b.loaded)} from the pool it keeps at "
+                f"{b.words[0][0]}, and the compiled function loads "
+                f"{', '.join(sorted(got, key=b.loaded.index)) or 'none of them'}")
+    avoid = taken | local_labels(body) | set().union(*(local_labels(b.text) for b in blocks))
+    free = (n for n in itertools.count(1) if n not in avoid)
+    for b in sorted(blocks, key=lambda b: b.k, reverse=True):
+        text = b.text
+        if b.around is not None:
+            fresh = next(free)
+            text = f"\tb %{fresh}\n{text}{fresh}\n"
+        at = positions[b.k - 1] + 1 if b.k else 0
+        out[at:at] = [text]
+    return "".join(out)
 
 
 def local_labels(text):
@@ -469,11 +668,14 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=(),
         body = compiled[name]
         shape = own_pool_shape(text)
         if shape == "interior":
-            raise SpliceError(
-                f"{unit}: {name} keeps a literal pool inside its own body, with "
-                f"instructions after it (interior); a compiled body has nowhere "
-                f"to put those words, so the code after them would move")
-        if shape == "trailing":
+            if constants is None:
+                constants = gba_constants()
+            if by_value is None:
+                by_value = unit_pool(pieces["pool.s"], constants)
+            body = splice_interior(unit, name, body, compiled_pool,
+                                   text[len(lead):len(text) - len(tail)],
+                                   by_value, constants, taken)
+        elif shape == "trailing":
             if constants is None:
                 constants = gba_constants()
             block = own_pool_block(lead, text[len(lead):len(text) - len(tail)])

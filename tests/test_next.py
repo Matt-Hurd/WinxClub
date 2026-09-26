@@ -145,15 +145,15 @@ def test_ready_queue_puts_parked_last_and_batches_skip_them():
     ]
     assert [r["name"] for r in nxt.queue(rows, "splice")] == ["grown", "fresh", "p"]
     assert [r["name"] for r in nxt.queue(rows, "splice", include_parked=False)] == ["grown", "fresh"]
-    # splice first, then pool; parked and interior-own-pool functions are not ready at all
+    # splice first, then pool, an own pool trailing or interior included; parked is not ready
     assert [r["name"] for r in nxt.queue(rows, "pool")] == ["lit", "trail", "alone", "inner"]
-    assert [r["name"] for r in nxt.ready(rows)] == ["grown", "fresh", "lit", "trail", "alone"]
+    assert [r["name"] for r in nxt.ready(rows)] == ["grown", "fresh", "lit", "trail", "alone", "inner"]
     assert nxt.flags(rows[4], "halfword", "parked") == ["own pool: trailing"]
     assert nxt.flags(rows[2], "halfword", "parked") == ["halfword"]
-    # a unit's pool functions ride with its splice ones; "inner" never appears
+    # a unit's pool functions ride with its splice ones, and with each other
     groups = nxt.batches(rows, count=3, per=1)
-    assert [[r["name"] for r in g] for g in groups] == [["grown", "lit"], ["fresh"], ["trail"]]
-    assert nxt.batches(rows, count=3, per=1, min_lines=5) == [[rows[2]], [rows[6]]]
+    assert [[r["name"] for r in g] for g in groups] == [["grown", "lit"], ["fresh"], ["trail", "inner"]]
+    assert nxt.batches(rows, count=3, per=1, min_lines=5) == [[rows[2]], [rows[6]], [rows[5]]]
     cmds = nxt.ticket_commands(groups, "winx-test")
     assert cmds.count("bd create ") == 3
     assert "--parent winx-test" in cmds
