@@ -26,6 +26,9 @@ extern void *GetEWRAMStart(void); /* 0x08005106 */
 /* asm/nonmatching/split_800525C */
 extern void sub_800529A(void *a0, int a1, int a2, void *a3); /* 0x0800529A */
 
+/* asm/split/split_800B12C.s */
+extern void sub_800B12C(void *a0, int a1, void *a2, int a3); /* 0x0800B12C */
+
 /* asm/nonmatching/split_800BBF4 */
 extern void sub_800BE0E(void *a0, void *a1); /* 0x0800BE0E */
 extern void sub_800C1CA(void *a0, void *a1); /* 0x0800C1CA */

@@ -1,5 +1,7 @@
-/* One function of split_8004BA8; the rest of the unit is still assembly in
- * asm/nonmatching/split_8004BA8/.
+/* Four functions of split_8004BA8; the rest of the unit is still assembly in
+ * asm/nonmatching/split_8004BA8/. sub_8004BA8 itself is parked -- see
+ * notes/parked.md -- and stays in asm/nonmatching/split_8004BA8/, which the
+ * splicer pulls in on its own since it is not named here.
  *
  * sub_8004C2C ignores its first argument. 0x200 and 0x2000 are the byte sizes
  * of a 4Kbit and a 64Kbit EEPROM, and the only caller (sub_800B314) dispatches
@@ -11,6 +13,20 @@
  * if/else inline and branches past it, where the ROM tests 0 first and branches
  * *to* that body. See notes/quirks/a-switch-puts-its-case-bodies-out-of-line.md.
  */
+
+void nullsub_23(void)
+{
+}
+
+int sub_8004C22(void)
+{
+    return 0;
+}
+
+int sub_8004C28(void)
+{
+    return 0;
+}
 
 int sub_8004C2C(void *a0, int a1)
 {

@@ -2049,6 +2049,7 @@ functions:
   isa: thumb
   unit: asm/split/split_800B12C.s
   name: sub_800B12C
+  decl: void sub_800B12C(void *a0, int a1, void *a2, int a3)
 - addr: '0x0800B148'
   isa: thumb
   unit: asm/split/split_800B12C.s
