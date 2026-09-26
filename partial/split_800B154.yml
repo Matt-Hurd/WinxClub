@@ -1,3 +1,3 @@
 unit: split_800B154
 source: partial/split_800B154.c
-functions: [CallSoftReset, sub_800B2A4]
+functions: [CallSoftReset, sub_800B2A4, nullsub_4, nullsub_9, nullsub_10, nullsub_11, nullsub_12, nullsub_13, nullsub_14, nullsub_15, nullsub_16, nullsub_17, nullsub_18, nullsub_19, nullsub_30, nullsub_31, sub_800B2AE, sub_800B286]
