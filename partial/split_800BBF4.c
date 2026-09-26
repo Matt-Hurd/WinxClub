@@ -92,3 +92,8 @@ void sub_800C0EC(void *a0, unsigned int a1, unsigned int a2)
     field[0] = (unsigned char)a1;
     field[1] -= a2;
 }
+
+unsigned int sub_800CADA(void *a0)
+{
+    return *(unsigned int *)((char *)a0 + 0x78) & 1;
+}
