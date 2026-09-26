@@ -20,10 +20,10 @@ public:
   virtual void m1C();          // slot 7
   virtual void m20();          // slot 8
   virtual void DamagePlayer(); // slot 9
-  virtual void PlayerIframe(); // slot 10
+  virtual int PlayerIframe();  // slot 10 -- returns 0, not void: see split_801E2D0.cpp
   virtual int Attack();        // slot 11
   virtual void TakeDamage();   // slot 12
-  virtual void Intersect();    // slot 13
+  virtual int Intersect();     // slot 13 -- returns 0/1, not void: see split_801E2D0.cpp
   virtual void m38();          // slot 14
   virtual void m3C();          // slot 15
   virtual void m40();          // slot 16
