@@ -1,7 +1,5 @@
-/* Two functions of split_8018070; the rest of the unit is still assembly in
- * asm/nonmatching/split_8018070/. FadeToBlack is a sibling of FadeToImage
- * but stays assembly here -- it is not word-aligned, so it is out of scope
- * for this pool-free/word-aligned batch.
+/* Functions of split_8018070; the rest of the unit is still assembly in
+ * asm/nonmatching/split_8018070/.
  */
 #include "generated/functions.h"
 
@@ -24,6 +22,32 @@ extern "C" void FadeToImage(void)
         sub_800EF2A();
     }
 }
+
+/* FadeToImage's sibling: the only difference is the first sub_803D680
+ * argument (0 rather than 1).
+ */
+extern "C" void FadeToBlack(void)
+{
+    int local[3];
+
+    sub_8004716(local);
+    sub_803D680(local, 0, 0x3f, 2, 0x10, 1, 0);
+    while (!sub_803D97C(local)) {
+        sub_803D834(local);
+        sub_800474E(local);
+        sub_800EF2A();
+    }
+}
+
+/* sub_801810E is a same-signature tail call into FadeToBlack. */
+extern "C" void sub_801810E(void)
+{
+    FadeToBlack();
+}
+
+/* sub_8018110 (parked -- see notes/parked.md) stays assembly in
+ * asm/nonmatching/split_8018070/sub_8018110.s.
+ */
 
 /* a0's first word is zeroed by sub_803D9A8 (offset 0), and a0[0x10] is a
  * pointer whose target's first word is itself a self-relative function
