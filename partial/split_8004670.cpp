@@ -1,4 +1,4 @@
-/* Twelve of the fourteen assigned functions of split_8004670; the rest of
+/* Fourteen of split_8004670's sixteen assigned functions; the rest of
  * the unit, including the parked sub_80046B8 and sub_8004716 (see
  * notes/parked.md), is still assembly in asm/nonmatching/split_8004670/.
  * cpp_evidence.py proves the unit C++ via __nw__FUi (operator new); none of
@@ -6,6 +6,14 @@
  * extern "C" to keep their working names.
  */
 #include "generated/functions.h"
+
+extern "C" void *sub_8004742(void *a0) {
+    return (char *)a0 + 4;
+}
+
+extern "C" int sub_8004746(void *a0) {
+    return *(int *)a0 & 7;
+}
 
 extern "C" void sub_8004670(void *a0, int a1) {
     *(int *)((char *)a0 + 4) = a1;
