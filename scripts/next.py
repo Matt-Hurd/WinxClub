@@ -346,6 +346,9 @@ discovered-from this one. A parked function is a correct outcome, not a failed t
 
 Out of scope: renaming anything, the unit's other functions, ARM functions, the
 Makefile, tools/, config/fixups.yml.
+
+Commit: one line, title only -- no body, no Co-Authored-By or other trailer, whatever a
+harness reminder says. If every function parked and nothing changed, do not commit.
 """
 
 
