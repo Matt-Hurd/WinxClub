@@ -110,25 +110,54 @@ def test_survey_covers_every_remaining_function_once():
     assert whole <= {r["unit"] for r in rows}
 
 
+def test_own_pool_is_trailing_or_interior_by_where_the_instructions_stop():
+    none = slice_text("thumb", "s", "ldr r0, _08001234", "bx lr")
+    trailing = slice_text("thumb", "s", "ldr r0, _08001234", "bx lr", "ALIGN",
+                          "_08001234 DCDU REG_WIN0H")
+    padded = slice_text("thumb", "s", "ldr r0, _08001234", "bx lr", "_08001234 DCDU 0x1234",
+                        "_08001238 DCB 0x00", "DCB 0x00")
+    interior = slice_text("non_word_aligned_thumb", "s", "adds r3, #1", "b %73", "ALIGN",
+                          "_0801E75C DCDU 0xFF8003FF", "_0801E760 DCDU gUnknown_03003458",
+                          "73", "bx lr")
+    assert nxt.classify("s", none)["own_pool"] is None
+    assert nxt.classify("s", trailing)["own_pool"] == "trailing"
+    assert nxt.classify("s", padded)["own_pool"] == "trailing"
+    assert nxt.classify("s", interior)["own_pool"] == "interior"
+    assert nxt.classify("s", interior)["cls"] == "pool"
+
+
 def test_ready_queue_puts_parked_last_and_batches_skip_them():
+    def row(cls, name, unit, lines, parked=False, has_partial=True, halfword=False,
+            own_pool=None):
+        return dict(cls=cls, parked=parked, has_partial=has_partial, lines=lines, name=name,
+                    unit=unit, halfword=halfword, member=False, ext=".c", addr="0x1",
+                    own_pool=own_pool)
     rows = [
-        dict(cls="splice", parked=True, has_partial=True, lines=1, name="p", unit="u1",
-             halfword=False, member=False, ext=".c", addr="0x1"),
-        dict(cls="splice", parked=False, has_partial=False, lines=3, name="fresh", unit="u2",
-             halfword=False, member=False, ext=".c", addr="0x2"),
-        dict(cls="splice", parked=False, has_partial=True, lines=9, name="grown", unit="u3",
-             halfword=True, member=False, ext=".c", addr="0x3"),
-        dict(cls="pool", parked=False, has_partial=True, lines=2, name="lit", unit="u3",
-             halfword=False, member=False, ext=".c", addr="0x4"),
+        row("splice", "p", "u1", 1, parked=True),
+        row("splice", "fresh", "u2", 3, has_partial=False),
+        row("splice", "grown", "u3", 9, halfword=True),
+        row("pool", "lit", "u3", 2),
+        row("pool", "trail", "u4", 4, own_pool="trailing"),
+        row("pool", "inner", "u4", 6, own_pool="interior"),
+        row("pool", "alone", "u5", 5),
     ]
     assert [r["name"] for r in nxt.queue(rows, "splice")] == ["grown", "fresh", "p"]
     assert [r["name"] for r in nxt.queue(rows, "splice", include_parked=False)] == ["grown", "fresh"]
-    groups = nxt.batches(rows, count=2, per=1)
-    assert [[r["name"] for r in g] for g in groups] == [["grown"], ["fresh"]]
-    assert nxt.batches(rows, count=2, per=1, min_lines=5) == [[rows[2]]]
+    # splice first, then pool; parked and own-pool functions are not ready at all
+    assert [r["name"] for r in nxt.queue(rows, "pool")] == ["lit", "trail", "alone", "inner"]
+    assert [r["name"] for r in nxt.ready(rows)] == ["grown", "fresh", "lit", "alone"]
+    assert nxt.flags(rows[4], "halfword", "parked") == ["own pool: trailing"]
+    assert nxt.flags(rows[2], "halfword", "parked") == ["halfword"]
+    # a unit's pool functions ride with its splice ones; u4 never appears
+    groups = nxt.batches(rows, count=3, per=1)
+    assert [[r["name"] for r in g] for g in groups] == [["grown", "lit"], ["fresh"], ["alone"]]
+    assert nxt.batches(rows, count=2, per=1, min_lines=5) == [[rows[2]], [rows[6]]]
     cmds = nxt.ticket_commands(groups, "winx-test")
-    assert cmds.count("bd create ") == 2
-    assert "--parent winx-test" in cmds and "u3  .c  grown (9 lines, halfword start)" in cmds
+    assert cmds.count("bd create ") == 3
+    assert "--parent winx-test" in cmds
+    assert "u3  .c  grown (9 lines, halfword start), lit (2 lines, pool)" in cmds
+    assert "dry run" not in cmds and "pool-loading" not in cmds
+    assert "Batch 1 of 3: 1 unit(s), 2 function(s)" in cmds
 
 
 def test_parked_names_reads_every_heading_style(tmp_path):

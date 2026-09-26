@@ -4,7 +4,8 @@
     python scripts/next.py                  summary: every remaining function by what blocks it
     python scripts/next.py --count          the counts, nothing else
     python scripts/next.py --queue splice   the ready queue, ranked, one line per function
-    python scripts/next.py --queue pool     the pool-loading functions, ranked the same way
+    python scripts/next.py --queue pool     the pool-loading functions, ranked the same way;
+                                            `own pool: trailing|interior` marks a refusal
     python scripts/next.py --unit STEM      one unit: each function and its state
     python scripts/next.py --batches N      N batch tickets off the ready queue, as bd create commands
     python scripts/next.py --json           the whole survey as JSON
@@ -36,7 +37,13 @@ asm/nonmatching/<unit>/ says:
            these in whole-asm units load no value that appears twice in their pool
            and none uses label+offset, so the rewrite is a lookup, not a search.
            The class is kept apart from `splice` because a refusal is still
-           possible; --queue pool ranks it the same way.
+           possible; --queue pool ranks it the same way. A slice that defines a
+           pool word of its own (splice_unit.RE_OWN_POOL) is the refusal the
+           splicer can tell in advance, so it is reported as a sub-state,
+           `own_pool`: `trailing` when every own word sits after the last
+           instruction (winx-w0p.1 takes these), `interior` when an instruction
+           follows one (winx-w0p.2). --batches skips both while the splicer
+           refuses them.
   adr      Thumb, `ADR rN, label` or `add rN, pc, #imm`: a pc-relative address into
            unit data that no pool token names. armasm rejects the splice (A1150E).
   veneer   a body of exactly `bx pc`: armlink's interworking thunk, no C source.
@@ -47,10 +54,12 @@ its class -- parking is about attempts, not about what the tooling can take -- b
 the ready queue puts parked functions last, and --batches skips them: each has a
 deferred retry ticket and releasing that is the owner's call.
 
-Ranking inside a class: a unit that already has a partial/ source first (its build
-plumbing exists and one function of it has matched), then fewest asm lines. A
-batch is whole units, filled to --per functions, so a unit's candidates ride
-together as they did in winx-78k.
+The ready queue, which --batches draws from, is class `splice` and then class
+`pool` without an own pool, parked functions left out. Ranking inside a class: a
+unit that already has a partial/ source first (its build plumbing exists and one
+function of it has matched), then fewest asm lines. A batch is whole units,
+filled to --per functions, so a unit's candidates ride together as they did in
+winx-78k; a unit's pool functions ride with its splice ones.
 """
 
 import argparse
@@ -68,6 +77,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import cpp_evidence  # noqa: E402
 from gen import is_code_unit, unit_stem  # noqa: E402
+from splice_unit import RE_OWN_POOL  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SYMBOLS = os.path.join(REPO, "config", "symbols.yml")
@@ -80,6 +90,9 @@ POOL_TOKEN = re.compile(r"\b_0[0-9A-Fa-f]{7}\b")
 ADR = re.compile(r"^\s*(adr\b|add\s+r\d+\s*,\s*pc\b)", re.I | re.M)
 FUNC_MACRO = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_(start|end)\b")
 FUNC_START = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_start\s+(\S+)", re.M)
+# A body line that is not an instruction: an own pool word, the ALIGN or DCB
+# padding around it, a numeric local label or a pool label on a line of its own.
+NOT_INSTRUCTION = re.compile(r"^(?:_0[0-9A-Fa-f]{7}(?:\s+DC\w+.*)?|ALIGN\b.*|DC[BWDQ]U?\b.*|\d+)$", re.I)
 # The name(s) an entry in notes/parked.md is about, in either of its shapes:
 # a `## ` heading -- `## name (where) -- ticket`, or several at once as
 # `## a, b, c (where)` and `## a / b (where)` -- or, in the older entries, a
@@ -103,7 +116,9 @@ def classify(name, text):
     """One slice's state, from its text alone.
 
     Returns a dict with `cls` (one of CLASSES), `mode`, `lines` (instruction
-    lines, macros and blanks excluded), `halfword`, `member`.
+    lines, macros and blanks excluded), `halfword`, `member`, and `own_pool`:
+    None, or "trailing" / "interior" for a slice that defines a pool word of its
+    own, by whether an instruction follows the first of them.
     """
     m = FUNC_START.search(text)
     if not m:
@@ -128,7 +143,18 @@ def classify(name, text):
         "lines": len(body),
         "halfword": mode == "non_word_aligned_thumb",
         "member": bool(MEMBER.search(name)),
+        "own_pool": own_pool(body),
     }
+
+
+def own_pool(body):
+    """None, "trailing" or "interior": where a slice keeps its own pool words."""
+    first = next((i for i, ln in enumerate(body) if RE_OWN_POOL.match(ln)), None)
+    if first is None:
+        return None
+    if any(not NOT_INSTRUCTION.match(ln) for ln in body[first + 1:]):
+        return "interior"
+    return "trailing"
 
 
 def parked_names(path=PARKED):
@@ -243,7 +269,13 @@ def survey(repo=REPO):
 
 
 def rank_key(rec):
-    return (rec["parked"], not rec["has_partial"], rec["lines"], rec["name"])
+    return (rec["parked"], rec["cls"] != "splice", not rec["has_partial"],
+            rec["lines"], rec["name"])
+
+
+def takeable(rec):
+    """Whether the splicer takes this function today: splice, or pool with no own pool."""
+    return rec["cls"] == "splice" or (rec["cls"] == "pool" and not rec.get("own_pool"))
 
 
 def queue(rows, cls, include_parked=True):
@@ -251,16 +283,29 @@ def queue(rows, cls, include_parked=True):
     return sorted(out, key=rank_key)
 
 
+def ready(rows, max_lines=None, min_lines=0):
+    """The ready queue: what --batches draws from, ranked. Splice first, then pool."""
+    return sorted((r for r in rows if takeable(r) and not r["parked"]
+                   and min_lines <= r["lines"]
+                   and (max_lines is None or r["lines"] <= max_lines)), key=rank_key)
+
+
+def flags(rec, *keys):
+    """The short words printed after a function: halfword, parked, member, own pool."""
+    out = [k for k in keys if rec.get(k)]
+    if rec.get("own_pool"):
+        out.append(f"own pool: {rec['own_pool']}")
+    return out
+
+
 def batches(rows, count, per=5, max_lines=None, min_lines=0):
     """Whole units off the ready queue, `per` functions per batch, smallest first.
 
-    `min_lines` leaves out the one-line stubs: they convert, but a dry run that
-    is meant to measure the loop learns nothing from `bx lr`.
+    `min_lines` leaves out the one-line stubs: they convert, but a run that is
+    meant to measure the loop learns nothing from `bx lr`.
     """
-    ready = [r for r in rows if r["cls"] == "splice" and not r["parked"]
-             and min_lines <= r["lines"] and (max_lines is None or r["lines"] <= max_lines)]
     units = collections.defaultdict(list)
-    for r in ready:
+    for r in ready(rows, max_lines, min_lines):
         units[r["unit"]].append(r)
     order = sorted(units, key=lambda u: min(rank_key(r) for r in units[u]))
     out, cur = [], []
@@ -278,9 +323,9 @@ def batches(rows, count, per=5, max_lines=None, min_lines=0):
 
 TICKET = """\
 Convert {nfun} function(s) across {nunit} unit(s), {lines} asm lines in all, each byte-matching.
-Batch {i} of {n} of the phase 5 loop dry run: the recipe is .agents/workflows/decompiling_to_c.md
-and the budget is notes/matching-protocol.md -- three build-and-compare cycles per function,
-then park it and finish the rest of the batch.
+Batch {i} of {n}: the recipe is .agents/workflows/decompiling_to_c.md and the budget is
+notes/matching-protocol.md -- three build-and-compare cycles per function, then park it
+and finish the rest of the batch.
 
 Units, the source to write, and the function(s) to convert in each:
 {units}
@@ -297,13 +342,18 @@ needs a decl: (then run python scripts/gen.py). No Makefile change is needed or 
 Check: make check prints winxclub.gba: OK and build/report.json scores each converted
 function 100.0. That is the only verdict.
 
+A function marked `pool` loads a literal: the splicer moves each load onto the unit's
+pool word with the same value, and refuses, naming the value, when the unit's pool has
+no such word or two of them. That refusal is not one of your three cycles and not your
+C to work around: park it with the splicer's line and move on.
+
 Parking: restore asm/split/<unit>.s (or keep the unit's matched functions and leave the
 parked one in asm/nonmatching/), append ONE entry to notes/parked.md with a single
 cat >> command, and file the deferred retry ticket the protocol shows, linked
 discovered-from this one. A parked function is a correct outcome, not a failed ticket.
 
-Out of scope: renaming anything, the unit's other functions, pool-loading or ARM
-functions, the Makefile, tools/, config/fixups.yml.
+Out of scope: renaming anything, the unit's other functions, ARM functions, the
+Makefile, tools/, config/fixups.yml.
 """
 
 
@@ -318,11 +368,11 @@ def ticket_commands(groups, parent):
         for u, rs in by_unit.items():
             names = ", ".join(f"{r['name']} ({r['lines']} lines"
                               f"{', halfword start' if r['halfword'] else ''}"
-                              f"{', member' if r['member'] else ''})" for r in rs)
+                              f"{', member' if r['member'] else ''}"
+                              f"{', pool' if r['cls'] == 'pool' else ''})" for r in rs)
             note = " -- has partial/ source already" if rs[0]["has_partial"] else ""
             unit_lines.append(f"  {u}  {rs[0]['ext']}  {names}{note}")
-        title = (f"Loop dry run, batch {i} of {n}: {len(by_unit)} unit(s), "
-                 f"{len(g)} function(s)")
+        title = f"Batch {i} of {n}: {len(by_unit)} unit(s), {len(g)} function(s)"
         body = TICKET.format(
             nfun=len(g), nunit=len(by_unit), lines=sum(r["lines"] for r in g),
             i=i, n=n, units="\n".join(unit_lines),
@@ -341,13 +391,18 @@ def summary(rows, notes):
         p = sum(r["parked"] for r in rs)
         print(f"{cls:8} {len(rs):5} {p:7} {len(rs) - p:6}  "
               f"{sum(r['halfword'] for r in rs):8}  {sum(r['has_partial'] for r in rs):11}")
-    ready = queue(rows, "splice", include_parked=False)
-    if ready:
-        sizes = sorted(r["lines"] for r in ready)
-        print(f"\nready queue: {len(ready)} functions, lines p50 {sizes[len(sizes) // 2]} "
-              f"max {sizes[-1]}; head:")
-        for r in ready[:10]:
-            print(f"  {r['unit']:16} {r['name']:32} {r['lines']:4} lines"
+    own = collections.Counter(r["own_pool"] for r in rows if r["own_pool"])
+    if own:
+        print(f"\n{sum(own.values())} pool functions keep a pool of their own "
+              f"({own['trailing']} trailing, {own['interior']} interior); "
+              f"the splicer refuses them and --batches skips them")
+    rs = ready(rows)
+    if rs:
+        sizes = sorted(r["lines"] for r in rs)
+        print(f"\nready queue (splice, then pool): {len(rs)} functions, "
+              f"lines p50 {sizes[len(sizes) // 2]} max {sizes[-1]}; head:")
+        for r in rs[:10]:
+            print(f"  {r['unit']:16} {r['name']:32} {r['cls']:7} {r['lines']:4} lines"
                   f"{'  halfword' if r['halfword'] else ''}{'  member' if r['member'] else ''}")
     for note in notes:
         print(f"note: {note}", file=sys.stderr)
@@ -366,7 +421,8 @@ def main():
     ap.add_argument("--max-lines", type=int, help="leave larger functions out of --batches")
     ap.add_argument("--min-lines", type=int, default=0,
                     help="leave smaller functions out of --batches (the bx-lr stubs)")
-    ap.add_argument("--parent", default="winx-dqh", help="epic for --batches tickets")
+    ap.add_argument("--parent", default="winx-iez",
+                    help="epic for --batches tickets (default: phase 6, the batch after winx-w0p)")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
@@ -376,21 +432,23 @@ def main():
         print()
     elif args.count:
         c = collections.Counter(r["cls"] for r in rows)
+        own = collections.Counter(r["own_pool"] for r in rows if r["own_pool"])
         print(f"remaining {len(rows)}  " + "  ".join(f"{k} {c[k]}" for k in CLASSES)
-              + f"  parked {sum(r['parked'] for r in rows)}")
+              + f"  parked {sum(r['parked'] for r in rows)}"
+              + f"  own-pool {sum(own.values())} ({own['trailing']} trailing, "
+              + f"{own['interior']} interior)  ready {len(ready(rows))}")
     elif args.unit:
         rs = sorted((r for r in rows if r["unit"] == args.unit), key=lambda r: r["addr"])
         if not rs:
             sys.exit(f"{args.unit}: nothing of it is still assembly")
         for r in rs:
             print(f"{r['addr']} {r['name']:32} {r['cls']:7} {r['lines']:4} lines"
-                  f"{'  halfword' if r['halfword'] else ''}"
-                  f"{'  parked' if r['parked'] else ''}{'  member' if r['member'] else ''}")
+                  + "".join("  " + f for f in flags(r, "halfword", "parked", "member")))
     elif args.queue:
         rs = queue(rows, args.queue, args.include_parked or args.queue != "splice")
         for r in rs[:args.limit]:
-            flags = [k for k in ("halfword", "parked", "member") if r[k]]
-            print("\t".join([r["unit"], r["name"], str(r["lines"]), r["ext"]] + flags))
+            print("\t".join([r["unit"], r["name"], str(r["lines"]), r["ext"]]
+                            + flags(r, "halfword", "parked", "member")))
     elif args.batches:
         groups = batches(rows, args.batches, args.per, args.max_lines, args.min_lines)
         print(ticket_commands(groups, args.parent))
