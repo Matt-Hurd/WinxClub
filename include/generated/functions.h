@@ -33,9 +33,18 @@ extern void sub_800C1CA(void *a0, void *a1); /* 0x0800C1CA */
 /* asm/nonmatching/split_800ED7C */
 extern void sub_800EF2A(void); /* 0x0800EF2A */
 
+/* asm/split/split_800F010.s */
+extern void *sub_800F1DA(void *a0); /* 0x0800F1DA */
+
 /* asm/split/split_80142D0.s */
 extern void sub_80143E0(void *a0); /* 0x080143E0 */
 extern void sub_8014436(void *a0, int a1); /* 0x08014436 */
+
+/* asm/split/split_801537C.s */
+extern void sub_801549A(void *a0, void *a1, unsigned short a2); /* 0x0801549A */
+extern void sub_80154AA(void *a0, void *a1, unsigned short a2); /* 0x080154AA */
+extern void sub_80154BA(void *a0, void *a1, unsigned short a2); /* 0x080154BA */
+extern int sub_80154CE(void *a0); /* 0x080154CE */
 
 /* asm/nonmatching/split_80158E0 */
 extern int sub_80158E0(void *a0); /* 0x080158E0 */
