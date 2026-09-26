@@ -191,12 +191,12 @@ def test_own_pool_blocks_count_the_instructions_in_front_and_tell_the_branch_ove
     natural = ("\tldr r0, _08005100\n\tb %7\n\tALIGN\n_08005100 DCDU 0x1234\n6\n"
                "\tmovs r0, #1\n7\n\tbx lr\n")
     [b] = su.own_pool_blocks(natural)
-    assert b.k == 2 and b.around is None and b.loaded == ["_08005100"] and b.trampoline is None
-    # a label on the branch over the pool: a conditional branch was routed through it
-    routed = ("\tldr r0, _08005100\n\tbeq %8\n\tmovs r0, #1\n8\n\tb %9\n\tALIGN\n"
+    assert b.k == 2 and b.around is None and b.loaded == ["_08005100"] and b.label is None
+    # a label on the branch over the pool: a branch target the pool dump landed on
+    landed = ("\tldr r0, _08005100\n\tbeq %8\n\tmovs r0, #1\n8\n\tb %9\n\tALIGN\n"
               "_08005100 DCDU 0x1234\n9\n\tbx lr\n")
-    [b] = su.own_pool_blocks(routed)
-    assert b.k == 3 and b.around == "9" and b.trampoline == "8"
+    [b] = su.own_pool_blocks(landed)
+    assert b.k == 3 and b.around == "9" and b.label == "8"
     # the disassembler's labels among the words stay in the block; the one after does not
     strings = ("\tldr r0, _08005100\n\tb %9\n\tALIGN\n_08005100 DCDU 0x1234\n8\n"
                "\tDCB 0x42, 0x00\n_08005108 DCDU 0x5678\n9\n\tbx lr\n")
@@ -275,12 +275,27 @@ def test_a_pool_after_the_functions_own_branch_goes_back_with_no_branch_of_its_o
             "\tthumb_func_end sub_1\n") in unnumbered(out)
 
 
-def test_a_branch_routed_past_the_pool_is_refused():
-    routed = slice_text("sub_1", "ldr r0, _08005100", "beq %8", "movs r0, #1", "8", "b %9",
+def test_a_pool_that_landed_on_a_label_goes_in_after_the_compiled_label():
+    # the slice: `beq %8` reaches the `b %9` over the words, since tcc emitted the
+    # label before the pool; compiled alone the same label sits on `bx lr`
+    landed = slice_text("sub_1", "ldr r0, _08005100", "beq %8", "movs r0, #1", "8", "b %9",
                         "ALIGN", "_08005100 DCDU 0x1234", "9", "bx lr")
     body = "\tLDR      r0,_pool_1_24_0\n\tBEQ      %9\n\tMOV      r0,#1\n9\n\tBX       lr\n"
-    msg = refused(body, {"_pool_1_24_0": ("DCD", "0x1234")}, {"sub_1.s": routed})
-    assert "through label 8" in msg and "out of range" in msg and "_08005100" in msg
+    out = su.splice("u", ["sub_1", "sub_2"], pieces(**{"sub_1.s": landed}), {"sub_1": body}, [],
+                    {"_pool_1_24_0": ("DCD", "0x1234")}, CONSTANTS)
+    assert ("\tthumb_func_start sub_1\n\tLDR      r0,_08005100\n\tBEQ      %N\n"
+            "\tMOV      r0,#1\nN\n\tb %N\n\tALIGN\n_08005100 DCDU 0x1234\nN\n"
+            "\tBX       lr\n\tthumb_func_end sub_1\n") in unnumbered(out)
+    # two compiled labels at that point both go in front of the words
+    two = "\tLDR      r0,_pool_1_24_0\n\tBEQ      %9\n\tMOV      r0,#1\n9\n10\n\tBX       lr\n"
+    out = su.splice("u", ["sub_1", "sub_2"], pieces(**{"sub_1.s": landed}), {"sub_1": two}, [],
+                    {"_pool_1_24_0": ("DCD", "0x1234")}, CONSTANTS)
+    assert "\tMOV      r0,#1\nN\nN\n\tb %N\n\tALIGN\n" in unnumbered(out)
+    # and a compiled function with no label there is refused, naming the slice's
+    none = "\tLDR      r0,_pool_1_24_0\n\tBEQ      %9\n\tMOV      r0,#1\n\tBX       lr\n9\n"
+    msg = refused(none, {"_pool_1_24_0": ("DCD", "0x1234")}, {"sub_1.s": landed})
+    assert "label 8 on the branch over the pool" in msg and "_08005100" in msg
+    assert "no label after instruction 3" in msg
 
 
 def test_an_interior_own_pool_is_refused_naming_both_sides():
@@ -384,16 +399,78 @@ def test_a_function_compiled_alone_splices_back_under_the_pool_the_unit_gave_it(
             "first.s": slice_text("first", "bx lr"), "big.s": slice_big}
     out = su.splice("midpool", ["first", "big"], unit, {"big": bodies["big"]}, imports, pool, {})
     got = out[out.index("\tthumb_func_start big\n"):out.index("\tthumb_func_end big\n") + 21]
-
-    def instructions(text):
-        return [re.sub(r"%\d+", "%N", " ".join(ln.split())).lower() for ln in text.splitlines()
-                if su.is_instruction(ln) or su.RE_UNIT_WORD.match(ln)]
-
     assert instructions(got) == instructions(slice_big)
     assert "_pool_" not in got
     # and through armasm: the unit spliced from asm alone and the unit with big
     # compiled alone assemble to the same code bytes
     asm_only = su.splice("midpool", ["first", "big"], unit)
+    assert code_bytes(tmp_path, "ref", asm_only) == code_bytes(tmp_path, "got", out)
+
+
+def instructions(text):
+    """The instructions and pool words of `text`, spacing, case and local label
+    numbers set aside."""
+    return [re.sub(r"%\d+", "%N", " ".join(ln.split())).lower() for ln in text.splitlines()
+            if su.is_instruction(ln) or su.RE_UNIT_WORD.match(ln)]
+
+
+def compiled_alone(tmp_path, fixture, name):
+    """tests/fixtures/<fixture>/<fixture>.c with only `name` and the externs in
+    it, through tcc and the label pass: (bodies, imports, pool)."""
+    import subprocess
+    import asmfix
+    src = open(os.path.join(FIXTURES, fixture, f"{fixture}.c")).read()
+    alone = src[src.index(f"void {name}("):src.index("void last(")]
+    (tmp_path / "alone.c").write_text(src[:src.index("void first(")] + alone)
+    subprocess.run(f"{TCC} {FLAGS} -o {tmp_path / 'alone.s'} {tmp_path / 'alone.c'}",
+                   shell=True, check=True)
+    asmfix.fix_file(str(tmp_path / "alone.s"), dict(asmfix.load_config(), pools={}))
+    return su.compiler_output((tmp_path / "alone.s").read_text())
+
+
+def fixture_slice(fixed, name, words, over):
+    """`name`'s body in a fixture's fixed.s, as the disassembler would have cut
+    the together-compiled unit: pool labels renamed by `words`, the compiler's
+    DCW before the words an ALIGN, and the `B` over them spelled as a slice's."""
+    start = fixed.index(f"{name} PROC") + len(f"{name} PROC\n")
+    body = fixed[start:fixed.index("        ENDP", start)]
+    body = body.replace("        DCW      0000\n", "\tALIGN\n")
+    body = re.sub(r"^(_pool_1_\d+_\d+)\n        DCD      (\S+)\n",
+                  lambda m: f"{words[m.group(1)]} DCDU {m.group(2)}\n", body, flags=re.M)
+    body = re.sub(r"_pool_1_\d+_\d+", lambda m: words[m.group(0)], body)
+    body = re.sub(r"^        ", "\t", body, flags=re.M).replace(f"\tB        %{over}", f"\tb %{over}")
+    return f"\tthumb_func_start {name}\n" + body + f"\tthumb_func_end {name}\n\n"
+
+
+@pytest.mark.skipif(not os.path.exists(TCC), reason="ADS tcc not installed")
+def test_a_pool_that_landed_on_a_label_splices_back_byte_for_byte(tmp_path):
+    """tests/fixtures/labelpool: the pool tcc dumps inside `big` lands on the
+    label the `if` branches to, so the unit reads `988`, `B %1040`, the words,
+    `1040`. Compiled alone, `big` has the label on the instruction after them.
+    Spliced, the label goes back in front of the words and the branch to it
+    reaches the same address the unit's does.
+    """
+    fixed = open(os.path.join(FIXTURES, "labelpool", "fixed.s")).read()
+    bodies, imports, pool = compiled_alone(tmp_path, "labelpool", "big")
+    together, _, _ = su.compiler_output(fixed)
+    assert together["big"] != bodies["big"]  # the label is at a different line
+    words = {f"_pool_1_992_{4 * i}": f"_08000{0x400 + 4 * i:03X}" for i in range(12)}
+    words.update({f"_pool_1_1068_{4 * i}": f"_08000{0x500 + 4 * i:03X}" for i in range(4)})
+    slice_big = fixture_slice(fixed, "big", words, 1040)
+    assert su.own_pool_shape(slice_big) == "interior"
+    [block] = su.own_pool_blocks(slice_big.split("\n", 1)[1].rsplit("\tthumb_func_end", 1)[0])
+    assert block.around == "1040" and block.label == "988" and len(block.words) == 12
+    unit = {"header.s": "\tAREA text, CODE\n\n\tIMPORT gBuffer\n\tIMPORT gLits\n"
+                        "\tIMPORT gSecond\n\tIMPORT gThird\n\n",
+            "pool.s": "\tALIGN\n_08000500 DCDU 0x00022222\n_08000504 DCDU gSecond\n"
+                      "_08000508 DCDU gThird\n_0800050C DCDU 0x00054321\n",
+            "first.s": slice_text("first", "bx lr"), "big.s": slice_big}
+    out = su.splice("labelpool", ["first", "big"], unit, {"big": bodies["big"]}, imports, pool, {})
+    got = out[out.index("\tthumb_func_start big\n"):out.index("\tthumb_func_end big\n") + 21]
+    assert instructions(got) == instructions(slice_big)
+    assert "_pool_" not in got
+    assert re.search(r"\s+BEQ\s+%(\d+)\n(?:.*\n)*?\1\n\tb %\d+\n\tALIGN\n_08000400 DCDU", got)
+    asm_only = su.splice("labelpool", ["first", "big"], unit)
     assert code_bytes(tmp_path, "ref", asm_only) == code_bytes(tmp_path, "got", out)
 
 

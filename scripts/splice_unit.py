@@ -82,12 +82,15 @@ the same value is not a candidate); a load after the last block goes onto the
 unit's end pool by value as any other. Refused, naming both sides, when the
 compiled function has fewer instructions than the slice has before a block,
 loads a value the original does not load from that block, or does not load a
-word the original does. Refused too when the branch over the pool carries a
-label (`33`, `b %34`, the words, `34`): a conditional branch from before the
-pool could not reach past it, so tcc routed it through that `b` -- and the
-function compiled on its own, with no pool in the way, branches straight
-there and the words put back push it out of range (A1176E). 4 of the 64
-interior slices are that shape (2026-09-26); sub_8021CFC was the first tried.
+word the original does. When the branch over the pool carries a label (`33`,
+`b %34`, the words, `34`) that label is a branch target of the function's own
+which the pool dump landed on: tcc emitted the label, then the branch over the
+words, so a `beq %33` from before the pool reaches the `b` and not the code
+after it. Compiled alone the same label sits on that code, with no pool in
+front of it (tests/fixtures/labelpool), so the block goes in *after* the
+compiled label there, and is refused when the compiled function defines none
+at that point. 4 of the 64 interior slices are that shape (2026-09-26):
+sub_8018F5E, HandleLoadGameScreen, sub_8021248, sub_8021CFC.
 
 Numeric local labels are a shared namespace in an armasm source file: the asm
 slices already repeat `1`, `2`, `3` across functions and armasm resolves `%N`
@@ -218,7 +221,7 @@ def is_instruction(line):
     return bool(line.strip()) and line[0] in " \t" and not RE_NOT_INSTRUCTION.match(line)
 
 
-Block = collections.namedtuple("Block", "k text around words loaded trampoline")
+Block = collections.namedtuple("Block", "k text around words loaded label")
 
 
 def own_pool_blocks(middle):
@@ -230,9 +233,9 @@ def own_pool_blocks(middle):
     label of the branch over it when that branch is the compiler's own (a
     `b %N` right before, `N` right after) and so not one of the k, else None;
     `words`, [(label, directive, value)]; `loaded`, the labels of the words
-    the slice's own instructions load, in the pool's order; and `trampoline`,
-    the local label on the branch over the pool when it has one -- a
-    conditional branch's way past a pool it could not reach over.
+    the slice's own instructions load, in the pool's order; and `label`, the
+    local label on the branch over the pool when it has one -- a branch target
+    of the function's own that the pool dump landed on.
     """
     lines = middle.splitlines(True)
     found, k, i = [], 0, 0
@@ -249,20 +252,20 @@ def own_pool_blocks(middle):
             j -= 1  # the label after the pool is the code's, not the pool's
         around = RE_B_LOCAL.match(lines[start - 1]) if start else None
         after = RE_LOCAL_DEF.match(lines[j]) if j < len(lines) else None
-        trampoline = None
+        label = None
         if around and after and around.group(1) == after.group(1):
             around = around.group(1)
             k -= 1  # the branch over the pool is the compiler's, not the function's
             on_it = RE_LOCAL_DEF.match(lines[start - 2]) if start > 1 else None
-            trampoline = on_it.group(1) if on_it else None
+            label = on_it.group(1) if on_it else None
         else:
             around = None
         words = [m.groups() for m in map(RE_UNIT_WORD.match, lines[i:j]) if m]
-        found.append([k, "".join(lines[start:j]), around, words, trampoline])
+        found.append([k, "".join(lines[start:j]), around, words, label])
         i = j
     refs = {m.group(0) for ln in lines if is_instruction(ln) for m in RE_ADDR_REF.finditer(ln)}
-    return [Block(k, text, around, words, [lab for lab, _, _ in words if lab in refs], tramp)
-            for k, text, around, words, tramp in found]
+    return [Block(k, text, around, words, [lab for lab, _, _ in words if lab in refs], label)
+            for k, text, around, words, label in found]
 
 
 def strip_body_pools(name, body, pool):
@@ -495,24 +498,22 @@ def splice_interior(unit, name, body, compiled_pool, middle, by_value, constants
     `middle` is the slice between its *_func_start and its tail. A block goes
     in after as many compiled instructions as the slice has in front of it,
     verbatim, under a fresh local label for the branch over it when the branch
-    is the compiler's. A load before a block is renamed onto the word of that
-    block the original loads with the same value; a load after the last block
-    onto the unit's end pool by value. `taken` is the local labels the fresh
-    ones must avoid. Refused, naming both sides, when the compiled function is
-    too short to reach a block, loads a value the original does not load from
-    that block, or leaves a word the original loads unloaded.
+    is the compiler's. When the slice has a label on that branch, the block goes
+    in after the compiled label(s) at the same point, so that the branches to
+    it reach the `b` over the words as the original's do. A load before a
+    block is renamed onto the word of that block the original loads with the
+    same value; a load after the last block onto the unit's end pool by value.
+    `taken` is the local labels the fresh ones must avoid. Refused, naming both
+    sides, when the compiled function is too short to reach a block, defines no
+    label where the slice has one on the branch over it, loads a value the
+    original does not load from that block, or leaves a word the original
+    loads unloaded.
     """
     require_label_pass(unit, name, body)
     blocks = own_pool_blocks(middle)
     lines = body.splitlines(True)
     positions = [i for i, ln in enumerate(lines) if is_instruction(ln)]
     for b in blocks:
-        if b.trampoline is not None:
-            raise SpliceError(
-                f"{unit}: {name} reaches the branch over the pool at {b.words[0][0]} "
-                f"through label {b.trampoline}: a conditional branch tcc routed past the "
-                f"pool, which the function compiled on its own does not need and the "
-                f"words put back would push out of range")
         if b.k > len(positions):
             raise SpliceError(
                 f"{unit}: {name} keeps a pool ({b.words[0][0]} ...) after {b.k} "
@@ -560,6 +561,16 @@ def splice_interior(unit, name, body, compiled_pool, middle, by_value, constants
             fresh = next(free)
             text = f"\tb %{fresh}\n{text}{fresh}\n"
         at = positions[b.k - 1] + 1 if b.k else 0
+        if b.label is not None:
+            upto = positions[b.k] if b.k < len(positions) else len(lines)
+            defined = [i for i in range(at, upto) if RE_LOCAL_DEF.match(lines[i])]
+            if not defined:
+                raise SpliceError(
+                    f"{unit}: {name} has label {b.label} on the branch over the pool "
+                    f"at {b.words[0][0]}, a branch target of its own that the pool "
+                    f"landed on, and the compiled function defines no label after "
+                    f"instruction {b.k}")
+            at = defined[-1] + 1
         out[at:at] = [text]
     return "".join(out)
 
