@@ -9,7 +9,9 @@ import next as nxt
 
 
 def slice_text(mode, name, *body):
-    lines = [f"\t{mode}_func_start {name}"] + [f"\t{b}" for b in body]
+    # a pool word and a numeric local label sit at column 0, as in the real slices
+    lines = [f"\t{mode}_func_start {name}"] + [
+        b if b[:2] == "_0" or b.isdigit() else f"\t{b}" for b in body]
     lines.append(f"\tthumb_func_end {name}" if mode != "arm" else f"\tarm_func_end {name}")
     return "\n".join(lines) + "\n"
 
@@ -143,15 +145,15 @@ def test_ready_queue_puts_parked_last_and_batches_skip_them():
     ]
     assert [r["name"] for r in nxt.queue(rows, "splice")] == ["grown", "fresh", "p"]
     assert [r["name"] for r in nxt.queue(rows, "splice", include_parked=False)] == ["grown", "fresh"]
-    # splice first, then pool; parked and own-pool functions are not ready at all
+    # splice first, then pool; parked and interior-own-pool functions are not ready at all
     assert [r["name"] for r in nxt.queue(rows, "pool")] == ["lit", "trail", "alone", "inner"]
-    assert [r["name"] for r in nxt.ready(rows)] == ["grown", "fresh", "lit", "alone"]
+    assert [r["name"] for r in nxt.ready(rows)] == ["grown", "fresh", "lit", "trail", "alone"]
     assert nxt.flags(rows[4], "halfword", "parked") == ["own pool: trailing"]
     assert nxt.flags(rows[2], "halfword", "parked") == ["halfword"]
-    # a unit's pool functions ride with its splice ones; u4 never appears
+    # a unit's pool functions ride with its splice ones; "inner" never appears
     groups = nxt.batches(rows, count=3, per=1)
-    assert [[r["name"] for r in g] for g in groups] == [["grown", "lit"], ["fresh"], ["alone"]]
-    assert nxt.batches(rows, count=2, per=1, min_lines=5) == [[rows[2]], [rows[6]]]
+    assert [[r["name"] for r in g] for g in groups] == [["grown", "lit"], ["fresh"], ["trail"]]
+    assert nxt.batches(rows, count=3, per=1, min_lines=5) == [[rows[2]], [rows[6]]]
     cmds = nxt.ticket_commands(groups, "winx-test")
     assert cmds.count("bd create ") == 3
     assert "--parent winx-test" in cmds

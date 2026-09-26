@@ -9,7 +9,9 @@ import splice_unit as su
 
 
 def slice_text(name, *body, mode="thumb"):
-    lines = [f"\t{mode}_func_start {name}"] + [f"\t{b}" for b in body]
+    # a pool word and a numeric local label sit at column 0, as in the real slices
+    lines = [f"\t{mode}_func_start {name}"] + [
+        b if b[:2] == "_0" or b.isdigit() else f"\t{b}" for b in body]
     lines.append(f"\tthumb_func_end {name}")
     return "\n".join(lines) + "\n\n"
 
@@ -148,11 +150,46 @@ def test_a_pool_the_label_pass_did_not_name_is_refused():
     assert "_08005258" in msg
 
 
-def test_a_slice_with_its_own_mid_function_pool_is_refused():
-    own = slice_text("sub_1", "ldr r0, _08005100", "bx lr").replace(
-        "\tbx lr\n", "\tbx lr\n_08005100 DCDU 0x1234\n")
+def test_a_slice_with_a_pool_in_the_interior_of_its_body_is_refused():
+    own = slice_text("sub_1", "ldr r0, _08005100", "b %1", "ALIGN", "_08005100 DCDU 0x1234",
+                     "1", "bx lr")
+    assert su.own_pool_shape(own) == "interior"
     msg = refused("\tMOV r0,#1\n\tBX lr\n", {}, {"sub_1.s": own})
-    assert "own body" in msg
+    assert "own body" in msg and "interior" in msg
+
+
+TRAILING = slice_text("sub_1", "ldr r0, _08005100", "ldr r1, _08005104", "bx lr", "ALIGN",
+                      "_08005100 DCDU REG_IE", "_08005104 DCDU 0x1234")
+TRAILING_BODY = "\tLDR      r0,_pool_1_24_4\n\tLDR      r1,_pool_1_24_0\n\tBX       lr\n"
+TRAILING_POOL = {"_pool_1_24_4": ("DCD", "0x04000200"), "_pool_1_24_0": ("DCD", "0x00001234")}
+
+
+def test_a_trailing_own_pool_is_kept_verbatim_and_the_loads_renamed_by_position():
+    assert su.own_pool_shape(TRAILING) == "trailing"
+    assert su.own_pool_shape(slice_text("sub_1", "bx lr")) is None
+    # compiled order (4 then 0, as the file defines them) is the slice's order
+    pool = dict(TRAILING_POOL)
+    out = su.splice("u", ["sub_1", "sub_2"], pieces(**{"sub_1.s": TRAILING}),
+                    {"sub_1": TRAILING_BODY}, [], pool, CONSTANTS)
+    assert ("\tthumb_func_start sub_1\n"
+            "\tLDR      r0,_08005100\n\tLDR      r1,_08005104\n\tBX       lr\n"
+            "\tALIGN\n_08005100 DCDU REG_IE\n_08005104 DCDU 0x1234\n"
+            "\tthumb_func_end sub_1\n") in out
+    assert "_pool_" not in out and out.endswith(POOL + "\tEND\n")
+
+
+def test_a_trailing_own_pool_with_a_different_count_or_value_is_refused_naming_both():
+    body = "\tLDR      r0,_pool_1_24_4\n\tBX       lr\n"
+    msg = refused(body, TRAILING_POOL, {"sub_1.s": TRAILING})
+    assert "keeps 2 pool word(s)" in msg and "loads 1 (DCD 0x04000200)" in msg
+    wrong = {"_pool_1_24_4": ("DCD", "0x04000200"), "_pool_1_24_0": ("DCD", "0x5678")}
+    msg = refused(TRAILING_BODY, wrong, {"sub_1.s": TRAILING})
+    assert "entry 2 of 2" in msg and "_08005104 DCDU 0x1234" in msg and "0x5678" in msg
+    msg = refused(TRAILING_BODY, {"_pool_1_24_4": ("DCD", "0x04000200")}, {"sub_1.s": TRAILING})
+    assert "_pool_1_24_0" in msg and "does not define" in msg
+    string = {"_pool_1_24_4": ("DCD", "0x04000200"), "_pool_1_24_0": ("DCB", '"abc",0')}
+    msg = refused(TRAILING_BODY, string, {"sub_1.s": TRAILING})
+    assert "entry 2 of 2" in msg and 'DCB "abc",0' in msg and "word against a word" in msg
 
 
 def test_a_pool_free_body_never_reads_the_constants():

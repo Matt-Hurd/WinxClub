@@ -48,12 +48,22 @@ compared as a number whatever its spelling; a GBA register name in the unit's
 pool is read through asm/gba_constants.inc, since the compiler only ever
 writes the address; a symbol is compared as text. The splice refuses, naming
 the value, when the unit's pool has no such word or more than one (the
-original's choice cannot be told from the value alone), when the entry is a
-string, and when the slice being replaced carried a literal pool of its own in
-the middle of the function -- a compiled body has nowhere to put those words,
-so the ones after them would move. Measured 2026-09-25 over the 273 aligned
-pool-loading Thumb functions still in whole-asm units: one loads a value its
-unit's pool holds twice, none uses label+offset, so the rewrite is a lookup.
+original's choice cannot be told from the value alone), and when the entry is a
+string. Measured 2026-09-25 over the 273 aligned pool-loading Thumb functions
+still in whole-asm units: one loads a value its unit's pool holds twice, none
+uses label+offset, so the rewrite is a lookup.
+
+A slice that keeps pool words of its own (`_0803D67C DCDU REG_WIN0H` inside the
+function, own_pool_shape) is handled by where they sit. Trailing -- every own
+word after the last instruction, the shape ADS gives a function too far from
+the unit's end pool -- keeps the slice's block verbatim (its ALIGN, its words,
+its padding) after the compiled body, and each compiled load is renamed onto
+the slice's word at the same position: the compiled entries the body loads, in
+the compiled order, against the slice's words in theirs, refused naming both
+when the counts differ or a value does. None of the 17 such functions loads a
+word outside its own block (2026-09-25), so no by-value lookup is mixed in.
+Interior -- an instruction after an own word -- is still refused: a compiled
+body has nowhere to put those words, so the code after them would move.
 
 Numeric local labels are a shared namespace in an armasm source file: the asm
 slices already repeat `1`, `2`, `3` across functions and armasm resolves `%N`
@@ -102,6 +112,10 @@ RE_UNPLACED = re.compile(r"\|L\d+\.\d+\||\b_0[0-9A-Fa-f]{7}\b")
 RE_COMPILED_WORD = re.compile(r"^\s+(DC[BWDQ]U?)\s+(.*?)\s*$")
 RE_UNIT_WORD = re.compile(r"^(\S+)\s+(DC[BWDQ]U?)\s+(.*?)\s*$")
 RE_OWN_POOL = re.compile(r"^_0[0-9A-Fa-f]{7}\s+DC[BWDQ]", re.M)
+# A slice line that is not an instruction: an own pool word, the ALIGN or DCB
+# padding around it, a numeric local label or a pool label on a line of its own.
+RE_NOT_INSTRUCTION = re.compile(
+    r"^\s*(?:_0[0-9A-Fa-f]{7}(?:\s+DC\w+.*)?|ALIGN\b.*|DC[BWDQ]U?\b.*|\d+)\s*$", re.I)
 RE_SETA = re.compile(r"^(\S+)\s+SETA\s+([^;]*)")
 RE_LOCAL_DEF = re.compile(r"^(\d+)\s*$")
 RE_LOCAL_REF = re.compile(r"%([FB]?[AT]?)(\d+)\b")
@@ -144,6 +158,30 @@ def cut_slice(name, text):
     while i > 1 and (lines[i - 1].strip() == "" or lines[i - 1].rstrip("\n") == "\tALIGN"):
         i -= 1
     return lines[0], "".join(lines[i:])
+
+
+def own_pool_shape(text):
+    """None, "trailing" or "interior": where a slice keeps pool words of its own.
+
+    "trailing" when every own word sits after the last instruction (ALIGN, the
+    words, padding, then *_func_end); "interior" when an instruction follows one.
+    """
+    lines = [ln for ln in text.splitlines()
+             if ln.strip() and not RE_START.match(ln) and not RE_END.match(ln)]
+    first = next((i for i, ln in enumerate(lines) if RE_OWN_POOL.match(ln)), None)
+    if first is None:
+        return None
+    if any(not RE_NOT_INSTRUCTION.match(ln) for ln in lines[first + 1:]):
+        return "interior"
+    return "trailing"
+
+
+def own_pool_block(lead, middle):
+    """The trailing block of a slice: everything after its last instruction."""
+    lines = middle.splitlines(True)
+    last = max((i for i, ln in enumerate(lines)
+                if ln.strip() and not RE_NOT_INSTRUCTION.match(ln)), default=-1)
+    return "".join(lines[last + 1:])
 
 
 def compiler_output(text):
@@ -250,16 +288,58 @@ def unit_pool(text, constants):
     return by_value
 
 
-def rewrite_literals(unit, name, body, compiled_pool, by_value, constants):
-    """`body` with each load of the compiler's pool moved onto the unit's word
-    with the same value, or a SpliceError naming what could not be moved.
-    """
+def require_label_pass(unit, name, body):
     unplaced = RE_UNPLACED.search(body)
     if unplaced:
         raise SpliceError(
             f"{unit}: {name} loads {unplaced.group(0)}, a pool spelling the splicer "
             f"cannot place; the compiled file has to come through the label pass "
             f"with an empty pool record first")
+
+
+def rewrite_own_pool(unit, name, body, compiled_pool, block, constants):
+    """`body` with each load of the compiler's pool renamed onto the slice's own
+    word at the same position, or a SpliceError naming both sides.
+
+    `block` is the slice's trailing block; its labelled entries, in order, are
+    the words. The compiled entries are the ones `body` loads, in the order the
+    compiled file defines them. Same count, same value at each position, or
+    the ROM decides and the splice refuses.
+    """
+    require_label_pass(unit, name, body)
+    words = [m.groups() for m in map(RE_UNIT_WORD.match, block.splitlines()) if m]
+    loaded = set(RE_POOL_REF.findall(body))
+    undefined = sorted(loaded - set(compiled_pool))
+    if undefined:
+        raise SpliceError(f"{unit}: {name} loads {', '.join(undefined)}, which the "
+                          f"compiled file does not define")
+    entries = [(tok, *compiled_pool[tok]) for tok in compiled_pool if tok in loaded]
+    if len(entries) != len(words):
+        raise SpliceError(
+            f"{unit}: {name} keeps {len(words)} pool word(s) after its body "
+            f"({', '.join(f'{lab} {d} {v}' for lab, d, v in words)}) and the compiled "
+            f"function loads {len(entries)} ({', '.join(f'{d} {v}' for _, d, v in entries)}); "
+            f"the counts must agree for the rename by position")
+    for i, ((tok, cdir, cval), (label, directive, value)) in enumerate(zip(entries, words), 1):
+        if not (cdir.startswith("DCD") and directive.startswith("DCD")):
+            raise SpliceError(
+                f"{unit}: {name}: own pool entry {i} of {len(words)} is {label} "
+                f"{directive} {value} in the slice and {cdir} {cval} compiled; only "
+                f"a word against a word can be renamed by position")
+        if literal_value(cval, constants) != literal_value(value, constants):
+            raise SpliceError(
+                f"{unit}: {name}: own pool entry {i} of {len(words)} is {label} "
+                f"{directive} {value} in the slice and {cval} in the compiled "
+                f"function; the ROM decides")
+    rename = {tok: label for (tok, _, _), (label, _, _) in zip(entries, words)}
+    return RE_POOL_REF.sub(lambda m: rename[m.group(0)], body)
+
+
+def rewrite_literals(unit, name, body, compiled_pool, by_value, constants):
+    """`body` with each load of the compiler's pool moved onto the unit's word
+    with the same value, or a SpliceError naming what could not be moved.
+    """
+    require_label_pass(unit, name, body)
 
     def label_for(m):
         token = m.group(0)
@@ -387,12 +467,18 @@ def splice(unit, order, pieces, compiled=None, compiled_imports=(),
             continue
         lead, tail = cut_slice(name, text)
         body = compiled[name]
-        if RE_OWN_POOL.search(text):
+        shape = own_pool_shape(text)
+        if shape == "interior":
             raise SpliceError(
-                f"{unit}: {name} keeps a literal pool inside its own body; a "
-                f"compiled body has nowhere to put those words, so the code "
-                f"after them would move")
-        if RE_POOL_REF.search(body) or RE_UNPLACED.search(body):
+                f"{unit}: {name} keeps a literal pool inside its own body, with "
+                f"instructions after it (interior); a compiled body has nowhere "
+                f"to put those words, so the code after them would move")
+        if shape == "trailing":
+            if constants is None:
+                constants = gba_constants()
+            block = own_pool_block(lead, text[len(lead):len(text) - len(tail)])
+            body = rewrite_own_pool(unit, name, body, compiled_pool, block, constants) + block
+        elif RE_POOL_REF.search(body) or RE_UNPLACED.search(body):
             if by_value is None:
                 if constants is None:
                     constants = gba_constants()

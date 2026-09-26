@@ -41,9 +41,10 @@ asm/nonmatching/<unit>/ says:
            pool word of its own (splice_unit.RE_OWN_POOL) is the refusal the
            splicer can tell in advance, so it is reported as a sub-state,
            `own_pool`: `trailing` when every own word sits after the last
-           instruction (winx-w0p.1 takes these), `interior` when an instruction
-           follows one (winx-w0p.2). --batches skips both while the splicer
-           refuses them.
+           instruction -- the splicer takes these since winx-w0p.1, renaming
+           the compiled loads onto the slice's words by position -- and
+           `interior` when an instruction follows one, which it still refuses
+           (winx-w0p.2), so --batches skips only `interior`.
   adr      Thumb, `ADR rN, label` or `add rN, pc, #imm`: a pc-relative address into
            unit data that no pool token names. armasm rejects the splice (A1150E).
   veneer   a body of exactly `bx pc`: armlink's interworking thunk, no C source.
@@ -55,7 +56,7 @@ the ready queue puts parked functions last, and --batches skips them: each has a
 deferred retry ticket and releasing that is the owner's call.
 
 The ready queue, which --batches draws from, is class `splice` and then class
-`pool` without an own pool, parked functions left out. Ranking inside a class: a
+`pool` less the interior own pools, parked functions left out. Ranking inside a class: a
 unit that already has a partial/ source first (its build plumbing exists and one
 function of it has matched), then fewest asm lines. A batch is whole units,
 filled to --per functions, so a unit's candidates ride together as they did in
@@ -77,7 +78,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import cpp_evidence  # noqa: E402
 from gen import is_code_unit, unit_stem  # noqa: E402
-from splice_unit import RE_OWN_POOL  # noqa: E402
+from splice_unit import own_pool_shape  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SYMBOLS = os.path.join(REPO, "config", "symbols.yml")
@@ -90,9 +91,6 @@ POOL_TOKEN = re.compile(r"\b_0[0-9A-Fa-f]{7}\b")
 ADR = re.compile(r"^\s*(adr\b|add\s+r\d+\s*,\s*pc\b)", re.I | re.M)
 FUNC_MACRO = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_(start|end)\b")
 FUNC_START = re.compile(r"^\s*(arm|thumb|non_word_aligned_thumb)_func_start\s+(\S+)", re.M)
-# A body line that is not an instruction: an own pool word, the ALIGN or DCB
-# padding around it, a numeric local label or a pool label on a line of its own.
-NOT_INSTRUCTION = re.compile(r"^(?:_0[0-9A-Fa-f]{7}(?:\s+DC\w+.*)?|ALIGN\b.*|DC[BWDQ]U?\b.*|\d+)$", re.I)
 # The name(s) an entry in notes/parked.md is about, in either of its shapes:
 # a `## ` heading -- `## name (where) -- ticket`, or several at once as
 # `## a, b, c (where)` and `## a / b (where)` -- or, in the older entries, a
@@ -118,7 +116,8 @@ def classify(name, text):
     Returns a dict with `cls` (one of CLASSES), `mode`, `lines` (instruction
     lines, macros and blanks excluded), `halfword`, `member`, and `own_pool`:
     None, or "trailing" / "interior" for a slice that defines a pool word of its
-    own, by whether an instruction follows the first of them.
+    own, by whether an instruction follows the first of them
+    (splice_unit.own_pool_shape, so the survey and the splicer agree).
     """
     m = FUNC_START.search(text)
     if not m:
@@ -143,18 +142,8 @@ def classify(name, text):
         "lines": len(body),
         "halfword": mode == "non_word_aligned_thumb",
         "member": bool(MEMBER.search(name)),
-        "own_pool": own_pool(body),
+        "own_pool": own_pool_shape(text),
     }
-
-
-def own_pool(body):
-    """None, "trailing" or "interior": where a slice keeps its own pool words."""
-    first = next((i for i, ln in enumerate(body) if RE_OWN_POOL.match(ln)), None)
-    if first is None:
-        return None
-    if any(not NOT_INSTRUCTION.match(ln) for ln in body[first + 1:]):
-        return "interior"
-    return "trailing"
 
 
 def parked_names(path=PARKED):
@@ -274,8 +263,10 @@ def rank_key(rec):
 
 
 def takeable(rec):
-    """Whether the splicer takes this function today: splice, or pool with no own pool."""
-    return rec["cls"] == "splice" or (rec["cls"] == "pool" and not rec.get("own_pool"))
+    """Whether the splicer takes this function today: splice, or pool unless its
+    own pool sits in the interior of the body."""
+    return rec["cls"] == "splice" or (rec["cls"] == "pool"
+                                      and rec.get("own_pool") != "interior")
 
 
 def queue(rows, cls, include_parked=True):
@@ -343,8 +334,9 @@ Check: make check prints winxclub.gba: OK and build/report.json scores each conv
 function 100.0. That is the only verdict.
 
 A function marked `pool` loads a literal: the splicer moves each load onto the unit's
-pool word with the same value, and refuses, naming the value, when the unit's pool has
-no such word or two of them. That refusal is not one of your three cycles and not your
+pool word with the same value, or onto the function's own trailing pool word by position,
+and refuses naming what it could not place -- no such word, two of them, or a word that
+differs from the compiled one. That refusal is not one of your three cycles and not your
 C to work around: park it with the splicer's line and move on.
 
 Parking: restore asm/split/<unit>.s (or keep the unit's matched functions and leave the
@@ -393,9 +385,9 @@ def summary(rows, notes):
               f"{sum(r['halfword'] for r in rs):8}  {sum(r['has_partial'] for r in rs):11}")
     own = collections.Counter(r["own_pool"] for r in rows if r["own_pool"])
     if own:
-        print(f"\n{sum(own.values())} pool functions keep a pool of their own "
-              f"({own['trailing']} trailing, {own['interior']} interior); "
-              f"the splicer refuses them and --batches skips them")
+        print(f"\n{sum(own.values())} pool functions keep a pool of their own: "
+              f"{own['trailing']} trailing (the splicer takes them), "
+              f"{own['interior']} interior (refused; --batches skips them)")
     rs = ready(rows)
     if rs:
         sizes = sorted(r["lines"] for r in rs)
