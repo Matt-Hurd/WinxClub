@@ -1,4 +1,4 @@
-/* Seven functions of split_800AFD4; the rest of the unit is still assembly in
+/* Ten functions of split_800AFD4; the rest of the unit is still assembly in
  * asm/nonmatching/split_800AFD4/. cpp_evidence.py proves this unit C++ (an
  * __nw__FUi operator-new call elsewhere in it), so it is spliced as .cpp
  * even though none of these five need a C++ construct themselves.
@@ -58,4 +58,44 @@ extern "C" void sub_800B0A0(void *a0, int a1, unsigned int a2)
 extern "C" unsigned short sub_800B0C0(void)
 {
     return *(volatile unsigned short *)0x4000006;
+}
+
+extern "C" void *sub_800B09A(void)
+{
+    return (void *)0x06000000;
+}
+
+extern "C" void sub_803DA18(void *a0);
+extern "C" void *gUnknown_03003E98;
+extern "C" int __VTABLE__14Singleton_3E98;
+
+extern "C" void sub_800B01A(void *a0, int a1)
+{
+    *(int *)a0 = (int)&__VTABLE__14Singleton_3E98;
+    gUnknown_03003E98 = 0;
+    if (a1) {
+        sub_803DA18(a0);
+    }
+}
+
+extern "C" int __VTABLE__339dword_803EB34;
+
+extern "C" void *sub_800AFD4(void *a0)
+{
+    if (a0 == 0) {
+        a0 = operator new(0xc);
+    }
+    if (a0 != 0) {
+        *(int *)a0 = (int)&__VTABLE__14Singleton_3E98;
+        gUnknown_03003E98 = a0;
+        *(int *)a0 = (int)&__VTABLE__339dword_803EB34;
+
+        *(volatile unsigned short *)0x04000000 |= 0x40;
+        *(volatile unsigned short *)0x04000000 &= ~0x80;
+        *(volatile unsigned short *)0x05000000 = 0x7fff;
+
+        *(int *)((char *)a0 + 4) = 0x100;
+        *(int *)((char *)a0 + 8) = 0;
+    }
+    return a0;
 }
