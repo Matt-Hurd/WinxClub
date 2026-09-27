@@ -7354,6 +7354,7 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_08050694
+  decl: void *gUnknown_08050694[]
 - addr: '0x080506E8'
   kind: object
   unit: data/data1.s

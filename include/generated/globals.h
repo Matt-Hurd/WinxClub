@@ -33,6 +33,7 @@ extern void *gUnknown_03003E88; /* 0x03003E88 */
 
 /* data/data1.s */
 extern unsigned short gUnknown_0804AF2C[]; /* 0x0804AF2C */
+extern void *gUnknown_08050694[]; /* 0x08050694 */
 extern unsigned char gUnknown_080506E8[]; /* 0x080506E8 */
 extern unsigned char gUnknown_080507F4[]; /* 0x080507F4 */
 extern unsigned char gUnknown_08050A24[]; /* 0x08050A24 */
