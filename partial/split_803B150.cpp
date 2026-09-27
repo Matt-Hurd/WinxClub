@@ -25,3 +25,35 @@ int dword_803EC7C::m10()
 void dword_803EC7C::m14()
 {
 }
+
+extern "C" void sub_803B1A6(void *a0)
+{
+}
+
+extern "C" void sub_80105AE(void *a0, int a1);
+extern "C" void sub_803DA18(void *a0);
+extern "C" int __VTABLE__351dword_803EC7C;
+
+extern "C" void sub_803B184(void *a0, int a1)
+{
+    *(void **)a0 = &__VTABLE__351dword_803EC7C;
+    sub_80105AE(a0, 0);
+    if (a1) {
+        sub_803DA18(a0);
+    }
+}
+
+extern "C" void sub_8010574(void *a0, int a1);
+
+extern "C" void *sub_803B15C(void *a0)
+{
+    if (a0 == 0) {
+        a0 = operator new(0x172c);
+        if (a0 == 0) {
+            return a0;
+        }
+    }
+    sub_8010574(a0, 0);
+    *(void **)a0 = &__VTABLE__351dword_803EC7C;
+    return a0;
+}

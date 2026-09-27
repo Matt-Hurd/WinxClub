@@ -32,3 +32,12 @@ extern "C" void sub_8036E04(void *a0)
     *(void **)((char *)p + 0x18) = *(void **)((char *)a0 + 0x28);
     *(void **)((char *)a0 + 0x28) = p;
 }
+
+extern "C" void sub_8036E5E(void *a0)
+{
+    *(int *)((char *)a0 + 0x9c) = 0x21;
+}
+
+extern "C" void sub_8036E02(void *a0)
+{
+}
