@@ -75,3 +75,62 @@ body:
     sub_803FC14(*(void **)((char *)a0 + 0x2c));
     sub_8000914(*(void **)((char *)a0 + 0x2c));
 }
+
+/* sub_801D9B0 stays in asm/nonmatching/split_801D9B0/ -- see notes/parked.md. */
+extern int sub_801D9B0(void *a0_unused, void *a1);
+extern void sub_801D788(void *a0, int a1);
+
+void sub_801DA2A(void *a0)
+{
+    int r = sub_801D9B0(a0, *(void **)((char *)a0 + 0x28));
+
+    if (r != 0) {
+        sub_801D788(a0, r);
+    }
+}
+
+void sub_801DB80(void *a0)
+{
+    extern void *gUnknown_03003450;
+
+    *(void **)((char *)gUnknown_03003450 + 0x9c0 + 0xc) =
+        *(void **)((char *)a0 + 0x2c);
+}
+
+/* Allocates a 0x1c-byte node from EWRAM the same way the sub_803DA80 family
+ * elsewhere in the ROM does (see notes/parked.md's winx-dz5/winx-q0w/winx-1g9
+ * entries), clears it with a plain memset that inlines to the same
+ * MOV+STMIA burst per
+ * notes/quirks/a-small-word-typed-memset-inlines-instead-of-calling-rt-memclr_w.md,
+ * then copies four (offset, size) halfword pairs from the source struct and
+ * three trailing header fields (two halfwords, one byte read as a halfword
+ * and truncated on store) before pushing the node onto a0's list at +0x28. */
+void sub_801DA46(void *a0, void *a1)
+{
+    extern void *GetEWRAMStart(void);
+    extern void *sub_803DA80(unsigned int size, void *heap, int a2, int a3);
+    extern void *memset(void *, int, unsigned int);
+    void *src = *(void **)a1;
+    int *buf = (int *)sub_803DA80(0x1c, GetEWRAMStart(), 0, 0);
+    unsigned char i;
+
+    if (buf != 0) {
+        memset(buf, 0, 0x1c);
+    }
+    for (i = 0; i < 4; i++) {
+        *(unsigned short *)((char *)buf + i * 2) =
+            *(unsigned short *)((char *)src + i * 2 + 4);
+        *(unsigned short *)((char *)buf + i * 2 + 8) =
+            *(unsigned short *)((char *)src + i * 2 + 0xc);
+    }
+    *(unsigned short *)((char *)buf + 0x10) =
+        *(unsigned short *)((char *)src + 0x14);
+    *(unsigned short *)((char *)buf + 0x12) =
+        *(unsigned short *)((char *)src + 0x16);
+    *(unsigned char *)((char *)buf + 0x14) =
+        (unsigned char)*(unsigned short *)((char *)src + 0x18);
+    *(void **)((char *)buf + 0x18) = *(void **)((char *)a0 + 0x28);
+    *(void **)((char *)a0 + 0x28) = buf;
+}
+
+/* sub_801DB3E stays in asm/nonmatching/split_801D9B0/ -- see notes/parked.md. */
