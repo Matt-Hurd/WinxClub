@@ -1,6 +1,6 @@
 /* Two functions of split_8004DE6; the rest of the unit is still assembly in
- * asm/nonmatching/split_8004DE6/. sub_8004F42 stays asm. sub_8004FFC is
- * parked -- see notes/parked.md.
+ * asm/nonmatching/split_8004DE6/. sub_8004F42 stays asm. sub_8004F12 and
+ * sub_8004FFC are parked -- see notes/parked.md.
  */
 
 extern "C" void *sub_8004F42(void *a0, char *a1, int a2);
