@@ -25,6 +25,7 @@ extern unsigned int gUnknown_03003478[32]; /* 0x03003478 */
 extern void *gUnknown_030034F8; /* 0x030034F8 */
 extern unsigned char gUnknown_03003520[]; /* 0x03003520 */
 extern unsigned char gUnknown_03003BC8[0x30]; /* 0x03003BC8 */
+extern unsigned short gUnknown_03003C58; /* 0x03003C58 */
 extern void *gUnknown_03003D20; /* 0x03003D20 */
 extern void *gPlayerEntity; /* 0x03003D2C */
 

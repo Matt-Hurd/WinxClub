@@ -7058,6 +7058,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003C58
+  decl: unsigned short gUnknown_03003C58
 - addr: '0x03003C84'
   kind: object
   unit: data/iwram1.s
