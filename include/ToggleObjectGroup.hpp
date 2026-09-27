@@ -22,7 +22,7 @@ public:
     virtual void m3C();
     virtual void m40();
     virtual void m44();
-    virtual void m48();
+    virtual void m48(void *a1);
     virtual void m4C();
 };
 
