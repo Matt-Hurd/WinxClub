@@ -1,10 +1,20 @@
-/* Three functions of split_8026014; the rest of the unit is still assembly
- * in asm/nonmatching/split_8026014/. GenericObject__08 is the vtable's
- * working label for slot +0x08, so it is written as
- * __vftable_GenericObject::m08(); the slot returns a value (used by its
- * callers as a boolean-ish result), so include/__vftable_GenericObject.hpp
- * gained that return type -- the mangled name does not encode it, so the
- * vtable itself is unchanged.
+/* Five functions of split_8026014; the rest of the unit is still assembly
+ * in asm/nonmatching/split_8026014/, including GenericObject__04 and
+ * GenericObject__Create (parked -- see notes/parked.md). GenericObject__08
+ * is the vtable's working label for slot +0x08, so it is written as
+ * __vftable_GenericObject::m08(); the slot returns a value the mangled name
+ * does not encode, so include/__vftable_GenericObject.hpp gained that --
+ * the vtable itself is unchanged.
+ *
+ * GenericObject__ctor is not a vtable slot (no hex offset in the working
+ * label), so it stays a free function, same as HostileCreature__ctor in
+ * notes/parked.md's winx-iez.9 entry: __VTABLE__333__vftable_GenericObject
+ * lives in this unit's own pool.s, so the splice succeeds where Static2's
+ * vtable store did not.
+ *
+ * sub_80260AE is GenericObject__04's case 0x1f body factored into its own
+ * function -- same sub_801DB90 call and the same this+0x80+0x1c field
+ * check/set.
  */
 #include "__vftable_GenericObject.hpp"
 
@@ -12,6 +22,9 @@ extern "C" void SetNextGlobalFunction(int a0);
 extern "C" void sub_80007A0(void *a0, unsigned int a1, int a2);
 extern "C" void sub_801DB90(void *a0);
 extern "C" int m08__7DefaultFv(void *a0);
+extern "C" void m00__7DefaultFv(void *a0, int a1);
+extern "C" void sub_803DA18(void *a0);
+extern "C" int __VTABLE__333__vftable_GenericObject;
 
 extern "C" void MaybeHandleTransitionToArea(void)
 {
@@ -49,3 +62,19 @@ int __vftable_GenericObject::m08(void *a1)
         return m08__7DefaultFv(this);
     }
 }
+
+extern "C" void sub_80260AE(void *a0)
+{
+    sub_801DB90(a0);
+    if (*(int *)((char *)a0 + 0x80 + 0x1c) == 0)
+        *(int *)((char *)a0 + 0x80 + 0x1c) = 0x13;
+}
+
+extern "C" void GenericObject__ctor(void *a0, int a1)
+{
+    *(void **)a0 = &__VTABLE__333__vftable_GenericObject;
+    m00__7DefaultFv(a0, 0);
+    if (a1)
+        sub_803DA18(a0);
+}
+
