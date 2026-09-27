@@ -19,6 +19,7 @@ extern void *gUnknown_03003450; /* 0x03003450 */
 extern void *gUnknown_03003454; /* 0x03003454 */
 extern void *gUnknown_03003458; /* 0x03003458 */
 extern void *gUnknown_0300345C; /* 0x0300345C */
+extern void *gUnknown_03003460; /* 0x03003460 */
 extern void *gUnknown_03003468; /* 0x03003468 */
 extern unsigned int gUnknown_03003478[32]; /* 0x03003478 */
 extern void *gUnknown_030034F8; /* 0x030034F8 */
