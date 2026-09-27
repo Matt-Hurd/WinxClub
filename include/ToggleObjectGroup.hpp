@@ -6,7 +6,7 @@ public:
     ToggleObjectGroup();
     virtual void m00();
     virtual void m04();
-    virtual void m08();
+    virtual int m08(void *a1);
     virtual void m0C();
     virtual void m10();
     virtual void m14();
