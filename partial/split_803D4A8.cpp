@@ -3,7 +3,18 @@
  * stays assembly there.
  */
 
+extern "C" void *gUnknown_030033E8;
 extern "C" void *sub_80051D6(void *a0, void *a1, int a2, void *a3, void *a4);
+extern "C" void sub_8005220(void *a0, void *a1, void *a2, void *a3);
+
+/* gUnknown_030033E8+8 is the arena instance sub_8005220 (already matched in
+ * partial/split_8005044.c as a two-argument free()) actually reads; a2/a3
+ * ride along in r2/r3 unused by the callee, the same dead-argument shape as
+ * split_8005044.c's sub_80050F4 reading the same global. */
+extern "C" void sub_803D9A8(void *a0, void *a1, void *a2)
+{
+    sub_8005220(*(void **)((char *)&gUnknown_030033E8 + 8), a0, a1, a2);
+}
 
 /* REG_BLDCNT, REG_BLDALPHA, REG_BLDY from a0[0..2]. The ROM pools REG_WIN0H
  * (0x04000040) and reaches them at #0x10/#0x12/#0x14: the 32-byte rebase of

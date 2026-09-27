@@ -49,3 +49,21 @@ acc_test:
 acc_done:
     return result;
 }
+
+extern void *gUnknown_03003E84;
+extern void *sub_800529A(void *a0, void *a1, unsigned int a2, void *a3);
+
+/* Top nibble of the node's own header word is its type; sub_800529A(a3=0)
+ * degenerates to returning a1 (see partial/split_800525C.c), so this reads
+ * *(node - 4) through it like split_801099C.c's sub_801099C does. */
+unsigned int sub_802F0B8(void *a0)
+{
+    void *p;
+    void *g;
+    unsigned int val;
+
+    p = (char *)a0 - 4;
+    g = sub_800529A(gUnknown_03003E84, p, 0x90, 0);
+    val = *(unsigned int *)g;
+    return (val << 4) >> 2;
+}
