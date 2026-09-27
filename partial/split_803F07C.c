@@ -1,5 +1,5 @@
-/* One function of split_803F07C; the rest of the unit is still assembly in
- * asm/nonmatching/split_803F07C/.
+/* One of split_803F07C's two assigned functions; the parked sub_803F0A8 (see
+ * notes/parked.md) is still assembly in asm/nonmatching/split_803F07C/.
  */
 
 void sub_803F07C(void *a0, void *a1, unsigned int a2)
