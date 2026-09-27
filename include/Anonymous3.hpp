@@ -4,7 +4,7 @@
 class Anonymous3 {
 public:
     Anonymous3();
-    virtual void m00();
+    virtual void m00(int a0);
     virtual void m04();
     virtual void m08();
 };
