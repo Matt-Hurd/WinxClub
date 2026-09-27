@@ -1,16 +1,38 @@
-/* Seventeen functions of split_800B464; the rest of the unit is still assembly
- * in asm/nonmatching/split_800B464/. cpp_evidence.py proves this unit C++
- * (an __nw__FUi operator-new call elsewhere in it), so it is spliced as
- * .cpp even though none of these seven functions need a C++ construct
- * themselves -- per tcc-and-tcpp-agree-unless-you-need-a-type.md that makes
- * no difference to the bytes, but the unit's proof still calls for tcpp.
+/* Twenty-three functions of split_800B464; the rest of the unit is still
+ * assembly in asm/nonmatching/split_800B464/. cpp_evidence.py proves this
+ * unit C++ (an __nw__FUi operator-new call elsewhere in it), so it is
+ * spliced as .cpp even though none of these seven functions need a C++
+ * construct themselves -- per tcc-and-tcpp-agree-unless-you-need-a-type.md
+ * that makes no difference to the bytes, but the unit's proof still calls
+ * for tcpp.
  *
- * All seven are thin wrappers around asm functions of split_80114B0/
- * split_8011A80 that have no known signature in config/symbols.yml
- * (out of scope for this batch), so they are declared locally as
- * extern "C" -- plain functions, not vtable slots, so unmangled --
- * same as partial/split_800B154.c's SoftReset.
+ * The first seventeen are thin wrappers around asm functions of
+ * split_80114B0/split_8011A80 that have no known signature in
+ * config/symbols.yml (out of scope for this batch), so they are declared
+ * locally as extern "C" -- plain functions, not vtable slots, so unmangled
+ * -- same as partial/split_800B154.c's SoftReset.
+ *
+ * sub_800B4E0, sub_800B464 and sub_800B496 register/query a
+ * dword_803EA8C's flags word (a bitfield at gUnknown_03003E94->8, cleared
+ * bit-by-bit for cmd 0/1/2) with sub_80114B0(sub_800B496, sub_800B464) --
+ * the same registration sub_800B4F0 and sub_800B590 do at the end of
+ * (re)initialising the singleton. sub_800B554 and sub_800B4F0/sub_800B590
+ * write the raw vtable pointer at offset 0 by hand -- both classes'
+ * .cpp files (Singleton_3E94.cpp, dword_803EA8C.cpp) are one line each and
+ * do not model this construct/destruct sequence in C++, so this follows
+ * src/split_8040380.cpp's already-matched precedent (a hand-written
+ * *(int*)obj = (int)&__VTABLE__... store, not a real ctor/dtor call) rather
+ * than inventing a base class here. sub_803D9C4 has no decl either, so it
+ * too is declared locally.
  */
+
+#include "generated/functions.h"
+
+extern "C" void sub_80114B0(void *a0, void *a1);
+extern "C" void *sub_803D9C4(int a0, int a1, int a2, int a3);
+extern "C" void *gUnknown_03003E94;
+extern "C" int __VTABLE__14Singleton_3E94;
+extern "C" int __VTABLE__335dword_803EA8C;
 
 extern "C" void sub_801175C(void *a0);
 extern "C" void sub_80115EC(void *a0);
@@ -115,4 +137,121 @@ extern "C" void sub_800B6AC(void *a0)
 {
     sub_80116D4(a0);
     *(void **)((char *)a0 + 0xc) = 0;
+}
+
+extern "C" void sub_800B464(unsigned int cmd);
+extern "C" void *sub_800B496(unsigned int cmd);
+
+extern "C" void sub_800B4E0(void)
+{
+    sub_80114B0((void *)sub_800B496, (void *)sub_800B464);
+}
+
+extern "C" void sub_800B464(unsigned int a0)
+{
+    unsigned int cmd = a0;
+    unsigned int *flags = (unsigned int *)((char *)gUnknown_03003E94 + 8);
+
+    switch (cmd)
+    {
+    case 0:
+        *flags = *flags >> 1 << 1;
+        break;
+    case 1:
+        *flags &= ~4;
+        break;
+    case 2:
+        *flags &= ~2;
+        break;
+    }
+}
+
+extern "C" void *sub_800B496(unsigned int a0)
+{
+    unsigned int cmd = a0;
+    void *inst = gUnknown_03003E94;
+    unsigned int *flags = (unsigned int *)((char *)inst + 8);
+
+    switch (cmd)
+    {
+    case 0:
+        *flags |= 1;
+        return *(char **)((char *)inst + 4);
+    case 1:
+        *flags |= 4;
+        return *(char **)((char *)inst + 4) + 0x700;
+    case 2:
+        *flags |= 2;
+        return *(char **)((char *)inst + 4) + 0xa20;
+    default:
+        return 0;
+    }
+}
+
+extern "C" void sub_800B554(void *a0, int a1)
+{
+    *(int *)a0 = (int)&__VTABLE__335dword_803EA8C;
+    sub_801175C((void *)&__VTABLE__335dword_803EA8C);
+
+    if (!((int)(*(unsigned int *)((char *)a0 + 8) << 0x1c) < 0))
+    {
+        sub_803D9A8(*(void **)((char *)a0 + 4), 0, 0);
+        *(void **)((char *)a0 + 4) = 0;
+    }
+
+    *(int *)a0 = (int)&__VTABLE__14Singleton_3E94;
+    gUnknown_03003E94 = 0;
+    if (a1)
+        sub_803DA18(a0);
+}
+
+extern "C" void *sub_800B4F0(void *a0)
+{
+    if (a0 == 0)
+    {
+        a0 = operator new(0x14);
+        if (a0 == 0)
+            return a0;
+    }
+
+    *(int *)a0 = (int)&__VTABLE__14Singleton_3E94;
+    gUnknown_03003E94 = a0;
+    *(int *)a0 = (int)&__VTABLE__335dword_803EA8C;
+
+    *(void **)((char *)a0 + 4) = sub_803D9C4(1, 0xc20, 0, 0);
+
+    *(unsigned int *)((char *)a0 + 8) = *(unsigned int *)((char *)a0 + 8) >> 1 << 1;
+    *(unsigned int *)((char *)a0 + 8) &= ~2;
+    *(unsigned int *)((char *)a0 + 8) &= ~4;
+    *(unsigned int *)((char *)a0 + 8) &= ~8;
+    *(unsigned int *)((char *)a0 + 8) &= ~0x10;
+
+    sub_80114B0((void *)sub_800B496, (void *)sub_800B464);
+
+    return a0;
+}
+
+extern "C" void sub_800B590(void *a0, void *a1)
+{
+    sub_801175C(a0);
+
+    if (!((int)(*(unsigned int *)((char *)a0 + 8) << 0x1c) < 0))
+        sub_803D9A8(*(void **)((char *)a0 + 4), 0, 0);
+
+    if (a1 == 0)
+    {
+        *(void **)((char *)a0 + 4) = sub_803D9C4(1, 0xc20, 0, 0);
+        *(unsigned int *)((char *)a0 + 8) &= ~8;
+    }
+    else
+    {
+        *(void **)((char *)a0 + 4) = a1;
+        *(unsigned int *)((char *)a0 + 8) |= 8;
+    }
+
+    *(unsigned int *)((char *)a0 + 8) = *(unsigned int *)((char *)a0 + 8) >> 1 << 1;
+    *(unsigned int *)((char *)a0 + 8) &= ~2;
+    *(unsigned int *)((char *)a0 + 8) &= ~4;
+
+    sub_80114B0((void *)sub_800B496, (void *)sub_800B464);
 }

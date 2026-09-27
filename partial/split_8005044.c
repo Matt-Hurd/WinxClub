@@ -1,4 +1,4 @@
-/* Seven of split_8005044's eleven candidates. sub_8005044,
+/* Nine of split_8005044's eleven candidates. sub_8005044,
  * SomehowInitEWRAMLinkedList, sub_8005164, sub_8005170 and sub_80051D6 are
  * parked -- see notes/parked.md -- and stay asm in
  * asm/nonmatching/split_8005044/.
@@ -6,7 +6,13 @@
  * The header/node struct these operate on is 0x10 bytes: a next-free-node
  * pointer @0x0, another link @0x4, a packed state|size word @0x8 (low byte
  * a small state code whose bit 0 doubles as an in-use flag, high 24 bits a
- * size), and a min-size @0xc. */
+ * size), and a min-size @0xc.
+ *
+ * GetEWRAMStart and sub_80050FA both work on gUnknown_030033E8, the same
+ * three-pointer block sub_80050F4 already reads (@0x4 the free-list head,
+ * @0x8 the cached EWRAM start): GetEWRAMStart returns the cache, and
+ * sub_80050FA sets it -- falling back to the free-list head@0x4 for a NULL
+ * argument. */
 
 #include "generated/globals.h"
 
@@ -110,4 +116,18 @@ void sub_8005220(unsigned char *a0, unsigned char *a1)
 void *sub_80050F4(void)
 {
     return *(void **)((unsigned char *)&gUnknown_030033E8 + 4);
+}
+
+void *GetEWRAMStart(void)
+{
+    return *(void **)((unsigned char *)&gUnknown_030033E8 + 8);
+}
+
+void sub_80050FA(void *a0)
+{
+    unsigned char *base = (unsigned char *)&gUnknown_030033E8;
+
+    if (a0 == 0)
+        a0 = *(void **)(base + 4);
+    *(void **)(base + 8) = a0;
 }
