@@ -5,8 +5,8 @@ class WallObject {
 public:
     WallObject();
     virtual void m00();
-    virtual void m04();
-    virtual void m08();
+    virtual void m04(void *a1);
+    virtual int m08(void *a1);
     virtual void m0C();
     virtual void m10();
     virtual void m14();
@@ -22,8 +22,8 @@ public:
     virtual void m3C();
     virtual void m40();
     virtual void m44();
-    virtual void m48();
-    virtual void m4C();
+    virtual void m48(void *a1);
+    virtual void m4C(void *a1);
 };
 
 #endif // WALLOBJECT_HPP_
