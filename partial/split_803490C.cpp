@@ -16,3 +16,4 @@ void Boss::m10()
 {
     Monster__10(this);
 }
+
