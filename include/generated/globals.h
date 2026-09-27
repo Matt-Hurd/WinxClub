@@ -14,6 +14,7 @@ extern "C" {
 /* data/iwram1.s */
 extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_030033E8; /* 0x030033E8 */
+extern void *gUnknown_030033FC[14]; /* 0x030033FC */
 extern void *gUnknown_03003444; /* 0x03003444 */
 extern void *gUnknown_03003450; /* 0x03003450 */
 extern void *gUnknown_03003454; /* 0x03003454 */
@@ -26,6 +27,7 @@ extern void *gUnknown_030034F8; /* 0x030034F8 */
 extern unsigned char gUnknown_03003520[]; /* 0x03003520 */
 extern unsigned char gUnknown_03003BC8[0x30]; /* 0x03003BC8 */
 extern unsigned short gUnknown_03003C58; /* 0x03003C58 */
+extern void (*gGlobalFunctionTable[38])(void); /* 0x03003C84 */
 extern void *gUnknown_03003D20; /* 0x03003D20 */
 extern void *gPlayerEntity; /* 0x03003D2C */
 

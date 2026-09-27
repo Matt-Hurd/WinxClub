@@ -6939,6 +6939,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_030033FC
+  decl: void *gUnknown_030033FC[14]
 - addr: '0x03003434'
   kind: object
   unit: data/iwram1.s
@@ -7063,6 +7064,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gGlobalFunctionTable
+  decl: void (*gGlobalFunctionTable[38])(void)
 - addr: '0x03003D1C'
   kind: object
   unit: data/iwram1.s
