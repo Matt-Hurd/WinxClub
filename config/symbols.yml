@@ -6961,10 +6961,12 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003448
+  decl: void *gUnknown_03003448
 - addr: '0x0300344C'
   kind: object
   unit: data/iwram1.s
   name: gUnknown_0300344C
+  decl: void *gUnknown_0300344C
 - addr: '0x03003450'
   kind: object
   unit: data/iwram1.s
@@ -7091,6 +7093,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003D30
+  decl: void *gUnknown_03003D30
 - addr: '0x03003D34'
   kind: object
   unit: data/iwram1.s
@@ -7296,6 +7299,7 @@ globals:
   kind: object
   unit: data/data1.s
   name: gUnknown_0804AE30
+  decl: unsigned char gUnknown_0804AE30[]
 - addr: '0x0804AE44'
   kind: object
   unit: data/data1.s

@@ -16,6 +16,8 @@ extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_030033E8; /* 0x030033E8 */
 extern void *gUnknown_030033FC[14]; /* 0x030033FC */
 extern void *gUnknown_03003444; /* 0x03003444 */
+extern void *gUnknown_03003448; /* 0x03003448 */
+extern void *gUnknown_0300344C; /* 0x0300344C */
 extern void *gUnknown_03003450; /* 0x03003450 */
 extern void *gUnknown_03003454; /* 0x03003454 */
 extern void *gUnknown_03003458; /* 0x03003458 */
@@ -30,11 +32,13 @@ extern unsigned short gUnknown_03003C58; /* 0x03003C58 */
 extern void (*gGlobalFunctionTable[38])(void); /* 0x03003C84 */
 extern void *gUnknown_03003D20; /* 0x03003D20 */
 extern void *gPlayerEntity; /* 0x03003D2C */
+extern void *gUnknown_03003D30; /* 0x03003D30 */
 
 /* data/iwram2.s */
 extern void *gUnknown_03003E88; /* 0x03003E88 */
 
 /* data/data1.s */
+extern unsigned char gUnknown_0804AE30[]; /* 0x0804AE30 */
 extern unsigned short gUnknown_0804AF2C[]; /* 0x0804AF2C */
 extern void *gUnknown_08050694[]; /* 0x08050694 */
 extern unsigned char gUnknown_080506E8[]; /* 0x080506E8 */
