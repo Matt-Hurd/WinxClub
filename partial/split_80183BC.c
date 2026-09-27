@@ -1,7 +1,7 @@
 /* One function of split_80183BC; the rest of the unit is still assembly in
  * asm/nonmatching/split_80183BC/. sub_80184BC, sub_8018540, sub_8018688,
- * sub_80186D8, sub_8018734, sub_80187A0 and sub_8018884 are parked -- see
- * notes/parked.md.
+ * sub_80186D8, sub_8018712, sub_801876E, sub_8018734, sub_80187A0,
+ * sub_80187D2 and sub_8018884 are parked -- see notes/parked.md.
  */
 
 /* Classic 16-step binary digit-recurrence square root: each step tests one
