@@ -1,8 +1,9 @@
-/* Two functions of split_802F118; the rest of the unit is still assembly in
- * asm/nonmatching/split_802F118/ -- including sub_802F818, parked (see
+/* Three functions of split_802F118; the rest of the unit is still assembly in
+ * asm/nonmatching/split_802F118/ -- including sub_802F818, Anonymous18__ctor,
+ * sub_802F228, Anonymous18__Create and sub_802F6F4, all parked (see
  * notes/parked.md). cpp_evidence.py: C++ proven (__nw__FUi in the unit's
- * IMPORT list). Neither of these two are vtable slots themselves (no vtable
- * references sub_802F1F0/sub_802F210), so they stay plain functions;
+ * IMPORT list). Neither sub_802F1F0 nor sub_802F210 are vtable slots
+ * themselves (no vtable references them), so they stay plain functions;
  * m04__7DefaultFv/m08__7DefaultFv are declared locally with the raw
  * two-argument signature these call sites actually use, not Default.hpp's
  * simplified stub.
@@ -10,6 +11,27 @@
 
 extern "C" int m04__7DefaultFv(void *a0, void *a1);
 extern "C" int m08__7DefaultFv(void *a0, void *a1);
+extern "C" void CollectPickup(void *a0);
+extern void *gPlayerEntity;
+
+extern "C" void sub_802F6BA(void *a0)
+{
+    unsigned char *flags = (unsigned char *)a0 + 0x70;
+    unsigned short *type = (unsigned short *)((char *)a0 + 0xa0);
+
+    if (*type == 0x2710) {
+        unsigned char *p = (unsigned char *)gPlayerEntity + 0xa0;
+        if (p[0xc] == p[0xf]) {
+            flags[0xd] = 0xa;
+            goto done;
+        }
+    }
+    CollectPickup(a0);
+done:
+    if (*type == 0x2712) {
+        flags[0xd] = 0xa;
+    }
+}
 
 extern "C" int sub_802F1F0(void *a0, void *a1)
 {

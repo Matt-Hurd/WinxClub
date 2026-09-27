@@ -1,9 +1,10 @@
-/* Two of split_803F72C's three functions; sub_803F72C is parked (see
- * notes/parked.md) and stays assembly in asm/nonmatching/split_803F72C/, as
- * does sub_803F898, which was never in scope here.
+/* Three of split_803F72C's four functions; sub_803F72C is parked (see
+ * notes/parked.md) and stays assembly in asm/nonmatching/split_803F72C/.
  */
 
 extern void sub_803F8BC(void *a0, void *out);
+extern void *sub_8000D5A(void *a0);
+extern void *gUnknown_03003EA0;
 
 void sub_803F774(void *a0, unsigned char *a1, unsigned char *a2)
 {
@@ -78,4 +79,13 @@ void sub_803F814(void *a0, short *out1, short *out2, short *out3, short *out4)
     if (out4)
         *out4 = *(unsigned short *)((char *)a0 + 0x1a)
                 + *(unsigned short *)((char *)a0 + 0x1e);
+}
+
+unsigned short sub_803F898(void *a0)
+{
+    void *cam = sub_8000D5A(gUnknown_03003EA0);
+    int camVal = *(int *)((char *)cam + 0x20);
+    int diff = *(int *)((char *)a0 + 0x10) - camVal;
+
+    return (unsigned short)(diff >> 3);
 }
