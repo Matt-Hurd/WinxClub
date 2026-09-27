@@ -3,6 +3,8 @@
 
 #include "winxclub.h"
 
+struct Sprite;
+
 // Default (GameObj) ScriptGroup base class
 // sizeof(Default) = 0xa0 (160 bytes)
 // Member layout derived from GameObj.hpp and Init_and_add_some_object analysis
@@ -53,8 +55,8 @@ public:
   unsigned short field_26;
   // 0x28
   unsigned int field_28;
-  unsigned int field_2c;
-  unsigned int field_30;
+  struct Sprite *field_2c;
+  struct Sprite *field_30;
   unsigned int field_34;
   // 0x38
   unsigned int field_38[5];

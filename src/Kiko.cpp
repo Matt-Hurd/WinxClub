@@ -11,6 +11,7 @@ extern "C" int rand(void);
 
 #include "Singleton_3EA0.hpp"
 
+#include "Sprite.h"
 class Kiko : public Default {
 public:
   Kiko();
@@ -93,40 +94,40 @@ void Kiko::m10() {
 
   unsigned int action = *(unsigned int *)((char *)this + 0x9c);
   if (action == 0) {
-    unsigned int r5_30 = field_30;
+    Sprite *r5_30 = field_30;
     Singleton_3EA0_Data *cam = sub_8000D5A((void *)gUnknown_03003EA0);
     unsigned int cam_x = cam->field_20;
-    unsigned int obj_x = *(unsigned int *)(r5_30 + 0x10);
-    unsigned int r5_2c = field_2c;
+    unsigned int obj_x = r5_30->field_10;
+    Sprite *r5_2c = field_2c;
     int diff = (int)(obj_x - cam_x);
     int shifted = diff >> 3;
     unsigned short r6 = (unsigned short)shifted;
 
     cam = sub_8000D5A((void *)gUnknown_03003EA0);
-    unsigned int p44_val = *(unsigned int *)(r5_2c + 0x44);
+    FrameEntry *p44_val = r5_2c->field_44;
     unsigned int cam_y = cam->field_28;
-    unsigned int field4 = *(unsigned int *)(p44_val + 4);
+    unsigned int field4 = p44_val->field_04;
     field4 = (field4 << 16) >> 14;
     cam_y += field4;
-    unsigned int p48_val = *(unsigned int *)(r5_2c + 0x48);
+    unsigned int p48_val = r5_2c->field_48;
     unsigned short *sprData2 = gUnknown_08051096;
     int diff2 = (int)(p48_val - cam_y);
     int idx2 = (diff2 >> 2) << 1;
     unsigned short *lookup = (unsigned short *)((char *)sprData2 + 0x18);
     unsigned short val = *(unsigned short *)((char *)lookup + idx2);
     if (r6 != val) {
-      unsigned int r6_2c = field_2c;
+      Sprite *r6_2c = field_2c;
       cam = sub_8000D5A((void *)gUnknown_03003EA0);
       unsigned int cam_y2 = cam->field_28;
-      unsigned int p44_val2 = *(unsigned int *)(r6_2c + 0x44);
-      unsigned int field4_2 = *(unsigned int *)(p44_val2 + 4);
+      FrameEntry *p44_val2 = r6_2c->field_44;
+      unsigned int field4_2 = p44_val2->field_04;
       field4_2 = (field4_2 << 16) >> 14;
       cam_y2 += field4_2;
-      unsigned int p48_val2 = *(unsigned int *)(r6_2c + 0x48);
+      unsigned int p48_val2 = r6_2c->field_48;
       int diff3 = (int)(p48_val2 - cam_y2);
       int idx3 = (diff3 >> 2) << 1;
       unsigned short lookupVal = *(unsigned short *)((char *)lookup + idx3);
-      sub_800065C((void *)field_30, lookupVal);
+      sub_800065C(field_30, lookupVal);
     }
   }
 

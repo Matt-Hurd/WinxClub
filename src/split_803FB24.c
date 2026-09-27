@@ -1,19 +1,20 @@
+#include "SlotManager.h"
 #include "generated/globals.h"
 
-void sub_803FB24(void *a0, unsigned int a1, unsigned char a2,
+void sub_803FB24(struct Slot *a0, unsigned int a1, unsigned char a2,
                  unsigned char a3) {
   unsigned short half;
-  *(unsigned int *)a0 = a1;
+  a0->field_00 = a1;
   if (a3 == 0xff) {
-    a3 = *((unsigned char *)gUnknown_03003E88 + 0x14);
+    a3 = gUnknown_03003E88->field_14;
   }
-  half = *(unsigned short *)((char *)a0 + 0x10);
+  half = a0->field_10;
   half = ((half >> 6) << 6) | (a3 & 0x3F);
-  *(unsigned short *)((char *)a0 + 0x10) = half;
-  *(unsigned char *)((char *)a0 + 4) = a2;
-  *(unsigned int *)((char *)a0 + 8) = 0;
-  *(unsigned short *)((char *)a0 + 0xc) = 0xFFFE;
-  *(unsigned short *)((char *)a0 + 0xe) = 0xFFFE;
-  *(unsigned int *)((char *)a0 + 0x14) = 0;
-  *(unsigned int *)((char *)a0 + 0x18) = 0;
+  a0->field_10 = half;
+  a0->field_04 = a2;
+  a0->field_08 = 0;
+  a0->field_0c = 0xFFFE;
+  a0->field_0e = 0xFFFE;
+  a0->field_14 = 0;
+  a0->field_18 = 0;
 }

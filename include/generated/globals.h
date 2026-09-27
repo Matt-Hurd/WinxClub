@@ -35,7 +35,7 @@ extern void *gPlayerEntity; /* 0x03003D2C */
 extern void *gUnknown_03003D30; /* 0x03003D30 */
 
 /* data/iwram2.s */
-extern void *gUnknown_03003E88; /* 0x03003E88 */
+extern struct SlotManager *gUnknown_03003E88; /* 0x03003E88 */
 
 /* data/data1.s */
 extern unsigned char gUnknown_0804AE30[]; /* 0x0804AE30 */
