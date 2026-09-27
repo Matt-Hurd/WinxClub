@@ -26,7 +26,8 @@ struct Player {
 struct PlayerPointer {
   char field_0;
   char field_1[0x3];
-  struct Player *field_4; 
+  struct Player *field_4;
+  unsigned char *field_8;
 };
 
 struct Unknown_030034F8 {
