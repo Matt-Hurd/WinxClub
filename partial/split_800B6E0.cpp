@@ -1,8 +1,14 @@
-/* Fifteen functions of split_800B6E0: several are two-line trampolines into
+/* Nineteen functions of split_800B6E0: several are two-line trampolines into
  * split_8011A80, sub_800B714/sub_800B740 turn a raw flag value into a bool,
  * sub_800B790 guards a call behind a flag test, and sub_800B7D2/sub_800B7C2
- * are a getter/setter pair for the same bit-4 flag. The rest of the unit is
- * still assembly in asm/nonmatching/split_800B6E0/.
+ * are a getter/setter pair for the same bit-4 flag. sub_800B8A4/sub_800B7DC
+ * are Singleton_3EA0's placement-ctor and heap-ctor: the vtable is set twice,
+ * once to the "341dword" base while its own ctor (sub_8000CCE) runs, then
+ * again to Singleton_3EA0's own vtable, same shape as split_800B464.cpp's
+ * sub_800B554/sub_800B4F0 for gUnknown_03003E94. sub_800B8CE/sub_800B94A are
+ * plain field pokes and a CpuSet/DMA3 fill choice (split_8000210.c's
+ * sub_80002E2 has the same DMA3-through-one-pointer idiom). The rest of the
+ * unit is still assembly in asm/nonmatching/split_800B6E0/.
  */
 extern "C" {
 
@@ -97,3 +103,90 @@ void sub_800B7C2(void *a0, int a1)
 }
 
 }
+
+extern "C" int __VTABLE__341dword_803EB3C;
+extern "C" int __VTABLE__14Singleton_3EA0;
+extern "C" void *gUnknown_03003EA0;
+extern "C" void sub_8000CCE(int *a0);
+extern "C" void *sub_803DA18(void *a0);
+
+extern "C" void sub_800B8A4(void *a0, int a1)
+{
+    *(int *)a0 = (int)&__VTABLE__341dword_803EB3C;
+    sub_8000CCE((int *)a0);
+    *(int *)a0 = (int)&__VTABLE__14Singleton_3EA0;
+    gUnknown_03003EA0 = 0;
+    if (a1)
+        sub_803DA18(a0);
+}
+
+extern "C" void sub_800B8CE(void *a0)
+{
+    *(void **)((char *)a0 + 0x1310) = (char *)a0 + 0xbd0;
+    *(void **)((char *)a0 + 0x1314) = (char *)a0 + 0xc50;
+
+    if (*(unsigned char *)((char *)a0 + 0x19ad) != 0) {
+        char *p = (char *)a0 + 0x1824;
+        unsigned int n = 0x1f;
+
+        do {
+            *(unsigned char *)(p + 0xb) = 0;
+            p += 0xc;
+        } while (n--);
+    }
+
+    *(int *)((char *)a0 + 0x1818) = 0;
+    *(int *)((char *)a0 + 0x19a4) = 0;
+}
+
+extern "C" void *memset(void *, int, unsigned int);
+
+extern "C" void *sub_800B7DC(void *a0)
+{
+    if (a0 == 0) {
+        a0 = operator new(0x19b0);
+        if (a0 == 0)
+            return a0;
+    }
+
+    *(int *)a0 = (int)&__VTABLE__14Singleton_3EA0;
+    gUnknown_03003EA0 = a0;
+    *(int *)a0 = (int)&__VTABLE__341dword_803EB3C;
+
+    *(int *)((char *)a0 + 0x40) = 0;
+    *(int *)((char *)a0 + 0x44) = 0;
+    *(int *)((char *)a0 + 0x48) = 0;
+    *(int *)((char *)a0 + 0x4c) = 0;
+    *(int *)((char *)a0 + 0x50) = 0;
+    *(int *)((char *)a0 + 0x54) = 0;
+    *(int *)((char *)a0 + 0x58) = 0;
+    *(int *)((char *)a0 + 0x5c) = 0;
+    *(int *)((char *)a0 + 0x60) = 0;
+    *(int *)((char *)a0 + 0x64) = 0;
+    *(int *)((char *)a0 + 0x68) = 0;
+    *(int *)((char *)a0 + 0x6c) = 0;
+
+    *(unsigned short *)((char *)a0 + 0x70) = 0;
+    *(unsigned short *)((char *)a0 + 0x72) = 0;
+    *(unsigned short *)((char *)a0 + 0x74) = 0;
+    *(unsigned short *)((char *)a0 + 0x76) = 0;
+
+    *(unsigned int *)((char *)a0 + 0x78) = (*(unsigned int *)((char *)a0 + 0x78) >> 1) << 1;
+    *(int *)((char *)a0 + 0x7c) = 0;
+
+    *(int *)((char *)a0 + 0x1310) = 0;
+    *(int *)((char *)a0 + 0x1314) = 0;
+
+    memset((int *)a0 + (4 / 4), 0, 0x3c);
+    memset((int *)a0 + (0x80 / 4), 0, 0x320);
+    memset((int *)a0 + (0x3a0 / 4), 0, 0x22);
+    memset((char *)a0 + 0x3c2, 0, 0x409);
+    memset((int *)a0 + (0x7cc / 4), 0, 0x404);
+    memset((int *)a0 + (0x1318 / 4), 0, 0x50c);
+    memset((int *)a0 + (0x1824 / 4), 0, 0x18c);
+    memset((int *)a0 + (0xbd0 / 4), 0, 0x80);
+    memset((int *)a0 + (0xc50 / 4), 0, 0x6c0);
+
+    return a0;
+}
+
