@@ -5,9 +5,11 @@
  * stay in asm/nonmatching and are pulled in as assembly by the splicer.
  */
 
+#include "EntityState.h"
+
 int sub_8014B58(void *a0)
 {
-    return *(int *)((char *)a0 + 0x54) != 0;
+    return ((struct EntityState *)a0)->field_54 != 0;
 }
 
 extern void sub_803F55C(void *a0);
