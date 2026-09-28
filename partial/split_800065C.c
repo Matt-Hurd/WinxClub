@@ -20,12 +20,12 @@
  * class; the fields src/Kiko.cpp and src/split_803FC14.cpp reach through
  * Singleton_3EA0_Data are read here as raw offsets from the pointer
  * instead -- gUnknown_03003EA0 itself with no `sub_8000D5A()` call, since
- * the ROM has no `bl sub_8000D5A` for these accesses either. It also
- * reads a fixed slot of the gUnknown_03003EA4 singleton's table via the
- * same fixed-offset pointer arithmetic as partial/split_8002004.c's
- * sub_8002004 (`*(void **)((char *)a0 + 0x980 + 0x20) + 0x38`) -- here
- * with a literal index (0x13) baked into the offset instead of a
- * variable one.
+ * the ROM has no `bl sub_8000D5A` for these accesses either. The same
+ * restriction applies to gUnknown_03003EA4: it reaches the 0x9a0 pointer
+ * by raw offset, the same fixed-offset arithmetic as
+ * partial/split_8002004.c's sub_8002004 and partial/split_800212C.c's
+ * sub_80023BA, but includes Singleton3EA4Records.h (a plain struct, no
+ * vtable) to type the record it points at.
  *
  * Its condition (four ANDed range checks against that table) compiles
  * with the small (flag-only) branch placed inline before the epilogue and
@@ -41,13 +41,14 @@
  */
 #include "generated/functions.h"
 #include "generated/globals.h"
+#include "Singleton3EA4Records.h"
 
 extern void *gUnknown_03003EA0;
 extern void *gUnknown_03003EA4;
 
 void sub_800069A(void *a0)
 {
-    int *elem = (int *)((char *)(*(void **)((char *)gUnknown_03003EA4 + 0x9A0)) + 0x38);
+    int *elem = (int *)((char *)(*(struct Singleton3EA4LevelBounds **)((char *)gUnknown_03003EA4 + 0x9A0)) + 0x38);
     unsigned int flags = *(unsigned int *)a0;
 
     if (!(*(int *)((char *)a0 + 0x3c) >= elem[0]
