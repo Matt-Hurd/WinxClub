@@ -6,6 +6,7 @@
 #ifdef __cplusplus
 
 struct Sprite;
+struct SpriteRecord;
 
 // Default (GameObj) ScriptGroup base class
 // sizeof(Default) = 0xa0 (160 bytes)
@@ -56,7 +57,7 @@ public:
   unsigned short field_24;
   unsigned short field_26;
   // 0x28
-  unsigned int field_28;
+  struct SpriteRecord *field_28;
   struct Sprite *field_2c;
   struct Sprite *field_30;
   unsigned int field_34;

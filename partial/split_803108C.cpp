@@ -16,34 +16,44 @@
  * Boss__Create/WallObject__Create (merge_partial_c only renames a splice's
  * literal load onto a single pool word by value, not a multi-word run
  * spelling a string), even though the string is this unit's own pool.s.
+ *
+ * Structs over casts (winx-qhyt.17): Critter::m04/m08 now call
+ * Default::m04()/m08() directly (through a cast to Default *, non-virtual,
+ * same dispatch as the old mangled-name call) instead of declaring
+ * m04__7DefaultFv/m08__7DefaultFv extern "C" -- with Default.hpp included,
+ * that declaration clashes with the class's own member of the same mangled
+ * name. Critter::m40's byte-offset casts are now Default's
+ * sprite_xx/field_70 through a `Default *self` (Critter has no C++ base).
+ * Critter__ctor's `*(void **)a0` is the compiler-managed vtable slot, not a
+ * Default member, and stays a cast, same as split_80344E4.cpp's Boss__ctor.
  */
 #include "Critter.hpp"
-
-extern "C" void m04__7DefaultFv(void *a0);
-extern "C" void m08__7DefaultFv(void *a0);
+#include "Default.hpp"
 
 void Critter::m04()
 {
-    m04__7DefaultFv(this);
+    ((Default *)this)->Default::m04();
 }
 
 void Critter::m08()
 {
-    m08__7DefaultFv(this);
+    ((Default *)this)->Default::m08();
 }
 
 void Critter::m40(int a1)
 {
+    Default *self = (Default *)this;
+
     if (a1 == 0x26) {
-        *(short *)((char *)this + 0x0e) = 0xf1;
-        *(short *)((char *)this + 0x0a) = 0xf1;
-        *(short *)((char *)this + 0x0c) = 0xf1;
-        *(short *)((char *)this + 0x08) = 0xf1;
-        *(short *)((char *)this + 0x1e) = 0xf0;
-        *(short *)((char *)this + 0x1a) = 0xf0;
-        *(short *)((char *)this + 0x1c) = 0xf0;
-        *(short *)((char *)this + 0x18) = 0xf0;
-        *(int *)((char *)this + 0x70) = 1 << 15;
+        self->sprite_0e = 0xf1;
+        self->sprite_0a = 0xf1;
+        self->sprite_0c = 0xf1;
+        self->sprite_08 = 0xf1;
+        self->sprite_1e = 0xf0;
+        self->sprite_1a = 0xf0;
+        self->sprite_1c = 0xf0;
+        self->sprite_18 = 0xf0;
+        self->field_70 = 1 << 15;
     }
 }
 
