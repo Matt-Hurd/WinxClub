@@ -125,7 +125,12 @@ enum GameObjDirection
 
 struct GameObjDirectionAndMore
 {
-  short unk1;
+  /* unk1 was one `short`; ToggleObjectGroup::m48 and WallObject::m48
+   * (partial/split_8035750.cpp, partial/split_8035E7C.cpp) each store its
+   * two bytes independently (STRB, not STRH), so the field is two signed
+   * chars, not one halfword -- same total size, same offsets. */
+  signed char unk1;
+  signed char unk2;
   char unk3;
   enum GameObjDirection direction;
 };
@@ -138,7 +143,12 @@ struct GameObjUnknown {
     int unk10;
     int unk14;
     char unk18[4];
-    enum EnemyAction CurrentAction;
+    /* enum EnemyAction's values (0x9..0x10) all fit a byte, so tcpp sizes
+     * the enum itself as 1 byte; partial/split_8035480.cpp's
+     * ToggleObjectGroup::m08/sub_8035530 store here as a full word
+     * (STR, not STRB), so the field has to be `int`, not the enum type,
+     * to reproduce that width. */
+    int CurrentAction;
 };
 
 union GameObjDirectionAndMoreUnion

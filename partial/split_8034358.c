@@ -8,7 +8,17 @@
  * sibling classes (sub_802DDDC, a different unit, same idiom): call the
  * base's own teardown (sub_802E47A), then free the owned pointer at +0x3c
  * through sub_8000DE6(gUnknown_03003EB8, ...) if it is set, and null it.
+ *
+ * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
+ * header this .c unit cannot include (tcc, not tcpp), so the struct below
+ * mirrors just the reached field: +0x3c is field_38[1], the vtable-pointer
+ * array's second slot (docs/decisions/drafts/2026-09-27-object-types.md).
  */
+
+struct GameObj {
+    char gap_00[0x38];
+    void *field_38[5];
+};
 
 extern void sub_802E47A(void *a0);
 extern void sub_8000DE6(void *a0, void *a1);
@@ -16,11 +26,11 @@ extern void *gUnknown_03003EB8;
 
 void sub_8034408(void *a0)
 {
-    char *self = (char *)a0;
+    struct GameObj *self = (struct GameObj *)a0;
 
     sub_802E47A(a0);
-    if (*(void **)(self + 0x3c) != 0) {
-        sub_8000DE6(gUnknown_03003EB8, self + 0x3c);
-        *(void **)(self + 0x3c) = 0;
+    if (self->field_38[1] != 0) {
+        sub_8000DE6(gUnknown_03003EB8, &self->field_38[1]);
+        self->field_38[1] = 0;
     }
 }

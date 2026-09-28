@@ -16,30 +16,46 @@
  * hold either -- only ToggleObjectGroup__40's own trailing pool block does,
  * a neighbour's words that the docs say are not a by-value candidate for
  * another function's compiled loads.
+ *
+ * ToggleObjectGroup does not derive from Default, and including Default.hpp
+ * here would collide with the hand-mangled `Dying__7DefaultFv` this file
+ * also declares (Default's own Dying slot mangles to the identical name),
+ * so `this+0x70`'s two bytes and `this+0xa8`'s bitfield are reached through
+ * a local mirror struct instead of the real class -- the same convention
+ * split_801D9B0.c and split_801F640.c use for .c units that cannot include
+ * it at all. `this+0xa8` is past Default's own 0xa0 and only this derived
+ * class has it (docs/decisions/drafts/2026-09-27-object-types.md), so it is
+ * not a Default field either way.
  */
+#include "winxclub.h"
 #include "ToggleObjectGroup.hpp"
 
 extern "C" void Dying__7DefaultFv(void *a0, void *a1);
 
+struct GameObj {
+    char gap_00[0x7c];
+    union GameObjDirectionAndMoreUnion directionAndMore;
+    char gap_80[0xa8 - 0x80];
+    unsigned int field_a8;
+};
+
 void ToggleObjectGroup::m48(void *a1)
 {
+    struct GameObj *self = (struct GameObj *)this;
     void *d = *(void **)a1;
     unsigned short type = *(unsigned short *)((char *)d + 8);
 
     if (type == 0x1f) {
         int v = (signed char)*(int *)((char *)d + 4);
-        char *p70 = (char *)this + 0x70;
-        char *p80;
 
-        p70[0xd] = (signed char)v;
+        self->directionAndMore.struc.unk2 = (signed char)v;
         if (v < 0) {
             v = -v;
         }
 
-        p80 = (char *)this + 0x80;
-        *(unsigned int *)(p80 + 0x28) = (*(unsigned int *)(p80 + 0x28) & ~0xff00)
+        self->field_a8 = (self->field_a8 & ~0xff00)
             | (((unsigned int)v & 0xff) << 8);
-        p70[0xc] = 0;
+        self->directionAndMore.struc.unk1 = 0;
     } else {
         Dying__7DefaultFv(this, a1);
     }

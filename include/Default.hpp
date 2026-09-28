@@ -94,6 +94,7 @@ public:
  * hand -- gen.py does not derive one from the other. */
 
 struct Sprite;
+struct SpriteRecord;
 
 struct Default {
   // 0x00
@@ -119,7 +120,7 @@ struct Default {
   unsigned short field_24;
   unsigned short field_26;
   // 0x28
-  unsigned int field_28;
+  struct SpriteRecord *field_28;
   struct Sprite *field_2c;
   struct Sprite *field_30;
   unsigned int field_34;

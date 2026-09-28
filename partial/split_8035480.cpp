@@ -15,8 +15,32 @@
  * Toggle__ctor is not a vtable slot (no hex offset in the working label), so
  * it stays a free function, same as GenericObject__ctor in
  * partial/split_8026014.cpp -- it sets ToggleObjectGroup's own vtable.
+ *
+ * ToggleObjectGroup does not derive from Default, and including Default.hpp
+ * here would collide with the hand-mangled `m08__7DefaultFv` this file also
+ * declares (Default's own m08 slot mangles to the identical name), so
+ * sub_8035530 and ToggleObjectGroup::m08 reach Default::field_78 and
+ * flags.CurrentAction (0x78 and 0x9c,
+ * docs/decisions/drafts/2026-09-27-object-types.md) through a local mirror
+ * struct instead of the real class, the same convention split_801D9B0.c and
+ * split_801F640.c use for .c units that cannot include it at all.
+ * CurrentAction is `int`, not `enum EnemyAction`: the enum's values all fit
+ * a byte, so tcpp sizes it as 1 byte, but this field is stored as a full
+ * word (see include/winxclub.h).
+ *
+ * ToggleObjectGroup::m08 casts `this` inline at each use rather than naming
+ * a `GameObj *self` local: naming one moves the `this`-to-r4 register copy
+ * ahead of the `unsigned char b = ...` load and does not match.
  */
+#include "winxclub.h"
 #include "ToggleObjectGroup.hpp"
+
+struct GameObj {
+    char gap_00[0x78];
+    int field_78;
+    char gap_7c[0x9c - 0x7c];
+    int CurrentAction;
+};
 
 extern "C" void sub_801DB90(void *a0);
 extern "C" void m00__7DefaultFv(void *a0, int a1);
@@ -26,9 +50,11 @@ extern "C" int __VTABLE__324ToggleObjectGroup;
 
 extern "C" void sub_8035530(void *a0)
 {
+    struct GameObj *self = (struct GameObj *)a0;
+
     sub_801DB90(a0);
-    if (*(int *)((char *)a0 + 0x9c) == 0) {
-        *(int *)((char *)a0 + 0x9c) = 0x13;
+    if (self->CurrentAction == 0) {
+        self->CurrentAction = 0x13;
     }
 }
 
@@ -38,12 +64,12 @@ int ToggleObjectGroup::m08(void *a1)
 
     switch (b) {
     case 0x1c:
-        return *(int *)((char *)this + 0x78) == 0 ? 1 : 0;
+        return ((struct GameObj *)this)->field_78 == 0 ? 1 : 0;
     case 0x1f:
         sub_801DB90(this);
-        if (*(int *)((char *)this + 0x9c) == 0)
-            *(int *)((char *)this + 0x9c) = 0x13;
-        return *(int *)((char *)this + 0x78) == 0 ? 1 : 0;
+        if (((struct GameObj *)this)->CurrentAction == 0)
+            ((struct GameObj *)this)->CurrentAction = 0x13;
+        return ((struct GameObj *)this)->field_78 == 0 ? 1 : 0;
     default:
         return m08__7DefaultFv(this, a1);
     }

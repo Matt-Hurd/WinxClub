@@ -11,14 +11,28 @@
  * sub_8028C2E on the resulting slot. gUnknown_0300345C has to be its own
  * statement before the field it is added to, or tcc schedules the field
  * read first and misses the ROM's reg+reg addressing.
+ *
+ * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
+ * header this .c unit cannot include (tcc, not tcpp), so the struct below
+ * mirrors the fields reached here: 0x8c is Default::flags.unk0C, and 0xb0/
+ * 0xb4 are Boss-only scratch past Default's own 0xa0
+ * (docs/decisions/drafts/2026-09-27-object-types.md), not Default fields.
  */
+
+struct GameObj {
+    char gap_00[0x8c];
+    unsigned int flags_unk0c;
+    char gap_90[0xb0 - 0x90];
+    unsigned int field_b0;
+    unsigned int field_b4;
+};
 
 extern void sub_8028C2E(void *a0);
 extern void TakeDamage__7DefaultFv(void *a0);
 extern void *gUnknown_0300345C;
 extern int *gUnknown_03003E98;
 
-void Boss__50(void *a0)
+void Boss__50(struct GameObj *a0)
 {
     unsigned int v;
     void *base;
@@ -27,20 +41,19 @@ void Boss__50(void *a0)
     v = *(unsigned int *)((char *)gUnknown_03003E98 + 8) & 3;
     if (v < 2) {
         base = gUnknown_0300345C;
-        idx = (*(unsigned int *)((char *)a0 + 0xb0) >> 19) & 0xff;
+        idx = (a0->field_b0 >> 19) & 0xff;
         sub_8028C2E((char *)base + (unsigned char)(idx + v) * 0x20);
     }
 }
 
-void Boss__TakeDamage(void *a0)
+void Boss__TakeDamage(struct GameObj *a0)
 {
     void *base;
     unsigned int idx;
 
-    *(unsigned int *)((char *)a0 + 0x8c) =
-        (*(unsigned int *)((char *)a0 + 0x8c) & 0x8007FFFF) + (0xf << 0x15);
+    a0->flags_unk0c = (a0->flags_unk0c & 0x8007FFFF) + (0xf << 0x15);
     base = gUnknown_0300345C;
-    idx = (*(unsigned int *)((char *)a0 + 0xb4) + 2) & 0xff;
+    idx = (a0->field_b4 + 2) & 0xff;
     sub_8028C2E((char *)base + idx * 0x20);
     TakeDamage__7DefaultFv(a0);
 }
