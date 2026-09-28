@@ -8,16 +8,21 @@
  * written as free functions, not members.
  */
 #include "generated/functions.h"
+#include "dword_803E374.hpp"
 
 extern "C" void sub_8013FF4(void)
 {
 }
 
-extern "C" void sub_8014060(void *a0, int a1, int a2)
+/* sub_8014060 operates on dword_803E6A0's fields (see
+ * include/dword_803E374.hpp) but 0x0e/0x18/0x1a fall inside the shared 0x58
+ * -byte base layout it re-stamps in sub_8013FF8, so the base type proves the
+ * header. */
+extern "C" void sub_8014060(dword_803E374 *a0, int a1, int a2)
 {
-    *(unsigned short *)((char *)a0 + 0x18) = (unsigned short)a1;
-    *(unsigned short *)((char *)a0 + 0x1a) = (unsigned short)a2;
-    *(unsigned short *)((char *)a0 + 0xe) |= 2;
+    a0->field_18 = (unsigned short)a1;
+    a0->field_1a = (unsigned short)a2;
+    a0->field_0e |= 2;
 }
 
 extern "C" void *sub_80134B8(void *a0);
