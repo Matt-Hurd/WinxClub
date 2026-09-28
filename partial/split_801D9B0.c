@@ -2,6 +2,8 @@
  * asm/nonmatching/split_801D9B0/.
  */
 
+#include "SpriteRecord.h"
+
 extern unsigned short sub_803F6B4(void *a0);
 extern void sub_80007A0(void *a0, int a1, int a2);
 extern void sub_803FC14(void *a0);
@@ -111,25 +113,21 @@ void sub_801DA46(void *a0, void *a1)
     extern void *sub_803DA80(unsigned int size, void *heap, int a2, int a3);
     extern void *memset(void *, int, unsigned int);
     void *src = *(void **)a1;
-    int *buf = (int *)sub_803DA80(0x1c, GetEWRAMStart(), 0, 0);
+    struct SpriteRecord *buf =
+        (struct SpriteRecord *)sub_803DA80(0x1c, GetEWRAMStart(), 0, 0);
     unsigned char i;
 
     if (buf != 0) {
         memset(buf, 0, 0x1c);
     }
     for (i = 0; i < 4; i++) {
-        *(unsigned short *)((char *)buf + i * 2) =
-            *(unsigned short *)((char *)src + i * 2 + 4);
-        *(unsigned short *)((char *)buf + i * 2 + 8) =
-            *(unsigned short *)((char *)src + i * 2 + 0xc);
+        buf->field_00[i] = *(unsigned short *)((char *)src + i * 2 + 4);
+        buf->field_08[i] = *(unsigned short *)((char *)src + i * 2 + 0xc);
     }
-    *(unsigned short *)((char *)buf + 0x10) =
-        *(unsigned short *)((char *)src + 0x14);
-    *(unsigned short *)((char *)buf + 0x12) =
-        *(unsigned short *)((char *)src + 0x16);
-    *(unsigned char *)((char *)buf + 0x14) =
-        (unsigned char)*(unsigned short *)((char *)src + 0x18);
-    *(void **)((char *)buf + 0x18) = *(void **)((char *)a0 + 0x28);
+    buf->field_10 = *(unsigned short *)((char *)src + 0x14);
+    buf->field_12 = *(unsigned short *)((char *)src + 0x16);
+    buf->field_14 = (unsigned char)*(unsigned short *)((char *)src + 0x18);
+    buf->field_18 = *(void **)((char *)a0 + 0x28);
     *(void **)((char *)a0 + 0x28) = buf;
 }
 
