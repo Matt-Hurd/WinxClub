@@ -15,7 +15,11 @@ public:
     virtual void m04();
     virtual void m08();
 
-    char gap_04[0xf4];
+    char gap_04[0x38];
+    void *field_3c;          /* sub_80154DC zero-inits it; sub_80163D4 and
+                               * sub_801613E read *field_3c & 1 to decide
+                               * whether to tell it sub_80401E4(ptr, 0) */
+    char gap_40[0xb8];
     unsigned char field_f8;  /* sub_80158E0, sub_80163D4, sub_801613E */
     char gap_f9[1];
     unsigned short field_fa; /* sub_80163D4, sub_801613E */

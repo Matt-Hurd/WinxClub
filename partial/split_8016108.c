@@ -17,24 +17,36 @@
  * same class of unreachable-from-source register choice as
  * quirks/add-operand-order-follows-evaluation-not-source.md. Parked; see
  * notes/parked.md.
+ *
+ * `a0` is a struct Anonymous3 * (include/Anonymous3.hpp is the C++ class
+ * header this mirrors; this is a plain .c translation unit compiled by
+ * tcc, which cannot parse `class`, so it reaches the fields through
+ * include/Anonymous3.h instead).
  */
+#include "Anonymous3.h"
+
 extern void sub_80401E4(void *a0, int a1);
 extern void sub_8028C2E(void *a0);
 extern void *gUnknown_0300345C;
 
 void sub_801613E(void *a0)
 {
+    /* a0+0xf0, not ((struct Anonymous3 *)a0)->field_f8 directly: removing
+     * this split moves a byte (quirks/offset-split-tells-you-where-the-
+     * field-boundary-is.md) -- 0xf0 looks like a real boundary this
+     * ticket does not claim, not just tcc's own constant synthesis; same
+     * as partial/split_80163D4.cpp's own 0x1b cases. */
     unsigned char *p1 = (unsigned char *)a0 + 0xf0;
 
     if (*(p1 + 8) != 0) {
-        void *ptr = *(void **)((char *)a0 + 0x3c);
+        void *ptr = ((struct Anonymous3 *)a0)->field_3c;
         int flag = *(unsigned int *)ptr & 1;
 
         if (flag)
             sub_80401E4(ptr, 0);
 
         *(p1 + 8) = 4;
-        *(unsigned short *)((char *)a0 + 0xfa) = 0;
+        ((struct Anonymous3 *)a0)->field_fa = 0;
         sub_8028C2E((char *)gUnknown_0300345C + 0x100);
     }
 }
