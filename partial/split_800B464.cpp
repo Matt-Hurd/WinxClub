@@ -27,10 +27,10 @@
  */
 
 #include "generated/functions.h"
+#include "Singleton_3E94.hpp"
 
 extern "C" void sub_80114B0(void *a0, void *a1);
 extern "C" void *sub_803D9C4(int a0, int a1, int a2, int a3);
-extern "C" void *gUnknown_03003E94;
 extern "C" int __VTABLE__14Singleton_3E94;
 extern "C" int __VTABLE__335dword_803EA8C;
 
@@ -88,7 +88,7 @@ extern "C" void sub_800B66A(void *a0)
 
 extern "C" void sub_800B676(void *a0, void *a1)
 {
-    *(void **)((char *)a0 + 0xc) = 0;
+    ((Singleton_3E94 *)a0)->field_0c = 0;
     sub_8011AC2(a1);
 }
 
@@ -124,19 +124,19 @@ extern "C" void sub_800B638(void *a0, void *a1)
 
 extern "C" void sub_800B698(void *a0, void *a1)
 {
-    *(void **)((char *)a0 + 0xc) = a1;
+    ((Singleton_3E94 *)a0)->field_0c = a1;
     sub_8011D3C(a1);
 }
 
 extern "C" void *sub_800B6A8(void *a0)
 {
-    return *(void **)((char *)a0 + 0xc);
+    return ((Singleton_3E94 *)a0)->field_0c;
 }
 
 extern "C" void sub_800B6AC(void *a0)
 {
     sub_80116D4(a0);
-    *(void **)((char *)a0 + 0xc) = 0;
+    ((Singleton_3E94 *)a0)->field_0c = 0;
 }
 
 extern "C" void sub_800B464(unsigned int cmd);
@@ -150,7 +150,7 @@ extern "C" void sub_800B4E0(void)
 extern "C" void sub_800B464(unsigned int a0)
 {
     unsigned int cmd = a0;
-    unsigned int *flags = (unsigned int *)((char *)gUnknown_03003E94 + 8);
+    unsigned int *flags = &gUnknown_03003E94->field_08;
 
     switch (cmd)
     {
@@ -169,20 +169,20 @@ extern "C" void sub_800B464(unsigned int a0)
 extern "C" void *sub_800B496(unsigned int a0)
 {
     unsigned int cmd = a0;
-    void *inst = gUnknown_03003E94;
-    unsigned int *flags = (unsigned int *)((char *)inst + 8);
+    Singleton_3E94 *inst = gUnknown_03003E94;
+    unsigned int *flags = &inst->field_08;
 
     switch (cmd)
     {
     case 0:
         *flags |= 1;
-        return *(char **)((char *)inst + 4);
+        return inst->field_04;
     case 1:
         *flags |= 4;
-        return *(char **)((char *)inst + 4) + 0x700;
+        return (char *)inst->field_04 + 0x700;
     case 2:
         *flags |= 2;
-        return *(char **)((char *)inst + 4) + 0xa20;
+        return (char *)inst->field_04 + 0xa20;
     default:
         return 0;
     }
@@ -190,13 +190,15 @@ extern "C" void *sub_800B496(unsigned int a0)
 
 extern "C" void sub_800B554(void *a0, int a1)
 {
+    Singleton_3E94 *self = (Singleton_3E94 *)a0;
+
     *(int *)a0 = (int)&__VTABLE__335dword_803EA8C;
     sub_801175C((void *)&__VTABLE__335dword_803EA8C);
 
-    if (!((int)(*(unsigned int *)((char *)a0 + 8) << 0x1c) < 0))
+    if (!((int)(self->field_08 << 0x1c) < 0))
     {
-        sub_803D9A8(*(void **)((char *)a0 + 4), 0, 0);
-        *(void **)((char *)a0 + 4) = 0;
+        sub_803D9A8(self->field_04, 0, 0);
+        self->field_04 = 0;
     }
 
     *(int *)a0 = (int)&__VTABLE__14Singleton_3E94;
@@ -207,24 +209,27 @@ extern "C" void sub_800B554(void *a0, int a1)
 
 extern "C" void *sub_800B4F0(void *a0)
 {
+    Singleton_3E94 *self;
+
     if (a0 == 0)
     {
         a0 = operator new(0x14);
         if (a0 == 0)
             return a0;
     }
+    self = (Singleton_3E94 *)a0;
 
     *(int *)a0 = (int)&__VTABLE__14Singleton_3E94;
-    gUnknown_03003E94 = a0;
+    gUnknown_03003E94 = self;
     *(int *)a0 = (int)&__VTABLE__335dword_803EA8C;
 
-    *(void **)((char *)a0 + 4) = sub_803D9C4(1, 0xc20, 0, 0);
+    self->field_04 = sub_803D9C4(1, 0xc20, 0, 0);
 
-    *(unsigned int *)((char *)a0 + 8) = *(unsigned int *)((char *)a0 + 8) >> 1 << 1;
-    *(unsigned int *)((char *)a0 + 8) &= ~2;
-    *(unsigned int *)((char *)a0 + 8) &= ~4;
-    *(unsigned int *)((char *)a0 + 8) &= ~8;
-    *(unsigned int *)((char *)a0 + 8) &= ~0x10;
+    self->field_08 = self->field_08 >> 1 << 1;
+    self->field_08 &= ~2;
+    self->field_08 &= ~4;
+    self->field_08 &= ~8;
+    self->field_08 &= ~0x10;
 
     sub_80114B0((void *)sub_800B496, (void *)sub_800B464);
 
@@ -235,23 +240,23 @@ extern "C" void sub_800B590(void *a0, void *a1)
 {
     sub_801175C(a0);
 
-    if (!((int)(*(unsigned int *)((char *)a0 + 8) << 0x1c) < 0))
-        sub_803D9A8(*(void **)((char *)a0 + 4), 0, 0);
+    if (!((int)(((Singleton_3E94 *)a0)->field_08 << 0x1c) < 0))
+        sub_803D9A8(((Singleton_3E94 *)a0)->field_04, 0, 0);
 
     if (a1 == 0)
     {
-        *(void **)((char *)a0 + 4) = sub_803D9C4(1, 0xc20, 0, 0);
-        *(unsigned int *)((char *)a0 + 8) &= ~8;
+        ((Singleton_3E94 *)a0)->field_04 = sub_803D9C4(1, 0xc20, 0, 0);
+        ((Singleton_3E94 *)a0)->field_08 &= ~8;
     }
     else
     {
-        *(void **)((char *)a0 + 4) = a1;
-        *(unsigned int *)((char *)a0 + 8) |= 8;
+        ((Singleton_3E94 *)a0)->field_04 = a1;
+        ((Singleton_3E94 *)a0)->field_08 |= 8;
     }
 
-    *(unsigned int *)((char *)a0 + 8) = *(unsigned int *)((char *)a0 + 8) >> 1 << 1;
-    *(unsigned int *)((char *)a0 + 8) &= ~2;
-    *(unsigned int *)((char *)a0 + 8) &= ~4;
+    ((Singleton_3E94 *)a0)->field_08 = ((Singleton_3E94 *)a0)->field_08 >> 1 << 1;
+    ((Singleton_3E94 *)a0)->field_08 &= ~2;
+    ((Singleton_3E94 *)a0)->field_08 &= ~4;
 
     sub_80114B0((void *)sub_800B496, (void *)sub_800B464);
 }

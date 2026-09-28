@@ -9,6 +9,7 @@
  * mmio-constants-get-rebased-to-a-32-byte-boundary.md for the case where
  * that is *not* true.
  */
+#include "Singleton_3E98.hpp"
 
 extern "C" void VBlankIntrWait(void);
 
@@ -66,7 +67,6 @@ extern "C" void *sub_800B09A(void)
 }
 
 extern "C" void sub_803DA18(void *a0);
-extern "C" void *gUnknown_03003E98;
 extern "C" int __VTABLE__14Singleton_3E98;
 
 extern "C" void sub_800B01A(void *a0, int a1)
@@ -86,16 +86,17 @@ extern "C" void *sub_800AFD4(void *a0)
         a0 = operator new(0xc);
     }
     if (a0 != 0) {
+        Singleton_3E98 *self = (Singleton_3E98 *)a0;
         *(int *)a0 = (int)&__VTABLE__14Singleton_3E98;
-        gUnknown_03003E98 = a0;
+        gUnknown_03003E98 = self;
         *(int *)a0 = (int)&__VTABLE__339dword_803EB34;
 
         *(volatile unsigned short *)0x04000000 |= 0x40;
         *(volatile unsigned short *)0x04000000 &= ~0x80;
         *(volatile unsigned short *)0x05000000 = 0x7fff;
 
-        *(int *)((char *)a0 + 4) = 0x100;
-        *(int *)((char *)a0 + 8) = 0;
+        self->field_04 = 0x100;
+        self->field_08 = 0;
     }
     return a0;
 }
