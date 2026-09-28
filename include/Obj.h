@@ -26,7 +26,7 @@ typedef struct {
     unsigned int field_60;
     unsigned int field_64;
     unsigned int field_68;
-    char pad_6c[0x70 - 0x6c];
+    unsigned int field_6c;
     struct ObjBank *field_70;
     unsigned int field_74;
     unsigned int field_78;

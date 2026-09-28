@@ -11,6 +11,7 @@
  * so they get their own local `extern "C"` prototypes here rather than one.
  */
 #include "generated/functions.h"
+#include "Obj.h"
 
 extern "C" int __VTABLE__337dword_803EAE0;
 extern "C" void sub_800FB48(void *a0);
@@ -56,9 +57,10 @@ extern "C" int sub_800FB0E(void)
     return 0;
 }
 
-extern "C" int sub_800FA9A(void *a0)
+extern "C" int sub_800FA9A(void *a0v)
 {
-    unsigned int flags = *(unsigned int *)((char *)a0 + 0x18);
+    Obj *a0 = (Obj *)a0v;
+    unsigned int flags = a0->field_18;
     return (flags >> 10 & 0xffff) && (flags >> 6 & 0xf);
 }
 

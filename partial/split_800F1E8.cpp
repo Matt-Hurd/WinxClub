@@ -3,42 +3,45 @@
  * are parked -- see notes/parked.md.
  */
 #include "generated/functions.h"
+#include "Obj.h"
 
 extern "C" void *memset(void *, int, unsigned int);
 
-extern "C" void sub_800F1E8(int *a0)
+extern "C" void sub_800F1E8(int *a0i)
 {
+    Obj *a0 = (Obj *)a0i;
     unsigned int i;
 
-    a0[0] = 0x8800;
+    a0->field_00 = 0x8800;
     for (i = 0; i < 1; i++) {
-        *(int *)((char *)a0 + i * 4 + 0x18) = 0;
-        *(int *)((char *)a0 + i * 4 + 4) = 1;
+        (&a0->field_18)[i] = 0;
+        (&a0->field_04)[i] = 1;
     }
     for (i = 0; i < 2; i++) {
-        *(int *)((char *)a0 + i * 4 + 0x10) = 0;
-        *(int *)((char *)a0 + i * 4 + 8) = 1;
-        *((unsigned char *)a0 + i + 0x7c) = 0;
+        (&a0->field_10)[i] = 0;
+        (&a0->field_08)[i] = 1;
+        (&a0->field_7c)[i] = 0;
     }
-    *(int *)((char *)a0 + 0x34) = 0;
+    a0->field_34 = 0;
 }
 
-extern "C" void sub_800F220(int *a0)
+extern "C" void sub_800F220(int *a0i)
 {
+    Obj *a0 = (Obj *)a0i;
     unsigned int i;
 
     memset(a0, 0, 0x80);
-    a0[0] = 0x8800;
+    a0->field_00 = 0x8800;
     for (i = 0; i < 1; i++) {
-        *(int *)((char *)a0 + i * 4 + 0x18) = 0;
-        *(int *)((char *)a0 + i * 4 + 4) = 1;
+        (&a0->field_18)[i] = 0;
+        (&a0->field_04)[i] = 1;
     }
     for (i = 0; i < 2; i++) {
-        *(int *)((char *)a0 + i * 4 + 0x10) = 0;
-        *(int *)((char *)a0 + i * 4 + 8) = 1;
-        *((unsigned char *)a0 + i + 0x7c) = 0;
+        (&a0->field_10)[i] = 0;
+        (&a0->field_08)[i] = 1;
+        (&a0->field_7c)[i] = 0;
     }
-    *(int *)((char *)a0 + 0x34) = 0;
+    a0->field_34 = 0;
 }
 
 extern "C" int sub_800F2B4(void)
@@ -46,9 +49,10 @@ extern "C" int sub_800F2B4(void)
     return 0x98;
 }
 
-extern "C" void sub_800F2B8(void *a0, int a1)
+extern "C" void sub_800F2B8(void *a0v, int a1)
 {
-    *(int *)((char *)a0 + 0x70) = a1;
+    Obj *a0 = (Obj *)a0v;
+    a0->field_70 = (struct ObjBank *)a1;
 }
 
 extern "C" void sub_800FB48(void *a0);
@@ -57,25 +61,27 @@ extern "C" void *sub_803DAC0(void *a0, int a1);
 extern "C" void sub_8012468(void *a0, void *a1, int a2);
 extern int __VTABLE__328dword_803E870;
 
-extern "C" void *sub_800F264(void *a0)
+extern "C" void *sub_800F264(void *a0v)
 {
+    Obj *a0 = (Obj *)a0v;
     if (a0 == 0) {
-        a0 = operator new(0x78);
+        a0 = (Obj *)operator new(0x78);
         if (a0 == 0) {
             return a0;
         }
     }
     sub_800FB48(a0);
-    *(int *)a0 = (int)&__VTABLE__328dword_803E870;
-    *(int *)((char *)a0 + 0x70) = 0;
-    *(int *)((char *)a0 + 0x74) = 0;
-    *(int *)((char *)a0 + 0x6c) = 0;
+    a0->field_00 = (unsigned int)&__VTABLE__328dword_803E870;
+    a0->field_70 = 0;
+    a0->field_74 = 0;
+    a0->field_6c = 0;
     return a0;
 }
 
-extern "C" void sub_800F292(void *a0, int a1)
+extern "C" void sub_800F292(void *a0v, int a1)
 {
-    *(int *)a0 = (int)&__VTABLE__328dword_803E870;
+    Obj *a0 = (Obj *)a0v;
+    a0->field_00 = (unsigned int)&__VTABLE__328dword_803E870;
     sub_800FB72(a0, 0);
     if (a1) {
         sub_803DA18(a0);
@@ -84,6 +90,11 @@ extern "C" void sub_800F292(void *a0, int a1)
 
 extern void *gUnknown_03003E84;
 
+/* Every a0->0x70 access below keeps its (char *) cast: converting any one
+ * of them to field access perturbs which register the ROM's compile keeps
+ * the pointer live in across the goto, and moves a byte -- see
+ * notes/quirks/a-second-pointer-expression-defeats-tccs-reload-elimination.md.
+ * a0->4, a0->8, a0->0x74 and a0->0x5c convert cleanly on their own. */
 extern "C" int sub_800F312(void *a0, unsigned int a1)
 {
     char *dest = *(char **)((char *)a0 + 4);

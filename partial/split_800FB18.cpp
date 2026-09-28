@@ -12,30 +12,34 @@
  * two more functions through a vtable_base+offset function pointer, and
  * stays assembly in asm/nonmatching/split_800FB18/sub_800FCF0.s.
  */
+#include "Obj.h"
+
 extern "C" void *memset(void *, int, unsigned int);
 
-extern "C" void sub_800FB18(void *a0)
+extern "C" void sub_800FB18(void *a0v)
 {
-    void *p = *(void **)((char *)a0 + 4);
+    Obj *a0 = (Obj *)a0v;
+    void *p = (void *)a0->field_04;
 
     if (p) {
-        memset(p, 0, (1 << *(int *)((char *)a0 + 8)) + 0x10);
+        memset(p, 0, (1 << a0->field_08) + 0x10);
     }
-    *(int *)((char *)a0 + 0xc) = 0;
-    *(int *)((char *)a0 + 0x10) = 0;
+    a0->field_0c = 0;
+    a0->field_10 = 0;
     {
         /* pointer arithmetic on a plain int* (not a cast at the call site)
          * is what makes tcpp reach __rt_memclr_w for this one. */
         int *ip = (int *)a0;
         memset(ip + 5, 0, 0x48);
     }
-    *(int *)((char *)a0 + 0x5c) = 8;
+    a0->field_5c = 8;
 }
 
-extern "C" void sub_800FC6C(void *a0, int a1, int a2)
+extern "C" void sub_800FC6C(void *a0v, int a1, int a2)
 {
-    *(int *)((char *)a0 + 4) = a1;
-    *(int *)((char *)a0 + 8) = a2;
+    Obj *a0 = (Obj *)a0v;
+    a0->field_04 = a1;
+    a0->field_08 = a2;
 }
 
 extern "C" int sub_800FD2C(void)
@@ -59,9 +63,10 @@ extern "C" int sub_800FC72(void)
 /* Same 4-bit-field-at-bit-6 accessor shape as sub_800FBA0, sub_800FC76 and
  * sub_800FBC0 below -- an unsigned shift-shift, not an AND, is what keeps
  * this an `lsrs` rather than an `asrs`. */
-extern "C" int sub_800FB96(void *a0)
+extern "C" int sub_800FB96(void *a0v)
 {
-    unsigned int v = *(unsigned int *)((char *)a0 + 0x18);
+    Obj *a0 = (Obj *)a0v;
+    unsigned int v = a0->field_18;
     return (v << 0x16) >> 0x1c;
 }
 
@@ -71,32 +76,34 @@ extern "C" int __VTABLE__354dword_803ECB8;
 extern "C" void *gUnknown_03003E7C;
 extern "C" void *gUnknown_03003E84;
 
-extern "C" void sub_800FB72(void *a0)
+extern "C" void sub_800FB72(void *a0v)
 {
+    Obj *a0 = (Obj *)a0v;
     /* routed through a function pointer, not a plain call -- tcpp otherwise
      * inlines sub_800FB18's whole body here instead of a `bl`; see
      * notes/quirks/a-function-pointer-variable-defeats-same-tu-inlining.md */
     void (*fn)(void *) = sub_800FB18;
 
-    *(int *)a0 = (int)&__VTABLE__313dword_803E59C;
+    a0->field_00 = (unsigned int)&__VTABLE__313dword_803E59C;
     sub_800FD48(a0);
     fn(a0);
-    *(int *)a0 = (int)&__VTABLE__354dword_803ECB8;
+    a0->field_00 = (unsigned int)&__VTABLE__354dword_803ECB8;
     gUnknown_03003E7C = 0;
 }
 
-extern "C" void *sub_800FB48(void *a0)
+extern "C" void *sub_800FB48(void *a0v)
 {
+    Obj *a0 = (Obj *)a0v;
     void (*fn)(void *) = sub_800FB18;
 
-    *(int *)a0 = (int)&__VTABLE__354dword_803ECB8;
+    a0->field_00 = (unsigned int)&__VTABLE__354dword_803ECB8;
     gUnknown_03003E7C = a0;
-    *(int *)a0 = (int)&__VTABLE__313dword_803E59C;
-    *(int *)((char *)a0 + 4) = 0;
-    *(int *)((char *)a0 + 8) = 0;
-    *(int *)((char *)a0 + 0x60) = 0;
-    *(int *)((char *)a0 + 0x64) = 0;
-    *(int *)((char *)a0 + 0x68) = 0;
+    a0->field_00 = (unsigned int)&__VTABLE__313dword_803E59C;
+    a0->field_04 = 0;
+    a0->field_08 = 0;
+    a0->field_60 = 0;
+    a0->field_64 = 0;
+    a0->field_68 = 0;
     fn(a0);
     return a0;
 }
