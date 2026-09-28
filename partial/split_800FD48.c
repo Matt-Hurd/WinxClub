@@ -2,9 +2,11 @@
  * stays in asm/split/ once this lands (asm/nonmatching/split_800FD48/ still
  * holds the cut slices the splicer uses per function).
  *
- * A working name for the object these touch: some kind of playing sound
- * channel. field_04 is a raw sample-data address, field_08 a small shift
- * count (channel/voice index), field_5c and field_64 plain state words.
+ * The object these touch is `Obj` (include/Obj.h): a playing sound channel.
+ * field_04 is a raw sample-data address, field_08 a small shift count
+ * (channel/voice index), field_5c and field_64 plain state words. This unit
+ * is where those four field names were first proven; the rest of Obj's
+ * fields come from other units, see include/Obj.h's own comment.
  *
  * REG_DMA1 (0x040000bc) and REG_TM0CNT (0x04000100) are not 32-byte aligned,
  * so a flat cast would rebase (notes/quirks/mmio-constants-get-rebased-to-a-
@@ -18,19 +20,10 @@
  */
 
 #include "generated/functions.h"
+#include "Obj.h"
 
 extern void *gUnknown_03003EAC;
 extern unsigned int gUnknown_03003E7C;
-
-typedef struct {
-    char pad_00[4];
-    unsigned int field_04;
-    unsigned int field_08;
-    char pad_0c[0x5c - 0x0c];
-    unsigned int field_5c;
-    char pad_60[0x64 - 0x60];
-    unsigned int field_64;
-} Obj;
 
 void sub_800FDCE(Obj *a0, unsigned int a1);
 
