@@ -9,53 +9,73 @@
  * the shift-then-mask shape from offset-split-tells-you-where-the-field-
  * boundary-is.md, applied with the shift written explicitly rather than as
  * `>> 10 & 1`, which tcc folds into the same single-instruction test.
+ *
+ * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
+ * header this .c unit cannot include (tcc, not tcpp), so the struct below
+ * mirrors the fields reached here: field_2c/field_30 are Sprite*
+ * (include/Sprite.h), field_38 the vtable-pointer array, field_7c the same
+ * raw directionAndMore word split_801E2D0.cpp reads through Default.hpp
+ * directly. `gUnknown_03003454` is a SlotManager* (include/SlotManager.h).
  */
 
-void sub_801F640(void *a0, unsigned int a1)
+#include "Sprite.h"
+#include "SlotManager.h"
+
+struct GameObj {
+    char gap_00[0x2c];
+    struct Sprite *field_2c;
+    struct Sprite *field_30;
+    char gap_34[4];
+    void *field_38[5];
+    char gap_4c[0x7c - 0x4c];
+    unsigned int field_7c;
+};
+
+void sub_801F640(struct GameObj *a0, unsigned int a1)
 {
-    unsigned int *p = *(unsigned int **)((char *)a0 + 0x2c);
+    struct Sprite *p = a0->field_2c;
     unsigned int bit;
 
     if (p == 0)
         return;
-    bit = (*p << 21) >> 31;
+    bit = (p->field_00 << 21) >> 31;
     if (bit == 0)
         return;
-    *p = (*p & ~0x800) | (a1 << 11);
+    p->field_00 = (p->field_00 & ~0x800) | (a1 << 11);
 }
 
 extern void sub_80401E4(void *a0, unsigned int a1);
 extern void sub_8017862(void *a0, unsigned int a1);
-extern void *gUnknown_03003454;
+extern struct SlotManager *gUnknown_03003454;
 
 /* Each pending-object slot's first word is a vtable pointer whose own first
  * word is a PIC-style offset from itself to the callback, the same shape as
  * split_801CB18.c's `vtbl + *(int*)(vtbl+off)` calls but at offset 0. */
-void sub_801F65C(void *a0)
+void sub_801F65C(struct GameObj *a0)
 {
     unsigned int i;
 
     for (i = 0; i < 5; i++) {
-        void *obj = *(void **)((char *)a0 + i * 4 + 0x38);
+        void *obj = a0->field_38[i];
         if (obj != 0) {
             int *vtbl = *(int **)obj;
             ((void (*)(void *, int))((char *)vtbl + *vtbl))(obj, 1);
-            *(void **)((char *)a0 + i * 4 + 0x38) = 0;
+            a0->field_38[i] = 0;
         }
     }
 
-    if ((int)(*(unsigned int *)(*(void **)((char *)a0 + 0x30)) << 31) != 0)
-        sub_80401E4(*(void **)((char *)a0 + 0x30), 0);
-    if ((int)(*(unsigned int *)(*(void **)((char *)a0 + 0x2c)) << 31) == 0)
-        sub_80401E4(*(void **)((char *)a0 + 0x2c), 1);
+    if ((int)(a0->field_30->field_00 << 31) != 0)
+        sub_80401E4(a0->field_30, 0);
+    if ((int)(a0->field_2c->field_00 << 31) == 0)
+        sub_80401E4(a0->field_2c, 1);
 
     {
-        void *g454 = gUnknown_03003454;
-        unsigned char idx = (unsigned char)(*(unsigned int *)((char *)a0 + 0x7c) >> 16);
+        struct SlotManager *g454 = gUnknown_03003454;
+        unsigned char idx = (unsigned char)(a0->field_7c >> 16);
 
-        *(unsigned short *)((char *)g454 + idx * 2 + 0x598) &= ~1;
+        g454->field_598[idx] &= ~1;
         sub_8017862(g454, idx);
-        *(unsigned int *)((char *)g454 + idx * 4 + 0x498) = 0;
-        *(unsigned int *)((char *)a0 + 0x7c) &= ~0xff0000;
+        g454->field_498[idx] = 0;
+        a0->field_7c &= ~0xff0000;
     }
 }

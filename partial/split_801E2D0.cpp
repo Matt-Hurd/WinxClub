@@ -40,8 +40,8 @@ void Default::TakeDamage()
  */
 int Default::Intersect()
 {
-    *(unsigned int *)((char *)this + 0x7c) =
-        (*(unsigned int *)((char *)this + 0x7c) << 1) >> 1;
+    directionAndMore.flags = (enum GameObjDirectionAndMoreEnum)
+        (((unsigned int)directionAndMore.flags << 1) >> 1);
     field_34 = 0;
     return 0;
 }
@@ -51,8 +51,8 @@ extern "C" void sub_803FF24(void *a0, void *a1);
 /* Same shape as the proven-matching Npc::m3C in partial/split_80253A8.cpp. */
 void Default::m3C()
 {
-    sub_803FF24(*(void **)((char *)this + 0x2c), (void *)((char *)this + 0x58));
-    if (*(void **)((char *)this + 0x30) != 0) {
-        sub_803FF24(*(void **)((char *)this + 0x30), (void *)((char *)this + 0x58));
+    sub_803FF24(field_2c, &x_pos);
+    if (field_30 != 0) {
+        sub_803FF24(field_30, &x_pos);
     }
 }
