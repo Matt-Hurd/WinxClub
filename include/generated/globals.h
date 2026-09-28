@@ -16,7 +16,7 @@ extern unsigned char gUnknown_03003346[4]; /* 0x03003346 */
 extern void *gUnknown_030033E8; /* 0x030033E8 */
 extern void *gUnknown_030033FC[14]; /* 0x030033FC */
 extern void *gUnknown_03003444; /* 0x03003444 */
-extern void *gUnknown_03003448; /* 0x03003448 */
+extern struct Unknown_03003448 *gUnknown_03003448; /* 0x03003448 */
 extern void *gUnknown_0300344C; /* 0x0300344C */
 extern void *gUnknown_03003450; /* 0x03003450 */
 extern void *gUnknown_03003454; /* 0x03003454 */

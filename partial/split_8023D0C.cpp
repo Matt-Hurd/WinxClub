@@ -49,7 +49,6 @@ extern "C" void *sub_8023D0C(void *a0)
 
 extern "C" void sub_8023DD0(void *a0);
 extern "C" void sub_8000DE6(void *a0, void *a1);
-extern void *gUnknown_03003448;
 
 /* Walks the +0xdc[16] pointer array sub_8023D0C zeroed and, for each set
  * entry, unlinks it via sub_8000DE6 before clearing the slot. */
