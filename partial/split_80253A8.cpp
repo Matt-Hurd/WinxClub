@@ -32,7 +32,14 @@ void Npc::m10()
  * read raw offsets of `this` that line up with Default's x_pos/x_speed
  * fields (0x58/0x5c) and a pointer field at 0x2c, but Npc.hpp declares no
  * data members of its own, so they are spelled as byte-offset casts, same
- * as dword_803ED28::m1C() in partial/split_802DDDC.cpp.
+ * as dword_803ED28::m1C() in partial/split_802DDDC.cpp. `this` is
+ * Default-shaped (winx-qhyt.15), but this TU cannot include Default.hpp
+ * either, for the same reason it cannot spell Npc::m04/m08/m10 as calls
+ * through a Default base above: Default's own m04()/m08()/m10() mangle to
+ * the exact m0X__7DefaultFv names this file already declares extern "C",
+ * and the two declarations of one symbol conflict (tried; tcpp: "'was
+ * previously declared without "C" linkage'"). See also
+ * partial/split_801FE90.cpp.
  */
 void Npc::m38()
 {

@@ -15,6 +15,15 @@
  * sub_80260AE is GenericObject__04's case 0x1f body factored into its own
  * function -- same sub_801DB90 call and the same this+0x80+0x1c field
  * check/set.
+ *
+ * a0/this is Default-shaped throughout (winx-qhyt.15), but this TU cannot
+ * include Default.hpp: it declares m08__7DefaultFv and m00__7DefaultFv
+ * extern "C", the exact mangled names of Default::m08()/m00(), and the two
+ * declarations of one symbol conflict (see partial/split_801FE90.cpp for
+ * the same wall hit first). Every a0/this offset here stays a byte cast for
+ * that reason, including this+0x80+0x1c (CurrentAction) -- which would not
+ * safely go through the struct anyway, see
+ * notes/quirks/ads-sizes-an-unqualified-enum-to-its-values-not-to-int.md.
  */
 #include "__vftable_GenericObject.hpp"
 

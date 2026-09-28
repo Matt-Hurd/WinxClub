@@ -12,7 +12,17 @@
  * memset-inlines-to-MOV+STMIA shape, same four-halfword-pair copy loop --
  * pushed onto an array of list heads at a0 + idx*4 + 0x150 instead of a
  * single head at a fixed offset.
+ *
+ * a0 is Default-shaped (winx-qhyt.15), but this TU cannot include
+ * Default.hpp: its m08__7DefaultFv, above, is the exact mangled name of
+ * Default::m08(), so including the class as well would redeclare that
+ * symbol with C++ linkage and conflict. The a0 offsets inside sub_80200A4
+ * stay byte casts for that reason; a0->0x2c is spelled through struct
+ * Sprite instead, which needs no Default.hpp.
  */
+
+#include "Sprite.h"
+#include "SpriteRecord.h"
 
 extern "C" int m08__7DefaultFv(void *a0, void *a1);
 extern "C" void sub_802E3C6(void *a0);
@@ -23,22 +33,20 @@ extern "C" void *memset(void *, int, unsigned int);
 extern "C" void sub_801FEFE(void *a0, void *a1)
 {
     void *tmpl = *(void **)a1;
-    int *buf = (int *)sub_803DA80(0x1c, GetEWRAMStart(), 0, 0);
+    struct SpriteRecord *buf = (struct SpriteRecord *)sub_803DA80(0x1c, GetEWRAMStart(), 0, 0);
     unsigned char i;
 
     if (buf != 0) {
         memset(buf, 0, 0x1c);
     }
     for (i = 0; i < 4; i++) {
-        *(unsigned short *)((char *)buf + i * 2) =
-            *(unsigned short *)((char *)tmpl + i * 2 + 6);
-        *(unsigned short *)((char *)buf + i * 2 + 8) =
-            *(unsigned short *)((char *)tmpl + i * 2 + 0xe);
+        buf->field_00[i] = *(unsigned short *)((char *)tmpl + i * 2 + 6);
+        buf->field_08[i] = *(unsigned short *)((char *)tmpl + i * 2 + 0xe);
     }
-    *(unsigned short *)((char *)buf + 0x10) = *(unsigned short *)((char *)tmpl + 0x16);
-    *(unsigned char *)((char *)buf + 0x14) = 2;
+    buf->field_10 = *(unsigned short *)((char *)tmpl + 0x16);
+    buf->field_14 = 2;
 
-    *(void **)((char *)buf + 0x18) =
+    buf->field_18 =
         *(void **)((char *)a0 + *(unsigned short *)((char *)tmpl + 4) * 4 + 0x150);
     *(void **)((char *)a0 + *(unsigned short *)((char *)tmpl + 4) * 4 + 0x150) = buf;
 }
@@ -81,6 +89,6 @@ extern "C" void sub_8020A74(void *a0)
 
 extern "C" int sub_8020B60(void *a0)
 {
-    unsigned int v = *(unsigned int *)*(unsigned int *)((char *)a0 + 0x2c);
-    return 1 - ((v >> 9) & 1);
+    struct Sprite *sprite = *(struct Sprite **)((char *)a0 + 0x2c);
+    return 1 - ((sprite->field_00 >> 9) & 1);
 }

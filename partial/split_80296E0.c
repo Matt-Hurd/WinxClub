@@ -9,9 +9,27 @@
  * working label). maybeCall60IfActive, HostileCreature__20,
  * HostileBaseObject__5C and HostileScriptGroups__58 (winx-iez.43's other
  * assigned functions of this unit) all park -- see notes/parked.md.
+ *
+ * a0 is Default-shaped (winx-qhyt.15), but this is a plain .c TU and
+ * Default.hpp is a C++ class tcc cannot parse, so a0+0x7c
+ * (directionAndMore, also a bitfield extraction, out of scope on its own)
+ * and a0+0x38 (field_38[]) stay byte casts; a0+0x80 is struct
+ * GameObjUnknown though, a plain struct in winxclub.h, so a0+0x80+0xc goes
+ * through it. a0+0x80+0x1c (CurrentAction) still stays a word cast --
+ * routing it through the struct's enum member narrows the access to a byte,
+ * see notes/quirks/ads-sizes-an-unqualified-enum-to-its-values-not-to-int.md.
+ * a0+0x80+0x2c and a0+0x80+0x38 are HostileCreature's own fields past
+ * Default's 0xa0 (0xac, 0xb8 in docs/decisions/drafts/2026-09-27-object-
+ * types.md), no header yet.
+ *
+ * gUnknown_03003458 is struct Unknown_03003458 (winx-qhyt.8), but
+ * sub_802B0CA's `p` is one whole struct past it (0x29 * 0x20 ==
+ * sizeof(struct Unknown_03003458)) -- into whatever static data follows it,
+ * not a field of this struct -- so it stays untyped.
  */
 #include "generated/functions.h"
 #include "generated/globals.h"
+#include "winxclub.h"
 
 int sub_80296E0(void *a0)
 {
@@ -117,8 +135,13 @@ void sub_802B0CA(void *a0)
 
     sub_801F65C(a0);
 
-    *(unsigned int *)((char *)a0 + 0x80 + 0xc) =
-        (*(unsigned int *)((char *)a0 + 0x80 + 0xc) & 0x8007FFFF) | 0x80000;
+    /* Not hoisted into a `flags` local: a cached base pointer changes
+     * register allocation here (tried; make check moved a byte), so each
+     * access re-spells (struct GameObjUnknown *)(a0 + 0x80) the way the
+     * original re-spells (char *)a0 + 0x80. See notes/quirks/caching-a-
+     * repeated-base-pointer-in-a-local-changes-which-registers-tcc-picks.md. */
+    ((struct GameObjUnknown *)((char *)a0 + 0x80))->unk0C =
+        (((struct GameObjUnknown *)((char *)a0 + 0x80))->unk0C & 0x8007FFFF) | 0x80000;
 
     if (*(int *)((char *)a0 + 0x80 + 0x1c) == 9) {
         idx = *(unsigned int *)((char *)a0 + 0x80 + 0x2c) & 7;
