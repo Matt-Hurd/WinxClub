@@ -6,7 +6,11 @@ public:
   virtual ~Singleton_3E98();
 
   // 0x04
-  char gap_04[0x1a];
+  int field_04;
+  // 0x08
+  int field_08;
+  // 0x0c
+  char gap_0c[0x12];
   // 0x1e
   unsigned short field_1e;
   // 0x20
