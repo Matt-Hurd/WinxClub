@@ -54,16 +54,24 @@
  * here. See docs/decisions/drafts/2026-09-27-object-types.md, type 13.
  */
 struct Unknown_03003448 {
-  char gap_00[0x19b4]; /* 0x00: vtable, two-step ctor (g3003448__Init writes
-                         * __VTABLE__14Singleton_3EB8 then
-                         * __VTABLE__350dword_803EC78; also aliased as
-                         * gUnknown_03003EB8, same instance -- reconciling
-                         * that with include/Singleton_3EB8.hpp's own field
-                         * list is not attempted here). 0x04: see the note
-                         * above the struct -- NOT declared as an embedded
-                         * type, since sub_8000FCE's field_54/field_7a
-                         * (below) already conflict with treating it as a
-                         * clean sub-object. */
+  char gap_00[4]; /* 0x00: vtable, two-step ctor (g3003448__Init writes
+                    * __VTABLE__14Singleton_3EB8 then
+                    * __VTABLE__350dword_803EC78; also aliased as
+                    * gUnknown_03003EB8, same instance -- reconciling that
+                    * with include/Singleton_3EB8.hpp's own field list is
+                    * not attempted here). */
+  int field_04;   /* &a0->field_04 is this + 4: g3003448__Init passes it to
+                    * sub_800B7DC (the embedded Singleton_3EA0's own
+                    * placement-ctor path) and sub_8000F4C/sub_8000FCE pass
+                    * it on to sub_8000C7C's family and nullsub_3. Never
+                    * read here as a value -- see the note above the struct
+                    * for why the object it points into is NOT declared as
+                    * an embedded type: sub_8000FCE's field_54/field_7a
+                    * (below) already conflict with treating it as a clean
+                    * sub-object. */
+  char gap_08[0x19ac]; /* the rest of the embedded Singleton_3EA0-shaped
+                         * sub-object at field_04; not this struct's own
+                         * fields. */
   int field_19b4;      /* sub_80015E6's a1 (rec = a0 + 0x1980, p = rec + 0x34);
                          * zeroed by g3003448__Init */
   int field_19b8;      /* sub_80015E6's a2; zeroed by g3003448__Init */

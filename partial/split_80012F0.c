@@ -8,16 +8,14 @@
  */
 
 #include "generated/functions.h"
+#include "Unknown_03003448.h"
 
 void nullsub_20(void)
 {
 }
 
-void sub_80015E6(void *a0, int a1, int a2)
+void sub_80015E6(struct Unknown_03003448 *a0, int a1, int a2)
 {
-    char *rec = (char *)a0 + 0x1980;
-    int *p = (int *)(rec + 0x34);
-
-    p[0] = a1;
-    p[1] = a2;
+    a0->field_19b4 = a1;
+    a0->field_19b8 = a2;
 }

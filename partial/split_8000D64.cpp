@@ -10,6 +10,7 @@
  * local extern "C" prototypes here rather than generated ones.
  */
 #include "generated/functions.h"
+#include "Unknown_03003448.h"
 
 extern "C" void sub_8000CC6(int *a0, int a1);
 extern "C" void sub_8000CCA(int *a0, int a1);
@@ -24,35 +25,33 @@ extern "C" void sub_800B7DC(void *a0);
 extern "C" void sub_800B8A4(void *a0, int a1);
 extern "C" void sub_800B8CE(void);
 extern "C" void sub_800B916(void *a0);
-extern "C" void sub_8000E6C(void *a0);
 extern "C" void sub_8000DE6(void *a0, void **a1);
 
-extern "C" void sub_8000F4C(void *a0, int a1, unsigned int a2, int a3)
+extern "C" void sub_8000F4C(struct Unknown_03003448 *a0, int a1, unsigned int a2, int a3)
 {
-    unsigned short *list = *(unsigned short **)((char *)a0 + 0x19DC);
+    unsigned short *list = a0->field_19dc;
 
     if (list) {
         operator delete[](list);
-        *(unsigned short **)((char *)a0 + 0x19DC) = 0;
+        a0->field_19dc = 0;
     }
 
     if (a2) {
         unsigned int i;
 
-        *(int *)((char *)a0 + 0x19D8) = 0;
-        *(unsigned short **)((char *)a0 + 0x19DC) =
-            (unsigned short *)sub_803DA9C(a2 * 2, GetEWRAMStart(), 0, 0);
+        a0->field_19d8 = 0;
+        a0->field_19dc = (unsigned short *)sub_803DA9C(a2 * 2, GetEWRAMStart(), 0, 0);
 
         for (i = 0; i < a2 - 1; i++) {
-            (*(unsigned short **)((char *)a0 + 0x19DC))[i] = i + 1;
+            a0->field_19dc[i] = i + 1;
         }
-        (*(unsigned short **)((char *)a0 + 0x19DC))[a2 - 1] = -1;
+        a0->field_19dc[a2 - 1] = -1;
     }
 
-    sub_8000CC6((int *)((char *)a0 + 4), a2);
-    sub_8000CCA((int *)((char *)a0 + 4), a3);
-    sub_8000C7C((int *)((char *)a0 + 4), a1);
-    sub_800B9B6((char *)a0 + 4);
+    sub_8000CC6(&a0->field_04, a2);
+    sub_8000CCA(&a0->field_04, a3);
+    sub_8000C7C(&a0->field_04, a1);
+    sub_800B9B6(&a0->field_04);
 }
 
 extern "C" void *g3003448__Init(void *a0)
@@ -67,30 +66,30 @@ extern "C" void *g3003448__Init(void *a0)
         *(int *)a0 = (int)&__VTABLE__14Singleton_3EB8;
         gUnknown_03003EB8 = a0;
         *(int *)a0 = (int)&__VTABLE__350dword_803EC78;
-        sub_800B7DC((char *)a0 + 4);
+        sub_800B7DC(&((struct Unknown_03003448 *)a0)->field_04);
 
-        *(int *)((char *)a0 + 0x19B4) = 0;
-        *(int *)((char *)a0 + 0x19B8) = 0;
+        ((struct Unknown_03003448 *)a0)->field_19b4 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19b8 = 0;
 
-        *(unsigned short *)((char *)a0 + 0x19BC) = 0;
-        *(unsigned short *)((char *)a0 + 0x19BE) = 0;
+        ((struct Unknown_03003448 *)a0)->field_19bc = 0;
+        ((struct Unknown_03003448 *)a0)->field_19be = 0;
 
-        *(void **)((char *)a0 + 0x19C0) = 0;
-        *(unsigned short *)((char *)a0 + 0x19C4) = 0;
-        *(unsigned short *)((char *)a0 + 0x19C6) = 0;
-        *(unsigned short *)((char *)a0 + 0x19C8) = 0;
-        *(unsigned short *)((char *)a0 + 0x19CA) = 0;
-        *(unsigned short *)((char *)a0 + 0x19CC) = 0;
-        *(unsigned short *)((char *)a0 + 0x19CE) = 0;
-        *(void **)((char *)a0 + 0x19D0) = 0;
-        *(int *)((char *)a0 + 0x19D4) = 0;
-        *(unsigned int *)((char *)a0 + 0x19D8) = 0x0000FFFF;
-        *(void **)((char *)a0 + 0x19DC) = 0;
-        *(unsigned int *)((char *)a0 + 0x19E0) = 0x0000FFFF;
-        *(void **)((char *)a0 + 0x19E4) = 0;
+        ((struct Unknown_03003448 *)a0)->field_19c0 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19c4 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19c6 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19c8 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19ca = 0;
+        ((struct Unknown_03003448 *)a0)->field_19cc = 0;
+        ((struct Unknown_03003448 *)a0)->field_19ce = 0;
+        ((struct Unknown_03003448 *)a0)->field_19d0 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19d4 = 0;
+        ((struct Unknown_03003448 *)a0)->field_19d8 = 0x0000FFFF;
+        ((struct Unknown_03003448 *)a0)->field_19dc = 0;
+        ((struct Unknown_03003448 *)a0)->field_19e0 = 0x0000FFFF;
+        ((struct Unknown_03003448 *)a0)->field_19e4 = 0;
 
         {
-            unsigned int flags = *(unsigned int *)((char *)a0 + 0x19E8);
+            unsigned int flags = ((struct Unknown_03003448 *)a0)->field_19e8;
             unsigned int mask = 0xFFFF;
             flags &= ~mask;
             mask += 1;
@@ -103,63 +102,65 @@ extern "C" void *g3003448__Init(void *a0)
             flags |= mask;
             mask <<= 1;
             flags |= mask;
-            *(unsigned int *)((char *)a0 + 0x19E8) = flags;
+            ((struct Unknown_03003448 *)a0)->field_19e8 = flags;
         }
     }
     return a0;
 }
 
-extern "C" void sub_8000E6C(void *a0)
+extern "C" void sub_8000E6C(struct Unknown_03003448 *a0)
 {
     int i;
 
-    for (i = 1; i <= *(unsigned short *)((char *)a0 + 0x19BC); i++) {
-        void *elem = (char *)(*(void **)((char *)a0 + 0x19C0)) + i * 0x60;
-        if (*(int *)((char *)elem + 0x14) != 0) {
+    for (i = 1; i <= a0->field_19bc; i++) {
+        void *elem = (unsigned char *)a0->field_19c0 + i * 0x60;
+        if (*(int *)((unsigned char *)elem + 0x14) != 0) {
             sub_8000DE6(a0, &elem);
         }
     }
 
-    *(unsigned int *)((char *)a0 + 0x19E8) |= 0x40000;
-    operator delete[](*(void **)((char *)a0 + 0x19C0));
-    *(void **)((char *)a0 + 0x19C0) = 0;
-    operator delete[](*(void **)((char *)a0 + 0x19D0));
-    *(void **)((char *)a0 + 0x19D0) = 0;
-    *(unsigned short *)((char *)a0 + 0x19BC) = 0;
-    *(unsigned short *)((char *)a0 + 0x19C4) = 0;
-    *(unsigned short *)((char *)a0 + 0x19C6) = 0;
-    *(unsigned short *)((char *)a0 + 0x19C8) = 0;
-    *(unsigned short *)((char *)a0 + 0x19CA) = 0;
-    *(unsigned short *)((char *)a0 + 0x19CC) = 0;
-    *(unsigned short *)((char *)a0 + 0x19CE) = 0;
-    *(unsigned int *)((char *)a0 + 0x19E8) &= 0xFFFF0000;
+    a0->field_19e8 |= 0x40000;
+    operator delete[](a0->field_19c0);
+    a0->field_19c0 = 0;
+    operator delete[](a0->field_19d0);
+    a0->field_19d0 = 0;
+    a0->field_19bc = 0;
+    a0->field_19c4 = 0;
+    a0->field_19c6 = 0;
+    a0->field_19c8 = 0;
+    a0->field_19ca = 0;
+    a0->field_19cc = 0;
+    a0->field_19ce = 0;
+    a0->field_19e8 &= 0xFFFF0000;
     if (gUnknown_03003EA0 != 0) {
         sub_800B8CE();
         sub_800B916(gUnknown_03003EA0);
     }
-    *(unsigned int *)((char *)a0 + 0x19E8) &= ~0x40000;
+    a0->field_19e8 &= ~0x40000;
 }
 
-extern "C" void sub_8000FCE(void *a0)
+extern "C" void sub_8000FCE(struct Unknown_03003448 *a0)
 {
-    nullsub_3((char *)a0 + 4);
+    nullsub_3(&a0->field_04);
 
-    if (*(void **)((char *)a0 + 0x19E4) != 0) {
-        operator delete[](*(void **)((char *)a0 + 0x19E4));
-        *(void **)((char *)a0 + 0x19E4) = 0;
+    if (a0->field_19e4 != 0) {
+        operator delete[](a0->field_19e4);
+        a0->field_19e4 = 0;
     }
 
+    /* +0x54 and +0x7a fall inside the ambiguous Singleton_3EA0-shaped
+     * sub-object at field_04 (see the header note above struct
+     * Unknown_03003448); not one of this struct's own declared fields. */
     if (*(int *)((char *)a0 + 0x54) != 0) {
         unsigned int i;
 
-        *(int *)((char *)a0 + 0x19E0) = *(unsigned short *)((char *)a0 + 0x7a);
-        *(unsigned short **)((char *)a0 + 0x19E4) =
+        a0->field_19e0 = *(unsigned short *)((char *)a0 + 0x7a);
+        a0->field_19e4 =
             (unsigned short *)sub_803DA9C(*(unsigned int *)((char *)a0 + 0x54) * 2, GetEWRAMStart(), 0, 0);
 
         for (i = 0; i < *(unsigned int *)((char *)a0 + 0x54) - 1; i++) {
-            (*(unsigned short **)((char *)a0 + 0x19E4))[i] =
-                *(unsigned short *)((char *)a0 + 0x7a) + i + 1;
+            a0->field_19e4[i] = *(unsigned short *)((char *)a0 + 0x7a) + i + 1;
         }
-        (*(unsigned short **)((char *)a0 + 0x19E4))[*(unsigned int *)((char *)a0 + 0x54) - 1] = -1;
+        a0->field_19e4[*(unsigned int *)((char *)a0 + 0x54) - 1] = -1;
     }
 }

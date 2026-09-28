@@ -3,6 +3,7 @@
  */
 
 #include "generated/functions.h"
+#include "Unknown_03003448.h"
 
 int sub_80017E4(void *a0, int a1, int a2, int a3)
 {
@@ -82,6 +83,9 @@ int sub_8001818(void *a0, int *a1, int a2)
 
 void *sub_800185E(void *a0, int a1)
 {
+    /* +0x34 falls inside the ambiguous Singleton_3EA0-shaped sub-object at
+     * Unknown_03003448's field_04 (see the header note), not one of
+     * Unknown_03003448's own declared fields. */
     void *base = *(void **)((char *)a0 + 0x34);
     return (a1 << 4) + (char *)base;
 }
@@ -94,12 +98,14 @@ void nullsub_22(void)
 {
 }
 
-int sub_80019A6(void *a0)
+int sub_80019A6(struct Unknown_03003448 *a0)
 {
-    unsigned int *p = (unsigned int *)((char *)a0 + 0x19c0);
-    return (unsigned)(p[10] << 0xc) >> 0x1f;
+    return (unsigned)(a0->field_19e8 << 0xc) >> 0x1f;
 }
 
+/* +0x1ad4 and +0x19ec (below, in sub_80019C4/D4/E8/FC) are past
+ * field_19e8, the last field Unknown_03003448's header declares -- see the
+ * header's own note on why the struct stops there. */
 void *sub_80019B4(void *a0)
 {
     return sub_800F1DA((char *)a0 + 0x1ad4);
@@ -125,17 +131,15 @@ void sub_80019FC(void *a0, void *a1, int a2)
     sub_80154BA(a0, (char *)a1 + 0x19ec, (unsigned short)a2);
 }
 
-void sub_8001A10(void *a0, int a1)
+void sub_8001A10(struct Unknown_03003448 *a0, int a1)
 {
-    unsigned int *p = (unsigned int *)((char *)a0 + 0x19c0);
-    unsigned int old = p[10];
+    unsigned int old = a0->field_19e8;
 
     old &= ~(1 << 0x14);
-    p[10] = (a1 << 0x14) | old;
+    a0->field_19e8 = (a1 << 0x14) | old;
 }
 
-int sub_8001A26(void *a0)
+int sub_8001A26(struct Unknown_03003448 *a0)
 {
-    unsigned int *p = (unsigned int *)((char *)a0 + 0x19c0);
-    return (unsigned)(p[10] << 0xb) >> 0x1f;
+    return (unsigned)(a0->field_19e8 << 0xb) >> 0x1f;
 }

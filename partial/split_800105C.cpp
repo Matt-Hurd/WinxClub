@@ -6,9 +6,9 @@
 
 extern "C" void sub_8000CCE(int *a0);
 
-extern "C" void sub_800105C(void *a0)
+extern "C" void sub_800105C(struct Unknown_03003448 *a0)
 {
-    sub_8000CCE((int *)((char *)a0 + 4));
+    sub_8000CCE(&a0->field_04);
 }
 
 extern "C" int sub_80011CA(struct Unknown_03003448 *a0)
