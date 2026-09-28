@@ -20,7 +20,7 @@ void dword_803ED28::m20()
 
 unsigned int dword_803ED28::m1C()
 {
-    return (*(unsigned int *)((char *)this + 0x48) >> 10) & 0x1f;
+    return (field_48 >> 10) & 0x1f;
 }
 
 extern "C" void sub_802E47A(void *a0);

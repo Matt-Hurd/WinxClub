@@ -16,7 +16,7 @@
 
 unsigned char dword_803ED4C::m1C()
 {
-    return *((unsigned char *)((char *)this + 0x30) + 0xc);
+    return field_3c;
 }
 
 extern "C" int __VTABLE__377dword_803EDC4;

@@ -12,7 +12,7 @@
 
 unsigned char dword_803EB10::m1C()
 {
-    return *((unsigned char *)this + 0x40);
+    return field_40;
 }
 
 extern "C" void sub_802E47A(void *a0);
