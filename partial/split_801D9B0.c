@@ -2,10 +2,11 @@
  * asm/nonmatching/split_801D9B0/.
  *
  * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
- * header this .c unit cannot include (tcc, not tcpp), so the struct below
- * mirrors the fields reached here: field_08/field_18 are Default's
- * sprite_08..sprite_0e/sprite_18..sprite_1e (an indexed array reproduces the
- * hand-split offsets the same way, see
+ * header this .c unit cannot include (tcc, not tcpp), so it reaches the
+ * fields through include/GameObj.h instead: Default's sprite_08..sprite_0e/
+ * sprite_18..sprite_1e are named fields there, not arrays, so the loops
+ * below index off `&a0->sprite_08`/`&a0->sprite_1a` (an indexed access off
+ * the field's address reproduces the hand-split offsets the same way, see
  * notes/quirks/an-indexed-struct-array-access-compiles-the-same-as-the-hand-
  * split-offset.md); field_2c is a Sprite* (include/Sprite.h); field_28 is
  * the SpriteRecord list head sub_801DA46 pushes onto (include/SpriteRecord.h).
@@ -13,16 +14,7 @@
 
 #include "Sprite.h"
 #include "SpriteRecord.h"
-
-struct GameObj {
-    char gap_00[8];
-    unsigned short field_08[4];
-    char gap_10[0x18 - 0x10];
-    unsigned short field_18[4];
-    char gap_20[0x28 - 0x20];
-    struct SpriteRecord *field_28;
-    struct Sprite *field_2c;
-};
+#include "GameObj.h"
 
 extern unsigned short sub_803F6B4(void *a0);
 extern void sub_80007A0(void *a0, int a1, int a2);
@@ -44,9 +36,9 @@ void sub_801DAA0(struct GameObj *a0, void *a1)
 
     i = 0;
     do {
-        a0->field_08[i] = *(unsigned short *)((char *)src + i * 2 + 6);
-        if (a0->field_18[i] == 0) {
-            a0->field_18[i] = *(unsigned short *)((char *)src + i * 2 + 6);
+        (&a0->sprite_08)[i] = *(unsigned short *)((char *)src + i * 2 + 6);
+        if ((&a0->sprite_18)[i] == 0) {
+            (&a0->sprite_18)[i] = *(unsigned short *)((char *)src + i * 2 + 6);
         }
         i++;
     } while (i < 4);
@@ -54,7 +46,7 @@ void sub_801DAA0(struct GameObj *a0, void *a1)
 
 mode1:
     do {
-        a0->field_18[i] = *(unsigned short *)((char *)src + i * 2 + 6);
+        (&a0->sprite_18)[i] = *(unsigned short *)((char *)src + i * 2 + 6);
         i++;
     } while (i < 4);
 }
@@ -73,10 +65,10 @@ void sub_801DAEC(struct GameObj *a0, void *a1)
         return;
 
 body:
-    a0->field_18[0] = *(unsigned short *)((char *)src + 4);
-    a0->field_18[1] = *(unsigned short *)((char *)src + 4);
-    a0->field_18[2] = *(unsigned short *)((char *)src + 4);
-    a0->field_18[3] = *(unsigned short *)((char *)src + 4);
+    a0->sprite_18 = *(unsigned short *)((char *)src + 4);
+    a0->sprite_1a = *(unsigned short *)((char *)src + 4);
+    a0->sprite_1c = *(unsigned short *)((char *)src + 4);
+    a0->sprite_1e = *(unsigned short *)((char *)src + 4);
 
     if (sub_803F6B4(p) != *(unsigned short *)((char *)src + 4)) {
         sub_80007A0(a0->field_2c, *(unsigned short *)((char *)src + 4), 0);

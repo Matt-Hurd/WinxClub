@@ -11,25 +11,17 @@
  * `>> 10 & 1`, which tcc folds into the same single-instruction test.
  *
  * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
- * header this .c unit cannot include (tcc, not tcpp), so the struct below
- * mirrors the fields reached here: field_2c/field_30 are Sprite*
- * (include/Sprite.h), field_38 the vtable-pointer array, field_7c the same
- * raw directionAndMore word split_801E2D0.cpp reads through Default.hpp
- * directly. `gUnknown_03003454` is a SlotManager* (include/SlotManager.h).
+ * header this .c unit cannot include (tcc, not tcpp), so it reaches the
+ * fields through include/GameObj.h instead: field_2c/field_30 are Sprite*
+ * (include/Sprite.h), field_38 the vtable-pointer array, directionAndMore the
+ * same raw word split_801E2D0.cpp reads through Default.hpp directly, here
+ * through a raw `a0 + 0x7c` cast since this unit only ever touches it as a
+ * bitfield. `gUnknown_03003454` is a SlotManager* (include/SlotManager.h).
  */
 
 #include "Sprite.h"
 #include "SlotManager.h"
-
-struct GameObj {
-    char gap_00[0x2c];
-    struct Sprite *field_2c;
-    struct Sprite *field_30;
-    char gap_34[4];
-    void *field_38[5];
-    char gap_4c[0x7c - 0x4c];
-    unsigned int field_7c;
-};
+#include "GameObj.h"
 
 void sub_801F640(struct GameObj *a0, unsigned int a1)
 {
@@ -56,7 +48,7 @@ void sub_801F65C(struct GameObj *a0)
     unsigned int i;
 
     for (i = 0; i < 5; i++) {
-        void *obj = a0->field_38[i];
+        void *obj = (void *)a0->field_38[i];
         if (obj != 0) {
             int *vtbl = *(int **)obj;
             ((void (*)(void *, int))((char *)vtbl + *vtbl))(obj, 1);
@@ -71,11 +63,11 @@ void sub_801F65C(struct GameObj *a0)
 
     {
         struct SlotManager *g454 = gUnknown_03003454;
-        unsigned char idx = (unsigned char)(a0->field_7c >> 16);
+        unsigned char idx = (unsigned char)(*(unsigned int *)((char *)a0 + 0x7c) >> 16);
 
         g454->field_598[idx] &= ~1;
         sub_8017862(g454, idx);
         g454->field_498[idx] = 0;
-        a0->field_7c &= ~0xff0000;
+        *(unsigned int *)((char *)a0 + 0x7c) &= ~0xff0000;
     }
 }

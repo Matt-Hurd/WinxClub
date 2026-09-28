@@ -3,18 +3,14 @@
  *
  * `a0` is a Default* (include/Default.hpp), but Default.hpp is a C++ class
  * header and this unit is a plain .c translation unit compiled by tcc, which
- * cannot parse `class`; the struct below mirrors the fields this unit
- * reaches (Default's directionAndMore at 0x7c and flags.unk00/unk08 at
- * 0x80/0x88) instead of including it.
+ * cannot parse `class`; it reaches Default's directionAndMore (0x7c) and
+ * flags.unk00/unk08 (0x80/0x88) through include/GameObj.h instead.
+ * GameObjUnknown's unk00/unk08 are `int` (winxclub.h), but every shift here
+ * needs the unsigned/logical form the original mirror's `unsigned int`
+ * fields gave it, so both reads go through an `unsigned int` cast.
  */
 
-struct GameObj {
-    char gap_00[0x7c];
-    unsigned int field_7c; /* Default::directionAndMore */
-    unsigned int field_80; /* Default::flags.unk00 */
-    char gap_84[4];
-    unsigned int field_88; /* Default::flags.unk08 */
-};
+#include "GameObj.h"
 
 extern void *gUnknown_03003454;
 extern int rand(void);
@@ -22,11 +18,11 @@ extern void sub_8017884(void *a0, unsigned int a1, unsigned int a2, unsigned int
 
 void sub_801DCFC(struct GameObj *a0)
 {
-    if (((a0->field_80 << 0x15) >> 0x18) != 0) {
-        unsigned short arg1 = rand() % (int)((a0->field_80 << 0x15) >> 0x18) +
-            ((a0->field_88 << 0x16) >> 0x16);
+    if ((((unsigned int)a0->flags.unk00 << 0x15) >> 0x18) != 0) {
+        unsigned short arg1 = rand() % (int)(((unsigned int)a0->flags.unk00 << 0x15) >> 0x18) +
+            (((unsigned int)a0->flags.unk08 << 0x16) >> 0x16);
 
         sub_8017884(gUnknown_03003454, arg1,
-            (a0->field_7c << 8) >> 0x18, 1, a0);
+            (*(unsigned int *)&a0->directionAndMore << 8) >> 0x18, 1, a0);
     }
 }

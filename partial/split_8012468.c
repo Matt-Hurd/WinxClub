@@ -3,14 +3,11 @@
  *
  * `a0` is a Default* (include/Default.hpp), but Default.hpp is a C++ class
  * header and this unit is a plain .c translation unit compiled by tcc, which
- * cannot parse `class`; the struct below mirrors the one field this unit
- * reaches instead of including it.
+ * cannot parse `class`; it reaches Default::field_34 through include/GameObj.h
+ * instead of including it.
  */
 
-struct GameObj {
-    char gap_00[0x34];
-    unsigned int field_34; /* Default::field_34 */
-};
+#include "GameObj.h"
 
 extern void gUnknown_03002F48(void *a0, void *a1, unsigned int a2);
 extern void sub_80124C8(void *a0);

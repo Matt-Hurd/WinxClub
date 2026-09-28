@@ -13,19 +13,14 @@
  * read first and misses the ROM's reg+reg addressing.
  *
  * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
- * header this .c unit cannot include (tcc, not tcpp), so the struct below
- * mirrors the fields reached here: 0x8c is Default::flags.unk0C, and 0xb0/
- * 0xb4 are Boss-only scratch past Default's own 0xa0
- * (docs/decisions/drafts/2026-09-27-object-types.md), not Default fields.
+ * header this .c unit cannot include (tcc, not tcpp), so it reaches
+ * Default::flags.unk0C through include/GameObj.h; 0xb0/0xb4 are Boss-only
+ * scratch past Default's own 0xa0
+ * (docs/decisions/drafts/2026-09-27-object-types.md), not Default fields, so
+ * those two stay raw offset casts.
  */
 
-struct GameObj {
-    char gap_00[0x8c];
-    unsigned int flags_unk0c;
-    char gap_90[0xb0 - 0x90];
-    unsigned int field_b0;
-    unsigned int field_b4;
-};
+#include "GameObj.h"
 
 extern void sub_8028C2E(void *a0);
 extern void TakeDamage__7DefaultFv(void *a0);
@@ -41,7 +36,7 @@ void Boss__50(struct GameObj *a0)
     v = *(unsigned int *)((char *)gUnknown_03003E98 + 8) & 3;
     if (v < 2) {
         base = gUnknown_0300345C;
-        idx = (a0->field_b0 >> 19) & 0xff;
+        idx = (*(unsigned int *)((char *)a0 + 0xb0) >> 19) & 0xff;
         sub_8028C2E((char *)base + (unsigned char)(idx + v) * 0x20);
     }
 }
@@ -51,9 +46,9 @@ void Boss__TakeDamage(struct GameObj *a0)
     void *base;
     unsigned int idx;
 
-    a0->flags_unk0c = (a0->flags_unk0c & 0x8007FFFF) + (0xf << 0x15);
+    a0->flags.unk0C = (a0->flags.unk0C & 0x8007FFFF) + (0xf << 0x15);
     base = gUnknown_0300345C;
-    idx = (a0->field_b4 + 2) & 0xff;
+    idx = (*(unsigned int *)((char *)a0 + 0xb4) + 2) & 0xff;
     sub_8028C2E((char *)base + idx * 0x20);
     TakeDamage__7DefaultFv(a0);
 }

@@ -21,8 +21,8 @@
  * declares (Default's own m08 slot mangles to the identical name), so
  * sub_8035530 and ToggleObjectGroup::m08 reach Default::field_78 and
  * flags.CurrentAction (0x78 and 0x9c,
- * docs/decisions/drafts/2026-09-27-object-types.md) through a local mirror
- * struct instead of the real class, the same convention split_801D9B0.c and
+ * docs/decisions/drafts/2026-09-27-object-types.md) through include/GameObj.h
+ * instead of the real class, the same convention split_801D9B0.c and
  * split_801F640.c use for .c units that cannot include it at all.
  * CurrentAction is `int`, not `enum EnemyAction`: the enum's values all fit
  * a byte, so tcpp sizes it as 1 byte, but this field is stored as a full
@@ -34,13 +34,7 @@
  */
 #include "winxclub.h"
 #include "ToggleObjectGroup.hpp"
-
-struct GameObj {
-    char gap_00[0x78];
-    int field_78;
-    char gap_7c[0x9c - 0x7c];
-    int CurrentAction;
-};
+#include "GameObj.h"
 
 extern "C" void sub_801DB90(void *a0);
 extern "C" void m00__7DefaultFv(void *a0, int a1);
@@ -53,8 +47,8 @@ extern "C" void sub_8035530(void *a0)
     struct GameObj *self = (struct GameObj *)a0;
 
     sub_801DB90(a0);
-    if (self->CurrentAction == 0) {
-        self->CurrentAction = 0x13;
+    if (self->flags.CurrentAction == 0) {
+        self->flags.CurrentAction = 0x13;
     }
 }
 
@@ -67,8 +61,8 @@ int ToggleObjectGroup::m08(void *a1)
         return ((struct GameObj *)this)->field_78 == 0 ? 1 : 0;
     case 0x1f:
         sub_801DB90(this);
-        if (((struct GameObj *)this)->CurrentAction == 0)
-            ((struct GameObj *)this)->CurrentAction = 0x13;
+        if (((struct GameObj *)this)->flags.CurrentAction == 0)
+            ((struct GameObj *)this)->flags.CurrentAction = 0x13;
         return ((struct GameObj *)this)->field_78 == 0 ? 1 : 0;
     default:
         return m08__7DefaultFv(this, a1);

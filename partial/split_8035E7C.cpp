@@ -20,8 +20,8 @@
  * would collide with the hand-mangled `m08__7DefaultFv`/`m20__7DefaultFv`/
  * `Dying__7DefaultFv` this file also declares (Default's own slots mangle
  * to the identical names), so every `this` cast below is reached through
- * the local mirror struct instead -- the same convention split_801D9B0.c
- * and split_801F640.c use for .c units that cannot include Default.hpp at
+ * include/GameObj.h instead -- the same convention split_801D9B0.c and
+ * split_801F640.c use for .c units that cannot include Default.hpp at
  * all. The node m38/m20 build and push onto self->field_28 is the
  * SpriteRecord sub_803DA80 hands back (include/SpriteRecord.h,
  * winx-qhyt.7), the same list partial/split_801D9B0.c already reaches
@@ -30,23 +30,12 @@
  * and stays raw casts; its two bytes at this+0x70 are
  * self->directionAndMore.struc.unk1/unk2 and its byte at this+0xa0+8
  * (0xa8) is a derived-class field past Default's own 0xa0, not a Default
- * field either way.
+ * field either way, so it stays a raw offset cast.
  */
 #include "winxclub.h"
 #include "SpriteRecord.h"
 #include "WallObject.hpp"
-
-struct GameObj {
-    char gap_00[0x18];
-    unsigned short sprite_18;
-    unsigned short sprite_1a;
-    char gap_1c[0x28 - 0x1c];
-    struct SpriteRecord *field_28;
-    char gap_2c[0x7c - 0x2c];
-    union GameObjDirectionAndMoreUnion directionAndMore;
-    char gap_80[0xa8 - 0x80];
-    unsigned char field_a8;
-};
+#include "GameObj.h"
 
 extern "C" void m00__7DefaultFv(void *a0, int a1);
 extern "C" void m04__7DefaultFv(void *a0, void *a1);
@@ -175,7 +164,7 @@ void WallObject::m48(void *a1)
         } else {
             v = -v;
         }
-        self->field_a8 = (unsigned char)v;
+        *((unsigned char *)self + 0xa8) = (unsigned char)v;
         self->directionAndMore.struc.unk1 = 0;
         break;
     }

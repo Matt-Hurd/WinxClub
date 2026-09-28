@@ -10,15 +10,13 @@
  * through sub_8000DE6(gUnknown_03003EB8, ...) if it is set, and null it.
  *
  * `a0` is a Default* (include/Default.hpp); Default.hpp is a C++ class
- * header this .c unit cannot include (tcc, not tcpp), so the struct below
- * mirrors just the reached field: +0x3c is field_38[1], the vtable-pointer
- * array's second slot (docs/decisions/drafts/2026-09-27-object-types.md).
+ * header this .c unit cannot include (tcc, not tcpp), so it reaches the
+ * field through include/GameObj.h instead: +0x3c is field_38[1], the
+ * vtable-pointer array's second slot
+ * (docs/decisions/drafts/2026-09-27-object-types.md).
  */
 
-struct GameObj {
-    char gap_00[0x38];
-    void *field_38[5];
-};
+#include "GameObj.h"
 
 extern void sub_802E47A(void *a0);
 extern void sub_8000DE6(void *a0, void *a1);
