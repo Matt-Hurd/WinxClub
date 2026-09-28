@@ -45,9 +45,19 @@ struct Unknown_03003458 {
   int screen_x_offset;
   int screen_y_offset;
   char field_10[0x10]; //buffer
-  struct GameObj* objects[0x40]; //Unsure actual limit
-  char field_210[0x40C];
-  char total_object_count; //0x51C, object_count*2
+  struct GameObj* objects[0x40]; //Unsure actual limit. sub_801CB18's a0+0x1b0 pointer
+                                  //is NOT this array grown further: it is a pointer to
+                                  //an unrolled unsigned short[] (up to 0xfc entries) used
+                                  //for a rotate/insertion-sort, unrelated to GameObj*.
+                                  //It lives inside field_210 below, offset 0x90 into it.
+  char field_210[0x3FC]; //was 0x40C; shrunk by 0x10 so total_object_count below lands at
+                          //the real 0x51C every reader uses. Also holds the a0+0x1b0
+                          //short-array pointer noted above (0x1b0 - 0x120 = 0x90).
+  unsigned int total_object_count; //0x51C, was char. sub_8016D90 and all of
+                                    //split_801CB18.c load/store a *word* here: bits 1-7
+                                    //are object_count*2 (ADS's usual <<24>>25 bitfield
+                                    //extract), and sub_8016D90 also toggles bit 0x1000 of
+                                    //this same word, so it is a flags word, not a byte.
 };
 
 struct struct_8023AA2_a
