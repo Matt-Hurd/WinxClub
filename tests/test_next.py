@@ -112,6 +112,27 @@ def test_survey_covers_every_remaining_function_once():
     assert whole <= {r["unit"] for r in rows}
 
 
+def test_origin_library_or_handwritten_is_never_ready_or_batched():
+    rows, notes = nxt.survey(REPO)
+    assert not notes, notes
+    foreign = [r for r in rows if r["cls"] == "foreign"]
+    assert foreign, "no foreign functions found -- config/symbols.yml origin: fields missing?"
+    assert {r["origin"] for r in foreign} <= set(nxt.FOREIGN_ORIGINS)
+    ready_names = {r["name"] for r in nxt.ready(rows)}
+    splice_names = {r["name"] for r in nxt.queue(rows, "splice")}
+    pool_names = {r["name"] for r in nxt.queue(rows, "pool")}
+    batched = {r["name"] for g in nxt.batches(rows, count=len(rows)) for r in g}
+    for r in foreign:
+        assert r["name"] not in ready_names
+        assert r["name"] not in splice_names
+        assert r["name"] not in pool_names
+        assert r["name"] not in batched
+    # a shared twin is not foreign: it stays in its ordinary class
+    shared = [r for r in rows if r.get("origin") == "shared"]
+    assert shared
+    assert all(r["cls"] != "foreign" for r in shared)
+
+
 def test_own_pool_is_trailing_or_interior_by_where_the_instructions_stop():
     none = slice_text("thumb", "s", "ldr r0, _08001234", "bx lr")
     trailing = slice_text("thumb", "s", "ldr r0, _08001234", "bx lr", "ALIGN",

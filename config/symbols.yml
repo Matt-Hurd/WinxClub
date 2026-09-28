@@ -915,6 +915,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8000210
   name: strToLower
+  origin: shared  # GBA Video: FUN_08000d34
 - addr: '0x080002C8'
   isa: thumb
   unit: asm/nonmatching/split_8000210
@@ -1350,6 +1351,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8004670
   name: sub_80046F8
+  origin: shared  # GBA Video: FUN_080004d8
 - addr: '0x08004716'
   isa: thumb
   unit: asm/nonmatching/split_8004670
@@ -1382,6 +1384,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8004780
   name: sub_8004784
+  origin: shared
 - addr: '0x080047A0'
   isa: thumb
   unit: asm/nonmatching/split_8004780
@@ -1398,6 +1401,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8004780
   name: sub_80047BE
+  origin: shared
 - addr: '0x080047DA'
   isa: thumb
   unit: asm/nonmatching/split_8004780
@@ -1629,6 +1633,7 @@ functions:
   isa: arm
   unit: asm/split/split_8005380.s
   name: sub_8005504
+  origin: handwritten
 - addr: '0x08006244'
   isa: arm
   unit: asm/split/split_8005380.s
@@ -1649,6 +1654,7 @@ functions:
   isa: arm
   unit: asm/split/split_80062F4.s
   name: sub_8006350
+  origin: handwritten
 - addr: '0x08006BA4'
   isa: arm
   unit: asm/split/split_80062F4.s
@@ -1657,6 +1663,7 @@ functions:
   isa: arm
   unit: asm/split/split_8006BC0.s
   name: sub_8006BC0
+  origin: handwritten
 - addr: '0x08006F90'
   isa: arm
   unit: asm/split/split_8006F90.s
@@ -1689,14 +1696,17 @@ functions:
   isa: arm
   unit: asm/split/split_80077E8.s
   name: sub_80077E8
+  origin: handwritten
 - addr: '0x08007C78'
   isa: arm
   unit: asm/split/split_80077E8.s
   name: sub_8007C78
+  origin: handwritten
 - addr: '0x08007D44'
   isa: arm
   unit: asm/split/split_80077E8.s
   name: sub_8007D44
+  origin: handwritten
 - addr: '0x08007ED8'
   isa: arm
   unit: asm/split/split_80077E8.s
@@ -1709,10 +1719,12 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8008008
   name: sub_8008008
+  origin: shared  # GBA Video: FUN_08000d88
 - addr: '0x0800802E'
   isa: thumb
   unit: asm/nonmatching/split_8008008
   name: sub_800802E
+  origin: shared
 - addr: '0x0800805E'
   isa: thumb
   unit: asm/nonmatching/split_8008008
@@ -1777,10 +1789,12 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_8008008
   name: sub_8008160
+  origin: shared  # GBA Video: FUN_08000ea4
 - addr: '0x08008182'
   isa: thumb
   unit: asm/nonmatching/split_8008008
   name: sub_8008182
+  origin: shared  # GBA Video: FUN_08000ec6
 - addr: '0x080081A8'
   isa: thumb
   unit: asm/nonmatching/split_8008008
@@ -1821,6 +1835,7 @@ functions:
   isa: arm
   unit: asm/split/split_80081D4.s
   name: sub_80087B8
+  origin: handwritten
 - addr: '0x08008AF4'
   isa: arm
   unit: asm/split/split_8008AF4.s
@@ -1889,10 +1904,12 @@ functions:
   isa: arm
   unit: asm/split/split_8008EB4.s
   name: sub_8009064
+  origin: handwritten
 - addr: '0x08009270'
   isa: arm
   unit: asm/split/split_8008EB4.s
   name: sub_8009270
+  origin: handwritten
 - addr: '0x080095B8'
   isa: arm
   unit: asm/split/split_8008EB4.s
@@ -1989,6 +2006,7 @@ functions:
   isa: arm
   unit: asm/split/split_800AA1C.s
   name: sub_800AE20
+  origin: handwritten
 - addr: '0x0800AFA8'
   isa: arm
   unit: asm/split/split_800AA1C.s
@@ -2013,6 +2031,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_800AFD4
   name: sub_800B034
+  origin: shared
 - addr: '0x0800B04C'
   isa: thumb
   unit: asm/nonmatching/split_800AFD4
@@ -2518,10 +2537,12 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_800F1E8
   name: sub_800F1E8
+  origin: shared
 - addr: '0x0800F220'
   isa: thumb
   unit: asm/nonmatching/split_800F1E8
   name: sub_800F220
+  origin: shared  # GBA Video: FUN_08004ec8
 - addr: '0x0800F264'
   isa: thumb
   unit: asm/nonmatching/split_800F1E8
@@ -3106,6 +3127,7 @@ functions:
   isa: arm
   unit: asm/split/split_8012674.s
   name: sub_8012674
+  origin: handwritten
 - addr: '0x080127C0'
   isa: arm
   unit: asm/split/split_8012674.s
@@ -3118,10 +3140,12 @@ functions:
   isa: arm
   unit: asm/nonmatching/split_8013024
   name: sub_8013024
+  origin: handwritten
 - addr: '0x080130DC'
   isa: arm
   unit: asm/nonmatching/split_8013024
   name: sub_80130DC
+  origin: handwritten
 - addr: '0x080132F4'
   isa: thumb
   unit: asm/nonmatching/split_8013024
@@ -5120,6 +5144,7 @@ functions:
   isa: thumb
   unit: asm/split/split_80301E8.s
   name: sub_80301E8
+  origin: shared  # GBA Video: FUN_08004e34
 - addr: '0x08030244'
   isa: thumb
   unit: asm/split/split_80301E8.s
@@ -5929,10 +5954,12 @@ functions:
   isa: thumb
   unit: asm/split/split_803B4D8.s
   name: IdentifyEeprom
+  origin: library
 - addr: '0x0803B520'
   isa: thumb
   unit: asm/split/split_803B520.s
   name: EepromTimerIntr
+  origin: library
 - addr: '0x0803B548'
   isa: thumb
   unit: asm/split/split_803B520.s
@@ -5941,22 +5968,27 @@ functions:
   isa: thumb
   unit: asm/split/split_803B5A0.s
   name: sub_803B5A0
+  origin: library
 - addr: '0x0803B650'
   isa: thumb
   unit: asm/split/split_803B650.s
   name: Dma3Transmit
+  origin: library
 - addr: '0x0803B664'
   isa: thumb
   unit: asm/split/split_803B650.s
   name: sub_803B664
+  origin: library
 - addr: '0x0803B7C4'
   isa: thumb
   unit: asm/split/split_803B7C4.s
   name: sub_803B7C4
+  origin: library
 - addr: '0x0803B81C'
   isa: thumb
   unit: asm/nonmatching/split_803B81C
   name: sub_803B81C
+  origin: library
 - addr: '0x0803B85C'
   isa: thumb
   unit: asm/nonmatching/split_803B81C
@@ -6053,6 +6085,7 @@ functions:
   isa: arm
   unit: asm/nonmatching/split_803D4A8
   name: __rt_stackheap_init
+  origin: handwritten
 - addr: '0x0803DAFC'
   isa: arm
   unit: asm/nonmatching/split_803D4A8
@@ -6077,6 +6110,7 @@ functions:
   isa: arm
   unit: asm/split/split_803DB3C.s
   name: sub_803DCE4
+  origin: handwritten
 - addr: '0x0803DEF8'
   isa: arm
   unit: asm/split/split_803DB3C.s
@@ -6363,6 +6397,7 @@ functions:
   isa: arm
   unit: asm/split/split_80405D8.s
   name: sub_80405DC
+  origin: shared  # GBA Video: FUN_08008420
 - addr: '0x080405F8'
   isa: thumb
   unit: asm/split/split_80405F8.s
@@ -6387,6 +6422,7 @@ functions:
   isa: arm
   unit: asm/split/split_8040640.s
   name: sub_8040644
+  origin: shared  # GBA Video: FUN_08008460
 - addr: '0x08040660'
   isa: thumb
   unit: asm/split/split_8040660.s
@@ -6516,18 +6552,22 @@ functions:
   isa: arm
   unit: asm/last_code.s
   name: sub_8052BF4
+  origin: shared  # GBA Video: FUN_08009d80
 - addr: '0x08052C4C'
   isa: arm
   unit: asm/last_code.s
   name: sub_8052C4C
+  origin: shared  # GBA Video: FUN_08009dd8
 - addr: '0x08052C84'
   isa: arm
   unit: asm/last_code.s
   name: sub_8052C84
+  origin: shared  # GBA Video: FUN_08009e10
 - addr: '0x08052D84'
   isa: arm
   unit: asm/last_code.s
   name: sub_8052D84
+  origin: shared
 - addr: '0x08052D94'
   isa: arm
   unit: asm/last_code.s
@@ -6544,6 +6584,7 @@ functions:
   isa: arm
   unit: asm/last_code.s
   name: sub_8052DD4
+  origin: shared  # GBA Video: FUN_08009f34
 - addr: '0x08052E78'
   isa: arm
   unit: asm/last_code.s
@@ -6556,6 +6597,7 @@ functions:
   isa: arm
   unit: asm/last_code.s
   name: sub_8052E90
+  origin: shared  # GBA Video: decompressimage
 - addr: '0x08053CCC'
   isa: arm
   unit: asm/last_code.s
@@ -6580,6 +6622,7 @@ functions:
   isa: arm
   unit: asm/last_code.s
   name: sub_8054344
+  origin: shared  # GBA Video: FUN_08009754
 - addr: '0x080544AC'
   isa: arm
   unit: asm/last_code.s

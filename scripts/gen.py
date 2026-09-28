@@ -24,6 +24,12 @@ include those instead of retyping the `extern` itself. A symbol with no `decl:`
 is simply absent from the headers: ADS warns on an unprototyped call and there
 is no honest signature to invent.
 
+A function may also carry an `origin:` of `library`, `handwritten` or `shared`
+(notes/library-code-survey.md), read by scripts/next.py to keep foreign code out
+of the ready queue. It is hand-written the same way `decl:` is, and `--extract`
+carries it across the same way, by (addr, name) -- there being no way to
+re-derive it from the ELF.
+
 ARM-vs-Thumb is deliberately not expressed in the headers. ADS 1.2 has no
 declaration qualifier for it -- `__arm` is a predefined macro equal to 1, not a
 keyword -- and under `-apcs /interwork` a call to either mode compiles to the
@@ -376,16 +382,28 @@ def extract_globals():
     return globals_, problems
 
 
+HAND_WRITTEN_FIELDS = ("decl", "origin")
+
+
 def carry_decls(entries, previous):
-    """Re-apply the hand-written `decl:` fields that --extract would otherwise drop."""
-    keep = {(e["addr"], e["name"]): e["decl"] for e in previous if e.get("decl")}
+    """Re-apply the hand-written `decl:` and `origin:` fields --extract would
+    otherwise drop, by (addr, name)."""
+    keep = {}
+    for e in previous:
+        for field in HAND_WRITTEN_FIELDS:
+            if e.get(field):
+                keep[(e["addr"], e["name"], field)] = e[field]
     kept = 0
     for e in entries:
-        decl = keep.pop((e["addr"], e["name"]), None)
-        if decl:
-            e["decl"] = decl
+        found = False
+        for field in HAND_WRITTEN_FIELDS:
+            value = keep.pop((e["addr"], e["name"], field), None)
+            if value:
+                e[field] = value
+                found = True
+        if found:
             kept += 1
-    return kept, sorted(keep)
+    return kept, sorted({(addr, name) for addr, name, _ in keep})
 
 
 # ------------------------------------------------------------------- headers

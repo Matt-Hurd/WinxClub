@@ -50,6 +50,13 @@ asm/nonmatching/<unit>/ says:
            unit data that no pool token names. armasm rejects the splice (A1150E).
   veneer   a body of exactly `bx pc`: armlink's interworking thunk, no C source.
   arm      an ARM function: armcc, phase 7.
+  foreign  config/symbols.yml gives this function an `origin:` of `library` or
+           `handwritten` (notes/library-code-survey.md): not armcc output, so
+           nothing here can teach the splicer or gen.py anything about it.
+           foreign is not takeable and --batches never draws from it, no matter
+           what its text would otherwise classify as. `origin: shared` (a GBA
+           Video twin) is not foreign -- the same tcc compiled it, so it stays
+           in its ordinary class and the ready queue.
 
 `parked` marks a function notes/parked.md already has a heading for. It stays in
 its class -- parking is about attempts, not about what the tooling can take -- but
@@ -108,7 +115,9 @@ DEFINITION = re.compile(
     r"^(?!\s)(?:extern\s+\"C\"\s+)?[\w\s\*&]+?\b(\w+(?:::\w+)?)\s*\([^;{)]*\)\s*(?:\{|$)",
     re.M)
 
-CLASSES = ("splice", "pool", "adr", "veneer", "arm")
+CLASSES = ("splice", "pool", "adr", "veneer", "arm", "foreign")
+
+FOREIGN_ORIGINS = ("library", "handwritten")
 
 
 def classify(name, text):
@@ -218,9 +227,12 @@ def survey(repo=REPO):
     with open(os.path.join(repo, "config", "symbols.yml")) as fh:
         symbols = yaml.safe_load(fh)
     by_unit = collections.defaultdict(list)
+    origin = {}
     for fn in symbols["functions"]:
         if is_code_unit(fn["unit"]):
             by_unit[unit_stem(fn["unit"])].append((int(fn["addr"], 16), fn["name"]))
+            if fn.get("origin"):
+                origin[fn["name"]] = fn["origin"]
 
     parked = parked_names(os.path.join(repo, "notes", "parked.md"))
     evidence = cpp_evidence.units()
@@ -252,8 +264,11 @@ def survey(repo=REPO):
                 continue
             with open(path) as fh:
                 rec = classify(name, fh.read())
+            if origin.get(name) in FOREIGN_ORIGINS:
+                rec["cls"] = "foreign"
             rec.update(unit=stem, name=name, addr=f"0x{addr:08X}",
-                       parked=name in parked, has_partial=partial, ext=ext)
+                       parked=name in parked, has_partial=partial, ext=ext,
+                       origin=origin.get(name))
             rows.append(rec)
     return rows, notes
 
