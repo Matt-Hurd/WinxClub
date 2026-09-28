@@ -7,38 +7,67 @@
  * sub_8001B80 indexes an object with a count at +8 and an array of pointers
  * at +0x20, each element's first word carrying a small type tag in its low
  * 4 bits. sub_8001A60 zero-inits an unrelated, smaller object -- the two
- * share a unit only by address proximity.
+ * share a unit only by address proximity. Neither object is surveyed
+ * elsewhere, so both structs below are local to this unit, not shared
+ * headers. The tagged element pointed to by TaggedTable8001B80's array is a
+ * third, unsurveyed object -- no header for it either, so its one field
+ * access keeps its cast.
  */
+
+typedef struct {
+    int field_00;
+    int field_04;
+    int field_08;
+    int field_0c;
+    unsigned char field_10;
+    char gap_11[3];
+    int field_14;
+    unsigned char field_18;
+    char gap_19[3];
+    int field_1c;
+    unsigned char field_20;
+    char gap_21[3];
+    int field_24;
+    int field_28;
+} ZeroRecord8001A60;
+
+typedef struct {
+    char gap_00[8];
+    unsigned int count; /* 0x08 */
+    char gap_0c[0x20 - 0xc];
+    void **items; /* 0x20 -- each element's first word carries a type tag in its low 4 bits */
+} TaggedTable8001B80;
 
 extern "C" void *sub_8001A60(void *a0)
 {
     if (a0 == 0) {
-        a0 = operator new(0x2c);
+        a0 = operator new(sizeof(ZeroRecord8001A60));
     }
     if (a0 != 0) {
-        *(int *)((char *)a0 + 0x0) = 0;
-        *(int *)((char *)a0 + 0x4) = 0;
-        *(int *)((char *)a0 + 0x8) = 0;
-        *(int *)((char *)a0 + 0xc) = 0;
-        *(unsigned char *)((char *)a0 + 0x10) = 0;
-        *(int *)((char *)a0 + 0x14) = 0;
-        *(unsigned char *)((char *)a0 + 0x18) = 0;
-        *(int *)((char *)a0 + 0x1c) = 0;
-        *(unsigned char *)((char *)a0 + 0x20) = 0;
-        *(int *)((char *)a0 + 0x24) = 0;
-        *(int *)((char *)a0 + 0x28) = 0;
+        ZeroRecord8001A60 *rec = (ZeroRecord8001A60 *)a0;
+        rec->field_00 = 0;
+        rec->field_04 = 0;
+        rec->field_08 = 0;
+        rec->field_0c = 0;
+        rec->field_10 = 0;
+        rec->field_14 = 0;
+        rec->field_18 = 0;
+        rec->field_1c = 0;
+        rec->field_20 = 0;
+        rec->field_24 = 0;
+        rec->field_28 = 0;
     }
     return a0;
 }
 
 extern "C" void *sub_8001B80(void *a0, int a1, int a2)
 {
-    unsigned int count = *(unsigned int *)((char *)a0 + 8);
+    unsigned int count = ((TaggedTable8001B80 *)a0)->count;
     unsigned int matched = 0;
     unsigned int i = 0;
 
     if (i < count) {
-        a0 = *(void ***)((char *)a0 + 0x20);
+        a0 = ((TaggedTable8001B80 *)a0)->items;
         do {
             if ((*(int *)((void **)a0)[i] & 0xf) == a2) {
                 if (matched == (unsigned int)a1)
