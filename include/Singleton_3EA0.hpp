@@ -53,6 +53,8 @@ struct Singleton_3EA0_Data {
   unsigned int field_6c;
 };
 
+#ifdef __cplusplus
+
 class Singleton_3EA0 {
 public:
   virtual ~Singleton_3EA0();
@@ -61,5 +63,15 @@ public:
 };
 
 extern Singleton_3EA0 *gUnknown_03003EA0;
+
+#else
+
+/* A plain C translation unit cannot declare the class above (it has a
+ * vtable), so it sees only the raw pointer -- sub_8000D5A(gUnknown_03003EA0)
+ * skips the vtable slot and returns a struct Singleton_3EA0_Data *, which a
+ * .c file can use directly since that struct has no vtable of its own. */
+extern void *gUnknown_03003EA0;
+
+#endif // __cplusplus
 
 #endif // SINGLETON_3EA0_HPP

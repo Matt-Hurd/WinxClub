@@ -1,39 +1,42 @@
 /* Three of split_803F72C's four functions; sub_803F72C is parked (see
  * notes/parked.md) and stays assembly in asm/nonmatching/split_803F72C/.
  */
+#include "EntityState.h"
+#include "Singleton_3EA0.hpp"
+#include "Sprite.h"
 
 extern void sub_803F8BC(void *a0, void *out);
-extern void *sub_8000D5A(void *a0);
+extern struct Singleton_3EA0_Data *sub_8000D5A(void *a0);
 extern void *gUnknown_03003EA0;
 
-void sub_803F774(void *a0, unsigned char *a1, unsigned char *a2)
+void sub_803F774(struct EntityState *a0, unsigned char *a1, unsigned char *a2)
 {
     struct { unsigned short x, y; } pos;
     short accumY;
     short accumX;
 
-    accumY = *(short *)((char *)a0 + 0x1a);
-    accumX = *(short *)((char *)a0 + 0x18);
+    accumY = a0->field_1a;
+    accumX = a0->field_18;
 
     *a1 = 0;
     *a2 = 0;
 
     goto testA;
 nextA:
-    sub_803F8BC((*(void ***)((char *)a0 + 0x54))[*a2 * *((unsigned char *)a0 + 0x6f)], &pos);
+    sub_803F8BC(a0->field_54[*a2 * a0->field_6f], &pos);
     accumY = pos.y + accumY;
     (*a2)++;
 testA:
-    if (*a2 < *((unsigned char *)a0 + 0x6e) && accumY < 0xa0)
+    if (*a2 < a0->field_6e && accumY < 0xa0)
         goto nextA;
 
     goto testB;
 nextB:
-    sub_803F8BC((*(void ***)((char *)a0 + 0x54))[*a1], &pos);
+    sub_803F8BC(a0->field_54[*a1], &pos);
     accumX = pos.x + accumX;
     (*a1)++;
 testB:
-    if (*a1 < *((unsigned char *)a0 + 0x6f) && accumX < 0xf0)
+    if (*a1 < a0->field_6f && accumX < 0xf0)
         goto nextB;
 
     if (*a1 == 0) {
@@ -44,6 +47,10 @@ testB:
     }
 }
 
+/* a0 is the 0x58-byte vtable object surveyed as type 9
+ * (docs/decisions/drafts/2026-09-27-object-types.md, include/dword_803E374.hpp)
+ * -- a pure-virtual C++ class, so this plain C translation unit can only
+ * reach it by raw offset. */
 void sub_803F814(void *a0, short *out1, short *out2, short *out3, short *out4)
 {
     signed char delta;
@@ -81,11 +88,10 @@ void sub_803F814(void *a0, short *out1, short *out2, short *out3, short *out4)
                 + *(unsigned short *)((char *)a0 + 0x1e);
 }
 
-unsigned short sub_803F898(void *a0)
+unsigned short sub_803F898(struct Sprite *a0)
 {
-    void *cam = sub_8000D5A(gUnknown_03003EA0);
-    int camVal = *(int *)((char *)cam + 0x20);
-    int diff = *(int *)((char *)a0 + 0x10) - camVal;
+    struct Singleton_3EA0_Data *cam = sub_8000D5A(gUnknown_03003EA0);
+    struct FrameEntry *cam20 = cam->field_20;
 
-    return (unsigned short)(diff >> 3);
+    return (unsigned short)(a0->field_10 - cam20);
 }

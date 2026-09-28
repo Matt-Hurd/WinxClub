@@ -8,19 +8,20 @@
  * the optional operator delete.
  */
 #include "Singleton_3E88.hpp"
+#include "SlotManager.h"
 #include "generated/functions.h"
 
 extern int __VTABLE__14Singleton_3E88;
 extern int __VTABLE__325dword_803E864;
 
-extern "C" void sub_80175D4(void *a0, unsigned int a1)
+extern "C" void sub_80175D4(struct SlotManager *a0, unsigned int a1)
 {
     void *elem;
     unsigned char i;
 
-    *(int *)a0 = (int)&__VTABLE__325dword_803E864;
+    a0->vtable = &__VTABLE__325dword_803E864;
 
-    elem = *(void **)((char *)a0 + 0xc);
+    elem = a0->field_0c;
     if (elem != 0) {
         void *base = *(void **)elem;
         void (*fn)(void *, int) = (void (*)(void *, int))(*(int *)base + (int)base);
@@ -28,10 +29,10 @@ extern "C" void sub_80175D4(void *a0, unsigned int a1)
     }
 
     for (i = 0; i < 0x40; i++) {
-        operator delete[](*(void **)((char *)a0 + 0x18 + i * 4));
+        operator delete[](a0->field_18[i]);
     }
 
-    *(int *)a0 = (int)&__VTABLE__14Singleton_3E88;
+    a0->vtable = &__VTABLE__14Singleton_3E88;
     gUnknown_03003E88 = 0;
 
     if (a1 != 0) {

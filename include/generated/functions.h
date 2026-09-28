@@ -59,10 +59,10 @@ extern void sub_8016108(void *a0); /* 0x08016108 */
 extern void sub_8017620(void *a0, unsigned int a1); /* 0x08017620 */
 
 /* asm/nonmatching/split_80177D8 */
-extern void sub_8017862(void *a0, unsigned int a1); /* 0x08017862 */
+extern void sub_8017862(struct SlotManager *a0, unsigned int a1); /* 0x08017862 */
 extern void sub_8017884(void *a0, unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4); /* 0x08017884 */
-extern void sub_8017A0A(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4); /* 0x08017A0A */
-extern void sub_8017A56(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4); /* 0x08017A56 */
+extern void sub_8017A0A(struct SlotManager *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4); /* 0x08017A0A */
+extern void sub_8017A56(struct SlotManager *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4); /* 0x08017A56 */
 
 /* asm/split/split_801837C.s */
 extern void SetNextGlobalFunction(int a0); /* 0x08018386 */

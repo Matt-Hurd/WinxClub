@@ -3663,7 +3663,7 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_80177D8
   name: sub_8017862
-  decl: void sub_8017862(void *a0, unsigned int a1)
+  decl: void sub_8017862(struct SlotManager *a0, unsigned int a1)
 - addr: '0x08017884'
   isa: thumb
   unit: asm/nonmatching/split_80177D8
@@ -3677,12 +3677,12 @@ functions:
   isa: thumb
   unit: asm/nonmatching/split_80177D8
   name: sub_8017A0A
-  decl: void sub_8017A0A(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
+  decl: void sub_8017A0A(struct SlotManager *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017A56'
   isa: thumb
   unit: asm/nonmatching/split_80177D8
   name: sub_8017A56
-  decl: void sub_8017A56(void *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
+  decl: void sub_8017A56(struct SlotManager *a0, unsigned int a1, void *a2, unsigned int a3, unsigned int a4)
 - addr: '0x08017AB0'
   isa: thumb
   unit: asm/split/split_8017AB0.s

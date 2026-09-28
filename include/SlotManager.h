@@ -27,7 +27,10 @@ struct Slot {
 };
 
 struct SlotManager {
-  char gap_00[0x14];              /* 0x00 vtable, 0x0c a pointer (split_8017474.cpp) */
+  void *vtable;                   /* 0x00 */
+  char gap_04[8];
+  void *field_0c;                 /* split_8017474.cpp's sub_80175D4 */
+  char gap_10[4];
   unsigned char field_14;         /* default slot index for a3 == 0xff */
   char gap_15[3];
   void *field_18[0x40];           /* per-slot buffer; slot 0 never claimed */
@@ -39,7 +42,8 @@ struct SlotManager {
   unsigned int field_498[0x40];
   unsigned short field_598[0x40]; /* bit 0: claimed as a special slot */
   unsigned char field_618;        /* count of claims */
-  /* 0x61c: a further pointer table, indexed by a Slot's caller (sub_80177D8) */
+  char gap_619[3];
+  void *field_61c[4];             /* indexed by a Slot's caller's own index (sub_80177D8) */
 };
 
 #endif /* SLOTMANAGER_H */

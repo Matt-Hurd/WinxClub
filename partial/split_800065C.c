@@ -42,52 +42,53 @@
 #include "generated/functions.h"
 #include "generated/globals.h"
 #include "Singleton3EA4Records.h"
+#include "Sprite.h"
 
 extern void *gUnknown_03003EA0;
 extern void *gUnknown_03003EA4;
 
-void sub_800069A(void *a0)
+void sub_800069A(struct Sprite *a0)
 {
     int *elem = (int *)((char *)(*(struct Singleton3EA4LevelBounds **)((char *)gUnknown_03003EA4 + 0x9A0)) + 0x38);
-    unsigned int flags = *(unsigned int *)a0;
+    unsigned int flags = a0->field_00;
 
-    if (!(*(int *)((char *)a0 + 0x3c) >= elem[0]
-        && *(int *)((char *)a0 + 0x34) < elem[0] + 0xf00000
-        && *(int *)((char *)a0 + 0x40) >= elem[1]
-        && *(int *)((char *)a0 + 0x38) < elem[1] + 0xa00000)) {
+    if (!(a0->field_3c >= elem[0]
+        && a0->field_34 < elem[0] + 0xf00000
+        && a0->field_40 >= elem[1]
+        && a0->field_38 < elem[1] + 0xa00000)) {
         if (!(flags & 0x200)) {
             sub_800C1CA(gUnknown_03003EA0, a0);
-            *(unsigned int *)a0 |= 0x200;
+            a0->field_00 |= 0x200;
         }
     } else {
         if (flags & 0x200) {
             sub_800BE0E(gUnknown_03003EA0, a0);
-            flags = *(unsigned int *)a0;
+            flags = a0->field_00;
             flags &= ~0x200;
             flags |= 0x20;
             flags |= 0x40;
-            *(unsigned int *)a0 = flags;
+            a0->field_00 = flags;
         }
 
         {
-            int f2c = *(int *)((char *)a0 + 0x2c);
+            int f2c = a0->field_2c;
             int diff28 = (f2c / 0x10000) - (elem[0] / 0x10000);
-            unsigned short h28 = *(unsigned short *)((char *)a0 + 0x28);
+            unsigned short h28 = a0->field_28;
             unsigned int lowbits = ((unsigned int)diff28 << 23) >> 23;
             unsigned int highbits = ((unsigned int)h28 >> 9) << 9;
-            *(unsigned short *)((char *)a0 + 0x28) = (unsigned short)(lowbits | highbits);
+            a0->field_28 = (unsigned short)(lowbits | highbits);
         }
         {
-            int f30 = *(int *)((char *)a0 + 0x30);
+            int f30 = a0->field_30;
             int diff26 = (f30 / 0x10000) - (elem[1] / 0x10000);
-            unsigned short h26 = *(unsigned short *)((char *)a0 + 0x26);
+            unsigned short h26 = a0->field_26;
             unsigned int lowbits = (unsigned int)diff26 << 24;
             unsigned int highbits = (unsigned int)h26 >> 8;
             highbits = highbits << 8;
             lowbits = lowbits >> 24;
-            *(unsigned short *)((char *)a0 + 0x26) = (unsigned short)(lowbits | highbits);
+            a0->field_26 = (unsigned short)(lowbits | highbits);
         }
 
-        *(unsigned int *)a0 |= 0x80;
+        a0->field_00 |= 0x80;
     }
 }
