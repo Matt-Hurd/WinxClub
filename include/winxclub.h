@@ -21,6 +21,12 @@ struct Player {
   struct PlayerUnk1 *field_4;
   char field_8[0x78];
   struct PlayerUnk2 field_80;
+  char gap_85[0x27]; //opaque
+  unsigned char field_ac; //sub_802F6BA (p[0xc], read)
+  unsigned char field_ad; //sub_8016D24 (written from field_b0)
+  unsigned char field_ae; //sub_8016D24 (written 0)
+  unsigned char field_af; //sub_802F6BA (p[0xf], read)
+  unsigned char field_b0; //sub_8016D24 (read)
 };
 
 struct PlayerPointer {
