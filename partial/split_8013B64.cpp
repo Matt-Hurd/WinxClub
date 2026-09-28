@@ -4,37 +4,38 @@
  * (cpp_evidence.py: __da__FPv, operator delete[]).
  */
 #include "generated/functions.h"
+#include "dword_803E374.hpp"
 
 extern "C" void sub_8041274(void *a0, void *a1, int a2, int a3);
 
-extern "C" void sub_8013E64(void *a0, unsigned char a1)
+extern "C" void sub_8013E64(dword_803E374 *a0, unsigned char a1)
 {
-    *((unsigned char *)a0 + 0x2d) = a1;
-    *(unsigned short *)((char *)a0 + 0xe) |= 1;
+    a0->field_2d = a1;
+    a0->field_0e |= 1;
 }
 
 /* Same shape as split_8040104.cpp's inner if: free/hand-off the object at
  * +0x48 depending on whether +0x50 is set, then two independent teardown
  * fields. */
-extern "C" void sub_8013F6C(void *a0)
+extern "C" void sub_8013F6C(dword_803E374 *a0)
 {
-    void *p = *(void **)((char *)a0 + 0x48);
+    void *p = a0->field_48;
     if (p) {
-        void *q = *(void **)((char *)a0 + 0x50);
+        void *q = a0->field_50;
         if (q) {
             sub_8041274(q, p, 0, 0);
         } else {
             operator delete[](p);
         }
-        *(void **)((char *)a0 + 0x48) = 0;
+        a0->field_48 = 0;
     }
-    if (*(void **)((char *)a0 + 0x14)) {
-        operator delete[](*(void **)((char *)a0 + 0x14));
-        *(void **)((char *)a0 + 0x14) = 0;
+    if (a0->field_14) {
+        operator delete[](a0->field_14);
+        a0->field_14 = 0;
     }
-    if (*(void **)((char *)a0 + 0x4c)) {
-        sub_803DA18(*(void **)((char *)a0 + 0x4c));
-        *(void **)((char *)a0 + 0x4c) = 0;
+    if (a0->field_4c) {
+        sub_803DA18(a0->field_4c);
+        a0->field_4c = 0;
     }
 }
 
@@ -54,21 +55,21 @@ extern "C" void sub_8013FC2(void)
 {
 }
 
-extern "C" void sub_8013F66(void *a0, unsigned char a1)
+extern "C" void sub_8013F66(dword_803E374 *a0, unsigned char a1)
 {
-    *((unsigned char *)a0 + 0x2e) = a1;
+    a0->field_2e = a1;
 }
 
-extern "C" void sub_8013F1E(void *a0, unsigned short a1)
+extern "C" void sub_8013F1E(dword_803E374 *a0, unsigned short a1)
 {
-    *(unsigned short *)((char *)a0 + 0x22) = a1;
-    *(unsigned short *)((char *)a0 + 0xe) |= 8;
+    a0->field_22 = a1;
+    a0->field_0e |= 8;
 }
 
-extern "C" void sub_8013F5A(void *a0, unsigned char a1)
+extern "C" void sub_8013F5A(dword_803E374 *a0, unsigned char a1)
 {
-    *((unsigned char *)a0 + 0x10) = a1;
-    *(unsigned short *)((char *)a0 + 0xe) |= 1;
+    a0->field_10 = a1;
+    a0->field_0e |= 1;
 }
 
 extern "C" void sub_80139AC(void *a0, int a1);
@@ -78,37 +79,37 @@ extern "C" void sub_8013FAE(void *a0)
     sub_80139AC(a0, 0);
 }
 
-extern "C" void sub_8013E56(void *a0, unsigned short a1, unsigned short a2)
+extern "C" void sub_8013E56(dword_803E374 *a0, unsigned short a1, unsigned short a2)
 {
-    *(unsigned short *)((char *)a0 + 0x18) = a1;
-    *(unsigned short *)((char *)a0 + 0x1a) = a2;
-    *(unsigned short *)((char *)a0 + 0xe) |= 2;
+    a0->field_18 = a1;
+    a0->field_1a = a2;
+    a0->field_0e |= 2;
 }
 
-extern "C" void sub_8013B76(void *a0)
+extern "C" void sub_8013B76(dword_803E374 *a0)
 {
-    if (*(void **)((char *)a0 + 0x4c)) {
-        sub_803DA18(*(void **)((char *)a0 + 0x4c));
-        *(void **)((char *)a0 + 0x4c) = 0;
+    if (a0->field_4c) {
+        sub_803DA18(a0->field_4c);
+        a0->field_4c = 0;
     }
-    *((unsigned char *)a0 + 0x2c) = 0;
-    *(unsigned short *)((char *)a0 + 0x3a) = 0xffff;
-    *(unsigned short *)((char *)a0 + 0xe) = 1;
+    a0->field_2c = 0;
+    a0->field_3a = 0xffff;
+    a0->field_0e = 1;
 }
 
-extern "C" void sub_8013F2A(void *a0, void *a1)
+extern "C" void sub_8013F2A(dword_803E374 *a0, void *a1)
 {
-    *(void **)((char *)a0 + 0x44) = a1;
+    a0->field_44 = a1;
     if (a1 == 0) {
-        void *p = *(void **)((char *)a0 + 0x48);
+        void *p = a0->field_48;
         if (p) {
-            void *q = *(void **)((char *)a0 + 0x50);
+            void *q = a0->field_50;
             if (q) {
                 sub_8041274(q, p, 0, 0);
             } else {
                 operator delete[](p);
             }
-            *(void **)((char *)a0 + 0x48) = 0;
+            a0->field_48 = 0;
         }
     }
 }
@@ -129,21 +130,21 @@ struct Buckets03003C40 {
 };
 extern struct Buckets03003C40 gUnknown_03003C40;
 
-extern "C" void sub_8013FC4(void *a0, int a1)
+extern "C" void sub_8013FC4(dword_803E374 *a0, int a1)
 {
-    void *node;
+    dword_803E374 *node;
 
     if (a1 != 0) {
-        *(unsigned short *)((char *)a0 + 0xe) = 0;
+        a0->field_0e = 0;
         return;
     }
 
-    node = gUnknown_03003C40.tails[*(unsigned char *)((char *)a0 + 0xc)];
+    node = (dword_803E374 *)gUnknown_03003C40.tails[a0->field_0c];
     while (node) {
-        if (*(unsigned char *)((char *)node + 0xc) == *(unsigned char *)((char *)a0 + 0xc)) {
-            *(unsigned short *)((char *)node + 0xe) = 0;
+        if (node->field_0c == a0->field_0c) {
+            node->field_0e = 0;
         }
-        node = *(void **)((char *)node + 4);
+        node = node->field_04;
     }
 }
 

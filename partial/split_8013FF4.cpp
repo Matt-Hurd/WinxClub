@@ -29,25 +29,25 @@ extern "C" void *sub_80134B8(void *a0);
 extern "C" void sub_8013E2C(void *a0);
 extern "C" int __VTABLE__320dword_803E6A0;
 
-extern "C" void *sub_8013FF8(void *a0)
+extern "C" dword_803E374 *sub_8013FF8(dword_803E374 *a0)
 {
     if (a0 == 0) {
-        a0 = operator new(0x60);
+        a0 = (dword_803E374 *)operator new(0x60);
         if (a0 == 0) {
             return a0;
         }
     }
     sub_80134B8(a0);
     *(int *)a0 = (int)&__VTABLE__320dword_803E6A0;
-    *(unsigned char *)((char *)a0 + 0xc) = 0;
-    *(unsigned char *)((char *)a0 + 0x10) = 1;
+    a0->field_0c = 0;
+    a0->field_10 = 1;
     sub_8013E2C(a0);
     return a0;
 }
 
 extern "C" void sub_801352C(void *a0, int a1);
 
-extern "C" void sub_801402C(void *a0, int a1)
+extern "C" void sub_801402C(dword_803E374 *a0, int a1)
 {
     *(int *)a0 = (int)&__VTABLE__320dword_803E6A0;
     sub_801352C(a0, 0);

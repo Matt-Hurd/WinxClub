@@ -1,24 +1,24 @@
 /* One function of split_8040104; the rest of the unit is still assembly in
  * asm/nonmatching/split_8040104/.
  */
+#include "dword_803E374.hpp"
 
 extern "C" void sub_8041274(void *a0, void *a1, int a2, int a3);
 
-extern "C" void sub_8040104(void *a0, short a1, short a2)
+extern "C" void sub_8040104(dword_803E374 *a0, short a1, short a2)
 {
-    if (*(void **)((char *)a0 + 0x44) == 0) {
-        if (*(void **)((char *)a0 + 0x50) != 0) {
-            sub_8041274(*(void **)((char *)a0 + 0x50),
-                        *(void **)((char *)a0 + 0x48), 0, 0);
+    if (a0->field_44 == 0) {
+        if (a0->field_50 != 0) {
+            sub_8041274(a0->field_50, a0->field_48, 0, 0);
         } else {
-            operator delete[](*(void **)((char *)a0 + 0x48));
+            operator delete[](a0->field_48);
         }
-        *(void **)((char *)a0 + 0x48) = 0;
+        a0->field_48 = 0;
     }
-    *(short *)((char *)a0 + 0x20) = a1;
-    *(short *)((char *)a0 + 0x1e) = a2;
-    *(short *)((char *)a0 + 0x2a) = a1;
-    *(short *)((char *)a0 + 0x28) = a2;
-    *(int *)((char *)a0 + 0x24) = 0;
-    *(unsigned short *)((char *)a0 + 0xe) |= 1;
+    a0->field_20 = a1;
+    a0->field_1e = a2;
+    a0->field_2a = a1;
+    a0->field_28 = a2;
+    a0->field_24 = 0;
+    a0->field_0e |= 1;
 }

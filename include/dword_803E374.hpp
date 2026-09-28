@@ -55,8 +55,11 @@ public:
     virtual void m58();
     virtual void m5C() = 0;
 
-    // 0x04 -- unclaimed
-    char gap_04[8];
+    // 0x04
+    dword_803E374 *field_04; // next pointer threading the gUnknown_03003C40
+                              // bucket list (sub_8013FC4, sub_8013DEA);
+                              // 0x08 onward unclaimed
+    char gap_08[4];
     // 0x0c
     unsigned char field_0c;
     char gap_0d[1];
