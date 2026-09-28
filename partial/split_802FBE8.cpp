@@ -18,9 +18,33 @@ extern "C" void m00__7DefaultFv(void *a0, int a1);
 extern "C" void *sub_803DA18(void *a0);
 extern "C" int __VTABLE__307Bird;
 
+/* m04__7DefaultFv/m08__7DefaultFv/m00__7DefaultFv above are Default's own
+ * vtable-slot working labels, so this TU cannot include Default.hpp's C++
+ * class -- tcpp reads a same-named member declaration as redeclaring those
+ * externs with a mismatched linkage. This mirrors just the fields
+ * Bird__ctor/Bird__40 touch, same offsets and widths as include/Default.hpp.
+ */
+struct Default {
+    void *vtable;
+    char gap_04[4];
+    unsigned short sprite_08;
+    unsigned short sprite_0a;
+    unsigned short sprite_0c;
+    unsigned short sprite_0e;
+    char gap_10[8];
+    unsigned short sprite_18;
+    unsigned short sprite_1a;
+    unsigned short sprite_1c;
+    unsigned short sprite_1e;
+    char gap_20[0x70 - 0x20];
+    int field_70;
+};
+
 extern "C" void Bird__ctor(void *a0, int a1)
 {
-    *(void **)a0 = &__VTABLE__307Bird;
+    struct Default *obj = (struct Default *)a0;
+
+    obj->vtable = &__VTABLE__307Bird;
     m00__7DefaultFv(a0, 0);
     if (a1)
         sub_803DA18(a0);
@@ -28,45 +52,50 @@ extern "C" void Bird__ctor(void *a0, int a1)
 
 extern "C" void Bird__40(void *a0, int a1)
 {
+    struct Default *obj = (struct Default *)a0;
     int type = a1;
+    /* 0xb4 is one halfword past sizeof(Default) -- a Bird-specific field
+     * (docs/decisions/drafts/2026-09-27-object-types.md, type 1: "0xb4 2u
+     * (Bird__40)"); Bird.hpp declares no data members, so this stays a raw
+     * offset rather than a guessed field on the wrong header. */
     unsigned short *s = (unsigned short *)((char *)a0 + 0xa0);
 
     switch (type) {
     case 0x23:
-        *(unsigned short *)((char *)a0 + 0xe) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0xa) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0xc) = 0x1f;
-        *(unsigned short *)((char *)a0 + 8) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0x1e) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0x1a) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0x1c) = 0x1f;
-        *(unsigned short *)((char *)a0 + 0x18) = 0x1f;
+        obj->sprite_0e = 0x1f;
+        obj->sprite_0a = 0x1f;
+        obj->sprite_0c = 0x1f;
+        obj->sprite_08 = 0x1f;
+        obj->sprite_1e = 0x1f;
+        obj->sprite_1a = 0x1f;
+        obj->sprite_1c = 0x1f;
+        obj->sprite_18 = 0x1f;
         s[0xa] = 0x1e;
-        *(unsigned int *)((char *)a0 + 0x70) = 0x8000;
+        obj->field_70 = 0x8000;
         break;
     case 0x24:
-        *(unsigned short *)((char *)a0 + 0xe) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0xa) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0xc) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 8) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0x1e) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0x1a) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0x1c) = 0x2d2;
-        *(unsigned short *)((char *)a0 + 0x18) = 0x2d2;
+        obj->sprite_0e = 0x2d2;
+        obj->sprite_0a = 0x2d2;
+        obj->sprite_0c = 0x2d2;
+        obj->sprite_08 = 0x2d2;
+        obj->sprite_1e = 0x2d2;
+        obj->sprite_1a = 0x2d2;
+        obj->sprite_1c = 0x2d2;
+        obj->sprite_18 = 0x2d2;
         s[0xa] = 0x2d2 - 1;
-        *(unsigned int *)((char *)a0 + 0x70) = 0x8000;
+        obj->field_70 = 0x8000;
         break;
     case 0x25:
-        *(unsigned short *)((char *)a0 + 0xe) = 0x155;
-        *(unsigned short *)((char *)a0 + 0xa) = 0x155;
-        *(unsigned short *)((char *)a0 + 0xc) = 0x155;
-        *(unsigned short *)((char *)a0 + 8) = 0x155;
-        *(unsigned short *)((char *)a0 + 0x1e) = 0x155;
-        *(unsigned short *)((char *)a0 + 0x1a) = 0x155;
-        *(unsigned short *)((char *)a0 + 0x1c) = 0x155;
-        *(unsigned short *)((char *)a0 + 0x18) = 0x155;
+        obj->sprite_0e = 0x155;
+        obj->sprite_0a = 0x155;
+        obj->sprite_0c = 0x155;
+        obj->sprite_08 = 0x155;
+        obj->sprite_1e = 0x155;
+        obj->sprite_1a = 0x155;
+        obj->sprite_1c = 0x155;
+        obj->sprite_18 = 0x155;
         s[0xa] = 0x155 - 1;
-        *(unsigned int *)((char *)a0 + 0x70) = 0x8000;
+        obj->field_70 = 0x8000;
         break;
     }
 }

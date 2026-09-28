@@ -17,6 +17,11 @@ extern void *gPlayerEntity;
 extern "C" void sub_802F6BA(void *a0)
 {
     unsigned char *flags = (unsigned char *)a0 + 0x70;
+    /* 0xa0 is one byte past sizeof(Default) -- the survey (type 1 in
+     * docs/decisions/drafts/2026-09-27-object-types.md) has no header for
+     * whatever derived class a0 actually is here, only the unrelated
+     * 0xac..0xb0 bytes of struct Player past its declared end; keep the
+     * cast rather than guess a field into a struct that isn't Default's. */
     unsigned short *type = (unsigned short *)((char *)a0 + 0xa0);
 
     if (*type == 0x2710) {
