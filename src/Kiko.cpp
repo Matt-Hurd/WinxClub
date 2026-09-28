@@ -96,11 +96,10 @@ void Kiko::m10() {
   if (action == 0) {
     Sprite *r5_30 = field_30;
     Singleton_3EA0_Data *cam = sub_8000D5A((void *)gUnknown_03003EA0);
-    unsigned int cam_x = cam->field_20;
-    unsigned int obj_x = r5_30->field_10;
+    FrameEntry *cam_x = cam->field_20;
+    FrameEntry *obj_x = r5_30->field_10;
     Sprite *r5_2c = field_2c;
-    int diff = (int)(obj_x - cam_x);
-    int shifted = diff >> 3;
+    int shifted = obj_x - cam_x;
     unsigned short r6 = (unsigned short)shifted;
 
     cam = sub_8000D5A((void *)gUnknown_03003EA0);

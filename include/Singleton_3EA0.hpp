@@ -6,6 +6,8 @@
 // sub_8000D5A(ptr) returns ptr+4 (skips vtable), returning a
 // pointer to the data portion (Singleton_3EA0_Data).
 
+struct FrameEntry;
+
 struct Singleton_3EA0_Data {
   // 0x00
   unsigned int field_00;
@@ -24,9 +26,9 @@ struct Singleton_3EA0_Data {
   // 0x1c
   unsigned int field_1c;
   // 0x20
-  unsigned int field_20;
+  struct FrameEntry *field_20;
   // 0x24
-  unsigned int field_24;
+  struct FrameEntry *field_24;
   // 0x28
   unsigned int field_28;
   // 0x2c
