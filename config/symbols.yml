@@ -7040,7 +7040,7 @@ globals:
   kind: object
   unit: data/iwram1.s
   name: gUnknown_03003BC8
-  decl: unsigned char gUnknown_03003BC8[0x30]
+  decl: struct SoundDriver gUnknown_03003BC8
 - addr: '0x03003BF8'
   kind: object
   unit: data/iwram1.s

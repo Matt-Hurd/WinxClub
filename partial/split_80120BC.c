@@ -18,9 +18,10 @@
  * (base+index vs index+base) that no source reshaping moved -- see
  * notes/quirks/add-operand-order-follows-evaluation-not-source.md.
  */
-#include "generated/globals.h"
+#include "SoundDriver.h"
 
 extern void *sub_80123B4(void *a0);
+extern struct SoundDriver gUnknown_03003BC8;
 
 void sub_80122F0(void *a0)
 {
@@ -47,7 +48,7 @@ void sub_801230C(void *a0)
 unsigned char sub_80120BC(void)
 {
     unsigned char result = 0;
-    void *ptr = *(void **)(gUnknown_03003BC8 + 0x1c);
+    void *ptr = gUnknown_03003BC8.field_1c;
 
     if (ptr != 0)
         result = *(unsigned char *)((char *)ptr + 2);

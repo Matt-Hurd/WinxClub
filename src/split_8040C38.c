@@ -1,27 +1,28 @@
 #include "generated/globals.h"
+#include "SoundDriver.h"
 
 void sub_8040C38(unsigned short a0) {
   unsigned char v;
   unsigned char lim;
-  v = gUnknown_03003BC8[7] + 1;
-  gUnknown_03003BC8[7] = v;
-  lim = gUnknown_03003BC8[8];
+  v = gUnknown_03003BC8.field_07 + 1;
+  gUnknown_03003BC8.field_07 = v;
+  lim = gUnknown_03003BC8.field_08;
   if (v > lim) {
-    unsigned short flags = *(unsigned short *)gUnknown_03003BC8;
+    unsigned short flags = gUnknown_03003BC8.field_00;
     if (!(flags & 0x100)) {
-      gUnknown_03003BC8[0xa]++;
-      gUnknown_03003BC8[7] = gUnknown_03003BC8[9];
+      gUnknown_03003BC8.field_0a++;
+      gUnknown_03003BC8.field_07 = gUnknown_03003BC8.field_09;
     } else {
       flags |= 8;
-      *(unsigned short *)gUnknown_03003BC8 = flags;
+      gUnknown_03003BC8.field_00 = flags;
     }
   }
-  *(unsigned short *)(gUnknown_03003BC8 + 0xc) = a0;
+  gUnknown_03003BC8.field_0c = a0;
   {
-    unsigned char *p = *(unsigned char **)(gUnknown_03003BC8 + 0x18);
-    unsigned char idx = gUnknown_03003BC8[7];
+    unsigned char *p = gUnknown_03003BC8.field_18;
+    unsigned char idx = gUnknown_03003BC8.field_07;
     unsigned int val = p[idx];
-    unsigned int *arr = *(unsigned int **)(gUnknown_03003BC8 + 0x24);
-    *(unsigned int *)(gUnknown_03003BC8 + 0x28) = arr[val];
+    unsigned int *arr = gUnknown_03003BC8.field_24;
+    gUnknown_03003BC8.field_28 = arr[val];
   }
 }
