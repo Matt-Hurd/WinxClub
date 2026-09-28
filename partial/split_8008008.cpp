@@ -19,26 +19,64 @@
  * a hardware timer snapshot), never dereferenced as a pointer here.
  * REG_TM0CNT (0x04000100) is 32-byte aligned, so a flat cast pools verbatim
  * -- see notes/quirks/mmio-constants-get-rebased-to-a-32-byte-boundary.md.
+ *
+ * sub_8008008 and sub_80081B6 build a small, vtable-less record (0x18
+ * bytes, matching the operator new(0x18) here); sub_800802E, sub_8008072,
+ * sub_8008100 and sub_800805E build a different, larger vtable-bearing
+ * record (0x20 bytes) -- the two share this unit only by address
+ * proximity, same as sub_8001A60/sub_8001B80 in partial/split_8001A60.cpp.
+ * sub_8008008 writes its offset 0xc as one byte; sub_800802E's record has
+ * an int at that offset instead, which is consistent with them being two
+ * different objects, not one shape written two ways.
  */
 #include "generated/functions.h"
 
 extern "C" int __VTABLE__384dword_803EEF0;
-extern "C" struct { int field_00; int field_04; } gUnknown_030033F4;
+
+struct Unknown_030033F4 {
+    int field_00;
+    int field_04;
+};
+extern "C" struct Unknown_030033F4 gUnknown_030033F4;
+
+struct Struct8008008 {
+    int field_00;
+    int field_04;
+    int field_08;
+    unsigned char field_0c;
+    int field_10;
+    int field_14;
+};
+
+struct Struct800802E {
+    void *vtable;
+    unsigned short field_04;
+    unsigned short field_06;
+    int field_08;
+    int field_0c;
+    int field_10;
+    int field_14;
+    int field_18;
+    int field_1c;
+};
 
 extern "C" void *sub_8008008(void *a0)
 {
+    struct Struct8008008 *p;
+
     if (a0 == 0) {
         a0 = operator new(0x18);
         if (a0 == 0) {
             return a0;
         }
     }
-    *(int *)((char *)a0 + 0x0) = 0;
-    *(int *)((char *)a0 + 0x4) = 0;
-    *(int *)((char *)a0 + 0x8) = 0;
-    *(char *)((char *)a0 + 0xc) = 1;
-    *(int *)((char *)a0 + 0x10) = 0;
-    *(int *)((char *)a0 + 0x14) = 0;
+    p = (struct Struct8008008 *)a0;
+    p->field_00 = 0;
+    p->field_04 = 0;
+    p->field_08 = 0;
+    p->field_0c = 1;
+    p->field_10 = 0;
+    p->field_14 = 0;
     return a0;
 }
 
@@ -49,7 +87,7 @@ extern "C" int sub_80080FC(void)
 
 extern "C" int sub_8008100(void *a0)
 {
-    return *(int *)((char *)a0 + 0x18) == 0;
+    return ((struct Struct800802E *)a0)->field_18 == 0;
 }
 
 extern "C" int sub_8008118(void)
@@ -71,9 +109,11 @@ extern "C" void sub_8008120(void)
  */
 extern "C" void sub_80081B6(void *a0, int a1)
 {
-    *(int *)((char *)a0 + 0x0) = 0;
-    *(int *)((char *)a0 + 0x4) = 0;
-    *(int *)((char *)a0 + 0x8) = a1;
+    struct Struct8008008 *p = (struct Struct8008008 *)a0;
+
+    p->field_00 = 0;
+    p->field_04 = 0;
+    p->field_08 = a1;
 }
 
 extern "C" void sub_800807A(void)
@@ -96,7 +136,7 @@ extern "C" int sub_8008112(void)
 
 extern "C" unsigned char sub_8008072(void *a0)
 {
-    return *(unsigned short *)((char *)a0 + 6);
+    return ((struct Struct800802E *)a0)->field_06;
 }
 
 extern "C" void sub_8008122(void)
@@ -113,7 +153,7 @@ extern "C" void sub_80081A8(void)
 
 extern "C" void sub_800805E(void *a0, int a1)
 {
-    *(int *)a0 = (int)&__VTABLE__384dword_803EEF0;
+    ((struct Struct800802E *)a0)->vtable = &__VTABLE__384dword_803EEF0;
     if (a1 != 0)
         sub_803DA18(a0);
 }
@@ -133,6 +173,8 @@ extern "C" int sub_8008160(void)
 
 extern "C" int sub_8008182(void)
 {
+    /* REG_TM0CNT, not gUnknown_030033F4 or either a0 record -- kept as a
+     * flat cast, see the mmio-constants-get-rebased quirk noted above. */
     volatile unsigned int *tm = (volatile unsigned int *)0x04000100;
     int flag;
     int cur;
@@ -152,6 +194,7 @@ extern "C" void sub_800802E(void *a0)
 {
     void *vt;
     int *g;
+    struct Struct800802E *p;
 
     if (a0 == 0) {
         a0 = operator new(0x20);
@@ -160,15 +203,16 @@ extern "C" void sub_800802E(void *a0)
     }
     vt = &__VTABLE__384dword_803EEF0;
     g = &gUnknown_030033F4.field_00;
-    *(void **)a0 = vt;
-    *(short *)((char *)a0 + 4) = 0;
-    *(short *)((char *)a0 + 6) = 0;
-    *(int *)((char *)a0 + 8) = 0;
-    *(int *)((char *)a0 + 0xc) = 0;
-    *(int *)((char *)a0 + 0x10) = 0;
-    *(int *)((char *)a0 + 0x14) = 0;
-    *(int *)((char *)a0 + 0x18) = 0;
-    *(int *)((char *)a0 + 0x1c) = 0;
+    p = (struct Struct800802E *)a0;
+    p->vtable = vt;
+    p->field_04 = 0;
+    p->field_06 = 0;
+    p->field_08 = 0;
+    p->field_0c = 0;
+    p->field_10 = 0;
+    p->field_14 = 0;
+    p->field_18 = 0;
+    p->field_1c = 0;
     *g = 0;
 }
 
