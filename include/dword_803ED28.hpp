@@ -13,6 +13,11 @@ public:
     virtual void m18();
     virtual unsigned int m1C();
     virtual void m20();
+
+    // 0x04
+    char gap_04[0x44];
+    // 0x48
+    unsigned int field_48;
 };
 
 #endif // DWORD_803ED28_HPP_
