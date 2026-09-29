@@ -2,12 +2,16 @@
  * asm/nonmatching/split_800BBF4/, including sub_800C134 (parked, see
  * notes/parked.md).
  *
- * Both walk the same packed structure at offset 0x3a0/0x3c0 of `a0`: a
- * halfword table at +0x3a0, a byte pair at +0x3c0/+0x3c1, and (for
- * sub_800BCE4) a small binary tree of packed bytes reached through a
- * separate pointer, `a1`. Field names are unknown, so this stays raw offset
- * arithmetic rather than a named struct.
+ * sub_800C0EC and sub_800CADA's `a0` is the camera singleton's data portion,
+ * struct Singleton_3EA0_Data (include/Singleton_3EA0.hpp) -- not the
+ * level-state object at gUnknown_03003448 winx-qhyt.25 named this unit for;
+ * that survey attribution was superseded once winx-qhyt.13 wrote
+ * include/Unknown_03003448.h, whose header comment says so explicitly and
+ * lists these two functions by name. sub_800BCE4's `a0` is unread and its
+ * `a1` is a small binary tree of packed bytes reached through a separate,
+ * unidentified pointer; neither is in scope here.
  */
+#include "Singleton_3EA0.hpp"
 
 /* a0 is carried through unread -- every caller passes a pointer, but nothing
  * in this function ever loads it; it is only here to keep the register
@@ -75,25 +79,23 @@ done:
     *a1 = (unsigned char)((r0 & 0xf) | node);
 }
 
-void sub_800C0EC(void *a0, unsigned int a1, unsigned int a2)
+void sub_800C0EC(struct Singleton_3EA0_Data *a0, unsigned int a1, unsigned int a2)
 {
     unsigned int i;
-    unsigned char *field;
     unsigned char saved;
 
     for (i = 0; i < a2 - 1; i++) {
-        *(unsigned short *)((char *)a0 + 0x3a0 + (a1 + i) * 2) =
+        *(unsigned short *)((char *)&a0->field_3a0 + (a1 + i) * 2) =
             (unsigned char)(a1 + i + 1);
     }
 
-    field = (unsigned char *)a0 + 0x3c0;
-    saved = field[0];
-    *(unsigned short *)((char *)a0 + 0x3a0 + (a1 + a2 - 1) * 2) = saved;
-    field[0] = (unsigned char)a1;
-    field[1] -= a2;
+    saved = a0->field_3c0;
+    *(unsigned short *)((char *)&a0->field_3a0 + (a1 + a2 - 1) * 2) = saved;
+    a0->field_3c0 = (unsigned char)a1;
+    a0->field_3c1 -= a2;
 }
 
-unsigned int sub_800CADA(void *a0)
+unsigned int sub_800CADA(struct Singleton_3EA0_Data *a0)
 {
-    return *(unsigned int *)((char *)a0 + 0x78) & 1;
+    return a0->field_78 & 1;
 }

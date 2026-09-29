@@ -1,6 +1,14 @@
 /* Two functions of split_8011040; sub_8011040 and sub_801115C are not part
  * of this conversion and stay assembly in asm/nonmatching/split_8011040/.
  * sub_8011040 is parked, see notes/parked.md.
+ *
+ * `a0` in both sub_801114E and sub_8011106 is not the level-state object at
+ * gUnknown_03003448 winx-qhyt.25 named this unit for: per
+ * include/Unknown_03003448.h's header comment, both belong instead to
+ * dword_803EC98 (include/dword_803EC98.hpp), the PlayMovie-only object.
+ * That header declares no data members (vtable slots only), so there is no
+ * struct to route these casts through yet -- a separate ticket, not this
+ * one.
  */
 
 extern int sub_8010ED2(void *a0, unsigned char a1);

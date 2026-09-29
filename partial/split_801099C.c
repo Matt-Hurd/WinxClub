@@ -3,6 +3,16 @@
  * both parked (see notes/parked.md). sub_8010B6C's division reaches
  * __16__rt_sdiv
  * (notes/quirks/a-thumb-bl-to-__rt_memclr_w-lands-on-__16__rt_memclr_w.md).
+ *
+ * `a0` in sub_80109EC, sub_8010B6C and sub_8010B3E is not the level-state
+ * object at gUnknown_03003448 winx-qhyt.25 named this unit for: per
+ * include/Unknown_03003448.h's header comment, all three belong instead to
+ * dword_803EC98 (include/dword_803EC98.hpp), the PlayMovie-only object.
+ * That header declares no data members (vtable slots only), so there is no
+ * struct to route these casts through yet -- a separate ticket, not this
+ * one. sub_80109DE's `a0` is in the same excluded list. sub_801099C's `a0`
+ * (its single `+4` access) is not named by that survey either way and is
+ * left alone.
  */
 
 extern void *gUnknown_03003E84;
