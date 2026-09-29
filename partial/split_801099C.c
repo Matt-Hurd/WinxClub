@@ -4,23 +4,22 @@
  * __16__rt_sdiv
  * (notes/quirks/a-thumb-bl-to-__rt_memclr_w-lands-on-__16__rt_memclr_w.md).
  *
- * `a0` in sub_80109EC, sub_8010B6C and sub_8010B3E is not the level-state
- * object at gUnknown_03003448 winx-qhyt.25 named this unit for: per
- * include/Unknown_03003448.h's header comment, all three belong instead to
- * dword_803EC98 (include/dword_803EC98.hpp), the PlayMovie-only object.
- * That header declares no data members (vtable slots only), so there is no
- * struct to route these casts through yet -- a separate ticket, not this
- * one. sub_80109DE's `a0` is in the same excluded list. sub_801099C's `a0`
- * (its single `+4` access) is not named by that survey either way and is
- * left alone.
+ * sub_80109DE, sub_80109EC, sub_8010B3E and sub_8010B6C's a0 is
+ * dword_803EC98 (include/dword_803EC98.hpp, winx-qhyt.29); sub_801099C's a0
+ * is a different, still-uncast object (gUnknown_03003448's gap_00, see
+ * notes/parked.md-adjacent docs/decisions/drafts/2026-09-27-object-types.md
+ * type 13), so its one cast stays.
  */
+#include "dword_803EC98.hpp"
 
 extern void *gUnknown_03003E84;
 extern void *sub_800529A(void *a0, void *a1, int a2, void *a3);
 
 int sub_80109DE(void *a0)
 {
-    return (unsigned short)(*(int *)((char *)a0 + 0x10)) - *(int *)((char *)a0 + 0x5c) - 1;
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
+
+    return (unsigned short)self->field_10 - self->field_5c - 1;
 }
 
 int sub_801099C(void *a0, unsigned int a1)
@@ -48,29 +47,31 @@ int sub_801099C(void *a0, unsigned int a1)
 
 int sub_80109EC(void *a0)
 {
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
     unsigned int idx;
-    char *entry;
     unsigned int val;
 
-    idx = *(unsigned char *)((char *)a0 + 0x54);
-    entry = (char *)a0 + idx * 12 + 0x640;
-    val = *(unsigned int *)(entry + 0x10);
-    return (val >> 16) - *(unsigned int *)((char *)a0 + 0x60) - 1;
+    idx = self->field_54;
+    val = self->field_64c[idx].field_04;
+    return (val >> 16) - self->field_60 - 1;
 }
 
 int sub_8010B6C(void *a0)
 {
-    return (*(int *)((char *)a0 + 0x64) - *(int *)((char *)a0 + 0x68)) * 1000
-        / (int)((*(unsigned int *)((char *)a0 + 0xc) >> 4) & 0xff);
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
+
+    return (self->field_64 - self->field_68) * 1000
+        / (int)((self->field_0c >> 4) & 0xff);
 }
 
 void sub_8010B3E(void *a0, int a1)
 {
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
     int prod;
 
-    prod = *(int *)((char *)a0 + 0x58) * a1;
-    *(int *)((char *)a0 + 0x7c) = (*(int *)((char *)a0 + 0x7c) + prod) & *(int *)((char *)a0 + 0x80);
-    *(int *)((char *)a0 + 0x6fc) += prod;
-    *(int *)((char *)a0 + 0x60) -= a1;
-    *(int *)((char *)a0 + 0x64) += a1;
+    prod = self->field_58 * a1;
+    self->field_7c = (self->field_7c + prod) & self->field_80;
+    self->field_6fc += prod;
+    self->field_60 -= a1;
+    self->field_64 += a1;
 }
