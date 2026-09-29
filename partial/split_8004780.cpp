@@ -1,14 +1,14 @@
-/* Twenty-five of split_8004780's twenty-seven assigned functions; the rest
+/* Twenty-six of split_8004780's twenty-seven assigned functions; the rest
  * of the unit is still assembly in asm/nonmatching/split_8004780/.
  * cpp_evidence.py proves this unit C++ (an __nw__FUi operator-new call in
  * sub_80047EC), so it is spliced as .cpp. None of these are vtable slots --
  * plain sub_ labels -- so they are unmangled `extern "C"` free functions,
  * same convention as partial/split_8008008.cpp.
  *
- * sub_8004784 and sub_8004984 (18 lines, 48 bytes) are parked --
- * register-allocation-is-the-stop-signal, see notes/parked.md -- and stay in
- * asm/nonmatching/split_8004780/{sub_8004784,sub_8004984}.s, which the
- * splicer pulls in on its own since they are not named here.
+ * sub_8004984 (29 lines) is parked --
+ * register-allocation-is-the-stop-signal, see notes/parked.md -- and stays in
+ * asm/nonmatching/split_8004780/sub_8004984.s, which the splicer pulls in on
+ * its own since it is not named here.
  *
  * sub_800496A and sub_8004924 store `__VTABLE__14Singleton_3E80` and
  * `__VTABLE__317dword_803E67C` by hand, the same shape as
@@ -85,6 +85,23 @@ extern "C" unsigned char sub_80047A0(NoteEvent780 *a0, int a1)
         r = (v >> 8) & 0x3F;
     }
     return (unsigned char)r;
+}
+
+/* Setter counterpart of sub_80047A0 above: bits 0-5 of field_00 from a1,
+ * bits 8-13 from a2, everything else preserved. `register` on `a1` is what
+ * moves tcc's allocator onto the ROM's r1-as-accumulator choice --
+ * notes/quirks/register-storage-class-moves-tccs-register-allocation.md. */
+extern "C" void sub_8004784(NoteEvent780 *a0, register unsigned int a1, unsigned int a2)
+{
+    unsigned int v = a0->field_00;
+    a1 = (a1 << 26) >> 26;
+    v = (v >> 6) << 6;
+    a1 = a1 | v;
+    unsigned int mask = 0x3f << 8;
+    unsigned int hi = (a2 << 26) >> 18;
+    a1 = a1 & ~mask;
+    a1 = a1 | hi;
+    a0->field_00 = (unsigned short)a1;
 }
 
 extern "C" void *sub_80047EC(NoteEvent780 *a0)

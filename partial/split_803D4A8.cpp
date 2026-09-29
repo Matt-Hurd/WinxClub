@@ -1,4 +1,4 @@
-/* Seven functions of split_803D4A8; the rest of the unit is still assembly in
+/* Nine functions of split_803D4A8; the rest of the unit is still assembly in
  * asm/nonmatching/split_803D4A8/. sub_80051D6 lives in split_8005044 and
  * stays assembly there.
  */
@@ -14,6 +14,29 @@ extern "C" void sub_8005220(void *a0, void *a1, void *a2, void *a3);
 extern "C" void sub_803D9A8(void *a0, void *a1, void *a2)
 {
     sub_8005220(*(void **)((char *)&gUnknown_030033E8 + 8), a0, a1, a2);
+}
+
+/* operator new and sub_803D984 both forward to sub_80051D6 with the same
+ * arena dereference as sub_803D9A8 above, and were parked on it (register-
+ * allocation-is-the-stop-signal, see notes/parked.md): the inline-expression
+ * form used above compiles the deref last, right before the call, where the
+ * ROM does it right after the push, before the stack-argument spill and the
+ * constant/copy moves. Naming the dereferenced pointer as its own local
+ * (`void *arena = ...`, not folded into the call expression) is what moves
+ * tcc's scheduler onto the ROM's order for both of these two -- the
+ * remaining `str r2,[sp]` vs `str r2,[sp,#0]` line regtest.py's diff shows
+ * is spelling only, not a byte difference (SP-relative STR with a 0 offset
+ * assembles the same either way). */
+void *operator new(unsigned int a0)
+{
+    void *arena = *(void **)((char *)&gUnknown_030033E8 + 8);
+    return sub_80051D6(arena, (void *)a0, 1, 0, 0);
+}
+
+extern "C" void *sub_803D984(void *a0, void *a1, void *a2)
+{
+    void *arena = *(void **)((char *)&gUnknown_030033E8 + 8);
+    return sub_80051D6(arena, a0, 3, a1, a2);
 }
 
 /* REG_BLDCNT, REG_BLDALPHA, REG_BLDY from a0[0..2]. The ROM pools REG_WIN0H
