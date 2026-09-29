@@ -7,9 +7,10 @@
  * statements put the first `return 0` inline instead.
  */
 #include "generated/globals.h"
+#include "Default.hpp"
 
-int sub_803FAB8(void *a0)
+int sub_803FAB8(struct Default *a0)
 {
-    return (*(unsigned int *)((char *)a0 + 0x7c) >> 24 & 0xf) == 2
-        && (*(unsigned int *)((char *)a0 + 0x80) & 4) != 0;
+    return (*(unsigned int *)&a0->directionAndMore >> 24 & 0xf) == 2
+        && (a0->flags.unk00 & 4) != 0;
 }

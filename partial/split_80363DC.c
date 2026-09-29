@@ -12,28 +12,31 @@
  * the same register as the bit test, matching the ROM's register choice too.
  */
 
-extern void *gUnknown_03003EA0;
-extern void *sub_8000D5A(void *a0);
+#include "Default.hpp"
+#include "Sprite.h"
+#include "Singleton_3EA0.hpp"
+
+extern struct Singleton_3EA0_Data *sub_8000D5A(void *a0);
 extern void m10__7DefaultFv(void *a0);
 
-void WallObjectScriptGroup__10(void *a0)
+void WallObjectScriptGroup__10(void *a0v)
 {
-    void *target = *(void **)((char *)a0 + 0x2c);
-    unsigned int bit = (*(unsigned int *)target << 21) >> 31;
+    struct Default *a0 = a0v;
+    struct Sprite *target = a0->field_2c;
+    unsigned int bit = (target->field_00 << 21) >> 31;
 
     if (bit == 0) {
         void *g = gUnknown_03003EA0;
         int computed = -1;
 
-        if (*(int *)((char *)target + 0x44) != 0) {
-            computed = (*(int *)((char *)target + 0x44) -
-                        *(int *)((char *)sub_8000D5A(g) + 0x24)) >> 3;
+        if (target->field_44 != 0) {
+            computed = target->field_44 - sub_8000D5A(g)->field_24;
         }
 
         {
-            unsigned short cur = *(unsigned short *)((char *)a0 + 0x1a);
+            unsigned short cur = a0->sprite_1a;
             if ((unsigned short)computed != cur)
-                *(unsigned short *)((char *)a0 + 0x18) = cur;
+                a0->sprite_18 = cur;
         }
     }
 

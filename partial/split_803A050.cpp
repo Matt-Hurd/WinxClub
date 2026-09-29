@@ -28,6 +28,9 @@ void Scanner::m48(void *a1)
     void *msg = *(void **)a1;
     int type = *(unsigned short *)((char *)msg + 8);
     int x;
+    /* 0xc0 (and the 0xf0 it indexes into below) is past Default's 0xa0 --
+     * a Scanner-derived field with no header yet, so it stays a raw offset
+     * from `this` rather than a Default.hpp member. */
     char *scriptGroup = (char *)this + 0xc0;
 
     switch (type) {

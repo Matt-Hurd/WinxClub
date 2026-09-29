@@ -2,15 +2,17 @@
  * asm/nonmatching/split_8036CE4/.
  */
 
+#include "Default.hpp"
+
 extern "C" void sub_803F2CC(void *a0, int a1);
 extern "C" void *GetEWRAMStart(void);
 extern "C" void *sub_803DA80(void *a0, void *a1, void *a2, void *a3);
 extern "C" void *memset(void *, int, unsigned int);
 
-extern "C" void sub_8036E04(void *a0)
+extern "C" void sub_8036E04(Default *a0)
 {
-    sub_803F2CC(*(void **)((char *)a0 + 0x2c), 0);
-    *(int *)((char *)a0 + 0x9c) = 1;
+    sub_803F2CC(a0->field_2c, 0);
+    a0->flags.CurrentAction = 1;
 
     int *p = (int *)sub_803DA80((void *)0x1c, GetEWRAMStart(), 0, 0);
     if (p != 0) {
@@ -29,13 +31,13 @@ extern "C" void sub_8036E04(void *a0)
     h[8] = 0;
     h[9] = 0;
     *((unsigned char *)p + 0x14) = 3;
-    *(void **)((char *)p + 0x18) = *(void **)((char *)a0 + 0x28);
-    *(void **)((char *)a0 + 0x28) = p;
+    *(void **)((char *)p + 0x18) = a0->field_28;
+    a0->field_28 = (SpriteRecord *)p;
 }
 
-extern "C" void sub_8036E5E(void *a0)
+extern "C" void sub_8036E5E(Default *a0)
 {
-    *(int *)((char *)a0 + 0x9c) = 0x21;
+    a0->flags.CurrentAction = 0x21;
 }
 
 extern "C" void sub_8036E02(void *a0)
