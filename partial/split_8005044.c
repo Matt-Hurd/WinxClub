@@ -1,5 +1,5 @@
-/* Nine of split_8005044's eleven candidates. sub_8005044,
- * SomehowInitEWRAMLinkedList, sub_8005164, sub_8005170 and sub_80051D6 are
+/* Ten of split_8005044's eleven candidates. sub_8005044,
+ * SomehowInitEWRAMLinkedList, sub_8005170 and sub_80051D6 are
  * parked -- see notes/parked.md -- and stay asm in
  * asm/nonmatching/split_8005044/.
  *
@@ -78,6 +78,15 @@ unsigned int sub_8005158(unsigned char *a0)
 unsigned int sub_8005160(unsigned char *a0)
 {
     return *(unsigned int *)(a0 + 0xc);
+}
+
+/* Free-space calculation: (field4 - field0) - fieldC. Written as one
+ * expression rather than through locals -- with locals tcc combines the
+ * field0/field4 reads into an LDMIA regardless of read order (see
+ * notes/parked.md); this shape keeps them as two separate ldrs. */
+unsigned int sub_8005164(unsigned char *a0)
+{
+    return (*(unsigned int *)(a0 + 4) - *(unsigned int *)a0) - *(unsigned int *)(a0 + 0xc);
 }
 
 void sub_8005220(unsigned char *a0, unsigned char *a1)
