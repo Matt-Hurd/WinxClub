@@ -1,4 +1,4 @@
-/* One of split_8016D90's four functions; sub_8016F78, sub_8016E20 and
+/* Two of split_8016D90's four functions; sub_8016F78, sub_8016E20 and
  * sub_8016E8C are parked (see notes/parked.md) and stay assembly in
  * asm/nonmatching/split_8016D90/.
  */
@@ -38,4 +38,22 @@ void sub_8016D90(void *a0, void *a1)
     sub_802459E(gUnknown_030034F8, *(unsigned short *)((char *)obj + 4) == 1);
 
     *(unsigned int *)((char *)a0 + 0xc) = (*(unsigned short *)((char *)obj + 4) != 0);
+}
+
+/* a0 is genuinely unused. Reading the offset-4 field twice -- once signed
+ * for the test and negation, once unsigned for the positive-branch call
+ * argument -- lands the instruction count; naming the negated value (rather
+ * than casting the negation inline) is what moves the `movs r1,#0` flag
+ * load after the zero-extend, matching the ROM's schedule (winx-aif3.10). */
+void sub_8016F50(void *a0, void *a1)
+{
+    char *p = *(void **)a1;
+    short v = *(short *)(p + 4);
+
+    if (v > 0) {
+        sub_803FEF8(*(unsigned short *)(p + 4), 1);
+    } else {
+        unsigned short neg = -v;
+        sub_803FEF8(neg, 0);
+    }
 }

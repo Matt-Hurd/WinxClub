@@ -1,6 +1,6 @@
-/* Six functions of split_8013024; the rest of the unit is still assembly in
- * asm/nonmatching/split_8013024/. sub_80133AE and sub_801340A were attempted
- * and parked -- see notes/parked.md.
+/* Seven functions of split_8013024; the rest of the unit is still assembly
+ * in asm/nonmatching/split_8013024/. sub_80133AE is parked -- see
+ * notes/parked.md.
  */
 #include "generated/functions.h"
 
@@ -55,7 +55,7 @@ extern "C" void *sub_80133A0(unsigned int a0)
     return (char *)gUnknown_03003C3C + a0 * 0x1c;
 }
 
-/* sub_80133AE and sub_801340A were attempted and parked: both come down to a
+/* sub_80133AE was attempted and parked: comes down to a
  * register-allocation/operand-order difference only, see notes/parked.md. */
 extern "C" int sub_80133AE(unsigned int a0, void *a1);
 extern "C" void *sub_8004FFC(void *a0);
@@ -64,6 +64,25 @@ extern void *gUnknown_03003EA8;
 extern "C" void sub_80133F0(unsigned int a0)
 {
     sub_80133AE(a0, sub_8004FFC(gUnknown_03003EA8));
+}
+
+/* Byte-sums a table lookup over a NUL-terminated string, table[c] the top
+ * byte of a word: `register` on `table` -- not `result` or the parameters --
+ * is what gives it its own dead register instead of sharing one with the
+ * loop character (winx-aif3.10, notes/quirks/register-storage-class-moves-
+ * tccs-register-allocation.md). */
+extern "C" unsigned short sub_801340A(void *a0, unsigned char *a1)
+{
+    register unsigned int *table;
+    unsigned short result = 0;
+
+    if (*a1 == 0) return result;
+    table = *(unsigned int **)((char *)a0 + 8);
+    do {
+        result += table[*a1] >> 24;
+        a1++;
+    } while (*a1);
+    return result;
 }
 
 extern "C" void *memset(void *, int, unsigned int);
