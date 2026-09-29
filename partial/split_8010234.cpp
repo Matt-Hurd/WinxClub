@@ -49,7 +49,8 @@ void dword_803EC98::m14()
 
 extern "C" void sub_8010278(void *a0, int a1)
 {
-    *(void **)a0 = &__VTABLE__352dword_803EC98;
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
+    self->vtable = &__VTABLE__352dword_803EC98;
     sub_80105AE(a0, 0);
     if (a1)
         sub_803DA18(a0);
@@ -63,8 +64,9 @@ extern "C" void *sub_8010234(void *a0)
             return a0;
     }
     sub_801053C(a0);
-    *(void **)a0 = &__VTABLE__352dword_803EC98;
-    *(unsigned char *)((char *)a0 + 0x1720 + 0xc) = 0;
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
+    self->vtable = &__VTABLE__352dword_803EC98;
+    self->field_172c = 0;
     void *e98 = gUnknown_03003E98;
     sub_8004670(e98, gUnknown_0804AE44[gUnknown_030031EC]);
     return a0;
@@ -72,9 +74,11 @@ extern "C" void *sub_8010234(void *a0)
 
 extern "C" void sub_801029A(void *a0)
 {
+    struct dword_803EC98_Data *self = (struct dword_803EC98_Data *)a0;
+
     (void)sub_80049B4(gUnknown_03003E80);
 
-    int v = *(int *)((char *)a0 + 0x1720);
+    int v = self->field_1710.field_10;
     if (v & 1)
         return;
 
@@ -85,7 +89,7 @@ extern "C" void sub_801029A(void *a0)
         lo = *(unsigned short *)((char *)cur + 6);
 
     if (((unsigned short)lo & v) != 0)
-        *((unsigned char *)a0 + 0x1720 + 0xc) = 1;
+        self->field_172c = 1;
 }
 
 extern "C" void sub_80102D8(void *a0)
@@ -96,7 +100,7 @@ extern "C" void sub_80102D8(void *a0)
         fn(gUnknown_03003E7C);
     }
 
-    if (*((unsigned char *)a0 + 0x54) != 0xb) {
+    if (((struct dword_803EC98_Data *)a0)->field_54 != 0xb) {
         void *obj = a0;
         char *vt = *(char **)obj;
         void (*fn)(void *) = (void (*)(void *))(vt + *(int *)(vt + 8));
@@ -104,14 +108,14 @@ extern "C" void sub_80102D8(void *a0)
     }
 
     sub_80081A8();
-    unsigned char *p = (unsigned char *)a0 + 0x1720;
-    sub_8011040(a0, p[4], p[5]);
+    sub_8011040(a0, ((struct dword_803EC98_Data *)a0)->field_1710.field_14,
+                ((struct dword_803EC98_Data *)a0)->field_1710.field_15);
 
     if (gUnknown_03003E7C != 0) {
         char *vt = *(char **)gUnknown_03003E7C;
         int (*fn)(void *) = (int (*)(void *))(vt + *(int *)(vt + 0x14));
         if (fn(gUnknown_03003E7C) != 0) {
-            void *n = *(void **)((char *)a0 + 0x64);
+            void *n = (void *)((struct dword_803EC98_Data *)a0)->field_64;
             char *vt2 = *(char **)gUnknown_03003E7C;
             void (*fn2)(void *, void *) = (void (*)(void *, void *))(vt2 + *(int *)(vt2 + 0xc));
             fn2(gUnknown_03003E7C, n);
@@ -144,10 +148,9 @@ extern "C" int sub_8010344(void *a0)
         fn3(gUnknown_03003E7C);
     }
 
-    unsigned char *p = (unsigned char *)a0 + 0x1720;
-    if (p[0xc] == 1) {
+    if (((struct dword_803EC98_Data *)a0)->field_172c == 1) {
         return 1;
     }
-    p[0xc] = 0;
+    ((struct dword_803EC98_Data *)a0)->field_172c = 0;
     return sub_801115C(a0) != 0 ? 0 : 1;
 }

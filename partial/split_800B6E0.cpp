@@ -9,7 +9,17 @@
  * plain field pokes and a CpuSet/DMA3 fill choice (split_8000210.c's
  * sub_80002E2 has the same DMA3-through-one-pointer idiom). The rest of the
  * unit is still assembly in asm/nonmatching/split_800B6E0/.
+ *
+ * sub_800B790/sub_800B7D2/sub_800B7C2's a0 and sub_800B8CE's a0 are
+ * Singleton_3EA0_Data directly (include/Singleton_3EA0.hpp); sub_800B8A4 and
+ * sub_800B7DC's a0 is the raw object one word earlier (its own vtable slot,
+ * which they write by hand), so their field accesses go through a
+ * `(char *)a0 + 4` adjustor once at the top -- the same "+4 skips vtable"
+ * sub_8000D5A performs, inlined instead of called because the ROM never
+ * calls it here (winx-qhyt.26).
  */
+#include "Singleton_3EA0.hpp"
+
 extern "C" {
 
 void sub_8011DB2(void);
@@ -75,9 +85,9 @@ void sub_800B782(int a0, int a1)
     sub_8012180(a1);
 }
 
-void sub_800B790(void *a0, int a1, int a2, int a3)
+void sub_800B790(struct Singleton_3EA0_Data *a0, int a1, int a2, int a3)
 {
-    if (!(*(unsigned int *)((char *)a0 + 8) & 0x10))
+    if (!(a0->field_08 & 0x10))
         sub_8012126(a1, a2, a3);
 }
 
@@ -91,22 +101,21 @@ int sub_800B7AA(int a0, int a1)
     return sub_80121C4(a1) != 0;
 }
 
-int sub_800B7D2(void *a0)
+int sub_800B7D2(struct Singleton_3EA0_Data *a0)
 {
-    return (*(unsigned int *)((char *)a0 + 8) << 27) >> 31;
+    return (a0->field_08 << 27) >> 31;
 }
 
-void sub_800B7C2(void *a0, int a1)
+void sub_800B7C2(struct Singleton_3EA0_Data *a0, int a1)
 {
-    unsigned int old = *(unsigned int *)((char *)a0 + 8) & ~0x10;
-    *(unsigned int *)((char *)a0 + 8) = old | ((unsigned int)(a1 << 31) >> 27);
+    unsigned int old = a0->field_08 & ~0x10;
+    a0->field_08 = old | ((unsigned int)(a1 << 31) >> 27);
 }
 
 }
 
 extern "C" int __VTABLE__341dword_803EB3C;
 extern "C" int __VTABLE__14Singleton_3EA0;
-extern "C" void *gUnknown_03003EA0;
 extern "C" void sub_8000CCE(int *a0);
 extern "C" void *sub_803DA18(void *a0);
 
@@ -122,6 +131,13 @@ extern "C" void sub_800B8A4(void *a0, int a1)
 
 extern "C" void sub_800B8CE(void *a0)
 {
+    /* Same fields sub_800B7DC calls field_130c/field_1310/field_1814/
+     * field_1820/field_19a0/field_19a9 (Singleton_3EA0.hpp) -- but going
+     * through the +4 adjustor here, unlike there, adds an ADD the ROM does
+     * not have: this function's own compiled form computes every offset
+     * straight off a0, never through a second `self = a0 + 4` pointer,
+     * so the casts stay (winx-qhyt.26; same family as
+     * notes/quirks/a-too-large-offset-pool-loads-the-written-constant-not-the-resolved-address.md). */
     *(void **)((char *)a0 + 0x1310) = (char *)a0 + 0xbd0;
     *(void **)((char *)a0 + 0x1314) = (char *)a0 + 0xc50;
 
@@ -150,33 +166,47 @@ extern "C" void *sub_800B7DC(void *a0)
     }
 
     *(int *)a0 = (int)&__VTABLE__14Singleton_3EA0;
-    gUnknown_03003EA0 = a0;
+    gUnknown_03003EA0 = (Singleton_3EA0 *)a0;
     *(int *)a0 = (int)&__VTABLE__341dword_803EB3C;
 
-    *(int *)((char *)a0 + 0x40) = 0;
-    *(int *)((char *)a0 + 0x44) = 0;
-    *(int *)((char *)a0 + 0x48) = 0;
-    *(int *)((char *)a0 + 0x4c) = 0;
-    *(int *)((char *)a0 + 0x50) = 0;
-    *(int *)((char *)a0 + 0x54) = 0;
-    *(int *)((char *)a0 + 0x58) = 0;
-    *(int *)((char *)a0 + 0x5c) = 0;
-    *(int *)((char *)a0 + 0x60) = 0;
-    *(int *)((char *)a0 + 0x64) = 0;
-    *(int *)((char *)a0 + 0x68) = 0;
-    *(int *)((char *)a0 + 0x6c) = 0;
+    /* Not through one `self` local: it and a0 would then be two registers
+     * live for the same value across this whole function, where the ROM
+     * keeps only a0's. Repeating the +4 adjustor cast lets tcc fold it
+     * into each field's own immediate instead (winx-qhyt.26). */
+#define DATA(p) ((struct Singleton_3EA0_Data *)((char *)(p) + 4))
 
-    *(unsigned short *)((char *)a0 + 0x70) = 0;
-    *(unsigned short *)((char *)a0 + 0x72) = 0;
-    *(unsigned short *)((char *)a0 + 0x74) = 0;
-    *(unsigned short *)((char *)a0 + 0x76) = 0;
+    DATA(a0)->field_3c = 0;
+    DATA(a0)->field_40 = 0;
+    DATA(a0)->field_44 = 0;
+    DATA(a0)->field_48 = 0;
+    DATA(a0)->field_4c = 0;
+    DATA(a0)->field_50 = 0;
+    DATA(a0)->field_54 = 0;
+    DATA(a0)->field_58 = 0;
+    DATA(a0)->field_5c = 0;
+    DATA(a0)->field_60 = 0;
+    DATA(a0)->field_64 = 0;
+    DATA(a0)->field_68 = 0;
 
-    *(unsigned int *)((char *)a0 + 0x78) = (*(unsigned int *)((char *)a0 + 0x78) >> 1) << 1;
-    *(int *)((char *)a0 + 0x7c) = 0;
+    DATA(a0)->field_6c = 0;
+    DATA(a0)->field_6e = 0;
+    DATA(a0)->field_70 = 0;
+    DATA(a0)->field_72 = 0;
 
-    *(int *)((char *)a0 + 0x1310) = 0;
-    *(int *)((char *)a0 + 0x1314) = 0;
+    DATA(a0)->field_74 = (DATA(a0)->field_74 >> 1) << 1;
+    DATA(a0)->field_78 = 0;
 
+    DATA(a0)->field_130c = 0;
+    DATA(a0)->field_1310 = 0;
+
+#undef DATA
+
+    /* Bulk zero-fills of anonymous padding, kept on raw a0 rather than
+     * self+K: for an offset too big for an immediate STR, tcc pool-loads
+     * the constant actually written in the source (0x1318, not self's
+     * 0x1314), so self+K produces a different literal pool word even
+     * though the resulting address is the same
+     * (notes/quirks/a-too-large-offset-pool-loads-the-written-constant-not-the-resolved-address.md). */
     memset((int *)a0 + (4 / 4), 0, 0x3c);
     memset((int *)a0 + (0x80 / 4), 0, 0x320);
     memset((int *)a0 + (0x3a0 / 4), 0, 0x22);
