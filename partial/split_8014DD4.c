@@ -2,6 +2,8 @@
  * asm/nonmatching/split_8014DD4/. sub_8014E46 is parked -- see notes/parked.md.
  */
 
+#include "EntityState.h"
+
 extern void sub_803F55C(void *a0);
 extern void sub_803F5FC(void *a0, int a1, int a2, int a3);
 extern void sub_8013F6C(void *a0);
@@ -25,31 +27,32 @@ void sub_8014E04(void *a0)
 {
     sub_803F55C(a0);
 
-    if (*(int *)((char *)a0 + 0x54) != 0) {
-        sub_803F5FC(a0, *(int *)((char *)a0 + 0x54),
-                        *(int *)((char *)a0 + 0x58),
-                        *(int *)((char *)a0 + 0x5c));
+    if (((struct EntityState *)a0)->field_54 != 0) {
+        sub_803F5FC(a0, (int)((struct EntityState *)a0)->field_54,
+                    ((struct EntityState *)a0)->field_58,
+                    ((struct EntityState *)a0)->field_5c);
     }
 
-    if (*(int *)((char *)a0 + 0x60) != 0) {
-        sub_803F5FC(a0, *(int *)((char *)a0 + 0x60),
-                        *(int *)((char *)a0 + 0x64),
-                        *(int *)((char *)a0 + 0x68));
+    if (((struct EntityState *)a0)->field_60 != 0) {
+        sub_803F5FC(a0, ((struct EntityState *)a0)->field_60,
+                    ((struct EntityState *)a0)->field_64,
+                    ((struct EntityState *)a0)->field_68);
     }
 
-    *(int *)((char *)a0 + 0x54) = 0;
-    *(int *)((char *)a0 + 0x60) = 0;
-    *((char *)a0 + 0x6e) = 0;
-    *((char *)a0 + 0x6f) = 0;
+    ((struct EntityState *)a0)->field_54 = 0;
+    ((struct EntityState *)a0)->field_60 = 0;
+    ((struct EntityState *)a0)->field_6e = 0;
+    ((struct EntityState *)a0)->field_6f = 0;
 
     sub_8013F6C(a0);
 }
 
 void sub_8014E76(void *a0, int a1)
 {
+    struct EntityState *state = (struct EntityState *)a0;
     int i;
 
-    for (i = 0; i < *((unsigned char *)a0 + 0x6e) * *((unsigned char *)a0 + 0x6f); i++) {
-        sub_80401E4((*(void ***)((char *)a0 + 0x54))[i], a1);
+    for (i = 0; i < state->field_6e * state->field_6f; i++) {
+        sub_80401E4(state->field_54[i], a1);
     }
 }

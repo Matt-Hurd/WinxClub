@@ -24,13 +24,14 @@ void sub_8014B7E(void *a0, int a1)
 int sub_8014B66(void *a0, int a1)
 {
     typedef int (*Fn)(void *, unsigned char);
+    struct EntityState *state = (struct EntityState *)a0;
     void *vt;
     Fn fn;
 
-    *(int *)((char *)a0 + 0x40) = a1;
-    vt = *(void **)a0;
+    state->field_40 = a1;
+    vt = state->field_00;
     fn = (Fn)(*(int *)((char *)vt + 0x28) + (int)vt);
-    return fn(a0, *(unsigned char *)((char *)a0 + 0x2e));
+    return fn(a0, state->field_2e);
 }
 
 extern void sub_803EF2C(void *a0);
@@ -43,17 +44,18 @@ extern void sub_803F5FC(void *a0, int a1, int a2, int a3);
  */
 void sub_8014B02(void *a0, int a1)
 {
-    if (*(int *)((char *)a0 + 0x70) == a1)
+    struct EntityState *state = (struct EntityState *)a0;
+
+    if (state->field_70 == a1)
         return;
-    *(int *)((char *)a0 + 0x70) = a1;
-    if (a1 != 0 && *(int *)((char *)a0 + 0x54) != 0) {
+    state->field_70 = a1;
+    if (a1 != 0 && state->field_54 != 0) {
         sub_803EF2C(a0);
         return;
     }
     if (a1 != 0)
         return;
-    if (*(int *)((char *)a0 + 0x60) != 0) {
-        sub_803F5FC(a0, *(int *)((char *)a0 + 0x60), *(int *)((char *)a0 + 0x64),
-                    *(int *)((char *)a0 + 0x68));
+    if (state->field_60 != 0) {
+        sub_803F5FC(a0, state->field_60, state->field_64, state->field_68);
     }
 }
