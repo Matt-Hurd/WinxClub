@@ -32,6 +32,7 @@ def norm(lines):
         s = s.split(";")[0].lower().replace("\t", " ")
         s = re.sub(r"\s+", " ", s).strip()
         s = re.sub(r",\s*", ",", s)
+        s = re.sub(r"#0x([0-9a-f]+)", lambda m: "#" + str(int(m.group(1), 16)), s)
         s = re.sub(r"\[(r\d),#0\]", r"[\1]", s)
         s = re.sub(r"r(\d)-r(\d)", lambda m: ",".join(f"r{i}" for i in range(int(m.group(1)), int(m.group(2)) + 1)), s)
         s = re.sub(r"_0[0-9a-f]{7}\b|\bl\d+ \+ \d+\b|\|l1\.\d+\|( \+ \d+)?", "pool", s)
